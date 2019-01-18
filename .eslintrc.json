@@ -1,0 +1,20 @@
+{
+    "extends": [
+        "airbnb-base",
+        "plugin:mocha/recommended"
+    ],
+    "parserOptions": {
+        "parser": "babel-eslint",
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "env": {
+        "es6": true
+    },
+    "plugins": [
+        "mocha"
+    ],
+    "rules": {
+      "prefer-destructuring": "off"
+    }
+}
