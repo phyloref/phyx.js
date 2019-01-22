@@ -88,7 +88,7 @@ phyxCacheManager = new CacheManager();
 
 /* Scientific name processing */
 
-class ScientificNameWrapper {
+export class ScientificNameWrapper {
   // Wraps a scientific name to provide access to components of
   // the scientific name. For now, we ignore binomialName, genus and
   // specificEpithet and rederive them from the scientific name.
@@ -179,7 +179,7 @@ class ScientificNameWrapper {
 
 /* Specimen wrapper */
 
-class SpecimenWrapper {
+export class SpecimenWrapper {
   // Wraps a specimen identifier.
 
   constructor(specimen) {
@@ -340,7 +340,7 @@ class SpecimenWrapper {
 
 /* Taxonomic unit wrapper */
 
-class TaxonomicUnitWrapper {
+export class TaxonomicUnitWrapper {
   // Wraps a taxonomic unit.
   // Also provides static methods for obtaining lists of wrapped taxonomic units
   // from node labels.
@@ -435,7 +435,7 @@ class TaxonomicUnitWrapper {
 
 /* Taxonomic unit matching */
 
-class TaxonomicUnitMatcher {
+export class TaxonomicUnitMatcher {
   // A taxonomic unit matcher tests for taxonomic matches between pairs of
   // taxonomic units.
 
@@ -561,7 +561,7 @@ class TaxonomicUnitMatcher {
 
 /* Phylogeny wrapper */
 
-class PhylogenyWrapper {
+export class PhylogenyWrapper {
   // Wraps a Phylogeny in a PHYX file and provides access to node, node labels
   // and other information. Remember that a Phylogeny also has the
   // additionalNodeProperties object which provides additional properties for
@@ -913,8 +913,7 @@ class PhylogenyWrapper {
 
 /* Phyloreference wrapper */
 
-// eslint-disable-next-line no-unused-vars
-class PhylorefWrapper {
+export class PhylorefWrapper {
   // Wraps a phyloreference in a PHYX model.
 
   constructor(phyloref) {
@@ -1491,8 +1490,7 @@ class PhylorefWrapper {
 
 /* PHYX file wrapper */
 
-// eslint-disable-next-line no-unused-vars
-class PHYXWrapper {
+export class PHYXWrapper {
   // Wraps an entire PHYX document.
 
   constructor(phyx) {
@@ -1620,18 +1618,4 @@ class PHYXWrapper {
 
     return jsonld;
   }
-}
-
-/* Exports */
-if (!hasOwnProperty(this, 'window')) {
-  module.exports = {
-    ScientificNameWrapper,
-    SpecimenWrapper,
-    TaxonomicUnitWrapper,
-    TaxonomicUnitMatcher,
-    PhylogenyWrapper,
-    PhylorefWrapper,
-    PHYXWrapper,
-    phyxCacheManager,
-  };
 }
