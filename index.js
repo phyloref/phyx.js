@@ -20,14 +20,18 @@
  * can be complex and slow if necessary.
  */
 
-// TODO: remove references to Vue but make sure it still works from within Vue.
-import phylotree from 'phylotree';
-    // TODO: phylotree requires bootstrap, which seems excessive, but our
-    // current code is designed to work on its particular internal structure.
-    // It might be worth moving that code into the Curation Tool, and replacing
-    // this prerequestive with https://www.npmjs.com/package/newick-js
+// Used to parse timestamps for phyloref statuses.
 import moment from 'moment';
+
+// Used to make deep copies of objects.
 import extend from 'extend';
+
+// TODO: remove references to Vue but make sure it still works from within Vue.
+// TODO: phylotree requires bootstrap, which seems excessive, but our
+// current code is designed to work on its particular internal structure.
+// It might be worth moving that code into the Curation Tool, and replacing
+// this prerequestive with https://www.npmjs.com/package/newick-js
+import phylotree from 'phylotree';
 
 // Some OWL constants to be used.
 const CDAO_HAS_CHILD = 'obo:CDAO_0000149';
@@ -471,9 +475,9 @@ export class TaxonomicUnitMatcher {
   match() {
     // Try to match the two taxonomic units using a number of matching methods.
     if (
-      this.matchByBinomialName() ||
-      this.matchByExternalReferences() ||
-      this.matchBySpecimenIdentifier()
+      this.matchByBinomialName()
+      || this.matchByExternalReferences()
+      || this.matchBySpecimenIdentifier()
     ) {
       this.matched = true;
     } else {
@@ -493,10 +497,10 @@ export class TaxonomicUnitMatcher {
       return this.tunit2.scientificNames.some((scname2) => {
         const scname2wrapped = new ScientificNameWrapper(scname2);
 
-        const result = scname1wrapped.binomialName !== undefined &&
-          scname2wrapped.binomialName !== undefined &&
-          scname1wrapped.binomialName.trim().length > 0 &&
-          scname1wrapped.binomialName.trim() === scname2wrapped.binomialName.trim();
+        const result = scname1wrapped.binomialName !== undefined
+          && scname2wrapped.binomialName !== undefined
+          && scname1wrapped.binomialName.trim().length > 0
+          && scname1wrapped.binomialName.trim() === scname2wrapped.binomialName.trim();
 
         if (result) {
           this.matchReason = `Scientific name '${scname1wrapped.scientificName}' and scientific name '${scname2wrapped.scientificName}' share the same binomial name`;
@@ -513,22 +517,21 @@ export class TaxonomicUnitMatcher {
     if (hasOwnProperty(this.tunit1, 'externalReferences') && hasOwnProperty(this.tunit2, 'externalReferences')) {
       // Each external reference is a URL as a string. We will lowercase it,
       // but do no other transformation.
-      return this.tunit1.externalReferences.some(extref1 =>
-        this.tunit2.externalReferences.some((extref2) => {
-          const result = (
-            // Make sure that the external reference isn't blank
-            extref1.trim() !== '' &&
+      return this.tunit1.externalReferences.some(extref1 => this.tunit2.externalReferences.some((extref2) => {
+        const result = (
+          // Make sure that the external reference isn't blank
+          extref1.trim() !== ''
 
             // And that it is identical after trimming
-            extref1.toLowerCase().trim() === extref2.toLowerCase().trim()
-          );
+            && extref1.toLowerCase().trim() === extref2.toLowerCase().trim()
+        );
 
-          if (result) {
-            this.matchReason = `External reference '${extref1}' is shared by taxonomic unit ${this.tunit1} and ${this.tunit2}`;
-          }
+        if (result) {
+          this.matchReason = `External reference '${extref1}' is shared by taxonomic unit ${this.tunit1} and ${this.tunit2}`;
+        }
 
-          return result;
-        }));
+        return result;
+      }));
     }
 
     return false;
@@ -612,9 +615,9 @@ export class PhylogenyWrapper {
     if (parenLevels !== 0) {
       errors.push({
         title: 'Unbalanced parentheses in Newick string',
-        message: (parenLevels > 0 ?
-          `You have ${parenLevels} too many open parentheses` :
-          `You have ${-parenLevels} too few open parentheses`
+        message: (parenLevels > 0
+          ? `You have ${parenLevels} too many open parentheses`
+          : `You have ${-parenLevels} too few open parentheses`
         ),
       });
     }
@@ -681,8 +684,7 @@ export class PhylogenyWrapper {
     const nodeLabels = this.getNodeLabels(nodeType);
     const tunits = new Set();
 
-    nodeLabels.forEach(nodeLabel =>
-      this.getTaxonomicUnitsForNodeLabel(nodeLabel).forEach(tunit => tunits.add(tunit)));
+    nodeLabels.forEach(nodeLabel => this.getTaxonomicUnitsForNodeLabel(nodeLabel).forEach(tunit => tunits.add(tunit)));
 
     return tunits;
   }
@@ -712,9 +714,9 @@ export class PhylogenyWrapper {
           // Only add the node label if it is on the type of node
           // we're interested in.
           if (
-            (nodeType === 'both') ||
-            (nodeType === 'internal' && nodeHasChildren) ||
-            (nodeType === 'terminal' && !nodeHasChildren)
+            (nodeType === 'both')
+            || (nodeType === 'internal' && nodeHasChildren)
+            || (nodeType === 'terminal' && !nodeHasChildren)
           ) {
             nodeLabels.add(node.name);
           }
@@ -731,8 +733,8 @@ export class PhylogenyWrapper {
     // Look up additional node properties.
     let additionalNodeProperties = {};
     if (
-      hasOwnProperty(this.phylogeny, 'additionalNodeProperties') &&
-      hasOwnProperty(this.phylogeny.additionalNodeProperties, nodeLabel)
+      hasOwnProperty(this.phylogeny, 'additionalNodeProperties')
+      && hasOwnProperty(this.phylogeny.additionalNodeProperties, nodeLabel)
     ) {
       additionalNodeProperties = this.phylogeny.additionalNodeProperties[nodeLabel];
     }
@@ -765,8 +767,7 @@ export class PhylogenyWrapper {
 
       // Attempt pairwise matches between taxonomic units in the specifier
       // and associated with the node.
-      return specifierTUnits.some(tunit1 =>
-        nodeTUnits.some(tunit2 => new TaxonomicUnitMatcher(tunit1, tunit2).matched));
+      return specifierTUnits.some(tunit1 => nodeTUnits.some(tunit2 => new TaxonomicUnitMatcher(tunit1, tunit2).matched));
     });
   }
 
@@ -923,11 +924,11 @@ export class PhylorefWrapper {
     // Reset internal and external specifiers if needed.
     // if (!hasOwnProperty(this.phyloref, 'internalSpecifiers')) Vue.set(this.phyloref, 'internalSpecifiers', []);
     if (!hasOwnProperty(this.phyloref, 'internalSpecifiers')) {
-        this.phyloref.internalSpecifiers = [];
+      this.phyloref.internalSpecifiers = [];
     }
     // if (!hasOwnProperty(this.phyloref, 'externalSpecifiers')) Vue.set(this.phyloref, 'externalSpecifiers', []);
     if (!hasOwnProperty(this.phyloref, 'externalSpecifiers')) {
-        this.phyloref.externalSpecifiers = [];
+      this.phyloref.externalSpecifiers = [];
     }
   }
 
@@ -1056,9 +1057,9 @@ export class PhylorefWrapper {
       if (nodeLabel === phylorefLabel) {
         nodeLabels.add(nodeLabel);
       } else if (
-        hasOwnProperty(phylogeny, 'additionalNodeProperties') &&
-        hasOwnProperty(phylogeny.additionalNodeProperties, nodeLabel) &&
-        hasOwnProperty(phylogeny.additionalNodeProperties[nodeLabel], 'expectedPhyloreferenceNamed')
+        hasOwnProperty(phylogeny, 'additionalNodeProperties')
+        && hasOwnProperty(phylogeny.additionalNodeProperties, nodeLabel)
+        && hasOwnProperty(phylogeny.additionalNodeProperties[nodeLabel], 'expectedPhyloreferenceNamed')
       ) {
         // Does this node label have an expectedPhyloreferenceNamed that
         // includes this phyloreference name?
@@ -1097,9 +1098,9 @@ export class PhylorefWrapper {
     //  - intervalEnd: the end of the interval
 
     if (
-      hasOwnProperty(this.phyloref, 'pso:holdsStatusInTime') &&
-      Array.isArray(this.phyloref['pso:holdsStatusInTime']) &&
-      this.phyloref['pso:holdsStatusInTime'].length > 0
+      hasOwnProperty(this.phyloref, 'pso:holdsStatusInTime')
+      && Array.isArray(this.phyloref['pso:holdsStatusInTime'])
+      && this.phyloref['pso:holdsStatusInTime'].length > 0
     ) {
       // If we have any pso:holdsStatusInTime entries, pick the first one and
       // extract the CURIE and time interval information from it.
@@ -1184,14 +1185,14 @@ export class PhylorefWrapper {
 
     // Check to see if there's a previous time interval we should end.
     if (
-      Array.isArray(this.phyloref['pso:holdsStatusInTime']) &&
-      this.phyloref['pso:holdsStatusInTime'].length > 0
+      Array.isArray(this.phyloref['pso:holdsStatusInTime'])
+      && this.phyloref['pso:holdsStatusInTime'].length > 0
     ) {
       const lastStatusInTime = this.phyloref['pso:holdsStatusInTime'][this.phyloref['pso:holdsStatusInTime'].length - 1];
 
       // if (!hasOwnProperty(lastStatusInTime, 'tvc:atTime')) Vue.set(lastStatusInTime, 'tvc:atTime', {});
       if (!hasOwnProperty(lastStatusInTime, 'tvc:atTime')) {
-          lastStatusInTime['tvc:atTime'] = {};
+        lastStatusInTime['tvc:atTime'] = {};
       }
       if (!hasOwnProperty(lastStatusInTime['tvc:atTime'], 'timeinterval:hasIntervalEndDate')) {
         // If the last time entry doesn't already have an interval end date, set it to now.
@@ -1533,15 +1534,13 @@ export class PHYXWrapper {
 
     // Add descriptions for individual nodes in each phylogeny.
     if (hasOwnProperty(jsonld, 'phylogenies')) {
-      jsonld.phylogenies = jsonld.phylogenies.map((phylogeny, countPhylogeny) =>
-        new PhylogenyWrapper(phylogeny)
-          .asJSONLD(PHYXWrapper.getBaseURIForPhylogeny(countPhylogeny)));
+      jsonld.phylogenies = jsonld.phylogenies.map((phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny)
+        .asJSONLD(PHYXWrapper.getBaseURIForPhylogeny(countPhylogeny)));
     }
 
     // Convert phyloreferences into an OWL class restriction
     if (hasOwnProperty(jsonld, 'phylorefs')) {
-      jsonld.phylorefs = jsonld.phylorefs.map((phyloref, countPhyloref) =>
-        new PhylorefWrapper(phyloref).asJSONLD(PHYXWrapper.getBaseURIForPhyloref(countPhyloref)));
+      jsonld.phylorefs = jsonld.phylorefs.map((phyloref, countPhyloref) => new PhylorefWrapper(phyloref).asJSONLD(PHYXWrapper.getBaseURIForPhyloref(countPhyloref)));
     }
 
     // Match all specifiers with nodes.
@@ -1579,8 +1578,9 @@ export class PHYXWrapper {
                 nodeTUs.forEach((nodeTU) => {
                   const matcher = new TaxonomicUnitMatcher(specifierTU, nodeTU);
                   if (matcher.matched) {
-                    const tuMatchAsJSONLD =
-                      matcher.asJSONLD(PHYXWrapper.getBaseURIForTUMatch(countTaxonomicUnitMatches));
+                    const tuMatchAsJSONLD = matcher.asJSONLD(
+                      PHYXWrapper.getBaseURIForTUMatch(countTaxonomicUnitMatches),
+                    );
                     jsonld.hasTaxonomicUnitMatches.push(tuMatchAsJSONLD);
                     nodesMatchedCount += 1;
                     countTaxonomicUnitMatches += 1;
