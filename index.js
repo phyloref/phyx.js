@@ -24,10 +24,10 @@
 const { parse: parseNewick } = require('newick-js');
 
 // Used to parse timestamps for phyloref statuses.
-import moment from 'moment';
+const moment = require('moment');
 
 // Used to make deep copies of objects.
-import extend from 'extend';
+const extend = require('extend');
 
 // Some OWL constants to be used.
 const CDAO_HAS_CHILD = 'obo:CDAO_0000149';
@@ -88,7 +88,7 @@ phyxCacheManager = new CacheManager();
 
 /* Scientific name processing */
 
-export class ScientificNameWrapper {
+class ScientificNameWrapper {
   // Wraps a scientific name to provide access to components of
   // the scientific name. For now, we ignore binomialName, genus and
   // specificEpithet and rederive them from the scientific name.
@@ -179,7 +179,7 @@ export class ScientificNameWrapper {
 
 /* Specimen wrapper */
 
-export class SpecimenWrapper {
+class SpecimenWrapper {
   // Wraps a specimen identifier.
 
   constructor(specimen) {
@@ -340,7 +340,7 @@ export class SpecimenWrapper {
 
 /* Taxonomic unit wrapper */
 
-export class TaxonomicUnitWrapper {
+class TaxonomicUnitWrapper {
   // Wraps a taxonomic unit.
   // Also provides static methods for obtaining lists of wrapped taxonomic units
   // from node labels.
@@ -435,7 +435,7 @@ export class TaxonomicUnitWrapper {
 
 /* Taxonomic unit matching */
 
-export class TaxonomicUnitMatcher {
+class TaxonomicUnitMatcher {
   // A taxonomic unit matcher tests for taxonomic matches between pairs of
   // taxonomic units.
 
@@ -560,7 +560,7 @@ export class TaxonomicUnitMatcher {
 
 /* Phylogeny wrapper */
 
-export class PhylogenyWrapper {
+class PhylogenyWrapper {
   // Wraps a Phylogeny in a PHYX file and provides access to node, node labels
   // and other information. Remember that a Phylogeny also has the
   // additionalNodeProperties object which provides additional properties for
@@ -923,7 +923,7 @@ export class PhylogenyWrapper {
 
 /* Phyloreference wrapper */
 
-export class PhylorefWrapper {
+class PhylorefWrapper {
   // Wraps a phyloreference in a PHYX model.
 
   constructor(phyloref) {
@@ -1500,7 +1500,7 @@ export class PhylorefWrapper {
 
 /* PHYX file wrapper */
 
-export class PHYXWrapper {
+class PHYXWrapper {
   // Wraps an entire PHYX document.
 
   constructor(phyx) {
@@ -1628,3 +1628,15 @@ export class PHYXWrapper {
     return jsonld;
   }
 }
+
+/* Exports */
+module.exports = {
+  ScientificNameWrapper,
+  SpecimenWrapper,
+  TaxonomicUnitWrapper,
+  TaxonomicUnitMatcher,
+  PhylogenyWrapper,
+  PhylorefWrapper,
+  PHYXWrapper,
+  phyxCacheManager,
+};
