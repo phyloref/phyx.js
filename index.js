@@ -780,12 +780,12 @@ class PhylogenyWrapper {
     });
   }
 
-  getParsedNewickWithIRIs(baseURI) {
+  static getParsedNewickWithIRIs(parsedNewick, baseURI) {
     // Return the parsed Newick string, but with EVERY node given an IRI.
+    // parsedNewick: A Newick tree represented as a tree produced by Phylotree.
     // baseURI: The base URI to use for node elements (e.g. ':phylogeny1').
 
-    const newick = this.phylogeny.newick || '()';
-    const parsed = d3.layout.newick_parser(newick);
+    const parsed = parsedNewick;
     if (hasOwnProperty(parsed, 'json')) {
       PhylogenyWrapper.recurseNodes(parsed.json, (node, nodeCount) => {
         // Start with the additional node properties.
@@ -800,8 +800,9 @@ class PhylogenyWrapper {
     return parsed;
   }
 
-  getNodesAsJSONLD(baseURI) {
+  static getNodesAsJSONLD(parsedNewick, baseURI) {
     // Returns a list of all nodes in this phylogeny as a series of nodes.
+    // - parsedNewick: A Newick tree parsed into a tree structure by Phylotree.
     // - baseURI: The base URI to use for node elements (e.g. ':phylogeny1').
 
     // List of nodes we have identified.
@@ -817,7 +818,7 @@ class PhylogenyWrapper {
     // Parse the Newick string; if parseable, recurse through the nodes,
     // added them to the list of JSON-LD nodes as we go.
 
-    const parsed = this.getParsedNewickWithIRIs(baseURI);
+    const parsed = this.getParsedNewickWithIRIs(parsedNewick, baseURI);
     if (hasOwnProperty(parsed, 'json')) {
       PhylogenyWrapper.recurseNodes(parsed.json, (node, nodeCount, parentCount) => {
         // Start with the additional node properties.
