@@ -66,8 +66,8 @@ class CacheManager {
 
   has(cacheName, cacheKey) {
     // Return true if we have a value for this particular cache key.
-    return hasOwnProperty(this.caches, cacheName) &&
-      hasOwnProperty(this.caches[cacheName], cacheKey);
+    return hasOwnProperty(this.caches, cacheName)
+      && hasOwnProperty(this.caches[cacheName], cacheKey);
   }
 
   get(cacheName, cacheKey) {
@@ -513,14 +513,14 @@ class TaxonomicUnitMatcher {
     if (hasOwnProperty(this.tunit1, 'externalReferences') && hasOwnProperty(this.tunit2, 'externalReferences')) {
       // Each external reference is a URL as a string. We will lowercase it,
       // but do no other transformation.
-      return this.tunit1.externalReferences.some(extref1 =>
-        this.tunit2.externalReferences.some((extref2) => {
+      return this.tunit1.externalReferences.some(
+        extref1 => this.tunit2.externalReferences.some((extref2) => {
           const result = (
             // Make sure that the external reference isn't blank
-            extref1.trim() !== '' &&
+            extref1.trim() !== ''
 
-            // And that it is identical after trimming
-            extref1.toLowerCase().trim() === extref2.toLowerCase().trim()
+              // And that it is identical after trimming
+              && extref1.toLowerCase().trim() === extref2.toLowerCase().trim()
           );
 
           if (result) {
@@ -528,7 +528,8 @@ class TaxonomicUnitMatcher {
           }
 
           return result;
-        }));
+        }),
+      );
     }
 
     return false;
@@ -681,8 +682,10 @@ class PhylogenyWrapper {
     const nodeLabels = this.getNodeLabels(nodeType);
     const tunits = new Set();
 
-    nodeLabels.forEach(nodeLabel =>
-      this.getTaxonomicUnitsForNodeLabel(nodeLabel).forEach(tunit => tunits.add(tunit)));
+    nodeLabels.forEach(
+      nodeLabel => this.getTaxonomicUnitsForNodeLabel(nodeLabel)
+        .forEach(tunit => tunits.add(tunit)),
+    );
 
     return tunits;
   }
@@ -778,8 +781,11 @@ class PhylogenyWrapper {
 
       // Attempt pairwise matches between taxonomic units in the specifier
       // and associated with the node.
-      return specifierTUnits.some(tunit1 =>
-        nodeTUnits.some(tunit2 => new TaxonomicUnitMatcher(tunit1, tunit2).matched));
+      return specifierTUnits.some(
+        tunit1 => nodeTUnits.some(
+          tunit2 => new TaxonomicUnitMatcher(tunit1, tunit2).matched,
+        ),
+      );
     });
   }
 
@@ -936,11 +942,13 @@ class PhylorefWrapper {
     this.phyloref = phyloref;
 
     // Reset internal and external specifiers if needed.
-    // if (!hasOwnProperty(this.phyloref, 'internalSpecifiers')) Vue.set(this.phyloref, 'internalSpecifiers', []);
+    // if (!hasOwnProperty(this.phyloref, 'internalSpecifiers'))
+    //  Vue.set(this.phyloref, 'internalSpecifiers', []);
     if (!hasOwnProperty(this.phyloref, 'internalSpecifiers')) {
         this.phyloref.internalSpecifiers = [];
     }
-    // if (!hasOwnProperty(this.phyloref, 'externalSpecifiers')) Vue.set(this.phyloref, 'externalSpecifiers', []);
+    // if (!hasOwnProperty(this.phyloref, 'externalSpecifiers'))
+    //  Vue.set(this.phyloref, 'externalSpecifiers', []);
     if (!hasOwnProperty(this.phyloref, 'externalSpecifiers')) {
         this.phyloref.externalSpecifiers = [];
     }
@@ -1204,7 +1212,8 @@ class PhylorefWrapper {
     ) {
       const lastStatusInTime = this.phyloref['pso:holdsStatusInTime'][this.phyloref['pso:holdsStatusInTime'].length - 1];
 
-      // if (!hasOwnProperty(lastStatusInTime, 'tvc:atTime')) Vue.set(lastStatusInTime, 'tvc:atTime', {});
+      // if (!hasOwnProperty(lastStatusInTime, 'tvc:atTime'))
+      //  Vue.set(lastStatusInTime, 'tvc:atTime', {});
       if (!hasOwnProperty(lastStatusInTime, 'tvc:atTime')) {
           lastStatusInTime['tvc:atTime'] = {};
       }
@@ -1549,15 +1558,18 @@ class PHYXWrapper {
 
     // Add descriptions for individual nodes in each phylogeny.
     if (hasOwnProperty(jsonld, 'phylogenies')) {
-      jsonld.phylogenies = jsonld.phylogenies.map((phylogeny, countPhylogeny) =>
-        new PhylogenyWrapper(phylogeny)
-          .asJSONLD(PHYXWrapper.getBaseURIForPhylogeny(countPhylogeny)));
+      jsonld.phylogenies = jsonld.phylogenies.map(
+        (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny)
+          .asJSONLD(PHYXWrapper.getBaseURIForPhylogeny(countPhylogeny)),
+      );
     }
 
     // Convert phyloreferences into an OWL class restriction
     if (hasOwnProperty(jsonld, 'phylorefs')) {
-      jsonld.phylorefs = jsonld.phylorefs.map((phyloref, countPhyloref) =>
-        new PhylorefWrapper(phyloref).asJSONLD(PHYXWrapper.getBaseURIForPhyloref(countPhyloref)));
+      jsonld.phylorefs = jsonld.phylorefs.map(
+        (phyloref, countPhyloref) => new PhylorefWrapper(phyloref)
+          .asJSONLD(PHYXWrapper.getBaseURIForPhyloref(countPhyloref)),
+      );
     }
 
     // Match all specifiers with nodes.
