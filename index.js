@@ -20,18 +20,14 @@
  * can be complex and slow if necessary.
  */
 
+// Used to parse Newick strings.
+const { parse: parseNewick } = require('newick-js');
+
 // Used to parse timestamps for phyloref statuses.
 import moment from 'moment';
 
 // Used to make deep copies of objects.
 import extend from 'extend';
-
-// TODO: remove references to Vue but make sure it still works from within Vue.
-// TODO: phylotree requires bootstrap, which seems excessive, but our
-// current code is designed to work on its particular internal structure.
-// It might be worth moving that code into the Curation Tool, and replacing
-// this prerequestive with https://www.npmjs.com/package/newick-js
-import phylotree from 'phylotree';
 
 // Some OWL constants to be used.
 const CDAO_HAS_CHILD = 'obo:CDAO_0000149';
@@ -622,13 +618,13 @@ export class PhylogenyWrapper {
       });
     }
 
-    // Finally, try parsing it with newick_parser and see if we get an error.
-    const parsed = d3.layout.newick_parser(newickTrimmed);
-    if (!hasOwnProperty(parsed, 'json') || parsed.json === null) {
-      const error = (hasOwnProperty(parsed, 'error') ? parsed.error : 'unknown error');
+    // Finally, try parsing it with parseNewick and see if we get an error.
+    try {
+      parseNewick(newickTrimmed);
+    } catch (ex) {
       errors.push({
         title: 'Error parsing phylogeny',
-        message: `An error occured while parsing this phylogeny: ${error}`,
+        message: `An error occured while parsing this phylogeny: ${ex.message}`,
       });
     }
 
@@ -690,41 +686,54 @@ export class PhylogenyWrapper {
   }
 
   getNodeLabels(nodeType = 'both') {
-    // Return a list of all the node labels in a phylogeny.
+    // Return a list of all the node labels in this phylogeny.
     //
     // nodeType can be one of:
     // - 'internal': Return node labels on internal nodes.
     // - 'terminal': Return node labels on terminal nodes.
     // - 'both': Return node labels on both internal and terminal nodes.
 
-    const nodeLabels = new Set();
+    // Parse the phylogeny (will throw an exception if parsing failed).
+    const { graph } = parseNewick(this.phylogeny.newick || '()');
+    const [vertices, arcs] = graph;
 
-    // Names from the Newick string.
-    const newick = this.phylogeny.newick || '()';
-
-    // Parse the Newick string; if parseable, recurse through the node labels,
-    // adding them all to 'nodeLabels'.
-    const parsed = d3.layout.newick_parser(newick);
-    if (hasOwnProperty(parsed, 'json') && parsed.json !== null) {
-      // Recurse away!
-      PhylogenyWrapper.recurseNodes(parsed.json, (node) => {
-        if (hasOwnProperty(node, 'name') && node.name !== '') {
-          const nodeHasChildren = hasOwnProperty(node, 'children') && node.children.length > 0;
-
-          // Only add the node label if it is on the type of node
-          // we're interested in.
-          if (
-            (nodeType === 'both')
-            || (nodeType === 'internal' && nodeHasChildren)
-            || (nodeType === 'terminal' && !nodeHasChildren)
-          ) {
-            nodeLabels.add(node.name);
-          }
-        }
-      });
+    if (nodeType === 'both') {
+      // Return all node labels.
+      return Array.from(
+        new Set(
+          Array.from(vertices)
+            .map(vertex => vertex.label)
+            .filter(label => label !== undefined),
+        ),
+      );
     }
 
-    return Array.from(nodeLabels);
+    if (nodeType === 'internal') {
+      // Return the internal nodes (those with atleast one child).
+      return Array.from(new Set(
+        Array.from(arcs)
+          .map(arc => arc[0].label) // Retrieve the label of the parent vertex in this arc.
+          .filter(label => label !== undefined),
+      ));
+    }
+
+    if (nodeType === 'terminal') {
+      // Return the terminal nodes. This would require calculating the children
+      // of every vertex in the graph and then identifying vertices without any
+      // children.
+      //
+      // A quicker and dirtier way to do this is by removing internal labels
+      // from the list of all node labels. This will report an incorrect result
+      // if an internal node has the same label as a terminal node, but at that
+      // point a lot of other assumptions are going to fail, too, so this is
+      // probably good enough for now.
+      const allLabels = this.getNodeLabels('both');
+      const internalLabels = new Set(this.getNodeLabels('internal'));
+
+      return allLabels.filter(label => !internalLabels.has(label));
+    }
+
+    throw new Error(`Unknown nodeType: '${nodeType}'`);
   }
 
   getTaxonomicUnitsForNodeLabel(nodeLabel) {
