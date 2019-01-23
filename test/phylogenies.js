@@ -92,7 +92,7 @@ describe('PhylogenyWrapper', function () {
 
     describe('when given an incomplete Newick string', function () {
       const incompleteNewickStrings = [
-        '(;)',
+        ';',
         '))(A, (B, ',
       ];
 
@@ -145,7 +145,7 @@ describe('PhylogenyWrapper', function () {
 
   describe('given a particular phylogeny with additional node properties', function () {
     const wrapper = new phyx.PhylogenyWrapper({
-      newick: '((MVZ225749, MVZ191016), "Rana boylii")',
+      newick: '((MVZ225749, MVZ191016), Rana boylii)',
       additionalNodeProperties: {
         MVZ225749: {
           representsTaxonomicUnits: [{
@@ -169,7 +169,6 @@ describe('PhylogenyWrapper', function () {
             'MVZ191016',
             'MVZ225749',
             'Rana boylii',
-            'root',
           ]);
       });
     });
