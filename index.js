@@ -789,12 +789,12 @@ class PhylogenyWrapper {
     });
   }
 
-  static getParsedNewickWithIRIs(parsedNewick, baseURI) {
+  getParsedNewickWithIRIs(baseURI, newickParser) {
     // Return the parsed Newick string, but with EVERY node given an IRI.
     // parsedNewick: A Newick tree represented as a tree produced by Phylotree.
     // baseURI: The base URI to use for node elements (e.g. ':phylogeny1').
 
-    const parsed = parsedNewick;
+    const parsed = newickParser(this.phylogeny.newick || '()');
     if (hasOwnProperty(parsed, 'json')) {
       PhylogenyWrapper.recurseNodes(parsed.json, (node, nodeCount) => {
         // Start with the additional node properties.
@@ -809,7 +809,7 @@ class PhylogenyWrapper {
     return parsed;
   }
 
-  static getNodesAsJSONLD(parsedNewick, baseURI) {
+  getNodesAsJSONLD(baseURI, newickParser) {
     // Returns a list of all nodes in this phylogeny as a series of nodes.
     // - parsedNewick: A Newick tree parsed into a tree structure by Phylotree.
     // - baseURI: The base URI to use for node elements (e.g. ':phylogeny1').
@@ -827,7 +827,7 @@ class PhylogenyWrapper {
     // Parse the Newick string; if parseable, recurse through the nodes,
     // added them to the list of JSON-LD nodes as we go.
 
-    const parsed = this.getParsedNewickWithIRIs(parsedNewick, baseURI);
+    const parsed = this.getParsedNewickWithIRIs(baseURI, newickParser);
     if (hasOwnProperty(parsed, 'json')) {
       PhylogenyWrapper.recurseNodes(parsed.json, (node, nodeCount, parentCount) => {
         // Start with the additional node properties.
@@ -907,7 +907,7 @@ class PhylogenyWrapper {
     return nodes;
   }
 
-  asJSONLD(baseURI) {
+  asJSONLD(baseURI, newickParser) {
     // Export this phylogeny as JSON-LD.
 
     // Create a copy to export.
@@ -918,7 +918,7 @@ class PhylogenyWrapper {
     phylogenyAsJSONLD['@type'] = PHYLOREFERENCE_PHYLOGENY;
 
     // Translate nodes into JSON-LD objects.
-    phylogenyAsJSONLD.nodes = this.getNodesAsJSONLD(baseURI);
+    phylogenyAsJSONLD.nodes = this.getNodesAsJSONLD(baseURI, newickParser);
     if (phylogenyAsJSONLD.nodes.length > 0) {
       // We don't have a better way to identify the root node, so we just
       // default to the first one.
@@ -1518,9 +1518,17 @@ class PhylorefWrapper {
 class PHYXWrapper {
   // Wraps an entire PHYX document.
 
-  constructor(phyx) {
+  constructor(phyx, newickParser) {
     // Wraps an entire PHYX document.
+    // - phyx: the Phyx structure to wrap.
+    // - newickParser: a method that accepts a Newick string and returns a list of
+    //   nodes. Each node should have a 'children' key with its children and
+    //   optionally a 'name' key with its label. This code previously depended
+    //   on phylotree.js, whose newick_parser() function works exactly like this.
+    //   This option allows you to drop in Phylotree's newick_parser() or --
+    //   if you prefer -- any other option.
     this.phyx = phyx;
+    this.newickParser = newickParser;
   }
 
   static get BASE_URI() {
@@ -1560,7 +1568,7 @@ class PHYXWrapper {
     if (hasOwnProperty(jsonld, 'phylogenies')) {
       jsonld.phylogenies = jsonld.phylogenies.map(
         (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny)
-          .asJSONLD(PHYXWrapper.getBaseURIForPhylogeny(countPhylogeny)),
+          .asJSONLD(PHYXWrapper.getBaseURIForPhylogeny(countPhylogeny), this.newickParser),
       );
     }
 
