@@ -24,10 +24,10 @@
 const { parse: parseNewick } = require('newick-js');
 
 // Used to parse timestamps for phyloref statuses.
-import moment from 'moment';
+const moment = require('moment');
 
 // Used to make deep copies of objects.
-import extend from 'extend';
+const extend = require('extend');
 
 // Some OWL constants to be used.
 const CDAO_HAS_CHILD = 'obo:CDAO_0000149';
