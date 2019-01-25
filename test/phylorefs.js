@@ -170,7 +170,7 @@ describe('PhylorefWrapper', function () {
           .to.throw(
             TypeError,
             'setStatus() called with invalid status CURIE \'pso:retracted-from_publication\'',
-            'PhylorefWrapper throws TypeError on a mistyped status',
+            'PhylorefWrapper throws TypeError on a mistyped status'
           );
       });
     });

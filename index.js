@@ -471,9 +471,9 @@ class TaxonomicUnitMatcher {
   match() {
     // Try to match the two taxonomic units using a number of matching methods.
     if (
-      this.matchByBinomialName() ||
-      this.matchByExternalReferences() ||
-      this.matchBySpecimenIdentifier()
+      this.matchByBinomialName()
+      || this.matchByExternalReferences()
+      || this.matchBySpecimenIdentifier()
     ) {
       this.matched = true;
     } else {
@@ -493,10 +493,10 @@ class TaxonomicUnitMatcher {
       return this.tunit2.scientificNames.some((scname2) => {
         const scname2wrapped = new ScientificNameWrapper(scname2);
 
-        const result = scname1wrapped.binomialName !== undefined &&
-          scname2wrapped.binomialName !== undefined &&
-          scname1wrapped.binomialName.trim().length > 0 &&
-          scname1wrapped.binomialName.trim() === scname2wrapped.binomialName.trim();
+        const result = scname1wrapped.binomialName !== undefined
+          && scname2wrapped.binomialName !== undefined
+          && scname1wrapped.binomialName.trim().length > 0
+          && scname1wrapped.binomialName.trim() === scname2wrapped.binomialName.trim();
 
         if (result) {
           this.matchReason = `Scientific name '${scname1wrapped.scientificName}' and scientific name '${scname2wrapped.scientificName}' share the same binomial name`;
@@ -528,7 +528,7 @@ class TaxonomicUnitMatcher {
           }
 
           return result;
-        }),
+        })
       );
     }
 
@@ -613,9 +613,9 @@ class PhylogenyWrapper {
     if (parenLevels !== 0) {
       errors.push({
         title: 'Unbalanced parentheses in Newick string',
-        message: (parenLevels > 0 ?
-          `You have ${parenLevels} too many open parentheses` :
-          `You have ${-parenLevels} too few open parentheses`
+        message: (parenLevels > 0
+          ? `You have ${parenLevels} too many open parentheses`
+          : `You have ${-parenLevels} too few open parentheses`
         ),
       });
     }
@@ -659,7 +659,7 @@ class PhylogenyWrapper {
           child,
           func,
           nextID,
-          nodeCount,
+          nodeCount
         );
       });
     }
@@ -684,7 +684,7 @@ class PhylogenyWrapper {
 
     nodeLabels.forEach(
       nodeLabel => this.getTaxonomicUnitsForNodeLabel(nodeLabel)
-        .forEach(tunit => tunits.add(tunit)),
+        .forEach(tunit => tunits.add(tunit))
     );
 
     return tunits;
@@ -708,8 +708,8 @@ class PhylogenyWrapper {
         new Set(
           Array.from(vertices)
             .map(vertex => vertex.label)
-            .filter(label => label !== undefined),
-        ),
+            .filter(label => label !== undefined)
+        )
       );
     }
 
@@ -718,7 +718,7 @@ class PhylogenyWrapper {
       return Array.from(new Set(
         Array.from(arcs)
           .map(arc => arc[0].label) // Retrieve the label of the parent vertex in this arc.
-          .filter(label => label !== undefined),
+          .filter(label => label !== undefined)
       ));
     }
 
@@ -747,8 +747,8 @@ class PhylogenyWrapper {
     // Look up additional node properties.
     let additionalNodeProperties = {};
     if (
-      hasOwnProperty(this.phylogeny, 'additionalNodeProperties') &&
-      hasOwnProperty(this.phylogeny.additionalNodeProperties, nodeLabel)
+      hasOwnProperty(this.phylogeny, 'additionalNodeProperties')
+      && hasOwnProperty(this.phylogeny.additionalNodeProperties, nodeLabel)
     ) {
       additionalNodeProperties = this.phylogeny.additionalNodeProperties[nodeLabel];
     }
@@ -783,8 +783,8 @@ class PhylogenyWrapper {
       // and associated with the node.
       return specifierTUnits.some(
         tunit1 => nodeTUnits.some(
-          tunit2 => new TaxonomicUnitMatcher(tunit1, tunit2).matched,
-        ),
+          tunit2 => new TaxonomicUnitMatcher(tunit1, tunit2).matched
+        )
       );
     });
   }
@@ -944,12 +944,12 @@ class PhylorefWrapper {
     // if (!hasOwnProperty(this.phyloref, 'internalSpecifiers'))
     //  Vue.set(this.phyloref, 'internalSpecifiers', []);
     if (!hasOwnProperty(this.phyloref, 'internalSpecifiers')) {
-        this.phyloref.internalSpecifiers = [];
+      this.phyloref.internalSpecifiers = [];
     }
     // if (!hasOwnProperty(this.phyloref, 'externalSpecifiers'))
     //  Vue.set(this.phyloref, 'externalSpecifiers', []);
     if (!hasOwnProperty(this.phyloref, 'externalSpecifiers')) {
-        this.phyloref.externalSpecifiers = [];
+      this.phyloref.externalSpecifiers = [];
     }
   }
 
@@ -1078,9 +1078,9 @@ class PhylorefWrapper {
       if (nodeLabel === phylorefLabel) {
         nodeLabels.add(nodeLabel);
       } else if (
-        hasOwnProperty(phylogeny, 'additionalNodeProperties') &&
-        hasOwnProperty(phylogeny.additionalNodeProperties, nodeLabel) &&
-        hasOwnProperty(phylogeny.additionalNodeProperties[nodeLabel], 'expectedPhyloreferenceNamed')
+        hasOwnProperty(phylogeny, 'additionalNodeProperties')
+        && hasOwnProperty(phylogeny.additionalNodeProperties, nodeLabel)
+        && hasOwnProperty(phylogeny.additionalNodeProperties[nodeLabel], 'expectedPhyloreferenceNamed')
       ) {
         // Does this node label have an expectedPhyloreferenceNamed that
         // includes this phyloreference name?
@@ -1119,9 +1119,9 @@ class PhylorefWrapper {
     //  - intervalEnd: the end of the interval
 
     if (
-      hasOwnProperty(this.phyloref, 'pso:holdsStatusInTime') &&
-      Array.isArray(this.phyloref['pso:holdsStatusInTime']) &&
-      this.phyloref['pso:holdsStatusInTime'].length > 0
+      hasOwnProperty(this.phyloref, 'pso:holdsStatusInTime')
+      && Array.isArray(this.phyloref['pso:holdsStatusInTime'])
+      && this.phyloref['pso:holdsStatusInTime'].length > 0
     ) {
       // If we have any pso:holdsStatusInTime entries, pick the first one and
       // extract the CURIE and time interval information from it.
@@ -1206,15 +1206,15 @@ class PhylorefWrapper {
 
     // Check to see if there's a previous time interval we should end.
     if (
-      Array.isArray(this.phyloref['pso:holdsStatusInTime']) &&
-      this.phyloref['pso:holdsStatusInTime'].length > 0
+      Array.isArray(this.phyloref['pso:holdsStatusInTime'])
+      && this.phyloref['pso:holdsStatusInTime'].length > 0
     ) {
       const lastStatusInTime = this.phyloref['pso:holdsStatusInTime'][this.phyloref['pso:holdsStatusInTime'].length - 1];
 
       // if (!hasOwnProperty(lastStatusInTime, 'tvc:atTime'))
       //  Vue.set(lastStatusInTime, 'tvc:atTime', {});
       if (!hasOwnProperty(lastStatusInTime, 'tvc:atTime')) {
-          lastStatusInTime['tvc:atTime'] = {};
+        lastStatusInTime['tvc:atTime'] = {};
       }
       if (!hasOwnProperty(lastStatusInTime['tvc:atTime'], 'timeinterval:hasIntervalEndDate')) {
         // If the last time entry doesn't already have an interval end date, set it to now.
@@ -1340,7 +1340,7 @@ class PhylorefWrapper {
         phylorefURI,
         phylorefAsJSONLD.hasAdditionalClass,
         phylorefAsJSONLD.internalSpecifiers[0],
-        phylorefAsJSONLD.internalSpecifiers[1],
+        phylorefAsJSONLD.internalSpecifiers[1]
       );
 
       for (let index = 2; index < internalSpecifierCount; index += 1) {
@@ -1348,7 +1348,7 @@ class PhylorefWrapper {
           phylorefURI,
           phylorefAsJSONLD.hasAdditionalClass,
           equivalentClassAccumulator,
-          phylorefAsJSONLD.internalSpecifiers[index],
+          phylorefAsJSONLD.internalSpecifiers[index]
         );
       }
 
@@ -1566,7 +1566,7 @@ class PHYXWrapper {
     if (hasOwnProperty(jsonld, 'phylogenies')) {
       jsonld.phylogenies = jsonld.phylogenies.map(
         (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny)
-          .asJSONLD(PHYXWrapper.getBaseURIForPhylogeny(countPhylogeny), this.newickParser),
+          .asJSONLD(PHYXWrapper.getBaseURIForPhylogeny(countPhylogeny), this.newickParser)
       );
     }
 
@@ -1574,7 +1574,7 @@ class PHYXWrapper {
     if (hasOwnProperty(jsonld, 'phylorefs')) {
       jsonld.phylorefs = jsonld.phylorefs.map(
         (phyloref, countPhyloref) => new PhylorefWrapper(phyloref)
-          .asJSONLD(PHYXWrapper.getBaseURIForPhyloref(countPhyloref)),
+          .asJSONLD(PHYXWrapper.getBaseURIForPhyloref(countPhyloref))
       );
     }
 
@@ -1613,8 +1613,9 @@ class PHYXWrapper {
                 nodeTUs.forEach((nodeTU) => {
                   const matcher = new TaxonomicUnitMatcher(specifierTU, nodeTU);
                   if (matcher.matched) {
-                    const tuMatchAsJSONLD =
-                      matcher.asJSONLD(PHYXWrapper.getBaseURIForTUMatch(countTaxonomicUnitMatches));
+                    const tuMatchAsJSONLD = matcher.asJSONLD(
+                      PHYXWrapper.getBaseURIForTUMatch(countTaxonomicUnitMatches)
+                    );
                     jsonld.hasTaxonomicUnitMatches.push(tuMatchAsJSONLD);
                     nodesMatchedCount += 1;
                     countTaxonomicUnitMatches += 1;
