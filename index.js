@@ -933,7 +933,6 @@ class PhylogenyWrapper {
 
 /* Phyloreference wrapper */
 
-// eslint-disable-next-line no-unused-vars
 class PhylorefWrapper {
   // Wraps a phyloreference in a PHYX model.
 
@@ -1514,7 +1513,6 @@ class PhylorefWrapper {
 
 /* PHYX file wrapper */
 
-// eslint-disable-next-line no-unused-vars
 class PHYXWrapper {
   // Wraps an entire PHYX document.
 
@@ -1657,15 +1655,13 @@ class PHYXWrapper {
 }
 
 /* Exports */
-if (!hasOwnProperty(this, 'window')) {
-  module.exports = {
-    ScientificNameWrapper,
-    SpecimenWrapper,
-    TaxonomicUnitWrapper,
-    TaxonomicUnitMatcher,
-    PhylogenyWrapper,
-    PhylorefWrapper,
-    PHYXWrapper,
-    phyxCacheManager,
-  };
-}
+module.exports = {
+  ScientificNameWrapper,
+  SpecimenWrapper,
+  TaxonomicUnitWrapper,
+  TaxonomicUnitMatcher,
+  PhylogenyWrapper,
+  PhylorefWrapper,
+  PHYXWrapper,
+  phyxCacheManager,
+};
