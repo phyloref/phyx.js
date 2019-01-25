@@ -1531,7 +1531,7 @@ class PHYXWrapper {
 
   static get BASE_URI() {
     // Returns the default base URI for PHYX documents in JSON-LD.
-    return '';
+    return 'http://phyloref.org/curation-tool';
   }
 
   static getBaseURIForPhyloref(phylorefCount) {
