@@ -3,10 +3,8 @@
 language: node_js
 
 node_js:
-  - 'node' # Check against the latest stable Node release, currently: 11.x
-  - 'lts/*' # Check against the active long-term support (LTS), currently: 10.x
-  - '11' # Current release
-  - '10' # Active LTS until April 2020 (according to https://github.com/nodejs/Release)
+  - '11' # Current release (according to https://github.com/nodejs/Release)
+  - '10' # Active LTS until April 2020
   - '8' # Maintenance LTS until December 2019
   - '6' # Maintenance LTS until April 2019
 
