@@ -3,8 +3,12 @@
 language: node_js
 
 node_js:
-  - 'lts/*' # Check against all long-term support Node releases.
-  - 'node' # Check against the latest stable Node release.
+  - 'node' # Check against the latest stable Node release, currently: 11.x
+  - 'lts/*' # Check against the active long-term support (LTS), currently: 10.x
+  - '11' # Current release
+  - '10' # Active LTS until April 2020 (according to https://github.com/nodejs/Release)
+  - '8' # Maintenance LTS until December 2019
+  - '6' # Maintenance LTS until April 2019
 
 before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
 
