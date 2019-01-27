@@ -3,7 +3,8 @@
 language: node_js
 
 node_js:
-  - '10'
+  - 'lts/*' # Check against all long-term support Node releases.
+  - 'node' # Check against the latest stable Node release.
 
 before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
 
