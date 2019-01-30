@@ -789,7 +789,34 @@ class PhylogenyWrapper {
     });
   }
 
-  getParsedNewickWithIRIs(baseURI, newickParser) {
+  static getParsedNewick(newick) {
+    // We previously used phylotree.js's Newick parser to parse Newick into a
+    // tree-like structure. However, this is difficult to integrate using NPM.
+    // This method provides a similar facility using the newick-js library.
+    //
+    // Throws an exception if the Newick could not be parsed.
+    const { graph, root, rootWeight } = parseNewick(newick);
+    const [, arcs] = graph;
+
+    // Go through the arcs, assigning 'children' to the appropriate parent node.
+    arcs.forEach((arc) => {
+      const [parent, child, weight] = arc;
+
+      // Add child to parent.children.
+      if (!hasOwnProperty(parent, 'children')) parent.children = [];
+      parent.children.push(child);
+
+      // Phylotree.js uses 'attribute' to store weights, so we'll store it there as well.
+      if (!hasOwnProperty(child, 'attribute') && weight !== 0) child.attribute = weight;
+    });
+
+    // Set root 'attribute' to root weight.
+    if (!hasOwnProperty(root, 'attribute') && rootWeight !== 0) root.attribute = rootWeight;
+
+    return { json: root };
+  }
+
+  getParsedNewickWithIRIs(baseURI, newickParser = PhylogenyWrapper.getParsedNewick) {
     // Return the parsed Newick string, but with EVERY node given an IRI.
     // parsedNewick: A Newick tree represented as a tree produced by Phylotree.
     // baseURI: The base URI to use for node elements (e.g. ':phylogeny1').
