@@ -806,12 +806,16 @@ class PhylogenyWrapper {
       if (!hasOwnProperty(parent, 'children')) parent.children = [];
       parent.children.push(child);
 
+      // Phylotree.js uses 'name' instead of 'label'.
+      if (hasOwnProperty(parent, 'label')) { parent.name = parent.label; }
+      if (hasOwnProperty(child, 'label')) { child.name = child.label; }
+
       // Phylotree.js uses 'attribute' to store weights, so we'll store it there as well.
-      if (!hasOwnProperty(child, 'attribute') && weight !== 0) child.attribute = weight;
+      if (!hasOwnProperty(child, 'attribute') && !Number.isNaN(weight)) child.attribute = weight;
     });
 
     // Set root 'attribute' to root weight.
-    if (!hasOwnProperty(root, 'attribute') && rootWeight !== 0) root.attribute = rootWeight;
+    if (!hasOwnProperty(root, 'attribute') && !Number.isNaN(rootWeight)) root.attribute = rootWeight;
 
     return { json: root };
   }
