@@ -3,6 +3,10 @@ All notable changes to this library will be documented in this file.
 
 The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning].
 
+## Unreleased
+### Added
+- A replacement for the Phylotree.js Newick parser.
+
 ## 0.1.0 - 2019-01-27
 ### Added
 - Transfered initial code from the [Phyloreference Curation Tool]. The initial
