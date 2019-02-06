@@ -236,4 +236,46 @@ describe('PhylogenyWrapper', function () {
       });
     });
   });
+
+  describe('#getParsedNewickWithIRIs', function () {
+    const tests = [
+      {
+        newick: '(((A, B)C, D)E, F)G',
+        result: {
+          json: {
+            '@id': '_node0',
+            name: 'G',
+            label: 'G',
+            children: [
+              { '@id': '_node1', name: 'F', label: 'F' },
+              {
+                '@id': '_node2',
+                name: 'E',
+                label: 'E',
+                children: [
+                  { '@id': '_node3', name: 'D', label: 'D' },
+                  {
+                    '@id': '_node4',
+                    name: 'C',
+                    label: 'C',
+                    children: [
+                      { '@id': '_node5', name: 'B', label: 'B' },
+                      { '@id': '_node6', name: 'A', label: 'A' },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+    ];
+
+    tests.forEach((test) => {
+      it('should be able to parse a provided Newick string as expected', function () {
+        expect(new phyx.PhylogenyWrapper({ newick: test.newick }).getParsedNewickWithIRIs(''))
+          .to.deep.equal(test.result);
+      });
+    });
+  });
 });
