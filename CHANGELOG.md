@@ -4,6 +4,8 @@ All notable changes to this library will be documented in this file.
 The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning].
 
 ## Unreleased
+
+## 0.1.1 - 2019-02-06
 ### Added
 - A replacement for the Phylotree.js Newick parser.
 
