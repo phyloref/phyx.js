@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 ## Unreleased
 
+## 0.1.2 - 2019-02-08
+### Added
+- Moved Phyx context file for JSON-LD into this repository from the Curation Tool and changed URI to point to it.
+
 ## 0.1.1 - 2019-02-06
 ### Added
 - A replacement for the Phylotree.js Newick parser.
