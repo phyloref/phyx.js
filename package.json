@@ -1,6 +1,6 @@
 {
   "name": "@phyloref/phyx",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Phyloreference Exchange (PHYX) library in JavaScript",
   "main": "index.js",
   "scripts": {
