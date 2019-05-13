@@ -3,8 +3,8 @@
  */
 
 // Require phyx.js, our PHYX library, and Chai for testing.
-const phyx = require('..');
 const chai = require('chai');
+const phyx = require('../src');
 
 // We use Chai's Expect API.
 const expect = chai.expect;

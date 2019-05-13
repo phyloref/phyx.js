@@ -3,7 +3,7 @@
  */
 
 const chai = require('chai');
-const phyx = require('..');
+const phyx = require('../src');
 
 // Use Chai's expect API.
 const expect = chai.expect;
