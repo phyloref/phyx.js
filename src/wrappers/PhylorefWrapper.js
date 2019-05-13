@@ -1,9 +1,10 @@
 /** Used to parse timestamps for phyloref statuses. */
 const moment = require('moment');
+const { has } = require('lodash');
 
 const owlterms = require('../utils/owlterms');
-const TaxonomicUnitWrapper = require('./TaxonomicUnitWrapper');
-const PhylogenyWrapper = require('./PhylogenyWrapper');
+const { TaxonomicUnitWrapper } = require('./TaxonomicUnitWrapper');
+const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 
 /**
  * PhylorefWrapper
@@ -18,30 +19,30 @@ class PhylorefWrapper {
     this.phyloref = phyloref;
 
     // Reset internal and external specifiers if needed.
-    // if (!hasOwnProperty(this.phyloref, 'internalSpecifiers'))
+    // if (!has(this.phyloref, 'internalSpecifiers'))
     //  Vue.set(this.phyloref, 'internalSpecifiers', []);
-    if (!hasOwnProperty(this.phyloref, 'internalSpecifiers')) {
+    if (!has(this.phyloref, 'internalSpecifiers')) {
       this.phyloref.internalSpecifiers = [];
     }
-    // if (!hasOwnProperty(this.phyloref, 'externalSpecifiers'))
+    // if (!has(this.phyloref, 'externalSpecifiers'))
     //  Vue.set(this.phyloref, 'externalSpecifiers', []);
-    if (!hasOwnProperty(this.phyloref, 'externalSpecifiers')) {
+    if (!has(this.phyloref, 'externalSpecifiers')) {
       this.phyloref.externalSpecifiers = [];
     }
   }
 
   get label() {
     // Return a label for this phyloreference.
-    if (hasOwnProperty(this.phyloref, 'label')) return this.phyloref.label;
-    if (hasOwnProperty(this.phyloref, 'labels') && this.phyloref.labels.length > 0) return this.phyloref.labels[0];
-    if (hasOwnProperty(this.phyloref, 'title')) return this.phyloref.title;
+    if (has(this.phyloref, 'label')) return this.phyloref.label;
+    if (has(this.phyloref, 'labels') && this.phyloref.labels.length > 0) return this.phyloref.labels[0];
+    if (has(this.phyloref, 'title')) return this.phyloref.title;
 
     return undefined;
   }
 
   set label(newLabel) {
     // Set a label for this phyloreference.
-    if (hasOwnProperty(this.phyloref, 'label')) {
+    if (has(this.phyloref, 'label')) {
       this.phyloref.label = newLabel;
     } else {
       // Vue.set(this.phyloref, 'label', newLabel);
@@ -124,11 +125,11 @@ class PhylorefWrapper {
     if (specifier === null) return undefined;
 
     // Maybe there is a label or description right there?
-    if (hasOwnProperty(specifier, 'label')) return specifier.label;
-    if (hasOwnProperty(specifier, 'description')) return specifier.description;
+    if (has(specifier, 'label')) return specifier.label;
+    if (has(specifier, 'description')) return specifier.description;
 
     // Look at the individual taxonomic units.
-    if (hasOwnProperty(specifier, 'referencesTaxonomicUnits')) {
+    if (has(specifier, 'referencesTaxonomicUnits')) {
       const labels = specifier.referencesTaxonomicUnits
         .map(tu => new TaxonomicUnitWrapper(tu).label)
         .filter(label => (label !== undefined));
@@ -155,9 +156,9 @@ class PhylorefWrapper {
       if (nodeLabel === phylorefLabel) {
         nodeLabels.add(nodeLabel);
       } else if (
-        hasOwnProperty(phylogeny, 'additionalNodeProperties')
-        && hasOwnProperty(phylogeny.additionalNodeProperties, nodeLabel)
-        && hasOwnProperty(phylogeny.additionalNodeProperties[nodeLabel], 'expectedPhyloreferenceNamed')
+        has(phylogeny, 'additionalNodeProperties')
+        && has(phylogeny.additionalNodeProperties, nodeLabel)
+        && has(phylogeny.additionalNodeProperties[nodeLabel], 'expectedPhyloreferenceNamed')
       ) {
         // Does this node label have an expectedPhyloreferenceNamed that
         // includes this phyloreference name?
@@ -196,7 +197,7 @@ class PhylorefWrapper {
     //  - intervalEnd: the end of the interval
 
     if (
-      hasOwnProperty(this.phyloref, 'pso:holdsStatusInTime')
+      has(this.phyloref, 'pso:holdsStatusInTime')
       && Array.isArray(this.phyloref['pso:holdsStatusInTime'])
       && this.phyloref['pso:holdsStatusInTime'].length > 0
     ) {
@@ -209,10 +210,10 @@ class PhylorefWrapper {
       let intervalStart;
       let intervalEnd;
 
-      if (hasOwnProperty(lastStatusInTime, 'tvc:atTime')) {
+      if (has(lastStatusInTime, 'tvc:atTime')) {
         const atTime = lastStatusInTime['tvc:atTime'];
-        if (hasOwnProperty(atTime, 'timeinterval:hasIntervalStartDate')) intervalStart = atTime['timeinterval:hasIntervalStartDate'];
-        if (hasOwnProperty(atTime, 'timeinterval:hasIntervalEndDate')) intervalEnd = atTime['timeinterval:hasIntervalEndDate'];
+        if (has(atTime, 'timeinterval:hasIntervalStartDate')) intervalStart = atTime['timeinterval:hasIntervalStartDate'];
+        if (has(atTime, 'timeinterval:hasIntervalEndDate')) intervalEnd = atTime['timeinterval:hasIntervalEndDate'];
       }
 
       // Return result object
@@ -233,25 +234,25 @@ class PhylorefWrapper {
 
   getStatusChanges() {
     // Return a list of status changes for a particular phyloreference
-    if (hasOwnProperty(this.phyloref, 'pso:holdsStatusInTime')) {
+    if (has(this.phyloref, 'pso:holdsStatusInTime')) {
       return this.phyloref['pso:holdsStatusInTime'].map((entry) => {
         const result = {};
 
         // Create a statusCURIE convenience field.
-        if (hasOwnProperty(entry, 'pso:withStatus')) {
+        if (has(entry, 'pso:withStatus')) {
           result.statusCURIE = entry['pso:withStatus']['@id'];
           result.statusInEnglish = PhylorefWrapper.getStatusCURIEsInEnglish()[result.statusCURIE];
         }
 
         // Create intervalStart/intervalEnd convenient fields
-        if (hasOwnProperty(entry, 'tvc:atTime')) {
+        if (has(entry, 'tvc:atTime')) {
           const atTime = entry['tvc:atTime'];
-          if (hasOwnProperty(atTime, 'timeinterval:hasIntervalStartDate')) {
+          if (has(atTime, 'timeinterval:hasIntervalStartDate')) {
             result.intervalStart = atTime['timeinterval:hasIntervalStartDate'];
             result.intervalStartAsCalendar = moment(result.intervalStart).calendar();
           }
 
-          if (hasOwnProperty(atTime, 'timeinterval:hasIntervalEndDate')) {
+          if (has(atTime, 'timeinterval:hasIntervalEndDate')) {
             result.intervalEnd = atTime['timeinterval:hasIntervalEndDate'];
             result.intervalEndAsCalendar = moment(result.intervalEnd).calendar();
           }
@@ -269,14 +270,14 @@ class PhylorefWrapper {
     // Set the status of a phyloreference
     //
     // Check whether we have a valid status CURIE.
-    if (!hasOwnProperty(PhylorefWrapper.getStatusCURIEsInEnglish(), status)) {
+    if (!has(PhylorefWrapper.getStatusCURIEsInEnglish(), status)) {
       throw new TypeError(`setStatus() called with invalid status CURIE '${status}'`);
     }
 
     // See if we can end the previous interval.
     const currentTime = new Date(Date.now()).toISOString();
 
-    if (!hasOwnProperty(this.phyloref, 'pso:holdsStatusInTime')) {
+    if (!has(this.phyloref, 'pso:holdsStatusInTime')) {
       // Vue.set(this.phyloref, 'pso:holdsStatusInTime', []);
       this.phyloref['pso:holdsStatusInTime'] = [];
     }
@@ -288,12 +289,12 @@ class PhylorefWrapper {
     ) {
       const lastStatusInTime = this.phyloref['pso:holdsStatusInTime'][this.phyloref['pso:holdsStatusInTime'].length - 1];
 
-      // if (!hasOwnProperty(lastStatusInTime, 'tvc:atTime'))
+      // if (!has(lastStatusInTime, 'tvc:atTime'))
       //  Vue.set(lastStatusInTime, 'tvc:atTime', {});
-      if (!hasOwnProperty(lastStatusInTime, 'tvc:atTime')) {
+      if (!has(lastStatusInTime, 'tvc:atTime')) {
         lastStatusInTime['tvc:atTime'] = {};
       }
-      if (!hasOwnProperty(lastStatusInTime['tvc:atTime'], 'timeinterval:hasIntervalEndDate')) {
+      if (!has(lastStatusInTime['tvc:atTime'], 'timeinterval:hasIntervalEndDate')) {
         // If the last time entry doesn't already have an interval end date, set it to now.
         lastStatusInTime['tvc:atTime']['timeinterval:hasIntervalEndDate'] = currentTime;
       }
@@ -350,7 +351,7 @@ class PhylorefWrapper {
 
       // Add identifiers to all taxonomic units.
       let countTaxonomicUnits = 0;
-      if (hasOwnProperty(internalSpecifier, 'referencesTaxonomicUnits')) {
+      if (has(internalSpecifier, 'referencesTaxonomicUnits')) {
         internalSpecifier.referencesTaxonomicUnits.forEach((tunitToChange) => {
           const tunit = tunitToChange;
 
@@ -376,7 +377,7 @@ class PhylorefWrapper {
 
       // Add identifiers to all taxonomic units.
       let countTaxonomicUnits = 0;
-      if (hasOwnProperty(externalSpecifier, 'referencesTaxonomicUnits')) {
+      if (has(externalSpecifier, 'referencesTaxonomicUnits')) {
         externalSpecifier.referencesTaxonomicUnits.forEach((tunitToChange) => {
           const tunit = tunitToChange;
 

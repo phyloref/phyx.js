@@ -2,14 +2,16 @@
  * PhylogenyWrapper
  */
 
+const { has } = require('lodash');
+
 /** Used to parse Newick strings. */
 const { parse: parseNewick } = require('newick-js');
 
 /** OWL terms to be used here. */
 const owlterms = require('../utils/owlterms');
 
-const TaxonomicUnitWrapper = require('./TaxonomicUnitWrapper');
-const TaxonomicUnitMatcher = require('../matchers/TaxonomicUnitMatcher');
+const { TaxonomicUnitWrapper } = require('./TaxonomicUnitWrapper');
+const { TaxonomicUnitMatcher } = require('../matchers/TaxonomicUnitMatcher');
 
 class PhylogenyWrapper {
   // Wraps a Phylogeny in a PHYX file and provides access to node, node labels
@@ -102,7 +104,7 @@ class PhylogenyWrapper {
     let nextID = nodeCount + 1;
 
     // Recurse through all children of this node.
-    if (hasOwnProperty(node, 'children')) {
+    if (has(node, 'children')) {
       node.children.forEach((child) => {
         nextID = PhylogenyWrapper.recurseNodes(
           child,
@@ -196,15 +198,15 @@ class PhylogenyWrapper {
     // Look up additional node properties.
     let additionalNodeProperties = {};
     if (
-      hasOwnProperty(this.phylogeny, 'additionalNodeProperties')
-      && hasOwnProperty(this.phylogeny.additionalNodeProperties, nodeLabel)
+      has(this.phylogeny, 'additionalNodeProperties')
+      && has(this.phylogeny.additionalNodeProperties, nodeLabel)
     ) {
       additionalNodeProperties = this.phylogeny.additionalNodeProperties[nodeLabel];
     }
 
     // If there are explicit taxonomic units in the
     // representsTaxonomicUnits property, we need to use those.
-    if (hasOwnProperty(additionalNodeProperties, 'representsTaxonomicUnits')) {
+    if (has(additionalNodeProperties, 'representsTaxonomicUnits')) {
       return additionalNodeProperties.representsTaxonomicUnits;
     }
 
@@ -220,7 +222,7 @@ class PhylogenyWrapper {
 
     // Does the specifier have any taxonomic units? If not, we can't
     // match anything!
-    if (!hasOwnProperty(specifier, 'referencesTaxonomicUnits')) { return []; }
+    if (!has(specifier, 'referencesTaxonomicUnits')) { return []; }
     const specifierTUnits = specifier.referencesTaxonomicUnits;
 
     return this.getNodeLabels().filter((nodeLabel) => {
@@ -252,19 +254,19 @@ class PhylogenyWrapper {
       const [parent, child, weight] = arc;
 
       // Add child to parent.children.
-      if (!hasOwnProperty(parent, 'children')) parent.children = [];
+      if (!has(parent, 'children')) parent.children = [];
       parent.children.push(child);
 
       // Phylotree.js uses 'name' instead of 'label'.
-      if (hasOwnProperty(parent, 'label')) { parent.name = parent.label; }
-      if (hasOwnProperty(child, 'label')) { child.name = child.label; }
+      if (has(parent, 'label')) { parent.name = parent.label; }
+      if (has(child, 'label')) { child.name = child.label; }
 
       // Phylotree.js uses 'attribute' to store weights, so we'll store it there as well.
-      if (!hasOwnProperty(child, 'attribute') && !Number.isNaN(weight)) child.attribute = weight;
+      if (!has(child, 'attribute') && !Number.isNaN(weight)) child.attribute = weight;
     });
 
     // Set root 'attribute' to root weight.
-    if (!hasOwnProperty(root, 'attribute') && !Number.isNaN(rootWeight)) root.attribute = rootWeight;
+    if (!has(root, 'attribute') && !Number.isNaN(rootWeight)) root.attribute = rootWeight;
 
     return { json: root };
   }
@@ -275,7 +277,7 @@ class PhylogenyWrapper {
     // baseURI: The base URI to use for node elements (e.g. ':phylogeny1').
 
     const parsed = newickParser(this.phylogeny.newick || '()');
-    if (hasOwnProperty(parsed, 'json')) {
+    if (has(parsed, 'json')) {
       PhylogenyWrapper.recurseNodes(parsed.json, (node, nodeCount) => {
         // Start with the additional node properties.
         const nodeAsJSONLD = node;
@@ -308,7 +310,7 @@ class PhylogenyWrapper {
     // added them to the list of JSON-LD nodes as we go.
 
     const parsed = this.getParsedNewickWithIRIs(baseURI, newickParser);
-    if (hasOwnProperty(parsed, 'json')) {
+    if (has(parsed, 'json')) {
       PhylogenyWrapper.recurseNodes(parsed.json, (node, nodeCount, parentCount) => {
         // Start with the additional node properties.
         const nodeAsJSONLD = {};
@@ -319,12 +321,12 @@ class PhylogenyWrapper {
         nodeAsJSONLD['@type'] = 'http://purl.obolibrary.org/obo/CDAO_0000140';
 
         // Add labels, additional node properties and taxonomic units.
-        if (hasOwnProperty(node, 'name') && node.name !== '') {
+        if (has(node, 'name') && node.name !== '') {
           // Add node label.
           nodeAsJSONLD.labels = [node.name];
 
           // Add additional node properties, if any.
-          if (additionalNodeProperties && hasOwnProperty(additionalNodeProperties, node.name)) {
+          if (additionalNodeProperties && has(additionalNodeProperties, node.name)) {
             Object.keys(additionalNodeProperties[node.name]).forEach((key) => {
               nodeAsJSONLD[key] = additionalNodeProperties[node.name][key];
             });
@@ -350,14 +352,14 @@ class PhylogenyWrapper {
           nodeAsJSONLD.parent = parentURI;
 
           // Update list of nodes by parent IDs.
-          if (!hasOwnProperty(nodeIdsByParentId, parentURI)) {
+          if (!has(nodeIdsByParentId, parentURI)) {
             nodeIdsByParentId[parentURI] = new Set();
           }
           nodeIdsByParentId[parentURI].add(nodeURI);
         }
 
         // Add nodeAsJSONLD to list
-        if (hasOwnProperty(nodesById, nodeURI)) {
+        if (has(nodesById, nodeURI)) {
           throw new Error('Error in programming: duplicate node URI generated');
         }
         nodesById[nodeURI] = nodeAsJSONLD;
@@ -372,7 +374,7 @@ class PhylogenyWrapper {
       const children = childrenIDs.map(childId => nodesById[childId]);
 
       // Is this the root node?
-      if (hasOwnProperty(nodesById, parentId)) {
+      if (has(nodesById, parentId)) {
         const parent = nodesById[parentId];
         parent.children = childrenIDs;
       }

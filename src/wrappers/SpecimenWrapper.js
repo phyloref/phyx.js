@@ -1,5 +1,5 @@
-
-const phyxCacheManager = require('../utils/PhyxCacheManager');
+const { has } = require('lodash');
+const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
 
 /* Specimen wrapper */
 
@@ -10,12 +10,12 @@ class SpecimenWrapper {
     // Constructs a wrapper around a specimen.
     this.specimen = specimen;
 
-    if (!hasOwnProperty(specimen, 'occurrenceID')) {
+    if (!has(specimen, 'occurrenceID')) {
       // There might be a catalogNumber, institutionCode or a collectionCode.
       // In which case, let's construct an occurrenceID!
-      if (hasOwnProperty(specimen, 'catalogNumber')) {
-        if (hasOwnProperty(specimen, 'institutionCode')) {
-          if (hasOwnProperty(specimen, 'collectionCode')) {
+      if (has(specimen, 'catalogNumber')) {
+        if (has(specimen, 'institutionCode')) {
+          if (has(specimen, 'collectionCode')) {
             this.specimen.occurrenceID = `urn:catalog:${specimen.institutionCode}:${specimen.collectionCode}:${specimen.catalogNumber}`;
           } else {
             this.specimen.occurrenceID = `urn:catalog:${specimen.institutionCode}::${specimen.catalogNumber}`;
@@ -61,8 +61,8 @@ class SpecimenWrapper {
     }
 
     // Parsing an occurrence ID takes some time, so we should memoize it.
-    if (phyxCacheManager.has('SpecimenWrapper.occurrenceIDCache', occurID)) {
-      return phyxCacheManager.get('SpecimenWrapper.occurrenceIDCache', occurID);
+    if (PhyxCacheManager.has('SpecimenWrapper.occurrenceIDCache', occurID)) {
+      return PhyxCacheManager.get('SpecimenWrapper.occurrenceIDCache', occurID);
     }
 
     // Split the occurrence ID into components, and store them in the appropriate fields.
@@ -79,45 +79,45 @@ class SpecimenWrapper {
       specimen.catalogNumber = catalogNumValues.join(':');
     }
 
-    phyxCacheManager.put('SpecimenWrapper.occurrenceIDCache', occurID, specimen);
+    PhyxCacheManager.put('SpecimenWrapper.occurrenceIDCache', occurID, specimen);
     return specimen;
   }
 
   get catalogNumber() {
     // Get the catalog number from the specimen object if present.
-    if (hasOwnProperty(this.specimen, 'catalogNumber')) return this.specimen.catalogNumber;
+    if (has(this.specimen, 'catalogNumber')) return this.specimen.catalogNumber;
 
     // Otherwise, try to parse the occurrenceID and see if we can extract a
     // catalogNumber from there.
-    if (hasOwnProperty(this.specimen, 'occurrenceID')) {
+    if (has(this.specimen, 'occurrenceID')) {
       const specimen = SpecimenWrapper.createFromOccurrenceID(this.specimen.occurrenceID);
-      if (hasOwnProperty(specimen, 'catalogNumber')) return specimen.catalogNumber;
+      if (has(specimen, 'catalogNumber')) return specimen.catalogNumber;
     }
     return undefined;
   }
 
   get institutionCode() {
     // Get the institution code from the specimen object if present.
-    if (hasOwnProperty(this.specimen, 'institutionCode')) return this.specimen.institutionCode;
+    if (has(this.specimen, 'institutionCode')) return this.specimen.institutionCode;
 
     // Otherwise, try to parse the occurrenceID and see if we can extract an
     // occurrenceID from there.
-    if (hasOwnProperty(this.specimen, 'occurrenceID')) {
+    if (has(this.specimen, 'occurrenceID')) {
       const specimen = SpecimenWrapper.createFromOccurrenceID(this.specimen.occurrenceID);
-      if (hasOwnProperty(specimen, 'institutionCode')) return specimen.institutionCode;
+      if (has(specimen, 'institutionCode')) return specimen.institutionCode;
     }
     return undefined;
   }
 
   get collectionCode() {
     // Get the collection code from the specimen object if present.
-    if (hasOwnProperty(this.specimen, 'collectionCode')) return this.specimen.collectionCode;
+    if (has(this.specimen, 'collectionCode')) return this.specimen.collectionCode;
 
     // Otherwise, try to parse the occurrenceID and see if we can extract an
     // occurrenceID from there.
-    if (hasOwnProperty(this.specimen, 'occurrenceID')) {
+    if (has(this.specimen, 'occurrenceID')) {
       const specimen = SpecimenWrapper.createFromOccurrenceID(this.specimen.occurrenceID);
-      if (hasOwnProperty(specimen, 'collectionCode')) return specimen.collectionCode;
+      if (has(specimen, 'collectionCode')) return specimen.collectionCode;
     }
     return undefined;
   }
@@ -134,19 +134,19 @@ class SpecimenWrapper {
     // wrapper.
 
     // Return the occurrenceID if it exists.
-    if (hasOwnProperty(this.specimen, 'occurrenceID') && this.specimen.occurrenceID.trim() !== '') {
+    if (has(this.specimen, 'occurrenceID') && this.specimen.occurrenceID.trim() !== '') {
       return this.specimen.occurrenceID.trim();
     }
 
     // Otherwise, we could try to construct the occurrenceID from its components.
-    if (hasOwnProperty(this.specimen, 'catalogNumber')) {
-      if (hasOwnProperty(this.specimen, 'institutionCode')) {
-        if (hasOwnProperty(this.specimen, 'collectionCode')) {
+    if (has(this.specimen, 'catalogNumber')) {
+      if (has(this.specimen, 'institutionCode')) {
+        if (has(this.specimen, 'collectionCode')) {
           return `urn:catalog:${this.specimen.institutionCode.trim()}:${this.specimen.collectionCode.trim()}:${this.specimen.catalogNumber.trim()}`;
         }
         return `urn:catalog:${this.specimen.institutionCode.trim()}::${this.specimen.catalogNumber.trim()}`;
       }
-      if (hasOwnProperty(this.specimen, 'collectionCode')) {
+      if (has(this.specimen, 'collectionCode')) {
         return `urn:catalog::${this.specimen.collectionCode.trim()}:${this.specimen.catalogNumber.trim()}`;
       }
       return `urn:catalog:::${this.specimen.catalogNumber.trim()}`;
