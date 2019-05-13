@@ -1,6 +1,8 @@
-const phyxCacheManager = require('../utils/PhyxCacheManager');
-const SpecimenWrapper = require('./SpecimenWrapper');
-const ScientificNameWrapper = require('./ScientificNameWrapper');
+const { has } = require('lodash');
+
+const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
+const { SpecimenWrapper } = require('./SpecimenWrapper');
+const { ScientificNameWrapper } = require('./ScientificNameWrapper');
 
 /* Taxonomic unit wrapper */
 
@@ -22,23 +24,23 @@ class TaxonomicUnitWrapper {
     const labels = [];
 
     // A label or description for the TU?
-    if (hasOwnProperty(this.tunit, 'label')) return this.tunit.label;
-    if (hasOwnProperty(this.tunit, 'description')) return this.tunit.description;
+    if (has(this.tunit, 'label')) return this.tunit.label;
+    if (has(this.tunit, 'description')) return this.tunit.description;
 
     // Any specimens?
-    if (hasOwnProperty(this.tunit, 'includesSpecimens')) {
+    if (has(this.tunit, 'includesSpecimens')) {
       this.tunit.includesSpecimens.forEach((specimen) => {
         labels.push(new SpecimenWrapper(specimen).label);
       });
     }
 
     // Any external references?
-    if (hasOwnProperty(this.tunit, 'externalReferences')) {
+    if (has(this.tunit, 'externalReferences')) {
       this.tunit.externalReferences.forEach(externalRef => labels.push(`<${externalRef}>`));
     }
 
     // Any scientific names?
-    if (hasOwnProperty(this.tunit, 'scientificNames')) {
+    if (has(this.tunit, 'scientificNames')) {
       this.tunit.scientificNames.forEach((scname) => {
         labels.push(new ScientificNameWrapper(scname).label);
       });
@@ -69,8 +71,8 @@ class TaxonomicUnitWrapper {
     if (nodeLabel === undefined || nodeLabel === null) return [];
 
     // This regular expression times a while to run, so let's memoize this.
-    if (phyxCacheManager.has('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel)) {
-      return phyxCacheManager.get('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel);
+    if (PhyxCacheManager.has('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel)) {
+      return PhyxCacheManager.get('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel);
     }
 
     // Check if the label starts with a binomial name.
@@ -91,7 +93,7 @@ class TaxonomicUnitWrapper {
     }
 
     // Record in the cache
-    phyxCacheManager.put('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel, tunits);
+    PhyxCacheManager.put('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel, tunits);
 
     return tunits;
   }

@@ -1,3 +1,6 @@
+const { has } = require('lodash');
+const { ScientificNameWrapper } = require('../wrappers/ScientificNameWrapper');
+const { SpecimenWrapper } = require('../wrappers/SpecimenWrapper');
 
 /* Taxonomic unit matching */
 
@@ -52,7 +55,7 @@ class TaxonomicUnitMatcher {
     // Try to match by binomial name, and return true if it could be matched.
 
     // Do both TUnits have scientificNames?
-    if (!hasOwnProperty(this.tunit1, 'scientificNames') || !hasOwnProperty(this.tunit2, 'scientificNames')) return false;
+    if (!has(this.tunit1, 'scientificNames') || !has(this.tunit2, 'scientificNames')) return false;
 
     return this.tunit1.scientificNames.some((scname1) => {
       const scname1wrapped = new ScientificNameWrapper(scname1);
@@ -76,7 +79,7 @@ class TaxonomicUnitMatcher {
   matchByExternalReferences() {
     // Try to match by external references.
 
-    if (hasOwnProperty(this.tunit1, 'externalReferences') && hasOwnProperty(this.tunit2, 'externalReferences')) {
+    if (has(this.tunit1, 'externalReferences') && has(this.tunit2, 'externalReferences')) {
       // Each external reference is a URL as a string. We will lowercase it,
       // but do no other transformation.
       return this.tunit1.externalReferences.some(
@@ -104,7 +107,7 @@ class TaxonomicUnitMatcher {
   matchBySpecimenIdentifier() {
     // Try to match by specimen identifier (i.e. occurrence ID).
 
-    if (hasOwnProperty(this.tunit1, 'includesSpecimens') && hasOwnProperty(this.tunit2, 'includesSpecimens')) {
+    if (has(this.tunit1, 'includesSpecimens') && has(this.tunit2, 'includesSpecimens')) {
       // Convert specimen identifiers (if present) into a standard format and compare those.
       return this.tunit1.includesSpecimens.some((specimen1) => {
         const specimenURN1 = new SpecimenWrapper(specimen1).occurrenceID;
@@ -125,3 +128,7 @@ class TaxonomicUnitMatcher {
     return false;
   }
 }
+
+module.exports = {
+  TaxonomicUnitMatcher,
+};

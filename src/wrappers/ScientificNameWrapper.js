@@ -1,4 +1,5 @@
-const phyxCacheManager = require('../utils/PhyxCacheManager');
+const { has } = require('lodash');
+const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
 
 /* Scientific name processing */
 
@@ -25,8 +26,8 @@ class ScientificNameWrapper {
 
     // Split the verbatim name into a genus and specific epithet, if possible.
     // Splitting the verbatim name takes some time, so let's memoize this.
-    if (phyxCacheManager.has('ScientificNameWrapper.scnameCache', verbatimName)) {
-      return phyxCacheManager.get('ScientificNameWrapper.scnameCache', verbatimName);
+    if (PhyxCacheManager.has('ScientificNameWrapper.scnameCache', verbatimName)) {
+      return PhyxCacheManager.get('ScientificNameWrapper.scnameCache', verbatimName);
     }
 
     const comps = verbatimName.split(/\s+/);
@@ -42,7 +43,7 @@ class ScientificNameWrapper {
     }
 
     // Store in the cache.
-    phyxCacheManager.put('ScientificNameWrapper.scnameCache', verbatimName, scname);
+    PhyxCacheManager.put('ScientificNameWrapper.scnameCache', verbatimName, scname);
 
     return scname;
   }
@@ -61,26 +62,26 @@ class ScientificNameWrapper {
 
   get genus() {
     // Try to read the genus if available.
-    if (hasOwnProperty(this.scname, 'genus')) return this.scname.genus;
+    if (has(this.scname, 'genus')) return this.scname.genus;
 
     // If there is no genus but there is a scientificName, try to extract a genus
     // from it.
-    if (hasOwnProperty(this.scname, 'scientificName')) {
+    if (has(this.scname, 'scientificName')) {
       const scname = ScientificNameWrapper.createFromVerbatimName(this.scname.scientificName);
-      if (hasOwnProperty(scname, 'genus')) return scname.genus;
+      if (has(scname, 'genus')) return scname.genus;
     }
     return undefined;
   }
 
   get specificEpithet() {
     // Try to read the specific epithet if available.
-    if (hasOwnProperty(this.scname, 'specificEpithet')) return this.scname.specificEpithet;
+    if (has(this.scname, 'specificEpithet')) return this.scname.specificEpithet;
 
     // If there is no specific epithet but there is a scientificName, try to
     // extract a specific epithet from it.
-    if (hasOwnProperty(this.scname, 'scientificName')) {
+    if (has(this.scname, 'scientificName')) {
       const scname = ScientificNameWrapper.createFromVerbatimName(this.scname.scientificName);
-      if (hasOwnProperty(scname, 'specificEpithet')) return scname.specificEpithet;
+      if (has(scname, 'specificEpithet')) return scname.specificEpithet;
     }
     return undefined;
   }

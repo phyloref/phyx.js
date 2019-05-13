@@ -1,11 +1,12 @@
 /** Used to make deep copies of objects. */
 const extend = require('extend');
+const { has } = require('lodash');
 
 const owlterms = require('../utils/owlterms');
 
-const PhylorefWrapper = require('./PhylorefWrapper');
-const PhylogenyWrapper = require('./PhylogenyWrapper');
-const TaxonomicUnitMatcher = require('../matchers/TaxonomicUnitMatcher');
+const { PhylorefWrapper } = require('./PhylorefWrapper');
+const { PhylogenyWrapper } = require('./PhylogenyWrapper');
+const { TaxonomicUnitMatcher } = require('../matchers/TaxonomicUnitMatcher');
 
 /* PHYX file wrapper */
 
@@ -59,7 +60,7 @@ class PhyxWrapper {
     const jsonld = extend(true, {}, this.phyx);
 
     // Add descriptions for individual nodes in each phylogeny.
-    if (hasOwnProperty(jsonld, 'phylogenies')) {
+    if (has(jsonld, 'phylogenies')) {
       jsonld.phylogenies = jsonld.phylogenies.map(
         (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny)
           .asJSONLD(PhyxWrapper.getBaseURIForPhylogeny(countPhylogeny), this.newickParser)
@@ -67,7 +68,7 @@ class PhyxWrapper {
     }
 
     // Convert phyloreferences into an OWL class restriction
-    if (hasOwnProperty(jsonld, 'phylorefs')) {
+    if (has(jsonld, 'phylorefs')) {
       jsonld.phylorefs = jsonld.phylorefs.map(
         (phyloref, countPhyloref) => new PhylorefWrapper(phyloref)
           .asJSONLD(PhyxWrapper.getBaseURIForPhyloref(countPhyloref))
@@ -75,7 +76,7 @@ class PhyxWrapper {
     }
 
     // Match all specifiers with nodes.
-    if (hasOwnProperty(jsonld, 'phylorefs') && hasOwnProperty(jsonld, 'phylogenies')) {
+    if (has(jsonld, 'phylorefs') && has(jsonld, 'phylogenies')) {
       jsonld.hasTaxonomicUnitMatches = [];
 
       // Used to create unique identifiers for each taxonomic unit match.
@@ -85,16 +86,16 @@ class PhyxWrapper {
         const phyloref = phylorefToChange;
         let specifiers = [];
 
-        if (hasOwnProperty(phyloref, 'internalSpecifiers')) {
+        if (has(phyloref, 'internalSpecifiers')) {
           specifiers = specifiers.concat(phyloref.internalSpecifiers);
         }
 
-        if (hasOwnProperty(phyloref, 'externalSpecifiers')) {
+        if (has(phyloref, 'externalSpecifiers')) {
           specifiers = specifiers.concat(phyloref.externalSpecifiers);
         }
 
         specifiers.forEach((specifier) => {
-          if (!hasOwnProperty(specifier, 'referencesTaxonomicUnits')) return;
+          if (!has(specifier, 'referencesTaxonomicUnits')) return;
           const specifierTUs = specifier.referencesTaxonomicUnits;
           let nodesMatchedCount = 0;
 
@@ -103,7 +104,7 @@ class PhyxWrapper {
 
             specifierTUs.forEach((specifierTU) => {
               phylogeny.nodes.forEach((node) => {
-                if (!hasOwnProperty(node, 'representsTaxonomicUnits')) return;
+                if (!has(node, 'representsTaxonomicUnits')) return;
                 const nodeTUs = node.representsTaxonomicUnits;
 
                 nodeTUs.forEach((nodeTU) => {
@@ -123,7 +124,7 @@ class PhyxWrapper {
 
           if (nodesMatchedCount === 0) {
             // No nodes matched? Record this as an unmatched specifier.
-            if (!hasOwnProperty(phyloref, 'hasUnmatchedSpecifiers')) phyloref.hasUnmatchedSpecifiers = [];
+            if (!has(phyloref, 'hasUnmatchedSpecifiers')) phyloref.hasUnmatchedSpecifiers = [];
             phyloref.hasUnmatchedSpecifiers.push(specifier);
           }
         });
@@ -143,7 +144,7 @@ class PhyxWrapper {
     ];
 
     // If the '@context' is missing, add it here.
-    if (!hasOwnProperty(jsonld, '@context')) {
+    if (!has(jsonld, '@context')) {
       jsonld['@context'] = 'http://www.phyloref.org/phyx.js/v0.1.0/phyx.json';
     }
 

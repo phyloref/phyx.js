@@ -27,6 +27,7 @@
   "homepage": "https://github.com/phyloref/phyx.js#readme",
   "dependencies": {
     "extend": "^3.0.2",
+    "lodash": "^4.17.11",
     "moment": "^2.23.0",
     "newick-js": "^1.1.0"
   },
