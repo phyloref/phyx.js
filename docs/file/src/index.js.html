@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/index.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Phyloreference Exchange (PHYX) library in JavaScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Phyloreference Exchange (PHYX) library in JavaScript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/index.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*
+ * PHYX Library
+ * Copyright (c) The Phyloreferencing Project, 2018-19
+ *
+ * PHYloreference eXchange (PHYX) files store phyloreferences along with
+ * annotated phylogenies that allow their expected resolution to be curated
+ * and tested. This library provides classes and methods that help read and
+ * manipulate components of PHYX files.
+ *
+ * Note that our goal here isn&apos;t to provide a library for modeling an entire
+ * PHYX file in Javascript. The Curation Tool can mostly access and edit
+ * components of the PHYX file as text strings or JSON objects, and the terms
+ * used in the PHYX file should be clearly defined on their own. This library
+ * contains convenience classes and methods that make accessing those components
+ * easier.
+ *
+ * Most of these classes are wrappers. Because the object they wrap may be
+ * unexpectedly modified through the UI, wrapper constructors should be extremely
+ * lightweight so that the wrapper can be created quickly. Individual methods
+ * can be complex and slow if necessary.
+ */
+
+// Used to parse Newick strings.
+const { parse: parseNewick } = require(&apos;newick-js&apos;);
+
+// Used to parse timestamps for phyloref statuses.
+const moment = require(&apos;moment&apos;);
+
+// Used to make deep copies of objects.
+const extend = require(&apos;extend&apos;);
+
+// Some OWL constants to be used.
+const CDAO_HAS_CHILD = &apos;obo:CDAO_0000149&apos;;
+const CDAO_HAS_DESCENDANT = &apos;obo:CDAO_0000174&apos;;
+const PHYLOREF_EXCLUDES_LINEAGE_TO = &apos;phyloref:excludes_lineage_to&apos;;
+const PHYLOREFERENCE_TEST_CASE = &apos;testcase:PhyloreferenceTestCase&apos;;
+const PHYLOREFERENCE_PHYLOGENY = &apos;testcase:PhyloreferenceTestPhylogeny&apos;;
+const TESTCASE_SPECIFIER = &apos;testcase:Specifier&apos;;
+
+// Our global variables
+// eslint-disable-next-line no-var
+var phyxCacheManager;
+
+/* Helper methods */
+
+function hasOwnProperty(obj, key) {
+  return Object.prototype.hasOwnProperty.call(obj, key);
+}
+
+/* Cache manager */
+
+class CacheManager {
+  // The Cache Manager helps manage the various caches we use in this library
+  // Ideally, caches should be created in the global phyxCacheManager object.
+  // A library can then call phyxCacheManager.clear() to empty the entire cache.
+
+  constructor() {
+    // Construct a new cache manager.
+    this.clear();
+  }
+
+  clear() {
+    // Clear all current caches
+    this.caches = {};
+  }
+
+  has(cacheName, cacheKey) {
+    // Return true if we have a value for this particular cache key.
+    return hasOwnProperty(this.caches, cacheName)
+      &amp;&amp; hasOwnProperty(this.caches[cacheName], cacheKey);
+  }
+
+  get(cacheName, cacheKey) {
+    // Look up the value of a key in a particular cache key.
+    if (!hasOwnProperty(this.caches, cacheName)) this.caches[cacheName] = {};
+    if (!hasOwnProperty(this.caches[cacheName], cacheKey)) return undefined;
+    return this.caches[cacheName][cacheKey];
+  }
+
+  put(cacheName, cacheKey, value) {
+    // Set the value of a key in a particular cache key.
+    if (!hasOwnProperty(this.caches, cacheName)) this.caches[cacheName] = {};
+    if (!hasOwnProperty(this.caches[cacheName], cacheKey)) this.caches[cacheName][cacheKey] = {};
+    this.caches[cacheName][cacheKey] = value;
+  }
+}
+phyxCacheManager = new CacheManager();
+
+/* Scientific name processing */
+
+class ScientificNameWrapper {
+  // Wraps a scientific name to provide access to components of
+  // the scientific name. For now, we ignore binomialName, genus and
+  // specificEpithet and rederive them from the scientific name.
+
+  constructor(scname) {
+    // Create a new scientific name wrapper around the JSON representation of
+    // a scientific name.
+    this.scname = scname;
+  }
+
+  static createFromVerbatimName(verbatimName) {
+    // Returns a scientific name object created from a particular verbatim name.
+    // Not that the returned object will NOT be wrapped -- so remember to wrap it
+    // if necessary!
+
+    // Start with the &apos;scientific name&apos; as the verbatim name.
+    const scname = {
+      scientificName: verbatimName,
+    };
+
+    // Split the verbatim name into a genus and specific epithet, if possible.
+    // Splitting the verbatim name takes some time, so let&apos;s memoize this.
+    if (phyxCacheManager.has(&apos;ScientificNameWrapper.scnameCache&apos;, verbatimName)) {
+      return phyxCacheManager.get(&apos;ScientificNameWrapper.scnameCache&apos;, verbatimName);
+    }
+
+    const comps = verbatimName.split(/\s+/);
+
+    // Did we find a binomial?
+    if (comps.length &gt;= 2) {
+      [, scname.specificEpithet] = comps;
+    }
+
+    // Did we find a uninomial?
+    if (comps.length &gt;= 1) {
+      [scname.genus] = comps;
+    }
+
+    // Store in the cache.
+    phyxCacheManager.put(&apos;ScientificNameWrapper.scnameCache&apos;, verbatimName, scname);
+
+    return scname;
+  }
+
+  get scientificName() {
+    // Get the &quot;dwc:scientificName&quot; -- the complete scientific name.
+    return this.scname.scientificName;
+  }
+
+  get binomialName() {
+    // Get the binomial name. Constructed from the genus and specific epithet
+    // if available.
+    if (this.genus === undefined || this.specificEpithet === undefined) return undefined;
+    return `${this.genus} ${this.specificEpithet}`;
+  }
+
+  get genus() {
+    // Try to read the genus if available.
+    if (hasOwnProperty(this.scname, &apos;genus&apos;)) return this.scname.genus;
+
+    // If there is no genus but there is a scientificName, try to extract a genus
+    // from it.
+    if (hasOwnProperty(this.scname, &apos;scientificName&apos;)) {
+      const scname = ScientificNameWrapper.createFromVerbatimName(this.scname.scientificName);
+      if (hasOwnProperty(scname, &apos;genus&apos;)) return scname.genus;
+    }
+    return undefined;
+  }
+
+  get specificEpithet() {
+    // Try to read the specific epithet if available.
+    if (hasOwnProperty(this.scname, &apos;specificEpithet&apos;)) return this.scname.specificEpithet;
+
+    // If there is no specific epithet but there is a scientificName, try to
+    // extract a specific epithet from it.
+    if (hasOwnProperty(this.scname, &apos;scientificName&apos;)) {
+      const scname = ScientificNameWrapper.createFromVerbatimName(this.scname.scientificName);
+      if (hasOwnProperty(scname, &apos;specificEpithet&apos;)) return scname.specificEpithet;
+    }
+    return undefined;
+  }
+
+  get label() {
+    // Return a label corresponding to this scientific name -- we use the complete verbatim name.
+    return this.scientificName;
+  }
+}
+
+/* Specimen wrapper */
+
+class SpecimenWrapper {
+  // Wraps a specimen identifier.
+
+  constructor(specimen) {
+    // Constructs a wrapper around a specimen.
+    this.specimen = specimen;
+
+    if (!hasOwnProperty(specimen, &apos;occurrenceID&apos;)) {
+      // There might be a catalogNumber, institutionCode or a collectionCode.
+      // In which case, let&apos;s construct an occurrenceID!
+      if (hasOwnProperty(specimen, &apos;catalogNumber&apos;)) {
+        if (hasOwnProperty(specimen, &apos;institutionCode&apos;)) {
+          if (hasOwnProperty(specimen, &apos;collectionCode&apos;)) {
+            this.specimen.occurrenceID = `urn:catalog:${specimen.institutionCode}:${specimen.collectionCode}:${specimen.catalogNumber}`;
+          } else {
+            this.specimen.occurrenceID = `urn:catalog:${specimen.institutionCode}::${specimen.catalogNumber}`;
+          }
+        } else {
+          this.specimen.occurrenceID = `urn:catalog:::${specimen.catalogNumber}`;
+        }
+      } else {
+        this.specimen.occurrenceID = &apos;urn:catalog:::&apos;;
+      }
+    }
+  }
+
+  static createFromOccurrenceID(occurrenceID) {
+    // Create a specimen object from the occurrence ID.
+    // The two expected formats are:
+    //  - &apos;urn:catalog:[institutionCode]:[collectionCode]:[catalogNumber]&apos;
+    //      (in which case, we ignore the first two &quot;components&quot; here)
+    //  - &apos;[institutionCode]:[collectionCode]:[catalogNumber]&apos;
+    // Note that the returned object is NOT wrapped -- so please wrap it if needed!
+
+    // Copy the occurrence ID so we can truncate it if necessary.
+    let occurID = occurrenceID;
+    if (occurID.startsWith(&apos;urn:catalog:&apos;)) occurID = occurID.substr(12);
+
+    // Prepare the specimen.
+    const specimen = {
+      occurrenceID: occurID,
+    };
+
+    // Look for certain prefixes that suggest that we&apos;ve been passed a URN or
+    // URL instead. If so, don&apos;t do any further processing!
+    const URL_URN_PREFIXES = [
+      &apos;http://&apos;,
+      &apos;https://&apos;,
+      &apos;ftp://&apos;,
+      &apos;sftp://&apos;,
+      &apos;file://&apos;,
+      &apos;urn:&apos;,
+    ];
+    if (URL_URN_PREFIXES.filter(prefix =&gt; occurID.toLowerCase().startsWith(prefix)).length &gt; 0) {
+      return specimen;
+    }
+
+    // Parsing an occurrence ID takes some time, so we should memoize it.
+    if (phyxCacheManager.has(&apos;SpecimenWrapper.occurrenceIDCache&apos;, occurID)) {
+      return phyxCacheManager.get(&apos;SpecimenWrapper.occurrenceIDCache&apos;, occurID);
+    }
+
+    // Split the occurrence ID into components, and store them in the appropriate fields.
+    const comps = occurID.split(/:/);
+    if (comps.length === 1) {
+      // specimen.institutionCode = undefined;
+      // specimen.collectionCode = undefined;
+      [specimen.catalogNumber] = comps;
+    } else if (comps.length === 2) {
+      [specimen.institutionCode, specimen.catalogNumber] = comps;
+    } else if (comps.length &gt;= 3) {
+      let catalogNumValues = []; // Store all split catalog number values.
+      [specimen.institutionCode, specimen.collectionCode, ...catalogNumValues] = comps;
+      specimen.catalogNumber = catalogNumValues.join(&apos;:&apos;);
+    }
+
+    phyxCacheManager.put(&apos;SpecimenWrapper.occurrenceIDCache&apos;, occurID, specimen);
+    return specimen;
+  }
+
+  get catalogNumber() {
+    // Get the catalog number from the specimen object if present.
+    if (hasOwnProperty(this.specimen, &apos;catalogNumber&apos;)) return this.specimen.catalogNumber;
+
+    // Otherwise, try to parse the occurrenceID and see if we can extract a
+    // catalogNumber from there.
+    if (hasOwnProperty(this.specimen, &apos;occurrenceID&apos;)) {
+      const specimen = SpecimenWrapper.createFromOccurrenceID(this.specimen.occurrenceID);
+      if (hasOwnProperty(specimen, &apos;catalogNumber&apos;)) return specimen.catalogNumber;
+    }
+    return undefined;
+  }
+
+  get institutionCode() {
+    // Get the institution code from the specimen object if present.
+    if (hasOwnProperty(this.specimen, &apos;institutionCode&apos;)) return this.specimen.institutionCode;
+
+    // Otherwise, try to parse the occurrenceID and see if we can extract an
+    // occurrenceID from there.
+    if (hasOwnProperty(this.specimen, &apos;occurrenceID&apos;)) {
+      const specimen = SpecimenWrapper.createFromOccurrenceID(this.specimen.occurrenceID);
+      if (hasOwnProperty(specimen, &apos;institutionCode&apos;)) return specimen.institutionCode;
+    }
+    return undefined;
+  }
+
+  get collectionCode() {
+    // Get the collection code from the specimen object if present.
+    if (hasOwnProperty(this.specimen, &apos;collectionCode&apos;)) return this.specimen.collectionCode;
+
+    // Otherwise, try to parse the occurrenceID and see if we can extract an
+    // occurrenceID from there.
+    if (hasOwnProperty(this.specimen, &apos;occurrenceID&apos;)) {
+      const specimen = SpecimenWrapper.createFromOccurrenceID(this.specimen.occurrenceID);
+      if (hasOwnProperty(specimen, &apos;collectionCode&apos;)) return specimen.collectionCode;
+    }
+    return undefined;
+  }
+
+  get occurrenceID() {
+    // Does this specimen have an occurrenceID? If so, return it.
+    // If not, we attempt to construct one in the form:
+    //   &quot;urn:catalog:&quot; + institutionCode (if present) + &apos;:&apos; +
+    //      collectionCode (if present) + &apos;:&apos; + catalogNumber (if present)
+    // If all else fails, we return undefined.
+    //
+    // If this was a full wrapper, we might create a setter on the occurrenceID;
+    // however, the Vue model modifies the underlying specimen object, not the
+    // wrapper.
+
+    // Return the occurrenceID if it exists.
+    if (hasOwnProperty(this.specimen, &apos;occurrenceID&apos;) &amp;&amp; this.specimen.occurrenceID.trim() !== &apos;&apos;) {
+      return this.specimen.occurrenceID.trim();
+    }
+
+    // Otherwise, we could try to construct the occurrenceID from its components.
+    if (hasOwnProperty(this.specimen, &apos;catalogNumber&apos;)) {
+      if (hasOwnProperty(this.specimen, &apos;institutionCode&apos;)) {
+        if (hasOwnProperty(this.specimen, &apos;collectionCode&apos;)) {
+          return `urn:catalog:${this.specimen.institutionCode.trim()}:${this.specimen.collectionCode.trim()}:${this.specimen.catalogNumber.trim()}`;
+        }
+        return `urn:catalog:${this.specimen.institutionCode.trim()}::${this.specimen.catalogNumber.trim()}`;
+      }
+      if (hasOwnProperty(this.specimen, &apos;collectionCode&apos;)) {
+        return `urn:catalog::${this.specimen.collectionCode.trim()}:${this.specimen.catalogNumber.trim()}`;
+      }
+      return `urn:catalog:::${this.specimen.catalogNumber.trim()}`;
+    }
+
+    // None of our specimen identifier schemes worked.
+    return undefined;
+  }
+
+  get label() {
+    // Return a label for this specimen
+    return `Specimen ${this.occurrenceID}`;
+  }
+}
+
+/* Taxonomic unit wrapper */
+
+class TaxonomicUnitWrapper {
+  // Wraps a taxonomic unit.
+  // Also provides static methods for obtaining lists of wrapped taxonomic units
+  // from node labels.
+
+  constructor(tunit) {
+    // Wrap a taxonomic unit.
+    this.tunit = tunit;
+  }
+
+  get label() {
+    // Try to determine the label of a taxonomic unit. This checks the
+    // &apos;label&apos; and &apos;description&apos; properties, and then tries to create a
+    // descriptive label by combining the scientific names, specimens
+    // and external references of the taxonomic unit.
+    const labels = [];
+
+    // A label or description for the TU?
+    if (hasOwnProperty(this.tunit, &apos;label&apos;)) return this.tunit.label;
+    if (hasOwnProperty(this.tunit, &apos;description&apos;)) return this.tunit.description;
+
+    // Any specimens?
+    if (hasOwnProperty(this.tunit, &apos;includesSpecimens&apos;)) {
+      this.tunit.includesSpecimens.forEach((specimen) =&gt; {
+        labels.push(new SpecimenWrapper(specimen).label);
+      });
+    }
+
+    // Any external references?
+    if (hasOwnProperty(this.tunit, &apos;externalReferences&apos;)) {
+      this.tunit.externalReferences.forEach(externalRef =&gt; labels.push(`&lt;${externalRef}&gt;`));
+    }
+
+    // Any scientific names?
+    if (hasOwnProperty(this.tunit, &apos;scientificNames&apos;)) {
+      this.tunit.scientificNames.forEach((scname) =&gt; {
+        labels.push(new ScientificNameWrapper(scname).label);
+      });
+    }
+
+    // If we don&apos;t have any properties of a taxonomic unit, return undefined.
+    if (labels.length === 0) return undefined;
+
+    return labels.join(&apos; or &apos;);
+  }
+
+  // Access variables in the underlying wrapped taxonomic unit.
+  get scientificNames() {
+    return this.tunit.scientificNames;
+  }
+
+  get includeSpecimens() {
+    return this.tunit.includesSpecimens;
+  }
+
+  get externalReferences() {
+    return this.tunit.externalReferences;
+  }
+
+  static getTaxonomicUnitsFromNodeLabel(nodeLabel) {
+    // Given a node label, attempt to parse it as a scientific name.
+    // Returns a list of taxonomic units.
+    if (nodeLabel === undefined || nodeLabel === null) return [];
+
+    // This regular expression times a while to run, so let&apos;s memoize this.
+    if (phyxCacheManager.has(&apos;TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache&apos;, nodeLabel)) {
+      return phyxCacheManager.get(&apos;TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache&apos;, nodeLabel);
+    }
+
+    // Check if the label starts with a binomial name.
+    let tunits = [];
+    const results = /^([A-Z][a-z]+)[ _]([a-z-]+)(?:\b|_)\s*(.*)/.exec(nodeLabel);
+    if (results !== null) {
+      tunits = [{
+        scientificNames: [{
+          scientificName: `${results[1]} ${results[2]} ${results[3]}`.trim(),
+          binomialName: `${results[1]} ${results[2]}`,
+          genus: results[1],
+          specificEpithet: results[2],
+        }],
+      }];
+    } else {
+      // It may be a scientific name, but we don&apos;t know how to parse it as such.
+      tunits = [];
+    }
+
+    // Record in the cache
+    phyxCacheManager.put(&apos;TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache&apos;, nodeLabel, tunits);
+
+    return tunits;
+  }
+}
+
+/* Taxonomic unit matching */
+
+class TaxonomicUnitMatcher {
+  // A taxonomic unit matcher tests for taxonomic matches between pairs of
+  // taxonomic units.
+
+  constructor(tunit1, tunit2) {
+    // Construct a Taxonomic Unit Matcher to compare the two provided
+    // taxonomic units.
+    this.tunit1 = tunit1;
+    this.tunit2 = tunit2;
+
+    // Set up places to store the match results.
+    this.matched = undefined; // Boolean variable for storing whether these TUnits matched.
+    this.matchReason = undefined; // The reason provided for this match.
+
+    // Execute the match.
+    this.match();
+  }
+
+  asJSONLD(idURI) {
+    // Return this TUMatch as a JSON object for insertion into the PHYX file.
+    if (!this.matched) return undefined;
+
+    return {
+      &apos;@id&apos;: idURI,
+      &apos;@type&apos;: &apos;testcase:TUMatch&apos;,
+      reason: this.matchReason,
+      matchesTaxonomicUnits: [
+        { &apos;@id&apos;: this.tunit1[&apos;@id&apos;] },
+        { &apos;@id&apos;: this.tunit2[&apos;@id&apos;] },
+      ],
+    };
+  }
+
+  match() {
+    // Try to match the two taxonomic units using a number of matching methods.
+    if (
+      this.matchByBinomialName()
+      || this.matchByExternalReferences()
+      || this.matchBySpecimenIdentifier()
+    ) {
+      this.matched = true;
+    } else {
+      this.matched = false;
+      this.matchReason = undefined;
+    }
+  }
+
+  matchByBinomialName() {
+    // Try to match by binomial name, and return true if it could be matched.
+
+    // Do both TUnits have scientificNames?
+    if (!hasOwnProperty(this.tunit1, &apos;scientificNames&apos;) || !hasOwnProperty(this.tunit2, &apos;scientificNames&apos;)) return false;
+
+    return this.tunit1.scientificNames.some((scname1) =&gt; {
+      const scname1wrapped = new ScientificNameWrapper(scname1);
+      return this.tunit2.scientificNames.some((scname2) =&gt; {
+        const scname2wrapped = new ScientificNameWrapper(scname2);
+
+        const result = scname1wrapped.binomialName !== undefined
+          &amp;&amp; scname2wrapped.binomialName !== undefined
+          &amp;&amp; scname1wrapped.binomialName.trim().length &gt; 0
+          &amp;&amp; scname1wrapped.binomialName.trim() === scname2wrapped.binomialName.trim();
+
+        if (result) {
+          this.matchReason = `Scientific name &apos;${scname1wrapped.scientificName}&apos; and scientific name &apos;${scname2wrapped.scientificName}&apos; share the same binomial name`;
+        }
+
+        return result;
+      });
+    });
+  }
+
+  matchByExternalReferences() {
+    // Try to match by external references.
+
+    if (hasOwnProperty(this.tunit1, &apos;externalReferences&apos;) &amp;&amp; hasOwnProperty(this.tunit2, &apos;externalReferences&apos;)) {
+      // Each external reference is a URL as a string. We will lowercase it,
+      // but do no other transformation.
+      return this.tunit1.externalReferences.some(
+        extref1 =&gt; this.tunit2.externalReferences.some((extref2) =&gt; {
+          const result = (
+            // Make sure that the external reference isn&apos;t blank
+            extref1.trim() !== &apos;&apos;
+
+              // And that it is identical after trimming
+              &amp;&amp; extref1.toLowerCase().trim() === extref2.toLowerCase().trim()
+          );
+
+          if (result) {
+            this.matchReason = `External reference &apos;${extref1}&apos; is shared by taxonomic unit ${this.tunit1} and ${this.tunit2}`;
+          }
+
+          return result;
+        })
+      );
+    }
+
+    return false;
+  }
+
+  matchBySpecimenIdentifier() {
+    // Try to match by specimen identifier (i.e. occurrence ID).
+
+    if (hasOwnProperty(this.tunit1, &apos;includesSpecimens&apos;) &amp;&amp; hasOwnProperty(this.tunit2, &apos;includesSpecimens&apos;)) {
+      // Convert specimen identifiers (if present) into a standard format and compare those.
+      return this.tunit1.includesSpecimens.some((specimen1) =&gt; {
+        const specimenURN1 = new SpecimenWrapper(specimen1).occurrenceID;
+        return this.tunit2.includesSpecimens.some((specimen2) =&gt; {
+          const specimenURN2 = new SpecimenWrapper(specimen2).occurrenceID;
+
+          const result = (specimenURN1 === specimenURN2);
+
+          if (result) {
+            this.matchReason = `Specimen identifier &apos;${specimenURN1}&apos; is shared by taxonomic units`;
+          }
+
+          return result;
+        });
+      });
+    }
+
+    return false;
+  }
+}
+
+/* Phylogeny wrapper */
+
+class PhylogenyWrapper {
+  // Wraps a Phylogeny in a PHYX file and provides access to node, node labels
+  // and other information. Remember that a Phylogeny also has the
+  // additionalNodeProperties object which provides additional properties for
+  // nodes.
+
+  constructor(phylogeny) {
+    // Construct a phylogeny based on a Phylogeny object in a PHYX phylogeny.
+    // Note that this version ONLY uses the `newick` property to determine the
+    // phylogeny: if other representations are included (such as a node-based
+    // format, as used in JSON-LD), they will be ignored and possibly overwritten
+    // during export. So, to update the phylogeny, please only update the newick
+    // string!
+    //
+    // This ensures that we don&apos;t need to reconcile between different
+    // possible representations of a phylogeny.
+    this.phylogeny = phylogeny;
+  }
+
+  static getErrorsInNewickString(newick) {
+    // Given a Newick string, return a list of errors found in parsing this
+    // string. The errors are returned as a list of objects, each of which
+    // has two properties:
+    //  - title: A short title of the error, distinct for each type of error.
+    //  - message: A longer description of the error, which might include
+    //    information specific to a particular error.
+    //
+    // We try to order errors from most helpful (&apos;Unbalanced parentheses in
+    // Newick string&apos;) to least helpful (&apos;Error parsing phylogeny&apos;).
+    const newickTrimmed = newick.trim();
+    const errors = [];
+
+    // Look for an empty Newick string.
+    if (newickTrimmed === &apos;&apos; || newickTrimmed === &apos;()&apos; || newickTrimmed === &apos;();&apos;) {
+      // None of the later errors are relevant here, so bail out now.
+      return [{
+        title: &apos;No phylogeny entered&apos;,
+        message: &apos;Click on &quot;Edit as Newick&quot; to enter a phylogeny below.&apos;,
+      }];
+    }
+
+    // Look for an unbalanced Newick string.
+    let parenLevels = 0;
+    for (let x = 0; x &lt; newickTrimmed.length; x += 1) {
+      if (newickTrimmed[x] === &apos;(&apos;) parenLevels += 1;
+      if (newickTrimmed[x] === &apos;)&apos;) parenLevels -= 1;
+    }
+
+    if (parenLevels !== 0) {
+      errors.push({
+        title: &apos;Unbalanced parentheses in Newick string&apos;,
+        message: (parenLevels &gt; 0
+          ? `You have ${parenLevels} too many open parentheses`
+          : `You have ${-parenLevels} too few open parentheses`
+        ),
+      });
+    }
+
+    // Finally, try parsing it with parseNewick and see if we get an error.
+    try {
+      parseNewick(newickTrimmed);
+    } catch (ex) {
+      errors.push({
+        title: &apos;Error parsing phylogeny&apos;,
+        message: `An error occured while parsing this phylogeny: ${ex.message}`,
+      });
+    }
+
+    return errors;
+  }
+
+  static recurseNodes(node, func, nodeCount = 0, parentCount = undefined) {
+    // Recurse through PhyloTree nodes, executing function on each node.
+    //  - node: The node to recurse from. The function will be called on node
+    //          *before* being called on its children.
+    //  - func: The function to call on `node` and all of its children.
+    //  - nodeCount: `node` will be called with this nodeCount. All of its
+    //          children will be called with consecutively increasing nodeCounts.
+    //  - parentCount: The nodeCount associated with the parent of this node
+    //          within this run of recurseNodes. For instance, immediate children
+    //          of `node` will have a parentCount of 0. By default, `node` itself
+    //          will have a parentCount of `undefined`.
+    // When the function `func` is called, it is given three arguments:
+    //  - The current node object (initially: `node`)
+    //  - The count of the current node object (initially: `nodeCount`)
+    //  - The parent count of the current node object (initially: `parentCount`)
+    func(node, nodeCount, parentCount);
+
+    let nextID = nodeCount + 1;
+
+    // Recurse through all children of this node.
+    if (hasOwnProperty(node, &apos;children&apos;)) {
+      node.children.forEach((child) =&gt; {
+        nextID = PhylogenyWrapper.recurseNodes(
+          child,
+          func,
+          nextID,
+          nodeCount
+        );
+      });
+    }
+
+    return nextID;
+  }
+
+  getTaxonomicUnits(nodeType = &apos;both&apos;) {
+    // Return a list of all taxonomic units in this phylogeny.
+    // Node labels will be extracted from:
+    //  - internal nodes only (if nodeType == &apos;internal&apos;)
+    //  - terminal nodes only (if nodeType == &apos;terminal&apos;)
+    //  - both internal and terminal nodes (if nodeType == &apos;both&apos;)
+    //
+    // See `getTaxonomicUnitsForNodeLabel` to see how node labels are converted
+    // into node labels, but in brief:
+    //  1. We look for taxonomic units in the additionalNodeProperties.
+    //  2. If none are found, we attempt to parse the node label as a scientific name.
+    //
+    const nodeLabels = this.getNodeLabels(nodeType);
+    const tunits = new Set();
+
+    nodeLabels.forEach(
+      nodeLabel =&gt; this.getTaxonomicUnitsForNodeLabel(nodeLabel)
+        .forEach(tunit =&gt; tunits.add(tunit))
+    );
+
+    return tunits;
+  }
+
+  getNodeLabels(nodeType = &apos;both&apos;) {
+    // Return a list of all the node labels in this phylogeny.
+    //
+    // nodeType can be one of:
+    // - &apos;internal&apos;: Return node labels on internal nodes.
+    // - &apos;terminal&apos;: Return node labels on terminal nodes.
+    // - &apos;both&apos;: Return node labels on both internal and terminal nodes.
+
+    // Parse the phylogeny (will throw an exception if parsing failed).
+    const { graph } = parseNewick(this.phylogeny.newick || &apos;()&apos;);
+    const [vertices, arcs] = graph;
+
+    if (nodeType === &apos;both&apos;) {
+      // Return all node labels.
+      return Array.from(
+        new Set(
+          Array.from(vertices)
+            .map(vertex =&gt; vertex.label)
+            .filter(label =&gt; label !== undefined)
+        )
+      );
+    }
+
+    if (nodeType === &apos;internal&apos;) {
+      // Return the internal nodes (those with atleast one child).
+      return Array.from(new Set(
+        Array.from(arcs)
+          .map(arc =&gt; arc[0].label) // Retrieve the label of the parent vertex in this arc.
+          .filter(label =&gt; label !== undefined)
+      ));
+    }
+
+    if (nodeType === &apos;terminal&apos;) {
+      // Return the terminal nodes. This would require calculating the children
+      // of every vertex in the graph and then identifying vertices without any
+      // children.
+      //
+      // A quicker and dirtier way to do this is by removing internal labels
+      // from the list of all node labels. This will report an incorrect result
+      // if an internal node has the same label as a terminal node, but at that
+      // point a lot of other assumptions are going to fail, too, so this is
+      // probably good enough for now.
+      const allLabels = this.getNodeLabels(&apos;both&apos;);
+      const internalLabels = new Set(this.getNodeLabels(&apos;internal&apos;));
+
+      return allLabels.filter(label =&gt; !internalLabels.has(label));
+    }
+
+    throw new Error(`Unknown nodeType: &apos;${nodeType}&apos;`);
+  }
+
+  getTaxonomicUnitsForNodeLabel(nodeLabel) {
+    // Return a list of taxonomic units for a node label.
+
+    // Look up additional node properties.
+    let additionalNodeProperties = {};
+    if (
+      hasOwnProperty(this.phylogeny, &apos;additionalNodeProperties&apos;)
+      &amp;&amp; hasOwnProperty(this.phylogeny.additionalNodeProperties, nodeLabel)
+    ) {
+      additionalNodeProperties = this.phylogeny.additionalNodeProperties[nodeLabel];
+    }
+
+    // If there are explicit taxonomic units in the
+    // representsTaxonomicUnits property, we need to use those.
+    if (hasOwnProperty(additionalNodeProperties, &apos;representsTaxonomicUnits&apos;)) {
+      return additionalNodeProperties.representsTaxonomicUnits;
+    }
+
+    // If that doesn&apos;t work, we can try to extract scientific names from
+    // the node label. Note that taxonomic units will NOT be extracted from
+    // the label if there is a taxonomic unit present!
+    return TaxonomicUnitWrapper.getTaxonomicUnitsFromNodeLabel(nodeLabel.trim());
+  }
+
+  getNodeLabelsMatchedBySpecifier(specifier) {
+    // Return a list of node labels matched by a given specifier on
+    // a given phylogeny.
+
+    // Does the specifier have any taxonomic units? If not, we can&apos;t
+    // match anything!
+    if (!hasOwnProperty(specifier, &apos;referencesTaxonomicUnits&apos;)) { return []; }
+    const specifierTUnits = specifier.referencesTaxonomicUnits;
+
+    return this.getNodeLabels().filter((nodeLabel) =&gt; {
+      // Find all the taxonomic units associated with the specifier and
+      // with the node.
+      const nodeTUnits = this.getTaxonomicUnitsForNodeLabel(nodeLabel);
+
+      // Attempt pairwise matches between taxonomic units in the specifier
+      // and associated with the node.
+      return specifierTUnits.some(
+        tunit1 =&gt; nodeTUnits.some(
+          tunit2 =&gt; new TaxonomicUnitMatcher(tunit1, tunit2).matched
+        )
+      );
+    });
+  }
+
+  static getParsedNewick(newick) {
+    // We previously used phylotree.js&apos;s Newick parser to parse Newick into a
+    // tree-like structure. However, this is difficult to integrate using NPM.
+    // This method provides a similar facility using the newick-js library.
+    //
+    // Throws an exception if the Newick could not be parsed.
+    const { graph, root, rootWeight } = parseNewick(newick);
+    const [, arcs] = graph;
+
+    // Go through the arcs, assigning &apos;children&apos; to the appropriate parent node.
+    arcs.forEach((arc) =&gt; {
+      const [parent, child, weight] = arc;
+
+      // Add child to parent.children.
+      if (!hasOwnProperty(parent, &apos;children&apos;)) parent.children = [];
+      parent.children.push(child);
+
+      // Phylotree.js uses &apos;name&apos; instead of &apos;label&apos;.
+      if (hasOwnProperty(parent, &apos;label&apos;)) { parent.name = parent.label; }
+      if (hasOwnProperty(child, &apos;label&apos;)) { child.name = child.label; }
+
+      // Phylotree.js uses &apos;attribute&apos; to store weights, so we&apos;ll store it there as well.
+      if (!hasOwnProperty(child, &apos;attribute&apos;) &amp;&amp; !Number.isNaN(weight)) child.attribute = weight;
+    });
+
+    // Set root &apos;attribute&apos; to root weight.
+    if (!hasOwnProperty(root, &apos;attribute&apos;) &amp;&amp; !Number.isNaN(rootWeight)) root.attribute = rootWeight;
+
+    return { json: root };
+  }
+
+  getParsedNewickWithIRIs(baseURI, newickParser = PhylogenyWrapper.getParsedNewick) {
+    // Return the parsed Newick string, but with EVERY node given an IRI.
+    // parsedNewick: A Newick tree represented as a tree produced by Phylotree.
+    // baseURI: The base URI to use for node elements (e.g. &apos;:phylogeny1&apos;).
+
+    const parsed = newickParser(this.phylogeny.newick || &apos;()&apos;);
+    if (hasOwnProperty(parsed, &apos;json&apos;)) {
+      PhylogenyWrapper.recurseNodes(parsed.json, (node, nodeCount) =&gt; {
+        // Start with the additional node properties.
+        const nodeAsJSONLD = node;
+
+        // Set @id and @type.
+        const nodeURI = `${baseURI}_node${nodeCount}`;
+        nodeAsJSONLD[&apos;@id&apos;] = nodeURI;
+      });
+    }
+
+    return parsed;
+  }
+
+  getNodesAsJSONLD(baseURI, newickParser) {
+    // Returns a list of all nodes in this phylogeny as a series of nodes.
+    // - parsedNewick: A Newick tree parsed into a tree structure by Phylotree.
+    // - baseURI: The base URI to use for node elements (e.g. &apos;:phylogeny1&apos;).
+
+    // List of nodes we have identified.
+    const nodes = [];
+
+    // We need to track the identifiers we give each node as we go.
+    const nodesById = {};
+    const nodeIdsByParentId = {};
+
+    // Extract the newick string.
+    const { additionalNodeProperties } = this.phylogeny;
+
+    // Parse the Newick string; if parseable, recurse through the nodes,
+    // added them to the list of JSON-LD nodes as we go.
+
+    const parsed = this.getParsedNewickWithIRIs(baseURI, newickParser);
+    if (hasOwnProperty(parsed, &apos;json&apos;)) {
+      PhylogenyWrapper.recurseNodes(parsed.json, (node, nodeCount, parentCount) =&gt; {
+        // Start with the additional node properties.
+        const nodeAsJSONLD = {};
+
+        // Set @id and @type. &apos;@id&apos; should already be set by getParsedNewickWithIRIs()!
+        const nodeURI = node[&apos;@id&apos;];
+        nodeAsJSONLD[&apos;@id&apos;] = nodeURI;
+        nodeAsJSONLD[&apos;@type&apos;] = &apos;http://purl.obolibrary.org/obo/CDAO_0000140&apos;;
+
+        // Add labels, additional node properties and taxonomic units.
+        if (hasOwnProperty(node, &apos;name&apos;) &amp;&amp; node.name !== &apos;&apos;) {
+          // Add node label.
+          nodeAsJSONLD.labels = [node.name];
+
+          // Add additional node properties, if any.
+          if (additionalNodeProperties &amp;&amp; hasOwnProperty(additionalNodeProperties, node.name)) {
+            Object.keys(additionalNodeProperties[node.name]).forEach((key) =&gt; {
+              nodeAsJSONLD[key] = additionalNodeProperties[node.name][key];
+            });
+          }
+
+          // Add taxonomic units.
+          nodeAsJSONLD.representsTaxonomicUnits = this.getTaxonomicUnitsForNodeLabel(node.name);
+
+          // Apply @id and @type to each taxonomic unit.
+          let countTaxonomicUnits = 0;
+          nodeAsJSONLD.representsTaxonomicUnits.forEach((tunitToChange) =&gt; {
+            const tunit = tunitToChange;
+
+            tunit[&apos;@id&apos;] = `${nodeURI}_taxonomicunit${countTaxonomicUnits}`;
+            tunit[&apos;@type&apos;] = &apos;http://purl.obolibrary.org/obo/CDAO_0000138&apos;;
+            countTaxonomicUnits += 1;
+          });
+        }
+
+        // Add references to parents and siblings.
+        if (parentCount !== undefined) {
+          const parentURI = `${baseURI}_node${parentCount}`;
+          nodeAsJSONLD.parent = parentURI;
+
+          // Update list of nodes by parent IDs.
+          if (!hasOwnProperty(nodeIdsByParentId, parentURI)) {
+            nodeIdsByParentId[parentURI] = new Set();
+          }
+          nodeIdsByParentId[parentURI].add(nodeURI);
+        }
+
+        // Add nodeAsJSONLD to list
+        if (hasOwnProperty(nodesById, nodeURI)) {
+          throw new Error(&apos;Error in programming: duplicate node URI generated&apos;);
+        }
+        nodesById[nodeURI] = nodeAsJSONLD;
+        nodes.push(nodeAsJSONLD);
+      });
+    }
+
+    // Go through nodes again and set children and sibling relationships.
+    Object.keys(nodeIdsByParentId).forEach((parentId) =&gt; {
+      // What are the children of this parentId?
+      const childrenIDs = Array.from(nodeIdsByParentId[parentId]);
+      const children = childrenIDs.map(childId =&gt; nodesById[childId]);
+
+      // Is this the root node?
+      if (hasOwnProperty(nodesById, parentId)) {
+        const parent = nodesById[parentId];
+        parent.children = childrenIDs;
+      }
+
+      children.forEach((child) =&gt; {
+        const childToModify = child;
+        // Add all other sibling to node.siblings, but don&apos;t add this node itself!
+        childToModify.siblings = childrenIDs.filter(childId =&gt; childId !== child[&apos;@id&apos;]);
+      });
+    });
+
+    return nodes;
+  }
+
+  asJSONLD(baseURI, newickParser) {
+    // Export this phylogeny as JSON-LD.
+
+    // Create a copy to export.
+    const phylogenyAsJSONLD = JSON.parse(JSON.stringify(this.phylogeny));
+
+    // Set name and class for phylogeny.
+    phylogenyAsJSONLD[&apos;@id&apos;] = baseURI;
+    phylogenyAsJSONLD[&apos;@type&apos;] = PHYLOREFERENCE_PHYLOGENY;
+
+    // Translate nodes into JSON-LD objects.
+    phylogenyAsJSONLD.nodes = this.getNodesAsJSONLD(baseURI, newickParser);
+    if (phylogenyAsJSONLD.nodes.length &gt; 0) {
+      // We don&apos;t have a better way to identify the root node, so we just
+      // default to the first one.
+      phylogenyAsJSONLD.hasRootNode = {
+        &apos;@id&apos;: phylogenyAsJSONLD.nodes[0][&apos;@id&apos;],
+      };
+    }
+
+    return phylogenyAsJSONLD;
+  }
+}
+
+/* Phyloreference wrapper */
+
+class PhylorefWrapper {
+  // Wraps a phyloreference in a PHYX model.
+
+  constructor(phyloref) {
+    // Wraps the provided phyloreference
+    this.phyloref = phyloref;
+
+    // Reset internal and external specifiers if needed.
+    // if (!hasOwnProperty(this.phyloref, &apos;internalSpecifiers&apos;))
+    //  Vue.set(this.phyloref, &apos;internalSpecifiers&apos;, []);
+    if (!hasOwnProperty(this.phyloref, &apos;internalSpecifiers&apos;)) {
+      this.phyloref.internalSpecifiers = [];
+    }
+    // if (!hasOwnProperty(this.phyloref, &apos;externalSpecifiers&apos;))
+    //  Vue.set(this.phyloref, &apos;externalSpecifiers&apos;, []);
+    if (!hasOwnProperty(this.phyloref, &apos;externalSpecifiers&apos;)) {
+      this.phyloref.externalSpecifiers = [];
+    }
+  }
+
+  get label() {
+    // Return a label for this phyloreference.
+    if (hasOwnProperty(this.phyloref, &apos;label&apos;)) return this.phyloref.label;
+    if (hasOwnProperty(this.phyloref, &apos;labels&apos;) &amp;&amp; this.phyloref.labels.length &gt; 0) return this.phyloref.labels[0];
+    if (hasOwnProperty(this.phyloref, &apos;title&apos;)) return this.phyloref.title;
+
+    return undefined;
+  }
+
+  set label(newLabel) {
+    // Set a label for this phyloreference.
+    if (hasOwnProperty(this.phyloref, &apos;label&apos;)) {
+      this.phyloref.label = newLabel;
+    } else {
+      // Vue.set(this.phyloref, &apos;label&apos;, newLabel);
+      this.phyloref.label = newLabel;
+    }
+  }
+
+  get specifiers() {
+    // Returns a list of all specifiers by combining the internal and external
+    // specifiers into a single list, with internal specifiers before
+    // external specifiers.
+    let specifiers = this.phyloref.internalSpecifiers;
+    specifiers = specifiers.concat(this.phyloref.externalSpecifiers);
+    return specifiers;
+  }
+
+  getSpecifierType(specifier) {
+    // For a given specifier, return a string indicating whether it is
+    // an &apos;Internal&apos; or &apos;External&apos; specifier.
+
+    if (this.phyloref.internalSpecifiers.includes(specifier)) return &apos;Internal&apos;;
+    if (this.phyloref.externalSpecifiers.includes(specifier)) return &apos;External&apos;;
+    return &apos;Specifier&apos;;
+  }
+
+  setSpecifierType(specifier, specifierType) {
+    // Change the type of a given specifier. To do this, we first need
+    // to determine if it was originally an internal or external
+    // specifier, then move it into the other list.
+
+    let index;
+    if (specifierType === &apos;Internal&apos;) {
+      // To set a specifier to &apos;Internal&apos;, we might need to delete it from the
+      // list of external specifiers first.
+      index = this.phyloref.externalSpecifiers.indexOf(specifier);
+      if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
+
+      // Don&apos;t add it to the list of internal specifiers if it&apos;s already there.
+      if (!this.phyloref.internalSpecifiers.includes(specifier)) {
+        this.phyloref.internalSpecifiers.unshift(specifier);
+      }
+    } else if (specifierType === &apos;External&apos;) {
+      // To set a specifier to &apos;External&apos;, we might need to delete it from the
+      // list of internal specifiers first.
+      index = this.phyloref.internalSpecifiers.indexOf(specifier);
+      if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+
+      // Don&apos;t add it to the list of internal specifiers if it&apos;s already there.
+      if (!this.phyloref.externalSpecifiers.includes(specifier)) {
+        this.phyloref.externalSpecifiers.unshift(specifier);
+      }
+    } else {
+      // Neither internal nor external? Ignore.
+    }
+  }
+
+  deleteSpecifier(specifier) {
+    // Since the user interface combines specifiers into a single list,
+    // it doesn&apos;t remember if the specifier to be deleted is internal
+    // or external. We delete the intended specifier from both arrays.
+
+    let index = this.phyloref.internalSpecifiers.indexOf(specifier);
+    if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+
+    index = this.phyloref.externalSpecifiers.indexOf(specifier);
+    if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
+  }
+
+  static getSpecifierLabel(specifier) {
+    // Try to determine the label of a specifier. This checks the
+    // &apos;label&apos; and &apos;description&apos; properties, and then tries to create a
+    // descriptive label by using the list of referenced taxonomic units.
+    //
+    // This logically belongs in PhylorefWrapper, but we don&apos;t actually need to
+    // know the phyloreference to figure out the specifier label, which is why
+    // this is a static method.
+
+    // Is this specifier even non-null?
+    if (specifier === undefined) return undefined;
+    if (specifier === null) return undefined;
+
+    // Maybe there is a label or description right there?
+    if (hasOwnProperty(specifier, &apos;label&apos;)) return specifier.label;
+    if (hasOwnProperty(specifier, &apos;description&apos;)) return specifier.description;
+
+    // Look at the individual taxonomic units.
+    if (hasOwnProperty(specifier, &apos;referencesTaxonomicUnits&apos;)) {
+      const labels = specifier.referencesTaxonomicUnits
+        .map(tu =&gt; new TaxonomicUnitWrapper(tu).label)
+        .filter(label =&gt; (label !== undefined));
+      if (labels.length &gt; 0) return labels.join(&apos;; &apos;);
+    }
+
+    // No idea!
+    return undefined;
+  }
+
+  getExpectedNodeLabels(phylogeny) {
+    // Given a phylogeny, determine which node labels we expect this phyloref to
+    // resolve to. To do this, we:
+    //  1. Find all node labels that are case-sensitively identical
+    //     to the phyloreference.
+    //  2. Find all node labels that have additionalNodeProperties with
+    //     expectedPhyloreferenceNamed case-sensitively identical to
+    //     the phyloreference.
+    const phylorefLabel = this.label;
+    const nodeLabels = new Set();
+
+    new PhylogenyWrapper(phylogeny).getNodeLabels().forEach((nodeLabel) =&gt; {
+      // Is this node label identical to the phyloreference name?
+      if (nodeLabel === phylorefLabel) {
+        nodeLabels.add(nodeLabel);
+      } else if (
+        hasOwnProperty(phylogeny, &apos;additionalNodeProperties&apos;)
+        &amp;&amp; hasOwnProperty(phylogeny.additionalNodeProperties, nodeLabel)
+        &amp;&amp; hasOwnProperty(phylogeny.additionalNodeProperties[nodeLabel], &apos;expectedPhyloreferenceNamed&apos;)
+      ) {
+        // Does this node label have an expectedPhyloreferenceNamed that
+        // includes this phyloreference name?
+
+        const expectedPhylorefs = phylogeny
+          .additionalNodeProperties[nodeLabel]
+          .expectedPhyloreferenceNamed;
+
+        if (expectedPhylorefs.includes(phylorefLabel)) {
+          nodeLabels.add(nodeLabel);
+        }
+      }
+    });
+
+    // Return node labels sorted alphabetically.
+    return Array.from(nodeLabels).sort();
+  }
+
+  static getStatusCURIEsInEnglish() {
+    // Return dictionary of all phyloref statuses in English
+    return {
+      &apos;pso:draft&apos;: &apos;Draft&apos;,
+      &apos;pso:final-draft&apos;: &apos;Final draft&apos;,
+      &apos;pso:under-review&apos;: &apos;Under review&apos;,
+      &apos;pso:submitted&apos;: &apos;Tested&apos;,
+      &apos;pso:published&apos;: &apos;Published&apos;,
+      &apos;pso:retracted-from-publication&apos;: &apos;Retracted&apos;,
+    };
+  }
+
+  getCurrentStatus() {
+    // Return a result object that contains:
+    //  - status: phyloreference status as a short URI (CURIE)
+    //  - statusInEnglish: an English representation of the phyloref status
+    //  - intervalStart: the start of the interval
+    //  - intervalEnd: the end of the interval
+
+    if (
+      hasOwnProperty(this.phyloref, &apos;pso:holdsStatusInTime&apos;)
+      &amp;&amp; Array.isArray(this.phyloref[&apos;pso:holdsStatusInTime&apos;])
+      &amp;&amp; this.phyloref[&apos;pso:holdsStatusInTime&apos;].length &gt; 0
+    ) {
+      // If we have any pso:holdsStatusInTime entries, pick the first one and
+      // extract the CURIE and time interval information from it.
+      const lastStatusInTime = this.phyloref[&apos;pso:holdsStatusInTime&apos;][this.phyloref[&apos;pso:holdsStatusInTime&apos;].length - 1];
+      const statusCURIE = lastStatusInTime[&apos;pso:withStatus&apos;][&apos;@id&apos;];
+
+      // Look for time interval information
+      let intervalStart;
+      let intervalEnd;
+
+      if (hasOwnProperty(lastStatusInTime, &apos;tvc:atTime&apos;)) {
+        const atTime = lastStatusInTime[&apos;tvc:atTime&apos;];
+        if (hasOwnProperty(atTime, &apos;timeinterval:hasIntervalStartDate&apos;)) intervalStart = atTime[&apos;timeinterval:hasIntervalStartDate&apos;];
+        if (hasOwnProperty(atTime, &apos;timeinterval:hasIntervalEndDate&apos;)) intervalEnd = atTime[&apos;timeinterval:hasIntervalEndDate&apos;];
+      }
+
+      // Return result object
+      return {
+        statusCURIE,
+        statusInEnglish: PhylorefWrapper.getStatusCURIEsInEnglish()[statusCURIE],
+        intervalStart,
+        intervalEnd,
+      };
+    }
+
+    // If we couldn&apos;t figure out a status for this phyloref, assume it&apos;s a draft.
+    return {
+      statusCURIE: &apos;pso:draft&apos;,
+      statusInEnglish: PhylorefWrapper.getStatusCURIEsInEnglish()[&apos;pso:draft&apos;],
+    };
+  }
+
+  getStatusChanges() {
+    // Return a list of status changes for a particular phyloreference
+    if (hasOwnProperty(this.phyloref, &apos;pso:holdsStatusInTime&apos;)) {
+      return this.phyloref[&apos;pso:holdsStatusInTime&apos;].map((entry) =&gt; {
+        const result = {};
+
+        // Create a statusCURIE convenience field.
+        if (hasOwnProperty(entry, &apos;pso:withStatus&apos;)) {
+          result.statusCURIE = entry[&apos;pso:withStatus&apos;][&apos;@id&apos;];
+          result.statusInEnglish = PhylorefWrapper.getStatusCURIEsInEnglish()[result.statusCURIE];
+        }
+
+        // Create intervalStart/intervalEnd convenient fields
+        if (hasOwnProperty(entry, &apos;tvc:atTime&apos;)) {
+          const atTime = entry[&apos;tvc:atTime&apos;];
+          if (hasOwnProperty(atTime, &apos;timeinterval:hasIntervalStartDate&apos;)) {
+            result.intervalStart = atTime[&apos;timeinterval:hasIntervalStartDate&apos;];
+            result.intervalStartAsCalendar = moment(result.intervalStart).calendar();
+          }
+
+          if (hasOwnProperty(atTime, &apos;timeinterval:hasIntervalEndDate&apos;)) {
+            result.intervalEnd = atTime[&apos;timeinterval:hasIntervalEndDate&apos;];
+            result.intervalEndAsCalendar = moment(result.intervalEnd).calendar();
+          }
+        }
+
+        return result;
+      });
+    }
+
+    // No changes? Return an empty list.
+    return [];
+  }
+
+  setStatus(status) {
+    // Set the status of a phyloreference
+    //
+    // Check whether we have a valid status CURIE.
+    if (!hasOwnProperty(PhylorefWrapper.getStatusCURIEsInEnglish(), status)) {
+      throw new TypeError(`setStatus() called with invalid status CURIE &apos;${status}&apos;`);
+    }
+
+    // See if we can end the previous interval.
+    const currentTime = new Date(Date.now()).toISOString();
+
+    if (!hasOwnProperty(this.phyloref, &apos;pso:holdsStatusInTime&apos;)) {
+      // Vue.set(this.phyloref, &apos;pso:holdsStatusInTime&apos;, []);
+      this.phyloref[&apos;pso:holdsStatusInTime&apos;] = [];
+    }
+
+    // Check to see if there&apos;s a previous time interval we should end.
+    if (
+      Array.isArray(this.phyloref[&apos;pso:holdsStatusInTime&apos;])
+      &amp;&amp; this.phyloref[&apos;pso:holdsStatusInTime&apos;].length &gt; 0
+    ) {
+      const lastStatusInTime = this.phyloref[&apos;pso:holdsStatusInTime&apos;][this.phyloref[&apos;pso:holdsStatusInTime&apos;].length - 1];
+
+      // if (!hasOwnProperty(lastStatusInTime, &apos;tvc:atTime&apos;))
+      //  Vue.set(lastStatusInTime, &apos;tvc:atTime&apos;, {});
+      if (!hasOwnProperty(lastStatusInTime, &apos;tvc:atTime&apos;)) {
+        lastStatusInTime[&apos;tvc:atTime&apos;] = {};
+      }
+      if (!hasOwnProperty(lastStatusInTime[&apos;tvc:atTime&apos;], &apos;timeinterval:hasIntervalEndDate&apos;)) {
+        // If the last time entry doesn&apos;t already have an interval end date, set it to now.
+        lastStatusInTime[&apos;tvc:atTime&apos;][&apos;timeinterval:hasIntervalEndDate&apos;] = currentTime;
+      }
+    }
+
+    // Create new entry.
+    this.phyloref[&apos;pso:holdsStatusInTime&apos;].push({
+      &apos;@type&apos;: &apos;http://purl.org/spar/pso/StatusInTime&apos;,
+      &apos;pso:withStatus&apos;: { &apos;@id&apos;: status },
+      &apos;tvc:atTime&apos;: {
+        &apos;timeinterval:hasIntervalStartDate&apos;: currentTime,
+      },
+    });
+  }
+
+  asJSONLD(phylorefURI) {
+    // Export this phyloreference in JSON-LD.
+
+    // Keep all currently extant data.
+    // - baseURI: the base URI for this phyloreference
+    const phylorefAsJSONLD = JSON.parse(JSON.stringify(this.phyloref));
+
+    // Set the @id and @type.
+    phylorefAsJSONLD[&apos;@id&apos;] = phylorefURI;
+
+    phylorefAsJSONLD[&apos;@type&apos;] = [
+      // We pun this as an instance that is a Phyloreference.
+      // (We need this to ensure that the object properties that store
+      // information on specifiers will work correctly)
+      &apos;phyloref:Phyloreference&apos;,
+      // Since we&apos;re writing this in RDF, just adding a &apos;@type&apos; of
+      // phyloref:Phyloreference would imply that phylorefURI is a named
+      // individual of class phyloref:Phyloreference. We need to explicitly
+      // let OWL know that this phylorefURI is an owl:Class.
+      //
+      // (This is implied by some of the properties that we apply to phylorefURI,
+      // such as by the domain of owl:equivalentClass. But it&apos;s nice to make that
+      // explicit as well!)
+      &apos;owl:Class&apos;,
+    ];
+
+    // Add identifiers for each internal specifier.
+    let internalSpecifierCount = 0;
+    phylorefAsJSONLD.internalSpecifiers.forEach((internalSpecifierToChange) =&gt; {
+      internalSpecifierCount += 1;
+
+      const internalSpecifier = internalSpecifierToChange;
+      const specifierId = `${phylorefURI}_specifier_internal${internalSpecifierCount}`;
+
+      internalSpecifier[&apos;@id&apos;] = specifierId;
+      internalSpecifier[&apos;@type&apos;] = [
+        TESTCASE_SPECIFIER,
+      ];
+
+      // Add identifiers to all taxonomic units.
+      let countTaxonomicUnits = 0;
+      if (hasOwnProperty(internalSpecifier, &apos;referencesTaxonomicUnits&apos;)) {
+        internalSpecifier.referencesTaxonomicUnits.forEach((tunitToChange) =&gt; {
+          const tunit = tunitToChange;
+
+          tunit[&apos;@id&apos;] = `${specifierId}_tunit${countTaxonomicUnits}`;
+          tunit[&apos;@type&apos;] = &apos;http://purl.obolibrary.org/obo/CDAO_0000138&apos;;
+          countTaxonomicUnits += 1;
+        });
+      }
+    });
+
+    // Add identifiers for each external specifier.
+    let externalSpecifierCount = 0;
+    phylorefAsJSONLD.externalSpecifiers.forEach((externalSpecifierToChange) =&gt; {
+      externalSpecifierCount += 1;
+
+      const externalSpecifier = externalSpecifierToChange;
+      const specifierId = `${phylorefURI}_specifier_external${externalSpecifierCount}`;
+
+      externalSpecifier[&apos;@id&apos;] = specifierId;
+      externalSpecifier[&apos;@type&apos;] = [
+        TESTCASE_SPECIFIER,
+      ];
+
+      // Add identifiers to all taxonomic units.
+      let countTaxonomicUnits = 0;
+      if (hasOwnProperty(externalSpecifier, &apos;referencesTaxonomicUnits&apos;)) {
+        externalSpecifier.referencesTaxonomicUnits.forEach((tunitToChange) =&gt; {
+          const tunit = tunitToChange;
+
+          tunit[&apos;@id&apos;] = `${specifierId}_tunit${countTaxonomicUnits}`;
+          tunit[&apos;@type&apos;] = &apos;http://purl.obolibrary.org/obo/CDAO_0000138&apos;;
+          countTaxonomicUnits += 1;
+        });
+      }
+    });
+
+    // For historical reasons, the Clade Ontology uses &apos;hasInternalSpecifier&apos; to
+    // store the specifiers as OWL classes and &apos;internalSpecifiers&apos; to store them
+    // as RDF annotations. We simplify that here by duplicating them here, but
+    // this should really be fixed in the Clade Ontology and in phyx.json.
+    phylorefAsJSONLD.hasInternalSpecifier = phylorefAsJSONLD.internalSpecifiers;
+    phylorefAsJSONLD.hasExternalSpecifier = phylorefAsJSONLD.externalSpecifiers;
+
+    if (internalSpecifierCount === 0 &amp;&amp; externalSpecifierCount === 0) {
+      phylorefAsJSONLD.malformedPhyloreference = &apos;No specifiers provided&apos;;
+    } else if (externalSpecifierCount &gt; 1) {
+      phylorefAsJSONLD.malformedPhyloreference = &apos;Multiple external specifiers are not yet supported&apos;;
+    } else if (internalSpecifierCount === 1 &amp;&amp; externalSpecifierCount === 0) {
+      phylorefAsJSONLD.malformedPhyloreference = &apos;Only a single internal specifier was provided&apos;;
+    } else if (externalSpecifierCount === 0) {
+      // This phyloreference is made up entirely of internal specifiers.
+
+      // We can write this in an accumulative manner by creating class expressions
+      // in the form:
+      //  mrca(mrca(mrca(node1, node2), node3), node4)
+
+      // We could write this as a single giant expression, but this tends to
+      // slow down the reasoner dramatically. So instead, we break it up into a
+      // series of &quot;additional classes&quot;, each of which represents a part of the
+      // overall expression.
+      phylorefAsJSONLD.hasAdditionalClass = [];
+
+      let equivalentClassAccumulator = PhylorefWrapper.getClassExpressionForMRCA(
+        phylorefURI,
+        phylorefAsJSONLD.hasAdditionalClass,
+        phylorefAsJSONLD.internalSpecifiers[0],
+        phylorefAsJSONLD.internalSpecifiers[1]
+      );
+
+      for (let index = 2; index &lt; internalSpecifierCount; index += 1) {
+        equivalentClassAccumulator = PhylorefWrapper.getClassExpressionForMRCA(
+          phylorefURI,
+          phylorefAsJSONLD.hasAdditionalClass,
+          equivalentClassAccumulator,
+          phylorefAsJSONLD.internalSpecifiers[index]
+        );
+      }
+
+      phylorefAsJSONLD.equivalentClass = equivalentClassAccumulator;
+    } else {
+      // This phyloreference is made up of one external specifier and some number
+      // of internal specifiers.
+
+      const internalSpecifierRestrictions = phylorefAsJSONLD.internalSpecifiers
+        .map(specifier =&gt; PhylorefWrapper
+          .wrapInternalOWLRestriction(PhylorefWrapper.getOWLRestrictionForSpecifier(specifier)));
+
+      const externalSpecifierRestrictions = phylorefAsJSONLD.externalSpecifiers
+        .map(specifier =&gt; PhylorefWrapper
+          .wrapExternalOWLRestriction(PhylorefWrapper.getOWLRestrictionForSpecifier(specifier)));
+
+      phylorefAsJSONLD.equivalentClass = {
+        &apos;@type&apos;: &apos;owl:Class&apos;,
+        intersectionOf: internalSpecifierRestrictions.concat(externalSpecifierRestrictions),
+      };
+    }
+
+    return phylorefAsJSONLD;
+  }
+
+  static getOWLRestrictionForSpecifier(specifier) {
+    // Return an OWL restriction corresponding to a specifier.
+    return {
+      &apos;@type&apos;: &apos;owl:Restriction&apos;,
+      onProperty: &apos;testcase:matches_specifier&apos;,
+      hasValue: {
+        &apos;@id&apos;: specifier[&apos;@id&apos;],
+      },
+    };
+  }
+
+  static wrapInternalOWLRestriction(restriction) {
+    // Wraps a restriction to act as an internal specifier.
+    // Mainly, we just need to extend the restriction to match:
+    //  restriction or cdao:has_Descendant some restriction
+    return {
+      &apos;@type&apos;: &apos;owl:Restriction&apos;,
+      unionOf: [
+        restriction,
+        {
+          &apos;@type&apos;: &apos;owl:Restriction&apos;,
+          onProperty: CDAO_HAS_DESCENDANT,
+          someValuesFrom: restriction,
+        },
+      ],
+    };
+  }
+
+  static wrapExternalOWLRestriction(restriction) {
+    // Wraps a restriction to act as an external specifier.
+    // This needs to match:
+    //  cdao:has_Sibling some (restriction or cdao:has_Descendant some restriction)
+    // Since that second part is just an internal specifier restriction, we can
+    // incorporate that in here.
+    return {
+      &apos;@type&apos;: &apos;owl:Restriction&apos;,
+      // onProperty: PHYLOREF_HAS_SIBLING,
+      onProperty: PHYLOREF_EXCLUDES_LINEAGE_TO,
+      someValuesFrom: restriction,
+    };
+  }
+
+  static getClassExpressionForMRCA(baseURI, additionalClasses, specifier1, specifier2) {
+    // Create an OWL restriction for the most recent common ancestor (MRCA)
+    // of the nodes matched by two specifiers.
+    const additionalClassesIds = new Set(additionalClasses.map(cl =&gt; cl[&apos;@id&apos;]));
+
+    // Specifiers might be either a real specifier or an additional class.
+    // We can check their @ids here and translate specifiers into class expressions.
+    let owlRestriction1;
+    if (additionalClassesIds.has(specifier1[&apos;@id&apos;])) {
+      owlRestriction1 = specifier1;
+    } else {
+      owlRestriction1 = PhylorefWrapper.getOWLRestrictionForSpecifier(specifier1);
+    }
+
+    let owlRestriction2;
+    if (additionalClassesIds.has(specifier2[&apos;@id&apos;])) {
+      owlRestriction2 = specifier2;
+    } else {
+      owlRestriction2 = PhylorefWrapper.getOWLRestrictionForSpecifier(specifier2);
+    }
+
+    // Construct OWL expression.
+    const mrcaAsOWL = {
+      &apos;@type&apos;: &apos;owl:Class&apos;,
+      unionOf: [
+        {
+          // What if specifier2 is a descendant of specifier1? If so, the MRCA
+          // is specifier1!
+          &apos;@type&apos;: &apos;owl:Class&apos;,
+          intersectionOf: [
+            owlRestriction1,
+            {
+              &apos;@type&apos;: &apos;owl:Restriction&apos;,
+              onProperty: CDAO_HAS_DESCENDANT,
+              someValuesFrom: owlRestriction2,
+            },
+          ],
+        },
+        {
+          // What if specifier1 is a descendant of specifier2? If so, the MRCA
+          // is specifier2!
+          &apos;@type&apos;: &apos;owl:Class&apos;,
+          intersectionOf: [
+            owlRestriction2,
+            {
+              &apos;@type&apos;: &apos;owl:Restriction&apos;,
+              onProperty: CDAO_HAS_DESCENDANT,
+              someValuesFrom: owlRestriction1,
+            },
+          ],
+        },
+        {
+          // If neither specifier is a descendant of the other, we can use our
+          // standard formula.
+          &apos;@type&apos;: &apos;owl:Class&apos;,
+          intersectionOf: [{
+            &apos;@type&apos;: &apos;owl:Restriction&apos;,
+            onProperty: CDAO_HAS_CHILD,
+            someValuesFrom: {
+              &apos;@type&apos;: &apos;owl:Class&apos;,
+              intersectionOf: [
+                PhylorefWrapper.wrapInternalOWLRestriction(owlRestriction1),
+                PhylorefWrapper.wrapExternalOWLRestriction(owlRestriction2),
+              ],
+            },
+          }, {
+            &apos;@type&apos;: &apos;owl:Restriction&apos;,
+            onProperty: CDAO_HAS_CHILD,
+            someValuesFrom: {
+              &apos;@type&apos;: &apos;owl:Class&apos;,
+              intersectionOf: [
+                PhylorefWrapper.wrapInternalOWLRestriction(owlRestriction2),
+                PhylorefWrapper.wrapExternalOWLRestriction(owlRestriction1),
+              ],
+            },
+          }],
+        },
+      ],
+    };
+
+    // Instead of building a single, large, complex expression, reasoners appear
+    // to prefer smaller expressions for classes that are assembled together.
+    // To help with that, we&apos;ll store the class expression in the additionalClasses
+    // list, and return a reference to this class.
+    const additionalClassId = `${baseURI}_additional${additionalClasses.length}`;
+    additionalClasses.push({
+      &apos;@id&apos;: additionalClassId,
+      &apos;@type&apos;: &apos;owl:Class&apos;,
+      equivalentClass: mrcaAsOWL,
+    });
+
+    return { &apos;@id&apos;: additionalClassId };
+  }
+}
+
+/* PHYX file wrapper */
+
+class PHYXWrapper {
+  // Wraps an entire PHYX document.
+
+  constructor(phyx, newickParser) {
+    // Wraps an entire PHYX document.
+    // - phyx: the Phyx structure to wrap.
+    // - newickParser: a method that accepts a Newick string and returns a list of
+    //   nodes. Each node should have a &apos;children&apos; key with its children and
+    //   optionally a &apos;name&apos; key with its label. This code previously depended
+    //   on phylotree.js, whose newick_parser() function works exactly like this.
+    //   This option allows you to drop in Phylotree&apos;s newick_parser() or --
+    //   if you prefer -- any other option.
+    this.phyx = phyx;
+    this.newickParser = newickParser;
+  }
+
+  static get BASE_URI() {
+    // Returns the default base URI for PHYX documents in JSON-LD.
+    return &apos;&apos;;
+  }
+
+  static getBaseURIForPhyloref(phylorefCount) {
+    // Return the base URI for a phyloreference based on its index.
+    return `${PHYXWrapper.BASE_URI}#phyloref${phylorefCount}`;
+  }
+
+  static getBaseURIForPhylogeny(phylogenyCount) {
+    // Return the base URI for phylogenies based on its index.
+    return `${PHYXWrapper.BASE_URI}#phylogeny${phylogenyCount}`;
+  }
+
+  static getBaseURIForTUMatch(countTaxonomicUnitMatches) {
+    // Return the base URI for taxonomic unit matches.
+    return `${PHYXWrapper.BASE_URI}#taxonomic_unit_match${countTaxonomicUnitMatches}`;
+  }
+
+  asJSONLD() {
+    // Export this PHYX document as a JSON-LD document. This replicates what
+    // phyx2owl.py does in the Clade Ontology.
+    //
+    // The document is mostly in JSON-LD already, except for two important
+    // things:
+    //  1. We have to convert all phylogenies into a series of statements
+    //     relating to the nodes inside these phylogenies.
+    //  2. We have to convert phylogenies into OWL restrictions.
+    //  3. Insert all matches between taxonomic units in this file.
+    //
+    const jsonld = extend(true, {}, this.phyx);
+
+    // Add descriptions for individual nodes in each phylogeny.
+    if (hasOwnProperty(jsonld, &apos;phylogenies&apos;)) {
+      jsonld.phylogenies = jsonld.phylogenies.map(
+        (phylogeny, countPhylogeny) =&gt; new PhylogenyWrapper(phylogeny)
+          .asJSONLD(PHYXWrapper.getBaseURIForPhylogeny(countPhylogeny), this.newickParser)
+      );
+    }
+
+    // Convert phyloreferences into an OWL class restriction
+    if (hasOwnProperty(jsonld, &apos;phylorefs&apos;)) {
+      jsonld.phylorefs = jsonld.phylorefs.map(
+        (phyloref, countPhyloref) =&gt; new PhylorefWrapper(phyloref)
+          .asJSONLD(PHYXWrapper.getBaseURIForPhyloref(countPhyloref))
+      );
+    }
+
+    // Match all specifiers with nodes.
+    if (hasOwnProperty(jsonld, &apos;phylorefs&apos;) &amp;&amp; hasOwnProperty(jsonld, &apos;phylogenies&apos;)) {
+      jsonld.hasTaxonomicUnitMatches = [];
+
+      // Used to create unique identifiers for each taxonomic unit match.
+      let countTaxonomicUnitMatches = 0;
+
+      jsonld.phylorefs.forEach((phylorefToChange) =&gt; {
+        const phyloref = phylorefToChange;
+        let specifiers = [];
+
+        if (hasOwnProperty(phyloref, &apos;internalSpecifiers&apos;)) {
+          specifiers = specifiers.concat(phyloref.internalSpecifiers);
+        }
+
+        if (hasOwnProperty(phyloref, &apos;externalSpecifiers&apos;)) {
+          specifiers = specifiers.concat(phyloref.externalSpecifiers);
+        }
+
+        specifiers.forEach((specifier) =&gt; {
+          if (!hasOwnProperty(specifier, &apos;referencesTaxonomicUnits&apos;)) return;
+          const specifierTUs = specifier.referencesTaxonomicUnits;
+          let nodesMatchedCount = 0;
+
+          jsonld.phylogenies.forEach((phylogenyToChange) =&gt; {
+            const phylogeny = phylogenyToChange;
+
+            specifierTUs.forEach((specifierTU) =&gt; {
+              phylogeny.nodes.forEach((node) =&gt; {
+                if (!hasOwnProperty(node, &apos;representsTaxonomicUnits&apos;)) return;
+                const nodeTUs = node.representsTaxonomicUnits;
+
+                nodeTUs.forEach((nodeTU) =&gt; {
+                  const matcher = new TaxonomicUnitMatcher(specifierTU, nodeTU);
+                  if (matcher.matched) {
+                    const tuMatchAsJSONLD = matcher.asJSONLD(
+                      PHYXWrapper.getBaseURIForTUMatch(countTaxonomicUnitMatches)
+                    );
+                    jsonld.hasTaxonomicUnitMatches.push(tuMatchAsJSONLD);
+                    nodesMatchedCount += 1;
+                    countTaxonomicUnitMatches += 1;
+                  }
+                });
+              });
+            });
+          });
+
+          if (nodesMatchedCount === 0) {
+            // No nodes matched? Record this as an unmatched specifier.
+            if (!hasOwnProperty(phyloref, &apos;hasUnmatchedSpecifiers&apos;)) phyloref.hasUnmatchedSpecifiers = [];
+            phyloref.hasUnmatchedSpecifiers.push(specifier);
+          }
+        });
+      });
+    }
+
+    // Finally, add the base URI as an ontology.
+    jsonld[&apos;@id&apos;] = PHYXWrapper.BASE_URI;
+    jsonld[&apos;@type&apos;] = [PHYLOREFERENCE_TEST_CASE, &apos;owl:Ontology&apos;];
+    jsonld[&apos;owl:imports&apos;] = [
+      &apos;http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl&apos;,
+      // - Will become &apos;http://vocab.phyloref.org/phyloref/testcase.owl&apos;
+      &apos;http://ontology.phyloref.org/2018-12-04/phyloref.owl&apos;,
+      // - The Phyloreferencing ontology.
+      &apos;http://purl.obolibrary.org/obo/bco.owl&apos;,
+      // - Contains OWL definitions for Darwin Core terms
+    ];
+
+    // If the &apos;@context&apos; is missing, add it here.
+    if (!hasOwnProperty(jsonld, &apos;@context&apos;)) {
+      jsonld[&apos;@context&apos;] = &apos;http://www.phyloref.org/phyx.js/v0.1.0/phyx.json&apos;;
+    }
+
+    return jsonld;
+  }
+}
+
+/* Exports */
+module.exports = {
+  ScientificNameWrapper,
+  SpecimenWrapper,
+  TaxonomicUnitWrapper,
+  TaxonomicUnitMatcher,
+  PhylogenyWrapper,
+  PhylorefWrapper,
+  PHYXWrapper,
+  phyxCacheManager,
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

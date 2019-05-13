@@ -4,9 +4,10 @@
   "description": "Phyloreference Exchange (PHYX) library in JavaScript",
   "main": "src/index.js",
   "scripts": {
-    "pretest": "npm run lint",
-    "test": "mocha"
     "lint": "eslint src/index.js \"test/**\" --ext .js",
+    "pretest": "npm run lint; npm run docs",
+    "test": "mocha",
+    "docs": "esdoc"
   },
   "repository": {
     "type": "git",
@@ -31,10 +32,21 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "esdoc": "^1.1.0",
+    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^5.12.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-mocha": "^5.2.1",
     "mocha": "^5.2.0"
+  },
+  "esdoc": {
+    "source": "./src",
+    "destination": "./docs",
+    "plugins": [
+      {
+        "name": "esdoc-standard-plugin"
+      }
+    ]
   }
 }
