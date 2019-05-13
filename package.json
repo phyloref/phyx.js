@@ -2,11 +2,11 @@
   "name": "@phyloref/phyx",
   "version": "0.2.0",
   "description": "Phyloreference Exchange (PHYX) library in JavaScript",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "lint": "eslint index.js \"test/**\" --ext .js",
     "pretest": "npm run lint",
     "test": "mocha"
+    "lint": "eslint src/index.js \"test/**\" --ext .js",
   },
   "repository": {
     "type": "git",
