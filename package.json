@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint src/index.js \"test/**\" --ext .js",
     "pretest": "npm run lint; npm run docs",
-    "test": "mocha",
+    "test": "nyc --reporter=html --report-dir=./docs/coverage --reporter=text mocha",
     "docs": "esdoc"
   },
   "repository": {
@@ -39,7 +39,8 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-mocha": "^5.2.1",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1"
   },
   "esdoc": {
     "source": "./src",
