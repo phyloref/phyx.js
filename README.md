@@ -7,6 +7,9 @@ entire Phyx file into a [JSON-LD] representation that can be reasoned over with
 an [OWL 2 DL] reasoner. See the [Phyloreference Curation Tool] or the [Clade Ontology]
 for examples of its usage.
 
+[![Build Status](https://travis-ci.org/phyloref/phyx.js.svg?branch=master)](https://travis-ci.org/phyloref/phyx.js)
+[![Documentation Coverage](https://phyloref.org/phyx.js/badge.svg)](https://phyloref.org/phyx.js/badge.svg/source.html)
+
 ## Funding
 Funded by the US National Science Foundation through collaborative grants [DBI-1458484]
 and [DBI-1458604]. See [Funding] for details.
