@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/matchers/TaxonomicUnitMatcher.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Phyloreference Exchange (PHYX) library in JavaScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Phyloreference Exchange (PHYX) library in JavaScript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/matchers/TaxonomicUnitMatcher.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const { has } = require(&apos;lodash&apos;);
+const { ScientificNameWrapper } = require(&apos;../wrappers/ScientificNameWrapper&apos;);
+const { SpecimenWrapper } = require(&apos;../wrappers/SpecimenWrapper&apos;);
+
+/* Taxonomic unit matching */
+
+class TaxonomicUnitMatcher {
+  // A taxonomic unit matcher tests for taxonomic matches between pairs of
+  // taxonomic units.
+
+  constructor(tunit1, tunit2) {
+    // Construct a Taxonomic Unit Matcher to compare the two provided
+    // taxonomic units.
+    this.tunit1 = tunit1;
+    this.tunit2 = tunit2;
+
+    // Set up places to store the match results.
+    this.matched = undefined; // Boolean variable for storing whether these TUnits matched.
+    this.matchReason = undefined; // The reason provided for this match.
+
+    // Execute the match.
+    this.match();
+  }
+
+  asJSONLD(idURI) {
+    // Return this TUMatch as a JSON object for insertion into the PHYX file.
+    if (!this.matched) return undefined;
+
+    return {
+      &apos;@id&apos;: idURI,
+      &apos;@type&apos;: &apos;testcase:TUMatch&apos;,
+      reason: this.matchReason,
+      matchesTaxonomicUnits: [
+        { &apos;@id&apos;: this.tunit1[&apos;@id&apos;] },
+        { &apos;@id&apos;: this.tunit2[&apos;@id&apos;] },
+      ],
+    };
+  }
+
+  match() {
+    // Try to match the two taxonomic units using a number of matching methods.
+    if (
+      this.matchByBinomialName()
+      || this.matchByExternalReferences()
+      || this.matchBySpecimenIdentifier()
+    ) {
+      this.matched = true;
+    } else {
+      this.matched = false;
+      this.matchReason = undefined;
+    }
+  }
+
+  matchByBinomialName() {
+    // Try to match by binomial name, and return true if it could be matched.
+
+    // Do both TUnits have scientificNames?
+    if (!has(this.tunit1, &apos;scientificNames&apos;) || !has(this.tunit2, &apos;scientificNames&apos;)) return false;
+
+    return this.tunit1.scientificNames.some((scname1) =&gt; {
+      const scname1wrapped = new ScientificNameWrapper(scname1);
+      return this.tunit2.scientificNames.some((scname2) =&gt; {
+        const scname2wrapped = new ScientificNameWrapper(scname2);
+
+        const result = scname1wrapped.binomialName !== undefined
+          &amp;&amp; scname2wrapped.binomialName !== undefined
+          &amp;&amp; scname1wrapped.binomialName.trim().length &gt; 0
+          &amp;&amp; scname1wrapped.binomialName.trim() === scname2wrapped.binomialName.trim();
+
+        if (result) {
+          this.matchReason = `Scientific name &apos;${scname1wrapped.scientificName}&apos; and scientific name &apos;${scname2wrapped.scientificName}&apos; share the same binomial name`;
+        }
+
+        return result;
+      });
+    });
+  }
+
+  matchByExternalReferences() {
+    // Try to match by external references.
+
+    if (has(this.tunit1, &apos;externalReferences&apos;) &amp;&amp; has(this.tunit2, &apos;externalReferences&apos;)) {
+      // Each external reference is a URL as a string. We will lowercase it,
+      // but do no other transformation.
+      return this.tunit1.externalReferences.some(
+        extref1 =&gt; this.tunit2.externalReferences.some((extref2) =&gt; {
+          const result = (
+            // Make sure that the external reference isn&apos;t blank
+            extref1.trim() !== &apos;&apos;
+
+              // And that it is identical after trimming
+              &amp;&amp; extref1.toLowerCase().trim() === extref2.toLowerCase().trim()
+          );
+
+          if (result) {
+            this.matchReason = `External reference &apos;${extref1}&apos; is shared by taxonomic unit ${this.tunit1} and ${this.tunit2}`;
+          }
+
+          return result;
+        })
+      );
+    }
+
+    return false;
+  }
+
+  matchBySpecimenIdentifier() {
+    // Try to match by specimen identifier (i.e. occurrence ID).
+
+    if (has(this.tunit1, &apos;includesSpecimens&apos;) &amp;&amp; has(this.tunit2, &apos;includesSpecimens&apos;)) {
+      // Convert specimen identifiers (if present) into a standard format and compare those.
+      return this.tunit1.includesSpecimens.some((specimen1) =&gt; {
+        const specimenURN1 = new SpecimenWrapper(specimen1).occurrenceID;
+        return this.tunit2.includesSpecimens.some((specimen2) =&gt; {
+          const specimenURN2 = new SpecimenWrapper(specimen2).occurrenceID;
+
+          const result = (specimenURN1 === specimenURN2);
+
+          if (result) {
+            this.matchReason = `Specimen identifier &apos;${specimenURN1}&apos; is shared by taxonomic units`;
+          }
+
+          return result;
+        });
+      });
+    }
+
+    return false;
+  }
+}
+
+module.exports = {
+  TaxonomicUnitMatcher,
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

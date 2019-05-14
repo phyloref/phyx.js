@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/wrappers/PhylorefWrapper.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Phyloreference Exchange (PHYX) library in JavaScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Phyloreference Exchange (PHYX) library in JavaScript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/wrappers/PhylorefWrapper.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** Used to parse timestamps for phyloref statuses. */
+const moment = require(&apos;moment&apos;);
+const { has } = require(&apos;lodash&apos;);
+
+const owlterms = require(&apos;../utils/owlterms&apos;);
+const { TaxonomicUnitWrapper } = require(&apos;./TaxonomicUnitWrapper&apos;);
+const { PhylogenyWrapper } = require(&apos;./PhylogenyWrapper&apos;);
+
+/**
+ * PhylorefWrapper
+ *
+ */
+
+class PhylorefWrapper {
+  // Wraps a phyloreference in a PHYX model.
+
+  constructor(phyloref) {
+    // Wraps the provided phyloreference
+    this.phyloref = phyloref;
+
+    // Reset internal and external specifiers if needed.
+    // if (!has(this.phyloref, &apos;internalSpecifiers&apos;))
+    //  Vue.set(this.phyloref, &apos;internalSpecifiers&apos;, []);
+    if (!has(this.phyloref, &apos;internalSpecifiers&apos;)) {
+      this.phyloref.internalSpecifiers = [];
+    }
+    // if (!has(this.phyloref, &apos;externalSpecifiers&apos;))
+    //  Vue.set(this.phyloref, &apos;externalSpecifiers&apos;, []);
+    if (!has(this.phyloref, &apos;externalSpecifiers&apos;)) {
+      this.phyloref.externalSpecifiers = [];
+    }
+  }
+
+  get label() {
+    // Return a label for this phyloreference.
+    if (has(this.phyloref, &apos;label&apos;)) return this.phyloref.label;
+    if (has(this.phyloref, &apos;labels&apos;) &amp;&amp; this.phyloref.labels.length &gt; 0) return this.phyloref.labels[0];
+    if (has(this.phyloref, &apos;title&apos;)) return this.phyloref.title;
+
+    return undefined;
+  }
+
+  set label(newLabel) {
+    // Set a label for this phyloreference.
+    if (has(this.phyloref, &apos;label&apos;)) {
+      this.phyloref.label = newLabel;
+    } else {
+      // Vue.set(this.phyloref, &apos;label&apos;, newLabel);
+      this.phyloref.label = newLabel;
+    }
+  }
+
+  get specifiers() {
+    // Returns a list of all specifiers by combining the internal and external
+    // specifiers into a single list, with internal specifiers before
+    // external specifiers.
+    let specifiers = this.phyloref.internalSpecifiers;
+    specifiers = specifiers.concat(this.phyloref.externalSpecifiers);
+    return specifiers;
+  }
+
+  getSpecifierType(specifier) {
+    // For a given specifier, return a string indicating whether it is
+    // an &apos;Internal&apos; or &apos;External&apos; specifier.
+
+    if (this.phyloref.internalSpecifiers.includes(specifier)) return &apos;Internal&apos;;
+    if (this.phyloref.externalSpecifiers.includes(specifier)) return &apos;External&apos;;
+    return &apos;Specifier&apos;;
+  }
+
+  setSpecifierType(specifier, specifierType) {
+    // Change the type of a given specifier. To do this, we first need
+    // to determine if it was originally an internal or external
+    // specifier, then move it into the other list.
+
+    let index;
+    if (specifierType === &apos;Internal&apos;) {
+      // To set a specifier to &apos;Internal&apos;, we might need to delete it from the
+      // list of external specifiers first.
+      index = this.phyloref.externalSpecifiers.indexOf(specifier);
+      if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
+
+      // Don&apos;t add it to the list of internal specifiers if it&apos;s already there.
+      if (!this.phyloref.internalSpecifiers.includes(specifier)) {
+        this.phyloref.internalSpecifiers.unshift(specifier);
+      }
+    } else if (specifierType === &apos;External&apos;) {
+      // To set a specifier to &apos;External&apos;, we might need to delete it from the
+      // list of internal specifiers first.
+      index = this.phyloref.internalSpecifiers.indexOf(specifier);
+      if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+
+      // Don&apos;t add it to the list of internal specifiers if it&apos;s already there.
+      if (!this.phyloref.externalSpecifiers.includes(specifier)) {
+        this.phyloref.externalSpecifiers.unshift(specifier);
+      }
+    } else {
+      // Neither internal nor external? Ignore.
+    }
+  }
+
+  deleteSpecifier(specifier) {
+    // Since the user interface combines specifiers into a single list,
+    // it doesn&apos;t remember if the specifier to be deleted is internal
+    // or external. We delete the intended specifier from both arrays.
+
+    let index = this.phyloref.internalSpecifiers.indexOf(specifier);
+    if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+
+    index = this.phyloref.externalSpecifiers.indexOf(specifier);
+    if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
+  }
+
+  static getSpecifierLabel(specifier) {
+    // Try to determine the label of a specifier. This checks the
+    // &apos;label&apos; and &apos;description&apos; properties, and then tries to create a
+    // descriptive label by using the list of referenced taxonomic units.
+    //
+    // This logically belongs in PhylorefWrapper, but we don&apos;t actually need to
+    // know the phyloreference to figure out the specifier label, which is why
+    // this is a static method.
+
+    // Is this specifier even non-null?
+    if (specifier === undefined) return undefined;
+    if (specifier === null) return undefined;
+
+    // Maybe there is a label or description right there?
+    if (has(specifier, &apos;label&apos;)) return specifier.label;
+    if (has(specifier, &apos;description&apos;)) return specifier.description;
+
+    // Look at the individual taxonomic units.
+    if (has(specifier, &apos;referencesTaxonomicUnits&apos;)) {
+      const labels = specifier.referencesTaxonomicUnits
+        .map(tu =&gt; new TaxonomicUnitWrapper(tu).label)
+        .filter(label =&gt; (label !== undefined));
+      if (labels.length &gt; 0) return labels.join(&apos;; &apos;);
+    }
+
+    // No idea!
+    return undefined;
+  }
+
+  getExpectedNodeLabels(phylogeny) {
+    // Given a phylogeny, determine which node labels we expect this phyloref to
+    // resolve to. To do this, we:
+    //  1. Find all node labels that are case-sensitively identical
+    //     to the phyloreference.
+    //  2. Find all node labels that have additionalNodeProperties with
+    //     expectedPhyloreferenceNamed case-sensitively identical to
+    //     the phyloreference.
+    const phylorefLabel = this.label;
+    const nodeLabels = new Set();
+
+    new PhylogenyWrapper(phylogeny).getNodeLabels().forEach((nodeLabel) =&gt; {
+      // Is this node label identical to the phyloreference name?
+      if (nodeLabel === phylorefLabel) {
+        nodeLabels.add(nodeLabel);
+      } else if (
+        has(phylogeny, &apos;additionalNodeProperties&apos;)
+        &amp;&amp; has(phylogeny.additionalNodeProperties, nodeLabel)
+        &amp;&amp; has(phylogeny.additionalNodeProperties[nodeLabel], &apos;expectedPhyloreferenceNamed&apos;)
+      ) {
+        // Does this node label have an expectedPhyloreferenceNamed that
+        // includes this phyloreference name?
+
+        const expectedPhylorefs = phylogeny
+          .additionalNodeProperties[nodeLabel]
+          .expectedPhyloreferenceNamed;
+
+        if (expectedPhylorefs.includes(phylorefLabel)) {
+          nodeLabels.add(nodeLabel);
+        }
+      }
+    });
+
+    // Return node labels sorted alphabetically.
+    return Array.from(nodeLabels).sort();
+  }
+
+  static getStatusCURIEsInEnglish() {
+    // Return dictionary of all phyloref statuses in English
+    return {
+      &apos;pso:draft&apos;: &apos;Draft&apos;,
+      &apos;pso:final-draft&apos;: &apos;Final draft&apos;,
+      &apos;pso:under-review&apos;: &apos;Under review&apos;,
+      &apos;pso:submitted&apos;: &apos;Tested&apos;,
+      &apos;pso:published&apos;: &apos;Published&apos;,
+      &apos;pso:retracted-from-publication&apos;: &apos;Retracted&apos;,
+    };
+  }
+
+  getCurrentStatus() {
+    // Return a result object that contains:
+    //  - status: phyloreference status as a short URI (CURIE)
+    //  - statusInEnglish: an English representation of the phyloref status
+    //  - intervalStart: the start of the interval
+    //  - intervalEnd: the end of the interval
+
+    if (
+      has(this.phyloref, &apos;pso:holdsStatusInTime&apos;)
+      &amp;&amp; Array.isArray(this.phyloref[&apos;pso:holdsStatusInTime&apos;])
+      &amp;&amp; this.phyloref[&apos;pso:holdsStatusInTime&apos;].length &gt; 0
+    ) {
+      // If we have any pso:holdsStatusInTime entries, pick the first one and
+      // extract the CURIE and time interval information from it.
+      const lastStatusInTime = this.phyloref[&apos;pso:holdsStatusInTime&apos;][this.phyloref[&apos;pso:holdsStatusInTime&apos;].length - 1];
+      const statusCURIE = lastStatusInTime[&apos;pso:withStatus&apos;][&apos;@id&apos;];
+
+      // Look for time interval information
+      let intervalStart;
+      let intervalEnd;
+
+      if (has(lastStatusInTime, &apos;tvc:atTime&apos;)) {
+        const atTime = lastStatusInTime[&apos;tvc:atTime&apos;];
+        if (has(atTime, &apos;timeinterval:hasIntervalStartDate&apos;)) intervalStart = atTime[&apos;timeinterval:hasIntervalStartDate&apos;];
+        if (has(atTime, &apos;timeinterval:hasIntervalEndDate&apos;)) intervalEnd = atTime[&apos;timeinterval:hasIntervalEndDate&apos;];
+      }
+
+      // Return result object
+      return {
+        statusCURIE,
+        statusInEnglish: PhylorefWrapper.getStatusCURIEsInEnglish()[statusCURIE],
+        intervalStart,
+        intervalEnd,
+      };
+    }
+
+    // If we couldn&apos;t figure out a status for this phyloref, assume it&apos;s a draft.
+    return {
+      statusCURIE: &apos;pso:draft&apos;,
+      statusInEnglish: PhylorefWrapper.getStatusCURIEsInEnglish()[&apos;pso:draft&apos;],
+    };
+  }
+
+  getStatusChanges() {
+    // Return a list of status changes for a particular phyloreference
+    if (has(this.phyloref, &apos;pso:holdsStatusInTime&apos;)) {
+      return this.phyloref[&apos;pso:holdsStatusInTime&apos;].map((entry) =&gt; {
+        const result = {};
+
+        // Create a statusCURIE convenience field.
+        if (has(entry, &apos;pso:withStatus&apos;)) {
+          result.statusCURIE = entry[&apos;pso:withStatus&apos;][&apos;@id&apos;];
+          result.statusInEnglish = PhylorefWrapper.getStatusCURIEsInEnglish()[result.statusCURIE];
+        }
+
+        // Create intervalStart/intervalEnd convenient fields
+        if (has(entry, &apos;tvc:atTime&apos;)) {
+          const atTime = entry[&apos;tvc:atTime&apos;];
+          if (has(atTime, &apos;timeinterval:hasIntervalStartDate&apos;)) {
+            result.intervalStart = atTime[&apos;timeinterval:hasIntervalStartDate&apos;];
+            result.intervalStartAsCalendar = moment(result.intervalStart).calendar();
+          }
+
+          if (has(atTime, &apos;timeinterval:hasIntervalEndDate&apos;)) {
+            result.intervalEnd = atTime[&apos;timeinterval:hasIntervalEndDate&apos;];
+            result.intervalEndAsCalendar = moment(result.intervalEnd).calendar();
+          }
+        }
+
+        return result;
+      });
+    }
+
+    // No changes? Return an empty list.
+    return [];
+  }
+
+  setStatus(status) {
+    // Set the status of a phyloreference
+    //
+    // Check whether we have a valid status CURIE.
+    if (!has(PhylorefWrapper.getStatusCURIEsInEnglish(), status)) {
+      throw new TypeError(`setStatus() called with invalid status CURIE &apos;${status}&apos;`);
+    }
+
+    // See if we can end the previous interval.
+    const currentTime = new Date(Date.now()).toISOString();
+
+    if (!has(this.phyloref, &apos;pso:holdsStatusInTime&apos;)) {
+      // Vue.set(this.phyloref, &apos;pso:holdsStatusInTime&apos;, []);
+      this.phyloref[&apos;pso:holdsStatusInTime&apos;] = [];
+    }
+
+    // Check to see if there&apos;s a previous time interval we should end.
+    if (
+      Array.isArray(this.phyloref[&apos;pso:holdsStatusInTime&apos;])
+      &amp;&amp; this.phyloref[&apos;pso:holdsStatusInTime&apos;].length &gt; 0
+    ) {
+      const lastStatusInTime = this.phyloref[&apos;pso:holdsStatusInTime&apos;][this.phyloref[&apos;pso:holdsStatusInTime&apos;].length - 1];
+
+      // if (!has(lastStatusInTime, &apos;tvc:atTime&apos;))
+      //  Vue.set(lastStatusInTime, &apos;tvc:atTime&apos;, {});
+      if (!has(lastStatusInTime, &apos;tvc:atTime&apos;)) {
+        lastStatusInTime[&apos;tvc:atTime&apos;] = {};
+      }
+      if (!has(lastStatusInTime[&apos;tvc:atTime&apos;], &apos;timeinterval:hasIntervalEndDate&apos;)) {
+        // If the last time entry doesn&apos;t already have an interval end date, set it to now.
+        lastStatusInTime[&apos;tvc:atTime&apos;][&apos;timeinterval:hasIntervalEndDate&apos;] = currentTime;
+      }
+    }
+
+    // Create new entry.
+    this.phyloref[&apos;pso:holdsStatusInTime&apos;].push({
+      &apos;@type&apos;: &apos;http://purl.org/spar/pso/StatusInTime&apos;,
+      &apos;pso:withStatus&apos;: { &apos;@id&apos;: status },
+      &apos;tvc:atTime&apos;: {
+        &apos;timeinterval:hasIntervalStartDate&apos;: currentTime,
+      },
+    });
+  }
+
+  asJSONLD(phylorefURI) {
+    // Export this phyloreference in JSON-LD.
+
+    // Keep all currently extant data.
+    // - baseURI: the base URI for this phyloreference
+    const phylorefAsJSONLD = JSON.parse(JSON.stringify(this.phyloref));
+
+    // Set the @id and @type.
+    phylorefAsJSONLD[&apos;@id&apos;] = phylorefURI;
+
+    phylorefAsJSONLD[&apos;@type&apos;] = [
+      // We pun this as an instance that is a Phyloreference.
+      // (We need this to ensure that the object properties that store
+      // information on specifiers will work correctly)
+      &apos;phyloref:Phyloreference&apos;,
+      // Since we&apos;re writing this in RDF, just adding a &apos;@type&apos; of
+      // phyloref:Phyloreference would imply that phylorefURI is a named
+      // individual of class phyloref:Phyloreference. We need to explicitly
+      // let OWL know that this phylorefURI is an owl:Class.
+      //
+      // (This is implied by some of the properties that we apply to phylorefURI,
+      // such as by the domain of owl:equivalentClass. But it&apos;s nice to make that
+      // explicit as well!)
+      &apos;owl:Class&apos;,
+    ];
+
+    // Add identifiers for each internal specifier.
+    let internalSpecifierCount = 0;
+    phylorefAsJSONLD.internalSpecifiers.forEach((internalSpecifierToChange) =&gt; {
+      internalSpecifierCount += 1;
+
+      const internalSpecifier = internalSpecifierToChange;
+      const specifierId = `${phylorefURI}_specifier_internal${internalSpecifierCount}`;
+
+      internalSpecifier[&apos;@id&apos;] = specifierId;
+      internalSpecifier[&apos;@type&apos;] = [
+        owlterms.TESTCASE_SPECIFIER,
+      ];
+
+      // Add identifiers to all taxonomic units.
+      let countTaxonomicUnits = 0;
+      if (has(internalSpecifier, &apos;referencesTaxonomicUnits&apos;)) {
+        internalSpecifier.referencesTaxonomicUnits.forEach((tunitToChange) =&gt; {
+          const tunit = tunitToChange;
+
+          tunit[&apos;@id&apos;] = `${specifierId}_tunit${countTaxonomicUnits}`;
+          tunit[&apos;@type&apos;] = &apos;http://purl.obolibrary.org/obo/CDAO_0000138&apos;;
+          countTaxonomicUnits += 1;
+        });
+      }
+    });
+
+    // Add identifiers for each external specifier.
+    let externalSpecifierCount = 0;
+    phylorefAsJSONLD.externalSpecifiers.forEach((externalSpecifierToChange) =&gt; {
+      externalSpecifierCount += 1;
+
+      const externalSpecifier = externalSpecifierToChange;
+      const specifierId = `${phylorefURI}_specifier_external${externalSpecifierCount}`;
+
+      externalSpecifier[&apos;@id&apos;] = specifierId;
+      externalSpecifier[&apos;@type&apos;] = [
+        owlterms.TESTCASE_SPECIFIER,
+      ];
+
+      // Add identifiers to all taxonomic units.
+      let countTaxonomicUnits = 0;
+      if (has(externalSpecifier, &apos;referencesTaxonomicUnits&apos;)) {
+        externalSpecifier.referencesTaxonomicUnits.forEach((tunitToChange) =&gt; {
+          const tunit = tunitToChange;
+
+          tunit[&apos;@id&apos;] = `${specifierId}_tunit${countTaxonomicUnits}`;
+          tunit[&apos;@type&apos;] = &apos;http://purl.obolibrary.org/obo/CDAO_0000138&apos;;
+          countTaxonomicUnits += 1;
+        });
+      }
+    });
+
+    // For historical reasons, the Clade Ontology uses &apos;hasInternalSpecifier&apos; to
+    // store the specifiers as OWL classes and &apos;internalSpecifiers&apos; to store them
+    // as RDF annotations. We simplify that here by duplicating them here, but
+    // this should really be fixed in the Clade Ontology and in phyx.json.
+    phylorefAsJSONLD.hasInternalSpecifier = phylorefAsJSONLD.internalSpecifiers;
+    phylorefAsJSONLD.hasExternalSpecifier = phylorefAsJSONLD.externalSpecifiers;
+
+    if (internalSpecifierCount === 0 &amp;&amp; externalSpecifierCount === 0) {
+      phylorefAsJSONLD.malformedPhyloreference = &apos;No specifiers provided&apos;;
+    } else if (externalSpecifierCount &gt; 1) {
+      phylorefAsJSONLD.malformedPhyloreference = &apos;Multiple external specifiers are not yet supported&apos;;
+    } else if (internalSpecifierCount === 1 &amp;&amp; externalSpecifierCount === 0) {
+      phylorefAsJSONLD.malformedPhyloreference = &apos;Only a single internal specifier was provided&apos;;
+    } else if (externalSpecifierCount === 0) {
+      // This phyloreference is made up entirely of internal specifiers.
+
+      // We can write this in an accumulative manner by creating class expressions
+      // in the form:
+      //  mrca(mrca(mrca(node1, node2), node3), node4)
+
+      // We could write this as a single giant expression, but this tends to
+      // slow down the reasoner dramatically. So instead, we break it up into a
+      // series of &quot;additional classes&quot;, each of which represents a part of the
+      // overall expression.
+      phylorefAsJSONLD.hasAdditionalClass = [];
+
+      let equivalentClassAccumulator = PhylorefWrapper.getClassExpressionForMRCA(
+        phylorefURI,
+        phylorefAsJSONLD.hasAdditionalClass,
+        phylorefAsJSONLD.internalSpecifiers[0],
+        phylorefAsJSONLD.internalSpecifiers[1]
+      );
+
+      for (let index = 2; index &lt; internalSpecifierCount; index += 1) {
+        equivalentClassAccumulator = PhylorefWrapper.getClassExpressionForMRCA(
+          phylorefURI,
+          phylorefAsJSONLD.hasAdditionalClass,
+          equivalentClassAccumulator,
+          phylorefAsJSONLD.internalSpecifiers[index]
+        );
+      }
+
+      phylorefAsJSONLD.equivalentClass = equivalentClassAccumulator;
+    } else {
+      // This phyloreference is made up of one external specifier and some number
+      // of internal specifiers.
+
+      const internalSpecifierRestrictions = phylorefAsJSONLD.internalSpecifiers
+        .map(specifier =&gt; PhylorefWrapper
+          .wrapInternalOWLRestriction(PhylorefWrapper.getOWLRestrictionForSpecifier(specifier)));
+
+      const externalSpecifierRestrictions = phylorefAsJSONLD.externalSpecifiers
+        .map(specifier =&gt; PhylorefWrapper
+          .wrapExternalOWLRestriction(PhylorefWrapper.getOWLRestrictionForSpecifier(specifier)));
+
+      phylorefAsJSONLD.equivalentClass = {
+        &apos;@type&apos;: &apos;owl:Class&apos;,
+        intersectionOf: internalSpecifierRestrictions.concat(externalSpecifierRestrictions),
+      };
+    }
+
+    return phylorefAsJSONLD;
+  }
+
+  static getOWLRestrictionForSpecifier(specifier) {
+    // Return an OWL restriction corresponding to a specifier.
+    return {
+      &apos;@type&apos;: &apos;owl:Restriction&apos;,
+      onProperty: &apos;testcase:matches_specifier&apos;,
+      hasValue: {
+        &apos;@id&apos;: specifier[&apos;@id&apos;],
+      },
+    };
+  }
+
+  static wrapInternalOWLRestriction(restriction) {
+    // Wraps a restriction to act as an internal specifier.
+    // Mainly, we just need to extend the restriction to match:
+    //  restriction or cdao:has_Descendant some restriction
+    return {
+      &apos;@type&apos;: &apos;owl:Restriction&apos;,
+      unionOf: [
+        restriction,
+        {
+          &apos;@type&apos;: &apos;owl:Restriction&apos;,
+          onProperty: owlterms.CDAO_HAS_DESCENDANT,
+          someValuesFrom: restriction,
+        },
+      ],
+    };
+  }
+
+  static wrapExternalOWLRestriction(restriction) {
+    // Wraps a restriction to act as an external specifier.
+    // This needs to match:
+    //  cdao:has_Sibling some (restriction or cdao:has_Descendant some restriction)
+    // Since that second part is just an internal specifier restriction, we can
+    // incorporate that in here.
+    return {
+      &apos;@type&apos;: &apos;owl:Restriction&apos;,
+      // onProperty: PHYLOREF_HAS_SIBLING,
+      onProperty: owlterms.PHYLOREF_EXCLUDES_LINEAGE_TO,
+      someValuesFrom: restriction,
+    };
+  }
+
+  static getClassExpressionForMRCA(baseURI, additionalClasses, specifier1, specifier2) {
+    // Create an OWL restriction for the most recent common ancestor (MRCA)
+    // of the nodes matched by two specifiers.
+    const additionalClassesIds = new Set(additionalClasses.map(cl =&gt; cl[&apos;@id&apos;]));
+
+    // Specifiers might be either a real specifier or an additional class.
+    // We can check their @ids here and translate specifiers into class expressions.
+    let owlRestriction1;
+    if (additionalClassesIds.has(specifier1[&apos;@id&apos;])) {
+      owlRestriction1 = specifier1;
+    } else {
+      owlRestriction1 = PhylorefWrapper.getOWLRestrictionForSpecifier(specifier1);
+    }
+
+    let owlRestriction2;
+    if (additionalClassesIds.has(specifier2[&apos;@id&apos;])) {
+      owlRestriction2 = specifier2;
+    } else {
+      owlRestriction2 = PhylorefWrapper.getOWLRestrictionForSpecifier(specifier2);
+    }
+
+    // Construct OWL expression.
+    const mrcaAsOWL = {
+      &apos;@type&apos;: &apos;owl:Class&apos;,
+      unionOf: [
+        {
+          // What if specifier2 is a descendant of specifier1? If so, the MRCA
+          // is specifier1!
+          &apos;@type&apos;: &apos;owl:Class&apos;,
+          intersectionOf: [
+            owlRestriction1,
+            {
+              &apos;@type&apos;: &apos;owl:Restriction&apos;,
+              onProperty: owlterms.CDAO_HAS_DESCENDANT,
+              someValuesFrom: owlRestriction2,
+            },
+          ],
+        },
+        {
+          // What if specifier1 is a descendant of specifier2? If so, the MRCA
+          // is specifier2!
+          &apos;@type&apos;: &apos;owl:Class&apos;,
+          intersectionOf: [
+            owlRestriction2,
+            {
+              &apos;@type&apos;: &apos;owl:Restriction&apos;,
+              onProperty: owlterms.CDAO_HAS_DESCENDANT,
+              someValuesFrom: owlRestriction1,
+            },
+          ],
+        },
+        {
+          // If neither specifier is a descendant of the other, we can use our
+          // standard formula.
+          &apos;@type&apos;: &apos;owl:Class&apos;,
+          intersectionOf: [{
+            &apos;@type&apos;: &apos;owl:Restriction&apos;,
+            onProperty: owlterms.CDAO_HAS_CHILD,
+            someValuesFrom: {
+              &apos;@type&apos;: &apos;owl:Class&apos;,
+              intersectionOf: [
+                PhylorefWrapper.wrapInternalOWLRestriction(owlRestriction1),
+                PhylorefWrapper.wrapExternalOWLRestriction(owlRestriction2),
+              ],
+            },
+          }, {
+            &apos;@type&apos;: &apos;owl:Restriction&apos;,
+            onProperty: owlterms.CDAO_HAS_CHILD,
+            someValuesFrom: {
+              &apos;@type&apos;: &apos;owl:Class&apos;,
+              intersectionOf: [
+                PhylorefWrapper.wrapInternalOWLRestriction(owlRestriction2),
+                PhylorefWrapper.wrapExternalOWLRestriction(owlRestriction1),
+              ],
+            },
+          }],
+        },
+      ],
+    };
+
+    // Instead of building a single, large, complex expression, reasoners appear
+    // to prefer smaller expressions for classes that are assembled together.
+    // To help with that, we&apos;ll store the class expression in the additionalClasses
+    // list, and return a reference to this class.
+    const additionalClassId = `${baseURI}_additional${additionalClasses.length}`;
+    additionalClasses.push({
+      &apos;@id&apos;: additionalClassId,
+      &apos;@type&apos;: &apos;owl:Class&apos;,
+      equivalentClass: mrcaAsOWL,
+    });
+
+    return { &apos;@id&apos;: additionalClassId };
+  }
+}
+
+module.exports = {
+  PhylorefWrapper,
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/wrappers/SpecimenWrapper.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Phyloreference Exchange (PHYX) library in JavaScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Phyloreference Exchange (PHYX) library in JavaScript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/wrappers/SpecimenWrapper.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const { has } = require(&apos;lodash&apos;);
+const { PhyxCacheManager } = require(&apos;../utils/PhyxCacheManager&apos;);
+
+/* Specimen wrapper */
+
+class SpecimenWrapper {
+  // Wraps a specimen identifier.
+
+  constructor(specimen) {
+    // Constructs a wrapper around a specimen.
+    this.specimen = specimen;
+
+    if (!has(specimen, &apos;occurrenceID&apos;)) {
+      // There might be a catalogNumber, institutionCode or a collectionCode.
+      // In which case, let&apos;s construct an occurrenceID!
+      if (has(specimen, &apos;catalogNumber&apos;)) {
+        if (has(specimen, &apos;institutionCode&apos;)) {
+          if (has(specimen, &apos;collectionCode&apos;)) {
+            this.specimen.occurrenceID = `urn:catalog:${specimen.institutionCode}:${specimen.collectionCode}:${specimen.catalogNumber}`;
+          } else {
+            this.specimen.occurrenceID = `urn:catalog:${specimen.institutionCode}::${specimen.catalogNumber}`;
+          }
+        } else {
+          this.specimen.occurrenceID = `urn:catalog:::${specimen.catalogNumber}`;
+        }
+      } else {
+        this.specimen.occurrenceID = &apos;urn:catalog:::&apos;;
+      }
+    }
+  }
+
+  static createFromOccurrenceID(occurrenceID) {
+    // Create a specimen object from the occurrence ID.
+    // The two expected formats are:
+    //  - &apos;urn:catalog:[institutionCode]:[collectionCode]:[catalogNumber]&apos;
+    //      (in which case, we ignore the first two &quot;components&quot; here)
+    //  - &apos;[institutionCode]:[collectionCode]:[catalogNumber]&apos;
+    // Note that the returned object is NOT wrapped -- so please wrap it if needed!
+
+    // Copy the occurrence ID so we can truncate it if necessary.
+    let occurID = occurrenceID;
+    if (occurID.startsWith(&apos;urn:catalog:&apos;)) occurID = occurID.substr(12);
+
+    // Prepare the specimen.
+    const specimen = {
+      occurrenceID: occurID,
+    };
+
+    // Look for certain prefixes that suggest that we&apos;ve been passed a URN or
+    // URL instead. If so, don&apos;t do any further processing!
+    const URL_URN_PREFIXES = [
+      &apos;http://&apos;,
+      &apos;https://&apos;,
+      &apos;ftp://&apos;,
+      &apos;sftp://&apos;,
+      &apos;file://&apos;,
+      &apos;urn:&apos;,
+    ];
+    if (URL_URN_PREFIXES.filter(prefix =&gt; occurID.toLowerCase().startsWith(prefix)).length &gt; 0) {
+      return specimen;
+    }
+
+    // Parsing an occurrence ID takes some time, so we should memoize it.
+    if (PhyxCacheManager.has(&apos;SpecimenWrapper.occurrenceIDCache&apos;, occurID)) {
+      return PhyxCacheManager.get(&apos;SpecimenWrapper.occurrenceIDCache&apos;, occurID);
+    }
+
+    // Split the occurrence ID into components, and store them in the appropriate fields.
+    const comps = occurID.split(/:/);
+    if (comps.length === 1) {
+      // specimen.institutionCode = undefined;
+      // specimen.collectionCode = undefined;
+      [specimen.catalogNumber] = comps;
+    } else if (comps.length === 2) {
+      [specimen.institutionCode, specimen.catalogNumber] = comps;
+    } else if (comps.length &gt;= 3) {
+      let catalogNumValues = []; // Store all split catalog number values.
+      [specimen.institutionCode, specimen.collectionCode, ...catalogNumValues] = comps;
+      specimen.catalogNumber = catalogNumValues.join(&apos;:&apos;);
+    }
+
+    PhyxCacheManager.put(&apos;SpecimenWrapper.occurrenceIDCache&apos;, occurID, specimen);
+    return specimen;
+  }
+
+  get catalogNumber() {
+    // Get the catalog number from the specimen object if present.
+    if (has(this.specimen, &apos;catalogNumber&apos;)) return this.specimen.catalogNumber;
+
+    // Otherwise, try to parse the occurrenceID and see if we can extract a
+    // catalogNumber from there.
+    if (has(this.specimen, &apos;occurrenceID&apos;)) {
+      const specimen = SpecimenWrapper.createFromOccurrenceID(this.specimen.occurrenceID);
+      if (has(specimen, &apos;catalogNumber&apos;)) return specimen.catalogNumber;
+    }
+    return undefined;
+  }
+
+  get institutionCode() {
+    // Get the institution code from the specimen object if present.
+    if (has(this.specimen, &apos;institutionCode&apos;)) return this.specimen.institutionCode;
+
+    // Otherwise, try to parse the occurrenceID and see if we can extract an
+    // occurrenceID from there.
+    if (has(this.specimen, &apos;occurrenceID&apos;)) {
+      const specimen = SpecimenWrapper.createFromOccurrenceID(this.specimen.occurrenceID);
+      if (has(specimen, &apos;institutionCode&apos;)) return specimen.institutionCode;
+    }
+    return undefined;
+  }
+
+  get collectionCode() {
+    // Get the collection code from the specimen object if present.
+    if (has(this.specimen, &apos;collectionCode&apos;)) return this.specimen.collectionCode;
+
+    // Otherwise, try to parse the occurrenceID and see if we can extract an
+    // occurrenceID from there.
+    if (has(this.specimen, &apos;occurrenceID&apos;)) {
+      const specimen = SpecimenWrapper.createFromOccurrenceID(this.specimen.occurrenceID);
+      if (has(specimen, &apos;collectionCode&apos;)) return specimen.collectionCode;
+    }
+    return undefined;
+  }
+
+  get occurrenceID() {
+    // Does this specimen have an occurrenceID? If so, return it.
+    // If not, we attempt to construct one in the form:
+    //   &quot;urn:catalog:&quot; + institutionCode (if present) + &apos;:&apos; +
+    //      collectionCode (if present) + &apos;:&apos; + catalogNumber (if present)
+    // If all else fails, we return undefined.
+    //
+    // If this was a full wrapper, we might create a setter on the occurrenceID;
+    // however, the Vue model modifies the underlying specimen object, not the
+    // wrapper.
+
+    // Return the occurrenceID if it exists.
+    if (has(this.specimen, &apos;occurrenceID&apos;) &amp;&amp; this.specimen.occurrenceID.trim() !== &apos;&apos;) {
+      return this.specimen.occurrenceID.trim();
+    }
+
+    // Otherwise, we could try to construct the occurrenceID from its components.
+    if (has(this.specimen, &apos;catalogNumber&apos;)) {
+      if (has(this.specimen, &apos;institutionCode&apos;)) {
+        if (has(this.specimen, &apos;collectionCode&apos;)) {
+          return `urn:catalog:${this.specimen.institutionCode.trim()}:${this.specimen.collectionCode.trim()}:${this.specimen.catalogNumber.trim()}`;
+        }
+        return `urn:catalog:${this.specimen.institutionCode.trim()}::${this.specimen.catalogNumber.trim()}`;
+      }
+      if (has(this.specimen, &apos;collectionCode&apos;)) {
+        return `urn:catalog::${this.specimen.collectionCode.trim()}:${this.specimen.catalogNumber.trim()}`;
+      }
+      return `urn:catalog:::${this.specimen.catalogNumber.trim()}`;
+    }
+
+    // None of our specimen identifier schemes worked.
+    return undefined;
+  }
+
+  get label() {
+    // Return a label for this specimen
+    return `Specimen ${this.occurrenceID}`;
+  }
+}
+
+module.exports = {
+  SpecimenWrapper,
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

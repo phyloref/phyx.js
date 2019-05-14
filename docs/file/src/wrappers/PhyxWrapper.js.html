@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/wrappers/PhyxWrapper.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Phyloreference Exchange (PHYX) library in JavaScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Phyloreference Exchange (PHYX) library in JavaScript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/wrappers/PhyxWrapper.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** Used to make deep copies of objects. */
+const extend = require(&apos;extend&apos;);
+const { has } = require(&apos;lodash&apos;);
+
+const owlterms = require(&apos;../utils/owlterms&apos;);
+
+const { PhylorefWrapper } = require(&apos;./PhylorefWrapper&apos;);
+const { PhylogenyWrapper } = require(&apos;./PhylogenyWrapper&apos;);
+const { TaxonomicUnitMatcher } = require(&apos;../matchers/TaxonomicUnitMatcher&apos;);
+
+/* PHYX file wrapper */
+
+class PhyxWrapper {
+  // Wraps an entire PHYX document.
+
+  constructor(phyx, newickParser) {
+    // Wraps an entire PHYX document.
+    // - phyx: the Phyx structure to wrap.
+    // - newickParser: a method that accepts a Newick string and returns a list of
+    //   nodes. Each node should have a &apos;children&apos; key with its children and
+    //   optionally a &apos;name&apos; key with its label. This code previously depended
+    //   on phylotree.js, whose newick_parser() function works exactly like this.
+    //   This option allows you to drop in Phylotree&apos;s newick_parser() or --
+    //   if you prefer -- any other option.
+    this.phyx = phyx;
+    this.newickParser = newickParser;
+  }
+
+  static get BASE_URI() {
+    // Returns the default base URI for PHYX documents in JSON-LD.
+    return &apos;&apos;;
+  }
+
+  static getBaseURIForPhyloref(phylorefCount) {
+    // Return the base URI for a phyloreference based on its index.
+    return `${PhyxWrapper.BASE_URI}#phyloref${phylorefCount}`;
+  }
+
+  static getBaseURIForPhylogeny(phylogenyCount) {
+    // Return the base URI for phylogenies based on its index.
+    return `${PhyxWrapper.BASE_URI}#phylogeny${phylogenyCount}`;
+  }
+
+  static getBaseURIForTUMatch(countTaxonomicUnitMatches) {
+    // Return the base URI for taxonomic unit matches.
+    return `${PhyxWrapper.BASE_URI}#taxonomic_unit_match${countTaxonomicUnitMatches}`;
+  }
+
+  asJSONLD() {
+    // Export this PHYX document as a JSON-LD document. This replicates what
+    // phyx2owl.py does in the Clade Ontology.
+    //
+    // The document is mostly in JSON-LD already, except for two important
+    // things:
+    //  1. We have to convert all phylogenies into a series of statements
+    //     relating to the nodes inside these phylogenies.
+    //  2. We have to convert phylogenies into OWL restrictions.
+    //  3. Insert all matches between taxonomic units in this file.
+    //
+    const jsonld = extend(true, {}, this.phyx);
+
+    // Add descriptions for individual nodes in each phylogeny.
+    if (has(jsonld, &apos;phylogenies&apos;)) {
+      jsonld.phylogenies = jsonld.phylogenies.map(
+        (phylogeny, countPhylogeny) =&gt; new PhylogenyWrapper(phylogeny)
+          .asJSONLD(PhyxWrapper.getBaseURIForPhylogeny(countPhylogeny), this.newickParser)
+      );
+    }
+
+    // Convert phyloreferences into an OWL class restriction
+    if (has(jsonld, &apos;phylorefs&apos;)) {
+      jsonld.phylorefs = jsonld.phylorefs.map(
+        (phyloref, countPhyloref) =&gt; new PhylorefWrapper(phyloref)
+          .asJSONLD(PhyxWrapper.getBaseURIForPhyloref(countPhyloref))
+      );
+    }
+
+    // Match all specifiers with nodes.
+    if (has(jsonld, &apos;phylorefs&apos;) &amp;&amp; has(jsonld, &apos;phylogenies&apos;)) {
+      jsonld.hasTaxonomicUnitMatches = [];
+
+      // Used to create unique identifiers for each taxonomic unit match.
+      let countTaxonomicUnitMatches = 0;
+
+      jsonld.phylorefs.forEach((phylorefToChange) =&gt; {
+        const phyloref = phylorefToChange;
+        let specifiers = [];
+
+        if (has(phyloref, &apos;internalSpecifiers&apos;)) {
+          specifiers = specifiers.concat(phyloref.internalSpecifiers);
+        }
+
+        if (has(phyloref, &apos;externalSpecifiers&apos;)) {
+          specifiers = specifiers.concat(phyloref.externalSpecifiers);
+        }
+
+        specifiers.forEach((specifier) =&gt; {
+          if (!has(specifier, &apos;referencesTaxonomicUnits&apos;)) return;
+          const specifierTUs = specifier.referencesTaxonomicUnits;
+          let nodesMatchedCount = 0;
+
+          jsonld.phylogenies.forEach((phylogenyToChange) =&gt; {
+            const phylogeny = phylogenyToChange;
+
+            specifierTUs.forEach((specifierTU) =&gt; {
+              phylogeny.nodes.forEach((node) =&gt; {
+                if (!has(node, &apos;representsTaxonomicUnits&apos;)) return;
+                const nodeTUs = node.representsTaxonomicUnits;
+
+                nodeTUs.forEach((nodeTU) =&gt; {
+                  const matcher = new TaxonomicUnitMatcher(specifierTU, nodeTU);
+                  if (matcher.matched) {
+                    const tuMatchAsJSONLD = matcher.asJSONLD(
+                      PhyxWrapper.getBaseURIForTUMatch(countTaxonomicUnitMatches)
+                    );
+                    jsonld.hasTaxonomicUnitMatches.push(tuMatchAsJSONLD);
+                    nodesMatchedCount += 1;
+                    countTaxonomicUnitMatches += 1;
+                  }
+                });
+              });
+            });
+          });
+
+          if (nodesMatchedCount === 0) {
+            // No nodes matched? Record this as an unmatched specifier.
+            if (!has(phyloref, &apos;hasUnmatchedSpecifiers&apos;)) phyloref.hasUnmatchedSpecifiers = [];
+            phyloref.hasUnmatchedSpecifiers.push(specifier);
+          }
+        });
+      });
+    }
+
+    // Finally, add the base URI as an ontology.
+    jsonld[&apos;@id&apos;] = PhyxWrapper.BASE_URI;
+    jsonld[&apos;@type&apos;] = [owlterms.PHYLOREFERENCE_TEST_CASE, &apos;owl:Ontology&apos;];
+    jsonld[&apos;owl:imports&apos;] = [
+      &apos;http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl&apos;,
+      // - Will become &apos;http://vocab.phyloref.org/phyloref/testcase.owl&apos;
+      &apos;http://ontology.phyloref.org/2018-12-04/phyloref.owl&apos;,
+      // - The Phyloreferencing ontology.
+      &apos;http://purl.obolibrary.org/obo/bco.owl&apos;,
+      // - Contains OWL definitions for Darwin Core terms
+    ];
+
+    // If the &apos;@context&apos; is missing, add it here.
+    if (!has(jsonld, &apos;@context&apos;)) {
+      jsonld[&apos;@context&apos;] = &apos;http://www.phyloref.org/phyx.js/v0.1.0/phyx.json&apos;;
+    }
+
+    return jsonld;
+  }
+}
+
+module.exports = {
+  PhyxWrapper,
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

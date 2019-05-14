@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/wrappers/TaxonomicUnitWrapper.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Phyloreference Exchange (PHYX) library in JavaScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Phyloreference Exchange (PHYX) library in JavaScript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/wrappers/TaxonomicUnitWrapper.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const { has } = require(&apos;lodash&apos;);
+
+const { PhyxCacheManager } = require(&apos;../utils/PhyxCacheManager&apos;);
+const { SpecimenWrapper } = require(&apos;./SpecimenWrapper&apos;);
+const { ScientificNameWrapper } = require(&apos;./ScientificNameWrapper&apos;);
+
+/* Taxonomic unit wrapper */
+
+class TaxonomicUnitWrapper {
+  // Wraps a taxonomic unit.
+  // Also provides static methods for obtaining lists of wrapped taxonomic units
+  // from node labels.
+
+  constructor(tunit) {
+    // Wrap a taxonomic unit.
+    this.tunit = tunit;
+  }
+
+  get label() {
+    // Try to determine the label of a taxonomic unit. This checks the
+    // &apos;label&apos; and &apos;description&apos; properties, and then tries to create a
+    // descriptive label by combining the scientific names, specimens
+    // and external references of the taxonomic unit.
+    const labels = [];
+
+    // A label or description for the TU?
+    if (has(this.tunit, &apos;label&apos;)) return this.tunit.label;
+    if (has(this.tunit, &apos;description&apos;)) return this.tunit.description;
+
+    // Any specimens?
+    if (has(this.tunit, &apos;includesSpecimens&apos;)) {
+      this.tunit.includesSpecimens.forEach((specimen) =&gt; {
+        labels.push(new SpecimenWrapper(specimen).label);
+      });
+    }
+
+    // Any external references?
+    if (has(this.tunit, &apos;externalReferences&apos;)) {
+      this.tunit.externalReferences.forEach(externalRef =&gt; labels.push(`&lt;${externalRef}&gt;`));
+    }
+
+    // Any scientific names?
+    if (has(this.tunit, &apos;scientificNames&apos;)) {
+      this.tunit.scientificNames.forEach((scname) =&gt; {
+        labels.push(new ScientificNameWrapper(scname).label);
+      });
+    }
+
+    // If we don&apos;t have any properties of a taxonomic unit, return undefined.
+    if (labels.length === 0) return undefined;
+
+    return labels.join(&apos; or &apos;);
+  }
+
+  // Access variables in the underlying wrapped taxonomic unit.
+  get scientificNames() {
+    return this.tunit.scientificNames;
+  }
+
+  get includeSpecimens() {
+    return this.tunit.includesSpecimens;
+  }
+
+  get externalReferences() {
+    return this.tunit.externalReferences;
+  }
+
+  static getTaxonomicUnitsFromNodeLabel(nodeLabel) {
+    // Given a node label, attempt to parse it as a scientific name.
+    // Returns a list of taxonomic units.
+    if (nodeLabel === undefined || nodeLabel === null) return [];
+
+    // This regular expression times a while to run, so let&apos;s memoize this.
+    if (PhyxCacheManager.has(&apos;TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache&apos;, nodeLabel)) {
+      return PhyxCacheManager.get(&apos;TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache&apos;, nodeLabel);
+    }
+
+    // Check if the label starts with a binomial name.
+    let tunits = [];
+    const results = /^([A-Z][a-z]+)[ _]([a-z-]+)(?:\b|_)\s*(.*)/.exec(nodeLabel);
+    if (results !== null) {
+      tunits = [{
+        scientificNames: [{
+          scientificName: `${results[1]} ${results[2]} ${results[3]}`.trim(),
+          binomialName: `${results[1]} ${results[2]}`,
+          genus: results[1],
+          specificEpithet: results[2],
+        }],
+      }];
+    } else {
+      // It may be a scientific name, but we don&apos;t know how to parse it as such.
+      tunits = [];
+    }
+
+    // Record in the cache
+    PhyxCacheManager.put(&apos;TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache&apos;, nodeLabel, tunits);
+
+    return tunits;
+  }
+}
+
+module.exports = {
+  TaxonomicUnitWrapper,
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

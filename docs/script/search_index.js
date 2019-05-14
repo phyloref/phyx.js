@@ -286,5 +286,59 @@ window.esdocSearchIndex = [
     "file/src/index.js.html",
     "src/index.js",
     "file"
+  ],
+  [
+    "src/matchers/taxonomicunitmatcher.js",
+    "file/src/matchers/TaxonomicUnitMatcher.js.html",
+    "src/matchers/TaxonomicUnitMatcher.js",
+    "file"
+  ],
+  [
+    "src/utils/phyxcachemanager.js",
+    "file/src/utils/PhyxCacheManager.js.html",
+    "src/utils/PhyxCacheManager.js",
+    "file"
+  ],
+  [
+    "src/utils/owlterms.js",
+    "file/src/utils/owlterms.js.html",
+    "src/utils/owlterms.js",
+    "file"
+  ],
+  [
+    "src/wrappers/phylogenywrapper.js",
+    "file/src/wrappers/PhylogenyWrapper.js.html",
+    "src/wrappers/PhylogenyWrapper.js",
+    "file"
+  ],
+  [
+    "src/wrappers/phylorefwrapper.js",
+    "file/src/wrappers/PhylorefWrapper.js.html",
+    "src/wrappers/PhylorefWrapper.js",
+    "file"
+  ],
+  [
+    "src/wrappers/phyxwrapper.js",
+    "file/src/wrappers/PhyxWrapper.js.html",
+    "src/wrappers/PhyxWrapper.js",
+    "file"
+  ],
+  [
+    "src/wrappers/scientificnamewrapper.js",
+    "file/src/wrappers/ScientificNameWrapper.js.html",
+    "src/wrappers/ScientificNameWrapper.js",
+    "file"
+  ],
+  [
+    "src/wrappers/specimenwrapper.js",
+    "file/src/wrappers/SpecimenWrapper.js.html",
+    "src/wrappers/SpecimenWrapper.js",
+    "file"
+  ],
+  [
+    "src/wrappers/taxonomicunitwrapper.js",
+    "file/src/wrappers/TaxonomicUnitWrapper.js.html",
+    "src/wrappers/TaxonomicUnitWrapper.js",
+    "file"
   ]
 ]
