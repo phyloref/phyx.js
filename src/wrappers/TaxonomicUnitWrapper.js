@@ -1,26 +1,102 @@
-const { has } = require('lodash');
+/** Utility functions. */
+const { has, isArray } = require('lodash');
 
+/** URIs from the OWL/RDF world. */
+const owlterms = require('../utils/owlterms');
+
+/** We store the taxonomic units we extract from phylogeny labels in the Phyx Cache Manager. */
 const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
+
+/** For parsing specimen identifiers. */
 const { SpecimenWrapper } = require('./SpecimenWrapper');
+
+/** For parsing scientific names. */
 const { ScientificNameWrapper } = require('./ScientificNameWrapper');
 
-/* Taxonomic unit wrapper */
+/**
+ * The TaxonomicUnitWrapper wraps taxonomic units, whether on a node or being used
+ * as a specifier on a phyloreference. It also contains static methods for extracting
+ * taxonomic units from phylogeny labels.
+ *
+ * Every taxonomic unit can have an rdfs:label or a dcterm:description to describe
+ * it in human-readable terms. It also includes an OWL restriction to describe
+ * the taxonomic unit in one of the following OWL/Manchester forms:
+ *  - tc:hasName some (ICZN_Name and dwc:scientificName value "scientific name")
+ *  - tc:circumscribedBy some (dwc:organismID value "occurrence ID")
+ *
+ * External references can be represented by the '@id' of the taxonomic unit itself.
+ *
+ * TODO: We need to develop a syntax for representing apomorphies and referencing
+ * phyloreferences.
+ */
 
 class TaxonomicUnitWrapper {
-  // Wraps a taxonomic unit.
-  // Also provides static methods for obtaining lists of wrapped taxonomic units
-  // from node labels.
-
+  /** Wrap a taxonomic unit. */
   constructor(tunit) {
-    // Wrap a taxonomic unit.
     this.tunit = tunit;
   }
 
+  /**
+   * Return the OWL restriction of this taxonomic unit.
+   */
+  get owlRestrictions() {
+    if (has(this.tunit, '@type')) {
+      if (!isArray(this.tunit['@type'])) {
+        this.tunit['@type'] = [this.tunit['@type']];
+      }
+
+      return this.tunit['@type'];
+    }
+
+    return undefined;
+  }
+
+  /**
+   * Set the OWL restriction of this taxonomic unit.
+   */
+  set owlRestrictions(owlRestrictions) {
+    this.tunit['@type'] = owlRestrictions;
+  }
+
+  /**
+   * Return the list of OWL restrictions for a particular property.
+   */
+  getOwlRestrictionsForProperty(prop) {
+    if (!this.owlRestrictions) return [];
+    return this.owlRestrictions.filter(restriction => (restriction.onProperty === prop));
+  }
+
+  /**
+   * Return the list of scientific names in this taxonomic unit.
+   */
+  get scientificNames() {
+    return this.getOwlRestrictionsForProperty(owlterms.TU_HAS_NAME_PROP)
+      .filter(restriction => has(restriction, 'someValuesFrom'))
+      .map((restriction) => {
+        if (isArray(restriction.someValuesFrom)) return restriction.someValuesFrom;
+        return [restriction.someValuesFrom];
+      });
+  }
+
+  /**
+   * Return the list of organism IDs in this taxonomic unit.
+   */
+  get specimens() {
+    return this.getOwlRestrictionsForProperty(owlterms.TU_ORGANISM_ID_PROP);
+  }
+
+  /**
+   * Return the list of external references for this taxonomic unit.
+   */
+  get externalReferences() {
+    if (isArray(this.tunit['@id'])) return this.tunit['@id'];
+    return [this.tunit['@id']];
+  }
+
+  /**
+   * Return the label of this taxonomic unit.
+   */
   get label() {
-    // Try to determine the label of a taxonomic unit. This checks the
-    // 'label' and 'description' properties, and then tries to create a
-    // descriptive label by combining the scientific names, specimens
-    // and external references of the taxonomic unit.
     const labels = [];
 
     // A label or description for the TU?
@@ -28,20 +104,23 @@ class TaxonomicUnitWrapper {
     if (has(this.tunit, 'description')) return this.tunit.description;
 
     // Any specimens?
-    if (has(this.tunit, 'includesSpecimens')) {
-      this.tunit.includesSpecimens.forEach((specimen) => {
+    const specimens = this.specimens;
+    if (specimens.length > 0) {
+      specimens.forEach((specimen) => {
         labels.push(new SpecimenWrapper(specimen).label);
       });
     }
 
     // Any external references?
-    if (has(this.tunit, 'externalReferences')) {
-      this.tunit.externalReferences.forEach(externalRef => labels.push(`<${externalRef}>`));
+    const externalReferences = this.externalReferences;
+    if (externalReferences.length > 0) {
+      externalReferences.forEach(externalRef => labels.push(`<${externalRef}>`));
     }
 
     // Any scientific names?
-    if (has(this.tunit, 'scientificNames')) {
-      this.tunit.scientificNames.forEach((scname) => {
+    const scientificNames = this.scientificNames;
+    if (scientificNames.length > 0) {
+      scientificNames.forEach((scname) => {
         labels.push(new ScientificNameWrapper(scname).label);
       });
     }
@@ -52,22 +131,11 @@ class TaxonomicUnitWrapper {
     return labels.join(' or ');
   }
 
-  // Access variables in the underlying wrapped taxonomic unit.
-  get scientificNames() {
-    return this.tunit.scientificNames;
-  }
-
-  get includeSpecimens() {
-    return this.tunit.includesSpecimens;
-  }
-
-  get externalReferences() {
-    return this.tunit.externalReferences;
-  }
-
+  /**
+   * Given a node label, attempt to parse it as a scientific name.
+   * @return A list of taxonomic units.
+   */
   static getTaxonomicUnitsFromNodeLabel(nodeLabel) {
-    // Given a node label, attempt to parse it as a scientific name.
-    // Returns a list of taxonomic units.
     if (nodeLabel === undefined || nodeLabel === null) return [];
 
     // This regular expression times a while to run, so let's memoize this.

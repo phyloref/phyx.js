@@ -7,4 +7,11 @@ module.exports = {
   PHYLOREFERENCE_TEST_CASE: 'testcase:PhyloreferenceTestCase',
   PHYLOREFERENCE_PHYLOGENY: 'testcase:PhyloreferenceTestPhylogeny',
   TESTCASE_SPECIFIER: 'testcase:Specifier',
+  TU_HAS_NAME_PROP: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
+  TU_SPECIMEN_PROP: 'dwc:organismID',
+
+  /** The default @type for taxonomic units. */
+  DEFAULT_TYPES_FOR_TU: [
+    'http://purl.obolibrary.org/obo/CDAO_0000138', // CDAO:TU
+  ],
 };
