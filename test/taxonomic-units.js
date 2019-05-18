@@ -101,23 +101,23 @@ describe('TaxonomicUnitWrapper', function () {
     it('when given a scientific name, it should return a list of a single TU wrapping a scientific name', function () {
       expect(phyx.TaxonomicUnitWrapper.getTaxonomicUnitsFromNodeLabel('Rana luteiventris MVZ225749'))
         .to.be.deep.equal([{
-          scientificNames: [{
-            scientificName: 'Rana luteiventris MVZ225749',
-            genus: 'Rana',
-            specificEpithet: 'luteiventris',
-            binomialName: 'Rana luteiventris',
-          }],
+          '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
+          nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
+          label: 'Rana luteiventris MVZ225749',
+          genusPart: 'Rana',
+          specificEpithet: 'luteiventris',
+          nameComplete: 'Rana luteiventris',
         }]);
     });
     it('when given a scientific name separated with underscores, it should return a list of a single TU wrapping the scientific name', function () {
       expect(phyx.TaxonomicUnitWrapper.getTaxonomicUnitsFromNodeLabel('Rana_luteiventris_MVZ_225749'))
         .to.be.deep.equal([{
-          scientificNames: [{
-            scientificName: 'Rana luteiventris MVZ_225749',
-            genus: 'Rana',
-            specificEpithet: 'luteiventris',
-            binomialName: 'Rana luteiventris',
-          }],
+          '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
+          label: 'Rana_luteiventris_MVZ_225749',
+          nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
+          nameComplete: 'Rana luteiventris',
+          genusPart: 'Rana',
+          specificEpithet: 'luteiventris',
         }]);
     });
   });

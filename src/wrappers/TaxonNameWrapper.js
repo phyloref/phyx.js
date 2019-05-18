@@ -1,5 +1,5 @@
 /** Utility functions. */
-const { has } = require('lodash');
+const { has, cloneDeep, isArray } = require('lodash');
 
 /** OWL/RDF terms. */
 const owlterms = require('../utils/owlterms');
@@ -56,7 +56,7 @@ class TaxonNameWrapper {
 
     // Use a regular expression to parse the verbatimName.
     let txname;
-    const results = /^([A-Z][a-z]+)[ _]([a-z-]+)(?:\b|_)\s*(.*)/.exec(verbatimName);
+    const results = /^([A-Z][a-z]+)[ _]([a-z-]+)(?:\b|_)\s*([a-z-]*)/.exec(verbatimName);
 
     if (results !== null) {
       txname = {
@@ -67,6 +67,18 @@ class TaxonNameWrapper {
         genusPart: results[1],
         specificEpithet: results[2],
       };
+    } else {
+      // Is it a uninomial name?
+      const checkUninomial = /^([A-Z][a-z]+)[ _]/.exec(verbatimName);
+      if (checkUninomial !== null) {
+        txname = {
+          '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
+          nomenclaturalCode: TaxonNameWrapper.getNomenCodeAsURI(nomenCode),
+          label: verbatimName,
+          nameComplete: results[1],
+          uninomial: results[1],
+        };
+      }
     }
 
     // Store in the cache.
@@ -85,7 +97,14 @@ class TaxonNameWrapper {
   }
 
   /**
-   * Return the verbatim name of this scientific name.
+   * Return the nomenclatural code of this taxon name.
+   */
+  get nomenclaturalCode() {
+    return this.txname.nomenclaturalCode || TaxonNameWrapper.getNomenCodeAsURI('unknown');
+  }
+
+  /**
+   * Return the verbatim name of this taxon name.
    */
   get verbatimName() {
     return this.txname.label;
@@ -97,6 +116,11 @@ class TaxonNameWrapper {
    */
   get nameComplete() {
     return this.txname.nameComplete;
+  }
+
+  /** Return the uninomial name if there is one. */
+  get uninomial() {
+    return this.txname.uninomial;
   }
 
   /** Return the binomial name if available. */
@@ -134,6 +158,21 @@ class TaxonNameWrapper {
       if (has(txname, 'specificEpithet')) return txname.specificEpithet;
     }
     return undefined;
+  }
+
+  /** Return this taxon name in an OWL/JSON-LD representation. */
+  asJSONLD() {
+    const jsonld = cloneDeep(this.txname);
+
+    // Make sure '@type' is an array.
+    if (!has(jsonld, '@type')) jsonld['@type'] = [];
+    if (!isArray(jsonld['@type'])) jsonld['@type'] = [jsonld['@type']];
+
+    // Make it explicit that the type includes the nomenclaturalCode.
+    const nomenCode = this.nomenclaturalCode;
+    if (!jsonld['@type'].includes(nomenCode)) jsonld['@type'].push(nomenCode);
+
+    return jsonld;
   }
 }
 

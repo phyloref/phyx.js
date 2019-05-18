@@ -186,12 +186,12 @@ describe('PhylogenyWrapper', function () {
         }]);
 
         expect(wrapper.getTaxonomicUnitsForNodeLabel('Rana boylii')).to.deep.equal([{
-          scientificNames: [{
-            scientificName: 'Rana boylii',
-            binomialName: 'Rana boylii',
-            genus: 'Rana',
-            specificEpithet: 'boylii',
-          }],
+          label: 'Rana boylii',
+          nameComplete: 'Rana boylii',
+          genusPart: 'Rana',
+          specificEpithet: 'boylii',
+          nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
+          '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
         }]);
       });
     });
