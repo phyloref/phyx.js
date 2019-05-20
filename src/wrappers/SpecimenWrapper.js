@@ -1,35 +1,33 @@
 const { has } = require('lodash');
+const owlterms = require('../utils/owlterms');
 const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
 
-/* Specimen wrapper */
-
+/**
+ * The SpecimenWrapper wraps specimen taxonomic units. These can be identified
+ * with a '@type' of SpecimenWrapper.TYPE_SPECIMEN (which is currently
+ * https://dwc.tdwg.org/terms/#occurrence).
+ *
+ * - TaxonomicUnitWrapper.TYPE_SPECIMEN: A specimen.
+ *    - Based on http://rs.tdwg.org/dwc/terms/Occurrence
+ *    - Should have an occurrenceID with the occurrence identifier.
+ *
+ * Since TaxonNameWrapper follows the TDWG ontology, we'd love to do the same for
+ * SpecimenWrapper, but unfortunately the TaxonOccurrence ontology has been deprecated
+ * (see https://github.com/tdwg/ontology). Therefore, it instead improvises a
+ * representation based on dwc:Occurrence.
+ */
 class SpecimenWrapper {
-  // Wraps a specimen identifier.
+  /** The '@type' of specimens in JSON-LD document. */
+  static get TYPE_SPECIMEN() {
+    return owlterms.DWC_OCCURRENCE;
+  }
 
   constructor(specimen) {
     // Constructs a wrapper around a specimen.
     this.specimen = specimen;
-
-    if (!has(specimen, 'occurrenceID')) {
-      // There might be a catalogNumber, institutionCode or a collectionCode.
-      // In which case, let's construct an occurrenceID!
-      if (has(specimen, 'catalogNumber')) {
-        if (has(specimen, 'institutionCode')) {
-          if (has(specimen, 'collectionCode')) {
-            this.specimen.occurrenceID = `urn:catalog:${specimen.institutionCode}:${specimen.collectionCode}:${specimen.catalogNumber}`;
-          } else {
-            this.specimen.occurrenceID = `urn:catalog:${specimen.institutionCode}::${specimen.catalogNumber}`;
-          }
-        } else {
-          this.specimen.occurrenceID = `urn:catalog:::${specimen.catalogNumber}`;
-        }
-      } else {
-        this.specimen.occurrenceID = 'urn:catalog:::';
-      }
-    }
   }
 
-  static createFromOccurrenceID(occurrenceID) {
+  static fromOccurrenceID(occurrenceID) {
     // Create a specimen object from the occurrence ID.
     // The two expected formats are:
     //  - 'urn:catalog:[institutionCode]:[collectionCode]:[catalogNumber]'
@@ -90,7 +88,7 @@ class SpecimenWrapper {
     // Otherwise, try to parse the occurrenceID and see if we can extract a
     // catalogNumber from there.
     if (has(this.specimen, 'occurrenceID')) {
-      const specimen = SpecimenWrapper.createFromOccurrenceID(this.specimen.occurrenceID);
+      const specimen = SpecimenWrapper.fromOccurrenceID(this.specimen.occurrenceID);
       if (has(specimen, 'catalogNumber')) return specimen.catalogNumber;
     }
     return undefined;
@@ -103,7 +101,7 @@ class SpecimenWrapper {
     // Otherwise, try to parse the occurrenceID and see if we can extract an
     // occurrenceID from there.
     if (has(this.specimen, 'occurrenceID')) {
-      const specimen = SpecimenWrapper.createFromOccurrenceID(this.specimen.occurrenceID);
+      const specimen = SpecimenWrapper.fromOccurrenceID(this.specimen.occurrenceID);
       if (has(specimen, 'institutionCode')) return specimen.institutionCode;
     }
     return undefined;
@@ -116,7 +114,7 @@ class SpecimenWrapper {
     // Otherwise, try to parse the occurrenceID and see if we can extract an
     // occurrenceID from there.
     if (has(this.specimen, 'occurrenceID')) {
-      const specimen = SpecimenWrapper.createFromOccurrenceID(this.specimen.occurrenceID);
+      const specimen = SpecimenWrapper.fromOccurrenceID(this.specimen.occurrenceID);
       if (has(specimen, 'collectionCode')) return specimen.collectionCode;
     }
     return undefined;

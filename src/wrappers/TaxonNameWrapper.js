@@ -21,6 +21,9 @@ class TaxonNameWrapper {
     this.txname = txname;
   }
 
+  /**
+   * The type associated with these taxonName objects.
+   */
   static get TYPE_TAXON_NAME() {
     return owlterms.TDWG_VOC_TAXON_NAME;
   }
@@ -48,7 +51,7 @@ class TaxonNameWrapper {
   /**
    * Create a scientific name JSON object from a verbatim scientific name.
    */
-  static createFromVerbatimName(verbatimName, nomenCode = 'unknown') {
+  static fromVerbatimName(verbatimName, nomenCode = 'unknown') {
     // Have we already parsed this verbatim name?
     if (PhyxCacheManager.has(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName)) {
       return PhyxCacheManager.get(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName);
@@ -58,7 +61,7 @@ class TaxonNameWrapper {
     let txname;
     const results = /^([A-Z][a-z]+)[ _]([a-z-]+)(?:\b|_)\s*([a-z-]*)/.exec(verbatimName);
 
-    if (results !== null) {
+    if (results) {
       txname = {
         '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
         nomenclaturalCode: TaxonNameWrapper.getNomenCodeAsURI(nomenCode),
@@ -69,14 +72,14 @@ class TaxonNameWrapper {
       };
     } else {
       // Is it a uninomial name?
-      const checkUninomial = /^([A-Z][a-z]+)[ _]/.exec(verbatimName);
-      if (checkUninomial !== null) {
+      const checkUninomial = /^([A-Z][a-z]+)[_\s\b]/.exec(verbatimName);
+      if (checkUninomial) {
         txname = {
           '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
           nomenclaturalCode: TaxonNameWrapper.getNomenCodeAsURI(nomenCode),
           label: verbatimName,
-          nameComplete: results[1],
-          uninomial: results[1],
+          nameComplete: checkUninomial[1],
+          uninomial: checkUninomial[1],
         };
       }
     }
@@ -120,7 +123,16 @@ class TaxonNameWrapper {
 
   /** Return the uninomial name if there is one. */
   get uninomial() {
-    return this.txname.uninomial;
+    if (has(this.txname, 'uninomial')) return this.txname.uninomial;
+
+    // If there is no genus but there is a scientificName, try to extract a genus
+    // from it.
+    if (this.nameComplete) {
+      const txname = TaxonNameWrapper.fromVerbatimName(this.nameComplete, this.nomenclaturalCode);
+      if (has(txname, 'uninomial')) return txname.uninomial;
+    }
+
+    return undefined;
   }
 
   /** Return the binomial name if available. */
@@ -134,12 +146,12 @@ class TaxonNameWrapper {
   /** Return the genus part of this scientific name if available. */
   get genusPart() {
     // Try to read the genus if available.
-    if (has(this.txname, 'genusPart')) return this.txname.genus;
+    if (has(this.txname, 'genusPart')) return this.txname.genusPart;
 
     // If there is no genus but there is a scientificName, try to extract a genus
     // from it.
-    if (has(this.txname, 'nameComplete')) {
-      const txname = TaxonNameWrapper.createFromVerbatimName(this.txname.nameComplete);
+    if (this.nameComplete) {
+      const txname = TaxonNameWrapper.fromVerbatimName(this.nameComplete, this.nomenclaturalCode);
       if (has(txname, 'genusPart')) return txname.genusPart;
     }
 
@@ -153,14 +165,20 @@ class TaxonNameWrapper {
 
     // If there is no specific epithet but there is a scientificName, try to
     // extract a specific epithet from it.
-    if (has(this.txname, 'nameComplete')) {
-      const txname = TaxonNameWrapper.createFromVerbatimName(this.txname.scientificName);
+    if (this.nameComplete) {
+      const txname = TaxonNameWrapper.fromVerbatimName(
+        this.txname.scientificName,
+        this.nomenclaturalCode
+      );
       if (has(txname, 'specificEpithet')) return txname.specificEpithet;
     }
+
     return undefined;
   }
 
-  /** Return this taxon name in an OWL/JSON-LD representation. */
+  /**
+   * Return this taxon name in an JSON-LD representation.
+   */
   asJSONLD() {
     const jsonld = cloneDeep(this.txname);
 
@@ -173,6 +191,20 @@ class TaxonNameWrapper {
     if (!jsonld['@type'].includes(nomenCode)) jsonld['@type'].push(nomenCode);
 
     return jsonld;
+  }
+
+  /**
+   * Return this taxon name as an OWL equivalentClass expression.
+   */
+  asEquivClass() {
+    // No complete name, can't return anything.
+    if (!this.nameComplete) return undefined;
+
+    return {
+      '@type': 'owl:Restriction',
+      onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+      hasValue: this.nameComplete,
+    };
   }
 }
 

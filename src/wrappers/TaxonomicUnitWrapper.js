@@ -11,37 +11,28 @@ const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
 const { SpecimenWrapper } = require('./SpecimenWrapper');
 
 /** For parsing scientific names. */
-const { TaxonNameWrapper } = require('./TaxonNameWrapper');
+const { TaxonConceptWrapper } = require('./TaxonConceptWrapper');
 
 /**
  * The TaxonomicUnitWrapper wraps taxonomic units, whether on a node or being used
- * as a specifier on a phyloreference. It also contains static methods for extracting
+ * as a specifier on a phyloreference. Every taxonomic unit can additionally be
+ * wrapped by more specific classes, such as {@link TaxonConceptWrapper} or
+ * {@link SpecimenWrapper}. We can determine which type it is based on its
+ * '@type' and whether it includes:
+ *  - TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT => {@link TaxonConceptWrapper}
+ *  - TaxonomicUnitWrapper.TYPE_SPECIMEN => {@link SpecimenWrapper}
+ *  - TaxonomicUnitWrapper.TYPE_APOMORPHY => reserved for future use
+ *  - TaxonomicUnitWrapper.TYPE_PHYLOREF => reserved for future use
+ *
+ * It also contains static methods for extracting
  * taxonomic units from arbitrary strings, such as phylogeny labels.
  *
  * Every taxonomic unit SHOULD have an rdfs:label and MAY include a dcterm:description
  * to describe it in human-readable terms. It MUST include a '@type' that specifies
- * what type of taxonomic unit it is:
- *
- *  - TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT: A taxon concept.
- *    - Based on http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept
- *    - SHOULD have a hasName property indicating the name this taxon refers to.
- *    - MAY have accordingTo, describedBy or circumscribedBy to indicate how this
- *      taxon concept should be circumscribed. If none of these are present,
- *      this taxonomic unit will be considered a taxon rather than a taxon concept
- *      (i.e. as a nominal taxon concept, as in https://github.com/darwin-sw/dsw/wiki/ClassTaxon).
- *    - MAY have nameString and accordingToString properties. We will fall back
- *      to these properties if hasName or accordingTo are missing.
- *
- *  - TaxonomicUnitWrapper.TYPE_SPECIMEN: A specimen.
- *    - Based on http://rs.tdwg.org/dwc/terms/Occurrence
- *    - Should have an occurrenceID with the occurrence identifier.
+ * what type of taxonomic unit it is.
  *
  * Taxonomic units may be specified with only an '@id' or a set of '@id's, which
- * indicate external references. We will add extra types for TYPE_APOMORPHY and
- * TYPE_PHYLOREF when needed.
- *
- * TODO: We need to develop a syntax for representing apomorphies and referencing
- * phyloreferences.
+ * indicate external references.
  */
 
 class TaxonomicUnitWrapper {
@@ -49,12 +40,12 @@ class TaxonomicUnitWrapper {
 
   /** A taxon or taxon concept. */
   static get TYPE_TAXON_CONCEPT() {
-    return 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept';
+    return TaxonConceptWrapper.TYPE_TAXON_CONCEPT;
   }
 
   /** A specimen. */
   static get TYPE_SPECIMEN() {
-    return 'http://rs.tdwg.org/ontology/voc/Specimen#Specimen';
+    return SpecimenWrapper.TYPE_SPECIMEN;
   }
 
   /** Wrap a taxonomic unit. */
@@ -63,61 +54,32 @@ class TaxonomicUnitWrapper {
   }
 
   /**
-   * What type of specifier is this? This is a URL that represents the type of
-   * specifier we have.
+   * What type of specifier is this? This is an array that could contain multiple
+   * classes, but should contain one of:
+   *  - {@link TYPE_TAXON_CONCEPT}
+   *  - {@link TYPE_SPECIMEN}
    */
-  get type() {
-    return this.tunit['@type'];
+  get types() {
+    if (!has(this.tunit, '@type')) return [];
+    if (isArray(this.tunit['@type'])) return this.tunit['@type'];
+    return [this.tunit['@type']];
   }
 
   /**
-   * Return the taxon name of this taxonomic unit (if any).
+   * Return this taxonomic unit if it is a taxon concept.
    */
-  get taxonName() {
-    // Only taxon concepts have scientific names.
-    if (this.type !== TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT) return undefined;
-
-    // Do we have any names?
-    if (has(this.tunit, 'hasName')) return this.type.hasName;
-
-    // Do we have a nameString?
-    if (has(this.tunit, 'nameString')) return TaxonNameWrapper.createFromVerbatimName(this.tunit.nameString);
-
-    // If not, we have no name!
+  get taxonConcept() {
+    if (this.types.includes(TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT)) return this.tunit;
     return undefined;
   }
 
   /**
-   * Return the accordingTo information (if any).
-   */
-  get accordingTo() {
-    // Only taxon concepts have accordingTo information.
-    if (this.type !== TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT) return undefined;
-
-    // For now, we return this verbatim. Once we close #15, we should wrap this
-    // with a CitationWrapper.
-
-    // Do we have any accordingTo information?
-    if (has(this.tunit, 'accordingTo')) return this.type.accordingTo;
-
-    // Do we have an accordingToString?
-    if (has(this.tunit, 'accordingToString')) return this.type.accordingToString;
-
-    // If not, we have no accodingTo information!
-    return undefined;
-  }
-
-  /**
-   * Return the specimen in this taxonomic unit (if any).
+   * Return this taxonomic unit if it is a specimen.
    */
   get specimen() {
     // Only specimens have scientific names.
-    if (this.type !== TaxonomicUnitWrapper.TYPE_SPECIMEN) return undefined;
+    if (this.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN)) return this.tunit;
 
-    // Look for an occurrenceID.
-    if (has(this.tunit, 'occurrenceID')) return this.tunit.occurrenceID;
-
-    // No specimen in this taxonomic unit!
     return undefined;
   }
 
@@ -135,86 +97,100 @@ class TaxonomicUnitWrapper {
    * Return the label of this taxonomic unit.
    */
   get label() {
-    const labels = [];
-
     // A label or description for this TU?
     if (has(this.tunit, 'label')) return this.tunit.label;
     if (has(this.tunit, 'description')) return this.tunit.description;
 
-    // Any specimens?
-    const specimens = this.specimens;
-    if (specimens.length > 0) {
-      specimens.forEach((specimen) => {
-        labels.push(new SpecimenWrapper(specimen).label);
-      });
+    // Am I a specimen?
+    if (this.specimen) {
+      return new SpecimenWrapper(this.specimen).label;
     }
 
-    // Any external references?
+    // Am I a taxon concept?
+    if (this.taxonConcept) {
+      return new TaxonConceptWrapper(this.taxonConcept).label;
+    }
+
+    // If I can't figure out any time, just list the external references.
     const externalReferences = this.externalReferences;
     if (externalReferences.length > 0) {
-      externalReferences.forEach(externalRef => labels.push(`<${externalRef}>`));
-    }
-
-    // Any scientific names?
-    const scientificNames = this.scientificNames;
-    if (scientificNames.length > 0) {
-      scientificNames.forEach((scname) => {
-        labels.push(new TaxonNameWrapper(scname).label);
-      });
+      return externalReferences
+        .map(externalRef => `<${externalRef}>`)
+        .join(' and ');
     }
 
     // If we don't have any properties of a taxonomic unit, return undefined.
-    if (labels.length === 0) return undefined;
-
-    return labels.join(' or ');
+    return undefined;
   }
 
   /**
    * Given a node label, attempt to parse it as a scientific name.
-   * @return A list of taxonomic units.
+   * @return A taxonomic unit that this node label could be parsed as.
    */
-  static getTaxonomicUnitsFromNodeLabel(nodeLabel) {
-    if (nodeLabel === undefined || nodeLabel === null) return [];
+  static fromNodeLabel(nodeLabel) {
+    if (nodeLabel === undefined || nodeLabel === null) return undefined;
 
-    // This regular expression times a while to run, so let's memoize this.
+    // Rather than figuring out with this label, check to see if we've parsed
+    // this before.
     if (PhyxCacheManager.has('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel)) {
       return PhyxCacheManager.get('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel);
     }
 
-    // Taxonomic units found in label.
-    const tunits = [];
+    // Look for taxon concept.
+    let tunit = TaxonConceptWrapper.fromLabel(nodeLabel);
 
-    // Can we parse the name into a scientific name?
-    const scientificName = TaxonNameWrapper.createFromVerbatimName(nodeLabel);
-    if (scientificName !== undefined) {
-      tunits.push(scientificName);
+    // Look for specimen.
+    if (!tunit) {
+      if (nodeLabel.toLowerCase().startsWith('specimen ')) {
+        // Eliminate a 'Specimen ' prefix if it exists.
+        tunit = SpecimenWrapper.fromOccurrenceID(nodeLabel.substr(9));
+      } else {
+        // Try parsing it as a specimen without a prefix.
+        tunit = SpecimenWrapper.fromOccurrenceID(nodeLabel);
+      }
+    }
+
+    // If it's neither a taxon concept nor a specimen, maybe it's an external reference?
+    if (!tunit) {
+      const URL_URN_PREFIXES = [
+        'http://',
+        'https://',
+        'ftp://',
+        'sftp://',
+        'file://',
+        'urn:',
+      ];
+
+      if (URL_URN_PREFIXES.filter(prefix => nodeLabel.startsWith(prefix)).length > 0) {
+        // The node label starts with something that looks like a URL!
+        // Treat it as an external reference.
+        tunit = {
+          '@id': nodeLabel,
+        };
+      }
     }
 
     // Record in the cache
-    PhyxCacheManager.put('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel, tunits);
+    PhyxCacheManager.put('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel, tunit);
 
-    return tunits;
+    return tunit;
   }
 
+  /**
+   * Return this taxonomic unit as an OWL/JSON-LD object.
+   */
   asJSONLD() {
     const jsonld = cloneDeep(this.tunit);
 
+    // Add CDAO_TU as a type to the existing types.
     if (has(this.tunit, '@type')) {
       if (isArray(this.tunit['@type'])) this.tunit['@type'].push(owlterms.CDAO_TU);
     }
 
-    if (this.type === TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT) {
-      const wrappedTaxonName = new TaxonNameWrapper(this.taxonName);
-
-      jsonld.equivalentClass = {
-        '@type': 'owl:Restriction',
-        onProperty: 'hasName',
-        someValuesFrom: wrappedTaxonName.asJSONLD(),
-      };
-    } else if (this.type === TaxonomicUnitWrapper.TYPE_SPECIMEN) {
-      const wrappedSpecimen = new SpecimenWrapper(this.specimen);
-
-      jsonld.equivalentClass = wrappedSpecimen.asJSONLD();
+    if (this.types.includes(TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT)) {
+      jsonld.equivalentClass = new TaxonConceptWrapper(this.tunit).asEquivClass();
+    } else if (this.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN)) {
+      jsonld.equivalentClass = new SpecimenWrapper(this.specimen).asEquivClass();
     } else {
       // Nothing we can do, so just ignore it.
     }
