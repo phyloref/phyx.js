@@ -1,5 +1,5 @@
 const { has } = require('lodash');
-const { ScientificNameWrapper } = require('../wrappers/ScientificNameWrapper');
+const { TaxonNameWrapper } = require('../wrappers/TaxonNameWrapper');
 const { SpecimenWrapper } = require('../wrappers/SpecimenWrapper');
 
 /* Taxonomic unit matching */
@@ -58,9 +58,9 @@ class TaxonomicUnitMatcher {
     if (!has(this.tunit1, 'scientificNames') || !has(this.tunit2, 'scientificNames')) return false;
 
     return this.tunit1.scientificNames.some((scname1) => {
-      const scname1wrapped = new ScientificNameWrapper(scname1);
+      const scname1wrapped = new TaxonNameWrapper(scname1);
       return this.tunit2.scientificNames.some((scname2) => {
-        const scname2wrapped = new ScientificNameWrapper(scname2);
+        const scname2wrapped = new TaxonNameWrapper(scname2);
 
         const result = scname1wrapped.binomialName !== undefined
           && scname2wrapped.binomialName !== undefined

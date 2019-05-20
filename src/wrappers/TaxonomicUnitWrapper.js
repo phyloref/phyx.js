@@ -1,7 +1,7 @@
 /** Utility functions. */
-const { has, isArray } = require('lodash');
+const { has, isArray, cloneDeep } = require('lodash');
 
-/** URIs from the OWL/RDF world. */
+/** List of OWL/RDF terms we use. */
 const owlterms = require('../utils/owlterms');
 
 /** We store the taxonomic units we extract from phylogeny labels in the Phyx Cache Manager. */
@@ -11,84 +11,122 @@ const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
 const { SpecimenWrapper } = require('./SpecimenWrapper');
 
 /** For parsing scientific names. */
-const { ScientificNameWrapper } = require('./ScientificNameWrapper');
+const { TaxonNameWrapper } = require('./TaxonNameWrapper');
 
 /**
  * The TaxonomicUnitWrapper wraps taxonomic units, whether on a node or being used
  * as a specifier on a phyloreference. It also contains static methods for extracting
- * taxonomic units from phylogeny labels.
+ * taxonomic units from arbitrary strings, such as phylogeny labels.
  *
- * Every taxonomic unit can have an rdfs:label or a dcterm:description to describe
- * it in human-readable terms. It also includes an OWL restriction to describe
- * the taxonomic unit in one of the following OWL/Manchester forms:
- *  - tc:hasName some (ICZN_Name and dwc:scientificName value "scientific name")
- *  - tc:circumscribedBy some (dwc:organismID value "occurrence ID")
+ * Every taxonomic unit SHOULD have an rdfs:label and MAY include a dcterm:description
+ * to describe it in human-readable terms. It MUST include a '@type' that specifies
+ * what type of taxonomic unit it is:
  *
- * External references can be represented by the '@id' of the taxonomic unit itself.
+ *  - TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT: A taxon concept.
+ *    - Based on http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept
+ *    - SHOULD have a hasName property indicating the name this taxon refers to.
+ *    - MAY have accordingTo, describedBy or circumscribedBy to indicate how this
+ *      taxon concept should be circumscribed. If none of these are present,
+ *      this taxonomic unit will be considered a taxon rather than a taxon concept
+ *      (i.e. as a nominal taxon concept, as in https://github.com/darwin-sw/dsw/wiki/ClassTaxon).
+ *    - MAY have nameString and accordingToString properties. We will fall back
+ *      to these properties if hasName or accordingTo are missing.
+ *
+ *  - TaxonomicUnitWrapper.TYPE_SPECIMEN: A specimen.
+ *    - Based on http://rs.tdwg.org/dwc/terms/Occurrence
+ *    - Should have an occurrenceID with the occurrence identifier.
+ *
+ * Taxonomic units may be specified with only an '@id' or a set of '@id's, which
+ * indicate external references. We will add extra types for TYPE_APOMORPHY and
+ * TYPE_PHYLOREF when needed.
  *
  * TODO: We need to develop a syntax for representing apomorphies and referencing
  * phyloreferences.
  */
 
 class TaxonomicUnitWrapper {
+  /* Types of taxonomic units we support (see documentation above). */
+
+  /** A taxon or taxon concept. */
+  static get TYPE_TAXON_CONCEPT() {
+    return 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept';
+  }
+
+  /** A specimen. */
+  static get TYPE_SPECIMEN() {
+    return 'http://rs.tdwg.org/ontology/voc/Specimen#Specimen';
+  }
+
   /** Wrap a taxonomic unit. */
   constructor(tunit) {
     this.tunit = tunit;
   }
 
   /**
-   * Return the OWL restriction of this taxonomic unit.
+   * What type of specifier is this? This is a URL that represents the type of
+   * specifier we have.
    */
-  get owlRestrictions() {
-    if (has(this.tunit, '@type')) {
-      if (!isArray(this.tunit['@type'])) {
-        this.tunit['@type'] = [this.tunit['@type']];
-      }
+  get type() {
+    return this.tunit['@type'];
+  }
 
-      return this.tunit['@type'];
-    }
+  /**
+   * Return the taxon name of this taxonomic unit (if any).
+   */
+  get taxonName() {
+    // Only taxon concepts have scientific names.
+    if (this.type !== TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT) return undefined;
 
+    // Do we have any names?
+    if (has(this.tunit, 'hasName')) return this.type.hasName;
+
+    // Do we have a nameString?
+    if (has(this.tunit, 'nameString')) return TaxonNameWrapper.createFromVerbatimName(this.tunit.nameString);
+
+    // If not, we have no name!
     return undefined;
   }
 
   /**
-   * Set the OWL restriction of this taxonomic unit.
+   * Return the accordingTo information (if any).
    */
-  set owlRestrictions(owlRestrictions) {
-    this.tunit['@type'] = owlRestrictions;
+  get accordingTo() {
+    // Only taxon concepts have accordingTo information.
+    if (this.type !== TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT) return undefined;
+
+    // For now, we return this verbatim. Once we close #15, we should wrap this
+    // with a CitationWrapper.
+
+    // Do we have any accordingTo information?
+    if (has(this.tunit, 'accordingTo')) return this.type.accordingTo;
+
+    // Do we have an accordingToString?
+    if (has(this.tunit, 'accordingToString')) return this.type.accordingToString;
+
+    // If not, we have no accodingTo information!
+    return undefined;
   }
 
   /**
-   * Return the list of OWL restrictions for a particular property.
+   * Return the specimen in this taxonomic unit (if any).
    */
-  getOwlRestrictionsForProperty(prop) {
-    if (!this.owlRestrictions) return [];
-    return this.owlRestrictions.filter(restriction => (restriction.onProperty === prop));
-  }
+  get specimen() {
+    // Only specimens have scientific names.
+    if (this.type !== TaxonomicUnitWrapper.TYPE_SPECIMEN) return undefined;
 
-  /**
-   * Return the list of scientific names in this taxonomic unit.
-   */
-  get scientificNames() {
-    return this.getOwlRestrictionsForProperty(owlterms.TU_HAS_NAME_PROP)
-      .filter(restriction => has(restriction, 'someValuesFrom'))
-      .map((restriction) => {
-        if (isArray(restriction.someValuesFrom)) return restriction.someValuesFrom;
-        return [restriction.someValuesFrom];
-      });
-  }
+    // Look for an occurrenceID.
+    if (has(this.tunit, 'occurrenceID')) return this.tunit.occurrenceID;
 
-  /**
-   * Return the list of organism IDs in this taxonomic unit.
-   */
-  get specimens() {
-    return this.getOwlRestrictionsForProperty(owlterms.TU_ORGANISM_ID_PROP);
+    // No specimen in this taxonomic unit!
+    return undefined;
   }
 
   /**
    * Return the list of external references for this taxonomic unit.
+   * This is just all the '@ids' of this object.
    */
   get externalReferences() {
+    if (!has(this.tunit, '@id')) return [];
     if (isArray(this.tunit['@id'])) return this.tunit['@id'];
     return [this.tunit['@id']];
   }
@@ -99,7 +137,7 @@ class TaxonomicUnitWrapper {
   get label() {
     const labels = [];
 
-    // A label or description for the TU?
+    // A label or description for this TU?
     if (has(this.tunit, 'label')) return this.tunit.label;
     if (has(this.tunit, 'description')) return this.tunit.description;
 
@@ -121,7 +159,7 @@ class TaxonomicUnitWrapper {
     const scientificNames = this.scientificNames;
     if (scientificNames.length > 0) {
       scientificNames.forEach((scname) => {
-        labels.push(new ScientificNameWrapper(scname).label);
+        labels.push(new TaxonNameWrapper(scname).label);
       });
     }
 
@@ -143,27 +181,45 @@ class TaxonomicUnitWrapper {
       return PhyxCacheManager.get('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel);
     }
 
-    // Check if the label starts with a binomial name.
-    let tunits = [];
-    const results = /^([A-Z][a-z]+)[ _]([a-z-]+)(?:\b|_)\s*(.*)/.exec(nodeLabel);
-    if (results !== null) {
-      tunits = [{
-        scientificNames: [{
-          scientificName: `${results[1]} ${results[2]} ${results[3]}`.trim(),
-          binomialName: `${results[1]} ${results[2]}`,
-          genus: results[1],
-          specificEpithet: results[2],
-        }],
-      }];
-    } else {
-      // It may be a scientific name, but we don't know how to parse it as such.
-      tunits = [];
+    // Taxonomic units found in label.
+    const tunits = [];
+
+    // Can we parse the name into a scientific name?
+    const scientificName = TaxonNameWrapper.createFromVerbatimName(nodeLabel);
+    if (scientificName !== undefined) {
+      tunits.push(scientificName);
     }
 
     // Record in the cache
     PhyxCacheManager.put('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel, tunits);
 
     return tunits;
+  }
+
+  asJSONLD() {
+    const jsonld = cloneDeep(this.tunit);
+
+    if (has(this.tunit, '@type')) {
+      if (isArray(this.tunit['@type'])) this.tunit['@type'].push(owlterms.CDAO_TU);
+    }
+
+    if (this.type === TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT) {
+      const wrappedTaxonName = new TaxonNameWrapper(this.taxonName);
+
+      jsonld.equivalentClass = {
+        '@type': 'owl:Restriction',
+        onProperty: 'hasName',
+        someValuesFrom: wrappedTaxonName.asJSONLD(),
+      };
+    } else if (this.type === TaxonomicUnitWrapper.TYPE_SPECIMEN) {
+      const wrappedSpecimen = new SpecimenWrapper(this.specimen);
+
+      jsonld.equivalentClass = wrappedSpecimen.asJSONLD();
+    } else {
+      // Nothing we can do, so just ignore it.
+    }
+
+    return jsonld;
   }
 }
 

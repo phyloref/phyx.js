@@ -24,7 +24,7 @@
 const { PhyxCacheManager } = require('./utils/PhyxCacheManager');
 
 /** A ScientificNameWrapper for wrapping scientific names. */
-const { ScientificNameWrapper } = require('./wrappers/ScientificNameWrapper');
+const { TaxonNameWrapper } = require('./wrappers/TaxonNameWrapper');
 
 /** A SpecimenWrapper for wrapping specimens. */
 const { SpecimenWrapper } = require('./wrappers/SpecimenWrapper');
@@ -46,7 +46,7 @@ const { PhyxWrapper } = require('./wrappers/PhyxWrapper');
 
 /* Exports */
 module.exports = {
-  ScientificNameWrapper,
+  TaxonNameWrapper,
   SpecimenWrapper,
   TaxonomicUnitWrapper,
   TaxonomicUnitMatcher,
