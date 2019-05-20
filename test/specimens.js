@@ -19,7 +19,7 @@ describe('SpecimenWrapper', function () {
       const wrapped = new phyx.SpecimenWrapper({});
 
       expect(wrapped).to.be.an.instanceOf(phyx.SpecimenWrapper);
-      expect(wrapped.occurrenceID).to.equal('urn:catalog:::');
+      expect(wrapped.occurrenceID).to.be.undefined;
     });
     it('should be able to extract an occurenceID and catalogNumber from simple specimen IDs', function () {
       const wrapper = new phyx.SpecimenWrapper({

@@ -28,8 +28,9 @@ describe('TaxonomicUnitWrapper', function () {
   describe('#label given a taxonomic unit', function () {
     it('should return a wrapped scientific name', function () {
       const wrapper = new phyx.TaxonomicUnitWrapper({
-        scientificNames: [{
-          scientificName: 'Ornithorhynchus anatinus (Shaw, 1799)',
+        hasName: [{
+          label: 'Ornithorhynchus anatinus (Shaw, 1799)',
+          nameComplete: 'Ornithorhynchus anatinus',
         }],
       });
       expect(wrapper.label).to.equal('Ornithorhynchus anatinus (Shaw, 1799)');
@@ -90,16 +91,16 @@ describe('TaxonomicUnitWrapper', function () {
         .to.equal('Specimen urn:catalog:MVZ::225749 or <http://arctos.database.museum/guid/MVZ:Herp:225749> or Rana luteiventris');
     });
   });
-  describe('#getTaxonomicUnitsFromNodeLabel', function () {
+  describe('#fromLabel', function () {
     it('should return empty lists when inputs are empty or undefined', function () {
-      expect(phyx.TaxonomicUnitWrapper.getTaxonomicUnitsFromNodeLabel()).to.be.empty;
-      expect(phyx.TaxonomicUnitWrapper.getTaxonomicUnitsFromNodeLabel(undefined)).to.be.empty;
-      expect(phyx.TaxonomicUnitWrapper.getTaxonomicUnitsFromNodeLabel(null)).to.be.empty;
-      expect(phyx.TaxonomicUnitWrapper.getTaxonomicUnitsFromNodeLabel('')).to.be.empty;
-      expect(phyx.TaxonomicUnitWrapper.getTaxonomicUnitsFromNodeLabel('    ')).to.be.empty;
+      expect(phyx.TaxonomicUnitWrapper.fromLabel()).to.be.empty;
+      expect(phyx.TaxonomicUnitWrapper.fromLabel(undefined)).to.be.empty;
+      expect(phyx.TaxonomicUnitWrapper.fromLabel(null)).to.be.empty;
+      expect(phyx.TaxonomicUnitWrapper.fromLabel('')).to.be.empty;
+      expect(phyx.TaxonomicUnitWrapper.fromLabel('    ')).to.be.empty;
     });
     it('when given a scientific name, it should return a list of a single TU wrapping a scientific name', function () {
-      expect(phyx.TaxonomicUnitWrapper.getTaxonomicUnitsFromNodeLabel('Rana luteiventris MVZ225749'))
+      expect(phyx.TaxonomicUnitWrapper.fromLabel('Rana luteiventris MVZ225749'))
         .to.be.deep.equal([{
           '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
           nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
@@ -110,7 +111,7 @@ describe('TaxonomicUnitWrapper', function () {
         }]);
     });
     it('when given a scientific name separated with underscores, it should return a list of a single TU wrapping the scientific name', function () {
-      expect(phyx.TaxonomicUnitWrapper.getTaxonomicUnitsFromNodeLabel('Rana_luteiventris_MVZ_225749'))
+      expect(phyx.TaxonomicUnitWrapper.fromLabel('Rana_luteiventris_MVZ_225749'))
         .to.be.deep.equal([{
           '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
           label: 'Rana_luteiventris_MVZ_225749',

@@ -19,7 +19,7 @@ describe('TaxonNameWrapper', function () {
       expect(wrapper).to.be.an.instanceOf(phyx.TaxonNameWrapper);
       expect(wrapper.nameComplete).to.be.undefined;
     });
-    it('should be able to parse uninomial names as genus names without a specific epithet', function () {
+    it('should be able to parse uninomial names as such', function () {
       const wrapper = new phyx.TaxonNameWrapper({
         nameComplete: 'Mus',
       });
