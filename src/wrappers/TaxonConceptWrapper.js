@@ -20,13 +20,6 @@ const { TaxonNameWrapper } = require('./TaxonNameWrapper');
  *      (i.e. as a nominal taxon concept, as in https://github.com/darwin-sw/dsw/wiki/ClassTaxon).
  *    - MAY have nameString and accordingToString properties. We will fall back
  *      to these properties if hasName or accordingTo are missing.
- *
- * Taxonomic units may be specified with only an '@id' or a set of '@id's, which
- * indicate external references. We will add extra types for TYPE_APOMORPHY and
- * TYPE_PHYLOREF when needed.
- *
- * TODO: We need to develop a syntax for representing apomorphies and referencing
- * phyloreferences.
  */
 
 class TaxonConceptWrapper {
