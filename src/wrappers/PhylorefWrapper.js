@@ -1,6 +1,6 @@
 /** Used to parse timestamps for phyloref statuses. */
 const moment = require('moment');
-const { has } = require('lodash');
+const { has, cloneDeep } = require('lodash');
 
 const owlterms = require('../utils/owlterms');
 const { TaxonomicUnitWrapper } = require('./TaxonomicUnitWrapper');
@@ -310,284 +310,400 @@ class PhylorefWrapper {
     });
   }
 
+  /**
+   * Create an additional class for the set of internal and external specifiers provided.
+   * We turn this into a label (in the form `A & B ~ C V D`), which we use to ensure that
+   * we don't create more than one class for a particular set of internal and external
+   * specifiers.
+   * - jsonld: The JSON-LD representation of the Phyloreference this is an additional class
+   *   for. We mainly use this to retrieve its '@id'.
+   * - internalSpecifiers: The set of internal specifiers for this additional class.
+   * - externalSpecifiers: The set of external specifiers for this additional class.
+   * - equivClassFunc: The equivalent class expression for this additional class as a function
+   *   that returns the expression as a string.
+   */
+  static createAdditionalClass(jsonld, internalSpecifiers, externalSpecifiers, equivClass) {
+    if (internalSpecifiers.length === 0) throw new Error('Cannot create additional class without any internal specifiers');
+    if (internalSpecifiers.length === 1 && externalSpecifiers.length === 0) throw new Error('Cannot create additional class with a single internal specifiers and no external specifiers');
+
+    /* Generate a label that represents this additional class. */
+
+    // Start with the internal specifiers, concatenated with '&'.
+    const internalSpecifierLabel = internalSpecifiers
+      .map(i => new TaxonomicUnitWrapper(i).label || '(error)')
+      .sort()
+      .join(' & ');
+    let additionalClassLabel = `(${internalSpecifierLabel}`;
+
+    if (externalSpecifiers.length === 0) {
+      additionalClassLabel += ')';
+    } else {
+      // Add the external specifiers, concatenated with 'V'.
+      const externalSpecifierLabel = externalSpecifiers
+        .map(i => new TaxonomicUnitWrapper(i).label || '(error)')
+        .sort()
+        .join(' V ');
+      additionalClassLabel += ` ~ ${externalSpecifierLabel})`;
+    }
+
+    process.stderr.write(`Additional class label: ${additionalClassLabel}\n`);
+
+    // TODO We need to replace this with an actual object-based comparison,
+    // rather than trusting the labels to tell us everything.
+    if (has(PhylorefWrapper.additionalClassesByLabel, additionalClassLabel)) {
+      // If we see the same label again, return the previously defined additional class.
+      return { '@id': PhylorefWrapper.additionalClassesByLabel[additionalClassLabel]['@id'] };
+    }
+
+    // Create a new additional class for this set of internal and external specifiers.
+    PhylorefWrapper.additionalClassCount += 1;
+    const additionalClass = {};
+    additionalClass['@id'] = `${jsonld['@id']}_additional${PhylorefWrapper.additionalClassCount}`;
+    // process.stderr.write(`Creating new additionalClass with id: ${additionalClass['@id']}`);
+
+    additionalClass['@type'] = 'owl:Class';
+    additionalClass.subClassOf = (
+      externalSpecifiers.length > 0 ? 'phyloref:PhyloreferenceUsingMinimumClade' : 'phyloref:PhyloreferenceUsingMaximumClade'
+    );
+    additionalClass.equivalentClass = equivClass;
+    additionalClass.label = additionalClassLabel;
+    jsonld.hasAdditionalClass.push(additionalClass);
+
+    PhylorefWrapper.additionalClassesByLabel[additionalClassLabel] = additionalClass;
+
+    return { '@id': additionalClass['@id'] };
+  }
+
+  static getIncludesRestrictionForTU(tu) {
+    return {
+      '@type': 'owl:Restriction',
+      onProperty: 'phyloref:includes_TU',
+      someValuesFrom: new TaxonomicUnitWrapper(tu).asEquivClass(),
+    };
+  }
+
+  /**
+   * Return an OWL restriction for the most recent common ancestor (MRCA)
+   * of two taxonomic units.
+   */
+  static getMRCARestrictionOfTwoTUs(tu1, tu2) {
+    return {
+      '@type': 'owl:Restriction',
+      onProperty: 'obo:CDAO_0000149', // cdao:has_Child
+      someValuesFrom: {
+        '@type': 'owl:Class',
+        intersectionOf: [
+          {
+            '@type': 'owl:Restriction',
+            onProperty: 'phyloref:excludes_TU',
+            someValuesFrom: new TaxonomicUnitWrapper(tu1).asEquivClass(),
+          },
+          PhylorefWrapper.getIncludesRestrictionForTU(tu2),
+        ],
+      },
+    };
+  }
+
+  /*
+   * Create an OWL restriction for a phyloreference made up entirely of internal
+   * specifiers.
+   *  - jsonld: the JSON-LD representation of this phyloreference in model 1.0.
+   *    We mainly use this to access the '@id' and internal and external specifiers.
+   *  - remainingInternals: all internal specifiers that have not yet been selected.
+   *  - selected: internal specifiers have been seen selected. This should initially
+   *    be [], and will be filled in when this method calls itself recursively.
+   *
+   * This method works like this:
+   *  1. We have several special cases: we fail if 0 or 1 specifiers are
+   *     provided, and we have a special representation for 2 specifiers.
+   *  2. Create an expression for the currently selected specifiers. This expression
+   *     is in the form:
+   *       has_Child some (
+   *        excludes_lineage_to some [remaining specifiers]
+   *        and [selected specifiers]
+   *       )
+   *     We generate the expressions for remaining specifiers and selected specifiers by calling
+   *     this method recursively.
+   *  3. Finally, we select another internal from the remainingInternals and generate an
+   *     expression for that selection by calling this method recursively. Note that we
+   *     only process cases where there are more remainingInternals than selected
+   *     internals -- when there are fewer, we'll just end up with the inverses of the
+   *     previous comparisons, which we'll already have covered.
+   */
+  static createClassExpressionsForInternals(jsonld, remainingInternals, selected) {
+    // process.stderr.write(`@id [${jsonld['@id']}] Remaining internals:
+    // ${remainingInternals.length}, selected: ${selected.length}\n`);
+
+    // Quick special case: if we have two 'remainingInternals' and zero selecteds,
+    // we can just return the MRCA for two internal specifiers.
+    if (selected.length === 0) {
+      if (remainingInternals.length === 2) {
+        return [
+          PhylorefWrapper.getMRCARestrictionOfTwoTUs(remainingInternals[0], remainingInternals[1]),
+        ];
+      } if (remainingInternals.length === 1) {
+        throw new Error('Cannot determine class expression for a single specifier');
+      } else if (remainingInternals.length === 0) {
+        throw new Error('Cannot determine class expression for zero specifiers');
+      }
+    }
+
+    // Step 1. If we've already selected something, create an expression for it.
+    const classExprs = [];
+    if (selected.length > 0) {
+      let remainingInternalsExpr = [];
+      if (remainingInternals.length === 1) {
+        remainingInternalsExpr = PhylorefWrapper.getIncludesRestrictionForTU(remainingInternals[0]);
+      } else if (remainingInternals.length === 2) {
+        remainingInternalsExpr = PhylorefWrapper.getMRCARestrictionOfTwoTUs(
+          remainingInternals[0],
+          remainingInternals[1]
+        );
+      } else {
+        remainingInternalsExpr = PhylorefWrapper.createAdditionalClass(
+          jsonld,
+          remainingInternals,
+          [],
+          PhylorefWrapper.createClassExpressionsForInternals(jsonld, remainingInternals, [])
+        );
+      }
+
+      let selectedExpr = [];
+      if (selected.length === 1) {
+        selectedExpr = PhylorefWrapper.getIncludesRestrictionForTU(selected[0]);
+      } else if (selected.length === 2) {
+        selectedExpr = PhylorefWrapper.getMRCARestrictionOfTwoTUs(selected[0], selected[1]);
+      } else {
+        selectedExpr = PhylorefWrapper.createAdditionalClass(
+          jsonld,
+          selected,
+          [],
+          PhylorefWrapper.createClassExpressionsForInternals(jsonld, selected, [])
+        );
+      }
+
+      classExprs.push({
+        '@type': 'owl:Restriction',
+        onProperty: 'obo:CDAO_0000149', // cdao:has_Child
+        someValuesFrom: {
+          '@type': 'owl:Class',
+          intersectionOf: [{
+            '@type': 'owl:Restriction',
+            onProperty: 'phyloref:excludes_lineage_to',
+            someValuesFrom: remainingInternalsExpr,
+          }, selectedExpr],
+        },
+      });
+    }
+
+    // Step 2. Now select everything from remaining once, and start recursing through
+    // every possibility.
+    // Note that we only process cases where there are more remainingInternals than
+    // selected internals -- when there are fewer, we'll just end up with the inverses
+    // of the previous comparisons, which we'll already have covered.
+    if (remainingInternals.length > 1 && selected.length <= remainingInternals.length) {
+      remainingInternals.map(newlySelected => PhylorefWrapper.createClassExpressionsForInternals(
+        jsonld,
+        // The new remaining is the old remaining minus the selected TU.
+        remainingInternals.filter(i => i !== newlySelected),
+        // The new selected is the old selected plus the selected TU.
+        selected.concat([newlySelected])
+      ))
+        .reduce((acc, val) => acc.concat(val), [])
+        .forEach(expr => classExprs.push(expr));
+    }
+
+    return classExprs;
+  }
+
+
+  /*
+   * Given an expression that evaluates to an included node and a taxonomic unit,
+   * return an expression for including it and excluding the TU. Note that this
+   * always returns an array.
+   *
+   * When the included expression includes a single taxonomic unit (i.e. is in the
+   * form `includes_TU some [TU]`), then the simple form is adequate. However, when
+   * it's a more complex expression, it's possible that the excluded TU isn't just
+   * sister to this clade but outside of it entirely. In that case, we add another
+   * class expression:
+   *  [includesExpr] and (has_Ancestor some (excludes_TU some [TU]))
+   */
+  static getClassExpressionsForExprAndTU(includedExpr, tu) {
+    if (!includedExpr) throw new Error('Exclusions require an included expression');
+
+    const exprs = [{
+      '@type': 'owl:Class',
+      intersectionOf: [
+        includedExpr,
+        {
+          '@type': 'owl:Restriction',
+          onProperty: 'phyloref:excludes_TU',
+          someValuesFrom: new TaxonomicUnitWrapper(tu).asEquivClass(),
+        },
+      ],
+    }];
+
+    if (!Array.isArray(includedExpr) && has(includedExpr, 'onProperty') && includedExpr.onProperty === 'phyloref:includes_TU') {
+      // In this specific set of circumstances, we do NOT need to add the has_Ancestor check.
+    } else {
+      // Add the has_Ancestor check!
+      exprs.push({
+        '@type': 'owl:Class',
+        intersectionOf: [
+          includedExpr,
+          {
+            '@type': 'owl:Restriction',
+            onProperty: 'obo:CDAO_0000144', // has_Ancestor
+            someValuesFrom: {
+              '@type': 'owl:Restriction',
+              onProperty: 'phyloref:excludes_TU',
+              someValuesFrom: new TaxonomicUnitWrapper(tu).asEquivClass(),
+            },
+          },
+        ],
+      });
+    }
+
+    return exprs;
+  }
+
+
+  /*
+   * Returns a list of class expressions for a phyloreference that has an expression
+   * for the MRCA of its internal specifiers, but also has one or more external specifiers.
+   *  - jsonld: The JSON-LD form of the Phyloreference from Model 1.0. Mainly used
+   *    for retrieving the '@id' and the specifiers.
+   *  - accumulatedExpr: Initially, an expression that evaluates to the MRCA of all
+   *    internal specifiers, calculated using createClassExpressionsForInternals().
+   *    When we call this method recusively, this expression will incorporate
+   *    representations of external references.
+   *  - remainingExternals: External specifiers that are yet to be incorporated into the
+   *    expressions we are building.
+   *  - selected: External specifiers that have already been selected.
+   *
+   * Our overall algorithm here is:
+   *  1. If we need to add a single remaining external to the accumulated expression,
+   *     we can do that by adding an `excludes_TU` to the expression (and possibly a
+   *     `has_Ancestor` check, see getClassExpressionsForExprAndTU()).
+   *  2. If we need to add more than one remaining external, we select each external
+   *     specifier one at a time. We add the selected specifier to the accumulated
+   *     expression using getClassExpressionsForExprAndTU(), and then call ourselves
+   *     recursively to add the remaining specifiers.
+   *
+   * The goal here is to create expressions for every possible sequence of external
+   * specifiers, so we can account for cases where some external specifiers are closer
+   * to the initial internal-specifier-only expression than others.
+   */
+  static createClassExpressionsForExternals(jsonld, accumulatedExpr, remainingExternals, selected) {
+    // process.stderr.write(`@id [${jsonld['@id']}] Remaining externals:
+    // ${remainingExternals.length}, selected: ${selected.length}\n`);
+
+    // Step 1. If we only have one external remaining, we can provide our two-case example
+    // to detect it.
+    const classExprs = [];
+    if (remainingExternals.length === 0) {
+      throw new Error('Cannot create class expression when no externals remain');
+    } else if (remainingExternals.length === 1) {
+      const remainingExternalsExprs = PhylorefWrapper.getClassExpressionsForExprAndTU(
+        accumulatedExpr,
+        remainingExternals[0],
+        selected.length > 0
+      );
+      remainingExternalsExprs.forEach(expr => classExprs.push(expr));
+    } else { // if(remainingExternals.length > 1)
+      // Recurse into remaining externals. Every time we select a single entry,
+      // we create a class expression for that.
+      remainingExternals.map((newlySelected) => {
+        // process.stderr.write(`Selecting new object, remaining now at:
+        // ${remainingExternals.filter(i => i !== newlySelected).length},
+        // selected: ${selected.concat([newlySelected]).length}\n`);
+
+        // Create a new additional class for the accumulated expression plus the
+        // newly selected external specifier.
+        const newlyAccumulatedExpr = PhylorefWrapper.createAdditionalClass(
+          jsonld,
+          jsonld.internalSpecifiers,
+          selected.concat([newlySelected]),
+          PhylorefWrapper.getClassExpressionsForExprAndTU(
+            accumulatedExpr, newlySelected, selected.length > 0
+          )
+        );
+
+        // Call ourselves recursively to add the remaining externals.
+        return PhylorefWrapper.createClassExpressionsForExternals(
+          jsonld,
+          newlyAccumulatedExpr,
+          // The new remaining is the old remaining minus the selected TU.
+          remainingExternals.filter(i => i !== newlySelected),
+          // The new selected is the old selected plus the selected TU.
+          selected.concat([newlySelected])
+        );
+      })
+        .reduce((acc, val) => acc.concat(val), [])
+        .forEach(expr => classExprs.push(expr));
+    }
+
+    return classExprs;
+  }
+
   asJSONLD(phylorefURI) {
     // Export this phyloreference in JSON-LD.
 
     // Keep all currently extant data.
     // - baseURI: the base URI for this phyloreference
-    const phylorefAsJSONLD = JSON.parse(JSON.stringify(this.phyloref));
+    const phylorefAsJSONLD = cloneDeep(this.phyloref);
 
     // Set the @id and @type.
     phylorefAsJSONLD['@id'] = phylorefURI;
+    phylorefAsJSONLD['@type'] = 'owl:Class';
 
-    phylorefAsJSONLD['@type'] = [
-      // We pun this as an instance that is a Phyloreference.
-      // (We need this to ensure that the object properties that store
-      // information on specifiers will work correctly)
-      'phyloref:Phyloreference',
-      // Since we're writing this in RDF, just adding a '@type' of
-      // phyloref:Phyloreference would imply that phylorefURI is a named
-      // individual of class phyloref:Phyloreference. We need to explicitly
-      // let OWL know that this phylorefURI is an owl:Class.
-      //
-      // (This is implied by some of the properties that we apply to phylorefURI,
-      // such as by the domain of owl:equivalentClass. But it's nice to make that
-      // explicit as well!)
-      'owl:Class',
-    ];
+    // All phyloreferences are subclasses of phyloref:Phyloreference.
+    phylorefAsJSONLD.subClassOf = 'phyloref:Phyloreference';
 
-    // Add identifiers for each internal specifier.
-    let internalSpecifierCount = 0;
-    phylorefAsJSONLD.internalSpecifiers.forEach((internalSpecifierToChange) => {
-      internalSpecifierCount += 1;
+    // Construct an equivalentClass expression for this phyloreference.
+    const internalSpecifiers = this.phyloref.internalSpecifiers || [];
+    const externalSpecifiers = this.phyloref.externalSpecifiers || [];
 
-      const internalSpecifier = internalSpecifierToChange;
-      const specifierId = `${phylorefURI}_specifier_internal${internalSpecifierCount}`;
-
-      internalSpecifier['@id'] = specifierId;
-      internalSpecifier['@type'] = [
-        owlterms.TESTCASE_SPECIFIER,
-      ];
-
-      // Add identifiers to all taxonomic units.
-      let countTaxonomicUnits = 0;
-      if (has(internalSpecifier, 'referencesTaxonomicUnits')) {
-        internalSpecifier.referencesTaxonomicUnits.forEach((tunitToChange) => {
-          const tunit = tunitToChange;
-
-          tunit['@id'] = `${specifierId}_tunit${countTaxonomicUnits}`;
-          tunit['@type'] = 'http://purl.obolibrary.org/obo/CDAO_0000138';
-          countTaxonomicUnits += 1;
-        });
-      }
-    });
-
-    // Add identifiers for each external specifier.
-    let externalSpecifierCount = 0;
-    phylorefAsJSONLD.externalSpecifiers.forEach((externalSpecifierToChange) => {
-      externalSpecifierCount += 1;
-
-      const externalSpecifier = externalSpecifierToChange;
-      const specifierId = `${phylorefURI}_specifier_external${externalSpecifierCount}`;
-
-      externalSpecifier['@id'] = specifierId;
-      externalSpecifier['@type'] = [
-        owlterms.TESTCASE_SPECIFIER,
-      ];
-
-      // Add identifiers to all taxonomic units.
-      let countTaxonomicUnits = 0;
-      if (has(externalSpecifier, 'referencesTaxonomicUnits')) {
-        externalSpecifier.referencesTaxonomicUnits.forEach((tunitToChange) => {
-          const tunit = tunitToChange;
-
-          tunit['@id'] = `${specifierId}_tunit${countTaxonomicUnits}`;
-          tunit['@type'] = 'http://purl.obolibrary.org/obo/CDAO_0000138';
-          countTaxonomicUnits += 1;
-        });
-      }
-    });
-
-    // For historical reasons, the Clade Ontology uses 'hasInternalSpecifier' to
-    // store the specifiers as OWL classes and 'internalSpecifiers' to store them
-    // as RDF annotations. We simplify that here by duplicating them here, but
-    // this should really be fixed in the Clade Ontology and in phyx.json.
-    phylorefAsJSONLD.hasInternalSpecifier = phylorefAsJSONLD.internalSpecifiers;
-    phylorefAsJSONLD.hasExternalSpecifier = phylorefAsJSONLD.externalSpecifiers;
-
-    if (internalSpecifierCount === 0 && externalSpecifierCount === 0) {
-      phylorefAsJSONLD.malformedPhyloreference = 'No specifiers provided';
-    } else if (externalSpecifierCount > 1) {
-      phylorefAsJSONLD.malformedPhyloreference = 'Multiple external specifiers are not yet supported';
-    } else if (internalSpecifierCount === 1 && externalSpecifierCount === 0) {
-      phylorefAsJSONLD.malformedPhyloreference = 'Only a single internal specifier was provided';
-    } else if (externalSpecifierCount === 0) {
-      // This phyloreference is made up entirely of internal specifiers.
-
-      // We can write this in an accumulative manner by creating class expressions
-      // in the form:
-      //  mrca(mrca(mrca(node1, node2), node3), node4)
-
-      // We could write this as a single giant expression, but this tends to
-      // slow down the reasoner dramatically. So instead, we break it up into a
-      // series of "additional classes", each of which represents a part of the
-      // overall expression.
-      phylorefAsJSONLD.hasAdditionalClass = [];
-
-      let equivalentClassAccumulator = PhylorefWrapper.getClassExpressionForMRCA(
-        phylorefURI,
-        phylorefAsJSONLD.hasAdditionalClass,
-        phylorefAsJSONLD.internalSpecifiers[0],
-        phylorefAsJSONLD.internalSpecifiers[1]
-      );
-
-      for (let index = 2; index < internalSpecifierCount; index += 1) {
-        equivalentClassAccumulator = PhylorefWrapper.getClassExpressionForMRCA(
-          phylorefURI,
-          phylorefAsJSONLD.hasAdditionalClass,
-          equivalentClassAccumulator,
-          phylorefAsJSONLD.internalSpecifiers[index]
+    // We might need to make additional JSON-LD.
+    phylorefAsJSONLD.hasAdditionalClass = [];
+    if (internalSpecifiers.length === 0) {
+      // We can't handle phyloreferences without at least one internal specifier.
+      phylorefAsJSONLD.malformedPhyloreference = 'No internal specifiers provided';
+    } else {
+      // Step 1. Construct an expression for all internal specifiers.
+      let expressionsForInternals;
+      if (internalSpecifiers.length === 1) {
+        expressionsForInternals = [
+          PhylorefWrapper.getIncludesRestrictionForTU(internalSpecifiers[0]),
+        ];
+      } else {
+        expressionsForInternals = PhylorefWrapper.createClassExpressionsForInternals(
+          phylorefAsJSONLD, internalSpecifiers, []
         );
       }
 
-      phylorefAsJSONLD.equivalentClass = equivalentClassAccumulator;
-    } else {
-      // This phyloreference is made up of one external specifier and some number
-      // of internal specifiers.
-
-      const internalSpecifierRestrictions = phylorefAsJSONLD.internalSpecifiers
-        .map(specifier => PhylorefWrapper
-          .wrapInternalOWLRestriction(PhylorefWrapper.getOWLRestrictionForSpecifier(specifier)));
-
-      const externalSpecifierRestrictions = phylorefAsJSONLD.externalSpecifiers
-        .map(specifier => PhylorefWrapper
-          .wrapExternalOWLRestriction(PhylorefWrapper.getOWLRestrictionForSpecifier(specifier)));
-
-      phylorefAsJSONLD.equivalentClass = {
-        '@type': 'owl:Class',
-        intersectionOf: internalSpecifierRestrictions.concat(externalSpecifierRestrictions),
-      };
+      if (externalSpecifiers.length === 0) {
+        // If we don't have external specifiers, we can just use the expression
+        // for the internal specifier.
+        phylorefAsJSONLD.equivalentClass = expressionsForInternals;
+      } else {
+        // Step 2. Create alternate class expressions for external specifiers.
+        phylorefAsJSONLD.equivalentClass = expressionsForInternals.map(
+          exprForInternal => PhylorefWrapper.createClassExpressionsForExternals(
+            phylorefAsJSONLD, exprForInternal, externalSpecifiers, []
+          )
+        ).reduce((acc, val) => acc.concat(val), []);
+      }
     }
 
     return phylorefAsJSONLD;
   }
-
-  static getOWLRestrictionForSpecifier(specifier) {
-    // Return an OWL restriction corresponding to a specifier.
-    return {
-      '@type': 'owl:Restriction',
-      onProperty: 'testcase:matches_specifier',
-      hasValue: {
-        '@id': specifier['@id'],
-      },
-    };
-  }
-
-  static wrapInternalOWLRestriction(restriction) {
-    // Wraps a restriction to act as an internal specifier.
-    // Mainly, we just need to extend the restriction to match:
-    //  restriction or cdao:has_Descendant some restriction
-    return {
-      '@type': 'owl:Restriction',
-      unionOf: [
-        restriction,
-        {
-          '@type': 'owl:Restriction',
-          onProperty: owlterms.CDAO_HAS_DESCENDANT,
-          someValuesFrom: restriction,
-        },
-      ],
-    };
-  }
-
-  static wrapExternalOWLRestriction(restriction) {
-    // Wraps a restriction to act as an external specifier.
-    // This needs to match:
-    //  cdao:has_Sibling some (restriction or cdao:has_Descendant some restriction)
-    // Since that second part is just an internal specifier restriction, we can
-    // incorporate that in here.
-    return {
-      '@type': 'owl:Restriction',
-      // onProperty: PHYLOREF_HAS_SIBLING,
-      onProperty: owlterms.PHYLOREF_EXCLUDES_LINEAGE_TO,
-      someValuesFrom: restriction,
-    };
-  }
-
-  static getClassExpressionForMRCA(baseURI, additionalClasses, specifier1, specifier2) {
-    // Create an OWL restriction for the most recent common ancestor (MRCA)
-    // of the nodes matched by two specifiers.
-    const additionalClassesIds = new Set(additionalClasses.map(cl => cl['@id']));
-
-    // Specifiers might be either a real specifier or an additional class.
-    // We can check their @ids here and translate specifiers into class expressions.
-    let owlRestriction1;
-    if (additionalClassesIds.has(specifier1['@id'])) {
-      owlRestriction1 = specifier1;
-    } else {
-      owlRestriction1 = PhylorefWrapper.getOWLRestrictionForSpecifier(specifier1);
-    }
-
-    let owlRestriction2;
-    if (additionalClassesIds.has(specifier2['@id'])) {
-      owlRestriction2 = specifier2;
-    } else {
-      owlRestriction2 = PhylorefWrapper.getOWLRestrictionForSpecifier(specifier2);
-    }
-
-    // Construct OWL expression.
-    const mrcaAsOWL = {
-      '@type': 'owl:Class',
-      unionOf: [
-        {
-          // What if specifier2 is a descendant of specifier1? If so, the MRCA
-          // is specifier1!
-          '@type': 'owl:Class',
-          intersectionOf: [
-            owlRestriction1,
-            {
-              '@type': 'owl:Restriction',
-              onProperty: owlterms.CDAO_HAS_DESCENDANT,
-              someValuesFrom: owlRestriction2,
-            },
-          ],
-        },
-        {
-          // What if specifier1 is a descendant of specifier2? If so, the MRCA
-          // is specifier2!
-          '@type': 'owl:Class',
-          intersectionOf: [
-            owlRestriction2,
-            {
-              '@type': 'owl:Restriction',
-              onProperty: owlterms.CDAO_HAS_DESCENDANT,
-              someValuesFrom: owlRestriction1,
-            },
-          ],
-        },
-        {
-          // If neither specifier is a descendant of the other, we can use our
-          // standard formula.
-          '@type': 'owl:Class',
-          intersectionOf: [{
-            '@type': 'owl:Restriction',
-            onProperty: owlterms.CDAO_HAS_CHILD,
-            someValuesFrom: {
-              '@type': 'owl:Class',
-              intersectionOf: [
-                PhylorefWrapper.wrapInternalOWLRestriction(owlRestriction1),
-                PhylorefWrapper.wrapExternalOWLRestriction(owlRestriction2),
-              ],
-            },
-          }, {
-            '@type': 'owl:Restriction',
-            onProperty: owlterms.CDAO_HAS_CHILD,
-            someValuesFrom: {
-              '@type': 'owl:Class',
-              intersectionOf: [
-                PhylorefWrapper.wrapInternalOWLRestriction(owlRestriction2),
-                PhylorefWrapper.wrapExternalOWLRestriction(owlRestriction1),
-              ],
-            },
-          }],
-        },
-      ],
-    };
-
-    // Instead of building a single, large, complex expression, reasoners appear
-    // to prefer smaller expressions for classes that are assembled together.
-    // To help with that, we'll store the class expression in the additionalClasses
-    // list, and return a reference to this class.
-    const additionalClassId = `${baseURI}_additional${additionalClasses.length}`;
-    additionalClasses.push({
-      '@id': additionalClassId,
-      '@type': 'owl:Class',
-      equivalentClass: mrcaAsOWL,
-    });
-
-    return { '@id': additionalClassId };
-  }
 }
+
+/** Keep track of additional classes across all instances. */
+PhylorefWrapper.additionalClassCount = 0;
+PhylorefWrapper.additionalClassesByLabel = {};
 
 module.exports = {
   PhylorefWrapper,
