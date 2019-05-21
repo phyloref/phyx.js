@@ -55,14 +55,15 @@ class TaxonConceptWrapper {
   }
 
   /**
-   * Return the taxon name of this taxon concept (if any) as a string.
+   * Return the complete taxon name of this taxon concept (if any), which is the
+   * uninomial, binomial or trinomial name.
    */
-  get taxonNameAsString() {
+  get nameComplete() {
     // Do we have any names as taxon name objects?
-    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.type.hasName).label;
+    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName).nameComplete;
 
     // Do we have a nameString with a taxon name as string?
-    if (has(this.tunit, 'nameString')) return this.tunit.nameString;
+    if (has(this.tunit, 'nameString')) return TaxonNameWrapper.fromVerbatimName(this.tunit.nameString).nameComplete;
 
     // If not, we have no name!
     return undefined;
@@ -91,7 +92,7 @@ class TaxonConceptWrapper {
    * For now, we stringify objects by converting them into JSON strings. Once we
    * close #15, we will be able to generate a label using CitationWrapper.
    */
-  get accordingToAsString() {
+  get accordingToString() {
     // Do we have any accordingTo information?
     if (has(this.tunit, 'accordingTo')) return JSON.stringify(this.type.accordingTo);
 
@@ -106,13 +107,13 @@ class TaxonConceptWrapper {
    * Return the label of this taxon concept.
    */
   get label() {
-    if (this.taxonNameAsString) {
+    if (this.nameComplete) {
       // Do we also have accordingTo information?
-      if (this.accordingToAsString) {
-        return `${this.taxonNameAsString} sensu ${this.accordingToString}`;
+      if (this.accordingToString) {
+        return `${this.nameComplete} sensu ${this.accordingToString}`;
       }
 
-      return this.taxonNameAsString;
+      return this.nameComplete;
     }
 
     return undefined;
@@ -128,7 +129,7 @@ class TaxonConceptWrapper {
    * @return A taxonomic unit that corresponds to this taxon concept.
    */
   static fromLabel(nodeLabel) {
-    if (nodeLabel === undefined || nodeLabel === null) return undefined;
+    if (nodeLabel === undefined || nodeLabel === null || nodeLabel.trim() === '') return undefined;
 
     // Check if this label can be divided into a name and a sensu/sec component.
     const match = /^\s*(.*)\s+(?:sec|sensu)\.?\s+(.*)\s*$/.exec(nodeLabel);

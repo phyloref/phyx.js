@@ -1,5 +1,10 @@
 /** Utility functions. */
-const { has, isArray, cloneDeep } = require('lodash');
+const {
+  has,
+  isArray,
+  cloneDeep,
+  assign,
+} = require('lodash');
 
 /** List of OWL/RDF terms we use. */
 const owlterms = require('../utils/owlterms');
@@ -124,11 +129,13 @@ class TaxonomicUnitWrapper {
   }
 
   /**
-   * Given a node label, attempt to parse it as a scientific name.
-   * @return A taxonomic unit that this node label could be parsed as.
+   * Given a label, attempt to parse it into a taxonomic unit, whether a scientific
+   * name or a specimen identifier.
+   *
+   * @return A taxonomic unit that this label could be parsed as.
    */
-  static fromNodeLabel(nodeLabel) {
-    if (nodeLabel === undefined || nodeLabel === null) return undefined;
+  static fromLabel(nodeLabel) {
+    if (nodeLabel === undefined || nodeLabel === null || nodeLabel.trim() === '') return undefined;
 
     // Rather than figuring out with this label, check to see if we've parsed
     // this before.
@@ -137,37 +144,53 @@ class TaxonomicUnitWrapper {
     }
 
     // Look for taxon concept.
-    let tunit = TaxonConceptWrapper.fromLabel(nodeLabel);
+    const taxonConcept = TaxonConceptWrapper.fromLabel(nodeLabel);
 
-    // Look for specimen.
-    if (!tunit) {
-      if (nodeLabel.toLowerCase().startsWith('specimen ')) {
-        // Eliminate a 'Specimen ' prefix if it exists.
-        tunit = SpecimenWrapper.fromOccurrenceID(nodeLabel.substr(9));
-      } else {
-        // Try parsing it as a specimen without a prefix.
-        tunit = SpecimenWrapper.fromOccurrenceID(nodeLabel);
-      }
+    // Look for specimen information.
+    let specimen;
+    if (nodeLabel.toLowerCase().startsWith('specimen ')) {
+      // Eliminate a 'Specimen ' prefix if it exists.
+      specimen = SpecimenWrapper.fromOccurrenceID(nodeLabel.substr(9));
     }
 
-    // If it's neither a taxon concept nor a specimen, maybe it's an external reference?
-    if (!tunit) {
-      const URL_URN_PREFIXES = [
-        'http://',
-        'https://',
-        'ftp://',
-        'sftp://',
-        'file://',
-        'urn:',
-      ];
+    let tunit;
+    if (taxonConcept && specimen) {
+      // If we have both, MERGE THEM!
+      tunit = assign({}, taxonConcept, specimen);
 
-      if (URL_URN_PREFIXES.filter(prefix => nodeLabel.startsWith(prefix)).length > 0) {
-        // The node label starts with something that looks like a URL!
-        // Treat it as an external reference.
-        tunit = {
-          '@id': nodeLabel,
-        };
-      }
+      // Make the '@type' clear for both.
+      tunit['@type'] = [
+        TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+        TaxonomicUnitWrapper.TYPE_SPECIMEN,
+      ];
+    } else if (taxonConcept) {
+      tunit = taxonConcept;
+    } else if (specimen) {
+      tunit = specimen;
+    }
+
+    // Look for external references. For now, we only check to see if the entire
+    // nodeLabel starts with URL/URNs, but we should eventually just look for
+    // them inside the label.
+    const URL_URN_PREFIXES = [
+      'http://',
+      'https://',
+      'ftp://',
+      'sftp://',
+      'file://',
+      'urn:',
+    ];
+
+    if (URL_URN_PREFIXES.filter(prefix => nodeLabel.startsWith(prefix)).length > 0) {
+      // The node label starts with something that looks like a URL!
+      // Treat it as an external reference.
+      if (tunit === undefined) tunit = {};
+      tunit['@id'] = nodeLabel;
+    }
+
+    // Finally, let's record the label we parsed to get to this tunit!
+    if (tunit) {
+      tunit.label = nodeLabel;
     }
 
     // Record in the cache

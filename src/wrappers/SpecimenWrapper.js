@@ -41,6 +41,7 @@ class SpecimenWrapper {
 
     // Prepare the specimen.
     const specimen = {
+      '@type': SpecimenWrapper.TYPE_SPECIMEN,
       occurrenceID: occurID,
     };
 
