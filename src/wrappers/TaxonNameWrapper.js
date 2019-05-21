@@ -72,7 +72,7 @@ class TaxonNameWrapper {
       };
     } else {
       // Is it a uninomial name?
-      const checkUninomial = /^([A-Z][a-z]+)[_\s\b]/.exec(verbatimName);
+      const checkUninomial = /^([A-Z][a-z]+)(?:[_\s]|\b)/.exec(verbatimName);
       if (checkUninomial) {
         txname = {
           '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
@@ -167,7 +167,7 @@ class TaxonNameWrapper {
     // extract a specific epithet from it.
     if (this.nameComplete) {
       const txname = TaxonNameWrapper.fromVerbatimName(
-        this.txname.scientificName,
+        this.nameComplete,
         this.nomenclaturalCode
       );
       if (has(txname, 'specificEpithet')) return txname.specificEpithet;
