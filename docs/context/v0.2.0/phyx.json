@@ -48,6 +48,11 @@
             "@type": "@id"
         },
 
+        "parent": {
+            "@id": "obo:CDAO_0000179",
+            "type": "@id"
+        },
+
         "hasRootNode": {
             "@id": "testcase:has_root_node",
             "@type": "@id"
