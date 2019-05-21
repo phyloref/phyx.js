@@ -45,7 +45,7 @@ class TaxonConceptWrapper {
    */
   get taxonName() {
     // Do we have any names as taxon name objects?
-    if (has(this.tunit, 'hasName')) return this.type.hasName;
+    if (has(this.tunit, 'hasName')) return this.tunit.hasName;
 
     // Do we have a nameString with a taxon name as string?
     if (has(this.tunit, 'nameString')) return TaxonNameWrapper.fromVerbatimName(this.tunit.nameString);
@@ -107,13 +107,14 @@ class TaxonConceptWrapper {
    * Return the label of this taxon concept.
    */
   get label() {
-    if (this.nameComplete) {
+    // If we're wrapping a taxonName, use its label.
+    if (this.taxonName) {
       // Do we also have accordingTo information?
       if (this.accordingToString) {
-        return `${this.nameComplete} sensu ${this.accordingToString}`;
+        return `${new TaxonNameWrapper(this.taxonName).label} sensu ${this.accordingToString}`;
       }
 
-      return this.nameComplete;
+      return new TaxonNameWrapper(this.taxonName).label;
     }
 
     return undefined;

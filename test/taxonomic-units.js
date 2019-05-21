@@ -28,67 +28,53 @@ describe('TaxonomicUnitWrapper', function () {
   describe('#label given a taxonomic unit', function () {
     it('should return a wrapped scientific name', function () {
       const wrapper = new phyx.TaxonomicUnitWrapper({
-        hasName: [{
+        '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+        hasName: {
           label: 'Ornithorhynchus anatinus (Shaw, 1799)',
           nameComplete: 'Ornithorhynchus anatinus',
-        }],
+        },
       });
       expect(wrapper.label).to.equal('Ornithorhynchus anatinus (Shaw, 1799)');
     });
-    it('should return two wrapped scientific names separated by "or"', function () {
-      const wrapper = new phyx.TaxonomicUnitWrapper({
-        scientificNames: [{
-          scientificName: 'Ornithorhynchus anatinus (Shaw, 1799)',
-        }, {
-          scientificName: 'Ornithorhynchus paradoxus Blumenbach, 1800',
-        }],
-      });
-      expect(wrapper.label).to.equal('Ornithorhynchus anatinus (Shaw, 1799) or Ornithorhynchus paradoxus Blumenbach, 1800');
-    });
     it('should return a wrapped specimen identifier preceded by "Specimen"', function () {
       const wrapper = new phyx.TaxonomicUnitWrapper({
-        includesSpecimens: [{
-          institutionCode: 'MVZ',
-          catalogNumber: '225749',
-        }],
+        '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+        occurrenceID: 'MVZ 225749',
       });
-      expect(wrapper.label).to.equal('Specimen urn:catalog:MVZ::225749');
+      expect(wrapper.label).to.equal('Specimen MVZ 225749');
     });
-    it('should return specimen identifiers and scientific names concatenated with "or"', function () {
+    it('should return both the taxon name and the specimen identifier if both are available', function () {
       const wrapper = new phyx.TaxonomicUnitWrapper({
-        scientificNames: [{
-          scientificName: 'Rana luteiventris',
-        }],
-        includesSpecimens: [{
-          institutionCode: 'MVZ',
-          catalogNumber: '225749',
-        }],
+        '@type': [
+          phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+          phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+        ],
+        nameString: 'Rana luteiventris',
+        occurrenceID: 'MVZ 225749',
       });
-      expect(wrapper.label).to.equal('Specimen urn:catalog:MVZ::225749 or Rana luteiventris');
+      expect(wrapper.label).to.equal('Rana luteiventris (Specimen MVZ 225749)');
     });
     it('should return a wrapped external reference by surrounding it with "<>"', function () {
       const wrapper = new phyx.TaxonomicUnitWrapper({
-        externalReferences: [
+        '@id': [
           'http://arctos.database.museum/guid/MVZ:Herp:225749',
         ],
       });
       expect(wrapper.label).to.equal('<http://arctos.database.museum/guid/MVZ:Herp:225749>');
     });
-    it('should concatenate specimen identifiers, external references and scientific names with "or"', function () {
+    it('should provide both taxon name and occurrence ID in label, but ignore external reference', function () {
       const wrapper = new phyx.TaxonomicUnitWrapper({
-        externalReferences: [
+        '@id': [
           'http://arctos.database.museum/guid/MVZ:Herp:225749',
         ],
-        scientificNames: [{
-          scientificName: 'Rana luteiventris',
-        }],
-        includesSpecimens: [{
-          institutionCode: 'MVZ',
-          catalogNumber: '225749',
-        }],
+        '@type': [
+          phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+          phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+        ],
+        nameString: 'Rana luteiventris',
+        occurrenceID: 'MVZ 225749',
       });
-      expect(wrapper.label)
-        .to.equal('Specimen urn:catalog:MVZ::225749 or <http://arctos.database.museum/guid/MVZ:Herp:225749> or Rana luteiventris');
+      expect(wrapper.label).to.equal('Rana luteiventris (Specimen MVZ 225749)');
     });
   });
   describe('#fromLabel', function () {
@@ -150,11 +136,11 @@ describe('TaxonomicUnitMatcher', function () {
       phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
     ],
     nameString: 'Rana luteiventris MVZ225749',
-    occurrenceID: 'urn:catalog:::MVZ225749',
+    occurrenceID: 'MVZ225749',
   };
   const tunit3 = {
     '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
-    catalogNumber: 'MVZ225749',
+    occurrenceID: 'MVZ225749',
     '@id': 'http://arctos.database.museum/guid/MVZ:Herp:225749',
   };
   const tunit4 = {

@@ -106,6 +106,11 @@ class TaxonomicUnitWrapper {
     if (has(this.tunit, 'label')) return this.tunit.label;
     if (has(this.tunit, 'description')) return this.tunit.description;
 
+    // Am I both a specimen and a taxon concept?
+    if (this.specimen && this.taxonConcept) {
+      return `${new TaxonConceptWrapper(this.taxonConcept).label} (${new SpecimenWrapper(this.specimen).label})`;
+    }
+
     // Am I a specimen?
     if (this.specimen) {
       return new SpecimenWrapper(this.specimen).label;
