@@ -93,82 +93,100 @@ describe('TaxonomicUnitWrapper', function () {
   });
   describe('#fromLabel', function () {
     it('should return empty lists when inputs are empty or undefined', function () {
-      expect(phyx.TaxonomicUnitWrapper.fromLabel()).to.be.empty;
-      expect(phyx.TaxonomicUnitWrapper.fromLabel(undefined)).to.be.empty;
-      expect(phyx.TaxonomicUnitWrapper.fromLabel(null)).to.be.empty;
-      expect(phyx.TaxonomicUnitWrapper.fromLabel('')).to.be.empty;
-      expect(phyx.TaxonomicUnitWrapper.fromLabel('    ')).to.be.empty;
+      expect(phyx.TaxonomicUnitWrapper.fromLabel()).to.be.undefined;
+      expect(phyx.TaxonomicUnitWrapper.fromLabel(undefined)).to.be.undefined;
+      expect(phyx.TaxonomicUnitWrapper.fromLabel(null)).to.be.undefined;
+      expect(phyx.TaxonomicUnitWrapper.fromLabel('')).to.be.undefined;
+      expect(phyx.TaxonomicUnitWrapper.fromLabel('    ')).to.be.undefined;
     });
     it('when given a scientific name, it should return a list of a single TU wrapping a scientific name', function () {
       expect(phyx.TaxonomicUnitWrapper.fromLabel('Rana luteiventris MVZ225749'))
-        .to.be.deep.equal([{
-          '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
-          nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
+        .to.be.deep.equal({
+          '@type': 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
           label: 'Rana luteiventris MVZ225749',
-          genusPart: 'Rana',
-          specificEpithet: 'luteiventris',
-          nameComplete: 'Rana luteiventris',
-        }]);
+          hasName: {
+            '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
+            nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
+            label: 'Rana luteiventris MVZ225749',
+            genusPart: 'Rana',
+            specificEpithet: 'luteiventris',
+            nameComplete: 'Rana luteiventris',
+          },
+        });
     });
     it('when given a scientific name separated with underscores, it should return a list of a single TU wrapping the scientific name', function () {
       expect(phyx.TaxonomicUnitWrapper.fromLabel('Rana_luteiventris_MVZ_225749'))
-        .to.be.deep.equal([{
-          '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
+        .to.be.deep.equal({
+          '@type': 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
           label: 'Rana_luteiventris_MVZ_225749',
-          nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
-          nameComplete: 'Rana luteiventris',
-          genusPart: 'Rana',
-          specificEpithet: 'luteiventris',
-        }]);
+          hasName: {
+            '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
+            label: 'Rana_luteiventris_MVZ_225749',
+            nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
+            nameComplete: 'Rana luteiventris',
+            genusPart: 'Rana',
+            specificEpithet: 'luteiventris',
+          },
+        });
     });
   });
 });
 
-describe('TaxonomicUnitMarcher', function () {
+describe('TaxonomicUnitMatcher', function () {
   // To test matching, let's set up some taxonomic units.
   // Note that:
   //  tunit1 and tunit2 should match by scientific name.
   //  tunit2 and tunit3 should match by specimen identifier.
   //  tunit3 and tunit4 should match by external references.
-  const tunit1 = { scientificNames: [{ scientificName: 'Rana luteiventris' }] };
+  const tunit1 = {
+    '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+    hasName: {
+      nameComplete: 'Rana luteiventris',
+    },
+  };
   const tunit2 = {
-    scientificNames: [{ scientificName: 'Rana luteiventris MVZ225749' }],
-    includesSpecimens: [{ occurrenceID: 'urn:catalog:::MVZ225749' }],
+    '@type': [
+      phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+      phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+    ],
+    nameString: 'Rana luteiventris MVZ225749',
+    occurrenceID: 'urn:catalog:::MVZ225749',
   };
   const tunit3 = {
-    includesSpecimens: [{ catalogNumber: 'MVZ225749' }],
-    externalReferences: ['http://arctos.database.museum/guid/MVZ:Herp:225749'],
+    '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+    catalogNumber: 'MVZ225749',
+    '@id': 'http://arctos.database.museum/guid/MVZ:Herp:225749',
   };
   const tunit4 = {
-    externalReferences: ['http://arctos.database.museum/guid/MVZ:Herp:225749'],
+    '@id': 'http://arctos.database.museum/guid/MVZ:Herp:225749',
   };
 
-  describe('#matchByBinomialName', function () {
-    it('should be able to match tunit1 and tunit2 by binomial name', function () {
+  describe('#matchByNameComplete', function () {
+    it('should be able to match tunit1 and tunit2 by complete name', function () {
       expect(new phyx.TaxonomicUnitMatcher(tunit1, tunit2).matchByExternalReferences()).to.be.false;
-      expect(new phyx.TaxonomicUnitMatcher(tunit1, tunit2).matchBySpecimenIdentifier()).to.be.false;
-      expect(new phyx.TaxonomicUnitMatcher(tunit1, tunit2).matchByBinomialName()).to.be.true;
+      expect(new phyx.TaxonomicUnitMatcher(tunit1, tunit2).matchByOccurrenceID()).to.be.false;
+      expect(new phyx.TaxonomicUnitMatcher(tunit1, tunit2).matchByNameComplete()).to.be.true;
     });
   });
   describe('#matchByExternalReferences', function () {
     it('should be able to match tunit3 and tunit4 by external references', function () {
       expect(new phyx.TaxonomicUnitMatcher(tunit3, tunit4).matchByExternalReferences()).to.be.true;
-      expect(new phyx.TaxonomicUnitMatcher(tunit3, tunit4).matchBySpecimenIdentifier()).to.be.false;
-      expect(new phyx.TaxonomicUnitMatcher(tunit3, tunit4).matchByBinomialName()).to.be.false;
+      expect(new phyx.TaxonomicUnitMatcher(tunit3, tunit4).matchByOccurrenceID()).to.be.false;
+      expect(new phyx.TaxonomicUnitMatcher(tunit3, tunit4).matchByNameComplete()).to.be.false;
     });
   });
-  describe('#matchBySpecimenIdentifier', function () {
+  describe('#matchByOccurrenceID', function () {
     it('should be able to match tunit2 and tunit3 by specimen identifiers', function () {
       expect(new phyx.TaxonomicUnitMatcher(tunit2, tunit3).matchByExternalReferences()).to.be.false;
-      expect(new phyx.TaxonomicUnitMatcher(tunit2, tunit3).matchBySpecimenIdentifier()).to.be.true;
-      expect(new phyx.TaxonomicUnitMatcher(tunit2, tunit3).matchByBinomialName()).to.be.false;
+      expect(new phyx.TaxonomicUnitMatcher(tunit2, tunit3).matchByOccurrenceID()).to.be.true;
+      expect(new phyx.TaxonomicUnitMatcher(tunit2, tunit3).matchByNameComplete()).to.be.false;
     });
   });
   describe('#matched and #matchReason', function () {
-    it('should match tunit1 and tunit2 on the basis of identical binomial name', function () {
+    it('should match tunit1 and tunit2 on the basis of identical complete names', function () {
       const matcher = new phyx.TaxonomicUnitMatcher(tunit1, tunit2);
       expect(matcher.matched).to.be.true;
-      expect(matcher.matchReason).to.include('share the same binomial name');
+      expect(matcher.matchReason).to.include('share the same complete name');
     });
 
     it('should match tunit3 and tunit4 by identical external reference', function () {
