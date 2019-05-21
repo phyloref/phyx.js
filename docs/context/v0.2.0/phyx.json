@@ -112,12 +112,12 @@
         },
 
         "newick": {
-            "@id": "testcase:as_newick_string",
+            "@id": "phyloref:newick_expression",
             "@type": "xsd:string"
         },
 
         "cladeDefinition": {
-            "@id": "testcase:clade_definition",
+            "@id": "obo:IAO_0000115",
             "@type": "xsd:string"
         }
     }, {
