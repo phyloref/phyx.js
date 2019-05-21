@@ -213,7 +213,7 @@ class PhylogenyWrapper {
     // If that doesn't work, we can try to extract scientific names from
     // the node label. Note that taxonomic units will NOT be extracted from
     // the label if there is a taxonomic unit present!
-    return TaxonomicUnitWrapper.getTaxonomicUnitsFromNodeLabel(nodeLabel.trim());
+    return [TaxonomicUnitWrapper.fromLabel(nodeLabel.trim())];
   }
 
   getNodeLabelsMatchedBySpecifier(specifier) {

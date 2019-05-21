@@ -149,14 +149,22 @@ describe('PhylogenyWrapper', function () {
       additionalNodeProperties: {
         MVZ225749: {
           representsTaxonomicUnits: [{
-            scientificNames: [{ scientificName: 'Rana luteiventris' }],
-            includesSpecimens: [{ occurrenceID: 'MVZ:225749' }],
+            '@type': [
+              phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+              phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+            ],
+            nameString: 'Rana luteiventris',
+            occurrenceID: 'MVZ:225749',
           }],
         },
         MVZ191016: {
           representsTaxonomicUnits: [{
-            scientificNames: [{ scientificName: 'Rana luteiventris' }],
-            includesSpecimens: [{ occurrenceID: 'MVZ:191016' }],
+            '@type': [
+              phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+              phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+            ],
+            nameString: 'Rana luteiventris',
+            occurrenceID: 'MVZ:191016',
           }],
         },
       },
@@ -176,22 +184,34 @@ describe('PhylogenyWrapper', function () {
     describe('#getTaxonomicUnitsForNodeLabel', function () {
       it('should return the list of taxonomic units using information from additional node properties', function () {
         expect(wrapper.getTaxonomicUnitsForNodeLabel('MVZ191016')).to.deep.equal([{
-          scientificNames: [{ scientificName: 'Rana luteiventris' }],
-          includesSpecimens: [{ occurrenceID: 'MVZ:191016' }],
+          '@type': [
+            phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+            phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+          ],
+          nameString: 'Rana luteiventris',
+          occurrenceID: 'MVZ:191016',
         }]);
 
         expect(wrapper.getTaxonomicUnitsForNodeLabel('MVZ225749')).to.deep.equal([{
-          scientificNames: [{ scientificName: 'Rana luteiventris' }],
-          includesSpecimens: [{ occurrenceID: 'MVZ:225749' }],
+          '@type': [
+            phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+            phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+          ],
+          nameString: 'Rana luteiventris',
+          occurrenceID: 'MVZ:225749',
         }]);
 
         expect(wrapper.getTaxonomicUnitsForNodeLabel('Rana boylii')).to.deep.equal([{
+          '@type': 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
           label: 'Rana boylii',
-          nameComplete: 'Rana boylii',
-          genusPart: 'Rana',
-          specificEpithet: 'boylii',
-          nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
-          '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
+          hasName: {
+            '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
+            label: 'Rana boylii',
+            nameComplete: 'Rana boylii',
+            genusPart: 'Rana',
+            specificEpithet: 'boylii',
+            nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
+          },
         }]);
       });
     });
@@ -200,9 +220,8 @@ describe('PhylogenyWrapper', function () {
       it('should match a specifier to MVZ225749 based on occurrence ID', function () {
         const specifier1 = {
           referencesTaxonomicUnits: [{
-            includesSpecimens: [{
-              occurrenceID: 'MVZ:225749',
-            }],
+            '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+            occurrenceID: 'MVZ:225749',
           }],
         };
         expect(wrapper.getNodeLabelsMatchedBySpecifier(specifier1))
@@ -212,9 +231,8 @@ describe('PhylogenyWrapper', function () {
       it('should match a specifier to MVZ191016 based on occurrence ID', function () {
         const specifier2 = {
           referencesTaxonomicUnits: [{
-            includesSpecimens: [{
-              occurrenceID: 'MVZ:191016',
-            }],
+            '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+            occurrenceID: 'MVZ:191016',
           }],
         };
 
@@ -225,14 +243,13 @@ describe('PhylogenyWrapper', function () {
       it('should match a specifier to node "Rana boylii" based on the parsed scientific name', function () {
         const specifier3 = {
           referencesTaxonomicUnits: [{
-            scientificNames: [{
-              scientificName: 'Rana boyli',
-            }],
+            '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+            nameString: 'Rana boylii',
           }],
         };
 
         expect(wrapper.getNodeLabelsMatchedBySpecifier(specifier3))
-          .to.have.members([]);
+          .to.have.members(['Rana boylii']);
       });
     });
   });
