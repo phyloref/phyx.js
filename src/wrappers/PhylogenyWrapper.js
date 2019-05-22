@@ -216,7 +216,9 @@ class PhylogenyWrapper {
     //
     // Note that old-style taxonomic units were lists while new-style taxonomic
     // units are single objects. So we turn it into a single entry list here.
-    return [TaxonomicUnitWrapper.fromLabel(nodeLabel.trim())];
+    const tunit = TaxonomicUnitWrapper.fromLabel(nodeLabel.trim());
+    if (tunit) return [tunit];
+    return []; // No TUnit? Return the empty list.
   }
 
   getNodeLabelsMatchedBySpecifier(specifier) {
