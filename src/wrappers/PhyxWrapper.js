@@ -136,16 +136,13 @@ class PhyxWrapper {
     jsonld['@type'] = [owlterms.PHYLOREFERENCE_TEST_CASE, 'owl:Ontology'];
     jsonld['owl:imports'] = [
       'http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl',
-      // - Will become 'http://vocab.phyloref.org/phyloref/testcase.owl'
-      'http://ontology.phyloref.org/2018-12-04/phyloref.owl',
-      // - The Phyloreferencing ontology.
-      'http://purl.obolibrary.org/obo/bco.owl',
-      // - Contains OWL definitions for Darwin Core terms
+      'http://ontology.phyloref.org/2018-12-14/phyloref.owl',
+      'http://ontology.phyloref.org/2018-12-14/tcan.owl',
     ];
 
     // If the '@context' is missing, add it here.
     if (!has(jsonld, '@context')) {
-      jsonld['@context'] = 'http://www.phyloref.org/phyx.js/context/v0.1.0/phyx.json';
+      jsonld['@context'] = 'http://www.phyloref.org/phyx.js/context/v0.2.0/phyx.json';
     }
 
     return jsonld;
