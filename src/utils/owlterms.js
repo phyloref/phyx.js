@@ -17,6 +17,7 @@ module.exports = {
   // (https://github.com/tdwg/ontology/blob/master/ontology/voc/TaxonName.rdf).
   TDWG_VOC_TAXON_NAME: 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
   TDWG_VOC_TAXON_CONCEPT: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
+  TDWG_VOC_HAS_NAME: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
   TDWG_VOC_NAME_COMPLETE: 'http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete',
 
   // Terms from Darwin Core.
