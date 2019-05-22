@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint src/index.js \"test/**\" --ext .js",
-    "pretest": "npm run lint; npm run docs",
+    "pretest": "npm run lint",
     "test": "mocha",
     "docs": "esdoc"
   },
@@ -44,7 +44,7 @@
   },
   "esdoc": {
     "source": "./src",
-    "destination": "./docs",
+    "destination": "./docs/esdocs",
     "plugins": [
       {
         "name": "esdoc-standard-plugin"

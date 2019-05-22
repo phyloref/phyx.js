@@ -1,3 +1,6 @@
+# Ignore esdocs documentation.
+/docs/esdocs/
+
 # Logs
 logs
 *.log
