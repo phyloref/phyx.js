@@ -1,6 +1,5 @@
 /** Used to make deep copies of objects. */
-const extend = require('extend');
-const { has } = require('lodash');
+const { has, cloneDeep } = require('lodash');
 
 const owlterms = require('../utils/owlterms');
 
@@ -57,7 +56,7 @@ class PhyxWrapper {
     //  2. We have to convert phylogenies into OWL restrictions.
     //  3. Insert all matches between taxonomic units in this file.
     //
-    const jsonld = extend(true, {}, this.phyx);
+    const jsonld = cloneDeep(this.phyx);
 
     // Add descriptions for individual nodes in each phylogeny.
     if (has(jsonld, 'phylogenies')) {
