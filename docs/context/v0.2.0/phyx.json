@@ -48,9 +48,11 @@
             "@type": "@id"
         },
 
+        "obo": "http://purl.obolibrary.org/obo/",
+
         "parent": {
             "@id": "obo:CDAO_0000179",
-            "type": "@id"
+            "@type": "@id"
         },
 
         "hasRootNode": {
@@ -91,18 +93,13 @@
             "@type": "xsd:string"
         },
 
-        "hasSpecifier": {
-            "@id": "testcase:has_specifier",
+        "internalSpecifiers": {
+            "@id": "testcase:internal_specifier",
             "@container": "@set"
         },
 
-        "hasInternalSpecifier": {
-            "@id": "testcase:has_internal_specifier",
-            "@container": "@set"
-        },
-
-        "hasExternalSpecifier": {
-            "@id": "testcase:has_external_specifier",
+        "externalSpecifiers": {
+            "@id": "testcase:external_specifier",
             "@container": "@set"
         },
 
@@ -203,6 +200,26 @@
         "_comments": {
           "@id": "rdfs:comment",
           "_comments": "Properties of individual TUs: scientific name and specimens"
+        },
+
+        "hasName": {
+          "@id": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName"
+        },
+
+        "nameComplete": {
+          "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+          "@type": "xsd:string"
+        },
+
+        "nameString": {
+          "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#nameString",
+          "@type": "xsd:string"
+        },
+
+        "nomenclaturalCode": {
+          "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+          "@type": "@id"
         },
 
         "dwc": "http://rs.tdwg.org/dwc/terms/",
