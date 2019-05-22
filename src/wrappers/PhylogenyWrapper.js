@@ -321,7 +321,15 @@ class PhylogenyWrapper {
         // Set @id and @type. '@id' should already be set by getParsedNewickWithIRIs()!
         const nodeURI = node['@id'];
         nodeAsJSONLD['@id'] = nodeURI;
-        nodeAsJSONLD['@type'] = 'http://purl.obolibrary.org/obo/CDAO_0000140';
+
+        // Since we may need to add multiple classes into the rdf:type, we need
+        // to make @type an array. However, the JSON-LD library we use in JPhyloRef
+        // can't support @type being an array (despite that being in the standard,
+        // see https://w3c.github.io/json-ld-syntax/#example-14-specifying-multiple-types-for-a-node),
+        // so we fall back to using rdf:type instead.
+        nodeAsJSONLD['http://www.w3.org/1999/02/22-rdf-syntax-ns#type'] = [
+          'http://purl.obolibrary.org/obo/CDAO_0000140', // CDAO:Node
+        ];
 
         // Add labels, additional node properties and taxonomic units.
         if (has(node, 'name') && node.name !== '') {
@@ -335,17 +343,25 @@ class PhylogenyWrapper {
             });
           }
 
-          // Add taxonomic units.
+          // Add taxonomic units into the metadata.
           nodeAsJSONLD.representsTaxonomicUnits = this.getTaxonomicUnitsForNodeLabel(node.name);
 
-          // Apply @id and @type to each taxonomic unit.
-          let countTaxonomicUnits = 0;
-          nodeAsJSONLD.representsTaxonomicUnits.forEach((tunitToChange) => {
-            const tunit = tunitToChange;
+          // Add it into the @type so we can reason over it.
+          nodeAsJSONLD.representsTaxonomicUnits.forEach((tu) => {
+            const wrappedTUnit = new TaxonomicUnitWrapper(tu);
 
-            tunit['@id'] = `${nodeURI}_taxonomicunit${countTaxonomicUnits}`;
-            tunit['@type'] = 'http://purl.obolibrary.org/obo/CDAO_0000138';
-            countTaxonomicUnits += 1;
+            if (wrappedTUnit) {
+              const equivClass = wrappedTUnit.asEquivClass();
+              if (equivClass) {
+                nodeAsJSONLD['http://www.w3.org/1999/02/22-rdf-syntax-ns#type'].push(
+                  {
+                    '@type': 'owl:Restriction',
+                    onProperty: 'obo:CDAO_0000187',
+                    someValuesFrom: equivClass,
+                  }
+                );
+              }
+            }
           });
         }
 
