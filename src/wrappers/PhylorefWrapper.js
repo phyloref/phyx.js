@@ -346,7 +346,7 @@ class PhylorefWrapper {
       additionalClassLabel += ` ~ ${externalSpecifierLabel})`;
     }
 
-    process.stderr.write(`Additional class label: ${additionalClassLabel}\n`);
+    // process.stderr.write(`Additional class label: ${additionalClassLabel}\n`);
 
     // TODO We need to replace this with an actual object-based comparison,
     // rather than trusting the labels to tell us everything.
@@ -662,11 +662,15 @@ class PhylorefWrapper {
     phylorefAsJSONLD.subClassOf = 'phyloref:Phyloreference';
 
     // Construct an equivalentClass expression for this phyloreference.
-    const internalSpecifiers = this.phyloref.internalSpecifiers || [];
-    const externalSpecifiers = this.phyloref.externalSpecifiers || [];
+    const internalSpecifiers = phylorefAsJSONLD.internalSpecifiers || [];
+    const externalSpecifiers = phylorefAsJSONLD.externalSpecifiers || [];
 
     // We might need to make additional JSON-LD.
+    // So we reset our additional class counts and records.
+    PhylorefWrapper.additionalClassCount = 0;
+    PhylorefWrapper.additionalClassesByLabel = {};
     phylorefAsJSONLD.hasAdditionalClass = [];
+
     if (internalSpecifiers.length === 0) {
       // We can't handle phyloreferences without at least one internal specifier.
       phylorefAsJSONLD.malformedPhyloreference = 'No internal specifiers provided';
@@ -700,10 +704,6 @@ class PhylorefWrapper {
     return phylorefAsJSONLD;
   }
 }
-
-/** Keep track of additional classes across all instances. */
-PhylorefWrapper.additionalClassCount = 0;
-PhylorefWrapper.additionalClassesByLabel = {};
 
 module.exports = {
   PhylorefWrapper,
