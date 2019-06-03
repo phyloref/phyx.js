@@ -23,7 +23,10 @@
 /** The Phyx Cache Manager -- used to manage caches across this library. */
 const { PhyxCacheManager } = require('./utils/PhyxCacheManager');
 
-/** A ScientificNameWrapper for wrapping scientific names. */
+/** A TaxonConceptWrapper for wrapping taxonomic concepts. */
+const { TaxonConceptWrapper } = require('./wrappers/TaxonConceptWrapper');
+
+/** A TaxonNameWrapper for wrapping taxonomic names. */
 const { TaxonNameWrapper } = require('./wrappers/TaxonNameWrapper');
 
 /** A SpecimenWrapper for wrapping specimens. */
@@ -46,6 +49,7 @@ const { PhyxWrapper } = require('./wrappers/PhyxWrapper');
 
 /* Exports */
 module.exports = {
+  TaxonConceptWrapper,
   TaxonNameWrapper,
   SpecimenWrapper,
   TaxonomicUnitWrapper,
