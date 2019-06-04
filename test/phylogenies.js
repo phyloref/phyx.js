@@ -244,6 +244,149 @@ describe('PhylogenyWrapper', function () {
     });
   });
 
+  describe('#asJSONLD', function () {
+    it('should generate the phylogeny in JSON-LD as expected', function () {
+      const expectedResults = [
+        {
+          newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
+          jsonld: {
+            '@id': '#',
+            '@type': 'testcase:PhyloreferenceTestPhylogeny',
+            hasRootNode: { '@id': '#_node0' },
+            newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
+            nodes: [
+              {
+                '@id': '#_node0',
+                children: ['#_node1', '#_node2'],
+                'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': [
+                  'http://purl.obolibrary.org/obo/CDAO_0000140',
+                ],
+              },
+              {
+                '@id': '#_node1',
+                'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': [
+                  'http://purl.obolibrary.org/obo/CDAO_0000140',
+                  {
+                    '@type': 'owl:Restriction',
+                    onProperty: 'obo:CDAO_0000187',
+                    someValuesFrom: {
+                      '@type': 'owl:Restriction',
+                      onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
+                      someValuesFrom: {
+                        '@type': 'owl:Restriction',
+                        hasValue: 'Mus musculus',
+                        onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete',
+                      },
+                    },
+                  },
+                ],
+                labels: ['Mus_musculus'],
+                parent: '#_node0',
+                representsTaxonomicUnits: [{
+                  '@type': 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
+                  hasName: {
+                    '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
+                    genusPart: 'Mus',
+                    label: 'Mus_musculus',
+                    nameComplete: 'Mus musculus',
+                    nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
+                    specificEpithet: 'musculus',
+                  },
+                  label: 'Mus_musculus',
+                }],
+                siblings: ['#_node2'],
+              },
+              {
+                '@id': '#_node2',
+                children: ['#_node3', '#_node4'],
+                'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': [
+                  'http://purl.obolibrary.org/obo/CDAO_0000140',
+                ],
+                parent: '#_node0',
+                siblings: ['#_node1'],
+              },
+              {
+                '@id': '#_node3',
+                'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': [
+                  'http://purl.obolibrary.org/obo/CDAO_0000140',
+                  {
+                    '@type': 'owl:Restriction',
+                    onProperty: 'obo:CDAO_0000187',
+                    someValuesFrom: {
+                      '@type': 'owl:Restriction',
+                      onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
+                      someValuesFrom: {
+                        '@type': 'owl:Restriction',
+                        hasValue: 'Panthera tigris',
+                        onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete',
+                      },
+                    },
+                  },
+                ],
+                labels: ['Panthera_tigris'],
+                parent: '#_node2',
+                representsTaxonomicUnits: [{
+                  '@type': 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
+                  hasName: {
+                    '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
+                    genusPart: 'Panthera',
+                    label: 'Panthera_tigris',
+                    nameComplete: 'Panthera tigris',
+                    nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
+                    specificEpithet: 'tigris',
+                  },
+                  label: 'Panthera_tigris',
+                }],
+                siblings: ['#_node4'],
+              },
+              {
+                '@id': '#_node4',
+                'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': [
+                  'http://purl.obolibrary.org/obo/CDAO_0000140',
+                  {
+                    '@type': 'owl:Restriction',
+                    onProperty: 'obo:CDAO_0000187',
+                    someValuesFrom: {
+                      '@type': 'owl:Restriction',
+                      onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
+                      someValuesFrom: {
+                        '@type': 'owl:Restriction',
+                        hasValue: 'Homo sapiens',
+                        onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete',
+                      },
+                    },
+                  },
+                ],
+                labels: ['Homo_sapiens'],
+                parent: '#_node2',
+                representsTaxonomicUnits: [
+                  {
+                    '@type': 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
+                    hasName: {
+                      '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
+                      genusPart: 'Homo',
+                      label: 'Homo_sapiens',
+                      nameComplete: 'Homo sapiens',
+                      nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
+                      specificEpithet: 'sapiens',
+                    },
+                    label: 'Homo_sapiens',
+                  },
+                ],
+                siblings: ['#_node3'],
+              },
+            ],
+          },
+        },
+      ];
+
+      expectedResults.forEach((expected) => {
+        const wrapper = new phyx.PhylogenyWrapper({ newick: expected.newick });
+        expect(wrapper.asJSONLD('#')).to.deep.equal(expected.jsonld);
+      });
+    });
+  });
+
   describe('#getParsedNewickWithIRIs', function () {
     const tests = [
       {
