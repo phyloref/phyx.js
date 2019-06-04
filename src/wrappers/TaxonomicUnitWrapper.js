@@ -106,17 +106,18 @@ class TaxonomicUnitWrapper {
     if (has(this.tunit, 'label')) return this.tunit.label;
     if (has(this.tunit, 'description')) return this.tunit.description;
 
-    // Am I a specimen?
+    // Is this a specimen?
     if (this.specimen) {
       return new SpecimenWrapper(this.specimen).label;
     }
 
-    // Am I a taxon concept?
+    // Is this a taxon concept?
     if (this.taxonConcept) {
       return new TaxonConceptWrapper(this.taxonConcept).label;
     }
 
-    // If I can't figure out any time, just list the external references.
+    // If its neither a specimen nor a taxon concept, just list the
+    // external references.
     const externalReferences = this.externalReferences;
     if (externalReferences.length > 0) {
       return externalReferences
