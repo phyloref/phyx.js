@@ -114,7 +114,7 @@ class TaxonomicUnitMatcher {
 
   /** Match by occurrence ID */
   matchByOccurrenceID() {
-    // Are both TUs taxon concepts?
+    // Are both TUs specimens?
     const wrappedTUnit1 = new TaxonomicUnitWrapper(this.tunit1);
     const wrappedTUnit2 = new TaxonomicUnitWrapper(this.tunit2);
 
