@@ -196,28 +196,6 @@ class TaxonomicUnitWrapper {
 
     return tunit;
   }
-
-  /**
-   * Return this taxonomic unit as an OWL/JSON-LD object.
-   */
-  asJSONLD() {
-    const jsonld = cloneDeep(this.tunit);
-
-    // Add CDAO_TU as a type to the existing types.
-    if (has(this.tunit, '@type')) {
-      if (isArray(this.tunit['@type'])) this.tunit['@type'].push(owlterms.CDAO_TU);
-    }
-
-    if (this.types.includes(TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT)) {
-      jsonld.equivalentClass = new TaxonConceptWrapper(this.tunit).asEquivClass();
-    } else if (this.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN)) {
-      jsonld.equivalentClass = new SpecimenWrapper(this.specimen).asEquivClass();
-    } else {
-      // Nothing we can do, so just ignore it.
-    }
-
-    return jsonld;
-  }
 }
 
 module.exports = {
