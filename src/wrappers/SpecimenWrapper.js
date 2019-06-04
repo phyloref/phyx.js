@@ -23,19 +23,18 @@ class SpecimenWrapper {
     return owlterms.DWC_OCCURRENCE;
   }
 
+  /** Construct a wrapper around a specimen. */
   constructor(specimen) {
-    // Constructs a wrapper around a specimen.
     this.specimen = specimen;
   }
 
+  /**
+   * Parse the provided occurrence ID. The two expected formats are:
+   *  - 'urn:catalog:[institutionCode]:[collectionCode]:[catalogNumber]'
+   *      (in which case, we ignore the first two "components" here)
+   *  - '[institutionCode]:[collectionCode]:[catalogNumber]'
+   */
   static fromOccurrenceID(occurrenceID) {
-    // Create a specimen object from the occurrence ID.
-    // The two expected formats are:
-    //  - 'urn:catalog:[institutionCode]:[collectionCode]:[catalogNumber]'
-    //      (in which case, we ignore the first two "components" here)
-    //  - '[institutionCode]:[collectionCode]:[catalogNumber]'
-    // Note that the returned object is NOT wrapped -- so please wrap it if needed!
-
     // Copy the occurrence ID so we can truncate it if necessary.
     let occurID = occurrenceID;
     if (occurID.startsWith('urn:catalog:')) occurID = occurID.substr(12);
@@ -83,6 +82,9 @@ class SpecimenWrapper {
     return specimen;
   }
 
+  /**
+   * Get the catalogNumber if present.
+   */
   get catalogNumber() {
     // Get the catalog number from the specimen object if present.
     if (has(this.specimen, 'catalogNumber')) return this.specimen.catalogNumber;
@@ -96,6 +98,9 @@ class SpecimenWrapper {
     return undefined;
   }
 
+  /**
+   * Get the institutionCode if present.
+   */
   get institutionCode() {
     // Get the institution code from the specimen object if present.
     if (has(this.specimen, 'institutionCode')) return this.specimen.institutionCode;
@@ -109,6 +114,9 @@ class SpecimenWrapper {
     return undefined;
   }
 
+  /**
+   * Get the collectionCode if present.
+   */
   get collectionCode() {
     // Get the collection code from the specimen object if present.
     if (has(this.specimen, 'collectionCode')) return this.specimen.collectionCode;
@@ -122,17 +130,13 @@ class SpecimenWrapper {
     return undefined;
   }
 
+  /**
+   * Return the occurrence ID of this specimen, if we have one. Otherwise, we
+   * attempt to construct one in the form:
+   *  "urn:catalog:" + institutionCode (if present) + ':' +
+   *  collectionCode (if present) + ':' + catalogNumber (if present)
+   */
   get occurrenceID() {
-    // Does this specimen have an occurrenceID? If so, return it.
-    // If not, we attempt to construct one in the form:
-    //   "urn:catalog:" + institutionCode (if present) + ':' +
-    //      collectionCode (if present) + ':' + catalogNumber (if present)
-    // If all else fails, we return undefined.
-    //
-    // If this was a full wrapper, we might create a setter on the occurrenceID;
-    // however, the Vue model modifies the underlying specimen object, not the
-    // wrapper.
-
     // Return the occurrenceID if it exists.
     if (has(this.specimen, 'occurrenceID') && this.specimen.occurrenceID.trim() !== '') {
       return this.specimen.occurrenceID.trim();
@@ -163,6 +167,7 @@ class SpecimenWrapper {
     return undefined;
   }
 
+  /** Return a label for this specimen. */
   get label() {
     // We can't return anything without an occurrenceID.
     if (!this.occurrenceID) return undefined;
