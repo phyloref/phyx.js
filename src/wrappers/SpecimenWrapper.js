@@ -1,4 +1,5 @@
 const { has } = require('lodash');
+const { TaxonConceptWrapper } = require('./TaxonConceptWrapper');
 const owlterms = require('../utils/owlterms');
 const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
 
@@ -155,8 +156,24 @@ class SpecimenWrapper {
     return undefined;
   }
 
+  /** Return this specimen as a taxon concept if it contains taxon name information. */
+  get taxonConcept() {
+    if (has(this.specimen, 'hasName')) return this.specimen;
+    if (has(this.specimen, 'nameString')) return this.specimen;
+    return undefined;
+  }
+
   get label() {
-    // Return a label for this specimen
+    // We can't return anything without an occurrenceID.
+    if (!this.occurrenceID) return undefined;
+
+    // Note that specimens may be identified to a taxon concept. If so, we should
+    // include that information in the label.
+    if (this.taxonConcept) {
+      return `Specimen ${this.occurrenceID} identified as ${new TaxonConceptWrapper(this.taxonConcept).label}`;
+    }
+
+    // Return a label for this specimen.
     return `Specimen ${this.occurrenceID}`;
   }
 }

@@ -106,11 +106,6 @@ class TaxonomicUnitWrapper {
     if (has(this.tunit, 'label')) return this.tunit.label;
     if (has(this.tunit, 'description')) return this.tunit.description;
 
-    // Am I both a specimen and a taxon concept?
-    if (this.specimen && this.taxonConcept) {
-      return `${new TaxonConceptWrapper(this.taxonConcept).label} (${new SpecimenWrapper(this.specimen).label})`;
-    }
-
     // Am I a specimen?
     if (this.specimen) {
       return new SpecimenWrapper(this.specimen).label;
@@ -160,14 +155,11 @@ class TaxonomicUnitWrapper {
 
     let tunit;
     if (taxonConcept && specimen) {
-      // If we have both, MERGE THEM!
+      // If we have both, then treat it as a specimen that has been identified
+      // to a particular taxonomic name.
       tunit = assign({}, taxonConcept, specimen);
 
-      // Make the '@type' clear for both.
-      tunit['@type'] = [
-        TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
-        TaxonomicUnitWrapper.TYPE_SPECIMEN,
-      ];
+      tunit['@type'] = TaxonomicUnitWrapper.TYPE_SPECIMEN;
     } else if (taxonConcept) {
       tunit = taxonConcept;
     } else if (specimen) {
