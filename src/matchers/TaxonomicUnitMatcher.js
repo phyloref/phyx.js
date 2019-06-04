@@ -64,14 +64,9 @@ class TaxonomicUnitMatcher {
 
   /** Try to match by nameComplete, and return true if it could be matched. */
   matchByNameComplete() {
-    // Are both TUs taxon concepts?
-    const wrappedTUnit1 = new TaxonomicUnitWrapper(this.tunit1);
-    const wrappedTUnit2 = new TaxonomicUnitWrapper(this.tunit2);
-
-    if (!wrappedTUnit1.types.includes(TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT)) return false;
-    if (!wrappedTUnit2.types.includes(TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT)) return false;
-
-    // Complete taxon names from both taxonomic units.
+    // Note that this doesn't apply just to taxon concepts -- we try to match
+    // any taxonomic units that have nameComplete, which might be taxon concepts
+    // OR specimens with taxonomic units.
     const wrappedTName1 = new TaxonConceptWrapper(this.tunit1);
     const wrappedTName2 = new TaxonConceptWrapper(this.tunit2);
 
