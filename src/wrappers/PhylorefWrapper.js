@@ -111,35 +111,6 @@ class PhylorefWrapper {
     if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
   }
 
-  static getSpecifierLabel(specifier) {
-    // Try to determine the label of a specifier. This checks the
-    // 'label' and 'description' properties, and then tries to create a
-    // descriptive label by using the list of referenced taxonomic units.
-    //
-    // This logically belongs in PhylorefWrapper, but we don't actually need to
-    // know the phyloreference to figure out the specifier label, which is why
-    // this is a static method.
-
-    // Is this specifier even non-null?
-    if (specifier === undefined) return undefined;
-    if (specifier === null) return undefined;
-
-    // Maybe there is a label or description right there?
-    if (has(specifier, 'label')) return specifier.label;
-    if (has(specifier, 'description')) return specifier.description;
-
-    // Look at the individual taxonomic units.
-    if (has(specifier, 'referencesTaxonomicUnits')) {
-      const labels = specifier.referencesTaxonomicUnits
-        .map(tu => new TaxonomicUnitWrapper(tu).label)
-        .filter(label => (label !== undefined));
-      if (labels.length > 0) return labels.join('; ');
-    }
-
-    // No idea!
-    return undefined;
-  }
-
   getExpectedNodeLabels(phylogeny) {
     // Given a phylogeny, determine which node labels we expect this phyloref to
     // resolve to. To do this, we:
@@ -378,7 +349,7 @@ class PhylorefWrapper {
     return {
       '@type': 'owl:Restriction',
       onProperty: 'phyloref:includes_TU',
-      someValuesFrom: new TaxonomicUnitWrapper(tu).asEquivClass(),
+      someValuesFrom: new TaxonomicUnitWrapper(tu).asEquivClass,
     };
   }
 
@@ -396,7 +367,7 @@ class PhylorefWrapper {
           {
             '@type': 'owl:Restriction',
             onProperty: 'phyloref:excludes_TU',
-            someValuesFrom: new TaxonomicUnitWrapper(tu1).asEquivClass(),
+            someValuesFrom: new TaxonomicUnitWrapper(tu1).asEquivClass,
           },
           PhylorefWrapper.getIncludesRestrictionForTU(tu2),
         ],
@@ -539,7 +510,7 @@ class PhylorefWrapper {
         {
           '@type': 'owl:Restriction',
           onProperty: 'phyloref:excludes_TU',
-          someValuesFrom: new TaxonomicUnitWrapper(tu).asEquivClass(),
+          someValuesFrom: new TaxonomicUnitWrapper(tu).asEquivClass,
         },
       ],
     }];
@@ -558,7 +529,7 @@ class PhylorefWrapper {
             someValuesFrom: {
               '@type': 'owl:Restriction',
               onProperty: 'phyloref:excludes_TU',
-              someValuesFrom: new TaxonomicUnitWrapper(tu).asEquivClass(),
+              someValuesFrom: new TaxonomicUnitWrapper(tu).asEquivClass,
             },
           },
         ],

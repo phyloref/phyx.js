@@ -23,22 +23,16 @@ const expect = chai.expect;
 describe('PhylorefWrapper', function () {
   // Some specifiers to use in testing.
   const specifier1 = {
-    referencesTaxonomicUnits: [{
-      '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
-      occurrenceID: 'MVZ:225749',
-    }],
+    '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+    occurrenceID: 'MVZ:225749',
   };
   const specifier2 = {
-    referencesTaxonomicUnits: [{
-      '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
-      occurrenceID: 'MVZ:191016',
-    }],
+    '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+    occurrenceID: 'MVZ:191016',
   };
   const specifier3 = {
-    referencesTaxonomicUnits: [{
-      '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
-      nameString: 'Rana boylii',
-    }],
+    '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+    nameString: 'Rana boylii',
   };
 
   describe('given an empty phyloreference', function () {
@@ -117,11 +111,11 @@ describe('PhylorefWrapper', function () {
       });
     });
 
-    describe('#getSpecifierLabel', function () {
+    describe('#getSpecifierLabel as TaxonomicUnitWrapper', function () {
       it('should return the correct label for each specifier', function () {
-        expect(phyx.PhylorefWrapper.getSpecifierLabel(specifier1)).to.equal('Specimen MVZ:225749');
-        expect(phyx.PhylorefWrapper.getSpecifierLabel(specifier2)).to.equal('Specimen MVZ:191016');
-        expect(phyx.PhylorefWrapper.getSpecifierLabel(specifier3)).to.equal('Rana boylii');
+        expect((new phyx.TaxonomicUnitWrapper(specifier1)).label).to.equal('Specimen MVZ:225749');
+        expect((new phyx.TaxonomicUnitWrapper(specifier2)).label).to.equal('Specimen MVZ:191016');
+        expect((new phyx.TaxonomicUnitWrapper(specifier3)).label).to.equal('Rana boylii');
       });
     });
   });
@@ -195,6 +189,77 @@ describe('PhylorefWrapper', function () {
           expect(statusChanges[4].statusCURIE, 'fifth status change should be a "pso:retracted-from-publication"').to.equal('pso:retracted-from-publication');
         });
       });
+    });
+  });
+
+  describe('#asJSONLD', function () {
+    it('should generate the expected equivClass expression for 1 int, 1 ext phyloref', function () {
+      const jsonld = new phyx.PhylorefWrapper({
+        internalSpecifiers: [specifier1],
+        externalSpecifiers: [specifier2],
+      }).asJSONLD('#');
+      expect(jsonld).to.have.property('equivalentClass');
+      expect(jsonld.equivalentClass).to.deep.equal([{
+        '@type': 'owl:Class',
+        intersectionOf: [
+          {
+            '@type': 'owl:Restriction',
+            onProperty: 'phyloref:includes_TU',
+            someValuesFrom: {
+              '@type': 'owl:Restriction',
+              hasValue: 'MVZ:225749',
+              onProperty: 'http://rs.tdwg.org/dwc/terms/occurrenceID',
+            },
+          },
+          {
+            '@type': 'owl:Restriction',
+            onProperty: 'phyloref:excludes_TU',
+            someValuesFrom: {
+              '@type': 'owl:Restriction',
+              hasValue: 'MVZ:191016',
+              onProperty: 'http://rs.tdwg.org/dwc/terms/occurrenceID',
+            },
+          },
+        ],
+      }]);
+    });
+
+    it('should generate the expected equivClass expression for 2 int phyloref', function () {
+      const jsonld = new phyx.PhylorefWrapper({
+        internalSpecifiers: [specifier2, specifier3],
+      }).asJSONLD('#');
+      expect(jsonld).to.have.property('equivalentClass');
+      expect(jsonld.equivalentClass).to.deep.equal([{
+        '@type': 'owl:Restriction',
+        onProperty: 'obo:CDAO_0000149',
+        someValuesFrom: {
+          '@type': 'owl:Class',
+          intersectionOf: [
+            {
+              '@type': 'owl:Restriction',
+              onProperty: 'phyloref:excludes_TU',
+              someValuesFrom: {
+                '@type': 'owl:Restriction',
+                hasValue: 'MVZ:191016',
+                onProperty: 'http://rs.tdwg.org/dwc/terms/occurrenceID',
+              },
+            },
+            {
+              '@type': 'owl:Restriction',
+              onProperty: 'phyloref:includes_TU',
+              someValuesFrom: {
+                '@type': 'owl:Restriction',
+                onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
+                someValuesFrom: {
+                  '@type': 'owl:Restriction',
+                  hasValue: 'Rana boylii',
+                  onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete',
+                },
+              },
+            },
+          ],
+        },
+      }]);
     });
   });
 });
