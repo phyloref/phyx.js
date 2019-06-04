@@ -215,10 +215,8 @@ describe('PhylogenyWrapper', function () {
     describe('#getNodeLabelsMatchedBySpecifier', function () {
       it('should match a specifier to MVZ225749 based on occurrence ID', function () {
         const specifier1 = {
-          referencesTaxonomicUnits: [{
-            '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
-            occurrenceID: 'MVZ:225749',
-          }],
+          '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+          occurrenceID: 'MVZ:225749',
         };
         expect(wrapper.getNodeLabelsMatchedBySpecifier(specifier1))
           .to.have.members(['MVZ225749']);
@@ -226,10 +224,8 @@ describe('PhylogenyWrapper', function () {
 
       it('should match a specifier to MVZ191016 based on occurrence ID', function () {
         const specifier2 = {
-          referencesTaxonomicUnits: [{
-            '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
-            occurrenceID: 'MVZ:191016',
-          }],
+          '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+          occurrenceID: 'MVZ:191016',
         };
 
         expect(wrapper.getNodeLabelsMatchedBySpecifier(specifier2))
@@ -238,10 +234,8 @@ describe('PhylogenyWrapper', function () {
 
       it('should match a specifier to node "Rana boylii" based on the parsed scientific name', function () {
         const specifier3 = {
-          referencesTaxonomicUnits: [{
-            '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
-            nameString: 'Rana boylii',
-          }],
+          '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+          nameString: 'Rana boylii',
         };
 
         expect(wrapper.getNodeLabelsMatchedBySpecifier(specifier3))

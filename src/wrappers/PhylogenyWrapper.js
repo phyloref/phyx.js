@@ -225,11 +225,6 @@ class PhylogenyWrapper {
     // Return a list of node labels matched by a given specifier on
     // a given phylogeny.
 
-    // Does the specifier have any taxonomic units? If not, we can't
-    // match anything!
-    if (!has(specifier, 'referencesTaxonomicUnits')) { return []; }
-    const specifierTUnits = specifier.referencesTaxonomicUnits;
-
     return this.getNodeLabels().filter((nodeLabel) => {
       // Find all the taxonomic units associated with the specifier and
       // with the node.
@@ -237,10 +232,8 @@ class PhylogenyWrapper {
 
       // Attempt pairwise matches between taxonomic units in the specifier
       // and associated with the node.
-      return specifierTUnits.some(
-        tunit1 => nodeTUnits.some(
-          tunit2 => new TaxonomicUnitMatcher(tunit1, tunit2).matched
-        )
+      return nodeTUnits.some(
+        tunit => new TaxonomicUnitMatcher(specifier, tunit).matched
       );
     });
   }
@@ -353,7 +346,7 @@ class PhylogenyWrapper {
             const wrappedTUnit = new TaxonomicUnitWrapper(tu);
 
             if (wrappedTUnit) {
-              const equivClass = wrappedTUnit.asEquivClass();
+              const equivClass = wrappedTUnit.asEquivClass;
               if (equivClass) {
                 nodeAsJSONLD['http://www.w3.org/1999/02/22-rdf-syntax-ns#type'].push(
                   {
