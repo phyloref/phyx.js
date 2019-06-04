@@ -154,7 +154,7 @@ class TaxonConceptWrapper {
    * Note that we don't include the accordingTo information in this
    * query, since we don't have a useful way to use that during OWL reasoning.
    */
-  asOWLEquivClass() {
+  get asOWLEquivClass() {
     // Without a taxonomicName, we can't do anything.
     if (!this.taxonName) return undefined;
 

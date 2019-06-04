@@ -200,7 +200,7 @@ class TaxonomicUnitWrapper {
   /**
    * Return this taxonomic unit as an OWL/JSON-LD object.
    */
-  asJSONLD() {
+  get asJSONLD() {
     const jsonld = cloneDeep(this.tunit);
 
     // Add CDAO_TU as a type to the existing types.
@@ -208,7 +208,7 @@ class TaxonomicUnitWrapper {
       if (isArray(this.tunit['@type'])) this.tunit['@type'].push(owlterms.CDAO_TU);
     }
 
-    const equivClass = this.asEquivClass();
+    const equivClass = this.asEquivClass;
     if (equivClass) {
       jsonld.equivalentClass = equivClass;
     }
@@ -219,13 +219,13 @@ class TaxonomicUnitWrapper {
   /**
    * Return the equivalent class expression for this taxonomic unit.
    */
-  asEquivClass() {
+  get asEquivClass() {
     if (this.types.includes(TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT)) {
-      return new TaxonConceptWrapper(this.tunit).asEquivClass();
+      return new TaxonConceptWrapper(this.tunit).asEquivClass;
     }
 
     if (this.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN)) {
-      return new SpecimenWrapper(this.specimen).asEquivClass();
+      return new SpecimenWrapper(this.specimen).asEquivClass;
     }
 
     // Nothing we can do, so just ignore it.
