@@ -151,7 +151,6 @@ describe('PhylogenyWrapper', function () {
           representsTaxonomicUnits: [{
             '@type': [
               phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
-              phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
             ],
             nameString: 'Rana luteiventris',
             occurrenceID: 'MVZ:225749',
@@ -161,7 +160,6 @@ describe('PhylogenyWrapper', function () {
           representsTaxonomicUnits: [{
             '@type': [
               phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
-              phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
             ],
             nameString: 'Rana luteiventris',
             occurrenceID: 'MVZ:191016',
@@ -186,7 +184,6 @@ describe('PhylogenyWrapper', function () {
         expect(wrapper.getTaxonomicUnitsForNodeLabel('MVZ191016')).to.deep.equal([{
           '@type': [
             phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
-            phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
           ],
           nameString: 'Rana luteiventris',
           occurrenceID: 'MVZ:191016',
@@ -195,7 +192,6 @@ describe('PhylogenyWrapper', function () {
         expect(wrapper.getTaxonomicUnitsForNodeLabel('MVZ225749')).to.deep.equal([{
           '@type': [
             phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
-            phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
           ],
           nameString: 'Rana luteiventris',
           occurrenceID: 'MVZ:225749',
