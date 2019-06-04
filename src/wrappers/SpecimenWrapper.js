@@ -181,6 +181,22 @@ class SpecimenWrapper {
     // Return a label for this specimen.
     return `Specimen ${this.occurrenceID}`;
   }
+
+  /** Return this specimen as an equivalentClass expression. */
+  get asEquivClass() {
+    // We can't do anything without an occurrence ID!
+    if (!this.occurrenceID) return undefined;
+
+    // TODO: Should we also match by this.taxonConcept is one is available?
+    // Technically no, but it might be useful. Hmm.
+
+    // Return as an OWL restriction.
+    return {
+      '@type': 'owl:Restriction',
+      onProperty: owlterms.DWC_OCCURRENCE_ID,
+      hasValue: this.occurrenceID,
+    };
+  }
 }
 
 module.exports = {

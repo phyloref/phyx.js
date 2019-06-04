@@ -22,6 +22,7 @@ module.exports = {
 
   // Terms from Darwin Core.
   DWC_OCCURRENCE: 'http://rs.tdwg.org/dwc/terms/Occurrence',
+  DWC_OCCURRENCE_ID: 'http://rs.tdwg.org/dwc/terms/occurrenceID',
 
   // Nomenclatural codes from Nomen.
   NAME_IN_UNKNOWN_CODE: 'http://purl.obolibrary.org/obo/NOMEN_0000036', // NOMEN:scientific name
