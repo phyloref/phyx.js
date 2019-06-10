@@ -322,9 +322,7 @@ class PhylogenyWrapper {
         // can't support @type being an array (despite that being in the standard,
         // see https://w3c.github.io/json-ld-syntax/#example-14-specifying-multiple-types-for-a-node),
         // so we fall back to using rdf:type instead.
-        nodeAsJSONLD['http://www.w3.org/1999/02/22-rdf-syntax-ns#type'] = [
-          'http://purl.obolibrary.org/obo/CDAO_0000140', // CDAO:Node
-        ];
+        nodeAsJSONLD[owlterms.RDF_TYPE] = [owlterms.CDAO_NODE];
 
         // Add labels, additional node properties and taxonomic units.
         if (has(node, 'name') && node.name !== '') {
@@ -348,10 +346,10 @@ class PhylogenyWrapper {
             if (wrappedTUnit) {
               const equivClass = wrappedTUnit.asEquivClass;
               if (equivClass) {
-                nodeAsJSONLD['http://www.w3.org/1999/02/22-rdf-syntax-ns#type'].push(
+                nodeAsJSONLD[owlterms.RDF_TYPE].push(
                   {
                     '@type': 'owl:Restriction',
-                    onProperty: 'obo:CDAO_0000187',
+                    onProperty: owlterms.CDAO_REPRESENTS_TU,
                     someValuesFrom: equivClass,
                   }
                 );

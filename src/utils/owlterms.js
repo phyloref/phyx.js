@@ -1,8 +1,10 @@
 
 // Some OWL constants to be used.
 module.exports = {
-  CDAO_HAS_CHILD: 'obo:CDAO_0000149',
-  CDAO_HAS_DESCENDANT: 'obo:CDAO_0000174',
+  // Where is our context file located?
+  PHYX_CONTEXT_JSON: 'http://www.phyloref.org/phyx.js/context/v0.2.0/phyx.json',
+
+  // Phyloref properties.
   PHYLOREF_EXCLUDES_LINEAGE_TO: 'phyloref:excludes_lineage_to',
   PHYLOREFERENCE_TEST_CASE: 'testcase:PhyloreferenceTestCase',
   PHYLOREFERENCE_PHYLOGENY: 'testcase:PhyloreferenceTestPhylogeny',
@@ -10,8 +12,15 @@ module.exports = {
   TU_HAS_NAME_PROP: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
   TU_SPECIMEN_PROP: 'dwc:organismID',
 
+  // Terms from RDF
+  RDF_TYPE: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type',
+
   // Terms from CDAO (http://www.obofoundry.org/ontology/cdao.html).
-  CDAO_TU: 'http://purl.obolibrary.org/obo/CDAO_0000138',
+  CDAO_TU: 'obo:CDAO_0000138',
+  CDAO_NODE: 'obo:CDAO_0000140',
+  CDAO_REPRESENTS_TU: 'obo:CDAO_0000187',
+  CDAO_HAS_CHILD: 'obo:CDAO_0000149',
+  CDAO_HAS_DESCENDANT: 'obo:CDAO_0000174',
 
   // Terms from the TaxonName ontology
   // (https://github.com/tdwg/ontology/blob/master/ontology/voc/TaxonName.rdf).

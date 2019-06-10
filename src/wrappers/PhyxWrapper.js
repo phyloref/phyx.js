@@ -141,7 +141,7 @@ class PhyxWrapper {
 
     // If the '@context' is missing, add it here.
     if (!has(jsonld, '@context')) {
-      jsonld['@context'] = 'http://www.phyloref.org/phyx.js/context/v0.2.0/phyx.json';
+      jsonld['@context'] = owlterms.PHYX_CONTEXT_JSON;
     }
 
     return jsonld;
