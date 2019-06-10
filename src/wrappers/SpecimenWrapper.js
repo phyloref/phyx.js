@@ -183,7 +183,7 @@ class SpecimenWrapper {
   }
 
   /** Return this specimen as an equivalentClass expression. */
-  get asEquivClass() {
+  get asOWLEquivClass() {
     // We can't do anything without an occurrence ID!
     if (!this.occurrenceID) return undefined;
 

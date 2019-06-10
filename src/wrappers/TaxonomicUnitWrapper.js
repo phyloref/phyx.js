@@ -208,7 +208,7 @@ class TaxonomicUnitWrapper {
       if (isArray(this.tunit['@type'])) this.tunit['@type'].push(owlterms.CDAO_TU);
     }
 
-    const equivClass = this.asEquivClass;
+    const equivClass = this.asOWLEquivClass;
     if (equivClass) {
       jsonld.equivalentClass = equivClass;
     }
@@ -219,13 +219,13 @@ class TaxonomicUnitWrapper {
   /**
    * Return the equivalent class expression for this taxonomic unit.
    */
-  get asEquivClass() {
+  get asOWLEquivClass() {
     if (this.types.includes(TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT)) {
-      return new TaxonConceptWrapper(this.tunit).asEquivClass;
+      return new TaxonConceptWrapper(this.tunit).asOWLEquivClass;
     }
 
     if (this.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN)) {
-      return new SpecimenWrapper(this.specimen).asEquivClass;
+      return new SpecimenWrapper(this.specimen).asOWLEquivClass;
     }
 
     // Nothing we can do, so just ignore it.

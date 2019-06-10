@@ -344,7 +344,7 @@ class PhylogenyWrapper {
             const wrappedTUnit = new TaxonomicUnitWrapper(tu);
 
             if (wrappedTUnit) {
-              const equivClass = wrappedTUnit.asEquivClass;
+              const equivClass = wrappedTUnit.asOWLEquivClass;
               if (equivClass) {
                 nodeAsJSONLD[owlterms.RDF_TYPE].push(
                   {

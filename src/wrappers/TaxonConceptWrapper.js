@@ -161,7 +161,7 @@ class TaxonConceptWrapper {
     return {
       '@type': 'owl:Restriction',
       onProperty: owlterms.TDWG_VOC_HAS_NAME,
-      someValuesFrom: new TaxonNameWrapper(this.taxonName).asOWLEquivClass(),
+      someValuesFrom: new TaxonNameWrapper(this.taxonName).asOWLEquivClass,
     };
   }
 }
