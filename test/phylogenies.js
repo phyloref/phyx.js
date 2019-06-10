@@ -6,6 +6,9 @@
 const chai = require('chai');
 const phyx = require('../src');
 
+// Make it easier to access owlterms.
+const owlterms = require('../src/utils/owlterms');
+
 // Use Chai's expect API for testing.
 const expect = chai.expect;
 
@@ -258,17 +261,15 @@ describe('PhylogenyWrapper', function () {
               {
                 '@id': '#_node0',
                 children: ['#_node1', '#_node2'],
-                'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': [
-                  'http://purl.obolibrary.org/obo/CDAO_0000140',
-                ],
+                'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': [owlterms.CDAO_NODE],
               },
               {
                 '@id': '#_node1',
                 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': [
-                  'http://purl.obolibrary.org/obo/CDAO_0000140',
+                  owlterms.CDAO_NODE,
                   {
                     '@type': 'owl:Restriction',
-                    onProperty: 'obo:CDAO_0000187',
+                    onProperty: owlterms.CDAO_REPRESENTS_TU,
                     someValuesFrom: {
                       '@type': 'owl:Restriction',
                       onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
@@ -299,19 +300,17 @@ describe('PhylogenyWrapper', function () {
               {
                 '@id': '#_node2',
                 children: ['#_node3', '#_node4'],
-                'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': [
-                  'http://purl.obolibrary.org/obo/CDAO_0000140',
-                ],
+                'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': [owlterms.CDAO_NODE],
                 parent: '#_node0',
                 siblings: ['#_node1'],
               },
               {
                 '@id': '#_node3',
                 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': [
-                  'http://purl.obolibrary.org/obo/CDAO_0000140',
+                  owlterms.CDAO_NODE,
                   {
                     '@type': 'owl:Restriction',
-                    onProperty: 'obo:CDAO_0000187',
+                    onProperty: owlterms.CDAO_REPRESENTS_TU,
                     someValuesFrom: {
                       '@type': 'owl:Restriction',
                       onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
@@ -342,10 +341,10 @@ describe('PhylogenyWrapper', function () {
               {
                 '@id': '#_node4',
                 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': [
-                  'http://purl.obolibrary.org/obo/CDAO_0000140',
+                  owlterms.CDAO_NODE,
                   {
                     '@type': 'owl:Restriction',
-                    onProperty: 'obo:CDAO_0000187',
+                    onProperty: owlterms.CDAO_REPRESENTS_TU,
                     someValuesFrom: {
                       '@type': 'owl:Restriction',
                       onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
