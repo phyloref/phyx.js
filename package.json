@@ -1,12 +1,13 @@
 {
   "name": "@phyloref/phyx",
-  "version": "0.1.2",
-  "description": "Phyloreference Exchange (PHYX) library in JavaScript",
-  "main": "index.js",
+  "version": "0.2.0",
+   "description": "Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files",
+  "main": "src/index.js",
   "scripts": {
-    "lint": "eslint index.js \"test/**\" --ext .js",
+    "lint": "eslint src/index.js \"test/**\" --ext .js",
     "pretest": "npm run lint",
-    "test": "mocha"
+    "test": "mocha",
+    "docs": "esdoc"
   },
   "repository": {
     "type": "git",
@@ -26,15 +27,31 @@
   "homepage": "https://github.com/phyloref/phyx.js#readme",
   "dependencies": {
     "extend": "^3.0.2",
+    "lodash": "^4.17.11",
     "moment": "^2.23.0",
     "newick-js": "^1.1.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "esdoc": "^1.1.0",
+    "esdoc-node": "^1.0.4",
+    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^5.12.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-mocha": "^5.2.1",
     "mocha": "^5.2.0"
+  },
+  "esdoc": {
+    "source": "./src",
+    "destination": "./docs/esdocs",
+    "plugins": [
+      {
+        "name": "esdoc-standard-plugin"
+      },
+      {
+        "name": "esdoc-node"
+      }
+    ]
   }
 }
