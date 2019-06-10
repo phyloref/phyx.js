@@ -154,14 +154,14 @@ class TaxonConceptWrapper {
    * Note that we don't include the accordingTo information in this
    * query, since we don't have a useful way to use that during OWL reasoning.
    */
-  asEquivClass() {
+  asOWLEquivClass() {
     // Without a taxonomicName, we can't do anything.
     if (!this.taxonName) return undefined;
 
     return {
       '@type': 'owl:Restriction',
       onProperty: 'hasName',
-      someValuesFrom: new TaxonNameWrapper(this.taxonName).asEquivClass(),
+      someValuesFrom: new TaxonNameWrapper(this.taxonName).asOWLEquivClass(),
     };
   }
 }
