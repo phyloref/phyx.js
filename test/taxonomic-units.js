@@ -143,13 +143,13 @@ describe('TaxonomicUnitWrapper', function () {
         });
     });
   });
-  describe('#asEquivClass', function () {
+  describe('#asOWLEquivClass', function () {
     it('when given a taxon concept, only the complete name should be present in the equivClass', function () {
       const wrapper = new phyx.TaxonomicUnitWrapper({
         '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
         nameString: 'Rana luteiventris Thompson, 1913',
       });
-      expect(wrapper.asEquivClass).to.deep.equal({
+      expect(wrapper.asOWLEquivClass).to.deep.equal({
         '@type': 'owl:Restriction',
         onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
         someValuesFrom: {
@@ -165,7 +165,7 @@ describe('TaxonomicUnitWrapper', function () {
         nameString: 'Rana luteiventris',
         occurrenceID: 'MVZ 225749',
       });
-      expect(wrapper.asEquivClass).to.deep.equal({
+      expect(wrapper.asOWLEquivClass).to.deep.equal({
         '@type': 'owl:Restriction',
         onProperty: 'http://rs.tdwg.org/dwc/terms/occurrenceID',
         hasValue: 'MVZ 225749',
