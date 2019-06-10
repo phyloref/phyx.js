@@ -18,6 +18,7 @@ class TaxonNameWrapper {
    * a taxon name.
    */
   constructor(txname) {
+    if (txname === undefined) throw new Error('TaxonNameWrapper tried to wrap undefined');
     this.txname = txname;
   }
 
