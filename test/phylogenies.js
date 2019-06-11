@@ -201,7 +201,7 @@ describe('PhylogenyWrapper', function () {
         }]);
 
         expect(wrapper.getTaxonomicUnitsForNodeLabel('Rana boylii')).to.deep.equal([{
-          '@type': 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
+          '@type': owlterms.TDWG_VOC_TAXON_CONCEPT,
           label: 'Rana boylii',
           hasName: {
             '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
@@ -254,7 +254,7 @@ describe('PhylogenyWrapper', function () {
           newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
           jsonld: {
             '@id': '#',
-            '@type': 'testcase:PhyloreferenceTestPhylogeny',
+            '@type': owlterms.PHYLOREFERENCE_PHYLOGENY,
             hasRootNode: { '@id': '#_node0' },
             newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
             nodes: [
@@ -268,15 +268,15 @@ describe('PhylogenyWrapper', function () {
                 'rdf:type': [
                   owlterms.CDAO_NODE,
                   {
-                    '@type': 'owl:Restriction',
+                    '@type': owlterms.OWL_RESTRICTION,
                     onProperty: owlterms.CDAO_REPRESENTS_TU,
                     someValuesFrom: {
-                      '@type': 'owl:Restriction',
-                      onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
+                      '@type': owlterms.OWL_RESTRICTION,
+                      onProperty: owlterms.TDWG_VOC_HAS_NAME,
                       someValuesFrom: {
-                        '@type': 'owl:Restriction',
+                        '@type': owlterms.OWL_RESTRICTION,
                         hasValue: 'Mus musculus',
-                        onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete',
+                        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
                       },
                     },
                   },
@@ -284,13 +284,13 @@ describe('PhylogenyWrapper', function () {
                 labels: ['Mus_musculus'],
                 parent: '#_node0',
                 representsTaxonomicUnits: [{
-                  '@type': 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
+                  '@type': owlterms.TDWG_VOC_TAXON_CONCEPT,
                   hasName: {
-                    '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
+                    '@type': owlterms.TDWG_VOC_TAXON_NAME,
                     genusPart: 'Mus',
                     label: 'Mus_musculus',
                     nameComplete: 'Mus musculus',
-                    nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
+                    nomenclaturalCode: owlterms.NAME_IN_UNKNOWN_CODE,
                     specificEpithet: 'musculus',
                   },
                   label: 'Mus_musculus',
@@ -309,15 +309,15 @@ describe('PhylogenyWrapper', function () {
                 'rdf:type': [
                   owlterms.CDAO_NODE,
                   {
-                    '@type': 'owl:Restriction',
+                    '@type': owlterms.OWL_RESTRICTION,
                     onProperty: owlterms.CDAO_REPRESENTS_TU,
                     someValuesFrom: {
-                      '@type': 'owl:Restriction',
-                      onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
+                      '@type': owlterms.OWL_RESTRICTION,
+                      onProperty: owlterms.TDWG_VOC_HAS_NAME,
                       someValuesFrom: {
-                        '@type': 'owl:Restriction',
+                        '@type': owlterms.OWL_RESTRICTION,
                         hasValue: 'Panthera tigris',
-                        onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete',
+                        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
                       },
                     },
                   },
@@ -325,13 +325,13 @@ describe('PhylogenyWrapper', function () {
                 labels: ['Panthera_tigris'],
                 parent: '#_node2',
                 representsTaxonomicUnits: [{
-                  '@type': 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
+                  '@type': owlterms.TDWG_VOC_TAXON_CONCEPT,
                   hasName: {
-                    '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
+                    '@type': owlterms.TDWG_VOC_TAXON_NAME,
                     genusPart: 'Panthera',
                     label: 'Panthera_tigris',
                     nameComplete: 'Panthera tigris',
-                    nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
+                    nomenclaturalCode: owlterms.NAME_IN_UNKNOWN_CODE,
                     specificEpithet: 'tigris',
                   },
                   label: 'Panthera_tigris',
@@ -343,15 +343,15 @@ describe('PhylogenyWrapper', function () {
                 'rdf:type': [
                   owlterms.CDAO_NODE,
                   {
-                    '@type': 'owl:Restriction',
+                    '@type': owlterms.OWL_RESTRICTION,
                     onProperty: owlterms.CDAO_REPRESENTS_TU,
                     someValuesFrom: {
-                      '@type': 'owl:Restriction',
-                      onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
+                      '@type': owlterms.OWL_RESTRICTION,
+                      onProperty: owlterms.TDWG_VOC_HAS_NAME,
                       someValuesFrom: {
-                        '@type': 'owl:Restriction',
+                        '@type': owlterms.OWL_RESTRICTION,
                         hasValue: 'Homo sapiens',
-                        onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete',
+                        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
                       },
                     },
                   },
@@ -360,13 +360,13 @@ describe('PhylogenyWrapper', function () {
                 parent: '#_node2',
                 representsTaxonomicUnits: [
                   {
-                    '@type': 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
+                    '@type': owlterms.TDWG_VOC_TAXON_CONCEPT,
                     hasName: {
-                      '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
+                      '@type': owlterms.TDWG_VOC_TAXON_NAME,
                       genusPart: 'Homo',
                       label: 'Homo_sapiens',
                       nameComplete: 'Homo sapiens',
-                      nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
+                      nomenclaturalCode: owlterms.NAME_IN_UNKNOWN_CODE,
                       specificEpithet: 'sapiens',
                     },
                     label: 'Homo_sapiens',

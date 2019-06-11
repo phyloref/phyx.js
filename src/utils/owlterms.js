@@ -4,6 +4,9 @@ module.exports = {
   // Where is our context file located?
   PHYX_CONTEXT_JSON: 'http://www.phyloref.org/phyx.js/context/v0.2.0/phyx.json',
 
+  // OWL properties.
+  OWL_RESTRICTION: 'owl:Restriction',
+
   // Phyloref properties.
   PHYLOREF_EXCLUDES_LINEAGE_TO: 'phyloref:excludes_lineage_to',
   PHYLOREFERENCE_TEST_CASE: 'testcase:PhyloreferenceTestCase',
