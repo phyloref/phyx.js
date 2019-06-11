@@ -13,7 +13,7 @@ module.exports = {
   TU_SPECIMEN_PROP: 'dwc:organismID',
 
   // Terms from RDF
-  RDF_TYPE: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type',
+  RDF_TYPE: 'rdf:type',
 
   // Terms from CDAO (http://www.obofoundry.org/ontology/cdao.html).
   CDAO_TU: 'obo:CDAO_0000138',
