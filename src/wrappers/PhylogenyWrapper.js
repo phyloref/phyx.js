@@ -1,11 +1,7 @@
-/**
- * PhylogenyWrapper
- */
-
 const { has } = require('lodash');
 
 /** Used to parse Newick strings. */
-const { parse: parseNewick } = require('newick-js');
+const parseNewick = require('newick-js').parse;
 
 /** OWL terms to be used here. */
 const owlterms = require('../utils/owlterms');
@@ -13,22 +9,28 @@ const owlterms = require('../utils/owlterms');
 const { TaxonomicUnitWrapper } = require('./TaxonomicUnitWrapper');
 const { TaxonomicUnitMatcher } = require('../matchers/TaxonomicUnitMatcher');
 
+/**
+ * PhylogenyWrapper
+ */
+
 class PhylogenyWrapper {
   // Wraps a Phylogeny in a PHYX file and provides access to node, node labels
   // and other information. Remember that a Phylogeny also has the
   // additionalNodeProperties object which provides additional properties for
   // nodes.
 
+  /**
+   * Construct a phylogeny based on a Phylogeny object in a PHYX phylogeny.
+   * Note that this version ONLY uses the `newick` property to determine the
+   * phylogeny: if other representations are included (such as a node-based
+   * format, as used in JSON-LD), they will be ignored and possibly overwritten
+   * during export. So, to update the phylogeny, please only update the newick
+   * string!
+   *
+   * This ensures that we don't need to reconcile between different
+   * possible representations of a phylogeny.
+   */
   constructor(phylogeny) {
-    // Construct a phylogeny based on a Phylogeny object in a PHYX phylogeny.
-    // Note that this version ONLY uses the `newick` property to determine the
-    // phylogeny: if other representations are included (such as a node-based
-    // format, as used in JSON-LD), they will be ignored and possibly overwritten
-    // during export. So, to update the phylogeny, please only update the newick
-    // string!
-    //
-    // This ensures that we don't need to reconcile between different
-    // possible representations of a phylogeny.
     this.phylogeny = phylogeny;
   }
 
