@@ -6,6 +6,9 @@
 const chai = require('chai');
 const phyx = require('../src');
 
+// Use owlterms so we don't have to repeat OWL terms.
+const owlterms = require('../src/utils/owlterms');
+
 // We use Chai's Expect API.
 const expect = chai.expect;
 
@@ -200,24 +203,24 @@ describe('PhylorefWrapper', function () {
       }).asJSONLD('#');
       expect(jsonld).to.have.property('equivalentClass');
       expect(jsonld.equivalentClass).to.deep.equal([{
-        '@type': 'owl:Class',
+        '@type': owlterms.OWL_CLASS,
         intersectionOf: [
           {
-            '@type': 'owl:Restriction',
-            onProperty: 'phyloref:includes_TU',
+            '@type': owlterms.OWL_RESTRICTION,
+            onProperty: owlterms.PHYLOREF_INCLUDES_TU,
             someValuesFrom: {
-              '@type': 'owl:Restriction',
+              '@type': owlterms.OWL_RESTRICTION,
               hasValue: 'MVZ:225749',
-              onProperty: 'http://rs.tdwg.org/dwc/terms/occurrenceID',
+              onProperty: owlterms.DWC_OCCURRENCE_ID,
             },
           },
           {
-            '@type': 'owl:Restriction',
-            onProperty: 'phyloref:excludes_TU',
+            '@type': owlterms.OWL_RESTRICTION,
+            onProperty: owlterms.PHYLOREF_EXCLUDES_TU,
             someValuesFrom: {
-              '@type': 'owl:Restriction',
+              '@type': owlterms.OWL_RESTRICTION,
               hasValue: 'MVZ:191016',
-              onProperty: 'http://rs.tdwg.org/dwc/terms/occurrenceID',
+              onProperty: owlterms.DWC_OCCURRENCE_ID,
             },
           },
         ],
@@ -230,30 +233,30 @@ describe('PhylorefWrapper', function () {
       }).asJSONLD('#');
       expect(jsonld).to.have.property('equivalentClass');
       expect(jsonld.equivalentClass).to.deep.equal([{
-        '@type': 'owl:Restriction',
-        onProperty: 'obo:CDAO_0000149',
+        '@type': owlterms.OWL_RESTRICTION,
+        onProperty: owlterms.CDAO_HAS_CHILD,
         someValuesFrom: {
           '@type': 'owl:Class',
           intersectionOf: [
             {
-              '@type': 'owl:Restriction',
-              onProperty: 'phyloref:excludes_TU',
+              '@type': owlterms.OWL_RESTRICTION,
+              onProperty: owlterms.PHYLOREF_EXCLUDES_TU,
               someValuesFrom: {
-                '@type': 'owl:Restriction',
+                '@type': owlterms.OWL_RESTRICTION,
                 hasValue: 'MVZ:191016',
-                onProperty: 'http://rs.tdwg.org/dwc/terms/occurrenceID',
+                onProperty: owlterms.DWC_OCCURRENCE_ID,
               },
             },
             {
-              '@type': 'owl:Restriction',
-              onProperty: 'phyloref:includes_TU',
+              '@type': owlterms.OWL_RESTRICTION,
+              onProperty: owlterms.PHYLOREF_INCLUDES_TU,
               someValuesFrom: {
-                '@type': 'owl:Restriction',
-                onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
+                '@type': owlterms.OWL_RESTRICTION,
+                onProperty: owlterms.TDWG_VOC_HAS_NAME,
                 someValuesFrom: {
-                  '@type': 'owl:Restriction',
+                  '@type': owlterms.OWL_RESTRICTION,
                   hasValue: 'Rana boylii',
-                  onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete',
+                  onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
                 },
               },
             },
