@@ -88,7 +88,7 @@ class TaxonNameWrapper {
     if (results) {
       txname = {
         '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
-        nomenclaturalCode: TaxonNameWrapper.getNomenCodeAsURI(nomenCode),
+        nomenclaturalCode: nomenCode,
         label: verbatimName,
         nameComplete: `${results[1]} ${results[2]} ${results[3]}`.trim(),
         genusPart: results[1],
@@ -120,7 +120,7 @@ class TaxonNameWrapper {
       if (results) {
         txname = {
           '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
-          nomenclaturalCode: TaxonNameWrapper.getNomenCodeAsURI(nomenCode),
+          nomenclaturalCode: nomenCode,
           label: verbatimName,
           nameComplete: results[1],
           uninomial: results[1],
@@ -159,6 +159,13 @@ class TaxonNameWrapper {
    */
   get nomenclaturalCode() {
     return this.txname.nomenclaturalCode || TaxonNameWrapper.getNomenCodeAsURI('unknown');
+  }
+
+  /**
+   * Set the nomenclatural code of this taxon name.
+   */
+  set nomenclaturalCode(nomenCode) {
+    this.txname.nomenclaturalCode = nomenCode;
   }
 
   /**
@@ -332,7 +339,7 @@ class TaxonNameWrapper {
   /**
    * Return this taxon name in an JSON-LD representation.
    */
-  asJSONLD() {
+  get asJSONLD() {
     const jsonld = cloneDeep(this.txname);
 
     // Make sure '@type' is an array.
