@@ -122,30 +122,34 @@ class TaxonConceptWrapper {
    *
    * @return A taxonomic unit that corresponds to this taxon concept.
    */
-  static fromLabel(nodeLabel) {
+  static fromLabel(nodeLabel, nomenCode) {
     if (nodeLabel === undefined || nodeLabel === null || nodeLabel.trim() === '') return undefined;
 
     // Check if this label can be divided into a name and a sensu/sec component.
     const match = /^\s*(.*)\s+(?:sec|sensu)\.?\s+(.*)\s*$/.exec(nodeLabel);
+    let accordingTo;
     if (match) {
-      return {
-        '@type': TaxonConceptWrapper.TYPE_TAXON_CONCEPT,
-        nameString: match[1],
-        accordingTo: match[2],
-      };
+      accordingTo = match[2];
     }
 
     // Can we parse it as a taxon name? If not, we will return undefined.
-    const taxonName = TaxonNameWrapper.fromVerbatimName(nodeLabel);
+    const taxonName = TaxonNameWrapper.fromVerbatimName(nodeLabel, nomenCode);
     if (taxonName) {
-      return {
-        '@type': TaxonConceptWrapper.TYPE_TAXON_CONCEPT,
-        hasName: taxonName,
-      };
+      return TaxonConceptWrapper.wrapTaxonName(taxonName, accordingTo);
     }
 
     // Couldn't parse it at all.
     return undefined;
+  }
+
+  /** Wrap a taxon name with a particular TaxonName object and an accordingTo (string). */
+  static wrapTaxonName(taxonName, accordingTo) {
+    const result = {
+      '@type': TaxonConceptWrapper.TYPE_TAXON_CONCEPT,
+      hasName: taxonName,
+    };
+    if (accordingTo) result.accordingTo = accordingTo;
+    return result;
   }
 
   /**
