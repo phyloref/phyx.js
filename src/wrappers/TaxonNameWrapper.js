@@ -132,8 +132,11 @@ class TaxonNameWrapper {
 
     // If there is no genus but there is a scientificName, try to extract a genus
     // from it.
-    if (this.nameComplete) {
-      const txname = TaxonNameWrapper.fromVerbatimName(this.nameComplete, this.nomenclaturalCode);
+    if (this.txname.nameComplete) {
+      const txname = TaxonNameWrapper.fromVerbatimName(
+        this.txname.nameComplete,
+        this.nomenclaturalCode
+      );
       if (has(txname, 'uninomial')) return txname.uninomial;
     }
 
@@ -165,8 +168,11 @@ class TaxonNameWrapper {
 
     // If there is no genus but there is a scientificName, try to extract a genus
     // from it.
-    if (this.nameComplete) {
-      const txname = TaxonNameWrapper.fromVerbatimName(this.nameComplete, this.nomenclaturalCode);
+    if (this.txname.nameComplete) {
+      const txname = TaxonNameWrapper.fromVerbatimName(
+        this.txname.nameComplete,
+        this.nomenclaturalCode
+      );
       if (has(txname, 'genusPart')) return txname.genusPart;
     }
 
@@ -198,7 +204,7 @@ class TaxonNameWrapper {
 
     // If there is no specific epithet but there is a scientificName, try to
     // extract a specific epithet from it.
-    if (this.nameComplete) {
+    if (this.txname.nameComplete) {
       const txname = TaxonNameWrapper.fromVerbatimName(
         this.nameComplete,
         this.nomenclaturalCode
