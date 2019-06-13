@@ -70,6 +70,7 @@ class TaxonNameWrapper {
         nameComplete: `${results[1]} ${results[2]} ${results[3]}`.trim(),
         genusPart: results[1],
         specificEpithet: results[2],
+        infraspecificEpithet: results[3],
       };
     } else {
       // Is it a uninomial name?
@@ -119,11 +120,14 @@ class TaxonNameWrapper {
    * without authority information).
    */
   get nameComplete() {
-    return this.txname.nameComplete;
+    return this.txname.nameComplete
+      || this.trinomialName
+      || this.binomialName
+      || this.uninomialName;
   }
 
   /** Return the uninomial name if there is one. */
-  get uninomial() {
+  get uninomialName() {
     if (has(this.txname, 'uninomial')) return this.txname.uninomial;
 
     // If there is no genus but there is a scientificName, try to extract a genus
@@ -142,6 +146,16 @@ class TaxonNameWrapper {
     // if available.
     if (this.genusPart === undefined || this.specificEpithet === undefined) return undefined;
     return `${this.genusPart} ${this.specificEpithet}`;
+  }
+
+  /** Return the trinomial name if available. */
+  get trinomialName() {
+    if (
+      this.infraspecificEpithet === undefined
+      || this.specificEpithet === undefined
+      || this.genusPart === undefined
+    ) return undefined;
+    return `${this.genusPart} ${this.specificEpithet} ${this.infraspecificEpithet}`;
   }
 
   /** Return the genus part of this scientific name if available. */
@@ -172,6 +186,24 @@ class TaxonNameWrapper {
         this.nomenclaturalCode
       );
       if (has(txname, 'specificEpithet')) return txname.specificEpithet;
+    }
+
+    return undefined;
+  }
+
+  /** Return the infraspecific epithet of this scientific name if available. */
+  get infraspecificEpithet() {
+    // Try to read the specific epithet if available.
+    if (has(this.txname, 'infraspecificEpithet')) return this.txname.infraspecificEpithet;
+
+    // If there is no specific epithet but there is a scientificName, try to
+    // extract a specific epithet from it.
+    if (this.nameComplete) {
+      const txname = TaxonNameWrapper.fromVerbatimName(
+        this.nameComplete,
+        this.nomenclaturalCode
+      );
+      if (has(txname, 'infraspecificEpithet')) return txname.infraspecificEpithet;
     }
 
     return undefined;
