@@ -17,18 +17,16 @@ class PhylorefWrapper {
   constructor(phyloref) {
     // Wraps the provided phyloreference
     this.phyloref = phyloref;
+  }
 
-    // Reset internal and external specifiers if needed.
-    // if (!has(this.phyloref, 'internalSpecifiers'))
-    //  Vue.set(this.phyloref, 'internalSpecifiers', []);
-    if (!has(this.phyloref, 'internalSpecifiers')) {
-      this.phyloref.internalSpecifiers = [];
-    }
-    // if (!has(this.phyloref, 'externalSpecifiers'))
-    //  Vue.set(this.phyloref, 'externalSpecifiers', []);
-    if (!has(this.phyloref, 'externalSpecifiers')) {
-      this.phyloref.externalSpecifiers = [];
-    }
+  /** Return the internal specifiers of this phyloref (if any). */
+  get internalSpecifiers() {
+    return this.phyloref.internalSpecifiers || [];
+  }
+
+  /** Return the external specifiers of this phyloref (if any). */
+  get externalSpecifiers() {
+    return this.phyloref.externalSpecifiers || [];
   }
 
   get label() {
@@ -50,12 +48,13 @@ class PhylorefWrapper {
     }
   }
 
+  /** Return all the specifiers of this phyloref (if any). */
   get specifiers() {
     // Returns a list of all specifiers by combining the internal and external
     // specifiers into a single list, with internal specifiers before
     // external specifiers.
-    let specifiers = this.phyloref.internalSpecifiers;
-    specifiers = specifiers.concat(this.phyloref.externalSpecifiers);
+    let specifiers = this.internalSpecifiers;
+    specifiers = specifiers.concat(this.externalSpecifiers);
     return specifiers;
   }
 
@@ -63,8 +62,8 @@ class PhylorefWrapper {
     // For a given specifier, return a string indicating whether it is
     // an 'Internal' or 'External' specifier.
 
-    if (this.phyloref.internalSpecifiers.includes(specifier)) return 'Internal';
-    if (this.phyloref.externalSpecifiers.includes(specifier)) return 'External';
+    if (this.internalSpecifiers.includes(specifier)) return 'Internal';
+    if (this.externalSpecifiers.includes(specifier)) return 'External';
     return 'Specifier';
   }
 
@@ -77,11 +76,11 @@ class PhylorefWrapper {
     if (specifierType === 'Internal') {
       // To set a specifier to 'Internal', we might need to delete it from the
       // list of external specifiers first.
-      index = this.phyloref.externalSpecifiers.indexOf(specifier);
-      if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
+      index = this.externalSpecifiers.indexOf(specifier);
+      if (index !== -1) this.externalSpecifiers.splice(index, 1);
 
       // Don't add it to the list of internal specifiers if it's already there.
-      if (!this.phyloref.internalSpecifiers.includes(specifier)) {
+      if (!this.internalSpecifiers.includes(specifier)) {
         this.phyloref.internalSpecifiers.unshift(specifier);
       }
     } else if (specifierType === 'External') {
