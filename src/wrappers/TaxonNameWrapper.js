@@ -179,6 +179,13 @@ class TaxonNameWrapper {
   }
 
   /**
+   * Return whether or not this taxon name has a nomenclatural code set.
+   */
+  hasNomenclaturalCode() {
+    return has(this.txname, 'nomenclaturalCode') && this.txname.nomenclaturalCode !== TaxonNameWrapper.getNomenCodeAsURI('unknown');
+  }
+
+  /**
    * Set the nomenclatural code of this taxon name.
    */
   set nomenclaturalCode(nomenCode) {
