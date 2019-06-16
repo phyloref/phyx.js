@@ -49,28 +49,34 @@ class TaxonNameWrapper {
   static getNomenclaturalCodes() {
     return [
       {
+        uri: owlterms.ICZN_NAME,
         shortName: 'ICZN',
         label: 'Zoological name (ICZN)',
         title: 'International Code of Zoological Nomenclature',
-        uri: owlterms.ICZN_NAME,
       },
       {
+        uri: owlterms.ICN_NAME,
         shortName: 'ICNafp',
         label: 'Algae, fungi and plants (ICNafp or ICBN)',
         title: 'International Code of Nomenclature for algae, fungi, and plants',
-        uri: owlterms.ICN_NAME,
       },
       {
+        uri: owlterms.ICNP_NAME,
         shortName: 'ICNP',
         label: 'Prokaryotes (ICNP)',
         title: 'International Code of Nomenclature of Prokaryotes',
-        uri: owlterms.ICNP_NAME,
       },
       {
+        uri: owlterms.ICTV_NAME,
         shortName: 'ICTV',
         label: 'Viruses (ICTV)',
         title: 'International Committee on Taxonomy of Viruses',
-        uri: owlterms.ICTV_NAME,
+      },
+      {
+        uri: owlterms.NAME_IN_UNKNOWN_CODE,
+        shortName: 'Unknown',
+        label: 'Code not known',
+        title: 'Nomenclatural code not known',
       },
     ];
   }
