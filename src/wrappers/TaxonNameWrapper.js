@@ -51,6 +51,13 @@ class TaxonNameWrapper {
   }
 
   /**
+   * The URI for an unknown nomenclatural code (i.e. all we know is that it's a scientific name).
+   */
+  static get NAME_IN_UNKNOWN_CODE() {
+    return owlterms.NAME_IN_UNKNOWN_CODE;
+  }
+
+  /**
    * Return a list of all supported nomenclatural code. Each entry will have
    * the following keys:
    *  - code: A list of short names that can be used to represent this nomenclatural code.
@@ -64,46 +71,70 @@ class TaxonNameWrapper {
   static getNomenclaturalCodes() {
     return [
       {
-        code: ['iczn'],
+        shortName: 'ICZN',
         label: 'Zoological name (ICZN)',
         title: 'International Code of Zoological Nomenclature',
         uri: owlterms.ICZN_NAME,
       },
       {
-        code: ['icn', 'icbn', 'icnafp'],
+        shortName: 'ICNafp',
         label: 'Algae, fungi and plants (ICNafp or ICBN)',
         title: 'International Code of Nomenclature for algae, fungi, and plants',
         uri: owlterms.ICN_NAME,
       },
       {
-        code: ['icnp'],
+        shortName: 'ICNP',
         label: 'Prokaryotes (ICNP)',
         title: 'International Code of Nomenclature of Prokaryotes',
         uri: owlterms.ICNP_NAME,
       },
       {
-        code: ['ictv'],
+        shortName: 'ICTV',
         label: 'Viruses (ICTV)',
         title: 'International Committee on Taxonomy of Viruses',
         uri: owlterms.ICTV_NAME,
-      },
-      {
-        code: ['unknown'],
-        label: 'Unknown',
-        title: 'Unknown nomenclatural code',
-        uri: owlterms.NAME_IN_UNKNOWN_CODE,
       },
     ];
   }
 
   /**
-   * Returns the URI for a particular nomenclature code.
+   * Returns the nomenclatural code entry for a code.
    */
-  static getNomenCodeAsURI(nomenCode) {
+  static getNomenCodeAsObject(nomenCodeURI) {
     const codes = TaxonNameWrapper.getNomenclaturalCodes();
-    const matchingCode = codes.find(code => code.code.includes(nomenCode.toLowerCase()));
-    if (matchingCode) return matchingCode.uri;
-    return owlterms.NAME_IN_UNKNOWN_CODE;
+
+    // Look for the entry with the same URI as the provided URI.
+    const matchingCode = codes
+      .find(code => code.uri.toLowerCase() === nomenCodeURI.toLowerCase());
+    if (matchingCode) return matchingCode;
+    return undefined;
+  }
+
+  /**
+   * Returns the nomenclatural code of this taxon name.
+   */
+  get nomenclaturalCode() {
+    return this.txname.nomenclaturalCode;
+  }
+
+  /**
+   * Returns the nomenclatural code of this taxon name as a URI.
+   */
+  get nomenclaturalCodeAsObject() {
+    const nomenCode = this.txname.nomenclaturalCode;
+    if (!nomenCode) return undefined;
+
+    const nomenObj = TaxonNameWrapper.getNomenCodeAsObject(nomenCode);
+    if (!nomenObj) return undefined;
+
+    return nomenObj;
+  }
+
+  /**
+   * Set the nomenclatural code of this taxon name.
+   */
+  set nomenclaturalCode(nomenCode) {
+    this.txname.nomenclaturalCode = nomenCode;
   }
 
   /**
@@ -188,27 +219,6 @@ class TaxonNameWrapper {
       // If we don't have a nameComplete, treat this as the name complete.
       this.nameComplete = lab;
     }
-  }
-
-  /**
-   * Return the nomenclatural code of this taxon name.
-   */
-  get nomenclaturalCode() {
-    return this.txname.nomenclaturalCode || TaxonNameWrapper.getNomenCodeAsURI('unknown');
-  }
-
-  /**
-   * Return whether or not this taxon name has a nomenclatural code set.
-   */
-  hasNomenclaturalCode() {
-    return has(this.txname, 'nomenclaturalCode') && this.txname.nomenclaturalCode !== TaxonNameWrapper.getNomenCodeAsURI('unknown');
-  }
-
-  /**
-   * Set the nomenclatural code of this taxon name.
-   */
-  set nomenclaturalCode(nomenCode) {
-    this.txname.nomenclaturalCode = nomenCode;
   }
 
   /**
