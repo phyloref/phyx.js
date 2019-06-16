@@ -35,15 +35,31 @@ class SpecimenWrapper {
    *  - '[institutionCode]:[collectionCode]:[catalogNumber]'
    */
   static fromOccurrenceID(occurrenceID) {
+    // Is there an occurrence ID at all?
+    if (!occurrenceID) return undefined;
+
     // Copy the occurrence ID so we can truncate it if necessary.
     let occurID = occurrenceID;
-    if (occurID.startsWith('urn:catalog:')) occurID = occurID.substr(12);
+    if (occurID.startsWith('urn:catalog:')) occurID = occurID.substring(12);
+
+    // Do we have an 'identified as' section?
+    const indexOfIdentifiedAs = occurID.indexOf(' identified as ');
+    let identifiedAs;
+    if (indexOfIdentifiedAs >= 0) {
+        identifiedAs = occurID.substring(indexOfIdentifiedAs + 15);
+        occurID = occurID.substring(0, indexOfIdentifiedAs);
+    }
 
     // Prepare the specimen.
     const specimen = {
       '@type': SpecimenWrapper.TYPE_SPECIMEN,
       occurrenceID: occurID,
     };
+
+    const identifiedAsTaxonName = TaxonNameWrapper.fromVerbatimString(identifiedAs);
+    if (identifiedAsTaxonName) {
+      specimen.hasName = identifiedAsTaxonName;
+    }
 
     // Look for certain prefixes that suggest that we've been passed a URN or
     // URL instead. If so, don't do any further processing!
