@@ -1,5 +1,6 @@
 const { has } = require('lodash');
 const { TaxonConceptWrapper } = require('./TaxonConceptWrapper');
+const { TaxonNameWrapper } = require('./TaxonNameWrapper');
 const owlterms = require('../utils/owlterms');
 const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
 
@@ -56,7 +57,7 @@ class SpecimenWrapper {
       occurrenceID: occurID,
     };
 
-    const identifiedAsTaxonName = TaxonNameWrapper.fromVerbatimString(identifiedAs);
+    const identifiedAsTaxonName = TaxonNameWrapper.fromVerbatimName(identifiedAs);
     if (identifiedAsTaxonName) {
       specimen.hasName = identifiedAsTaxonName;
     }
