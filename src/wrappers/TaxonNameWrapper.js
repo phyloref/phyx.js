@@ -91,8 +91,10 @@ class TaxonNameWrapper {
         nameComplete: `${results[1]} ${results[2]} ${results[3]}`.trim(),
         genusPart: results[1],
         specificEpithet: results[2],
-        infraspecificEpithet: results[3],
       };
+
+      // Set an infraspecificEpithet if there is one.
+      if (results[3] !== '') txname.infraspecificEpithet = results[3];
     } else {
       // Is it a uninomial name?
       const checkUninomial = /^([A-Z][a-z]+)(?:[_\s]|\b)/.exec(verbatimName);
