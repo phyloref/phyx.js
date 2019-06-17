@@ -47,8 +47,8 @@ class SpecimenWrapper {
     const indexOfIdentifiedAs = occurID.indexOf(' identified as ');
     let identifiedAs;
     if (indexOfIdentifiedAs >= 0) {
-        identifiedAs = occurID.substring(indexOfIdentifiedAs + 15);
-        occurID = occurID.substring(0, indexOfIdentifiedAs);
+      identifiedAs = occurID.substring(indexOfIdentifiedAs + 15);
+      occurID = occurID.substring(0, indexOfIdentifiedAs);
     }
 
     // Prepare the specimen.

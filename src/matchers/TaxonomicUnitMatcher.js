@@ -1,7 +1,5 @@
-const { has } = require('lodash');
 const { TaxonomicUnitWrapper } = require('../wrappers/TaxonomicUnitWrapper');
 const { TaxonConceptWrapper } = require('../wrappers/TaxonConceptWrapper');
-const { TaxonNameWrapper } = require('../wrappers/TaxonNameWrapper');
 const { SpecimenWrapper } = require('../wrappers/SpecimenWrapper');
 
 /**
