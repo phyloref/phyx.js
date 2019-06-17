@@ -65,14 +65,14 @@ describe('PhylorefWrapper', function () {
 
       describe('when a new external specifier is added using .externalSpecifiers', function () {
         it('should return a list with the new specifier', function () {
-          wrapper.phyloref.externalSpecifiers.push(specifier3);
+          wrapper.externalSpecifiers.push(specifier3);
           expect(wrapper.specifiers).to.deep.equal([specifier3]);
         });
       });
 
       describe('when a new external specifier is added using .externalSpecifiers', function () {
         it('should return a list with the new specifier', function () {
-          wrapper.phyloref.externalSpecifiers.push(specifier2);
+          wrapper.externalSpecifiers.push(specifier2);
           expect(wrapper.specifiers).to.deep.equal([specifier3, specifier2]);
         });
       });
@@ -86,7 +86,7 @@ describe('PhylorefWrapper', function () {
 
       describe('when a specifier is added using .externalSpecifiers', function () {
         it('should return the updated list', function () {
-          wrapper.phyloref.externalSpecifiers.push(specifier1);
+          wrapper.externalSpecifiers.push(specifier1);
           expect(wrapper.specifiers).to.deep.equal([specifier3, specifier1]);
         });
       });
@@ -100,7 +100,7 @@ describe('PhylorefWrapper', function () {
 
       describe('when a specifier is added using .internalSpecifiers', function () {
         it('should be included in the list of all specifiers', function () {
-          wrapper.phyloref.internalSpecifiers.push(specifier2);
+          wrapper.internalSpecifiers.push(specifier2);
           expect(wrapper.specifiers).to.deep.equal([specifier1, specifier2, specifier3]);
         });
       });
