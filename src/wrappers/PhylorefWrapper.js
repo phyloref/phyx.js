@@ -21,12 +21,20 @@ class PhylorefWrapper {
 
   /** Return the internal specifiers of this phyloref (if any). */
   get internalSpecifiers() {
-    return this.phyloref.internalSpecifiers || [];
+    if (!has(this.phyloref, 'internalSpecifiers')) {
+      this.phyloref.internalSpecifiers = [];
+    }
+
+    return this.phyloref.internalSpecifiers;
   }
 
   /** Return the external specifiers of this phyloref (if any). */
   get externalSpecifiers() {
-    return this.phyloref.externalSpecifiers || [];
+    if (!has(this.phyloref, 'externalSpecifiers')) {
+      this.phyloref.externalSpecifiers = [];
+    }
+
+    return this.phyloref.externalSpecifiers;
   }
 
   get label() {
