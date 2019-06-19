@@ -2,7 +2,7 @@
 // Some OWL constants to be used.
 module.exports = {
   // Where is our context file located?
-  PHYX_CONTEXT_JSON: 'http://www.phyloref.org/phyx.js/context/v0.2.0/phyx.json',
+  PHYX_CONTEXT_JSON: 'file:///home/vaidyagi/code/phyloref/phyx.js/docs/context/v0.2.0/phyx.json',
 
   // OWL properties.
   OWL_CLASS: 'owl:Class',
