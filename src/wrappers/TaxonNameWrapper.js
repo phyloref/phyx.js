@@ -80,8 +80,10 @@ class TaxonNameWrapper {
     }
 
     // Use a regular expression to parse the verbatimName.
+
+    // Attempt 1. Look for a trinomial name.
     let txname;
-    const results = /^([A-Z][a-z]+)[ _]([a-z-]+\.?)(?:\b|_)\s*([a-z-]*)/.exec(verbatimName);
+    let results = /^([A-Z][a-z]+)[ _]([a-z-]+\.?)(?:\b|_)\s*([a-z-]+)\b/.exec(verbatimName);
 
     if (results) {
       txname = {
@@ -91,20 +93,37 @@ class TaxonNameWrapper {
         nameComplete: `${results[1]} ${results[2]} ${results[3]}`.trim(),
         genusPart: results[1],
         specificEpithet: results[2],
+        infraspecificEpithet: results[3],
       };
+    }
 
-      // Set an infraspecificEpithet if there is one.
-      if (results[3] !== '') txname.infraspecificEpithet = results[3];
-    } else {
+    // Attempt 1. Look for a binomial name.
+    if (!txname) {
+      results = /^([A-Z][a-z]+)[ _]([a-z-]+\.?)(?:\b|_)/.exec(verbatimName);
+
+      if (results) {
+        txname = {
+          '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
+          nomenclaturalCode: nomenCode,
+          label: verbatimName,
+          nameComplete: `${results[1]} ${results[2]}`.trim(),
+          genusPart: results[1],
+          specificEpithet: results[2],
+        };
+      }
+    }
+
+    // Attempt 3. Look for a uninomial name.
+    if (!txname) {
       // Is it a uninomial name?
-      const checkUninomial = /^([A-Z][a-z]+)(?:[_\s]|\b)/.exec(verbatimName);
-      if (checkUninomial) {
+      results = /^([A-Z][a-z]+)(?:[_\s]|\b)/.exec(verbatimName);
+      if (results) {
         txname = {
           '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
           nomenclaturalCode: TaxonNameWrapper.getNomenCodeAsURI(nomenCode),
           label: verbatimName,
-          nameComplete: checkUninomial[1],
-          uninomial: checkUninomial[1],
+          nameComplete: results[1],
+          uninomial: results[1],
         };
       }
     }
