@@ -419,6 +419,8 @@ class TaxonNameWrapper {
     // No complete name, can't return anything.
     if (!this.nameComplete) return undefined;
 
+    // Note that until we figure out how to set up nomenclatural codes on
+    // phylogenies, we don't incorporate that into the OWL equiv class.
     return {
       '@type': 'owl:Restriction',
       onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
