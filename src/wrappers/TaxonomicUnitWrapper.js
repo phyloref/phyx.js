@@ -198,6 +198,13 @@ class TaxonomicUnitWrapper {
   }
 
   /**
+   * Return the JSON representation of this taxonomic unit, i.e. the object we're wrapping.
+   */
+  get asJSON() {
+    return this.tunit;
+  }
+
+  /**
    * Return this taxonomic unit as an OWL/JSON-LD object.
    */
   get asJSONLD() {
