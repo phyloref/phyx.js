@@ -78,7 +78,7 @@ class TaxonNameWrapper {
       },
       {
         uri: owlterms.ICN_NAME,
-        shortName: 'ICNafp',
+        shortName: 'ICN',
         label: 'Algae, fungi and plants (ICNafp or ICBN)',
         title: 'International Code of Nomenclature for algae, fungi, and plants',
       },
