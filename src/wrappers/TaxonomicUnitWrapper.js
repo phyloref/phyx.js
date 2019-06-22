@@ -53,6 +53,19 @@ class TaxonomicUnitWrapper {
     return SpecimenWrapper.TYPE_SPECIMEN;
   }
 
+  /** An apomorphy. */
+  static get TYPE_APOMORPHY() {
+    // TODO move to owlterms.
+    // This is cdao:Character.
+    return 'http://purl.obolibrary.org/obo/CDAO_0000071';
+  }
+
+  /** An external reference. */
+  static get TYPE_EXTERNAL_REFERENCE() {
+    // TODO replace with a better extref system.
+    return 'http://purl.org/dc/terms/BibliographicResource';
+  }
+
   /** Wrap a taxonomic unit. */
   constructor(tunit) {
     this.tunit = tunit;
