@@ -79,7 +79,7 @@ class TaxonNameWrapper {
       {
         uri: owlterms.ICN_NAME,
         shortName: 'ICN',
-        label: 'Algae, fungi and plants (ICNafp or ICBN)',
+        label: 'Algae, fungi and plants (ICN, previously ICBN)',
         title: 'International Code of Nomenclature for algae, fungi, and plants',
       },
       {
@@ -96,8 +96,8 @@ class TaxonNameWrapper {
       },
       {
         uri: owlterms.NAME_IN_UNKNOWN_CODE,
-        shortName: 'Unknown',
-        label: 'Code not known',
+        shortName: 'Code not known',
+        label: 'Nomenclatural code not known',
         title: 'Nomenclatural code not known',
       },
     ];
