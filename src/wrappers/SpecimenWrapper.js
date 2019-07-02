@@ -10,7 +10,8 @@ const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
  *
  * - TaxonomicUnitWrapper.TYPE_SPECIMEN: A specimen.
  *    - Based on http://rs.tdwg.org/dwc/terms/Occurrence
- *    - Should have an occurrenceID with the occurrence identifier.
+ *    - Should have a dwc:occurrenceID with the occurrence identifier.
+ *    - Should have a dwc:basisOfRecord to indicate what sort of occurrence this is.
  *
  * Since TaxonNameWrapper follows the TDWG ontology, we'd love to do the same for
  * SpecimenWrapper, but unfortunately the TaxonOccurrence ontology has been deprecated
@@ -34,7 +35,7 @@ class SpecimenWrapper {
    *      (in which case, we ignore the first two "components" here)
    *  - '[institutionCode]:[collectionCode]:[catalogNumber]'
    */
-  static fromOccurrenceID(occurrenceID) {
+  static fromOccurrenceID(occurrenceID, basisOfRecord = 'PreservedSpecimen') {
     // Copy the occurrence ID so we can truncate it if necessary.
     let occurID = occurrenceID;
     if (occurID.startsWith('urn:catalog:')) occurID = occurID.substr(12);
@@ -42,6 +43,7 @@ class SpecimenWrapper {
     // Prepare the specimen.
     const specimen = {
       '@type': SpecimenWrapper.TYPE_SPECIMEN,
+      'dwc:basisOfRecord': basisOfRecord,
       occurrenceID: occurID,
     };
 
@@ -158,6 +160,22 @@ class SpecimenWrapper {
 
     // None of our specimen identifier schemes worked.
     return undefined;
+  }
+
+  /**
+   * Return the basis of record, if one is present.
+   */
+  get basisOfRecord() {
+    if (has(this.specimen, 'dwc:basisOfRecord')) return this.specimen['dwc:basisOfRecord'];
+    return undefined;
+  }
+
+  /**
+   * Set the basis of record. See http://rs.tdwg.org/dwc/terms/basisOfRecord for
+   * recommended values.
+   */
+  set basisOfRecord(bor) {
+    this.specimen['dwc:basisOfRecord'] = bor;
   }
 
   /** Return this specimen as a taxon concept if it contains taxon name information. */
