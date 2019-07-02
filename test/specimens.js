@@ -24,17 +24,21 @@ describe('SpecimenWrapper', function () {
     it('should be able to extract an occurenceID and catalogNumber from simple specimen IDs', function () {
       const wrapper = new phyx.SpecimenWrapper({
         occurrenceID: 'Wall 2527, Fiji (uc)',
+        'dwc:basisOfRecord': 'PreservedSpecimen',
       });
       expect(wrapper.occurrenceID).to.equal('Wall 2527, Fiji (uc)');
       expect(wrapper.catalogNumber).to.equal('Wall 2527, Fiji (uc)');
+      expect(wrapper.basisOfRecord).to.equal('PreservedSpecimen');
     });
     it('should extract institutionCode and catalogNumber from a institutionCode:catalogNumber combination', function () {
       const wrapper = new phyx.SpecimenWrapper({
         occurrenceID: 'FMNH:PR 2081',
+        'dwc:basisOfRecord': 'PreservedSpecimen',
       });
       expect(wrapper.occurrenceID).to.equal('FMNH:PR 2081');
       expect(wrapper.institutionCode).to.equal('FMNH');
       expect(wrapper.catalogNumber).to.equal('PR 2081');
+      expect(wrapper.basisOfRecord).to.equal('PreservedSpecimen');
     });
     it('should extract occurenceID, institutionCode and catalogNumber from Darwin Core triples', function () {
       const wrapper = new phyx.SpecimenWrapper({
@@ -44,6 +48,7 @@ describe('SpecimenWrapper', function () {
       expect(wrapper.institutionCode).to.equal('FMNH');
       expect(wrapper.collectionCode).to.equal('PR');
       expect(wrapper.catalogNumber).to.equal('2081');
+      expect(wrapper.basisOfRecord).to.be.undefined;
     });
     it('should be able to extract the same occurrenceID from different representations', function () {
       expect(new phyx.SpecimenWrapper({ occurrenceID: 'urn:catalog:::MVZ225749' }).occurrenceID)
@@ -68,6 +73,14 @@ describe('SpecimenWrapper', function () {
       expect(wrapper.institutionCode).to.be.undefined;
       expect(wrapper.collectionCode).to.be.undefined;
       expect(wrapper.catalogNumber).to.be.undefined;
+    });
+    it('should be able to create a specimen JSON record from an occurrence ID', function () {
+      const specimen = phyx.SpecimenWrapper.fromOccurrenceID('FMNH:PR:2081');
+      expect(specimen.occurrenceID).to.equal('FMNH:PR:2081');
+      expect(specimen.institutionCode).to.equal('FMNH');
+      expect(specimen.collectionCode).to.equal('PR');
+      expect(specimen.catalogNumber).to.equal('2081');
+      expect(specimen['dwc:basisOfRecord']).to.equal('PreservedSpecimen');
     });
   });
 });
