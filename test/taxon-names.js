@@ -36,13 +36,22 @@ describe('TaxonNameWrapper', function () {
       expect(wrapper.genusPart).to.equal('Mus');
       expect(wrapper.specificEpithet).to.equal('musculus');
     });
-    it('should ignore authority after a binomial name', function () {
+    it('should be able to parse trinomial names into genus, specific epithet and infraspecific epithet', function () {
       const wrapper = new phyx.TaxonNameWrapper({
-        nameComplete: 'Mus musculus Linnaeus, 1758',
+        nameComplete: 'Mus musculus domesticus',
       });
 
       expect(wrapper.genusPart).to.equal('Mus');
       expect(wrapper.specificEpithet).to.equal('musculus');
+      expect(wrapper.infraspecificEpithet).to.equal('domesticus');
+    });
+    it('should ignore authority after a binomial name', function () {
+      const taxonName = phyx.TaxonNameWrapper.fromVerbatimName('Mus musculus Linnaeus, 1758');
+      expect(taxonName.nameComplete).to.equal('Mus musculus');
+      expect(taxonName.genusPart).to.equal('Mus');
+      expect(taxonName.specificEpithet).to.equal('musculus');
+      expect(taxonName.infraspecificEpithet).to.be.undefined;
+      expect(taxonName.uninomial).to.be.undefined;
     });
   });
 });
