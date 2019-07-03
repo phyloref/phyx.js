@@ -14,7 +14,7 @@ const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
  *
  * Every instance of this class is expected to have some combination of the
  * following fields:
- *  - label -- the verbatim taxon name
+ *  - rdfs:label -- the verbatim taxon name
  *  - nameComplete -- the complete uninomial, binomial or trinomial name.
  *  - nomenclaturalCode -- the nomenclatural code under which the complete name
  *    should be interpreted.
@@ -31,7 +31,9 @@ const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
  * changing the nameComplete will overwrite the genusPart, specificEpithet and
  * infraspecificEpithet.
  *
- * TODO: Note that the TaxonName ontology recommends dc:title instead of rdfs:label.
+ * Note that the TaxonName ontology recommends dc:title instead of rdfs:label;
+ * however, I like the idea of using dc:title for documents and rdfs:label for
+ * vocabulary terms, so I'm okay with using rdfs:label for the verbatim name.
  */
 class TaxonNameWrapper {
   /**
