@@ -99,7 +99,7 @@ class TaxonNameWrapper {
       };
     }
 
-    // Attempt 1. Look for a binomial name.
+    // Attempt 2. Look for a binomial name.
     if (!txname) {
       results = /^([A-Z][a-z]+)[ _]([a-z-]+\.?)(?:\b|_)/.exec(verbatimName);
 
