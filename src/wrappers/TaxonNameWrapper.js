@@ -11,6 +11,29 @@ const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
  * Wraps a taxon name to provide access to components of
  * the taxon name. This is based on the TDWG TaxonName standard, as at
  * https://github.com/tdwg/ontology/blob/master/ontology/voc/TaxonName.rdf.
+ *
+ * Every instance of this class is expected to have some combination of the
+ * following fields:
+ *  - rdfs:label -- the verbatim taxon name
+ *  - nameComplete -- the complete uninomial, binomial or trinomial name.
+ *  - nomenclaturalCode -- the nomenclatural code under which the complete name
+ *    should be interpreted.
+ *
+ * We will also read the following fields if they are present:
+ *  - uninomial: The uninomial name of this taxon, if one is present.
+ *  - genusPart: The genus name.
+ *  - specificEpithet: The specific epithet.
+ *  - infraspecificEpithet: The infraspecific epithet.
+ *
+ * We wrap whatever we're given, so we won't assume that these fields are actually
+ * consistent with each other. However, when one of these fields are set, we
+ * overwrite the nameComplete to ensure that they are consistent. Similarly,
+ * changing the nameComplete will overwrite the genusPart, specificEpithet and
+ * infraspecificEpithet.
+ *
+ * Note that the TaxonName ontology recommends dc:title instead of rdfs:label;
+ * however, I like the idea of using dc:title for documents and rdfs:label for
+ * vocabulary terms, so I'm okay with using rdfs:label for the verbatim name.
  */
 class TaxonNameWrapper {
   /**
@@ -50,17 +73,19 @@ class TaxonNameWrapper {
   }
 
   /**
-   * Create a scientific name JSON object from a verbatim scientific name.
+   * Parses a verbatim taxon name into an (unwrapped) TaxonName.
    */
-  static fromVerbatimName(verbatimName, nomenCode = 'unknown') {
+  static fromVerbatimName(verbatimName, nomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
     // Have we already parsed this verbatim name?
     if (PhyxCacheManager.has(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName)) {
       return PhyxCacheManager.get(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName);
     }
 
     // Use a regular expression to parse the verbatimName.
+
+    // Attempt 1. Look for a trinomial name.
     let txname;
-    const results = /^([A-Z][a-z]+)[ _]([a-z-]+)(?:\b|_)\s*([a-z-]*)/.exec(verbatimName);
+    let results = /^([A-Z][a-z]+)[ _]([a-z-]+\.?)(?:\b|_)\s*([a-z-]+)\b/.exec(verbatimName);
 
     if (results) {
       txname = {
@@ -70,17 +95,37 @@ class TaxonNameWrapper {
         nameComplete: `${results[1]} ${results[2]} ${results[3]}`.trim(),
         genusPart: results[1],
         specificEpithet: results[2],
+        infraspecificEpithet: results[3],
       };
-    } else {
+    }
+
+    // Attempt 2. Look for a binomial name.
+    if (!txname) {
+      results = /^([A-Z][a-z]+)[ _]([a-z-]+\.?)(?:\b|_)/.exec(verbatimName);
+
+      if (results) {
+        txname = {
+          '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
+          nomenclaturalCode: nomenCode,
+          label: verbatimName,
+          nameComplete: `${results[1]} ${results[2]}`.trim(),
+          genusPart: results[1],
+          specificEpithet: results[2],
+        };
+      }
+    }
+
+    // Attempt 3. Look for a uninomial name.
+    if (!txname) {
       // Is it a uninomial name?
-      const checkUninomial = /^([A-Z][a-z]+)(?:[_\s]|\b)/.exec(verbatimName);
-      if (checkUninomial) {
+      results = /^([A-Z][a-z]+)(?:[_\s]|\b)/.exec(verbatimName);
+      if (results) {
         txname = {
           '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
           nomenclaturalCode: TaxonNameWrapper.getNomenCodeAsURI(nomenCode),
           label: verbatimName,
-          nameComplete: checkUninomial[1],
-          uninomial: checkUninomial[1],
+          nameComplete: results[1],
+          uninomial: results[1],
         };
       }
     }
@@ -98,6 +143,17 @@ class TaxonNameWrapper {
    */
   get label() {
     return this.txname.label || this.nameComplete;
+  }
+
+  /**
+   * Set the label of this scientific name.
+   */
+  set label(lab) {
+    this.txname.label = lab;
+    if (!this.nameComplete) {
+      // If we don't have a nameComplete, treat this as the name complete.
+      this.nameComplete = lab;
+    }
   }
 
   /**
@@ -119,21 +175,40 @@ class TaxonNameWrapper {
    * without authority information).
    */
   get nameComplete() {
-    return this.txname.nameComplete;
+    return this.txname.nameComplete
+      || this.trinomialName
+      || this.binomialName
+      || this.uninomialName;
+  }
+
+  /**
+   * Set the complete name. To do this, we re-parse the provided name.
+   */
+  set nameComplete(name) {
+    this.txname = TaxonNameWrapper.fromVerbatimName(name, this.nomenclaturalCode);
   }
 
   /** Return the uninomial name if there is one. */
   get uninomial() {
-    if (has(this.txname, 'uninomial')) return this.txname.uninomial;
+    if (this.txname.uninomial) return this.txname.uninomial;
 
     // If there is no genus but there is a scientificName, try to extract a genus
     // from it.
-    if (this.nameComplete) {
-      const txname = TaxonNameWrapper.fromVerbatimName(this.nameComplete, this.nomenclaturalCode);
+    if (this.txname.nameComplete) {
+      const txname = TaxonNameWrapper.fromVerbatimName(
+        this.txname.nameComplete,
+        this.nomenclaturalCode
+      );
       if (has(txname, 'uninomial')) return txname.uninomial;
     }
 
     return undefined;
+  }
+
+  /** Set the uninomial name. */
+  set uninomial(uninom) {
+    this.txname.uninomial = uninom;
+    this.txname.nameComplete = uninom;
   }
 
   /** Return the binomial name if available. */
@@ -144,6 +219,28 @@ class TaxonNameWrapper {
     return `${this.genusPart} ${this.specificEpithet}`;
   }
 
+  /** Set the binomial name. */
+  set binomialName(binom) {
+    this.txname.uninomial = undefined;
+    this.txname.nameComplete = binom;
+  }
+
+  /** Return the trinomial name if available. */
+  get trinomialName() {
+    if (
+      this.infraspecificEpithet === undefined
+      || this.specificEpithet === undefined
+      || this.genusPart === undefined
+    ) return undefined;
+    return `${this.genusPart} ${this.specificEpithet} ${this.infraspecificEpithet}`;
+  }
+
+  /** Set the trinomial name. */
+  set trinomialName(trinom) {
+    this.txname.uninomial = undefined;
+    this.txname.nameComplete = trinom;
+  }
+
   /** Return the genus part of this scientific name if available. */
   get genusPart() {
     // Try to read the genus if available.
@@ -151,12 +248,27 @@ class TaxonNameWrapper {
 
     // If there is no genus but there is a scientificName, try to extract a genus
     // from it.
-    if (this.nameComplete) {
-      const txname = TaxonNameWrapper.fromVerbatimName(this.nameComplete, this.nomenclaturalCode);
+    if (this.txname.nameComplete) {
+      const txname = TaxonNameWrapper.fromVerbatimName(
+        this.txname.nameComplete,
+        this.nomenclaturalCode
+      );
       if (has(txname, 'genusPart')) return txname.genusPart;
     }
 
     return undefined;
+  }
+
+  /** Set the genus part of this name. */
+  set genusPart(genus) {
+    this.txname.genusPart = genus;
+    if (this.specificEpithet) {
+      if (this.infraspecificEpithet) {
+        this.txname.nameComplete = `${genus} ${this.specificEpithet} ${this.infraspecificEpithet}`;
+      } else {
+        this.txname.nameComplete = `${genus} ${this.specificEpithet}`;
+      }
+    }
   }
 
   /** Return the specific epithet of this scientific name if available. */
@@ -175,6 +287,48 @@ class TaxonNameWrapper {
     }
 
     return undefined;
+  }
+
+  /** Set the specificEpithet part of this name. */
+  set specificEpithet(epithet) {
+    this.txname.specificEpithet = epithet;
+    if (this.genusPart) {
+      if (this.infraspecificEpithet) {
+        this.txname.nameComplete = `${this.genusPart} ${epithet} ${this.infraspecificEpithet}`;
+      } else {
+        this.txname.nameComplete = `${this.genusPart} ${epithet}`;
+      }
+    }
+  }
+
+  /** Return the infraspecific epithet of this scientific name if available. */
+  get infraspecificEpithet() {
+    // Try to read the specific epithet if available.
+    if (has(this.txname, 'infraspecificEpithet')) return this.txname.infraspecificEpithet;
+
+    // If there is no specific epithet but there is a scientificName, try to
+    // extract a specific epithet from it.
+    if (this.txname.nameComplete) {
+      const txname = TaxonNameWrapper.fromVerbatimName(
+        this.nameComplete,
+        this.nomenclaturalCode
+      );
+      if (has(txname, 'infraspecificEpithet')) return txname.infraspecificEpithet;
+    }
+
+    return undefined;
+  }
+
+  /** Set the infraspecificEpithet part of this name. */
+  set infraspecificEpithet(epithet) {
+    this.txname.infraspecificEpithet = epithet;
+    if (this.genusPart) {
+      if (this.specificEpithet) {
+        this.txname.nameComplete = `${this.genusPart} ${this.specificEpithet} ${epithet}`;
+      } else {
+        this.txname.nameComplete = `${this.genusPart} sp. ${epithet}`;
+      }
+    }
   }
 
   /**
