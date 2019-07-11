@@ -24,23 +24,20 @@ describe('PhylorefWrapper', function () {
   // Some specifiers to use in testing.
   const specifier1 = {
     referencesTaxonomicUnits: [{
-      includesSpecimens: [{
-        occurrenceID: 'MVZ:225749',
-      }],
+      '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+      occurrenceID: 'MVZ:225749',
     }],
   };
   const specifier2 = {
     referencesTaxonomicUnits: [{
-      includesSpecimens: [{
-        occurrenceID: 'MVZ:191016',
-      }],
+      '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+      occurrenceID: 'MVZ:191016',
     }],
   };
   const specifier3 = {
     referencesTaxonomicUnits: [{
-      scientificNames: [{
-        scientificName: 'Rana boylii',
-      }],
+      '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+      nameString: 'Rana boylii',
     }],
   };
 
