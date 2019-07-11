@@ -6,6 +6,9 @@
 const chai = require('chai');
 const phyx = require('../src');
 
+// Make it easier to access owlterms.
+const owlterms = require('../src/utils/owlterms');
+
 // Use Chai's expect API for testing.
 const expect = chai.expect;
 
@@ -198,7 +201,7 @@ describe('PhylogenyWrapper', function () {
         }]);
 
         expect(wrapper.getTaxonomicUnitsForNodeLabel('Rana boylii')).to.deep.equal([{
-          '@type': 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
+          '@type': owlterms.TDWG_VOC_TAXON_CONCEPT,
           label: 'Rana boylii',
           hasName: {
             '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
@@ -215,10 +218,8 @@ describe('PhylogenyWrapper', function () {
     describe('#getNodeLabelsMatchedBySpecifier', function () {
       it('should match a specifier to MVZ225749 based on occurrence ID', function () {
         const specifier1 = {
-          referencesTaxonomicUnits: [{
-            '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
-            occurrenceID: 'MVZ:225749',
-          }],
+          '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+          occurrenceID: 'MVZ:225749',
         };
         expect(wrapper.getNodeLabelsMatchedBySpecifier(specifier1))
           .to.have.members(['MVZ225749']);
@@ -226,10 +227,8 @@ describe('PhylogenyWrapper', function () {
 
       it('should match a specifier to MVZ191016 based on occurrence ID', function () {
         const specifier2 = {
-          referencesTaxonomicUnits: [{
-            '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
-            occurrenceID: 'MVZ:191016',
-          }],
+          '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+          occurrenceID: 'MVZ:191016',
         };
 
         expect(wrapper.getNodeLabelsMatchedBySpecifier(specifier2))
@@ -238,14 +237,151 @@ describe('PhylogenyWrapper', function () {
 
       it('should match a specifier to node "Rana boylii" based on the parsed scientific name', function () {
         const specifier3 = {
-          referencesTaxonomicUnits: [{
-            '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
-            nameString: 'Rana boylii',
-          }],
+          '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+          nameString: 'Rana boylii',
         };
 
         expect(wrapper.getNodeLabelsMatchedBySpecifier(specifier3))
           .to.have.members(['Rana boylii']);
+      });
+    });
+  });
+
+  describe('#asJSONLD', function () {
+    it('should generate the phylogeny in JSON-LD as expected', function () {
+      const expectedResults = [
+        {
+          newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
+          jsonld: {
+            '@id': '#',
+            '@type': owlterms.PHYLOREFERENCE_PHYLOGENY,
+            hasRootNode: { '@id': '#_node0' },
+            newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
+            nodes: [
+              {
+                '@id': '#_node0',
+                children: ['#_node1', '#_node2'],
+                'rdf:type': [owlterms.CDAO_NODE],
+              },
+              {
+                '@id': '#_node1',
+                'rdf:type': [
+                  owlterms.CDAO_NODE,
+                  {
+                    '@type': owlterms.OWL_RESTRICTION,
+                    onProperty: owlterms.CDAO_REPRESENTS_TU,
+                    someValuesFrom: {
+                      '@type': owlterms.OWL_RESTRICTION,
+                      onProperty: owlterms.TDWG_VOC_HAS_NAME,
+                      someValuesFrom: {
+                        '@type': owlterms.OWL_RESTRICTION,
+                        hasValue: 'Mus musculus',
+                        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                      },
+                    },
+                  },
+                ],
+                labels: ['Mus_musculus'],
+                parent: '#_node0',
+                representsTaxonomicUnits: [{
+                  '@type': owlterms.TDWG_VOC_TAXON_CONCEPT,
+                  hasName: {
+                    '@type': owlterms.TDWG_VOC_TAXON_NAME,
+                    genusPart: 'Mus',
+                    label: 'Mus_musculus',
+                    nameComplete: 'Mus musculus',
+                    nomenclaturalCode: owlterms.NAME_IN_UNKNOWN_CODE,
+                    specificEpithet: 'musculus',
+                  },
+                  label: 'Mus_musculus',
+                }],
+                siblings: ['#_node2'],
+              },
+              {
+                '@id': '#_node2',
+                children: ['#_node3', '#_node4'],
+                'rdf:type': [owlterms.CDAO_NODE],
+                parent: '#_node0',
+                siblings: ['#_node1'],
+              },
+              {
+                '@id': '#_node3',
+                'rdf:type': [
+                  owlterms.CDAO_NODE,
+                  {
+                    '@type': owlterms.OWL_RESTRICTION,
+                    onProperty: owlterms.CDAO_REPRESENTS_TU,
+                    someValuesFrom: {
+                      '@type': owlterms.OWL_RESTRICTION,
+                      onProperty: owlterms.TDWG_VOC_HAS_NAME,
+                      someValuesFrom: {
+                        '@type': owlterms.OWL_RESTRICTION,
+                        hasValue: 'Panthera tigris',
+                        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                      },
+                    },
+                  },
+                ],
+                labels: ['Panthera_tigris'],
+                parent: '#_node2',
+                representsTaxonomicUnits: [{
+                  '@type': owlterms.TDWG_VOC_TAXON_CONCEPT,
+                  hasName: {
+                    '@type': owlterms.TDWG_VOC_TAXON_NAME,
+                    genusPart: 'Panthera',
+                    label: 'Panthera_tigris',
+                    nameComplete: 'Panthera tigris',
+                    nomenclaturalCode: owlterms.NAME_IN_UNKNOWN_CODE,
+                    specificEpithet: 'tigris',
+                  },
+                  label: 'Panthera_tigris',
+                }],
+                siblings: ['#_node4'],
+              },
+              {
+                '@id': '#_node4',
+                'rdf:type': [
+                  owlterms.CDAO_NODE,
+                  {
+                    '@type': owlterms.OWL_RESTRICTION,
+                    onProperty: owlterms.CDAO_REPRESENTS_TU,
+                    someValuesFrom: {
+                      '@type': owlterms.OWL_RESTRICTION,
+                      onProperty: owlterms.TDWG_VOC_HAS_NAME,
+                      someValuesFrom: {
+                        '@type': owlterms.OWL_RESTRICTION,
+                        hasValue: 'Homo sapiens',
+                        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                      },
+                    },
+                  },
+                ],
+                labels: ['Homo_sapiens'],
+                parent: '#_node2',
+                representsTaxonomicUnits: [
+                  {
+                    '@type': owlterms.TDWG_VOC_TAXON_CONCEPT,
+                    hasName: {
+                      '@type': owlterms.TDWG_VOC_TAXON_NAME,
+                      genusPart: 'Homo',
+                      label: 'Homo_sapiens',
+                      nameComplete: 'Homo sapiens',
+                      nomenclaturalCode: owlterms.NAME_IN_UNKNOWN_CODE,
+                      specificEpithet: 'sapiens',
+                    },
+                    label: 'Homo_sapiens',
+                  },
+                ],
+                siblings: ['#_node3'],
+              },
+            ],
+          },
+        },
+      ];
+
+      expectedResults.forEach((expected) => {
+        const wrapper = new phyx.PhylogenyWrapper({ newick: expected.newick });
+        expect(wrapper.asJSONLD('#')).to.deep.equal(expected.jsonld);
       });
     });
   });

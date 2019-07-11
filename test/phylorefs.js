@@ -6,6 +6,9 @@
 const chai = require('chai');
 const phyx = require('../src');
 
+// Use owlterms so we don't have to repeat OWL terms.
+const owlterms = require('../src/utils/owlterms');
+
 // We use Chai's Expect API.
 const expect = chai.expect;
 
@@ -23,22 +26,16 @@ const expect = chai.expect;
 describe('PhylorefWrapper', function () {
   // Some specifiers to use in testing.
   const specifier1 = {
-    referencesTaxonomicUnits: [{
-      '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
-      occurrenceID: 'MVZ:225749',
-    }],
+    '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+    occurrenceID: 'MVZ:225749',
   };
   const specifier2 = {
-    referencesTaxonomicUnits: [{
-      '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
-      occurrenceID: 'MVZ:191016',
-    }],
+    '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+    occurrenceID: 'MVZ:191016',
   };
   const specifier3 = {
-    referencesTaxonomicUnits: [{
-      '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
-      nameString: 'Rana boylii',
-    }],
+    '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+    nameString: 'Rana boylii',
   };
 
   describe('given an empty phyloreference', function () {
@@ -117,11 +114,11 @@ describe('PhylorefWrapper', function () {
       });
     });
 
-    describe('#getSpecifierLabel', function () {
+    describe('#getSpecifierLabel as TaxonomicUnitWrapper', function () {
       it('should return the correct label for each specifier', function () {
-        expect(phyx.PhylorefWrapper.getSpecifierLabel(specifier1)).to.equal('Specimen MVZ:225749');
-        expect(phyx.PhylorefWrapper.getSpecifierLabel(specifier2)).to.equal('Specimen MVZ:191016');
-        expect(phyx.PhylorefWrapper.getSpecifierLabel(specifier3)).to.equal('Rana boylii');
+        expect((new phyx.TaxonomicUnitWrapper(specifier1)).label).to.equal('Specimen MVZ:225749');
+        expect((new phyx.TaxonomicUnitWrapper(specifier2)).label).to.equal('Specimen MVZ:191016');
+        expect((new phyx.TaxonomicUnitWrapper(specifier3)).label).to.equal('Rana boylii');
       });
     });
   });
@@ -195,6 +192,77 @@ describe('PhylorefWrapper', function () {
           expect(statusChanges[4].statusCURIE, 'fifth status change should be a "pso:retracted-from-publication"').to.equal('pso:retracted-from-publication');
         });
       });
+    });
+  });
+
+  describe('#asJSONLD', function () {
+    it('should generate the expected equivClass expression for 1 int, 1 ext phyloref', function () {
+      const jsonld = new phyx.PhylorefWrapper({
+        internalSpecifiers: [specifier1],
+        externalSpecifiers: [specifier2],
+      }).asJSONLD('#');
+      expect(jsonld).to.have.property('equivalentClass');
+      expect(jsonld.equivalentClass).to.deep.equal([{
+        '@type': owlterms.OWL_CLASS,
+        intersectionOf: [
+          {
+            '@type': owlterms.OWL_RESTRICTION,
+            onProperty: owlterms.PHYLOREF_INCLUDES_TU,
+            someValuesFrom: {
+              '@type': owlterms.OWL_RESTRICTION,
+              hasValue: 'MVZ:225749',
+              onProperty: owlterms.DWC_OCCURRENCE_ID,
+            },
+          },
+          {
+            '@type': owlterms.OWL_RESTRICTION,
+            onProperty: owlterms.PHYLOREF_EXCLUDES_TU,
+            someValuesFrom: {
+              '@type': owlterms.OWL_RESTRICTION,
+              hasValue: 'MVZ:191016',
+              onProperty: owlterms.DWC_OCCURRENCE_ID,
+            },
+          },
+        ],
+      }]);
+    });
+
+    it('should generate the expected equivClass expression for 2 int phyloref', function () {
+      const jsonld = new phyx.PhylorefWrapper({
+        internalSpecifiers: [specifier2, specifier3],
+      }).asJSONLD('#');
+      expect(jsonld).to.have.property('equivalentClass');
+      expect(jsonld.equivalentClass).to.deep.equal([{
+        '@type': owlterms.OWL_RESTRICTION,
+        onProperty: owlterms.CDAO_HAS_CHILD,
+        someValuesFrom: {
+          '@type': 'owl:Class',
+          intersectionOf: [
+            {
+              '@type': owlterms.OWL_RESTRICTION,
+              onProperty: owlterms.PHYLOREF_EXCLUDES_TU,
+              someValuesFrom: {
+                '@type': owlterms.OWL_RESTRICTION,
+                hasValue: 'MVZ:191016',
+                onProperty: owlterms.DWC_OCCURRENCE_ID,
+              },
+            },
+            {
+              '@type': owlterms.OWL_RESTRICTION,
+              onProperty: owlterms.PHYLOREF_INCLUDES_TU,
+              someValuesFrom: {
+                '@type': owlterms.OWL_RESTRICTION,
+                onProperty: owlterms.TDWG_VOC_HAS_NAME,
+                someValuesFrom: {
+                  '@type': owlterms.OWL_RESTRICTION,
+                  hasValue: 'Rana boylii',
+                  onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                },
+              },
+            },
+          ],
+        },
+      }]);
     });
   });
 });

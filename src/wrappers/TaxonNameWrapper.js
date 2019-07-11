@@ -18,6 +18,7 @@ class TaxonNameWrapper {
    * a taxon name.
    */
   constructor(txname) {
+    if (txname === undefined) throw new Error('TaxonNameWrapper tried to wrap undefined');
     this.txname = txname;
   }
 
@@ -196,7 +197,7 @@ class TaxonNameWrapper {
   /**
    * Return this taxon name as an OWL equivalentClass expression.
    */
-  asOWLEquivClass() {
+  get asOWLEquivClass() {
     // No complete name, can't return anything.
     if (!this.nameComplete) return undefined;
 

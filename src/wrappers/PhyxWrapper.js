@@ -1,6 +1,5 @@
 /** Used to make deep copies of objects. */
-const extend = require('extend');
-const { has } = require('lodash');
+const { has, cloneDeep } = require('lodash');
 
 const owlterms = require('../utils/owlterms');
 
@@ -57,7 +56,7 @@ class PhyxWrapper {
     //  2. We have to convert phylogenies into OWL restrictions.
     //  3. Insert all matches between taxonomic units in this file.
     //
-    const jsonld = extend(true, {}, this.phyx);
+    const jsonld = cloneDeep(this.phyx);
 
     // Add descriptions for individual nodes in each phylogeny.
     if (has(jsonld, 'phylogenies')) {
@@ -136,16 +135,13 @@ class PhyxWrapper {
     jsonld['@type'] = [owlterms.PHYLOREFERENCE_TEST_CASE, 'owl:Ontology'];
     jsonld['owl:imports'] = [
       'http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl',
-      // - Will become 'http://vocab.phyloref.org/phyloref/testcase.owl'
-      'http://ontology.phyloref.org/2018-12-04/phyloref.owl',
-      // - The Phyloreferencing ontology.
-      'http://purl.obolibrary.org/obo/bco.owl',
-      // - Contains OWL definitions for Darwin Core terms
+      'http://ontology.phyloref.org/2018-12-14/phyloref.owl',
+      'http://ontology.phyloref.org/2018-12-14/tcan.owl',
     ];
 
     // If the '@context' is missing, add it here.
     if (!has(jsonld, '@context')) {
-      jsonld['@context'] = 'http://www.phyloref.org/phyx.js/context/v0.1.0/phyx.json';
+      jsonld['@context'] = owlterms.PHYX_CONTEXT_JSON;
     }
 
     return jsonld;

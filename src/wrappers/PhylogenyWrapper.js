@@ -216,17 +216,14 @@ class PhylogenyWrapper {
     //
     // Note that old-style taxonomic units were lists while new-style taxonomic
     // units are single objects. So we turn it into a single entry list here.
-    return [TaxonomicUnitWrapper.fromLabel(nodeLabel.trim())];
+    const tunit = TaxonomicUnitWrapper.fromLabel(nodeLabel.trim());
+    if (tunit) return [tunit];
+    return []; // No TUnit? Return the empty list.
   }
 
   getNodeLabelsMatchedBySpecifier(specifier) {
     // Return a list of node labels matched by a given specifier on
     // a given phylogeny.
-
-    // Does the specifier have any taxonomic units? If not, we can't
-    // match anything!
-    if (!has(specifier, 'referencesTaxonomicUnits')) { return []; }
-    const specifierTUnits = specifier.referencesTaxonomicUnits;
 
     return this.getNodeLabels().filter((nodeLabel) => {
       // Find all the taxonomic units associated with the specifier and
@@ -235,10 +232,8 @@ class PhylogenyWrapper {
 
       // Attempt pairwise matches between taxonomic units in the specifier
       // and associated with the node.
-      return specifierTUnits.some(
-        tunit1 => nodeTUnits.some(
-          tunit2 => new TaxonomicUnitMatcher(tunit1, tunit2).matched
-        )
+      return nodeTUnits.some(
+        tunit => new TaxonomicUnitMatcher(specifier, tunit).matched
       );
     });
   }
@@ -321,7 +316,13 @@ class PhylogenyWrapper {
         // Set @id and @type. '@id' should already be set by getParsedNewickWithIRIs()!
         const nodeURI = node['@id'];
         nodeAsJSONLD['@id'] = nodeURI;
-        nodeAsJSONLD['@type'] = 'http://purl.obolibrary.org/obo/CDAO_0000140';
+
+        // Since we may need to add multiple classes into the rdf:type, we need
+        // to make @type an array. However, the JSON-LD library we use in JPhyloRef
+        // can't support @type being an array (despite that being in the standard,
+        // see https://w3c.github.io/json-ld-syntax/#example-14-specifying-multiple-types-for-a-node),
+        // so we fall back to using rdf:type instead.
+        nodeAsJSONLD[owlterms.RDF_TYPE] = [owlterms.CDAO_NODE];
 
         // Add labels, additional node properties and taxonomic units.
         if (has(node, 'name') && node.name !== '') {
@@ -335,17 +336,25 @@ class PhylogenyWrapper {
             });
           }
 
-          // Add taxonomic units.
+          // Add taxonomic units into the metadata.
           nodeAsJSONLD.representsTaxonomicUnits = this.getTaxonomicUnitsForNodeLabel(node.name);
 
-          // Apply @id and @type to each taxonomic unit.
-          let countTaxonomicUnits = 0;
-          nodeAsJSONLD.representsTaxonomicUnits.forEach((tunitToChange) => {
-            const tunit = tunitToChange;
+          // Add it into the @type so we can reason over it.
+          nodeAsJSONLD.representsTaxonomicUnits.forEach((tu) => {
+            const wrappedTUnit = new TaxonomicUnitWrapper(tu);
 
-            tunit['@id'] = `${nodeURI}_taxonomicunit${countTaxonomicUnits}`;
-            tunit['@type'] = 'http://purl.obolibrary.org/obo/CDAO_0000138';
-            countTaxonomicUnits += 1;
+            if (wrappedTUnit) {
+              const equivClass = wrappedTUnit.asOWLEquivClass;
+              if (equivClass) {
+                nodeAsJSONLD[owlterms.RDF_TYPE].push(
+                  {
+                    '@type': 'owl:Restriction',
+                    onProperty: owlterms.CDAO_REPRESENTS_TU,
+                    someValuesFrom: equivClass,
+                  }
+                );
+              }
+            }
           });
         }
 
