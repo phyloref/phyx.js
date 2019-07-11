@@ -53,23 +53,96 @@ class TaxonNameWrapper {
   }
 
   /**
-   * Returns the URI for a particular nomenclature code.
+   * The URI for an unknown nomenclatural code (i.e. all we know is that it's a scientific name).
    */
-  static getNomenCodeAsURI(name) {
-    switch (name.toLowerCase()) {
-      case 'iczn':
-        return owlterms.ICZN_NAME;
-      case 'icn':
-      case 'icbn':
-      case 'icnafp':
-        return owlterms.ICN_NAME;
-      case 'ictv':
-        return owlterms.ICTV_NAME;
-      case 'icnp':
-        return owlterms.ICNP_NAME;
-      default:
-        return owlterms.NAME_IN_UNKNOWN_CODE;
-    }
+  static get NAME_IN_UNKNOWN_CODE() {
+    return owlterms.NAME_IN_UNKNOWN_CODE;
+  }
+
+  /**
+   * Return a list of all supported nomenclatural code. Each entry will have
+   * the following keys:
+   *  - code: A list of short names that can be used to represent this nomenclatural code.
+   *  - label: An informal name of this nomenclatural code in English.
+   *  - title: The formal name of this nomenclatural code in English.
+   *  - uri: The URI of this nomenclatural code.
+   *
+   * This will be used in drawing user interfaces, so this should be in order
+   * of likelihood of use.
+   */
+  static getNomenclaturalCodes() {
+    return [
+      {
+        uri: owlterms.ICZN_NAME,
+        shortName: 'ICZN',
+        label: 'Zoological name (ICZN)',
+        title: 'International Code of Zoological Nomenclature',
+      },
+      {
+        uri: owlterms.ICN_NAME,
+        shortName: 'ICN',
+        label: 'Algae, fungi and plants (ICN, previously ICBN)',
+        title: 'International Code of Nomenclature for algae, fungi, and plants',
+      },
+      {
+        uri: owlterms.ICNP_NAME,
+        shortName: 'ICNP',
+        label: 'Prokaryotes (ICNP)',
+        title: 'International Code of Nomenclature of Prokaryotes',
+      },
+      {
+        uri: owlterms.ICTV_NAME,
+        shortName: 'ICTV',
+        label: 'Viruses (ICTV)',
+        title: 'International Committee on Taxonomy of Viruses',
+      },
+      {
+        uri: owlterms.NAME_IN_UNKNOWN_CODE,
+        shortName: 'Code not known',
+        label: 'Nomenclatural code not known',
+        title: 'Nomenclatural code not known',
+      },
+    ];
+  }
+
+  /**
+   * Returns the nomenclatural code entry for a code.
+   */
+  static getNomenCodeAsObject(nomenCodeURI) {
+    const codes = TaxonNameWrapper.getNomenclaturalCodes();
+
+    // Look for the entry with the same URI as the provided URI.
+    const matchingCode = codes
+      .find(code => code.uri.toLowerCase() === nomenCodeURI.toLowerCase());
+    if (matchingCode) return matchingCode;
+    return undefined;
+  }
+
+  /**
+   * Returns the nomenclatural code of this taxon name.
+   */
+  get nomenclaturalCode() {
+    return this.txname.nomenclaturalCode;
+  }
+
+  /**
+   * Returns the nomenclatural code of this taxon name as a URI.
+   */
+  get nomenclaturalCodeAsObject() {
+    const nomenCode = this.txname.nomenclaturalCode;
+    if (!nomenCode) return undefined;
+
+    const nomenObj = TaxonNameWrapper.getNomenCodeAsObject(nomenCode);
+    if (!nomenObj) return undefined;
+
+    return nomenObj;
+  }
+
+  /**
+   * Set the nomenclatural code of this taxon name.
+   */
+  set nomenclaturalCode(nomenCode) {
+    this.txname.nomenclaturalCode = nomenCode;
   }
 
   /**
@@ -90,7 +163,7 @@ class TaxonNameWrapper {
     if (results) {
       txname = {
         '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
-        nomenclaturalCode: TaxonNameWrapper.getNomenCodeAsURI(nomenCode),
+        nomenclaturalCode: nomenCode,
         label: verbatimName,
         nameComplete: `${results[1]} ${results[2]} ${results[3]}`.trim(),
         genusPart: results[1],
@@ -122,7 +195,7 @@ class TaxonNameWrapper {
       if (results) {
         txname = {
           '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
-          nomenclaturalCode: TaxonNameWrapper.getNomenCodeAsURI(nomenCode),
+          nomenclaturalCode: nomenCode,
           label: verbatimName,
           nameComplete: results[1],
           uninomial: results[1],
@@ -154,13 +227,6 @@ class TaxonNameWrapper {
       // If we don't have a nameComplete, treat this as the name complete.
       this.nameComplete = lab;
     }
-  }
-
-  /**
-   * Return the nomenclatural code of this taxon name.
-   */
-  get nomenclaturalCode() {
-    return this.txname.nomenclaturalCode || TaxonNameWrapper.getNomenCodeAsURI('unknown');
   }
 
   /**
@@ -334,7 +400,7 @@ class TaxonNameWrapper {
   /**
    * Return this taxon name in an JSON-LD representation.
    */
-  asJSONLD() {
+  get asJSONLD() {
     const jsonld = cloneDeep(this.txname);
 
     // Make sure '@type' is an array.
@@ -355,6 +421,8 @@ class TaxonNameWrapper {
     // No complete name, can't return anything.
     if (!this.nameComplete) return undefined;
 
+    // Note that until we figure out how to set up nomenclatural codes on
+    // phylogenies, we don't incorporate that into the OWL equiv class.
     return {
       '@type': 'owl:Restriction',
       onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
