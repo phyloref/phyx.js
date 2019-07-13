@@ -5,7 +5,7 @@
 const { has } = require('lodash');
 
 /** Used to parse Newick strings. */
-const { parse: parseNewick } = require('newick-js');
+const parseNewick = require('newick-js').parse;
 
 /** OWL terms to be used here. */
 const owlterms = require('../utils/owlterms');

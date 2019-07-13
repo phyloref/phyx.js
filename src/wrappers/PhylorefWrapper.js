@@ -2,7 +2,6 @@
 const moment = require('moment');
 const { has, cloneDeep } = require('lodash');
 
-const owlterms = require('../utils/owlterms');
 const { TaxonomicUnitWrapper } = require('./TaxonomicUnitWrapper');
 const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 

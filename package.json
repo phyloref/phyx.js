@@ -4,7 +4,7 @@
    "description": "Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files",
   "main": "src/index.js",
   "scripts": {
-    "lint": "eslint src/index.js \"test/**\" --ext .js",
+    "lint": "eslint \"src/**\" \"test/**\" --ext .js",
     "pretest": "npm run lint",
     "test": "mocha",
     "docs": "esdoc"
