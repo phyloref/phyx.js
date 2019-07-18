@@ -4,6 +4,13 @@ All notable changes to this library will be documented in this file.
 The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning].
 
 ## Unreleased
+- None.
+
+## 0.2.0 - 2019-07-18
+### Changed
+- The single index.js has been split into multiple files, one per class, with documentation using ESdocs (#21).
+- Added support for generating "model 2.0" ontologies, which can be reasoned over in an OWL 2 EL reasoner such as Elk (#4). As part of this change, specifiers have been changed so that they are taxonomic units, rather than containing taxonomic units and a new Phyx context file has been created (#19).
+- Taxonomic units have been cleaned up, are clearly typed, and taxonomic names now include nomenclatural codes (#18) and support trinomial names (#22).
 
 ## 0.1.2 - 2019-02-08
 ### Added
