@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 ## [Unreleased]
 - Updated all NPM packages to their latest version.
+- Fixed a bug in which node's types were not being correctly set to obo:CDAO\_0000140.
 
 ## [0.2.0] - 2019-07-18
 ### Changed
