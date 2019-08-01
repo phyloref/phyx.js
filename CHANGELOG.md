@@ -4,7 +4,7 @@ All notable changes to this library will be documented in this file.
 The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
-- None.
+- Updated all NPM packages to their latest version.
 
 ## [0.2.0] - 2019-07-18
 ### Changed
