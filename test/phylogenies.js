@@ -261,12 +261,12 @@ describe('PhylogenyWrapper', function () {
               {
                 '@id': '#_node0',
                 children: ['#_node1', '#_node2'],
-                'rdf:type': [owlterms.CDAO_NODE],
+                'rdf:type': [{ '@id': owlterms.CDAO_NODE }],
               },
               {
                 '@id': '#_node1',
                 'rdf:type': [
-                  owlterms.CDAO_NODE,
+                  { '@id': owlterms.CDAO_NODE },
                   {
                     '@type': owlterms.OWL_RESTRICTION,
                     onProperty: owlterms.CDAO_REPRESENTS_TU,
@@ -300,14 +300,14 @@ describe('PhylogenyWrapper', function () {
               {
                 '@id': '#_node2',
                 children: ['#_node3', '#_node4'],
-                'rdf:type': [owlterms.CDAO_NODE],
+                'rdf:type': [{ '@id': owlterms.CDAO_NODE }],
                 parent: '#_node0',
                 siblings: ['#_node1'],
               },
               {
                 '@id': '#_node3',
                 'rdf:type': [
-                  owlterms.CDAO_NODE,
+                  { '@id': owlterms.CDAO_NODE },
                   {
                     '@type': owlterms.OWL_RESTRICTION,
                     onProperty: owlterms.CDAO_REPRESENTS_TU,
@@ -341,7 +341,7 @@ describe('PhylogenyWrapper', function () {
               {
                 '@id': '#_node4',
                 'rdf:type': [
-                  owlterms.CDAO_NODE,
+                  { '@id': owlterms.CDAO_NODE },
                   {
                     '@type': owlterms.OWL_RESTRICTION,
                     onProperty: owlterms.CDAO_REPRESENTS_TU,

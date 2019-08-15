@@ -322,7 +322,7 @@ class PhylogenyWrapper {
         // can't support @type being an array (despite that being in the standard,
         // see https://w3c.github.io/json-ld-syntax/#example-14-specifying-multiple-types-for-a-node),
         // so we fall back to using rdf:type instead.
-        nodeAsJSONLD[owlterms.RDF_TYPE] = [owlterms.CDAO_NODE];
+        nodeAsJSONLD[owlterms.RDF_TYPE] = [{ '@id': owlterms.CDAO_NODE }];
 
         // Add labels, additional node properties and taxonomic units.
         if (has(node, 'name') && node.name !== '') {
