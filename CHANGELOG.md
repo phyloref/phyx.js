@@ -4,6 +4,8 @@ All notable changes to this library will be documented in this file.
 The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+
+## [0.2.1] - 2019-08-15
 - Updated all NPM packages to their latest version.
 - Fixed a bug in which node's types were not being correctly set to obo:CDAO\_0000140.
 
@@ -31,6 +33,7 @@ release of this package was based on [commit 14d2c3d5d1] in that repository.
 - Made other changes to the initial code as needed to work as an independent NPM package.
 
   [Unreleased]: https://github.com/phyloref/phyx.js/compare/v0.2.0...master
+  [0.2.1]: https://github.com/phyloref/phyx.js/compare/v0.2.0...v0.2.1
   [0.2.0]: https://github.com/phyloref/phyx.js/compare/v0.1.2...v0.2.0
   [0.1.2]: https://github.com/phyloref/phyx.js/compare/v0.1.1...v0.1.2
   [0.1.1]: https://github.com/phyloref/phyx.js/compare/v0.1.0...v0.1.1
