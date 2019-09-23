@@ -1,5 +1,5 @@
 /** Used to make deep copies of objects. */
-const { has, cloneDeep } = require('lodash');
+const { has, cloneDeep, keys } = require('lodash');
 
 const owlterms = require('../utils/owlterms');
 
@@ -58,20 +58,99 @@ class PhyxWrapper {
     //
     const jsonld = cloneDeep(this.phyx);
 
-    // Add descriptions for individual nodes in each phylogeny.
-    if (has(jsonld, 'phylogenies')) {
-      jsonld.phylogenies = jsonld.phylogenies.map(
-        (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny)
-          .asJSONLD(PhyxWrapper.getBaseURIForPhylogeny(countPhylogeny), this.newickParser)
-      );
-    }
-
     // Convert phyloreferences into an OWL class restriction
     if (has(jsonld, 'phylorefs')) {
       jsonld.phylorefs = jsonld.phylorefs.map(
         (phyloref, countPhyloref) => new PhylorefWrapper(phyloref)
           .asJSONLD(PhyxWrapper.getBaseURIForPhyloref(countPhyloref))
       );
+    }
+
+    // Make a map of expected nodes across all phylogenies for all
+    // phyloreferences.
+    const expectedResolutionByPhylogenyId = {};
+    jsonld.phylorefs.forEach((phyloref) => {
+      if (has(phyloref, 'expectedResolution')) {
+        const phylorefId = phyloref['@id'];
+
+        keys(phyloref.expectedResolution).forEach((phylogenyId) => {
+          if (!has(expectedResolutionByPhylogenyId, phylogenyId)) {
+            expectedResolutionByPhylogenyId[phylogenyId] = {};
+          }
+
+          expectedResolutionByPhylogenyId[phylogenyId][phylorefId] = phyloref.expectedResolution[phylogenyId];
+
+          // Record that the phylogeny is evidence for this phyloref.
+          if (!has(phyloref, owlterms.RO_HAS_EVIDENCE)) {
+            phyloref[owlterms.RO_HAS_EVIDENCE] = [];
+          }
+
+          phyloref[owlterms.RO_HAS_EVIDENCE].push(phylogenyId);
+        });
+      }
+    });
+
+    // Add descriptions for individual nodes in each phylogeny.
+    if (has(jsonld, 'phylogenies')) {
+      jsonld.phylogenies = jsonld.phylogenies.map(
+        (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny)
+          .asJSONLD(PhyxWrapper.getBaseURIForPhylogeny(countPhylogeny), this.newickParser)
+      );
+
+      // Go through all the nodes and add information on expected resolution.
+      jsonld.phylogenies.forEach((phylogeny) => {
+        const phylogenyId = phylogeny['@id'];
+        (phylogeny.nodes || []).forEach((node) => {
+          // Don't care about unlabeled nodes.
+          if (!node.labels) return;
+
+          jsonld.phylorefs.forEach((phyloref) => {
+            const phylorefId = phyloref['@id'];
+
+            // There are two ways in which we determine that a phyloreference
+            // is expected to resolve to a node:
+            //  (1) If nodeLabel is set, then that must be one of the node's labels.
+            //  (2) If nodeLabel is not set, then one of the node's label should be
+            //      identical to the phyloreference's label.
+
+            let flagNodeExpectsPhyloref = false;
+
+            if (
+              has(expectedResolutionByPhylogenyId, phylogenyId)
+              && has(expectedResolutionByPhylogenyId[phylogenyId], phylorefId)
+            ) {
+              const expectedResolution = expectedResolutionByPhylogenyId[phylogenyId][phylorefId];
+              const nodeLabel = expectedResolution.nodeLabel;
+
+              if (nodeLabel && (node.labels || []).includes(nodeLabel)) {
+                flagNodeExpectsPhyloref = true;
+              }
+            } else if ((node.labels || []).includes(phyloref.label)) {
+              flagNodeExpectsPhyloref = true;
+            }
+
+            if (flagNodeExpectsPhyloref) {
+              node[owlterms.RDF_TYPE].push({
+                '@type': owlterms.OWL_RESTRICTION,
+                onProperty: owlterms.OBI_IS_SPECIFIED_OUTPUT_OF,
+                someValuesFrom: {
+                  '@type': owlterms.OWL_CLASS,
+                  intersectionOf: [
+                    { '@id': owlterms.OBI_PREDICTION },
+                    {
+                      '@type': owlterms.OWL_RESTRICTION,
+                      onProperty: owlterms.OBI_HAS_SPECIFIED_INPUT,
+                      someValuesFrom: {
+                        '@id': phylorefId,
+                      },
+                    },
+                  ],
+                },
+              });
+            }
+          });
+        });
+      });
     }
 
     // Match all specifiers with nodes.

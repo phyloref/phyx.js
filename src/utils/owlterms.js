@@ -45,4 +45,12 @@ module.exports = {
   ICN_NAME: 'http://purl.obolibrary.org/obo/NOMEN_0000109',
   ICNP_NAME: 'http://purl.obolibrary.org/obo/NOMEN_0000110',
   ICTV_NAME: 'http://purl.obolibrary.org/obo/NOMEN_0000111',
+
+  // Terms from the Relation Ontology.
+  RO_HAS_EVIDENCE: 'obo:RO_0002558',
+
+  // Terms from the Ontology for Biomedical Investigations.
+  OBI_HAS_SPECIFIED_INPUT: 'obo:OBI_0000293',
+  OBI_IS_SPECIFIED_OUTPUT_OF: 'obo:OBI_0000312',
+  OBI_PREDICTION: 'obo:OBI_0302910',
 };
