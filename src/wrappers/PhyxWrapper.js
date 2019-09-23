@@ -66,30 +66,6 @@ class PhyxWrapper {
       );
     }
 
-    // Make a map of expected nodes across all phylogenies for all
-    // phyloreferences.
-    const expectedResolutionByPhylogenyId = {};
-    jsonld.phylorefs.forEach((phyloref) => {
-      if (has(phyloref, 'expectedResolution')) {
-        const phylorefId = phyloref['@id'];
-
-        keys(phyloref.expectedResolution).forEach((phylogenyId) => {
-          if (!has(expectedResolutionByPhylogenyId, phylogenyId)) {
-            expectedResolutionByPhylogenyId[phylogenyId] = {};
-          }
-
-          expectedResolutionByPhylogenyId[phylogenyId][phylorefId] = phyloref.expectedResolution[phylogenyId];
-
-          // Record that the phylogeny is evidence for this phyloref.
-          if (!has(phyloref, owlterms.RO_HAS_EVIDENCE)) {
-            phyloref[owlterms.RO_HAS_EVIDENCE] = [];
-          }
-
-          phyloref[owlterms.RO_HAS_EVIDENCE].push(phylogenyId);
-        });
-      }
-    });
-
     // Add descriptions for individual nodes in each phylogeny.
     if (has(jsonld, 'phylogenies')) {
       jsonld.phylogenies = jsonld.phylogenies.map(
@@ -112,15 +88,16 @@ class PhyxWrapper {
             //  (1) If nodeLabel is set, then that must be one of the node's labels.
             //  (2) If nodeLabel is not set, then one of the node's label should be
             //      identical to the phyloreference's label.
-
+            //
+            // We set flagNodeExpectsPhyloref in all cases where we should note
+            // that this node expects to resolve to this phyloreference.
             let flagNodeExpectsPhyloref = false;
 
             if (
-              has(expectedResolutionByPhylogenyId, phylogenyId)
-              && has(expectedResolutionByPhylogenyId[phylogenyId], phylorefId)
+              has(phyloref, 'expectedResolution')
+              && has(phyloref.expectedResolution, phylogenyId)
             ) {
-              const expectedResolution = expectedResolutionByPhylogenyId[phylogenyId][phylorefId];
-              const nodeLabel = expectedResolution.nodeLabel;
+              const nodeLabel = phyloref.expectedResolution[phylogenyId].nodeLabel;
 
               if (nodeLabel && (node.labels || []).includes(nodeLabel)) {
                 flagNodeExpectsPhyloref = true;
