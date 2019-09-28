@@ -1,5 +1,5 @@
 /** Used to make deep copies of objects. */
-const { has, cloneDeep, keys } = require('lodash');
+const { has, cloneDeep } = require('lodash');
 
 const owlterms = require('../utils/owlterms');
 
