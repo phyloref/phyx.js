@@ -77,7 +77,7 @@ class PhyxWrapper {
       jsonld.phylogenies.forEach((phylogeny) => {
         const phylogenyId = phylogeny['@id'];
         (phylogeny.nodes || []).forEach((node) => {
-          // Don't care about unlabeled nodes.
+          // We can't set expected resolution information on unlabeled nodes.
           if (!node.labels) return;
 
           jsonld.phylorefs.forEach((phyloref) => {
@@ -97,16 +97,25 @@ class PhyxWrapper {
               has(phyloref, 'expectedResolution')
               && has(phyloref.expectedResolution, phylogenyId)
             ) {
+              // Expected resolution information set! The node label mentioned in that
+              // information must be identical to one of the labels of this phylogeny node.
               const nodeLabel = phyloref.expectedResolution[phylogenyId].nodeLabel;
 
               if (nodeLabel && (node.labels || []).includes(nodeLabel)) {
                 flagNodeExpectsPhyloref = true;
               }
             } else if ((node.labels || []).includes(phyloref.label)) {
+              // No expected resolution information, so we just check whether
+              // the phyloref label is one of the labels on this phylogeny node.
               flagNodeExpectsPhyloref = true;
             }
 
             if (flagNodeExpectsPhyloref) {
+              // Modify this phylogeny node's type to include that it is a type
+              // of:
+              //  obi:is_specified_output_of some (
+              //    obi:Prediction and obi:has_specified_output some #phyloref_id
+              //  )
               node[owlterms.RDF_TYPE].push({
                 '@type': owlterms.OWL_RESTRICTION,
                 onProperty: owlterms.OBI_IS_SPECIFIED_OUTPUT_OF,
