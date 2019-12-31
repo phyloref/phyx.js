@@ -632,7 +632,7 @@ class PhylorefWrapper {
     const phylorefAsJSONLD = cloneDeep(this.phyloref);
 
     // Set the @id and @type.
-    phylorefAsJSONLD['@id'] = phylorefURI;
+    if (!has(phylorefAsJSONLD, '@id')) phylorefAsJSONLD['@id'] = phylorefURI;
     phylorefAsJSONLD['@type'] = 'owl:Class';
 
     // All phyloreferences are subclasses of phyloref:Phyloreference.

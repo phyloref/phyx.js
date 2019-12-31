@@ -408,7 +408,7 @@ class PhylogenyWrapper {
     const phylogenyAsJSONLD = JSON.parse(JSON.stringify(this.phylogeny));
 
     // Set name and class for phylogeny.
-    phylogenyAsJSONLD['@id'] = baseURI;
+    if (!has(phylogenyAsJSONLD, '@id')) phylogenyAsJSONLD['@id'] = baseURI;
     phylogenyAsJSONLD['@type'] = owlterms.PHYLOREFERENCE_PHYLOGENY;
 
     // Translate nodes into JSON-LD objects.
