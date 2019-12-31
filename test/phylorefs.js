@@ -196,6 +196,23 @@ describe('PhylorefWrapper', function () {
   });
 
   describe('#asJSONLD', function () {
+    it('should preserve an existing @id on input phylorefs', function () {
+      const jsonld = new phyx.PhylorefWrapper({
+        '@id': '#providedId',
+        internalSpecifiers: [specifier1],
+        externalSpecifiers: [specifier2],
+      }).asJSONLD('#phyloref0');
+      expect(jsonld).to.have.property('@id');
+      expect(jsonld['@id']).to.equal('#providedId');
+    });
+    it('should generate a new @id on input phylorefs', function () {
+      const jsonld = new phyx.PhylorefWrapper({
+        internalSpecifiers: [specifier1],
+        externalSpecifiers: [specifier2],
+      }).asJSONLD('#phyloref0');
+      expect(jsonld).to.have.property('@id');
+      expect(jsonld['@id']).to.equal('#phyloref0');
+    });
     it('should generate the expected equivClass expression for 1 int, 1 ext phyloref', function () {
       const jsonld = new phyx.PhylorefWrapper({
         internalSpecifiers: [specifier1],
