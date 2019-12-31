@@ -395,8 +395,11 @@ describe('PhylogenyWrapper', function () {
       ];
 
       expectedResults.forEach((expected) => {
-        const wrapper = new phyx.PhylogenyWrapper({ newick: expected.newick });
-        expect(wrapper.asJSONLD('#')).to.deep.equal(expected.jsonld);
+        const wrapper = new phyx.PhylogenyWrapper({
+          '@id': '#',
+          newick: expected.newick,
+        });
+        expect(wrapper.asJSONLD('#phylogeny0')).to.deep.equal(expected.jsonld);
       });
     });
   });

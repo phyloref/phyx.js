@@ -412,7 +412,7 @@ class PhylogenyWrapper {
     phylogenyAsJSONLD['@type'] = owlterms.PHYLOREFERENCE_PHYLOGENY;
 
     // Translate nodes into JSON-LD objects.
-    phylogenyAsJSONLD.nodes = this.getNodesAsJSONLD(baseURI, newickParser);
+    phylogenyAsJSONLD.nodes = this.getNodesAsJSONLD(phylogenyAsJSONLD['@id'], newickParser);
     if (phylogenyAsJSONLD.nodes.length > 0) {
       // We don't have a better way to identify the root node, so we just
       // default to the first one.
