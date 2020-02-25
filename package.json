@@ -11,7 +11,8 @@
     "pretest": "npm run lint",
     "test": "mocha --recursive",
     "docs": "esdoc",
-    "resolve": "node bin/resolve.js"
+    "resolve": "node bin/resolve.js",
+    "generate-all-combinations": "test-all-combinations/generate-tests.js"
   },
   "repository": {
     "type": "git",
@@ -47,7 +48,8 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-mocha": "^5.2.1",
     "jsonld": "^3.1.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "yargs": "^15.1.0"
   },
   "esdoc": {
     "source": "./src",
