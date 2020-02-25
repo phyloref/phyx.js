@@ -4,6 +4,7 @@ All notable changes to this library will be documented in this file.
 The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+- Fixed a bug in which phyloref and phylogeny `@id` values were being overwritten when generating JSON-LD.
 
 ## [0.2.1] - 2019-08-15
 - Updated all NPM packages to their latest version.
