@@ -22,6 +22,11 @@ const argv = require('yargs')
 
 const nodeCount = argv.nodes
 
+if (nodeCount < 2) {
+  console.error(`The number of leaf nodes must be 2 or greater (${nodeCount})`)
+  process.exit(2);
+}
+
 // To label the leaf nodes, we'll name them from 'A' to 'Z', and then from 'AA' to 'ZZ', and so on.
 function generateNextNodeLabel(str = "") {
   // When called without a value, the next value is 'A'.
@@ -51,3 +56,47 @@ for(var x = 0; x < nodeCount; x++) {
 }
 
 console.log(`Generating Phyx files with ${nodeCount} leaf nodes each: ${leafNodes}`)
+
+// Taken from https://academic.oup.com/sysbio/article/27/1/27/1626689 and
+// https://en.wikipedia.org/wiki/Phylogenetic_tree#Enumerating_trees
+function factorial(n) {
+  if (n == 0) return 1;
+  return (n != 1) ? n * factorial(n - 1) : 1;
+}
+const expectedBifurcatingTrees = factorial(2 * nodeCount - 3)/((2**(nodeCount - 2)) * factorial(nodeCount - 2));
+console.log(`Expected bifurcating trees = ${expectedBifurcatingTrees}`);
+
+/*
+ * TODO: This doesn't work! I need to re-read the paper at
+ * https://academic.oup.com/sysbio/article/27/1/27/1626689
+ * and figure out why.
+ */
+function T1(n, m) {
+  if (n == 1 && m == 0) return 1;
+  if (n == 1) return 0;
+  if (n > 1 && m == 1) return T(n - 1, 1);
+  if (n > 1 && m > 1) return m * T(n - 1, m) + (n + m - 2) * T(n - 1, m - 1);
+  throw new Error(`Should never get here: (${n}, ${m})`);
+}
+
+function T(n, m) {
+  const val = T1(n, m);
+  console.log(`T(${n}, ${m}) = ${val}`);
+  return val;
+}
+
+var expectedMultifurcatingTrees = 0;
+for(var m = 1; m < nodeCount + 1; m++) {
+  const x = T(nodeCount, m);
+  console.log(`T(${nodeCount}, ${m}) = ${x}`)
+  expectedMultifurcatingTrees += x;
+}
+console.log(`Expected multifurcating trees = ${expectedMultifurcatingTrees}`);
+
+const expectedTotalTrees = expectedBifurcatingTrees + expectedMultifurcatingTrees
+console.log(`Expected total trees = ${expectedTotalTrees}`);
+
+// 1 = (A)
+// 2 = (A, B)
+// 3 = (A, B), C; A, (B, C); (A, C), B; A, B, C
+// 4 = (A, B), (C, D); A, (B, C, D)
