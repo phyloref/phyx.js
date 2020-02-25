@@ -624,15 +624,23 @@ class PhylorefWrapper {
     return classExprs;
   }
 
-  asJSONLD(phylorefURI) {
-    // Export this phyloreference in JSON-LD.
-
+  /*
+   * Phyloref.asJSONLD(phylorefURI)
+   *
+   * Export this phylogeny as JSON-LD.
+   *
+   * Arguments:
+   *  - fallbackIRI: The base IRI to use for this phyloref if it does not have
+   *    an '@id'.
+   */
+  asJSONLD(fallbackIRI) {
     // Keep all currently extant data.
     // - baseURI: the base URI for this phyloreference
     const phylorefAsJSONLD = cloneDeep(this.phyloref);
 
-    // Set the @id and @type.
-    if (!has(phylorefAsJSONLD, '@id')) phylorefAsJSONLD['@id'] = phylorefURI;
+    // Set the @id and @type. If we don't already have an '@id', use the
+    // fallbackIRI.
+    if (!has(phylorefAsJSONLD, '@id')) phylorefAsJSONLD['@id'] = fallbackIRI;
     phylorefAsJSONLD['@type'] = 'owl:Class';
 
     // All phyloreferences are subclasses of phyloref:Phyloreference.

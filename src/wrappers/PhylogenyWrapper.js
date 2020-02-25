@@ -401,14 +401,20 @@ class PhylogenyWrapper {
     return nodes;
   }
 
-  asJSONLD(baseURI, newickParser) {
+  asJSONLD(fallbackIRI, newickParser) {
     // Export this phylogeny as JSON-LD.
+    // - fallbackIRI: The fallback IRI to use for this phylogeny if it does not
+    //   already have an '@id' set.
+    // - newickParser: A function that parses a Newick string and returns a
+    //   an object based representation of this phylogeny. If not set, the
+    //   static method PhylogenyWrapper.getParsedNewick will be used instead.
 
     // Create a copy to export.
     const phylogenyAsJSONLD = JSON.parse(JSON.stringify(this.phylogeny));
 
-    // Set name and class for phylogeny.
-    if (!has(phylogenyAsJSONLD, '@id')) phylogenyAsJSONLD['@id'] = baseURI;
+    // Set name and class for phylogeny. If no '@id' is set, use the provided
+    // fallbackIRI.
+    if (!has(phylogenyAsJSONLD, '@id')) phylogenyAsJSONLD['@id'] = fallbackIRI;
     phylogenyAsJSONLD['@type'] = owlterms.PHYLOREFERENCE_PHYLOGENY;
 
     // Translate nodes into JSON-LD objects.
