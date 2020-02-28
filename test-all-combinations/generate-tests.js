@@ -100,3 +100,57 @@ console.log(`Expected total trees = ${expectedTotalTrees}`);
 // 2 = (A, B)
 // 3 = (A, B), C; A, (B, C); (A, C), B; A, B, C
 // 4 = (A, B), (C, D); A, (B, C, D)
+
+/*
+ * Start generating every possible phylogeny.
+ */
+function selectOne(array) {
+  const result = [];
+  for (var i = 0; i < array.length; i++) {
+    const changeable = [...array];
+    const deleted = changeable.splice(i, 1);
+    result.push([deleted, changeable])
+  }
+  return result;
+}
+
+function generateBifurcatingTrees(selected, unselected) {
+  console.log(`generateBifurcatingTrees(${selected};${unselected})`);
+  if (unselected.length == 0) return selected;
+  if (unselected.length == 1 || unselected.length == 2) {
+    // Create trees in the form [A, [B, [C, D]]]
+    const treeLike = [...selected, ...unselected].reduceRight((acc, curr) => [curr, acc]);
+
+    // TODO: create trees in the form [[A, B], [C, D]]
+    if (selected.length > 1) {
+      const unified = [selected, unselected];
+
+      return [treeLike, unified];
+    }
+
+    return [treeLike];
+  }
+
+  return selectOne(unselected).map(res => {
+    const [newlySelected, newlyUnselected] = res;
+    console.log(`selected = ${selected}, newlySelected = ${newlySelected}, newlyUnselected = ${newlyUnselected}.`);
+    const result = generateBifurcatingTrees([...selected, ...newlySelected], newlyUnselected);
+    console.log(`result = ${JSON.stringify(result)}`);
+    return result;
+  }).reduce((acc, cur) => acc.concat(cur));
+}
+
+function normalizeTree(tree) {
+  if (!Array.isArray(tree)) return tree;
+  if (tree.length == 0) return [];
+  if (tree.length == 1) return tree;
+  return tree.map(node => normalizeTree(node)).sort();
+}
+
+const { uniqWith, isEqual } = require('lodash');
+
+const bifurcatingTrees = generateBifurcatingTrees([], leafNodes);
+const normalizedUniqTrees = uniqWith(bifurcatingTrees.map(tree => normalizeTree(tree)), isEqual);
+
+normalizedUniqTrees.forEach((tree, index) => console.log(index + ": " + JSON.stringify(tree)));
+console.log("Length: " + normalizedUniqTrees.length)
