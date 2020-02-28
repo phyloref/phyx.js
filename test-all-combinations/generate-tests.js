@@ -115,7 +115,7 @@ function selectOne(array) {
 }
 
 function generateBifurcatingTrees(selected, unselected) {
-  console.log(`generateBifurcatingTrees(${selected};${unselected})`);
+  // console.log(`generateBifurcatingTrees(${selected};${unselected})`);
   if (unselected.length == 0) return selected;
   if (unselected.length == 1 || unselected.length == 2) {
     // Create trees in the form [A, [B, [C, D]]]
@@ -133,9 +133,9 @@ function generateBifurcatingTrees(selected, unselected) {
 
   return selectOne(unselected).map(res => {
     const [newlySelected, newlyUnselected] = res;
-    console.log(`selected = ${selected}, newlySelected = ${newlySelected}, newlyUnselected = ${newlyUnselected}.`);
+    // console.log(`selected = ${selected}, newlySelected = ${newlySelected}, newlyUnselected = ${newlyUnselected}.`);
     const result = generateBifurcatingTrees([...selected, ...newlySelected], newlyUnselected);
-    console.log(`result = ${JSON.stringify(result)}`);
+    // console.log(`result = ${JSON.stringify(result)}`);
     return result;
   }).reduce((acc, cur) => acc.concat(cur));
 }
