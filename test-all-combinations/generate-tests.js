@@ -114,30 +114,28 @@ function selectOne(array) {
   return result;
 }
 
-function generateBifurcatingTrees(selected, unselected) {
-  // console.log(`generateBifurcatingTrees(${selected};${unselected})`);
-  if (unselected.length == 0) return selected;
-  if (unselected.length == 1 || unselected.length == 2) {
-    // Create trees in the form [A, [B, [C, D]]]
-    const treeLike = [...selected, ...unselected].reduceRight((acc, curr) => [curr, acc]);
+function generateTrees(nodes) {
+  if (nodes.length == 1) return nodes;
 
-    // TODO: create trees in the form [[A, B], [C, D]]
-    if (selected.length > 1) {
-      const unified = [selected, unselected];
+  return selectOne(nodes).map(res => {
+    const [selected, unselected] = res;
 
-      return [treeLike, unified];
-    }
+    // Generate (A, (B, C)) type trees by selecting one leaf node and then finding every combination of the remaining nodes.
+    const selectOneResults = generateTrees(unselected).map(tree => [...selected, tree]);
 
-    return [treeLike];
-  }
+    // Needed when n == 5, where you also need ((A, B), ...) type trees.
+    const selectTwoResults = selectOne(unselected).map(res => {
+      const [innerSelected, innerUnselected] = res;
 
-  return selectOne(unselected).map(res => {
-    const [newlySelected, newlyUnselected] = res;
-    // console.log(`selected = ${selected}, newlySelected = ${newlySelected}, newlyUnselected = ${newlyUnselected}.`);
-    const result = generateBifurcatingTrees([...selected, ...newlySelected], newlyUnselected);
-    // console.log(`result = ${JSON.stringify(result)}`);
-    return result;
-  }).reduce((acc, cur) => acc.concat(cur));
+      return generateTrees(innerUnselected).map(tree => [[...selected, ...innerSelected], tree]);
+    }).reduce((acc, cur) => acc.concat(cur), []);
+
+    // Need to calculate n > 5? Then you need to extend this algorithm to handle
+    // "selectNResults". Since we only need n = 5, we only need to select at most
+    // two for now.
+
+    return [...selectOneResults, ...selectTwoResults].filter(tree => tree.length > 0);
+  }).reduce((acc, cur) => acc.concat(cur), []);
 }
 
 function normalizeTree(tree) {
@@ -149,8 +147,8 @@ function normalizeTree(tree) {
 
 const { uniqWith, isEqual } = require('lodash');
 
-const bifurcatingTrees = generateBifurcatingTrees([], leafNodes);
-const normalizedUniqTrees = uniqWith(bifurcatingTrees.map(tree => normalizeTree(tree)), isEqual);
+const trees = generateTrees(leafNodes);
+const normalizedUniqTrees = uniqWith(trees.map(tree => normalizeTree(tree)), isEqual);
 
 normalizedUniqTrees.forEach((tree, index) => console.log(index + ": " + JSON.stringify(tree)));
 console.log("Length: " + normalizedUniqTrees.length)
