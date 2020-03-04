@@ -81,17 +81,17 @@ function T1(n, m) {
 
 function T(n, m) {
   const val = T1(n, m);
-  console.log(`T(${n}, ${m}) = ${val}`);
+  // console.log(`T(${n}, ${m}) = ${val}`);
   return val;
 }
 
 var expectedMultifurcatingTrees = 0;
 for(var m = 1; m < nodeCount + 1; m++) {
   const x = T(nodeCount, m);
-  console.log(`T(${nodeCount}, ${m}) = ${x}`)
+  //console.log(`T(${nodeCount}, ${m}) = ${x}`)
   expectedMultifurcatingTrees += x;
 }
-console.log(`Expected multifurcating trees = ${expectedMultifurcatingTrees}`);
+console.log(`Expected multifurcating trees (#TODO) = ${expectedMultifurcatingTrees}`);
 
 const expectedTotalTrees = expectedBifurcatingTrees + expectedMultifurcatingTrees
 console.log(`Expected total trees = ${expectedTotalTrees}`);
