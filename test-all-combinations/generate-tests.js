@@ -130,8 +130,19 @@ function generateTrees(nodes) {
       return generateTrees(innerUnselected).map(tree => [[...selected, ...innerSelected], tree]);
     }).reduce((acc, cur) => acc.concat(cur), []);
 
-    // Need to calculate n > 5? Then you need to extend this algorithm to handle
-    // "selectNResults". Since we only need n = 5, we only need to select at most
+    // Needed when n == 6, where you also need ((A, B, C), ...)
+    const selectThreeResults = selectOne(unselected).map(res => {
+      const [firstSelected, firstUnselected] = res;
+
+      selectOne(firstUnselected).map(res2 => {
+        const [secondSelected, secondUnselected] = res2;
+
+        return generateTrees(secondUnselected).map(tree => [[...selected, ...secondSelected, ...firstSelected], tree]);
+      }).reduce((acc, cur) => acc.concat(cur), []);
+    }).reduce((acc, cur) => acc.concat(cur), []);
+
+    // Need to calculate n > 6? Then you need to extend this algorithm to handle
+    // "selectNResults". Since we only need n = 6, we only need to select at most
     // two for now.
 
     return [...selectOneResults, ...selectTwoResults].filter(tree => tree.length > 0);
