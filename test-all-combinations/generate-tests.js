@@ -146,9 +146,117 @@ function normalizeTree(tree) {
 }
 
 const { uniqWith, isEqual } = require('lodash');
+const fs = require('fs');
 
 const trees = generateTrees(leafNodes);
 const normalizedUniqTrees = uniqWith(trees.map(tree => normalizeTree(tree)), isEqual);
 
 normalizedUniqTrees.forEach((tree, index) => console.log(index + ": " + JSON.stringify(tree)));
 console.log("Length: " + normalizedUniqTrees.length)
+
+/*
+ * To generate testable Phyx files, we will need:
+ *  - Each phylogeny to be written in Newick, with internal labels describing
+ *    which phyloreferences *should* resolve to that node.
+ *    - We do this by describing each internal nodes as e.g. "ABCxDE", meaning
+ *      "The LCA of ABC, which excludes the DE clade".
+ */
+normalizedUniqTrees.forEach((tree, index) => {
+  function generateLabel(nodes) {
+    if (!Array.isArray(nodes)) return nodes;
+    return nodes.map(node => generateLabel(node)).flat().sort();
+  }
+
+  function generateLabelTrimmed(nodeString, sisterString) {
+    return ("N" + nodeString.toLowerCase() + "_" + sisterString.toLowerCase() + "n").trim();
+  }
+
+  function generateInternalNodeLabel(nodes, sister = []) {
+    // console.log(`generateInternalNodeLabel(${JSON.stringify(nodes)}; ${sister})`)
+    if (nodes.length == 1) return generateLabelTrimmed(nodes[0], generateLabel(sister).join(""));
+    return "(" + nodes.map((node, index) => {
+      const sisters = [...nodes];
+      const deleted = sisters.splice(index, 1); // Take out this one node.
+      return generateInternalNodeLabel(deleted[0], sisters);
+    }).join(",") + ")" + generateLabelTrimmed(generateLabel(nodes).join(""), generateLabel(sister).join(""));
+  }
+
+  function breakIntoWords(newick) {
+    return newick.split(/\W+/).sort((a, b) => a.length - b.length);
+  }
+
+  function chooseTarget(targetNode, newick) {
+    // Choose a one-character target node.
+    return breakIntoWords(newick).filter(node => node.match(`^N.*${targetNode.toLowerCase()}.*_`)).map(word => word.replace('_', ' ').trim()).shift();
+  }
+
+  function chooseABTarget(newick) {
+    // The AB target should be the smallest clade containing 'AB' before the 'x'.
+    return breakIntoWords(newick).filter(node => node.match(/^NAB.*_/i)).map(word => word.replace('_', ' ').trim()).shift();
+  }
+
+  function chooseAxCTarget(newick) {
+    // The AxC target should be the smallest clade containing 'A' before the 'x' and C after the 'x'.
+    return breakIntoWords(newick).filter(node => node.match(/^NA.*_.*C.*$/i)).map(word => word.replace('_', ' ').trim()).shift();
+  }
+
+  const newick = generateInternalNodeLabel(tree);
+  const phyx_document = {
+    '@context': 'http://www.phyloref.org/phyx.js/context/v0.2.0/phyx.json',
+    phylogenies: [
+      {
+        newick: newick
+      }
+    ],
+    phylorefs: [
+      {
+        label: chooseABTarget(newick).replace(' ', '_'),
+        internalSpecifiers: [
+          {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+            "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nameComplete": chooseTarget("A", newick)
+            }
+          },
+          {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+            "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nameComplete": chooseTarget("B", newick)
+            }
+          }
+        ]
+      },
+      {
+        label: chooseAxCTarget(newick).replace(' ', '_'),
+        internalSpecifiers: [
+          {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+            "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nameComplete": chooseTarget("A", newick)
+            }
+          }
+        ],
+        externalSpecifiers: [
+          {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+            "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nameComplete": chooseTarget("C", newick)
+            }
+          }
+        ]
+      }
+    ]
+  };
+
+  const phyx = require('../src');
+  const jsonld = new phyx.PhyxWrapper(phyx_document).asJSONLD();
+
+  const filename = `./test-all-combinations/tree${index + 1}.jsonld`;
+  fs.writeFileSync(filename, JSON.stringify(jsonld, null, 4));
+
+  console.log(newick + "\t # A:" + chooseTarget("A", newick) + " B:" + chooseTarget("B", newick) + " C:" + chooseTarget("C", newick) + " AB:" + chooseABTarget(newick) + " AxC:" + chooseAxCTarget(newick));
+});
