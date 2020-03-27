@@ -259,4 +259,8 @@ normalizedUniqTrees.forEach((tree, index) => {
   fs.writeFileSync(filename, JSON.stringify(jsonld, null, 4));
 
   console.log(newick + "\t # A:" + chooseTarget("A", newick) + " B:" + chooseTarget("B", newick) + " C:" + chooseTarget("C", newick) + " AB:" + chooseABTarget(newick) + " AxC:" + chooseAxCTarget(newick));
+
+  // TODO: Now we need to do all the multifurcating trees.
 });
+
+console.log(`${normalizedUniqTrees.length} trees generated out of an expected ${expectedBifurcatingTrees}.`)
