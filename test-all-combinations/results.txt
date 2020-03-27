@@ -1,0 +1,848 @@
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree1.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree1.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree10.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree100.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabd_cn'
+# The following nodes were matched and expected this phyloreference: [Nabd_cn]
+ok 2 Phyloreference 'Nabd_cn'
+# The following nodes were matched and expected this phyloreference: [Nabd_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree101.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_dn'
+# The following nodes were matched and expected this phyloreference: [Nab_dn]
+ok 2 Phyloreference 'Nabd_cn'
+# The following nodes were matched and expected this phyloreference: [Nabd_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree102.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabd_cn'
+# The following nodes were matched and expected this phyloreference: [Nabd_cn]
+ok 2 Phyloreference 'Nabd_cn'
+# The following nodes were matched and expected this phyloreference: [Nabd_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree103.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabc_dn'
+# The following nodes were matched and expected this phyloreference: [Nabc_dn]
+ok 2 Phyloreference 'Na_bcn'
+# The following nodes were matched and expected this phyloreference: [Na_bcn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree104.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_cn'
+# The following nodes were matched and expected this phyloreference: [Nab_cn]
+ok 2 Phyloreference 'Nab_cn'
+# The following nodes were matched and expected this phyloreference: [Nab_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree105.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabc_dn'
+# The following nodes were matched and expected this phyloreference: [Nabc_dn]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree11.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree12.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree13.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree14.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree15.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree16.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_cden'
+# The following nodes were matched and expected this phyloreference: [Nab_cden]
+ok 2 Phyloreference 'Nab_cden'
+# The following nodes were matched and expected this phyloreference: [Nab_cden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree17.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_cden'
+# The following nodes were matched and expected this phyloreference: [Nab_cden]
+ok 2 Phyloreference 'Nab_cden'
+# The following nodes were matched and expected this phyloreference: [Nab_cden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree18.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_cden'
+# The following nodes were matched and expected this phyloreference: [Nab_cden]
+ok 2 Phyloreference 'Nab_cden'
+# The following nodes were matched and expected this phyloreference: [Nab_cden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree19.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree2.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree20.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree21.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree22.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nad_bcen'
+# The following nodes were matched and expected this phyloreference: [Nad_bcen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree23.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nad_bcen'
+# The following nodes were matched and expected this phyloreference: [Nad_bcen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree24.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nad_bcen'
+# The following nodes were matched and expected this phyloreference: [Nad_bcen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree25.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nae_bcdn'
+# The following nodes were matched and expected this phyloreference: [Nae_bcdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree26.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nae_bcdn'
+# The following nodes were matched and expected this phyloreference: [Nae_bcdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree27.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nae_bcdn'
+# The following nodes were matched and expected this phyloreference: [Nae_bcdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree28.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cden'
+# The following nodes were matched and expected this phyloreference: [Na_cden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree29.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cden'
+# The following nodes were matched and expected this phyloreference: [Na_cden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree3.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree30.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cden'
+# The following nodes were matched and expected this phyloreference: [Na_cden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree31.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree32.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nad_cen'
+# The following nodes were matched and expected this phyloreference: [Nad_cen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree33.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nae_cdn'
+# The following nodes were matched and expected this phyloreference: [Nae_cdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree34.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nade_cn'
+# The following nodes were matched and expected this phyloreference: [Nade_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree35.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nade_cn'
+# The following nodes were matched and expected this phyloreference: [Nade_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree36.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nade_cn'
+# The following nodes were matched and expected this phyloreference: [Nade_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree37.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cen'
+# The following nodes were matched and expected this phyloreference: [Na_cen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree38.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree39.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nae_cn'
+# The following nodes were matched and expected this phyloreference: [Nae_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree4.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree40.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cdn'
+# The following nodes were matched and expected this phyloreference: [Na_cdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree41.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree42.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nad_cn'
+# The following nodes were matched and expected this phyloreference: [Nad_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree43.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nade_bcn'
+# The following nodes were matched and expected this phyloreference: [Nade_bcn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree44.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nade_bcn'
+# The following nodes were matched and expected this phyloreference: [Nade_bcn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree45.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nade_bcn'
+# The following nodes were matched and expected this phyloreference: [Nade_bcn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree46.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cen'
+# The following nodes were matched and expected this phyloreference: [Na_cen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree47.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree48.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nae_cn'
+# The following nodes were matched and expected this phyloreference: [Nae_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree49.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cdn'
+# The following nodes were matched and expected this phyloreference: [Na_cdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree5.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree50.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree51.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Nad_cn'
+# The following nodes were matched and expected this phyloreference: [Nad_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree52.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree53.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree54.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree55.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_den'
+# The following nodes were matched and expected this phyloreference: [Nab_den]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree56.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree57.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree58.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree59.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree6.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree60.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree61.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabe_dn'
+# The following nodes were matched and expected this phyloreference: [Nabe_dn]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree62.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_en'
+# The following nodes were matched and expected this phyloreference: [Nab_en]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree63.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabe_dn'
+# The following nodes were matched and expected this phyloreference: [Nabe_dn]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree64.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabd_en'
+# The following nodes were matched and expected this phyloreference: [Nabd_en]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree65.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_dn'
+# The following nodes were matched and expected this phyloreference: [Nab_dn]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree66.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabd_en'
+# The following nodes were matched and expected this phyloreference: [Nabd_en]
+ok 2 Phyloreference 'Nabde_cn'
+# The following nodes were matched and expected this phyloreference: [Nabde_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree67.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabe_cdn'
+# The following nodes were matched and expected this phyloreference: [Nabe_cdn]
+ok 2 Phyloreference 'Nabe_cdn'
+# The following nodes were matched and expected this phyloreference: [Nabe_cdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree68.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_en'
+# The following nodes were matched and expected this phyloreference: [Nab_en]
+ok 2 Phyloreference 'Nabe_cdn'
+# The following nodes were matched and expected this phyloreference: [Nabe_cdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree69.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabe_cdn'
+# The following nodes were matched and expected this phyloreference: [Nabe_cdn]
+ok 2 Phyloreference 'Nabe_cdn'
+# The following nodes were matched and expected this phyloreference: [Nabe_cdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree7.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree70.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabd_cen'
+# The following nodes were matched and expected this phyloreference: [Nabd_cen]
+ok 2 Phyloreference 'Nabd_cen'
+# The following nodes were matched and expected this phyloreference: [Nabd_cen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree71.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_dn'
+# The following nodes were matched and expected this phyloreference: [Nab_dn]
+ok 2 Phyloreference 'Nabd_cen'
+# The following nodes were matched and expected this phyloreference: [Nabd_cen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree72.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabd_cen'
+# The following nodes were matched and expected this phyloreference: [Nabd_cen]
+ok 2 Phyloreference 'Nabd_cen'
+# The following nodes were matched and expected this phyloreference: [Nabd_cen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree73.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabce_dn'
+# The following nodes were matched and expected this phyloreference: [Nabce_dn]
+ok 2 Phyloreference 'Na_bcen'
+# The following nodes were matched and expected this phyloreference: [Na_bcen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree74.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabce_dn'
+# The following nodes were matched and expected this phyloreference: [Nabce_dn]
+ok 2 Phyloreference 'Na_bcen'
+# The following nodes were matched and expected this phyloreference: [Na_bcen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree75.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabce_dn'
+# The following nodes were matched and expected this phyloreference: [Nabce_dn]
+ok 2 Phyloreference 'Na_bcen'
+# The following nodes were matched and expected this phyloreference: [Na_bcen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree76.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_cen'
+# The following nodes were matched and expected this phyloreference: [Nab_cen]
+ok 2 Phyloreference 'Nab_cen'
+# The following nodes were matched and expected this phyloreference: [Nab_cen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree77.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabce_dn'
+# The following nodes were matched and expected this phyloreference: [Nabce_dn]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree78.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabce_dn'
+# The following nodes were matched and expected this phyloreference: [Nabce_dn]
+ok 2 Phyloreference 'Nae_bcn'
+# The following nodes were matched and expected this phyloreference: [Nae_bcn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree79.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabce_dn'
+# The following nodes were matched and expected this phyloreference: [Nabce_dn]
+ok 2 Phyloreference 'Na_cen'
+# The following nodes were matched and expected this phyloreference: [Na_cen]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree8.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree80.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabce_dn'
+# The following nodes were matched and expected this phyloreference: [Nabce_dn]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree81.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabce_dn'
+# The following nodes were matched and expected this phyloreference: [Nabce_dn]
+ok 2 Phyloreference 'Nae_cn'
+# The following nodes were matched and expected this phyloreference: [Nae_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree82.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabe_cn'
+# The following nodes were matched and expected this phyloreference: [Nabe_cn]
+ok 2 Phyloreference 'Nabe_cn'
+# The following nodes were matched and expected this phyloreference: [Nabe_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree83.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_en'
+# The following nodes were matched and expected this phyloreference: [Nab_en]
+ok 2 Phyloreference 'Nabe_cn'
+# The following nodes were matched and expected this phyloreference: [Nabe_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree84.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabe_cn'
+# The following nodes were matched and expected this phyloreference: [Nabe_cn]
+ok 2 Phyloreference 'Nabe_cn'
+# The following nodes were matched and expected this phyloreference: [Nabe_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree85.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabc_en'
+# The following nodes were matched and expected this phyloreference: [Nabc_en]
+ok 2 Phyloreference 'Na_bcn'
+# The following nodes were matched and expected this phyloreference: [Na_bcn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree86.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_cn'
+# The following nodes were matched and expected this phyloreference: [Nab_cn]
+ok 2 Phyloreference 'Nab_cn'
+# The following nodes were matched and expected this phyloreference: [Nab_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree87.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabc_en'
+# The following nodes were matched and expected this phyloreference: [Nabc_en]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree88.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabc_den'
+# The following nodes were matched and expected this phyloreference: [Nabc_den]
+ok 2 Phyloreference 'Na_bcn'
+# The following nodes were matched and expected this phyloreference: [Na_bcn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree89.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_cn'
+# The following nodes were matched and expected this phyloreference: [Nab_cn]
+ok 2 Phyloreference 'Nab_cn'
+# The following nodes were matched and expected this phyloreference: [Nab_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree9.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcde_n'
+# The following nodes were matched and expected this phyloreference: [Nabcde_n]
+ok 2 Phyloreference 'Na_bcden'
+# The following nodes were matched and expected this phyloreference: [Na_bcden]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree90.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabc_den'
+# The following nodes were matched and expected this phyloreference: [Nabc_den]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree91.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcd_en'
+# The following nodes were matched and expected this phyloreference: [Nabcd_en]
+ok 2 Phyloreference 'Na_bcdn'
+# The following nodes were matched and expected this phyloreference: [Na_bcdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree92.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcd_en'
+# The following nodes were matched and expected this phyloreference: [Nabcd_en]
+ok 2 Phyloreference 'Na_bcdn'
+# The following nodes were matched and expected this phyloreference: [Na_bcdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree93.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcd_en'
+# The following nodes were matched and expected this phyloreference: [Nabcd_en]
+ok 2 Phyloreference 'Na_bcdn'
+# The following nodes were matched and expected this phyloreference: [Na_bcdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree94.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nab_cdn'
+# The following nodes were matched and expected this phyloreference: [Nab_cdn]
+ok 2 Phyloreference 'Nab_cdn'
+# The following nodes were matched and expected this phyloreference: [Nab_cdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree95.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcd_en'
+# The following nodes were matched and expected this phyloreference: [Nabcd_en]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree96.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcd_en'
+# The following nodes were matched and expected this phyloreference: [Nabcd_en]
+ok 2 Phyloreference 'Nad_bcn'
+# The following nodes were matched and expected this phyloreference: [Nad_bcn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree97.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcd_en'
+# The following nodes were matched and expected this phyloreference: [Nabcd_en]
+ok 2 Phyloreference 'Na_cdn'
+# The following nodes were matched and expected this phyloreference: [Na_cdn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree98.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcd_en'
+# The following nodes were matched and expected this phyloreference: [Nabcd_en]
+ok 2 Phyloreference 'Na_cn'
+# The following nodes were matched and expected this phyloreference: [Na_cn]
+
+1..2
+# From file: /Users/gaurav/code/phyloref/phyx.js/test-all-combinations/tree99.jsonld
+# Using reasoner: null/0.0.0.0
+ok 1 Phyloreference 'Nabcd_en'
+# The following nodes were matched and expected this phyloreference: [Nabcd_en]
+ok 2 Phyloreference 'Nad_cn'
+# The following nodes were matched and expected this phyloreference: [Nad_cn]
+
