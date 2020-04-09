@@ -56,7 +56,7 @@
   },
   "esdoc": {
     "source": "./src",
-    "destination": "./docs/esdocs",
+    "destination": "./docs",
     "plugins": [
       {
         "name": "esdoc-standard-plugin"
