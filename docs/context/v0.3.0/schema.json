@@ -1,0 +1,238 @@
+{
+  "definitions": {
+    "citation": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "year": {
+          "type": "number"
+        },
+        "authors": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "name",
+              "firstname",
+              "lastname"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "alternate": {
+                "type": "array",
+                "items": {
+                  "required": [],
+                  "properties": {}
+                }
+              },
+              "firstname": {
+                "type": "string",
+                "minLength": 1
+              },
+              "lastname": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "editors": {
+          "type": "array",
+          "items": {
+            "required": [],
+            "properties": {}
+          }
+        },
+        "series_editors": {
+          "type": "array",
+          "items": {
+            "required": [],
+            "properties": {}
+          }
+        },
+        "publisher": {
+          "type": "string",
+          "minLength": 1
+        },
+        "city": {
+          "type": "string",
+          "minLength": 1
+        },
+        "figure": {
+          "type": "string",
+          "minLength": 1
+        },
+        "identifier": {
+          "type": "array",
+          "items": {
+            "required": [],
+            "properties": {}
+          }
+        },
+        "link": {
+          "type": "array",
+          "items": {
+            "required": [],
+            "properties": {}
+          }
+        }
+      }
+    },
+
+    "taxonomic_unit": {
+      "type": "object",
+      "required": [
+        "@type"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hasName": {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "type": "string",
+              "minLength": 1
+            },
+            "nomenclaturalCode": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "nameComplete": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "@type",
+            "nomenclaturalCode",
+            "label",
+            "nameComplete"
+          ]
+        }
+      }
+    }
+  },
+
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "A Phyx file contains digital clade definitions and optionally phylogenies that indicate where they should resolve. See http://phyloref.org/phyx.js for more information.",
+  "type": "object",
+  "required": [
+    "@context"
+  ],
+  "properties": {
+    "@context": {
+      "type": "string",
+      "description": "Every Phyx file should have a @context, making it a valid JSON-LD file.",
+      "minLength": 1
+    },
+    "phylogenies": {
+      "type": "array",
+      "description": "A phylogeny is an evolutionary hypothesis that can be used to test Phyx files.",
+      "minItems": 0,
+      "items": {
+        "required": [
+          "newick"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "The label of this phylogeny."
+            "minLength": 1
+          },
+          "newick": {
+            "type": "string",
+            "description": "This phylogeny represented as a Newick string (https://en.wikipedia.org/wiki/Newick_format).",
+            "minLength": 2
+          },
+          "phylogenyType": {
+            "type": "string",
+            "description": "Specifies what type of phylogeny this is. All phylogenies are assumed to be 'phylogeny', unless they are a 'reference_phylogeny' or a 'primary_reference_phylogeny'.",
+            "enum": [
+              "primary_reference_phylogeny",
+              "reference_phylogeny",
+              "phylogeny"
+            ]
+          },
+          "citation": {
+            "description": "A citation to the published source of this phylogeny.",
+            "$ref": "#/definitions/citation"
+          }
+        }
+      }
+    },
+    "phylorefs": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "required": [
+          "cladeDefinition"
+        ],
+        "properties": {
+          "regnumId": {
+            "type": "string",
+            "description": "The identifier of this clade definition in the Regnum database",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "description": "The name or label of this phyloreference."
+          },
+          "scientificNameAuthorship": {
+            "type": "string",
+            "description": "The authors of the scientific name being used as the phyloreference label (if any)",
+            "minLength": 1
+          },
+          "namePublishedIn": {
+            "description": "The source of the scientific name being used as the phyloreference label (if any)",
+            "$ref": "#/definitions/citation"
+          },
+          "definition": {
+            "type": "string",
+            "description": "A verbatim, free-text definition of this clade."
+            "minLength": 1
+          },
+          "definitionSource": {
+            "description": "The source of the clade definition.",
+            "$ref": "#/definitions/citation"
+          },
+          "internalSpecifiers": {
+            "type": "array",
+            "description": "An array of taxonomic units that must be included in the defined clade",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+              "$ref": "#/definitions/taxonomic_unit"
+            }
+          },
+          "externalSpecifiers": {
+            "type": "array",
+            "description": "An array of taxonomic units that must be excluded from the defined clade",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+              "$ref": "#/definitions/taxonomic_unit"
+            }
+          }
+        }
+      }
+    }
+  }
+}
