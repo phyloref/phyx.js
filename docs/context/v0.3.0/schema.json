@@ -1,90 +1,111 @@
 {
   "definitions": {
+    "agent": {
+      "type": "object",
+      "description": "A person or entity.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The full name of this agent.",
+          "minLength": 1
+        },
+        "alternate": {
+          "type": "array",
+          "description": "A list of alternate names for this agent.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "firstname": {
+          "type": "string",
+          "description": "The first (or given) name of this agent.",
+          "minLength": 1
+        },
+        "lastname": {
+          "type": "string",
+          "description": "The last (or family) name of this agent.",
+          "minLength": 1
+        }
+      }
+    },
     "citation": {
       "type": "object",
+      "description": "A citation to a publication.",
       "properties": {
         "type": {
           "type": "string",
+          "description": "The type of publication. BibTeX entry types (https://en.wikipedia.org/wiki/BibTeX#Entry_types) are recommended.",
           "minLength": 1
         },
         "title": {
           "type": "string",
+          "description": "The title of this publication.",
           "minLength": 1
         },
         "year": {
-          "type": "number"
+          "type": "number",
+          "description": "The year of publication."
         },
         "authors": {
           "type": "array",
-          "uniqueItems": true,
-          "minItems": 1,
+          "description": "The authors of this work.",
           "items": {
-            "required": [
-              "name",
-              "firstname",
-              "lastname"
-            ],
-            "properties": {
-              "name": {
-                "type": "string",
-                "minLength": 1
-              },
-              "alternate": {
-                "type": "array",
-                "items": {
-                  "required": [],
-                  "properties": {}
-                }
-              },
-              "firstname": {
-                "type": "string",
-                "minLength": 1
-              },
-              "lastname": {
-                "type": "string",
-                "minLength": 1
-              }
-            }
+            "$ref": "#/definitions/agent"
           }
         },
         "editors": {
           "type": "array",
+          "description": "The editors of this work.",
           "items": {
-            "required": [],
-            "properties": {}
+            "$ref": "#/definitions/agent"
           }
         },
         "series_editors": {
           "type": "array",
+          "description": "The editors of the series of work of which this work is a part.",
           "items": {
-            "required": [],
-            "properties": {}
+            "$ref": "#/definitions/agent"
           }
         },
         "publisher": {
           "type": "string",
-          "minLength": 1
+          "description": "The publisher of this work."
         },
         "city": {
           "type": "string",
-          "minLength": 1
+          "description": "The city in which this work was published."
         },
         "figure": {
           "type": "string",
-          "minLength": 1
+          "description": "The figure(s) in the work being cited."
         },
         "identifier": {
           "type": "array",
           "items": {
-            "required": [],
-            "properties": {}
+            "required": ["type", "id"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The type of identifier (e.g. 'doi')",
+              },
+              "id": {
+                "type": "string",
+                "description": "The identifier itself (e.g. '10.1146/annurev.earth.31.100901.141308')"
+              }
+            }
           }
         },
         "link": {
           "type": "array",
+          "description": "Links to this publication.",
           "items": {
-            "required": [],
-            "properties": {}
+            "required": ["url"],
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "The URL of this publication.",
+              }
+            }
           }
         }
       }
@@ -92,24 +113,40 @@
 
     "taxonomic_unit": {
       "type": "object",
+      "description": "A unit of taxonomy, i.e. a taxon, taxon concept or specimen.",
       "required": [
         "@type"
       ],
       "properties": {
         "@type": {
-          "type": "string",
-          "minLength": 1
+          "type": "iri",
+          "description": "The type of this taxonomic unit.",
+          "enum": [
+            "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+            "http://rs.tdwg.org/dwc/terms/Occurrence"
+          ]
         },
         "hasName": {
           "type": "object",
+          "description": "The scientific name of this taxon, taxon concept or specimen.",
           "properties": {
             "@type": {
-              "type": "string",
-              "minLength": 1
+              "type": "iri",
+              "description": "The type of this taxonomic name.",
+              "enum" [
+                "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName"
+              ]
             },
             "nomenclaturalCode": {
               "type": "string",
-              "minLength": 1
+              "description": "The nomenclatural code under which this name is defined.",
+              "enum": [
+                "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                "http://purl.obolibrary.org/obo/NOMEN_0000109",
+                "http://purl.obolibrary.org/obo/NOMEN_0000110",
+                "http://purl.obolibrary.org/obo/NOMEN_0000111"
+              ]
             },
             "label": {
               "type": "string",
