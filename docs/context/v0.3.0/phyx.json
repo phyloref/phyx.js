@@ -10,10 +10,10 @@
     "tvc": "http://www.essepuntato.it/2012/04/tvc/",
     "timeinterval": "http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#",
 
-    "ot": "http://purl.org/opentree/nexson#",
+    "opentree": "http://purl.org/opentree/nexson#",
 
     "curator": {
-        "@id": "ot:curatorName",
+        "@id": "opentree:curatorName",
         "@type": "xsd:string"
     },
 
