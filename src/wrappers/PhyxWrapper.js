@@ -7,62 +7,55 @@ const { PhylorefWrapper } = require('./PhylorefWrapper');
 const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 const { TaxonomicUnitMatcher } = require('../matchers/TaxonomicUnitMatcher');
 
-/* PHYX file wrapper */
+/**
+ * The PhyxWrapper wraps an entire Phyx document.
+ */
 
 class PhyxWrapper {
-  // Wraps an entire PHYX document.
-
+  /**
+   * Wraps an entire PHYX document.
+   * @param {Object} phyx - the Phyx structure to wrap.
+   * @param {function(newick: string): {children: Object[], name: string}} newickParser - a method
+   *    that accepts a Newick string and returns a list of nodes. Each node should have a
+   *    'children' key with its children and optionally a 'name' key with its label. This
+   *    code previously depended on phylotree.js, whose newick_parser() function works exactly
+   *    like this. This option allows you to drop in Phylotree's newick_parser() or -- if you
+   *    prefer -- any other option.
+   */
   constructor(phyx, newickParser) {
-    // Wraps an entire PHYX document.
-    // - phyx: the Phyx structure to wrap.
-    // - newickParser: a method that accepts a Newick string and returns a list of
-    //   nodes. Each node should have a 'children' key with its children and
-    //   optionally a 'name' key with its label. This code previously depended
-    //   on phylotree.js, whose newick_parser() function works exactly like this.
-    //   This option allows you to drop in Phylotree's newick_parser() or --
-    //   if you prefer -- any other option.
+    //
     this.phyx = phyx;
     this.newickParser = newickParser;
   }
 
-  static get BASE_URI() {
-    // Returns the default base URI for PHYX documents in JSON-LD.
-    return '';
-  }
-
-  static getBaseURIForPhyloref(phylorefCount) {
-    // Return the base URI for a phyloreference based on its index.
-    return `${PhyxWrapper.BASE_URI}#phyloref${phylorefCount}`;
-  }
-
-  static getBaseURIForPhylogeny(phylogenyCount) {
-    // Return the base URI for phylogenies based on its index.
-    return `${PhyxWrapper.BASE_URI}#phylogeny${phylogenyCount}`;
-  }
-
-  static getBaseURIForTUMatch(countTaxonomicUnitMatches) {
-    // Return the base URI for taxonomic unit matches.
-    return `${PhyxWrapper.BASE_URI}#taxonomic_unit_match${countTaxonomicUnitMatches}`;
-  }
-
-  asJSONLD() {
-    // Export this PHYX document as a JSON-LD document. This replicates what
-    // phyx2owl.py does in the Clade Ontology.
-    //
-    // The document is mostly in JSON-LD already, except for two important
-    // things:
-    //  1. We have to convert all phylogenies into a series of statements
-    //     relating to the nodes inside these phylogenies.
-    //  2. We have to convert phylogenies into OWL restrictions.
-    //  3. Insert all matches between taxonomic units in this file.
-    //
+  /**
+   * Generate an executable ontology from this Phyx document. The document is mostly in JSON-LD
+   * already, except for two important things:
+   *    1. We have to convert all phylogenies into a series of statements relating to the nodes
+   *       inside these phylogenies.
+   *    2. We have to convert phylogenies into OWL restrictions.
+   *    3. Insert all matches between taxonomic units in this file.
+   *
+   * @param {string} [baseURI=""] - The base URI to use when generating this Phyx document.
+   * @return {string} This Phyx document as an OWL ontology in JSON-LD.
+   */
+  asOWLOntology(baseURI = '') {
     const jsonld = cloneDeep(this.phyx);
+
+    // Some helper methods for generating base URIs for phylorefs and phylogenies.
+    function getBaseURIForPhyloref(index) {
+      return `${baseURI}#phyloref${index}`;
+    }
+
+    function getBaseURIForPhylogeny(index) {
+      return `${baseURI}#phylogeny${index}`;
+    }
 
     // Convert phyloreferences into an OWL class restriction
     if (has(jsonld, 'phylorefs')) {
       jsonld.phylorefs = jsonld.phylorefs.map(
         (phyloref, countPhyloref) => new PhylorefWrapper(phyloref)
-          .asJSONLD(PhyxWrapper.getBaseURIForPhyloref(countPhyloref))
+          .asJSONLD(getBaseURIForPhyloref(countPhyloref))
       );
     }
 
@@ -70,7 +63,7 @@ class PhyxWrapper {
     if (has(jsonld, 'phylogenies')) {
       jsonld.phylogenies = jsonld.phylogenies.map(
         (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny)
-          .asJSONLD(PhyxWrapper.getBaseURIForPhylogeny(countPhylogeny), this.newickParser)
+          .asJSONLD(getBaseURIForPhylogeny(countPhylogeny), this.newickParser)
       );
 
       // Go through all the nodes and add information on expected resolution.
@@ -196,7 +189,7 @@ class PhyxWrapper {
     }
 
     // Finally, add the base URI as an ontology.
-    jsonld['@id'] = PhyxWrapper.BASE_URI;
+    if (baseURI) jsonld['@id'] = baseURI;
     jsonld['@type'] = [owlterms.PHYLOREFERENCE_TEST_CASE, 'owl:Ontology'];
     jsonld['owl:imports'] = [
       'http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl',
