@@ -14,8 +14,8 @@ const { TaxonomicUnitMatcher } = require('../matchers/TaxonomicUnitMatcher');
 class PhyxWrapper {
   /**
    * Wraps an entire PHYX document.
-   * @param {Object} phyx - the Phyx structure to wrap.
-   * @param {function(newick: string): {children: Object[], name: string}} newickParser - a method
+   * @param {Object} phyx - The Phyx structure to wrap.
+   * @param {function(newick: string): {name: string, children: Object[]}} newickParser - A method
    *    that accepts a Newick string and returns a list of nodes. Each node should have a
    *    'children' key with its children and optionally a 'name' key with its label. This
    *    code previously depended on phylotree.js, whose newick_parser() function works exactly
@@ -30,14 +30,14 @@ class PhyxWrapper {
 
   /**
    * Generate an executable ontology from this Phyx document. The document is mostly in JSON-LD
-   * already, except for two important things:
+   * already, except for three important things:
    *    1. We have to convert all phylogenies into a series of statements relating to the nodes
    *       inside these phylogenies.
    *    2. We have to convert phylogenies into OWL restrictions.
    *    3. Insert all matches between taxonomic units in this file.
    *
    * @param {string} [baseURI=""] - The base URI to use when generating this Phyx document.
-   * @return {string} This Phyx document as an OWL ontology in JSON-LD.
+   * @return {Object} This Phyx document as an OWL ontology as a JSON-LD object.
    */
   asOWLOntology(baseURI = '') {
     const jsonld = cloneDeep(this.phyx);
