@@ -66,32 +66,28 @@ function factorial(n) {
 const expectedBifurcatingTrees = factorial(2 * nodeCount - 3)/((2**(nodeCount - 2)) * factorial(nodeCount - 2));
 console.log(`Expected bifurcating trees = ${expectedBifurcatingTrees}`);
 
-/*
- * TODO: This doesn't work! I need to re-read the paper at
- * https://academic.oup.com/sysbio/article/27/1/27/1626689
- * and figure out why.
- */
-function T1(n, m) {
-  if (n == 1 && m == 0) return 1;
-  if (n == 1) return 0;
-  if (n > 1 && m == 1) return T(n - 1, 1);
-  if (n > 1 && m > 1) return m * T(n - 1, m) + (n + m - 2) * T(n - 1, m - 1);
-  throw new Error(`Should never get here: (${n}, ${m})`);
+// I tried to calculate this using the formula in
+// https://academic.oup.com/sysbio/article/27/1/27/1626689, but I didn't get it
+// working correctly. So I'm just hardcoding these numbers from
+// https://en.wikipedia.org/wiki/Phylogenetic_tree#Enumerating_trees
+const multifurcatingTreeCounts = [
+  0,
+  0,
+  0,
+  1,
+  11,
+  131,
+  1807,
+  28813,
+  524897,
+  10791887,
+  247678399,
+]
+if (nodeCount > 10) {
+  throw new Error("Multifurcating tree counts only go up to n > 10");
 }
-
-function T(n, m) {
-  const val = T1(n, m);
-  // console.log(`T(${n}, ${m}) = ${val}`);
-  return val;
-}
-
-var expectedMultifurcatingTrees = 0;
-for(var m = 1; m < nodeCount + 1; m++) {
-  const x = T(nodeCount, m);
-  //console.log(`T(${nodeCount}, ${m}) = ${x}`)
-  expectedMultifurcatingTrees += x;
-}
-console.log(`Expected multifurcating trees (#TODO) = ${expectedMultifurcatingTrees}`);
+const expectedMultifurcatingTrees = multifurcatingTreeCounts[nodeCount];
+console.log(`Expected multifurcating trees = ${expectedMultifurcatingTrees}`);
 
 const expectedTotalTrees = expectedBifurcatingTrees + expectedMultifurcatingTrees
 console.log(`Expected total trees = ${expectedTotalTrees}`);
