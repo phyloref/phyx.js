@@ -16,6 +16,10 @@ const argv = require('yargs')
   .describe('nodes', 'The number of leaf nodes to generate in each phylogeny')
   .demandOption(['nodes'])
   .alias('nodes', 'n')
+
+  .describe('multifurcating', 'Generate multifurcating trees as well as binary trees')
+  .alias('multifurcating', 'multi')
+
   .help('h')
   .alias('help', 'h')
   .argv
@@ -275,4 +279,8 @@ normalizedUniqTrees.forEach((tree, index) => {
   // TODO: Now we need to do all the multifurcating trees.
 });
 
-console.log(`${normalizedUniqTrees.length} trees generated out of an expected ${expectedBifurcatingTrees}.`)
+if (argv.multifurcating) {
+    console.log(`${treesToGenerate.length} multifurcating trees generated out of an expected ${expectedTotalTrees}.`)
+} else {
+    console.log(`${treesToGenerate.length} binary trees generated out of an expected ${expectedBifurcatingTrees}.`)
+}
