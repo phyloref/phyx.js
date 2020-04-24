@@ -15,14 +15,15 @@ class PhyxWrapper {
   /**
    * Wraps an entire PHYX document.
    * @param {Object} phyx - The Phyx structure to wrap.
-   * @param {function(newick: string): {name: string, children: Object[]}} newickParser - A method
+   * @param {function(newick: string): {name: string, children: Object[]}}
+   *    [newickParser=PhylogenyWrapper.getParsedNewick] - A method
    *    that accepts a Newick string and returns a list of nodes. Each node should have a
    *    'children' key with its children and optionally a 'name' key with its label. This
    *    code previously depended on phylotree.js, whose newick_parser() function works exactly
    *    like this. This option allows you to drop in Phylotree's newick_parser() or -- if you
    *    prefer -- any other option.
    */
-  constructor(phyx, newickParser) {
+  constructor(phyx, newickParser = PhylogenyWrapper.getParsedNewick) {
     //
     this.phyx = phyx;
     this.newickParser = newickParser;
@@ -36,19 +37,19 @@ class PhyxWrapper {
    *    2. We have to convert phylogenies into OWL restrictions.
    *    3. Insert all matches between taxonomic units in this file.
    *
-   * @param {string} [baseURI=""] - The base URI to use when generating this Phyx document.
+   * @param {string} [baseURI="#"] - The base URI to use when generating this Phyx document.
    * @return {Object} This Phyx document as an OWL ontology as a JSON-LD object.
    */
-  asOWLOntology(baseURI = '') {
+  asOWLOntology(baseURI = '#') {
     const jsonld = cloneDeep(this.phyx);
 
     // Some helper methods for generating base URIs for phylorefs and phylogenies.
     function getBaseURIForPhyloref(index) {
-      return `${baseURI}#phyloref${index}`;
+      return `${baseURI}phyloref${index}`;
     }
 
     function getBaseURIForPhylogeny(index) {
-      return `${baseURI}#phylogeny${index}`;
+      return `${baseURI}phylogeny${index}`;
     }
 
     // Convert phyloreferences into an OWL class restriction
