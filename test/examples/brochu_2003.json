@@ -1,0 +1,263 @@
+{
+    "@context": "../../docs/context/v0.3.0/phyx.json",
+    "doi": "10.1146/annurev.earth.31.100901.141308",
+    "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308",
+    "citation": "Brochu (2003) Annual Review of Earth and Planetary Sciences 31:357-397",
+    "phylogenies": [
+        {
+            "newick": "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;",
+            "label": "Fig 1 from Brochu 2003",
+            "@id": "#phylogeny0"
+        }
+    ],
+    "phylorefs": [
+        {
+            "label": "Alligatoridae",
+            "cladeDefinition": "Alligatoridae (Cuvier 1807).\n\nLast common ancestor of Alligator mississippiensis and Caiman crocodilus and all of its descendents.",
+            "internalSpecifiers": [
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Caiman crocodilus",
+                        "nameComplete": "Caiman crocodilus",
+                        "genusPart": "Caiman",
+                        "specificEpithet": "crocodilus"
+                    }
+                },
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Alligator mississippiensis",
+                        "nameComplete": "Alligator mississippiensis",
+                        "genusPart": "Alligator",
+                        "specificEpithet": "mississippiensis"
+                    },
+                    "label": "Alligator mississippiensis"
+                }
+            ],
+            "externalSpecifiers": [],
+            "pso:holdsStatusInTime": [
+                {
+                    "@type": "http://purl.org/spar/pso/StatusInTime",
+                    "pso:withStatus": {
+                        "@id": "pso:submitted"
+                    },
+                    "tvc:atTime": {
+                        "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:31.471Z"
+                    }
+                }
+            ]
+        },
+        {
+            "label": "Alligatorinae",
+            "cladeDefinition": "Alligatorinae (Kälin 1940).\n\nAlligator mississippiensis and all crocodylians closer to it than to Caiman crocodilus.",
+            "internalSpecifiers": [
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Alligator mississippiensis",
+                        "nameComplete": "Alligator mississippiensis",
+                        "genusPart": "Alligator",
+                        "specificEpithet": "mississippiensis"
+                    }
+                }
+            ],
+            "externalSpecifiers": [
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Caiman crocodilus",
+                        "nameComplete": "Caiman crocodilus",
+                        "genusPart": "Caiman",
+                        "specificEpithet": "crocodilus"
+                    },
+                    "label": "Caiman crocodilus"
+                }
+            ],
+            "pso:holdsStatusInTime": [
+                {
+                    "@type": "http://purl.org/spar/pso/StatusInTime",
+                    "pso:withStatus": {
+                        "@id": "pso:submitted"
+                    },
+                    "tvc:atTime": {
+                        "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:36.063Z"
+                    }
+                }
+            ],
+            "expectedResolution": {
+                "#phylogeny0": {
+                    "nodeLabel": "Alligator mississippiensis"
+                }
+            }
+        },
+        {
+            "label": "Caimaninae",
+            "cladeDefinition": "Caimaninae (Norell 1988).\n\nCaiman crocodilus and all crocodylians closer to it than to Alligator mississippiensis.",
+            "internalSpecifiers": [
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Caiman crocodilus",
+                        "nameComplete": "Caiman crocodilus",
+                        "genusPart": "Caiman",
+                        "specificEpithet": "crocodilus"
+                    }
+                }
+            ],
+            "externalSpecifiers": [
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Alligator mississippiensis",
+                        "nameComplete": "Alligator mississippiensis",
+                        "genusPart": "Alligator",
+                        "specificEpithet": "mississippiensis"
+                    }
+                }
+            ],
+            "pso:holdsStatusInTime": [
+                {
+                    "@type": "http://purl.org/spar/pso/StatusInTime",
+                    "pso:withStatus": {
+                        "@id": "pso:submitted"
+                    },
+                    "tvc:atTime": {
+                        "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:42.007Z"
+                    }
+                }
+            ],
+            "expectedResolution": {
+                "#phylogeny0": {
+                    "nodeLabel": "Caiman crocodilus"
+                }
+            }
+        },
+        {
+            "label": "Crocodyloidea",
+            "cladeDefinition": "Crocodyloidea (Fitzinger 1826).\n\nCrocodylus niloticus and all crocodylians closer to it than to Alligator mississippiensis or Gavialis gangeticus.",
+            "internalSpecifiers": [
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Crocodylus niloticus",
+                        "nameComplete": "Crocodylus niloticus",
+                        "genusPart": "Crocodylus",
+                        "specificEpithet": "niloticus"
+                    }
+                }
+            ],
+            "externalSpecifiers": [
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Alligator mississippiensis",
+                        "nameComplete": "Alligator mississippiensis",
+                        "genusPart": "Alligator",
+                        "specificEpithet": "mississippiensis"
+                    },
+                    "label": "Alligator mississippiensis"
+                },
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Gavialis gangeticus",
+                        "nameComplete": "Gavialis gangeticus",
+                        "genusPart": "Gavialis",
+                        "specificEpithet": "gangeticus"
+                    },
+                    "label": "Gavialis gangeticus"
+                }
+            ],
+            "pso:holdsStatusInTime": [
+                {
+                    "@type": "http://purl.org/spar/pso/StatusInTime",
+                    "pso:withStatus": {
+                        "@id": "pso:under-review"
+                    },
+                    "tvc:atTime": {
+                        "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:48.240Z"
+                    }
+                }
+            ],
+            "expectedResolution": {
+                "#phylogeny0": {
+                    "nodeLabel": "Crocodylidae"
+                }
+            }
+        },
+        {
+            "label": "Crocodylidae",
+            "cladeDefinition": "Crocodylidae (Cuvier 1807). Definition dependent on phylogenetic context.\n\nLast common ancestor of Crocodylus niloticus, Osteolaemus tetraspis, and Tomistoma schlegelii and all of its descendents.",
+            "internalSpecifiers": [
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Tomistoma schlegelii",
+                        "nameComplete": "Tomistoma schlegelii",
+                        "genusPart": "Tomistoma",
+                        "specificEpithet": "schlegelii"
+                    }
+                },
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Osteolaemus tetraspis",
+                        "nameComplete": "Osteolaemus tetraspis",
+                        "genusPart": "Osteolaemus",
+                        "specificEpithet": "tetraspis"
+                    },
+                    "label": "Osteolaemus tetraspis"
+                },
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Crocodylus niloticus",
+                        "nameComplete": "Crocodylus niloticus",
+                        "genusPart": "Crocodylus",
+                        "specificEpithet": "niloticus"
+                    },
+                    "label": "Crocodylus niloticus"
+                }
+            ],
+            "externalSpecifiers": [],
+            "pso:holdsStatusInTime": [
+                {
+                    "@type": "http://purl.org/spar/pso/StatusInTime",
+                    "pso:withStatus": {
+                        "@id": "pso:submitted"
+                    },
+                    "tvc:atTime": {
+                        "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:51.960Z"
+                    }
+                }
+            ]
+        }
+    ],
+    "title": "Phylogenetic Approaches Toward Crocodylian History",
+    "defaultNomenclaturalCodeURI": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+}
