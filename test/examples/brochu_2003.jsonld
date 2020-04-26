@@ -1,0 +1,2338 @@
+{
+  "@context": "../../docs/context/v0.3.0/phyx.json",
+  "doi": "10.1146/annurev.earth.31.100901.141308",
+  "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308",
+  "citation": "Brochu (2003) Annual Review of Earth and Planetary Sciences 31:357-397",
+  "phylogenies": [
+    {
+      "newick": "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;",
+      "label": "Fig 1 from Brochu 2003",
+      "@id": "#phylogeny0",
+      "@type": "testcase:PhyloreferenceTestPhylogeny",
+      "nodes": [
+        {
+          "@id": "#phylogeny0_node0",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "labels": [
+            "root"
+          ],
+          "representsTaxonomicUnits": [],
+          "children": [
+            "#phylogeny0_node1",
+            "#phylogeny0_node29"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node1",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "#phylogeny0_node0",
+          "siblings": [
+            "#phylogeny0_node29"
+          ],
+          "children": [
+            "#phylogeny0_node2",
+            "#phylogeny0_node27",
+            "#phylogeny0_node28"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node2",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Crocodylomorpha"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Crocodylomorpha"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Crocodylomorpha",
+                "nameComplete": "Crocodylomorpha",
+                "uninomial": "Crocodylomorpha"
+              },
+              "label": "Crocodylomorpha"
+            }
+          ],
+          "parent": "#phylogeny0_node1",
+          "siblings": [
+            "#phylogeny0_node27",
+            "#phylogeny0_node28"
+          ],
+          "children": [
+            "#phylogeny0_node3",
+            "#phylogeny0_node26"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node3",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Crocodyliformes"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Crocodyliformes"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Crocodyliformes",
+                "nameComplete": "Crocodyliformes",
+                "uninomial": "Crocodyliformes"
+              },
+              "label": "Crocodyliformes"
+            }
+          ],
+          "parent": "#phylogeny0_node2",
+          "siblings": [
+            "#phylogeny0_node26"
+          ],
+          "children": [
+            "#phylogeny0_node4",
+            "#phylogeny0_node25"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node4",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Mesoeucrocodylia"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Mesoeucrocodylia"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Mesoeucrocodylia",
+                "nameComplete": "Mesoeucrocodylia",
+                "uninomial": "Mesoeucrocodylia"
+              },
+              "label": "Mesoeucrocodylia"
+            }
+          ],
+          "parent": "#phylogeny0_node3",
+          "siblings": [
+            "#phylogeny0_node25"
+          ],
+          "children": [
+            "#phylogeny0_node5",
+            "#phylogeny0_node24"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node5",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Eusuchia"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Eusuchia"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Eusuchia",
+                "nameComplete": "Eusuchia",
+                "uninomial": "Eusuchia"
+              },
+              "label": "Eusuchia"
+            }
+          ],
+          "parent": "#phylogeny0_node4",
+          "siblings": [
+            "#phylogeny0_node24"
+          ],
+          "children": [
+            "#phylogeny0_node6",
+            "#phylogeny0_node21",
+            "#phylogeny0_node22",
+            "#phylogeny0_node23"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node6",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "#phylogeny0_node5",
+          "siblings": [
+            "#phylogeny0_node21",
+            "#phylogeny0_node22",
+            "#phylogeny0_node23"
+          ],
+          "children": [
+            "#phylogeny0_node7",
+            "#phylogeny0_node20"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node7",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Crocodylia"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Crocodylia"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Crocodylia",
+                "nameComplete": "Crocodylia",
+                "uninomial": "Crocodylia"
+              },
+              "label": "Crocodylia"
+            }
+          ],
+          "parent": "#phylogeny0_node6",
+          "siblings": [
+            "#phylogeny0_node20"
+          ],
+          "children": [
+            "#phylogeny0_node8",
+            "#phylogeny0_node19"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node8",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Brevirostres"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Brevirostres"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Brevirostres",
+                "nameComplete": "Brevirostres",
+                "uninomial": "Brevirostres"
+              },
+              "label": "Brevirostres"
+            }
+          ],
+          "parent": "#phylogeny0_node7",
+          "siblings": [
+            "#phylogeny0_node19"
+          ],
+          "children": [
+            "#phylogeny0_node9",
+            "#phylogeny0_node14"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node9",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Crocodylidae"
+                }
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:OBI_0000312",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@id": "obo:OBI_0302910"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:OBI_0000293",
+                    "someValuesFrom": {
+                      "@id": "http://example.org/brochu_2003.json#phyloref3"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:OBI_0000312",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@id": "obo:OBI_0302910"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:OBI_0000293",
+                    "someValuesFrom": {
+                      "@id": "http://example.org/brochu_2003.json#phyloref4"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "labels": [
+            "Crocodylidae"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Crocodylidae",
+                "nameComplete": "Crocodylidae",
+                "uninomial": "Crocodylidae"
+              },
+              "label": "Crocodylidae"
+            }
+          ],
+          "parent": "#phylogeny0_node8",
+          "siblings": [
+            "#phylogeny0_node14"
+          ],
+          "children": [
+            "#phylogeny0_node10",
+            "#phylogeny0_node13"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node10",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Crocodylinae"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Crocodylinae"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Crocodylinae",
+                "nameComplete": "Crocodylinae",
+                "uninomial": "Crocodylinae"
+              },
+              "label": "Crocodylinae"
+            }
+          ],
+          "parent": "#phylogeny0_node9",
+          "siblings": [
+            "#phylogeny0_node13"
+          ],
+          "children": [
+            "#phylogeny0_node11",
+            "#phylogeny0_node12"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node11",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Crocodylus niloticus"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Crocodylus niloticus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Crocodylus niloticus",
+                "nameComplete": "Crocodylus niloticus",
+                "genusPart": "Crocodylus",
+                "specificEpithet": "niloticus"
+              },
+              "label": "Crocodylus niloticus"
+            }
+          ],
+          "parent": "#phylogeny0_node10",
+          "siblings": [
+            "#phylogeny0_node12"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node12",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Osteolaemus tetraspis"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Osteolaemus tetraspis"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Osteolaemus tetraspis",
+                "nameComplete": "Osteolaemus tetraspis",
+                "genusPart": "Osteolaemus",
+                "specificEpithet": "tetraspis"
+              },
+              "label": "Osteolaemus tetraspis"
+            }
+          ],
+          "parent": "#phylogeny0_node10",
+          "siblings": [
+            "#phylogeny0_node11"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node13",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Tomistoma schlegelii"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Tomistoma schlegelii"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Tomistoma schlegelii",
+                "nameComplete": "Tomistoma schlegelii",
+                "genusPart": "Tomistoma",
+                "specificEpithet": "schlegelii"
+              },
+              "label": "Tomistoma schlegelii"
+            }
+          ],
+          "parent": "#phylogeny0_node9",
+          "siblings": [
+            "#phylogeny0_node10"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node14",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Alligatoroidea"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Alligatoroidea"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Alligatoroidea",
+                "nameComplete": "Alligatoroidea",
+                "uninomial": "Alligatoroidea"
+              },
+              "label": "Alligatoroidea"
+            }
+          ],
+          "parent": "#phylogeny0_node8",
+          "siblings": [
+            "#phylogeny0_node9"
+          ],
+          "children": [
+            "#phylogeny0_node15",
+            "#phylogeny0_node18"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node15",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Alligatoridae"
+                }
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:OBI_0000312",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@id": "obo:OBI_0302910"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:OBI_0000293",
+                    "someValuesFrom": {
+                      "@id": "http://example.org/brochu_2003.json#phyloref0"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "labels": [
+            "Alligatoridae"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Alligatoridae",
+                "nameComplete": "Alligatoridae",
+                "uninomial": "Alligatoridae"
+              },
+              "label": "Alligatoridae"
+            }
+          ],
+          "parent": "#phylogeny0_node14",
+          "siblings": [
+            "#phylogeny0_node18"
+          ],
+          "children": [
+            "#phylogeny0_node16",
+            "#phylogeny0_node17"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node16",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Caiman crocodilus"
+                }
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:OBI_0000312",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@id": "obo:OBI_0302910"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:OBI_0000293",
+                    "someValuesFrom": {
+                      "@id": "http://example.org/brochu_2003.json#phyloref2"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "labels": [
+            "Caiman crocodilus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Caiman crocodilus",
+                "nameComplete": "Caiman crocodilus",
+                "genusPart": "Caiman",
+                "specificEpithet": "crocodilus"
+              },
+              "label": "Caiman crocodilus"
+            }
+          ],
+          "parent": "#phylogeny0_node15",
+          "siblings": [
+            "#phylogeny0_node17"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node17",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Alligator mississippiensis"
+                }
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:OBI_0000312",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@id": "obo:OBI_0302910"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:OBI_0000293",
+                    "someValuesFrom": {
+                      "@id": "http://example.org/brochu_2003.json#phyloref1"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "labels": [
+            "Alligator mississippiensis"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Alligator mississippiensis",
+                "nameComplete": "Alligator mississippiensis",
+                "genusPart": "Alligator",
+                "specificEpithet": "mississippiensis"
+              },
+              "label": "Alligator mississippiensis"
+            }
+          ],
+          "parent": "#phylogeny0_node15",
+          "siblings": [
+            "#phylogeny0_node16"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node18",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Diplocynodon ratelii"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Diplocynodon ratelii"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Diplocynodon ratelii",
+                "nameComplete": "Diplocynodon ratelii",
+                "genusPart": "Diplocynodon",
+                "specificEpithet": "ratelii"
+              },
+              "label": "Diplocynodon ratelii"
+            }
+          ],
+          "parent": "#phylogeny0_node14",
+          "siblings": [
+            "#phylogeny0_node15"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node19",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Gavialis gangeticus"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Gavialis gangeticus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Gavialis gangeticus",
+                "nameComplete": "Gavialis gangeticus",
+                "genusPart": "Gavialis",
+                "specificEpithet": "gangeticus"
+              },
+              "label": "Gavialis gangeticus"
+            }
+          ],
+          "parent": "#phylogeny0_node7",
+          "siblings": [
+            "#phylogeny0_node8"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node20",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Allodaposuchus"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Allodaposuchus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Allodaposuchus",
+                "nameComplete": "Allodaposuchus",
+                "uninomial": "Allodaposuchus"
+              },
+              "label": "Allodaposuchus"
+            }
+          ],
+          "parent": "#phylogeny0_node6",
+          "siblings": [
+            "#phylogeny0_node7"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node21",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Stomatosuchus"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Stomatosuchus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Stomatosuchus",
+                "nameComplete": "Stomatosuchus",
+                "uninomial": "Stomatosuchus"
+              },
+              "label": "Stomatosuchus"
+            }
+          ],
+          "parent": "#phylogeny0_node5",
+          "siblings": [
+            "#phylogeny0_node6",
+            "#phylogeny0_node22",
+            "#phylogeny0_node23"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node22",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Aegyptosuchus"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Aegyptosuchus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Aegyptosuchus",
+                "nameComplete": "Aegyptosuchus",
+                "uninomial": "Aegyptosuchus"
+              },
+              "label": "Aegyptosuchus"
+            }
+          ],
+          "parent": "#phylogeny0_node5",
+          "siblings": [
+            "#phylogeny0_node6",
+            "#phylogeny0_node21",
+            "#phylogeny0_node23"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node23",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Hylaeochampsa"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Hylaeochampsa"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Hylaeochampsa",
+                "nameComplete": "Hylaeochampsa",
+                "uninomial": "Hylaeochampsa"
+              },
+              "label": "Hylaeochampsa"
+            }
+          ],
+          "parent": "#phylogeny0_node5",
+          "siblings": [
+            "#phylogeny0_node6",
+            "#phylogeny0_node21",
+            "#phylogeny0_node22"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node24",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "labels": [
+            "mesosuchians"
+          ],
+          "representsTaxonomicUnits": [],
+          "parent": "#phylogeny0_node4",
+          "siblings": [
+            "#phylogeny0_node5"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node25",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "labels": [
+            "protosuchians"
+          ],
+          "representsTaxonomicUnits": [],
+          "parent": "#phylogeny0_node3",
+          "siblings": [
+            "#phylogeny0_node4"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node26",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "labels": [
+            "sphenosuchians"
+          ],
+          "representsTaxonomicUnits": [],
+          "parent": "#phylogeny0_node2",
+          "siblings": [
+            "#phylogeny0_node3"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node27",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Aetosauria"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Aetosauria"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Aetosauria",
+                "nameComplete": "Aetosauria",
+                "uninomial": "Aetosauria"
+              },
+              "label": "Aetosauria"
+            }
+          ],
+          "parent": "#phylogeny0_node1",
+          "siblings": [
+            "#phylogeny0_node2",
+            "#phylogeny0_node28"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node28",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "labels": [
+            "rauisuchians"
+          ],
+          "representsTaxonomicUnits": [],
+          "parent": "#phylogeny0_node1",
+          "siblings": [
+            "#phylogeny0_node2",
+            "#phylogeny0_node27"
+          ]
+        },
+        {
+          "@id": "#phylogeny0_node29",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Parasuchia"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Parasuchia"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+                "label": "Parasuchia",
+                "nameComplete": "Parasuchia",
+                "uninomial": "Parasuchia"
+              },
+              "label": "Parasuchia"
+            }
+          ],
+          "parent": "#phylogeny0_node0",
+          "siblings": [
+            "#phylogeny0_node1"
+          ]
+        }
+      ],
+      "hasRootNode": {
+        "@id": "#phylogeny0_node0"
+      }
+    }
+  ],
+  "phylorefs": [
+    {
+      "label": "Alligatoridae",
+      "cladeDefinition": "Alligatoridae (Cuvier 1807).\n\nLast common ancestor of Alligator mississippiensis and Caiman crocodilus and all of its descendents.",
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Caiman crocodilus",
+            "nameComplete": "Caiman crocodilus",
+            "genusPart": "Caiman",
+            "specificEpithet": "crocodilus"
+          }
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis",
+            "genusPart": "Alligator",
+            "specificEpithet": "mississippiensis"
+          },
+          "label": "Alligator mississippiensis"
+        }
+      ],
+      "externalSpecifiers": [],
+      "pso:holdsStatusInTime": [
+        {
+          "@type": "http://purl.org/spar/pso/StatusInTime",
+          "pso:withStatus": {
+            "@id": "pso:submitted"
+          },
+          "tvc:atTime": {
+            "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:31.471Z"
+          }
+        }
+      ],
+      "@id": "http://example.org/brochu_2003.json#phyloref0",
+      "@type": "owl:Class",
+      "subClassOf": "phyloref:Phyloreference",
+      "hasAdditionalClass": [],
+      "equivalentClass": [
+        {
+          "@type": "owl:Restriction",
+          "onProperty": "obo:CDAO_0000149",
+          "someValuesFrom": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Caiman crocodilus"
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:includes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Alligator mississippiensis"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Alligatorinae",
+      "cladeDefinition": "Alligatorinae (Kälin 1940).\n\nAlligator mississippiensis and all crocodylians closer to it than to Caiman crocodilus.",
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis",
+            "genusPart": "Alligator",
+            "specificEpithet": "mississippiensis"
+          }
+        }
+      ],
+      "externalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Caiman crocodilus",
+            "nameComplete": "Caiman crocodilus",
+            "genusPart": "Caiman",
+            "specificEpithet": "crocodilus"
+          },
+          "label": "Caiman crocodilus"
+        }
+      ],
+      "pso:holdsStatusInTime": [
+        {
+          "@type": "http://purl.org/spar/pso/StatusInTime",
+          "pso:withStatus": {
+            "@id": "pso:submitted"
+          },
+          "tvc:atTime": {
+            "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:36.063Z"
+          }
+        }
+      ],
+      "expectedResolution": {
+        "#phylogeny0": {
+          "nodeLabel": "Alligator mississippiensis"
+        }
+      },
+      "@id": "http://example.org/brochu_2003.json#phyloref1",
+      "@type": "owl:Class",
+      "subClassOf": "phyloref:Phyloreference",
+      "hasAdditionalClass": [],
+      "equivalentClass": [
+        {
+          "@type": "owl:Class",
+          "intersectionOf": [
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "phyloref:includes_TU",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Alligator mississippiensis"
+                }
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "phyloref:excludes_TU",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Caiman crocodilus"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Caimaninae",
+      "cladeDefinition": "Caimaninae (Norell 1988).\n\nCaiman crocodilus and all crocodylians closer to it than to Alligator mississippiensis.",
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Caiman crocodilus",
+            "nameComplete": "Caiman crocodilus",
+            "genusPart": "Caiman",
+            "specificEpithet": "crocodilus"
+          }
+        }
+      ],
+      "externalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis",
+            "genusPart": "Alligator",
+            "specificEpithet": "mississippiensis"
+          }
+        }
+      ],
+      "pso:holdsStatusInTime": [
+        {
+          "@type": "http://purl.org/spar/pso/StatusInTime",
+          "pso:withStatus": {
+            "@id": "pso:submitted"
+          },
+          "tvc:atTime": {
+            "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:42.007Z"
+          }
+        }
+      ],
+      "expectedResolution": {
+        "#phylogeny0": {
+          "nodeLabel": "Caiman crocodilus"
+        }
+      },
+      "@id": "http://example.org/brochu_2003.json#phyloref2",
+      "@type": "owl:Class",
+      "subClassOf": "phyloref:Phyloreference",
+      "hasAdditionalClass": [],
+      "equivalentClass": [
+        {
+          "@type": "owl:Class",
+          "intersectionOf": [
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "phyloref:includes_TU",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Caiman crocodilus"
+                }
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "phyloref:excludes_TU",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Alligator mississippiensis"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Crocodyloidea",
+      "cladeDefinition": "Crocodyloidea (Fitzinger 1826).\n\nCrocodylus niloticus and all crocodylians closer to it than to Alligator mississippiensis or Gavialis gangeticus.",
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Crocodylus niloticus",
+            "nameComplete": "Crocodylus niloticus",
+            "genusPart": "Crocodylus",
+            "specificEpithet": "niloticus"
+          }
+        }
+      ],
+      "externalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis",
+            "genusPart": "Alligator",
+            "specificEpithet": "mississippiensis"
+          },
+          "label": "Alligator mississippiensis"
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Gavialis gangeticus",
+            "nameComplete": "Gavialis gangeticus",
+            "genusPart": "Gavialis",
+            "specificEpithet": "gangeticus"
+          },
+          "label": "Gavialis gangeticus"
+        }
+      ],
+      "pso:holdsStatusInTime": [
+        {
+          "@type": "http://purl.org/spar/pso/StatusInTime",
+          "pso:withStatus": {
+            "@id": "pso:under-review"
+          },
+          "tvc:atTime": {
+            "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:48.240Z"
+          }
+        }
+      ],
+      "expectedResolution": {
+        "#phylogeny0": {
+          "nodeLabel": "Crocodylidae"
+        }
+      },
+      "@id": "http://example.org/brochu_2003.json#phyloref3",
+      "@type": "owl:Class",
+      "subClassOf": "phyloref:Phyloreference",
+      "hasAdditionalClass": [
+        {
+          "@id": "http://example.org/brochu_2003.json#phyloref3_additional1",
+          "@type": "owl:Class",
+          "subClassOf": "phyloref:PhyloreferenceUsingMinimumClade",
+          "equivalentClass": [
+            {
+              "@type": "owl:Class",
+              "intersectionOf": [
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:includes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Crocodylus niloticus"
+                    }
+                  }
+                },
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Alligator mississippiensis"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "label": "(Crocodylus niloticus ~ Alligator mississippiensis)"
+        },
+        {
+          "@id": "http://example.org/brochu_2003.json#phyloref3_additional2",
+          "@type": "owl:Class",
+          "subClassOf": "phyloref:PhyloreferenceUsingMinimumClade",
+          "equivalentClass": [
+            {
+              "@type": "owl:Class",
+              "intersectionOf": [
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:includes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Crocodylus niloticus"
+                    }
+                  }
+                },
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Gavialis gangeticus"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "label": "(Crocodylus niloticus ~ Gavialis gangeticus)"
+        }
+      ],
+      "equivalentClass": [
+        {
+          "@type": "owl:Class",
+          "intersectionOf": [
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref3_additional1"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "phyloref:excludes_TU",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Gavialis gangeticus"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@type": "owl:Class",
+          "intersectionOf": [
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref3_additional1"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000144",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Gavialis gangeticus"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@type": "owl:Class",
+          "intersectionOf": [
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref3_additional2"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "phyloref:excludes_TU",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Alligator mississippiensis"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@type": "owl:Class",
+          "intersectionOf": [
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref3_additional2"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000144",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Alligator mississippiensis"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Crocodylidae",
+      "cladeDefinition": "Crocodylidae (Cuvier 1807). Definition dependent on phylogenetic context.\n\nLast common ancestor of Crocodylus niloticus, Osteolaemus tetraspis, and Tomistoma schlegelii and all of its descendents.",
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Tomistoma schlegelii",
+            "nameComplete": "Tomistoma schlegelii",
+            "genusPart": "Tomistoma",
+            "specificEpithet": "schlegelii"
+          }
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Osteolaemus tetraspis",
+            "nameComplete": "Osteolaemus tetraspis",
+            "genusPart": "Osteolaemus",
+            "specificEpithet": "tetraspis"
+          },
+          "label": "Osteolaemus tetraspis"
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Crocodylus niloticus",
+            "nameComplete": "Crocodylus niloticus",
+            "genusPart": "Crocodylus",
+            "specificEpithet": "niloticus"
+          },
+          "label": "Crocodylus niloticus"
+        }
+      ],
+      "externalSpecifiers": [],
+      "pso:holdsStatusInTime": [
+        {
+          "@type": "http://purl.org/spar/pso/StatusInTime",
+          "pso:withStatus": {
+            "@id": "pso:submitted"
+          },
+          "tvc:atTime": {
+            "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:51.960Z"
+          }
+        }
+      ],
+      "@id": "http://example.org/brochu_2003.json#phyloref4",
+      "@type": "owl:Class",
+      "subClassOf": "phyloref:Phyloreference",
+      "hasAdditionalClass": [],
+      "equivalentClass": [
+        {
+          "@type": "owl:Restriction",
+          "onProperty": "obo:CDAO_0000149",
+          "someValuesFrom": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_lineage_to",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "obo:CDAO_0000149",
+                  "someValuesFrom": {
+                    "@type": "owl:Class",
+                    "intersectionOf": [
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:excludes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Osteolaemus tetraspis"
+                          }
+                        }
+                      },
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:includes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Crocodylus niloticus"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:includes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Tomistoma schlegelii"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "owl:Restriction",
+          "onProperty": "obo:CDAO_0000149",
+          "someValuesFrom": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_lineage_to",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:includes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Crocodylus niloticus"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000149",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "phyloref:excludes_TU",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Tomistoma schlegelii"
+                        }
+                      }
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "phyloref:includes_TU",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Osteolaemus tetraspis"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "owl:Restriction",
+          "onProperty": "obo:CDAO_0000149",
+          "someValuesFrom": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_lineage_to",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:includes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Osteolaemus tetraspis"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000149",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "phyloref:excludes_TU",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Tomistoma schlegelii"
+                        }
+                      }
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "phyloref:includes_TU",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Crocodylus niloticus"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "owl:Restriction",
+          "onProperty": "obo:CDAO_0000149",
+          "someValuesFrom": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_lineage_to",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "obo:CDAO_0000149",
+                  "someValuesFrom": {
+                    "@type": "owl:Class",
+                    "intersectionOf": [
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:excludes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Tomistoma schlegelii"
+                          }
+                        }
+                      },
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:includes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Crocodylus niloticus"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:includes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Osteolaemus tetraspis"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "owl:Restriction",
+          "onProperty": "obo:CDAO_0000149",
+          "someValuesFrom": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_lineage_to",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:includes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Crocodylus niloticus"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000149",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "phyloref:excludes_TU",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Osteolaemus tetraspis"
+                        }
+                      }
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "phyloref:includes_TU",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Tomistoma schlegelii"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "owl:Restriction",
+          "onProperty": "obo:CDAO_0000149",
+          "someValuesFrom": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_lineage_to",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:includes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Tomistoma schlegelii"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000149",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "phyloref:excludes_TU",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Osteolaemus tetraspis"
+                        }
+                      }
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "phyloref:includes_TU",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Crocodylus niloticus"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "owl:Restriction",
+          "onProperty": "obo:CDAO_0000149",
+          "someValuesFrom": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_lineage_to",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "obo:CDAO_0000149",
+                  "someValuesFrom": {
+                    "@type": "owl:Class",
+                    "intersectionOf": [
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:excludes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Tomistoma schlegelii"
+                          }
+                        }
+                      },
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:includes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Osteolaemus tetraspis"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:includes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Crocodylus niloticus"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "owl:Restriction",
+          "onProperty": "obo:CDAO_0000149",
+          "someValuesFrom": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_lineage_to",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:includes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Osteolaemus tetraspis"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000149",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "phyloref:excludes_TU",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Crocodylus niloticus"
+                        }
+                      }
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "phyloref:includes_TU",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Tomistoma schlegelii"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "owl:Restriction",
+          "onProperty": "obo:CDAO_0000149",
+          "someValuesFrom": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_lineage_to",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:includes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Tomistoma schlegelii"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000149",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "phyloref:excludes_TU",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Crocodylus niloticus"
+                        }
+                      }
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "phyloref:includes_TU",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Osteolaemus tetraspis"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "title": "Phylogenetic Approaches Toward Crocodylian History",
+  "defaultNomenclaturalCodeURI": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+  "hasTaxonomicUnitMatches": [],
+  "@id": "http://example.org/brochu_2003.json#",
+  "@type": [
+    "testcase:PhyloreferenceTestCase",
+    "owl:Ontology"
+  ],
+  "owl:imports": [
+    "http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl",
+    "http://ontology.phyloref.org/2018-12-14/phyloref.owl",
+    "http://ontology.phyloref.org/2018-12-14/tcan.owl"
+  ]
+}
