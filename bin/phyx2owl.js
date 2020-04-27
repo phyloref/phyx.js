@@ -11,6 +11,10 @@ const phyx = require('..');
 // Read command line arguments.
 const argv = require('yargs')
   .usage("$0 [files to convert into OWL ontologies]")
+  .describe('max-internal-specifiers', 'The maximum number of internal specifiers (phylorefs with more than this number will be ignored)')
+  .default('max-internal-specifiers', 8)
+  .describe('max-external-specifiers', 'The maximum number of external specifiers (phylorefs with more than this number will be ignored)')
+  .default('max-external-specifiers', 8)
   .help()
   .alias('h', 'help')
   .argv
@@ -51,20 +55,50 @@ function convertFileToOWL(filename) {
   }
 
   try {
-    const phyxContent = JSON.parse(fs.readFileSync(filename));
+    // Parse the input file into JSON.
+    let phyxContent = JSON.parse(fs.readFileSync(filename));
+
+    // Remove any phylorefs that have too many specifiers.
+    const phylorefCount = (phyxContent.phylorefs || []).length;
+    filteredPhylorefs = (phyxContent.phylorefs || []).filter(phyloref => {
+      const wrappedPhyloref = new phyx.PhylorefWrapper(phyloref);
+      const internalSpecifiersCount = wrappedPhyloref.internalSpecifiers.length;
+      const externalSpecifiersCount = wrappedPhyloref.externalSpecifiers.length;
+      if (internalSpecifiersCount > argv.maxInternalSpecifiers) {
+        console.warn(`Phyloreference ${wrappedPhyloref.label} was skipped, since it has ${internalSpecifiersCount} internal specifiers.`);
+        return false;
+      } else if (externalSpecifiersCount > argv.maxExternalSpecifiers) {
+        console.warn(`Phyloreference ${wrappedPhyloref.label} was skipped, since it has ${externalSpecifiersCount} external specifiers.`);
+        return false;
+      }
+      return true;
+    });
+    phyxContent.phylorefs = filteredPhylorefs;
+
     const wrappedPhyx = new phyx.PhyxWrapper(phyxContent);
     const owlOntology = wrappedPhyx.asJSONLD();
+    const owlOntologyStr = JSON.stringify(owlOntology, null, 2);
     fs.writeFileSync(
       outputFilename,
-      JSON.stringify(owlOntology, null, 2)
+      owlOntologyStr
     );
 
-    console.info(`Converted ${filename} to ${outputFilename}`);
+    if (filteredPhylorefs.length == 0) {
+        console.warn(`No phyloreferences in ${filename} were converted to ${outputFilename}, as they were all filtered out.`);
+        return false;
+    } else if (phylorefCount > filteredPhylorefs.length) {
+        console.warn(`Only ${filteredPhylorefs.length} out of ${phylorefCount} were converted from ${filename} to ${outputFilename}.`);
+        return true;
+    } else {
+        console.info(`Converted ${filename} to ${outputFilename}.`);
+        return true;
+    }
+
     return true;
   } catch(e) {
     console.error(`Could not convert ${filename} to ${outputFilename}: ${e}`);
-    return false;
   }
+  return false;
 }
 const successes = files.map(file => convertFileToOWL(file));
 if(successes.every(x => x)) {
