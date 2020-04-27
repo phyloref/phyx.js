@@ -21,14 +21,18 @@ const argv = require('yargs')
 
 const filenames = argv._;
 
+/*
+ * Get a list of all files in a directory. We will recurse into directories and choose files that meet the
+ * criteria in the function `check(filename) => boolean`.
+ */
 function getFilesInDir(dir, check = (filename => filename.toLowerCase().endsWith(".json"))) {
-  console.log(`Processing file: ${dir}`)
+  // console.debug(`Processing file: ${dir}`)
   if (!fs.existsSync(dir)) return [];
 
   const lsync = fs.lstatSync(dir);
   if (lsync.isFile()) {
     if (!check(dir)) {
-      console.log(`Skipping ${dir}.`)
+      // console.log(`Skipping ${dir}.`)
       return [];
     } else {
       return [dir];
@@ -39,16 +43,25 @@ function getFilesInDir(dir, check = (filename => filename.toLowerCase().endsWith
       .reduce((acc, curr) => acc.concat(curr), [])
       .filter(filename => filename);
   } else {
-    console.info(`${dir} is neither a file nor a directory; skipping.`);
+    // console.debug(`${dir} is neither a file nor a directory; skipping.`);
     return [];
   }
 }
 const files = filenames.map(filename => getFilesInDir(filename)).reduce((acc, curr) => acc.concat(curr), []);
-console.debug(`Files to process: ${files.join(", ")}`);
+// console.debug(`Files to process: ${files.join(", ")}`);
 
-function convertFileToOWL(filename) {
+/*
+ * Convert the input file into the output filename.
+ * If no argOutputFilename is given, we generate one from the input
+ * filename: either by replacing '.json' with '.owl', or by concatenating
+ * '.owl' at the end.
+ */
+function convertFileToOWL(filename, argOutputFilename = "") {
+  // console.debug(`Starting with ${filename}.`);
   let outputFilename;
-  if (filename.toLowerCase().endsWith(".json")) {
+  if (argOutputFilename != "") {
+    outputFilename = argOutputFilename;
+  } else if (filename.toLowerCase().endsWith(".json")) {
     outputFilename = filename.substring(0, filename.length - 5) + ".owl";
   } else {
     outputFilename = filename + ".owl";
