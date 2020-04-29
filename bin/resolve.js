@@ -107,10 +107,31 @@ function resolvePhyx(filename) {
 
       if (internalOTTids.filter(x => x === undefined).length > 0) {
         console.info('Not all internal specifiers could be resolved to OTT Ids, skipping.');
+        return [
+          filename,
+          wrappedPhyloref.label,
+          wrappedPhyloref.phyloref.cladeDefinition,
+          'internal_specifiers_missing',
+          '', '', '', ''
+        ];
       } else if (externalOTTids.filter(x => x === undefined).length > 0) {
         console.info('Not all internal specifiers could be resolved to OTT Ids, skipping.');
+        return [
+          filename,
+          wrappedPhyloref.label,
+          wrappedPhyloref.phyloref.cladeDefinition,
+          'external_specifiers_missing',
+          '', '', '', ''
+        ];
       } else if (internalOTTids.length == 0) {
         console.info('No internal specifiers found, skipping.');
+        return [
+          filename,
+          wrappedPhyloref.label,
+          wrappedPhyloref.phyloref.cladeDefinition,
+          'no_internal_specifiers',
+          '', '', '', ''
+        ];
       } else {
         // console.debug('Request: ', { node_ids: internalOTTids, excluded_node_ids: externalOTTids });
         const result = retus("https://api.opentreeoflife.org/v3/tree_of_life/mrca ", {
@@ -127,8 +148,14 @@ function resolvePhyx(filename) {
         //    'supported_by' and 'unique_name') and a 'synth_id'.
 
         if (result.statusCode == 404 || result.statusCode == 400) {
-          console.info(`   -> Could not find a MRCA: ${result.body}.`);
-          return [];
+          console.info(`   -> Could not find a MRCA: ${result}.`);
+          return [
+            filename,
+            wrappedPhyloref.label,
+            wrappedPhyloref.phyloref.cladeDefinition,
+            'no_mrca_found:' + result.statusCode,
+            '', '', '', ''
+          ];
         }
 
         const body = JSON.parse(result.body);
@@ -151,6 +178,8 @@ function resolvePhyx(filename) {
           return [
             filename,
             wrappedPhyloref.label,
+            wrappedPhyloref.phyloref.cladeDefinition,
+            `found_${body.node_ids.length}_nodes`,
             'maximum',
             name,
             synth_id,
@@ -163,6 +192,8 @@ function resolvePhyx(filename) {
           return [
             filename,
             wrappedPhyloref.label,
+            wrappedPhyloref.phyloref.cladeDefinition,
+            'found_mrca',
             'minimum',
             name,
             synth_id,
@@ -172,7 +203,13 @@ function resolvePhyx(filename) {
         } else {
           console.error('   -> Unable to interpret Open Tree MRCA response: ', body);
         }
-        return [];
+        return [
+          filename,
+          wrappedPhyloref.label,
+          wrappedPhyloref.phyloref.cladeDefinition,
+          'unknown',
+          '', '', '', ''
+        ];
       }
     });
   } catch(e) {
