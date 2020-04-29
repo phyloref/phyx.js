@@ -78,9 +78,10 @@ function resolvePhyx(filename) {
             console.info(`     - ${wrappedSpecifier.label} is missing a taxonomic name: ${JSON.stringify(specifier)}`);
             return undefined;
           } else {
+            const nameToUse = nameComplete.replace(/\s+\(originally \w+\)/g, "");
             const { statusCode, body } = retus("https://api.opentreeoflife.org/v3/tnrs/match_names", {
               method: 'post',
-              json: { names : [ nameComplete ] },
+              json: { names : [ nameToUse ] },
             });
 
             const matches = body['results'].map(result => result['matches']).reduce((acc, curr) => acc.concat(curr), []);
