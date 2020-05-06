@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const retus = require('retus');
+const lodash = require('lodash');
 
 const phyx = require('..');
 
@@ -15,6 +16,8 @@ const phyx = require('..');
 const argv = require('yargs')
   .usage("$0 [files to resolve on the Open Tree of Life]")
   .describe('write-table', 'A file to write out a table of results to')
+  .describe('verbose', 'Display debugging information')
+  .boolean('verbose')
   .help()
   .alias('h', 'help')
   .showHelpOnFail(true)
@@ -26,12 +29,23 @@ if (filenames.length == 0) {
   process.exit(1);
 }
 
+/* Helper methods */
+
+/**
+ * Display debugging output to STDERR if the '--verbose' flag has been set.
+ */
+function debug(...args) {
+  if (argv.verbose) {
+    process.stderr.write(args.join(' ') + "\n")
+  }
+}
+
 /*
  * Get a list of all files in a directory. We will recurse into directories and choose files that meet the
  * criteria in the function `check(filename) => boolean`.
  */
 function getFilesInDir(dir, check = (filename => filename.toLowerCase().endsWith(".json"))) {
-  // console.debug(`Processing file: ${dir}`)
+  // debug(`Processing file: ${dir}`)
   if (!fs.existsSync(dir)) return [];
 
   const lsync = fs.lstatSync(dir);
@@ -48,44 +62,63 @@ function getFilesInDir(dir, check = (filename => filename.toLowerCase().endsWith
       .reduce((acc, curr) => acc.concat(curr), [])
       .filter(filename => filename);
   } else {
-    // console.debug(`${dir} is neither a file nor a directory; skipping.`);
+    // debug(`${dir} is neither a file nor a directory; skipping.`);
     return [];
   }
 }
 const files = filenames.map(filename => getFilesInDir(filename)).reduce((acc, curr) => acc.concat(curr), []);
-// console.debug(`Files to process: ${files.join(", ")}`);
+// debug(`Files to process: ${files.join(", ")}`);
 
 if (files.length == 0) {
   console.error(`No files found in input directories ${filenames.join(', ')}.`);
   process.exit(1);
 }
 
-/*
+/**
  * Resolve the input file on the Open Tree of Life.
+ *
+ * @return A set of results in the format:
+ *    {
+ *      'filename': 'input.json',
+ *      'phyloref': { '@id': '...', ... },
+ *      'internalSpecifiers': {
+ *        'Alligator mississippiensis': [
+ *          'https://tree.opentreeoflife.org/taxonomy/browse?id=335590'
+ *        ],
+ *        'Caiman crocodilus': [
+ *          'https://tree.opentreeoflife.org/taxonomy/browse?id=912130'
+ *        ]
+ *      },
+ *      'externalSpecifiers': {},
+ *      resolved: {
+ *        '@id': 'https://tree.opentreeoflife.org/opentree/argus/opentree12.3@ott195670',
+ *        'label': 'Alligatoridae'
+ *      }
+ *    }
  */
 function resolvePhyx(filename) {
-  // console.debug(`Starting with ${filename}.`);
+  // debug(`Starting with ${filename}.`);
 
   try {
     // Parse the input file into JSON.
     let phyxContent = JSON.parse(fs.readFileSync(filename));
 
-    console.info(`\nResolving phyloreferences in ${filename}:`);
+    debug(`\nResolving phyloreferences in ${filename}:`);
     return (phyxContent.phylorefs || []).map(phyloref => {
       const wrappedPhyloref = new phyx.PhylorefWrapper(phyloref);
-      console.info(` - Phyloref ${wrappedPhyloref.label}:`);
+      debug(` - Phyloref ${wrappedPhyloref.label}:`);
 
       function specifierToOTLId(specifier) {
         const wrappedSpecifier = new phyx.TaxonomicUnitWrapper(specifier);
 
         if (!wrappedSpecifier.taxonConcept) {
-          console.info(`     - ${wrappedSpecifier.label}: not a taxon concept`);
+          debug(`     - ${wrappedSpecifier.label}: not a taxon concept`);
           return undefined;
         } else {
           const nameComplete = new phyx.TaxonConceptWrapper(specifier).nameComplete;
 
           if (!nameComplete) {
-            console.info(`     - ${wrappedSpecifier.label} is missing a taxonomic name: ${JSON.stringify(specifier)}`);
+            debug(`     - ${wrappedSpecifier.label} is missing a taxonomic name: ${JSON.stringify(specifier)}`);
             return undefined;
           } else {
             const nameToUse = nameComplete.replace(/\s+\(originally \w+\)/g, "");
@@ -98,53 +131,49 @@ function resolvePhyx(filename) {
 
             const ottNames = matches.filter(match => match).map(match => match['taxon']['name']).filter(name => name);
             const ottIds = matches.filter(match => match).map(match => match['taxon']['ott_id']).filter(ott_id => ott_id);
-            const firstOttId = ottIds[0];
 
-            if (firstOttId) {
-              console.info(`     - ${wrappedSpecifier.label}: taxon name '${nameComplete}' resolved to ${ottNames.join('|')} (OTT IDs ${ottIds.join('|')}, using ${firstOttId})`);
-              return firstOttId;
-            } else {
-              console.info(`     - ${wrappedSpecifier.label} not found on the Open Tree of Life: ${JSON.stringify(body)}`);
-              return undefined;
-            }
-           }
+            if (ottIds.length > 1) debug(`     - Taxon name ${nameComplete} resolved to multiple OTT Ids: ${ottIds.join(', ')}.`)
+
+            const result = {};
+            result[nameComplete] = ottIds;
+            return result;
+          }
         }
       }
 
-      console.info(`   - Internal specifiers:`);
-      const internalOTTids = wrappedPhyloref.internalSpecifiers.map(specifierToOTLId);
-      console.info(`   - External specifiers:`);
-      const externalOTTids = wrappedPhyloref.externalSpecifiers.map(specifierToOTLId);
+      debug(`   - Internal specifiers:`);
+      const internalOTTs = wrappedPhyloref.internalSpecifiers.map(specifierToOTLId);
+      const internalOTTids = lodash.flattenDeep(internalOTTs.map(ott => lodash.head(lodash.values(ott))));
+      // console.log(internalOTTids);
+
+      debug(`   - External specifiers:`);
+      const externalOTTs = wrappedPhyloref.externalSpecifiers.map(specifierToOTLId);
+      const externalOTTids = lodash.flattenDeep(externalOTTs.map(ott => lodash.head(lodash.values(ott))));
+      // console.log(externalOTTids);
 
       if (internalOTTids.filter(x => x === undefined).length > 0) {
-        console.info('Not all internal specifiers could be resolved to OTT Ids, skipping.');
-        return [
+        debug('Not all internal specifiers could be resolved to OTT Ids, skipping.');
+        return {
           filename,
-          wrappedPhyloref.label,
-          wrappedPhyloref.phyloref.cladeDefinition,
-          'internal_specifiers_missing',
-          '', '', '', ''
-        ];
+          phyloref,
+          error: 'internal_specifiers_missing',
+        };
       } else if (externalOTTids.filter(x => x === undefined).length > 0) {
-        console.info('Not all internal specifiers could be resolved to OTT Ids, skipping.');
-        return [
+        debug('Not all internal specifiers could be resolved to OTT Ids, skipping.');
+        return {
           filename,
-          wrappedPhyloref.label,
-          wrappedPhyloref.phyloref.cladeDefinition,
-          'external_specifiers_missing',
-          '', '', '', ''
-        ];
+          phyloref,
+          error: 'external_specifiers_missing',
+        };
       } else if (internalOTTids.length == 0) {
-        console.info('No internal specifiers found, skipping.');
-        return [
+        debug('No internal specifiers found, skipping.');
+        return {
           filename,
-          wrappedPhyloref.label,
-          wrappedPhyloref.phyloref.cladeDefinition,
-          'no_internal_specifiers',
-          '', '', '', ''
-        ];
+          phyloref,
+          error: 'no_internal_specifiers',
+        };
       } else {
-        // console.debug('Request: ', { node_ids: internalOTTids, excluded_node_ids: externalOTTids });
+        // debug('Request: ', { node_ids: internalOTTids, excluded_node_ids: externalOTTids });
         const result = retus("https://api.opentreeoflife.org/v3/tree_of_life/mrca ", {
           throwHttpErrors: false,
           method: 'post',
@@ -159,21 +188,19 @@ function resolvePhyx(filename) {
         //    'supported_by' and 'unique_name') and a 'synth_id'.
 
         if (result.statusCode == 404 || result.statusCode == 400) {
-          console.info(`   -> Could not find a MRCA: ${result}.`);
-          return [
+          debug(`   -> Could not find a MRCA: ${result}.`);
+          return {
             filename,
-            wrappedPhyloref.label,
-            wrappedPhyloref.phyloref.cladeDefinition,
-            'no_mrca_found:' + result.statusCode,
-            '', '', '', ''
-          ];
+            phyloref,
+            error: 'no_mrca_found:' + result.statusCode,
+          };
         }
 
         const body = JSON.parse(result.body);
         const synth_id = body['synth_id'];
         if (body['node_ids']) {
           const node_id = body.node_ids[body.node_ids.length - 1];
-          console.info(`   -> ${body.node_ids.length} node IDs returned, with branch-based node at: https://tree.opentreeoflife.org/opentree/argus/${synth_id}@${node_id}`);
+          debug(`   -> ${body.node_ids.length} node IDs returned, with branch-based node at: https://tree.opentreeoflife.org/opentree/argus/${synth_id}@${node_id}`);
 
           const nodeInfo = retus("https://api.opentreeoflife.org/v3/tree_of_life/node_info ", {
             method: 'post',
@@ -183,60 +210,69 @@ function resolvePhyx(filename) {
           let name = "";
           if (nodeInfo['body'] && nodeInfo['body']['taxon'] && nodeInfo['body']['taxon']['unique_name']) {
             name = nodeInfo['body']['taxon']['unique_name'];
-            console.info(`     - Identified as ${name}.`);
+            debug(`     - Identified as ${name}.`);
           }
 
-          return [
+          return {
             filename,
-            wrappedPhyloref.label,
-            wrappedPhyloref.phyloref.cladeDefinition,
-            `found_${body.node_ids.length}_nodes`,
-            'maximum',
-            name,
-            synth_id,
-            node_id,
-            `https://tree.opentreeoflife.org/opentree/argus/${synth_id}@${node_id}`
-          ];
+            phyloref,
+            internalSpecifiers: internalOTTs,
+            externalSpecifiers: externalOTTs,
+            status: `found_${body.node_ids.length}_nodes`,
+            cladeType: 'maximum',
+            resolved: {
+              '@id': `https://tree.opentreeoflife.org/opentree/argus/${synth_id}@${node_id}`,
+              'label': name
+            }
+          };
         } else if(body['mrca']) {
           const name = body.mrca.unique_name || ((body.mrca.taxon || {}).name) || "";
-          console.info(`   -> Found MRCA node (${name}): https://tree.opentreeoflife.org/opentree/argus/${synth_id}@${body.mrca.node_id}`);
-          return [
+          debug(`   -> Found MRCA node (${name}): https://tree.opentreeoflife.org/opentree/argus/${synth_id}@${body.mrca.node_id}`);
+          return {
             filename,
-            wrappedPhyloref.label,
-            wrappedPhyloref.phyloref.cladeDefinition,
-            'found_mrca',
-            'minimum',
-            name,
-            synth_id,
-            body.mrca.node_id,
-            `https://tree.opentreeoflife.org/opentree/argus/${synth_id}@${body.mrca.node_id}`
-          ];
+            phyloref,
+            internalSpecifiers: internalOTTs,
+            externalSpecifiers: externalOTTs,
+            status: `found_mrca`,
+            cladeType: 'minimum',
+            resolved: {
+              '@id': `https://tree.opentreeoflife.org/opentree/argus/${synth_id}@${body.mrca.node_id}`,
+              'label': name
+            }
+          }
         } else {
-          console.error('   -> Unable to interpret Open Tree MRCA response: ', body);
+          console.error('Unable to interpret Open Tree MRCA response: ', body);
         }
-        return [
+        return {
           filename,
-          wrappedPhyloref.label,
-          wrappedPhyloref.phyloref.cladeDefinition,
-          'unknown',
-          '', '', '', ''
-        ];
+          phyloref,
+          error: 'unknown',
+        }
       }
     });
   } catch(e) {
     console.error(`Could not resolve ${filename}: `, e);
   }
-  return [];
+  return {
+    filename,
+    phyloref,
+    error: 'unknown',
+  }
 }
 
 // Process all files.
-const results = files.map(file => resolvePhyx(file)).reduce((acc, curr) => acc.concat(curr), []).filter(x => x);
-console.log(results);
+const results = lodash.groupBy(
+  files.map(file => resolvePhyx(file)).reduce((acc, curr) => acc.concat(curr), []).filter(x => x),
+  result => result.phyloref['@id'] || new phyx.PhylorefWrapper(result.phyloref).label || lodash.uniqueId('_')
+);
+process.stdout.write(JSON.stringify(results, null, 4));
+
 if (argv.writeTable) {
   const output = results.map(result => result.join("\t")).join("\n");
   fs.writeFileSync(
     argv.writeTable,
     output
   );
-  console.info(`Wrote table to ${argv.writeTable}.`);
+  debug(`Wrote table to ${argv.writeTable}.`);
 }
+process.exit(0);
