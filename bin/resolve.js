@@ -17,9 +17,14 @@ const argv = require('yargs')
   .describe('write-table', 'A file to write out a table of results to')
   .help()
   .alias('h', 'help')
+  .showHelpOnFail(true)
   .argv
 
 const filenames = argv._;
+if (filenames.length == 0) {
+  console.error(`No input files provided. Use 'npm run resolve --help' for more information.`);
+  process.exit(1);
+}
 
 /*
  * Get a list of all files in a directory. We will recurse into directories and choose files that meet the
@@ -49,6 +54,11 @@ function getFilesInDir(dir, check = (filename => filename.toLowerCase().endsWith
 }
 const files = filenames.map(filename => getFilesInDir(filename)).reduce((acc, curr) => acc.concat(curr), []);
 // console.debug(`Files to process: ${files.join(", ")}`);
+
+if (files.length == 0) {
+  console.error(`No files found in input directories ${filenames.join(', ')}.`);
+  process.exit(1);
+}
 
 /*
  * Resolve the input file on the Open Tree of Life.
