@@ -1,6 +1,9 @@
 # Ignore esdocs documentation.
 /docs/esdocs/
 
+# Ignore test combinations.
+/test-all-combinations
+
 # Logs
 logs
 *.log

@@ -165,7 +165,79 @@ const { uniqWith, isEqual } = require('lodash');
 const fs = require('fs');
 
 const trees = generateTrees(leafNodes);
-const normalizedUniqTrees = uniqWith(trees.map(tree => normalizeTree(tree)), isEqual);
+let normalizedUniqTrees = uniqWith(trees.map(tree => normalizeTree(tree)), isEqual);
+
+if (argv.multifurcating) {
+  function getMultifurcatingTreeForNode(bifurcatingTree) {
+    if (bifurcatingTree.length > 2) throw new RuntimeException(`Expected a bifurcating tree, got ${bifurcatingTree.join(', ')}.`);
+    const left = bifurcatingTree[0];
+    const right = bifurcatingTree[1];
+
+    // Given that tree is perfectly bifurcating, there are four possible trees here:
+    //  - (A, B) => (A, B)
+    //  - ((A, B), C) => (A, B, C)
+    //  - (A, (B, C)) => (A, B, C)
+    //  - ((A, B), (C, D)) =>
+    //    - ((A, B), C, D)
+    //    - (A, (B, C), D)
+    //    - (A, B, (C, D))
+    //    - ((A, B, C), D)
+    //    - (A, (B, C, D))
+    //    - (A, B, C, D)
+    if (Array.isArray(left)) {
+      if (Array.isArray(right)) {
+        // Both left and right must be bifurcating too!
+        if (left.length > 2) throw new RuntimeException(`Expected a bifurcating tree on left, got ${left.join(', ')}.`);
+        if (left.length > 2) throw new RuntimeException(`Expected a bifurcating tree on right, got ${right.join(', ')}.`);
+
+        const ll = left[0];
+        const lr = left[1];
+        const rl = right[0];
+        const rr = right[1];
+
+        return [
+          // Return the bifurcating node.
+          [left, right],
+
+          // Additional multifurcating combinations.
+          [[ll, lr], rl, rr],
+          [ll, [lr, rl], rr],
+          [ll, lr, [rl, rr]],
+          [[ll, rr], lr, rl],
+          [[ll, lr, rl], rr],
+          [ll, [lr, rl, rr]],
+          [lr, [ll, rl, rr]],
+          [rl, [ll, lr, rr]],
+          [rr, [ll, lr, rl]],
+          [ll, lr, rl, rr],
+        ];
+      } else {
+        return [
+          [left, right],
+          [left[0], left[1], right],
+        ];
+      }
+    } else {
+      if (Array.isArray(right)) {
+        return [
+          [left, right],
+          [left, right[0], right[1]],
+        ];
+      } else {
+        // Neither is an array, so there is no additional multifurcating node to return.
+        return [
+          [left, right],
+        ];
+      }
+    }
+  }
+
+  const multifurcatingTrees = normalizedUniqTrees
+    .map(getMultifurcatingTreeForNode)
+    .reduce((acc, cur) => acc.concat(cur), []);
+
+  normalizedUniqTrees = uniqWith(multifurcatingTrees.map(tree => normalizeTree(tree)), isEqual)
+}
 
 normalizedUniqTrees.forEach((tree, index) => console.log(index + ": " + JSON.stringify(tree)));
 console.log("Length: " + normalizedUniqTrees.length)
@@ -280,7 +352,7 @@ normalizedUniqTrees.forEach((tree, index) => {
 });
 
 if (argv.multifurcating) {
-    console.log(`${treesToGenerate.length} multifurcating trees generated out of an expected ${expectedTotalTrees}.`)
+    console.log(`${normalizedUniqTrees.length} multifurcating trees generated out of an expected ${expectedTotalTrees}.`)
 } else {
-    console.log(`${treesToGenerate.length} binary trees generated out of an expected ${expectedBifurcatingTrees}.`)
+    console.log(`${normalizedUniqTrees.length} binary trees generated out of an expected ${expectedBifurcatingTrees}.`)
 }
