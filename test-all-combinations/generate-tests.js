@@ -169,7 +169,15 @@ let normalizedUniqTrees = uniqWith(trees.map(tree => normalizeTree(tree)), isEqu
 
 if (argv.multifurcating) {
   function getMultifurcatingTreeForNode(bifurcatingTree) {
+    // If we don't have a tree, throw an error.
+    if (bifurcatingTree.length == 0) throw new RuntimeException(`Expected a bifurcating tree, got an empty tree.`);
+
+    // If we have more than 2 elements, then this isn't a bifurcating tree! Abort.
     if (bifurcatingTree.length > 2) throw new RuntimeException(`Expected a bifurcating tree, got ${bifurcatingTree.join(', ')}.`);
+
+    // If we are called with a single node, just return that one node.
+    if (bifurcatingTree.length == 1) return bifurcatingTree[0];
+
     const left = bifurcatingTree[0];
     const right = bifurcatingTree[1];
 
