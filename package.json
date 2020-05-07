@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint \"src/**/*.js\" \"test/**/*.js\"",
     "pretest": "npm run lint",
-    "test": "mocha",
+    "test": "mocha --recursive",
     "docs": "esdoc",
     "resolve": "node bin/resolve.js"
   },
