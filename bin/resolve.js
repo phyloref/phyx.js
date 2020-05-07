@@ -268,11 +268,24 @@ const results = lodash.groupBy(
 process.stdout.write(JSON.stringify(results, null, 4));
 
 if (argv.writeTable) {
-  const output = results.map(result => result.join("\t")).join("\n");
+  const output = lodash.flatten(lodash.values(results)).map(result => {
+    const wrappedPhyloref = new phyx.PhylorefWrapper(result.phyloref);
+
+    return [
+      result.filename,
+      wrappedPhyloref.label.replace(/\s+/g, ' ').trim(),
+      ((result.phyloref || {}).cladeDefinition || "").replace(/\s+/g, ' ').trim(),
+      result.error || result.status || 'unknown',
+      result.cladeType,
+      (result.resolved || {})['label'],
+      (result.resolved || {})['@id']
+    ].join("\t");
+  }).join("\n");
   fs.writeFileSync(
     argv.writeTable,
+    "filename\tlabel\tcladeDefinition\tstatus\tcladeType\tott_label\tott_url\n" +
     output
   );
-  debug(`Wrote table to ${argv.writeTable}.`);
+  debug(`\nWrote table to ${argv.writeTable}.`);
 }
 process.exit(0);
