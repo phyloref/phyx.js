@@ -288,4 +288,4 @@ if (argv.writeTable) {
   );
   debug(`\nWrote table to ${argv.writeTable}.`);
 }
-process.exit(0);
+process.exitCode = 0;
