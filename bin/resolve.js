@@ -70,7 +70,7 @@ const files = filenames.map(filename => getFilesInDir(filename)).reduce((acc, cu
 // debug(`Files to process: ${files.join(", ")}`);
 
 if (files.length == 0) {
-  console.error(`No files found in input directories ${filenames.join(', ')}.`);
+  console.error(`No files found in input directories or files: ${filenames.join(', ')}.`);
   process.exit(1);
 }
 
