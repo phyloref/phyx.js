@@ -1,10 +1,12 @@
 {
   "@context": {
     "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 
     "obo": "http://purl.obolibrary.org/obo/",
     "dwc": "http://rs.tdwg.org/dwc/terms/",
+    "testcase": "http://vocab.phyloref.org/phyloref/testcase.owl#",
 
     "pso": "http://purl.org/spar/pso/",
     "tvc": "http://www.essepuntato.it/2012/04/tvc/",
@@ -134,6 +136,11 @@
         "@type": "xsd:string"
     },
 
+    "nodes": {
+        "@id": "testcase:has_node",
+        "@container": "@set"
+    },
+
     "hasRootNode": {
         "@id": "testcase:has_root_node",
         "@type": "@id"
@@ -143,7 +150,6 @@
         "@id": "testcase:has_phylogeny",
         "@container": "@set"
     },
-
 
     "phylorefs": {
         "@id": "testcase:has_phyloreference",
@@ -179,4 +185,5 @@
         "@id": "phyloref:newick_expression",
         "@type": "xsd:string"
     }
+  }
 }
