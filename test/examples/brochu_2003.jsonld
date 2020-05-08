@@ -7,11 +7,11 @@
     {
       "newick": "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;",
       "label": "Fig 1 from Brochu 2003",
-      "@id": "#phylogeny0",
+      "@id": "http://example.org/brochu_2003.json#phylogeny0",
       "@type": "testcase:PhyloreferenceTestPhylogeny",
       "nodes": [
         {
-          "@id": "#phylogeny0_node0",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node0",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -22,29 +22,29 @@
           ],
           "representsTaxonomicUnits": [],
           "children": [
-            "#phylogeny0_node1",
-            "#phylogeny0_node29"
+            "http://example.org/brochu_2003.json#phylogeny0_node1",
+            "http://example.org/brochu_2003.json#phylogeny0_node29"
           ]
         },
         {
-          "@id": "#phylogeny0_node1",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node1",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
             }
           ],
-          "parent": "#phylogeny0_node0",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node0",
           "siblings": [
-            "#phylogeny0_node29"
+            "http://example.org/brochu_2003.json#phylogeny0_node29"
           ],
           "children": [
-            "#phylogeny0_node2",
-            "#phylogeny0_node27",
-            "#phylogeny0_node28"
+            "http://example.org/brochu_2003.json#phylogeny0_node2",
+            "http://example.org/brochu_2003.json#phylogeny0_node27",
+            "http://example.org/brochu_2003.json#phylogeny0_node28"
           ]
         },
         {
-          "@id": "#phylogeny0_node2",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node2",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -79,18 +79,18 @@
               "label": "Crocodylomorpha"
             }
           ],
-          "parent": "#phylogeny0_node1",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node1",
           "siblings": [
-            "#phylogeny0_node27",
-            "#phylogeny0_node28"
+            "http://example.org/brochu_2003.json#phylogeny0_node27",
+            "http://example.org/brochu_2003.json#phylogeny0_node28"
           ],
           "children": [
-            "#phylogeny0_node3",
-            "#phylogeny0_node26"
+            "http://example.org/brochu_2003.json#phylogeny0_node3",
+            "http://example.org/brochu_2003.json#phylogeny0_node26"
           ]
         },
         {
-          "@id": "#phylogeny0_node3",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node3",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -125,17 +125,17 @@
               "label": "Crocodyliformes"
             }
           ],
-          "parent": "#phylogeny0_node2",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node2",
           "siblings": [
-            "#phylogeny0_node26"
+            "http://example.org/brochu_2003.json#phylogeny0_node26"
           ],
           "children": [
-            "#phylogeny0_node4",
-            "#phylogeny0_node25"
+            "http://example.org/brochu_2003.json#phylogeny0_node4",
+            "http://example.org/brochu_2003.json#phylogeny0_node25"
           ]
         },
         {
-          "@id": "#phylogeny0_node4",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node4",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -170,17 +170,17 @@
               "label": "Mesoeucrocodylia"
             }
           ],
-          "parent": "#phylogeny0_node3",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node3",
           "siblings": [
-            "#phylogeny0_node25"
+            "http://example.org/brochu_2003.json#phylogeny0_node25"
           ],
           "children": [
-            "#phylogeny0_node5",
-            "#phylogeny0_node24"
+            "http://example.org/brochu_2003.json#phylogeny0_node5",
+            "http://example.org/brochu_2003.json#phylogeny0_node24"
           ]
         },
         {
-          "@id": "#phylogeny0_node5",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node5",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -215,37 +215,37 @@
               "label": "Eusuchia"
             }
           ],
-          "parent": "#phylogeny0_node4",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node4",
           "siblings": [
-            "#phylogeny0_node24"
+            "http://example.org/brochu_2003.json#phylogeny0_node24"
           ],
           "children": [
-            "#phylogeny0_node6",
-            "#phylogeny0_node21",
-            "#phylogeny0_node22",
-            "#phylogeny0_node23"
+            "http://example.org/brochu_2003.json#phylogeny0_node6",
+            "http://example.org/brochu_2003.json#phylogeny0_node21",
+            "http://example.org/brochu_2003.json#phylogeny0_node22",
+            "http://example.org/brochu_2003.json#phylogeny0_node23"
           ]
         },
         {
-          "@id": "#phylogeny0_node6",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node6",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
             }
           ],
-          "parent": "#phylogeny0_node5",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node5",
           "siblings": [
-            "#phylogeny0_node21",
-            "#phylogeny0_node22",
-            "#phylogeny0_node23"
+            "http://example.org/brochu_2003.json#phylogeny0_node21",
+            "http://example.org/brochu_2003.json#phylogeny0_node22",
+            "http://example.org/brochu_2003.json#phylogeny0_node23"
           ],
           "children": [
-            "#phylogeny0_node7",
-            "#phylogeny0_node20"
+            "http://example.org/brochu_2003.json#phylogeny0_node7",
+            "http://example.org/brochu_2003.json#phylogeny0_node20"
           ]
         },
         {
-          "@id": "#phylogeny0_node7",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node7",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -280,17 +280,17 @@
               "label": "Crocodylia"
             }
           ],
-          "parent": "#phylogeny0_node6",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node6",
           "siblings": [
-            "#phylogeny0_node20"
+            "http://example.org/brochu_2003.json#phylogeny0_node20"
           ],
           "children": [
-            "#phylogeny0_node8",
-            "#phylogeny0_node19"
+            "http://example.org/brochu_2003.json#phylogeny0_node8",
+            "http://example.org/brochu_2003.json#phylogeny0_node19"
           ]
         },
         {
-          "@id": "#phylogeny0_node8",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node8",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -325,17 +325,17 @@
               "label": "Brevirostres"
             }
           ],
-          "parent": "#phylogeny0_node7",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node7",
           "siblings": [
-            "#phylogeny0_node19"
+            "http://example.org/brochu_2003.json#phylogeny0_node19"
           ],
           "children": [
-            "#phylogeny0_node9",
-            "#phylogeny0_node14"
+            "http://example.org/brochu_2003.json#phylogeny0_node9",
+            "http://example.org/brochu_2003.json#phylogeny0_node14"
           ]
         },
         {
-          "@id": "#phylogeny0_node9",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node9",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -351,25 +351,6 @@
                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
                   "hasValue": "Crocodylidae"
                 }
-              }
-            },
-            {
-              "@type": "owl:Restriction",
-              "onProperty": "obo:OBI_0000312",
-              "someValuesFrom": {
-                "@type": "owl:Class",
-                "intersectionOf": [
-                  {
-                    "@id": "obo:OBI_0302910"
-                  },
-                  {
-                    "@type": "owl:Restriction",
-                    "onProperty": "obo:OBI_0000293",
-                    "someValuesFrom": {
-                      "@id": "http://example.org/brochu_2003.json#phyloref3"
-                    }
-                  }
-                ]
               }
             },
             {
@@ -408,17 +389,17 @@
               "label": "Crocodylidae"
             }
           ],
-          "parent": "#phylogeny0_node8",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node8",
           "siblings": [
-            "#phylogeny0_node14"
+            "http://example.org/brochu_2003.json#phylogeny0_node14"
           ],
           "children": [
-            "#phylogeny0_node10",
-            "#phylogeny0_node13"
+            "http://example.org/brochu_2003.json#phylogeny0_node10",
+            "http://example.org/brochu_2003.json#phylogeny0_node13"
           ]
         },
         {
-          "@id": "#phylogeny0_node10",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node10",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -453,17 +434,17 @@
               "label": "Crocodylinae"
             }
           ],
-          "parent": "#phylogeny0_node9",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node9",
           "siblings": [
-            "#phylogeny0_node13"
+            "http://example.org/brochu_2003.json#phylogeny0_node13"
           ],
           "children": [
-            "#phylogeny0_node11",
-            "#phylogeny0_node12"
+            "http://example.org/brochu_2003.json#phylogeny0_node11",
+            "http://example.org/brochu_2003.json#phylogeny0_node12"
           ]
         },
         {
-          "@id": "#phylogeny0_node11",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node11",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -499,13 +480,13 @@
               "label": "Crocodylus niloticus"
             }
           ],
-          "parent": "#phylogeny0_node10",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node10",
           "siblings": [
-            "#phylogeny0_node12"
+            "http://example.org/brochu_2003.json#phylogeny0_node12"
           ]
         },
         {
-          "@id": "#phylogeny0_node12",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node12",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -541,13 +522,13 @@
               "label": "Osteolaemus tetraspis"
             }
           ],
-          "parent": "#phylogeny0_node10",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node10",
           "siblings": [
-            "#phylogeny0_node11"
+            "http://example.org/brochu_2003.json#phylogeny0_node11"
           ]
         },
         {
-          "@id": "#phylogeny0_node13",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node13",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -583,13 +564,13 @@
               "label": "Tomistoma schlegelii"
             }
           ],
-          "parent": "#phylogeny0_node9",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node9",
           "siblings": [
-            "#phylogeny0_node10"
+            "http://example.org/brochu_2003.json#phylogeny0_node10"
           ]
         },
         {
-          "@id": "#phylogeny0_node14",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node14",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -624,17 +605,17 @@
               "label": "Alligatoroidea"
             }
           ],
-          "parent": "#phylogeny0_node8",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node8",
           "siblings": [
-            "#phylogeny0_node9"
+            "http://example.org/brochu_2003.json#phylogeny0_node9"
           ],
           "children": [
-            "#phylogeny0_node15",
-            "#phylogeny0_node18"
+            "http://example.org/brochu_2003.json#phylogeny0_node15",
+            "http://example.org/brochu_2003.json#phylogeny0_node18"
           ]
         },
         {
-          "@id": "#phylogeny0_node15",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node15",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -688,17 +669,17 @@
               "label": "Alligatoridae"
             }
           ],
-          "parent": "#phylogeny0_node14",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node14",
           "siblings": [
-            "#phylogeny0_node18"
+            "http://example.org/brochu_2003.json#phylogeny0_node18"
           ],
           "children": [
-            "#phylogeny0_node16",
-            "#phylogeny0_node17"
+            "http://example.org/brochu_2003.json#phylogeny0_node16",
+            "http://example.org/brochu_2003.json#phylogeny0_node17"
           ]
         },
         {
-          "@id": "#phylogeny0_node16",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node16",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -714,25 +695,6 @@
                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
                   "hasValue": "Caiman crocodilus"
                 }
-              }
-            },
-            {
-              "@type": "owl:Restriction",
-              "onProperty": "obo:OBI_0000312",
-              "someValuesFrom": {
-                "@type": "owl:Class",
-                "intersectionOf": [
-                  {
-                    "@id": "obo:OBI_0302910"
-                  },
-                  {
-                    "@type": "owl:Restriction",
-                    "onProperty": "obo:OBI_0000293",
-                    "someValuesFrom": {
-                      "@id": "http://example.org/brochu_2003.json#phyloref2"
-                    }
-                  }
-                ]
               }
             }
           ],
@@ -753,13 +715,13 @@
               "label": "Caiman crocodilus"
             }
           ],
-          "parent": "#phylogeny0_node15",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node15",
           "siblings": [
-            "#phylogeny0_node17"
+            "http://example.org/brochu_2003.json#phylogeny0_node17"
           ]
         },
         {
-          "@id": "#phylogeny0_node17",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node17",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -775,25 +737,6 @@
                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
                   "hasValue": "Alligator mississippiensis"
                 }
-              }
-            },
-            {
-              "@type": "owl:Restriction",
-              "onProperty": "obo:OBI_0000312",
-              "someValuesFrom": {
-                "@type": "owl:Class",
-                "intersectionOf": [
-                  {
-                    "@id": "obo:OBI_0302910"
-                  },
-                  {
-                    "@type": "owl:Restriction",
-                    "onProperty": "obo:OBI_0000293",
-                    "someValuesFrom": {
-                      "@id": "http://example.org/brochu_2003.json#phyloref1"
-                    }
-                  }
-                ]
               }
             }
           ],
@@ -814,13 +757,13 @@
               "label": "Alligator mississippiensis"
             }
           ],
-          "parent": "#phylogeny0_node15",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node15",
           "siblings": [
-            "#phylogeny0_node16"
+            "http://example.org/brochu_2003.json#phylogeny0_node16"
           ]
         },
         {
-          "@id": "#phylogeny0_node18",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node18",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -856,13 +799,13 @@
               "label": "Diplocynodon ratelii"
             }
           ],
-          "parent": "#phylogeny0_node14",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node14",
           "siblings": [
-            "#phylogeny0_node15"
+            "http://example.org/brochu_2003.json#phylogeny0_node15"
           ]
         },
         {
-          "@id": "#phylogeny0_node19",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node19",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -898,13 +841,13 @@
               "label": "Gavialis gangeticus"
             }
           ],
-          "parent": "#phylogeny0_node7",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node7",
           "siblings": [
-            "#phylogeny0_node8"
+            "http://example.org/brochu_2003.json#phylogeny0_node8"
           ]
         },
         {
-          "@id": "#phylogeny0_node20",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node20",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -939,13 +882,13 @@
               "label": "Allodaposuchus"
             }
           ],
-          "parent": "#phylogeny0_node6",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node6",
           "siblings": [
-            "#phylogeny0_node7"
+            "http://example.org/brochu_2003.json#phylogeny0_node7"
           ]
         },
         {
-          "@id": "#phylogeny0_node21",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node21",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -980,15 +923,15 @@
               "label": "Stomatosuchus"
             }
           ],
-          "parent": "#phylogeny0_node5",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node5",
           "siblings": [
-            "#phylogeny0_node6",
-            "#phylogeny0_node22",
-            "#phylogeny0_node23"
+            "http://example.org/brochu_2003.json#phylogeny0_node6",
+            "http://example.org/brochu_2003.json#phylogeny0_node22",
+            "http://example.org/brochu_2003.json#phylogeny0_node23"
           ]
         },
         {
-          "@id": "#phylogeny0_node22",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node22",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -1023,15 +966,15 @@
               "label": "Aegyptosuchus"
             }
           ],
-          "parent": "#phylogeny0_node5",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node5",
           "siblings": [
-            "#phylogeny0_node6",
-            "#phylogeny0_node21",
-            "#phylogeny0_node23"
+            "http://example.org/brochu_2003.json#phylogeny0_node6",
+            "http://example.org/brochu_2003.json#phylogeny0_node21",
+            "http://example.org/brochu_2003.json#phylogeny0_node23"
           ]
         },
         {
-          "@id": "#phylogeny0_node23",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node23",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -1066,15 +1009,15 @@
               "label": "Hylaeochampsa"
             }
           ],
-          "parent": "#phylogeny0_node5",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node5",
           "siblings": [
-            "#phylogeny0_node6",
-            "#phylogeny0_node21",
-            "#phylogeny0_node22"
+            "http://example.org/brochu_2003.json#phylogeny0_node6",
+            "http://example.org/brochu_2003.json#phylogeny0_node21",
+            "http://example.org/brochu_2003.json#phylogeny0_node22"
           ]
         },
         {
-          "@id": "#phylogeny0_node24",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node24",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -1084,13 +1027,13 @@
             "mesosuchians"
           ],
           "representsTaxonomicUnits": [],
-          "parent": "#phylogeny0_node4",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node4",
           "siblings": [
-            "#phylogeny0_node5"
+            "http://example.org/brochu_2003.json#phylogeny0_node5"
           ]
         },
         {
-          "@id": "#phylogeny0_node25",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node25",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -1100,13 +1043,13 @@
             "protosuchians"
           ],
           "representsTaxonomicUnits": [],
-          "parent": "#phylogeny0_node3",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node3",
           "siblings": [
-            "#phylogeny0_node4"
+            "http://example.org/brochu_2003.json#phylogeny0_node4"
           ]
         },
         {
-          "@id": "#phylogeny0_node26",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node26",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -1116,13 +1059,13 @@
             "sphenosuchians"
           ],
           "representsTaxonomicUnits": [],
-          "parent": "#phylogeny0_node2",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node2",
           "siblings": [
-            "#phylogeny0_node3"
+            "http://example.org/brochu_2003.json#phylogeny0_node3"
           ]
         },
         {
-          "@id": "#phylogeny0_node27",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node27",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -1157,14 +1100,14 @@
               "label": "Aetosauria"
             }
           ],
-          "parent": "#phylogeny0_node1",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node1",
           "siblings": [
-            "#phylogeny0_node2",
-            "#phylogeny0_node28"
+            "http://example.org/brochu_2003.json#phylogeny0_node2",
+            "http://example.org/brochu_2003.json#phylogeny0_node28"
           ]
         },
         {
-          "@id": "#phylogeny0_node28",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node28",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -1174,14 +1117,14 @@
             "rauisuchians"
           ],
           "representsTaxonomicUnits": [],
-          "parent": "#phylogeny0_node1",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node1",
           "siblings": [
-            "#phylogeny0_node2",
-            "#phylogeny0_node27"
+            "http://example.org/brochu_2003.json#phylogeny0_node2",
+            "http://example.org/brochu_2003.json#phylogeny0_node27"
           ]
         },
         {
-          "@id": "#phylogeny0_node29",
+          "@id": "http://example.org/brochu_2003.json#phylogeny0_node29",
           "rdf:type": [
             {
               "@id": "obo:CDAO_0000140"
@@ -1216,14 +1159,14 @@
               "label": "Parasuchia"
             }
           ],
-          "parent": "#phylogeny0_node0",
+          "parent": "http://example.org/brochu_2003.json#phylogeny0_node0",
           "siblings": [
-            "#phylogeny0_node1"
+            "http://example.org/brochu_2003.json#phylogeny0_node1"
           ]
         }
       ],
       "hasRootNode": {
-        "@id": "#phylogeny0_node0"
+        "@id": "http://example.org/brochu_2003.json#phylogeny0_node0"
       }
     }
   ],
@@ -2325,7 +2268,7 @@
   "title": "Phylogenetic Approaches Toward Crocodylian History",
   "defaultNomenclaturalCodeURI": "http://purl.obolibrary.org/obo/NOMEN_0000107",
   "hasTaxonomicUnitMatches": [],
-  "@id": "http://example.org/brochu_2003.json#",
+  "@id": "http://example.org/brochu_2003.json",
   "@type": [
     "testcase:PhyloreferenceTestCase",
     "owl:Ontology"
