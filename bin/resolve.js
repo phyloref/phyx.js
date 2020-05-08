@@ -15,7 +15,7 @@ const phyx = require('..');
 // Read command line arguments.
 const argv = require('yargs')
   .usage("$0 [files to resolve on the Open Tree of Life]")
-  .describe('write-table', 'A file to write out a table of results to')
+  .describe('write-table', 'A file to which to write a table of results')
   .describe('verbose', 'Display debugging information')
   .boolean('verbose')
   .help()
