@@ -230,6 +230,15 @@ if (argv.multifurcating) {
         if (Array.isArray(ll)) {
           const ll_alternatives = getMultifurcatingTreeForNode(ll);
           recursive_nodes = recursive_nodes.concat(ll_alternatives.map(alt => [
+            [[alt, lr], rl, rr],
+            [alt, [lr, rl], rr],
+            [alt, lr, [rl, rr]],
+            [[alt, rr], lr, rl],
+            [[alt, lr, rl], rr],
+            [alt, [lr, rl, rr]],
+            [lr, [alt, rl, rr]],
+            [rl, [alt, lr, rr]],
+            [alt, lr, rl, rr],
             [[...alt, lr], rl, rr],
             [...alt, [lr, rl], rr],
             [...alt, lr, [rl, rr]],
@@ -244,6 +253,15 @@ if (argv.multifurcating) {
         if (Array.isArray(lr)) {
           const lr_alternatives = getMultifurcatingTreeForNode(lr);
           recursive_nodes = recursive_nodes.concat(lr_alternatives.map(alt => [
+            [[ll, alt], rl, rr],
+            [ll, [alt, rl], rr],
+            [ll, alt, [rl, rr]],
+            [[ll, rr], alt, rl],
+            [[ll, alt, rl], rr],
+            [ll, [alt, rl, rr]],
+            [alt, [ll, rl, rr]],
+            [rl, [ll, alt, rr]],
+            [ll, alt, rl, rr],
             [[ll, ...alt], rl, rr],
             [ll, [...alt, rl], rr],
             [ll, ...alt, [rl, rr]],
@@ -258,6 +276,15 @@ if (argv.multifurcating) {
         if (Array.isArray(rl)) {
           const rl_alternatives = getMultifurcatingTreeForNode(rl);
           recursive_nodes = recursive_nodes.concat(rl_alternatives.map(alt => [
+            [[ll, lr], alt, rr],
+            [ll, [lr, alt], rr],
+            [ll, lr, [alt, rr]],
+            [[ll, rr], lr, alt],
+            [[ll, lr, alt], rr],
+            [ll, [lr, alt, rr]],
+            [lr, [ll, alt, rr]],
+            [alt, [ll, lr, rr]],
+            [ll, lr, alt, rr],
             [[ll, lr], ...alt, rr],
             [ll, [lr, ...alt], rr],
             [ll, lr, [...alt, rr]],
@@ -272,6 +299,15 @@ if (argv.multifurcating) {
         if (Array.isArray(rr)) {
           const rr_alternatives = getMultifurcatingTreeForNode(rr);
           recursive_nodes = recursive_nodes.concat(rr_alternatives.map(alt => [
+            [[ll, lr], rl, alt],
+            [ll, [lr, rl], alt],
+            [ll, lr, [rl, alt]],
+            [[ll, alt], lr, rl],
+            [[ll, lr, rl], alt],
+            [ll, [lr, rl, alt]],
+            [lr, [ll, rl, alt]],
+            [rl, [ll, lr, alt]],
+            [ll, lr, rl, alt],
             [[ll, lr], rl, ...alt],
             [ll, [lr, rl], ...alt],
             [ll, lr, [rl, ...alt]],
