@@ -322,17 +322,25 @@ if (argv.multifurcating) {
 
         return multifurcated_node_only.concat(recursive_nodes.reduce((acc, cur) => acc.concat(cur), []));
       } else {
-        return [
+        const direct = [
           [left, right],
           [left[0], left[1], right],
         ];
+        const recursed = getMultifurcatingTreeForNode(left).map(alt => [
+          [alt, right],
+        ]);
+        return direct.concat(recursed.reduce((acc, cur) => acc.concat(cur), []));
       }
     } else {
       if (Array.isArray(right)) {
-        return [
+        const direct = [
           [left, right],
           [left, right[0], right[1]],
         ];
+        const recursed = getMultifurcatingTreeForNode(right).map(alt => [
+          [left, alt],
+        ]);
+        return direct.concat(recursed.reduce((acc, cur) => acc.concat(cur), []));
       } else {
         // Neither is an array, so there is no additional multifurcating node to return.
         return [
