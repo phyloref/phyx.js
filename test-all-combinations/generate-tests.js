@@ -157,7 +157,13 @@ function generateTrees(nodes) {
 function normalizeTree(tree) {
   if (!Array.isArray(tree)) return tree;
   if (tree.length == 0) return [];
-  if (tree.length == 1) return tree;
+  if (tree.length == 1) {
+    // Look for cases where we have e.g. [[a, b]], which should be normalized to [a, b].
+    if (Array.isArray(tree) && Array.isArray(tree[0]) && tree[0].length == 1) {
+      return normalizeTree(tree[0]);
+    }
+    return tree;
+  }
   return tree.map(node => normalizeTree(node)).sort();
 }
 
@@ -203,7 +209,7 @@ if (argv.multifurcating) {
         const rl = right[0];
         const rr = right[1];
 
-        return [
+        const multifurcated_node_only = [
           // Return the bifurcating node.
           [left, right],
 
@@ -216,9 +222,69 @@ if (argv.multifurcating) {
           [ll, [lr, rl, rr]],
           [lr, [ll, rl, rr]],
           [rl, [ll, lr, rr]],
-          [rr, [ll, lr, rl]],
           [ll, lr, rl, rr],
         ];
+
+        //
+        let recursive_nodes = [];
+        if (Array.isArray(ll)) {
+          const ll_alternatives = getMultifurcatingTreeForNode(ll);
+          recursive_nodes = recursive_nodes.concat(ll_alternatives.map(alt => [
+            [[...alt, lr], rl, rr],
+            [...alt, [lr, rl], rr],
+            [...alt, lr, [rl, rr]],
+            [[...alt, rr], lr, rl],
+            [[...alt, lr, rl], rr],
+            [...alt, [lr, rl, rr]],
+            [lr, [...alt, rl, rr]],
+            [rl, [...alt, lr, rr]],
+            [...alt, lr, rl, rr],
+          ]));
+        }
+        if (Array.isArray(lr)) {
+          const lr_alternatives = getMultifurcatingTreeForNode(lr);
+          recursive_nodes = recursive_nodes.concat(lr_alternatives.map(alt => [
+            [[ll, ...alt], rl, rr],
+            [ll, [...alt, rl], rr],
+            [ll, ...alt, [rl, rr]],
+            [[ll, rr], ...alt, rl],
+            [[ll, ...alt, rl], rr],
+            [ll, [...alt, rl, rr]],
+            [...alt, [ll, rl, rr]],
+            [rl, [ll, ...alt, rr]],
+            [ll, ...alt, rl, rr],
+          ]));
+        }
+        if (Array.isArray(rl)) {
+          const rl_alternatives = getMultifurcatingTreeForNode(rl);
+          recursive_nodes = recursive_nodes.concat(rl_alternatives.map(alt => [
+            [[ll, lr], ...alt, rr],
+            [ll, [lr, ...alt], rr],
+            [ll, lr, [...alt, rr]],
+            [[ll, rr], lr, ...alt],
+            [[ll, lr, ...alt], rr],
+            [ll, [lr, ...alt, rr]],
+            [lr, [ll, ...alt, rr]],
+            [...alt, [ll, lr, rr]],
+            [ll, lr, ...alt, rr],
+          ]));
+        }
+        if (Array.isArray(rr)) {
+          const rr_alternatives = getMultifurcatingTreeForNode(rr);
+          recursive_nodes = recursive_nodes.concat(rr_alternatives.map(alt => [
+            [[ll, lr], rl, ...alt],
+            [ll, [lr, rl], ...alt],
+            [ll, lr, [rl, ...alt]],
+            [[ll, ...alt], lr, rl],
+            [[ll, lr, rl], ...alt],
+            [ll, [lr, rl, ...alt]],
+            [lr, [ll, rl, ...alt]],
+            [rl, [ll, lr, ...alt]],
+            [ll, lr, rl, ...alt],
+          ]));
+        }
+
+        return multifurcated_node_only.concat(recursive_nodes.reduce((acc, cur) => acc.concat(cur), []));
       } else {
         return [
           [left, right],
@@ -301,7 +367,7 @@ normalizedUniqTrees.forEach((tree, index) => {
     '@context': 'http://www.phyloref.org/phyx.js/context/v0.2.0/phyx.json',
     phylogenies: [
       {
-        newick: newick
+        newick,
       }
     ],
     phylorefs: [
@@ -349,6 +415,7 @@ normalizedUniqTrees.forEach((tree, index) => {
   };
 
   const phyx = require('../src');
+  console.log(`Wrapping Phyx for Newick: ${newick}`);
   const jsonld = new phyx.PhyxWrapper(phyx_document).asJSONLD();
 
   const filename = `./test-all-combinations/tree${index + 1}.jsonld`;
