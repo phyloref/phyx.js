@@ -109,6 +109,17 @@ assert.deepEqual(
   ]
 );
 
+/*
+ * selectN(n, array) extends selectOne(array) for selecting a greater number of
+ * elements. Returns an array of results, each of which is a tuple with an array
+ * of selected items and an array of not-selected items. For example, calling
+ * selectN(2, [1, 2, 3]) will result in:
+ * [
+ *  [[1, 2], [3]],
+ *  [[1, 3], [2]],
+ *  [[2, 3], [1]],
+ * ]
+ */
 function selectN(n, array) {
   const first = selectOne(array);
   if (n == 1) return first;
@@ -182,18 +193,27 @@ assert.deepEqual(normalizeTree([[2, 1], [[6, 7], 4, [3, 5]]]), [[1, 2], [[3, 5],
 assert.deepEqual(normalizeTree([[4, [5, 3], [7, 6]], [1, 2]]), [[1, 2], [[3, 5], 4, [6, 7]]]);
 
 /*
- * Given a phylogeny, this method will rearrange it into every possible combination.
+ * Given a phylogeny, this method will rearrange it into every possible binary
+ * combination. We use selectN to select groups of nodes from 1 to nodeLength,
+ * and then call ourselves recursively to find every combination of the two
+ * groups provided.
  */
 function generateTrees(nodes) {
   if (nodes.length == 1) return nodes;
 
   // For a given number of leaf nodes, we need to keep grouping them in
   // combinations up to the node length.
-  let phylogenies = [];
+  let results = [];
   for (let i = 1; i < (nodes.length + 1)/2; i++) {
     const results = selectN(i, nodes);
-    const temp = uniqWith(
-      phylogenies.concat(results.map(result =>
+    // We end up generating duplicate phylogenies here; to avoid generating a
+    // large number of duplicates, we'll use `uniqWith` to remove duplicates.
+    const phylogenies = uniqWith(
+      results.concat(results.map(result =>
+        // Result is a tuple with $i nodes in $results[0]
+        // and the remainder in $results[1]. We call
+        // ourselves recursively to find every possible
+        // combination of these groups.
         generateTrees(result[0]).map(res0 =>
           generateTrees(result[1]).map(res1 =>
             [res0, res1]
@@ -203,15 +223,16 @@ function generateTrees(nodes) {
       isEqual
     );
 
-    console.log(`select(${i}, ${JSON.stringify(nodes)}) generated ${JSON.stringify(temp)}.`);
-    phylogenies = temp;
+    // console.log(`select(${i}, ${JSON.stringify(nodes)}) generated ${JSON.stringify(temp)}.`);
+    results = phylogenies;
   }
 
-  console.log(`From ${JSON.stringify(nodes)} generated ${JSON.stringify(phylogenies)}.`);
-  return phylogenies;
+  // console.log(`From ${JSON.stringify(nodes)} generated ${JSON.stringify(results)}.`);
+  return results;
 }
 
-
+// Generate trees from the provided leaf nodes, normalize the resulting trees and
+// remove any duplicates.
 const trees = generateTrees(leafNodes);
 let normalizedUniqTrees = uniqWith(trees.map(tree => normalizeTree(tree)), isEqual);
 
