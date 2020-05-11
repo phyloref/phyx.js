@@ -100,46 +100,60 @@ function selectOne(array) {
   }
   return result;
 }
+assert.deepEqual(
+  selectOne([1, 2, 3]),
+  [
+    [[1], [2, 3]],
+    [[2], [1, 3]],
+    [[3], [1, 2]],
+  ]
+);
 
-function generateTrees(nodes) {
-  if (nodes.length == 1) return nodes;
+function selectN(n, array) {
+  const first = selectOne(array);
+  if (n == 1) return first;
+  if (n >= array.length) throw new Error(`selectN(${n}, ${array.join(',')}) cannot be used to select ${n} items from an array of length ${array.length}`);
 
-  return selectOne(nodes).map(res => {
-    const [selected, unselected] = res;
+  let currentArray = [...first];
+  for (let i = 1; i < n; i++) {
+    currentArray = currentArray.map(entry => {
+      const [selected, unselected] = entry;
 
-    // Generate (A, (B, C)) type trees by selecting one leaf node and then finding every combination of the remaining nodes.
-    const selectOneResults = generateTrees(unselected).map(tree => [...selected, tree]);
+      return selectOne(unselected).map(res => {
+        const [innerSelected, innerUnselected] = res;
 
-    // Needed when n == 5, where you also need ((A, B), ...) type trees.
-    const selectTwoResults = selectOne(unselected).map(res => {
-      const [innerSelected, innerUnselected] = res;
-
-      return generateTrees(innerUnselected).map(tree => [[...selected, ...innerSelected], tree]);
+        return [
+          [...selected, ...innerSelected].sort(),
+          innerUnselected.sort()
+        ];
+      });
     }).reduce((acc, cur) => acc.concat(cur), []);
-
-    // Needed when n == 6, where you also need ((A, B, C), ...)
-    const selectThreeResults = selectOne(unselected).map(res => {
-      const [firstSelected, firstUnselected] = res;
-
-      return selectOne(firstUnselected).map(res2 => {
-        const [secondSelected, secondUnselected] = res2;
-
-        if (secondUnselected.length == 0) return [];
-        return generateTrees(secondUnselected).map(tree => [
-          [[[...selected, ...firstSelected], ...secondSelected], tree],
-          [[...selected, [...firstSelected, ...secondSelected]], tree],
-          [[[...selected, ...secondSelected], ...firstSelected], tree],
-        ]).reduce((acc, cur) => acc.concat(cur), []);
-      }).reduce((acc, cur) => acc.concat(cur), []);
-    }).reduce((acc, cur) => acc.concat(cur), []);
-
-    // Need to calculate n > 6? Then you need to extend this algorithm to handle
-    // "selectNResults". Since we only need n = 6, we only need to select at most
-    // two for now.
-
-    return [...selectOneResults, ...selectTwoResults, ...selectThreeResults].filter(tree => tree != null && tree.length > 0);
-  }).reduce((acc, cur) => acc.concat(cur), []);
+  }
+  return uniqWith(currentArray, isEqual);
 }
+assert.deepEqual(
+  selectN(2, [1, 2, 3]),
+  [
+    [[1, 2], [3]],
+    [[1, 3], [2]],
+    [[2, 3], [1]],
+  ]
+);
+assert.deepEqual(
+  selectN(2, [1, 2, 3, 4, 5]),
+  [
+    [[1, 2], [3, 4, 5]],
+    [[1, 3], [2, 4, 5]],
+    [[1, 4], [2, 3, 5]],
+    [[1, 5], [2, 3, 4]],
+    [[2, 3], [1, 4, 5]],
+    [[2, 4], [1, 3, 5]],
+    [[2, 5], [1, 3, 4]],
+    [[3, 4], [1, 2, 5]],
+    [[3, 5], [1, 2, 4]],
+    [[4, 5], [1, 2, 3]],
+  ]
+);
 
 /*
  * Since we use arrays instead of sets, we generate a large number of duplicate
@@ -165,9 +179,41 @@ function normalizeTree(tree) {
 assert.deepEqual(normalizeTree([4, [2, [3, 1]]]), [[[1, 3], 2], 4]);
 assert.deepEqual(normalizeTree([1, [[2, 3]]]), [1, [2, 3]]);
 
+/*
+ * Given a phylogeny, this method will rearrange it into every possible combination.
+ */
+function generateTrees(nodes) {
+  if (nodes.length == 1) return nodes;
+
+  // For a given number of leaf nodes, we need to keep grouping them in
+  // combinations up to the node length.
+  let phylogenies = [];
+  for (let i = 1; i < (nodes.length + 1)/2; i++) {
+    const results = selectN(i, nodes);
+    const temp = uniqWith(
+      phylogenies.concat(results.map(result =>
+        generateTrees(result[0]).map(res0 =>
+          generateTrees(result[1]).map(res1 =>
+            [res0, res1]
+          )
+        ).reduce((acc, cur) => acc.concat(cur), []).map(normalizeTree)
+      ).reduce((acc, cur) => acc.concat(cur), [])).map(normalizeTree),
+      isEqual
+    );
+
+    console.log(`select(${i}, ${JSON.stringify(nodes)}) generated ${JSON.stringify(temp)}.`);
+    phylogenies = temp;
+  }
+
+  console.log(`From ${JSON.stringify(nodes)} generated ${JSON.stringify(phylogenies)}.`);
+  return phylogenies;
+}
+
 
 const trees = generateTrees(leafNodes);
 let normalizedUniqTrees = uniqWith(trees.map(tree => normalizeTree(tree)), isEqual);
+
+console.log(`Generated ${normalizedUniqTrees.length} bifurcating trees out of ${expectedBifurcatingTrees} expected with ${nodeCount} leaf nodes each: ${leafNodes}`)
 
 if (argv.multifurcating) {
   function getMultifurcatingTreeForNode(bifurcatingTree) {
