@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 
+const assert = require('assert').strict;
+const { uniqWith, isEqual } = require('lodash');
+const fs = require('fs');
+
 /*
  * In order to test whether we can resolve every possible type of clade,
  * we will generate every possible Phyx file for a given number of input
  * nodes.
  *
- * Synopsis: npm run generate-all-combinations --nodes [number of nodes]
+ * Synopsis: npm run generate-all-combinations --nodes [number of nodes] --multifurcating
  *
- *
+ * If the --multifurcating flag is not used, only binary trees will be generated.
  */
 
 // Set up command line arguments.
@@ -24,6 +28,7 @@ const argv = require('yargs')
   .alias('help', 'h')
   .argv
 
+// Determine how many leaf nodes we need to use.
 const nodeCount = argv.nodes
 
 if (nodeCount < 2) {
@@ -88,7 +93,7 @@ const multifurcatingTreeCounts = [
   247678399,
 ]
 if (nodeCount > 10) {
-  throw new Error("Multifurcating tree counts only go up to n > 10");
+  throw new Error("We only support multifurcating trees up to n=10");
 }
 const expectedMultifurcatingTrees = multifurcatingTreeCounts[nodeCount];
 console.log(`Expected multifurcating trees = ${expectedMultifurcatingTrees}`);
@@ -106,7 +111,7 @@ console.log(`Expected total trees = ${expectedTotalTrees}`);
  */
 function selectOne(array) {
   const result = [];
-  for (var i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     const changeable = [...array];
     const deleted = changeable.splice(i, 1);
     result.push([deleted, changeable])
@@ -167,8 +172,6 @@ function normalizeTree(tree) {
   return tree.map(node => normalizeTree(node)).sort();
 }
 
-const { uniqWith, isEqual } = require('lodash');
-const fs = require('fs');
 
 const trees = generateTrees(leafNodes);
 let normalizedUniqTrees = uniqWith(trees.map(tree => normalizeTree(tree)), isEqual);
@@ -406,6 +409,7 @@ normalizedUniqTrees.forEach((tree, index) => {
     return breakIntoWords(newick).filter(node => node.match(/^NA.*_.*C.*$/i)).map(word => word.replace('_', ' ').trim()).shift();
   }
 
+  // Construct a phyloreference.
   const newick = generateInternalNodeLabel(tree);
   const phyx_document = {
     '@context': 'http://www.phyloref.org/phyx.js/context/v0.2.0/phyx.json',
@@ -458,6 +462,7 @@ normalizedUniqTrees.forEach((tree, index) => {
     ]
   };
 
+  // Convert this Phyx document into a JSON-LD ontology and write it into a file.
   const phyx = require('../src');
   console.log(`Wrapping Phyx for Newick: ${newick}`);
   const jsonld = new phyx.PhyxWrapper(phyx_document).asJSONLD();
@@ -465,11 +470,22 @@ normalizedUniqTrees.forEach((tree, index) => {
   const filename = `./test-all-combinations/n${nodeCount}/tree${index + 1}.jsonld`;
   fs.writeFileSync(filename, JSON.stringify(jsonld, null, 4));
 
-  console.log(newick + "\t # A:" + chooseTarget("A", newick) + " B:" + chooseTarget("B", newick) + " C:" + chooseTarget("C", newick) + " AB:" + chooseABTarget(newick) + " AxC:" + chooseAxCTarget(newick));
-
-  // TODO: Now we need to do all the multifurcating trees.
+  // Report on the phylogeny produced and the nodes being matched.
+  // There are six nodes we're interested in:
+  //  A: The node labeled 'A'.
+  //  B: The node labeled 'B'.
+  //  C: The node labeled 'C'.
+  //  AB: The MRCA of A and B.
+  //  AxC: The ancestor of A that is sibling to an ancestor of C.
+  console.log(newick +
+    "\t # A:" + chooseTarget("A", newick).replace(' ', '_') +
+    " B:" + chooseTarget("B", newick).replace(' ', '_') +
+    " C:" + (chooseTarget("C", newick) || "undefined").replace(' ', '_') +
+    " AB:" + chooseABTarget(newick).replace(' ', '_') +
+    " AxC:" + (chooseAxCTarget(newick) || "undefined").replace(' ', '_'));
 });
 
+// Report on the number of trees produced versus what was expected.
 if (argv.multifurcating) {
     console.log(`${normalizedUniqTrees.length} multifurcating trees generated out of an expected ${expectedTotalTrees}.`)
 } else {
