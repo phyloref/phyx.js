@@ -178,6 +178,8 @@ function normalizeTree(tree) {
 }
 assert.deepEqual(normalizeTree([4, [2, [3, 1]]]), [[[1, 3], 2], 4]);
 assert.deepEqual(normalizeTree([1, [[2, 3]]]), [1, [2, 3]]);
+assert.deepEqual(normalizeTree([[2, 1], [[6, 7], 4, [3, 5]]]), [[1, 2], [[3, 5], 4, [6, 7]]]);
+assert.deepEqual(normalizeTree([[4, [5, 3], [7, 6]], [1, 2]]), [[1, 2], [[3, 5], 4, [6, 7]]]);
 
 /*
  * Given a phylogeny, this method will rearrange it into every possible combination.
