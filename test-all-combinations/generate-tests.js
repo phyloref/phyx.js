@@ -36,48 +36,20 @@ if (nodeCount < 2) {
   process.exit(2);
 }
 
-// To label the leaf nodes, we'll name them from 'A' to 'Z', and then from 'AA' to 'ZZ', and so on.
-function generateNextNodeLabel(str = "") {
-  // When called without a value, the next value is 'A'.
-  if (str == "") return "A";
-
-  // Split the string into [everthing but the last character][the last character].
-  const head = str.substring(0, str.length - 1);
-  const last = str.substring(str.length - 1);
-
-  // console.log(`(${head},${last})`);
-
-  if (last == 'Z') {
-    // When the last character goes up to 'Z', we increment the rest of the
-    // string, and then add an 'A' at the end.
-    return generateNextNodeLabel(head) + 'A'
-  } else {
-    // For characters other than 'Z', we increment it.
-    return head + (String.fromCharCode(last.charCodeAt(0) + 1))
-  }
-}
-
-const leafNodes = [];
-var lastValue = "";
-for(var x = 0; x < nodeCount; x++) {
-  lastValue = generateNextNodeLabel(lastValue)
-  leafNodes.push(lastValue);
-}
-
-console.log(`Generating Phyx files with ${nodeCount} leaf nodes each: ${leafNodes}`)
-
-// Taken from https://academic.oup.com/sysbio/article/27/1/27/1626689 and
-// https://en.wikipedia.org/wiki/Phylogenetic_tree#Enumerating_trees
+// Determine (and report) the number of expected binomial and multifurcating trees we will generate.
 function factorial(n) {
   if (n == 0) return 1;
   return (n != 1) ? n * factorial(n - 1) : 1;
 }
+
+// Taken from https://academic.oup.com/sysbio/article/27/1/27/1626689 and
+// https://en.wikipedia.org/wiki/Phylogenetic_tree#Enumerating_trees
 const expectedBifurcatingTrees = factorial(2 * nodeCount - 3)/((2**(nodeCount - 2)) * factorial(nodeCount - 2));
 console.log(`Expected bifurcating trees = ${expectedBifurcatingTrees}`);
 
 // I tried to calculate this using the formula in
 // https://academic.oup.com/sysbio/article/27/1/27/1626689, but I didn't get it
-// working correctly. So I'm just hardcoding these numbers from
+// working correctly. So for now I'm just hardcoding these numbers from
 // https://en.wikipedia.org/wiki/Phylogenetic_tree#Enumerating_trees
 const multifurcatingTreeCounts = [
   0,
