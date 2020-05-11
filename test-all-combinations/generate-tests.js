@@ -462,7 +462,7 @@ normalizedUniqTrees.forEach((tree, index) => {
   console.log(`Wrapping Phyx for Newick: ${newick}`);
   const jsonld = new phyx.PhyxWrapper(phyx_document).asJSONLD();
 
-  const filename = `./test-all-combinations/tree${index + 1}.jsonld`;
+  const filename = `./test-all-combinations/n${nodeCount}/tree${index + 1}.jsonld`;
   fs.writeFileSync(filename, JSON.stringify(jsonld, null, 4));
 
   console.log(newick + "\t # A:" + chooseTarget("A", newick) + " B:" + chooseTarget("B", newick) + " C:" + chooseTarget("C", newick) + " AB:" + chooseABTarget(newick) + " AxC:" + chooseAxCTarget(newick));
