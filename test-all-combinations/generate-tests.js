@@ -435,7 +435,7 @@ normalizedUniqTrees.forEach((tree, index) => {
         ]
       },
       {
-        label: chooseAxCTarget(newick).replace(' ', '_'),
+        label: (chooseAxCTarget(newick)  || "undefined").replace(' ', '_'),
         internalSpecifiers: [
           {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
