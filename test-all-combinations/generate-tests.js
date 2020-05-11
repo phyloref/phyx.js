@@ -73,13 +73,23 @@ console.log(`Expected multifurcating trees = ${expectedMultifurcatingTrees}`);
 const expectedTotalTrees = expectedBifurcatingTrees + expectedMultifurcatingTrees
 console.log(`Expected total trees = ${expectedTotalTrees}`);
 
-// 1 = (A)
-// 2 = (A, B)
-// 3 = (A, B), C; A, (B, C); (A, C), B; A, B, C
-// 4 = (A, B), (C, D); A, (B, C, D)
+/*
+ * Generate bifurcating phylogenies.
+ */
+
+// Generate a list of leaf node labels to use. We use characters from 'A' to 'Z'.
+const labels = [...Array('Z'.charCodeAt(0) - 'A'.charCodeAt(0) + 1).keys()].map(i => i + 'A'.charCodeAt(0)).map(chr => String.fromCharCode(chr));
+if (nodeCount > 26) throw new Error('We only suppose single-character labels, and so n > 26 are not supported.');
+const leafNodes = labels.slice(0, nodeCount);
 
 /*
- * Start generating every possible phylogeny.
+ * The key to this algorithm is the selectOne function. Given an input array of
+ * n elements, it returns n tuples, each containing one of the elements from the
+ * array and the remainder of the array, excluding the selected item.
+ * For example, given an input of [1, 2, 3], this will return:
+ *  [[1], [2, 3]],
+ *  [[2], [1, 3]],
+ *  [[3], [1, 2]]
  */
 function selectOne(array) {
   const result = [];
@@ -131,18 +141,29 @@ function generateTrees(nodes) {
   }).reduce((acc, cur) => acc.concat(cur), []);
 }
 
+/*
+ * Since we use arrays instead of sets, we generate a large number of duplicate
+ * trees. To eliminate them, we "normalize" all trees. The algorithm we use to
+ * do that is:
+ *  - 1. Every array in the phylogeny is sorted, so e.g. [4, [2, [3, 1]]] will
+ *       be rearranged to [[[1, 3], 2], 4].
+ *  - 2. Nodes containing a single element within an array (i.e. [[1]]) are
+ *       reduced so that the unnecessary node is eliminated (e.g. [1]).
+ */
 function normalizeTree(tree) {
   if (!Array.isArray(tree)) return tree;
   if (tree.length == 0) return [];
   if (tree.length == 1) {
-    // Look for cases where we have e.g. [[a, b]], which should be normalized to [a, b].
-    if (Array.isArray(tree) && Array.isArray(tree[0]) && tree[0].length == 1) {
+    // Look for cases where we have e.g. [[a]], which should be normalized to [a].
+    if (Array.isArray(tree) && tree.length == 1) {
       return normalizeTree(tree[0]);
     }
     return tree;
   }
   return tree.map(node => normalizeTree(node)).sort();
 }
+assert.deepEqual(normalizeTree([4, [2, [3, 1]]]), [[[1, 3], 2], 4]);
+assert.deepEqual(normalizeTree([1, [[2, 3]]]), [1, [2, 3]]);
 
 
 const trees = generateTrees(leafNodes);
