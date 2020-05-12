@@ -199,32 +199,39 @@ assert.deepEqual(normalizeTree([[4, [5, 3], [7, 6]], [1, 2]]), [[1, 2], [[3, 5],
  * groups provided.
  */
 function generateTrees(nodes) {
+  // console.log(`generateTrees(${JSON.stringify(nodes)})`);
   if (nodes.length == 1) return nodes;
 
   // For a given number of leaf nodes, we need to keep grouping them in
   // combinations up to the node length.
   let results = [];
   for (let i = 1; i < (nodes.length + 1)/2; i++) {
-    const results = selectN(i, nodes);
+    const groups = selectN(i, nodes);
     // We end up generating duplicate phylogenies here; to avoid generating a
     // large number of duplicates, we'll use `uniqWith` to remove duplicates.
-    const phylogenies = uniqWith(
-      results.concat(results.map(result =>
+    const bifurcatingTrees = uniqWith(
+      groups.map(result =>
         // Result is a tuple with $i nodes in $results[0]
         // and the remainder in $results[1]. We call
         // ourselves recursively to find every possible
         // combination of these groups.
         generateTrees(result[0]).map(res0 =>
-          generateTrees(result[1]).map(res1 =>
-            [res0, res1]
-          )
+          generateTrees(result[1]).map(res1 => {
+            const results = [[res0, res1]];
+            if (!argv.multifurcating) return results;
+            return results.concat([
+              [...res0, res1],
+              [res0, ...res1],
+              [...res0, ...res1],
+            ]);
+          }).reduce((acc, cur) => acc.concat(cur), []).map(normalizeTree)
         ).reduce((acc, cur) => acc.concat(cur), []).map(normalizeTree)
-      ).reduce((acc, cur) => acc.concat(cur), [])).map(normalizeTree),
+      ).reduce((acc, cur) => acc.concat(cur), []).map(normalizeTree),
       isEqual
     );
 
     // console.log(`select(${i}, ${JSON.stringify(nodes)}) generated ${JSON.stringify(temp)}.`);
-    results = phylogenies;
+    results = results.concat(bifurcatingTrees);
   }
 
   // console.log(`From ${JSON.stringify(nodes)} generated ${JSON.stringify(results)}.`);
@@ -236,194 +243,16 @@ function generateTrees(nodes) {
 const trees = generateTrees(leafNodes);
 let normalizedUniqTrees = uniqWith(trees.map(tree => normalizeTree(tree)), isEqual);
 
-console.log(`Generated ${normalizedUniqTrees.length} bifurcating trees out of ${expectedBifurcatingTrees} expected with ${nodeCount} leaf nodes each: ${leafNodes}`)
+normalizedUniqTrees.forEach((tree, index) => {
+  console.log(`Tree ${index + 1}: ${JSON.stringify(tree)}.`);
+})
 
+// Report on the number of trees produced versus what was expected.
 if (argv.multifurcating) {
-  function getMultifurcatingTreeForNode(bifurcatingTree) {
-    // If we don't have a tree, throw an error.
-    if (bifurcatingTree.length == 0) throw new RuntimeException(`Expected a bifurcating tree, got an empty tree.`);
-
-    // If we have more than 2 elements, then this isn't a bifurcating tree! Abort.
-    if (bifurcatingTree.length > 2) throw new RuntimeException(`Expected a bifurcating tree, got ${bifurcatingTree.join(', ')}.`);
-
-    // If we are called with a single node, just return that one node.
-    if (bifurcatingTree.length == 1) return bifurcatingTree[0];
-
-    const left = bifurcatingTree[0];
-    const right = bifurcatingTree[1];
-
-    // Given that tree is perfectly bifurcating, there are four possible trees here:
-    //  - (A, B) => (A, B)
-    //  - ((A, B), C) => (A, B, C)
-    //  - (A, (B, C)) => (A, B, C)
-    //  - ((A, B), (C, D)) =>
-    //    - ((A, B), C, D)
-    //    - (A, (B, C), D)
-    //    - (A, B, (C, D))
-    //    - ((A, B, C), D)
-    //    - (A, (B, C, D))
-    //    - (A, B, C, D)
-    if (Array.isArray(left)) {
-      if (Array.isArray(right)) {
-        // Both left and right must be bifurcating too!
-        if (left.length > 2) throw new RuntimeException(`Expected a bifurcating tree on left, got ${left.join(', ')}.`);
-        if (left.length > 2) throw new RuntimeException(`Expected a bifurcating tree on right, got ${right.join(', ')}.`);
-
-        const ll = left[0];
-        const lr = left[1];
-        const rl = right[0];
-        const rr = right[1];
-
-        const multifurcated_node_only = [
-          // Return the bifurcating node.
-          [left, right],
-
-          // Additional multifurcating combinations.
-          [[ll, lr], rl, rr],
-          [ll, [lr, rl], rr],
-          [ll, lr, [rl, rr]],
-          [[ll, rr], lr, rl],
-          [[ll, lr, rl], rr],
-          [ll, [lr, rl, rr]],
-          [lr, [ll, rl, rr]],
-          [rl, [ll, lr, rr]],
-          [ll, lr, rl, rr],
-        ];
-
-        //
-        let recursive_nodes = [];
-        if (Array.isArray(ll)) {
-          const ll_alternatives = getMultifurcatingTreeForNode(ll);
-          recursive_nodes = recursive_nodes.concat(ll_alternatives.map(alt => [
-            [[alt, lr], rl, rr],
-            [alt, [lr, rl], rr],
-            [alt, lr, [rl, rr]],
-            [[alt, rr], lr, rl],
-            [[alt, lr, rl], rr],
-            [alt, [lr, rl, rr]],
-            [lr, [alt, rl, rr]],
-            [rl, [alt, lr, rr]],
-            [alt, lr, rl, rr],
-            [[...alt, lr], rl, rr],
-            [...alt, [lr, rl], rr],
-            [...alt, lr, [rl, rr]],
-            [[...alt, rr], lr, rl],
-            [[...alt, lr, rl], rr],
-            [...alt, [lr, rl, rr]],
-            [lr, [...alt, rl, rr]],
-            [rl, [...alt, lr, rr]],
-            [...alt, lr, rl, rr],
-          ]));
-        }
-        if (Array.isArray(lr)) {
-          const lr_alternatives = getMultifurcatingTreeForNode(lr);
-          recursive_nodes = recursive_nodes.concat(lr_alternatives.map(alt => [
-            [[ll, alt], rl, rr],
-            [ll, [alt, rl], rr],
-            [ll, alt, [rl, rr]],
-            [[ll, rr], alt, rl],
-            [[ll, alt, rl], rr],
-            [ll, [alt, rl, rr]],
-            [alt, [ll, rl, rr]],
-            [rl, [ll, alt, rr]],
-            [ll, alt, rl, rr],
-            [[ll, ...alt], rl, rr],
-            [ll, [...alt, rl], rr],
-            [ll, ...alt, [rl, rr]],
-            [[ll, rr], ...alt, rl],
-            [[ll, ...alt, rl], rr],
-            [ll, [...alt, rl, rr]],
-            [...alt, [ll, rl, rr]],
-            [rl, [ll, ...alt, rr]],
-            [ll, ...alt, rl, rr],
-          ]));
-        }
-        if (Array.isArray(rl)) {
-          const rl_alternatives = getMultifurcatingTreeForNode(rl);
-          recursive_nodes = recursive_nodes.concat(rl_alternatives.map(alt => [
-            [[ll, lr], alt, rr],
-            [ll, [lr, alt], rr],
-            [ll, lr, [alt, rr]],
-            [[ll, rr], lr, alt],
-            [[ll, lr, alt], rr],
-            [ll, [lr, alt, rr]],
-            [lr, [ll, alt, rr]],
-            [alt, [ll, lr, rr]],
-            [ll, lr, alt, rr],
-            [[ll, lr], ...alt, rr],
-            [ll, [lr, ...alt], rr],
-            [ll, lr, [...alt, rr]],
-            [[ll, rr], lr, ...alt],
-            [[ll, lr, ...alt], rr],
-            [ll, [lr, ...alt, rr]],
-            [lr, [ll, ...alt, rr]],
-            [...alt, [ll, lr, rr]],
-            [ll, lr, ...alt, rr],
-          ]));
-        }
-        if (Array.isArray(rr)) {
-          const rr_alternatives = getMultifurcatingTreeForNode(rr);
-          recursive_nodes = recursive_nodes.concat(rr_alternatives.map(alt => [
-            [[ll, lr], rl, alt],
-            [ll, [lr, rl], alt],
-            [ll, lr, [rl, alt]],
-            [[ll, alt], lr, rl],
-            [[ll, lr, rl], alt],
-            [ll, [lr, rl, alt]],
-            [lr, [ll, rl, alt]],
-            [rl, [ll, lr, alt]],
-            [ll, lr, rl, alt],
-            [[ll, lr], rl, ...alt],
-            [ll, [lr, rl], ...alt],
-            [ll, lr, [rl, ...alt]],
-            [[ll, ...alt], lr, rl],
-            [[ll, lr, rl], ...alt],
-            [ll, [lr, rl, ...alt]],
-            [lr, [ll, rl, ...alt]],
-            [rl, [ll, lr, ...alt]],
-            [ll, lr, rl, ...alt],
-          ]));
-        }
-
-        return multifurcated_node_only.concat(recursive_nodes.reduce((acc, cur) => acc.concat(cur), []));
-      } else {
-        const direct = [
-          [left, right],
-          [left[0], left[1], right],
-        ];
-        const recursed = getMultifurcatingTreeForNode(left).map(alt => [
-          [alt, right],
-        ]);
-        return direct.concat(recursed.reduce((acc, cur) => acc.concat(cur), []));
-      }
-    } else {
-      if (Array.isArray(right)) {
-        const direct = [
-          [left, right],
-          [left, right[0], right[1]],
-        ];
-        const recursed = getMultifurcatingTreeForNode(right).map(alt => [
-          [left, alt],
-        ]);
-        return direct.concat(recursed.reduce((acc, cur) => acc.concat(cur), []));
-      } else {
-        // Neither is an array, so there is no additional multifurcating node to return.
-        return [
-          [left, right],
-        ];
-      }
-    }
-  }
-
-  const multifurcatingTrees = normalizedUniqTrees
-    .map(getMultifurcatingTreeForNode)
-    .reduce((acc, cur) => acc.concat(cur), []);
-
-  normalizedUniqTrees = uniqWith(multifurcatingTrees.map(tree => normalizeTree(tree)), isEqual)
+    console.log(`Generated ${normalizedUniqTrees.length} trees out of ${expectedTotalTrees} expected with ${nodeCount} leaf nodes each: ${leafNodes}`)
+} else {
+    console.log(`Generated ${normalizedUniqTrees.length} bifurcating trees out of ${expectedBifurcatingTrees} expected with ${nodeCount} leaf nodes each: ${leafNodes}`)
 }
-
-normalizedUniqTrees.forEach((tree, index) => console.log(index + ": " + JSON.stringify(tree)));
-console.log("Length: " + normalizedUniqTrees.length)
 
 /*
  * To generate testable Phyx files, we will need:
@@ -482,7 +311,7 @@ normalizedUniqTrees.forEach((tree, index) => {
     ],
     phylorefs: [
       {
-        label: chooseABTarget(newick).replace(' ', '_'),
+        label: (chooseABTarget(newick) || "undefined").replace(' ', '_'),
         internalSpecifiers: [
           {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
@@ -540,10 +369,10 @@ normalizedUniqTrees.forEach((tree, index) => {
   //  AB: The MRCA of A and B.
   //  AxC: The ancestor of A that is sibling to an ancestor of C.
   console.log(newick +
-    "\t # A:" + chooseTarget("A", newick).replace(' ', '_') +
-    " B:" + chooseTarget("B", newick).replace(' ', '_') +
+    "\t # A:" + (chooseTarget("A", newick) || "undefined").replace(' ', '_') +
+    " B:" + (chooseTarget("B", newick) || "undefined").replace(' ', '_') +
     " C:" + (chooseTarget("C", newick) || "undefined").replace(' ', '_') +
-    " AB:" + chooseABTarget(newick).replace(' ', '_') +
+    " AB:" + (chooseABTarget(newick) || "undefined").replace(' ', '_') +
     " AxC:" + (chooseAxCTarget(newick) || "undefined").replace(' ', '_'));
 });
 
