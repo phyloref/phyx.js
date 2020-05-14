@@ -6,8 +6,8 @@ const fs = require('fs');
 const path = require('path');
 
 const jsonld = require('jsonld');
-
 const chai = require('chai');
+const Ajv = require('ajv');
 
 const phyx = require('../src');
 
@@ -54,7 +54,7 @@ describe('PhyxWrapper', function () {
     });
 
     let context;
-    it('should be able to load the current context file (v0.3.0)', function () {
+    it('should be able to load the current context file (docs/context/development)', function () {
       context = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../docs/context/development/phyx.json')));
       expect(context).to.be.an('object');
     });
@@ -74,6 +74,34 @@ describe('PhyxWrapper', function () {
     it('should generate the same n-quads ontology as it generated earlier', function () {
       const expectedBrochu2003nq = fs.readFileSync(nqFilename).toString();
       expect(brochu2003nq).to.be.deep.equal(expectedBrochu2003nq);
+    });
+  });
+
+  describe('Test all example Phyx files', function () {
+    const examples = fs.readdirSync(path.resolve(__dirname, './examples'));
+    const jsonlds = examples.filter(filename => filename.toLowerCase().endsWith('.json'));
+    const ajv = new Ajv();
+    const validator = ajv.compile(
+      JSON.parse(
+        fs.readFileSync(
+          path.resolve(__dirname, '../docs/context/development/schema.json')
+        )
+      )
+    );
+
+    jsonlds.forEach((filename) => {
+      describe(`Example file ${filename}`, function () {
+        it('should validate against our JSON schema', function () {
+          const phyxContent = JSON.parse(
+            fs.readFileSync(
+              path.resolve(__dirname, `./examples/${filename}`)
+            )
+          );
+          const valid = validator(phyxContent);
+          expect(validator.errors).to.deep.equal([]);
+          expect(valid).to.be.true;
+        });
+      });
     });
   });
 });

@@ -3,6 +3,7 @@
     "agent": {
       "type": "object",
       "description": "A person or entity.",
+      "additionalProperties": false,
       "properties": {
         "name": {
           "type": "string",
@@ -31,6 +32,7 @@
     "citation": {
       "type": "object",
       "description": "A citation to a publication.",
+      "additionalProperties": false,
       "properties": {
         "type": {
           "type": "string",
@@ -86,7 +88,7 @@
             "properties": {
               "type": {
                 "type": "string",
-                "description": "The type of identifier (e.g. 'doi')",
+                "description": "The type of identifier (e.g. 'doi')"
               },
               "id": {
                 "type": "string",
@@ -103,7 +105,7 @@
             "properties": {
               "url": {
                 "type": "string",
-                "description": "The URL of this publication.",
+                "description": "The URL of this publication."
               }
             }
           }
@@ -114,12 +116,13 @@
     "taxonomic_unit": {
       "type": "object",
       "description": "A unit of taxonomy, i.e. a taxon, taxon concept or specimen.",
+      "additionalProperties": false,
       "required": [
         "@type"
       ],
       "properties": {
         "@type": {
-          "type": "iri",
+          "type": "string",
           "description": "The type of this taxonomic unit.",
           "enum": [
             "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
@@ -131,9 +134,9 @@
           "description": "The scientific name of this taxon, taxon concept or specimen.",
           "properties": {
             "@type": {
-              "type": "iri",
+              "type": "string",
               "description": "The type of this taxonomic name.",
-              "enum" [
+              "enum": [
                 "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName"
               ]
             },
@@ -168,12 +171,13 @@
     }
   },
 
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "A Phyx file contains digital clade definitions and optionally phylogenies that indicate where they should resolve. See http://phyloref.org/phyx.js for more information.",
   "type": "object",
   "required": [
     "@context"
   ],
+  "additionalProperties": false,
   "properties": {
     "@context": {
       "type": "string",
@@ -191,7 +195,7 @@
         "properties": {
           "label": {
             "type": "string",
-            "description": "The label of this phylogeny."
+            "description": "The label of this phylogeny.",
             "minLength": 1
           },
           "newick": {
@@ -243,7 +247,7 @@
           },
           "definition": {
             "type": "string",
-            "description": "A verbatim, free-text definition of this clade."
+            "description": "A verbatim, free-text definition of this clade.",
             "minLength": 1
           },
           "definitionSource": {
