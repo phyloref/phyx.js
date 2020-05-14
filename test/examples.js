@@ -55,7 +55,7 @@ describe('PhyxWrapper', function () {
 
     let context;
     it('should be able to load the current context file (v0.3.0)', function () {
-      context = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../docs/context/v0.3.0/phyx.json')));
+      context = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../docs/context/development/phyx.json')));
       expect(context).to.be.an('object');
     });
 
