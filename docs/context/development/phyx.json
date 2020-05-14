@@ -6,6 +6,7 @@
 
     "obo": "http://purl.obolibrary.org/obo/",
     "dwc": "http://rs.tdwg.org/dwc/terms/",
+    "tn": "http://rs.tdwg.org/ontology/voc/TaxonName#",
     "testcase": "http://vocab.phyloref.org/phyloref/testcase.owl#",
 
     "pso": "http://purl.org/spar/pso/",
@@ -53,13 +54,13 @@
         "@type": "xsd:string"
     },
 
-    "genus": {
-        "@id": "dwc:genus",
+    "genusPart": {
+        "@id": "tn:genusPart",
         "@type": "xsd:string"
     },
 
     "specificEpithet": {
-        "@id": "dwc:specificEpithet",
+        "@id": "tn:specificEpithet",
         "@type": "xsd:string"
     },
 
