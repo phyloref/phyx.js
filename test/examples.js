@@ -13,6 +13,14 @@ const phyx = require('../src');
 
 const expect = chai.expect;
 
+/*
+ * Constants
+ */
+// If REPLACE_EXISTING is set to true, we replace the existing JSON-LD and N-Quads
+// files rather than comparing them -- not a good way to test, but useful when
+// the output has changed.
+const REPLACE_EXISTING = false;
+
 /**
  * Test whether conversion of Phyx files to an OWL ontology occurs predictably.
  */
@@ -33,7 +41,7 @@ describe('PhyxWrapper', function () {
     it('should be able to convert brochu_2003.json to an OWL Ontology', function () {
       this.timeout(10000);
       brochu2003owl = new phyx.PhyxWrapper(brochu2003).asOWLOntology('http://example.org/brochu_2003.json');
-      // fs.writeFileSync(jsonldFilename, JSON.stringify(brochu2003owl, null, 2));
+      if (REPLACE_EXISTING) fs.writeFileSync(jsonldFilename, JSON.stringify(brochu2003owl, null, 2));
       expect(brochu2003owl).to.be.an('object');
     });
 
@@ -58,7 +66,7 @@ describe('PhyxWrapper', function () {
       brochu2003owl['@context'] = context['@context'];
       return jsonld.toRDF(brochu2003owl, { format: 'application/n-quads' }).then((rdf) => {
         brochu2003nq = rdf;
-        // fs.writeFileSync(nqFilename, brochu2003nq);
+        if (REPLACE_EXISTING) fs.writeFileSync(nqFilename, brochu2003nq);
         expect(brochu2003nq).to.be.a('string');
       });
     });
