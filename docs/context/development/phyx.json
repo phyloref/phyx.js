@@ -3,6 +3,7 @@
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
 
     "obo": "http://purl.obolibrary.org/obo/",
     "dwc": "http://rs.tdwg.org/dwc/terms/",
@@ -13,6 +14,7 @@
     "tvc": "http://www.essepuntato.it/2012/04/tvc/",
     "timeinterval": "http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#",
 
+    "phyloref": "http://ontology.phyloref.org/phyloref.owl#",
     "opentree": "http://purl.org/opentree/nexson#",
 
     "label": {
@@ -74,8 +76,6 @@
         "@type": "@id"
     },
 
-    "phyloref": "http://ontology.phyloref.org/phyloref.owl#",
-
     "parent": {
         "@id": "obo:CDAO_0000179",
         "@type": "@id"
@@ -91,30 +91,33 @@
         "@type": "@id"
     },
 
-    "owl": "http://www.w3.org/2002/07/owl#",
-
     "owl:imports": {
         "@id": "owl:imports",
         "@type": "@id"
     },
 
     "equivalentClass": "owl:equivalentClass",
+
     "intersectionOf": {
         "@id": "owl:intersectionOf",
         "@container": "@list"
     },
+
     "onProperty": {
         "@id": "owl:onProperty",
         "@type": "@id"
     },
+
     "someValuesFrom": {
         "@id": "owl:someValuesFrom",
         "@container": "@set"
     },
+
     "unionOf": {
         "@id": "owl:unionOf",
         "@container": "@list"
     },
+
     "hasValue": {
         "@id": "owl:hasValue",
         "@type": "xsd:string"
