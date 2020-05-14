@@ -133,21 +133,6 @@
         "@type": "@id"
     },
 
-    "phylogenies": {
-        "@id": "testcase:has_phylogeny",
-        "@container": "@set"
-    },
-
-    "phylorefs": {
-        "@id": "testcase:has_phyloreference",
-        "@container": "@set"
-    },
-
-    "malformedPhyloreference": {
-        "@id": "testcase:malformed_phyloreference",
-        "@type": "xsd:string"
-    },
-
     "internalSpecifiers": {
         "@id": "testcase:internal_specifier",
         "@container": "@set"
@@ -184,6 +169,21 @@
     "scientificNameAuthorship": {
       "@id": "dwc:scientificNameAuthorship",
       "@type": "xsd:string"
+    },
+
+    "phylogenies": {
+        "@id": "testcase:has_phylogeny",
+        "@container": "@set"
+    },
+
+    "phylorefs": {
+        "@id": "testcase:has_phyloreference",
+        "@container": "@set"
+    },
+
+    "malformedPhyloreference": {
+        "@id": "testcase:malformed_phyloreference",
+        "@type": "xsd:string"
     }
   }
 }
