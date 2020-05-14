@@ -1,8 +1,40 @@
 {
     "@context": "../../docs/context/v0.3.0/phyx.json",
-    "doi": "10.1146/annurev.earth.31.100901.141308",
-    "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308",
-    "citation": "Brochu (2003) Annual Review of Earth and Planetary Sciences 31:357-397",
+    "source": {
+      "type": "article",
+      "title": "Phylogenetic approaches toward crocodylian history",
+      "authors": [
+        {
+          "name": "Christopher A. Brochu",
+          "alternate": [ "Brochu, Christopher A." ],
+          "firstname": "Christopher",
+          "middlename": "A.",
+          "lastname": "Brochu"
+        }
+      ],
+      "year": 2003,
+      "figure": "1",
+      "identifier": [
+        {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+        }
+      ],
+      "link": [
+        {
+          "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+        }
+      ],
+      "journal": {
+        "name": "Annual Review of Earth and Planetary Sciences",
+        "volume": "31",
+        "pages": "357--397",
+        "identifier": [{
+          "type": "eISSN",
+          "id": "1545-4495"
+        }]
+      }
+    },
     "phylogenies": [
         {
             "newick": "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;",
@@ -258,6 +290,5 @@
             ]
         }
     ],
-    "title": "Phylogenetic Approaches Toward Crocodylian History",
     "defaultNomenclaturalCodeURI": "http://purl.obolibrary.org/obo/NOMEN_0000107"
 }

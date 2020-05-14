@@ -223,6 +223,10 @@
       "description": "Every Phyx file should have a @context, making it a valid JSON-LD file.",
       "minLength": 1
     },
+    "source": {
+      "description": "A citation to the source of this Phyx file.",
+      "$ref": "#/definitions/citation"
+    },
     "defaultNomenclaturalCodeURI": {
       "description": "The default nomenclatural code to use for new phyloreferences in this Phyx file.",
       "enum": [
