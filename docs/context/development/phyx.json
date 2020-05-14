@@ -36,6 +36,26 @@
       "@type": "xsd:string"
     },
 
+    "internalSpecifiers": {
+        "@id": "testcase:internal_specifier",
+        "@container": "@set"
+    },
+
+    "externalSpecifiers": {
+        "@id": "testcase:external_specifier",
+        "@container": "@set"
+    },
+
+    "hasUnmatchedSpecifiers": {
+        "@id": "testcase:has_unmatched_specifier",
+        "@container": "@set"
+    },
+
+    "hasAdditionalClass": {
+        "@id": "testcase:has_additional_class",
+        "@container": "@set"
+    },
+
     "hasName": {
       "@id": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
       "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName"
@@ -131,26 +151,6 @@
     "hasRootNode": {
         "@id": "testcase:has_root_node",
         "@type": "@id"
-    },
-
-    "internalSpecifiers": {
-        "@id": "testcase:internal_specifier",
-        "@container": "@set"
-    },
-
-    "externalSpecifiers": {
-        "@id": "testcase:external_specifier",
-        "@container": "@set"
-    },
-
-    "hasUnmatchedSpecifiers": {
-        "@id": "testcase:has_unmatched_specifier",
-        "@container": "@set"
-    },
-
-    "hasAdditionalClass": {
-        "@id": "testcase:has_additional_class",
-        "@container": "@set"
     },
 
     "newick": {
