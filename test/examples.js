@@ -98,7 +98,7 @@ describe('PhyxWrapper', function () {
             )
           );
           const valid = validator(phyxContent);
-          expect(validator.errors).to.deep.equal([]);
+          expect(validator.errors).to.be.null;
           expect(valid).to.be.true;
         });
       });
