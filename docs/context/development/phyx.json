@@ -14,11 +14,6 @@
 
     "opentree": "http://purl.org/opentree/nexson#",
 
-    "curator": {
-        "@id": "opentree:curatorName",
-        "@type": "xsd:string"
-    },
-
     "label": {
       "@id": "rdfs:label",
       "@type": "xsd:string"
@@ -28,11 +23,6 @@
         "@id": "rdfs:label",
         "@type": "xsd:string",
         "@container": "@set"
-    },
-
-    "scientificNameAuthorship": {
-      "@id": "dwc:scientificNameAuthorship",
-      "@type": "xsd:string"
     },
 
     "namePublishedIn": "dwc:namePublishedIn",
@@ -53,11 +43,6 @@
       "@type": "xsd:string"
     },
 
-    "nameString": {
-      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#nameString",
-      "@type": "xsd:string"
-    },
-
     "nomenclaturalCode": {
       "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
       "@type": "@id"
@@ -67,14 +52,12 @@
         "@id": "dwc:scientificName",
         "@type": "xsd:string"
     },
-    "binomialName": {
-        "@id": "testcase:has_binomial_name",
-        "@type": "xsd:string"
-    },
+
     "genus": {
         "@id": "dwc:genus",
         "@type": "xsd:string"
     },
+
     "specificEpithet": {
         "@id": "dwc:specificEpithet",
         "@type": "xsd:string"
@@ -184,6 +167,19 @@
     "newick": {
         "@id": "phyloref:newick_expression",
         "@type": "xsd:string"
+    },
+
+
+
+
+    "curator": {
+        "@id": "opentree:curatorName",
+        "@type": "xsd:string"
+    },
+
+    "scientificNameAuthorship": {
+      "@id": "dwc:scientificNameAuthorship",
+      "@type": "xsd:string"
     }
   }
 }
