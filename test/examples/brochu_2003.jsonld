@@ -2303,7 +2303,7 @@
   ],
   "defaultNomenclaturalCodeURI": "http://purl.obolibrary.org/obo/NOMEN_0000107",
   "hasTaxonomicUnitMatches": [],
-  "@id": "http://example.org/brochu_2003.json",
+  "@id": "http://example.org/brochu_2003.json#",
   "@type": [
     "testcase:PhyloreferenceTestCase",
     "owl:Ontology"
