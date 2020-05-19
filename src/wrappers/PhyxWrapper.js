@@ -38,8 +38,11 @@ class PhyxWrapper {
    *    3. Insert all matches between taxonomic units in this file.
    *
    * @param {string} [baseURI=""] - The base URI to use when generating this Phyx document.
-   *    This should include a trailing '#' or '/'. Use '' to indicate that relative ids
-   *    should be generated in the produced ontology (e.g. '#phylogeny1').
+   *    This should include a trailing '#' or '/'. Use '' to indicate that relative IDs
+   *    should be generated in the produced ontology (e.g. '#phylogeny1'). Note that if a
+   *    baseURI is provided, then relative IDs already in the Phyx file (identified by an
+   *    initial '#') will be turned into absolute IDs by removing the initial `#` and
+   *    prepending them with the baseURI.
    * @return {Object} This Phyx document as an OWL ontology as a JSON-LD object.
    */
   asOWLOntology(baseURI = '') {
