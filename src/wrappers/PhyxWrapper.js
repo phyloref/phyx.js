@@ -37,31 +37,68 @@ class PhyxWrapper {
    *    2. We have to convert phylogenies into OWL restrictions.
    *    3. Insert all matches between taxonomic units in this file.
    *
-   * @param {string} [baseURI="#"] - The base URI to use when generating this Phyx document.
+   * @param {string} [baseURI=""] - The base URI to use when generating this Phyx document.
+   *    This should include a trailing '#' or '/'. Use '' to indicate that relative IDs
+   *    should be generated in the produced ontology (e.g. '#phylogeny1'). Note that if a
+   *    baseURI is provided, then relative IDs already in the Phyx file (identified by an
+   *    initial '#') will be turned into absolute IDs by removing the initial `#` and
+   *    prepending them with the baseURI.
    * @return {Object} This Phyx document as an OWL ontology as a JSON-LD object.
    */
-  asOWLOntology(baseURI = '#') {
+  asOWLOntology(baseURI = '') {
     const jsonld = cloneDeep(this.phyx);
 
     // Some helper methods for generating base URIs for phylorefs and phylogenies.
     function getBaseURIForPhyloref(index) {
-      return `${baseURI}phyloref${index}`;
+      if (baseURI) return `${baseURI}phyloref${index}`;
+      return `#phyloref${index}`;
     }
 
     function getBaseURIForPhylogeny(index) {
-      return `${baseURI}phylogeny${index}`;
+      if (baseURI) return `${baseURI}phylogeny${index}`;
+      return `#phylogeny${index}`;
     }
 
-    // Convert phyloreferences into an OWL class restriction
     if (has(jsonld, 'phylorefs')) {
+      // We might have phyloref IDs set to relative URIs (e.g. "#phyloref0").
+      // If the baseURI is set to '', that's fine. But if not, we'll add it
+      // to the relative URI to make it absolute. This seems to avoid problems
+      // with some JSON-LD parsers.
+      if (baseURI) {
+        jsonld.phylorefs = jsonld.phylorefs.map((phyloref) => {
+          if ((phyloref['@id'] || '').startsWith('#')) {
+            const modifiedPhyloref = cloneDeep(phyloref);
+            modifiedPhyloref['@id'] = baseURI + phyloref['@id'].substring(1); // Remove the initial '#'.
+            return modifiedPhyloref;
+          }
+          return phyloref;
+        });
+      }
+
+      // Convert phyloreferences into an OWL class restriction
       jsonld.phylorefs = jsonld.phylorefs.map(
         (phyloref, countPhyloref) => new PhylorefWrapper(phyloref)
           .asJSONLD(getBaseURIForPhyloref(countPhyloref))
       );
     }
 
-    // Add descriptions for individual nodes in each phylogeny.
     if (has(jsonld, 'phylogenies')) {
+      // We might have phyloref IDs set to relative URIs (e.g. "#phyloref0").
+      // If the baseURI is set to '', that's fine. But if not, we'll add it
+      // to the relative URI to make it absolute. This seems to avoid problems
+      // with some JSON-LD parsers.
+      if (baseURI) {
+        jsonld.phylogenies = jsonld.phylogenies.map((phylogeny) => {
+          if ((phylogeny['@id'] || '').startsWith('#')) {
+            const modifiedPhylogeny = cloneDeep(phylogeny);
+            modifiedPhylogeny['@id'] = baseURI + phylogeny['@id'].substring(1); // Remove the initial '#'.
+            return modifiedPhylogeny;
+          }
+          return phylogeny;
+        });
+      }
+
+      // Add descriptions for individual nodes in each phylogeny.
       jsonld.phylogenies = jsonld.phylogenies.map(
         (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny)
           .asJSONLD(getBaseURIForPhylogeny(countPhylogeny), this.newickParser)
