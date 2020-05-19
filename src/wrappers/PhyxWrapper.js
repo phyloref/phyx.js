@@ -38,7 +38,8 @@ class PhyxWrapper {
    *    3. Insert all matches between taxonomic units in this file.
    *
    * @param {string} [baseURI=""] - The base URI to use when generating this Phyx document.
-   *    We will add a '#' if needed, so don't add it yourself.
+   *    This should include a trailing '#' or '/'. Use '' to indicate that relative ids
+   *    should be generated in the produced ontology (e.g. '#phylogeny1').
    * @return {Object} This Phyx document as an OWL ontology as a JSON-LD object.
    */
   asOWLOntology(baseURI = '') {
@@ -46,11 +47,13 @@ class PhyxWrapper {
 
     // Some helper methods for generating base URIs for phylorefs and phylogenies.
     function getBaseURIForPhyloref(index) {
-      return `${baseURI}#phyloref${index}`;
+      if (baseURI) return `${baseURI}phyloref${index}`;
+      return `#phyloref${index}`;
     }
 
     function getBaseURIForPhylogeny(index) {
-      return `${baseURI}#phylogeny${index}`;
+      if (baseURI) return `${baseURI}phylogeny${index}`;
+      return `#phylogeny${index}`;
     }
 
     if (has(jsonld, 'phylorefs')) {
@@ -62,7 +65,7 @@ class PhyxWrapper {
         jsonld.phylorefs = jsonld.phylorefs.map((phyloref) => {
           if ((phyloref['@id'] || '').startsWith('#')) {
             const modifiedPhyloref = cloneDeep(phyloref);
-            modifiedPhyloref['@id'] = baseURI + phyloref['@id'];
+            modifiedPhyloref['@id'] = baseURI + phyloref['@id'].substring(1); // Remove the initial '#'.
             return modifiedPhyloref;
           }
           return phyloref;
@@ -85,7 +88,7 @@ class PhyxWrapper {
         jsonld.phylogenies = jsonld.phylogenies.map((phylogeny) => {
           if ((phylogeny['@id'] || '').startsWith('#')) {
             const modifiedPhylogeny = cloneDeep(phylogeny);
-            modifiedPhylogeny['@id'] = baseURI + phylogeny['@id'];
+            modifiedPhylogeny['@id'] = baseURI + phylogeny['@id'].substring(1); // Remove the initial '#'.
             return modifiedPhylogeny;
           }
           return phylogeny;
