@@ -1,0 +1,28 @@
+#NEXUS
+
+BEGIN TAXA; [Treefile saved Wed, 17 June 2020 0:32 AM]
+   DIMENSIONS NTAX=3;
+   TAXLABELS
+      a
+      b
+      c
+      ;
+ENDBLOCK;
+
+BEGIN TREES;
+
+[!
+>All trees settings:
+>  MODEL = LABELED
+>  Trees are rooted
+
+]
+   TRANSLATE
+     1 a,
+     2 b,
+     3 c
+     ;
+   TREE T1 = ((1,2),3);
+   TREE T2 = ((1,3),2);
+   TREE T3 = (1,(2,3));
+ENDBLOCK;
