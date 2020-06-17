@@ -358,7 +358,7 @@ normalizedUniqTrees.forEach((tree, index) => {
   console.log(`Wrapping Phyx for Newick: ${newick}`);
   const jsonld = new phyx.PhyxWrapper(phyx_document).asJSONLD();
 
-  const filename = `./test-all-combinations/n${nodeCount}/tree${index + 1}.jsonld`;
+  const filename = `./all-phylogeny-testing/n${nodeCount}/tree${index + 1}.jsonld`;
   fs.writeFileSync(filename, JSON.stringify(jsonld, null, 4));
 
   // Report on the phylogeny produced and the nodes being matched.
