@@ -12,3 +12,8 @@ trees <- do.call(c, lapply(1:1000, function(x) multi2di(starTree(LETTERS[1:LEAF_
 uniqueTrees <- unique.multiPhylo(trees)
 length(uniqueTrees);
 write.tree(uniqueTrees, paste("all_trees_", LEAF_COUNT, ".txt", sep=""));
+
+coaltrees <- do.call(c, lapply(1:1000, function(x) rtree(LEAF_COUNT)))
+uniqueCoalTrees <- unique.multiPhylo(coaltrees)
+length(uniqueCoalTrees);
+plot(uniqueCoalTrees[3]);
