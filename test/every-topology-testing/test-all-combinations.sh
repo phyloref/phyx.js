@@ -19,7 +19,7 @@ for n in $(seq 2 $MAX_LEAF_NODES); do
     mkdir -p $DIR
 
     echo "Creating phylogenies for n=$n";
-    npm run generate-all-combinations -- -n $n --multifurcating > $DIR/stdout.txt 2> $DIR/stderr.txt
+    npm run generate-every-topology -- -n $n --multifurcating > $DIR/stdout.txt 2> $DIR/stderr.txt
 
     echo "Preparing output directories";
     mkdir -p $DIR/stdout

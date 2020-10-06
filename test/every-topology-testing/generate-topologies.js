@@ -3,15 +3,20 @@
 const assert = require('assert').strict;
 const { uniqWith, isEqual } = require('lodash');
 const fs = require('fs');
+const path = require('path');
+
+const pathToScript = __dirname;
 
 /*
  * In order to test whether we can resolve every possible type of clade,
  * we will generate every possible Phyx file for a given number of input
  * nodes.
  *
- * Synopsis: npm run generate-all-combinations --nodes [number of nodes] --multifurcating
+ * Synopsis: npm run generate-every-topology -- --nodes [number of nodes] --multifurcating
  *
  * If the --multifurcating flag is not used, only binary trees will be generated.
+ *
+ * Running it via `npm run` is recommended, because we need to access the Phyx library from the project root directory.
  */
 
 // Set up command line arguments.
@@ -273,7 +278,7 @@ normalizedUniqTrees.forEach((uniqTree, index) => {
   nexusFile += `  TREE T${index} = ${treeToNewick(uniqTree)};\n`;
 });
 nexusFile += "\nEND TREES;\n";
-const filename = `./all-phylogeny-testing/n${nodeCount}/trees.nex`;
+const filename = path.resolve(pathToScript, `n${nodeCount}`, 'trees.nex');
 fs.writeFileSync(filename, nexusFile);
 
 /*
@@ -380,7 +385,7 @@ normalizedUniqTrees.forEach((tree, index) => {
   console.log(`Wrapping Phyx for Newick: ${newick}`);
   const jsonld = new phyx.PhyxWrapper(phyx_document).asJSONLD();
 
-  const filename = `./all-phylogeny-testing/n${nodeCount}/tree${index + 1}.jsonld`;
+  const filename = path.resolve(pathToScript, `n${nodeCount}`, `tree${index + 1}.jsonld`);
   fs.writeFileSync(filename, JSON.stringify(jsonld, null, 4));
 
   // Report on the phylogeny produced and the nodes being matched.
