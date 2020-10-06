@@ -12,7 +12,7 @@
     "test": "mocha --recursive",
     "docs": "esdoc",
     "resolve": "node bin/resolve.js",
-    "generate-all-phylogenies": "all-phylogeny-testing/generate-tests.js"
+    "generate-every-topology": "test/every-topology-testing/generate-tests.js"
   },
   "repository": {
     "type": "git",
