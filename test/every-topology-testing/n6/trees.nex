@@ -2757,4 +2757,4 @@ BEGIN TREES;
   TREE T2750 = (((A, E), F), ((B, D), C));
   TREE T2751 = (((A, E), F), ((B, C), D));
 
-END TREES;
+END;

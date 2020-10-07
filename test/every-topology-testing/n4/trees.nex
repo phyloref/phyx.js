@@ -31,4 +31,4 @@ BEGIN TREES;
   TREE T24 = ((A, C), (B, D));
   TREE T25 = ((A, D), (B, C));
 
-END TREES;
+END;

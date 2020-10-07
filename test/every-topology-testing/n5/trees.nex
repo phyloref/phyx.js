@@ -241,4 +241,4 @@ BEGIN TREES;
   TREE T234 = (((A, C), B), (D, E));
   TREE T235 = (((A, B), C), (D, E));
 
-END TREES;
+END;

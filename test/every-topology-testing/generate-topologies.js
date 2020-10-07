@@ -15,8 +15,6 @@ const pathToScript = __dirname;
  * Synopsis: npm run generate-every-topology -- --nodes [number of nodes] --multifurcating
  *
  * If the --multifurcating flag is not used, only binary trees will be generated.
- *
- * Running it via `npm run` is recommended, because we need to access the Phyx library from the project root directory.
  */
 
 // Set up command line arguments.
@@ -277,7 +275,7 @@ normalizedUniqTrees.forEach((uniqTree, index) => {
   }
   nexusFile += `  TREE T${index} = ${treeToNewick(uniqTree)};\n`;
 });
-nexusFile += "\nEND TREES;\n";
+nexusFile += "\nEND;\n";
 const filename = path.resolve(pathToScript, `n${nodeCount}`, 'trees.nex');
 fs.writeFileSync(filename, nexusFile);
 
@@ -381,9 +379,9 @@ normalizedUniqTrees.forEach((tree, index) => {
   };
 
   // Convert this Phyx document into a JSON-LD ontology and write it into a file.
-  const phyx = require('../src');
+  const phyx = require('../../src');
   console.log(`Wrapping Phyx for Newick: ${newick}`);
-  const jsonld = new phyx.PhyxWrapper(phyx_document).asJSONLD();
+  const jsonld = new phyx.PhyxWrapper(phyx_document).asOWLOntology();
 
   const filename = path.resolve(pathToScript, `n${nodeCount}`, `tree${index + 1}.jsonld`);
   fs.writeFileSync(filename, JSON.stringify(jsonld, null, 4));

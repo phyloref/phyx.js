@@ -9,4 +9,4 @@ BEGIN TREES;
   TREE T2 = ((A, C), B);
   TREE T3 = ((A, B), C);
 
-END TREES;
+END;

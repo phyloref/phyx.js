@@ -6,4 +6,4 @@ BEGIN TREES;
 
   TREE T0 = (A, B);
 
-END TREES;
+END;
