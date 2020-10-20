@@ -10,7 +10,7 @@ node_js: # Releases from https://github.com/nodejs/Release
 
 before_install:
   - if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
-  - npm clean cache --force
+  - npm cache verify
 
 cache:
   directories:
