@@ -8,7 +8,9 @@ node_js: # Releases from https://github.com/nodejs/Release
   - '12' # Active LTS until April 2020
   - '10' # Active LTS until April 2021
 
-before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
+before_install:
+  - if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
+  - npm clean cache --force
 
 cache:
   directories:
