@@ -4,12 +4,9 @@ language: node_js
 
 node_js: # Releases from https://github.com/nodejs/Release
   - '14' # Current until April 2023
-  - '13' # Current until June 2020
-  - '12' # Active LTS until April 2020
   - '10' # Active LTS until April 2021
 
 before_install:
-  - if [[ `npm -v` != 6* ]]; then npm i -g npm@6; fi
   - npm cache verify
 
 cache:
