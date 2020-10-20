@@ -187,13 +187,21 @@ function resolvePhyx(filename) {
         //  - If we have only internal specifiers, we'll get a 'mrca' with a 'node_id' (as well as
         //    'supported_by' and 'unique_name') and a 'synth_id'.
 
-        if (result.statusCode == 404 || result.statusCode == 400) {
+        if (result.statusCode == 200) {
+          // Document returned successfully!
+        } else if (result.statusCode == 404 || result.statusCode == 400) {
+          // The API returns 400/404 codes when it can't find the MRCA. I think that:
+          //  400 means that one of the OTT IDs is not present on the synthetic tree.
+          //  404 means that the constraints couldn't be met, i.e. you can't exclude those node IDs.
           debug(`   -> Could not find a MRCA: ${result}.`);
           return {
             filename,
             phyloref,
             error: 'no_mrca_found:' + result.statusCode,
           };
+        } else {
+          // Unknown connection error! Bail out.
+          throw new Error(`Could not connect to the Open Tree of Life API: ${result}`)
         }
 
         const body = JSON.parse(result.body);
