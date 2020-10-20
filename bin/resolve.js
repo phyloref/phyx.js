@@ -174,7 +174,7 @@ function resolvePhyx(filename) {
         };
       } else {
         // debug('Request: ', { node_ids: internalOTTids, excluded_node_ids: externalOTTids });
-        const result = retus("https://api.opentreeoflife.org/v3/tree_of_life/mrca ", {
+        const result = retus("https://api.opentreeoflife.org/v3/tree_of_life/mrca", {
           throwHttpErrors: false,
           method: 'post',
           json: { node_ids: internalOTTids.map(id => "ott" + id), excluded_node_ids: externalOTTids.map(id => "ott" + id) },
