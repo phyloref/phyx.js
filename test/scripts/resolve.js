@@ -52,8 +52,6 @@ describe('bin/resolve.js', function () {
       resultObj = JSON.parse(result.stdout);
     }).to.not.throw(SyntaxError);
 
-    console.log(`Result object: ${JSON.stringify(resultObj, null, 2)}`);
-
     expect(lodash.keys(resultObj)).to.have.members([
       'Alligatoridae',
       'Alligatorinae',
@@ -77,6 +75,30 @@ describe('bin/resolve.js', function () {
     });
     expect(resultObj.Diplocynodontinae[0]).to.include({
       error: 'no_mrca_found:400',
+    });
+  });
+  it('should produce a 404 error instead of a 400 error on certain phyloreferences', function () {
+    var resultObj; // eslint-disable-line no-var
+
+    this.timeout(20000); // Take up to 20 seconds to run this.
+
+    const result = child.spawnSync(RESOLVE_JS, [path.resolve(__dirname, '../examples/produces-404-on-otr.json')], {
+      encoding: 'utf-8',
+      stdio: 'pipe',
+    });
+    expect(result.status).to.equal(0);
+    expect(result.stderr).to.be.empty;
+
+    expect(function () {
+      resultObj = JSON.parse(result.stdout);
+    }).to.not.throw(SyntaxError);
+
+    expect(lodash.keys(resultObj)).to.have.members([
+      'Produces404OnOTR',
+    ]);
+
+    expect(resultObj.Produces404OnOTR[0]).to.include({
+      error: 'no_mrca_found:404',
     });
   });
 });
