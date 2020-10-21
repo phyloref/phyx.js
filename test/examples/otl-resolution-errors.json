@@ -79,10 +79,11 @@
                   "hasName": {
                       "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
                       "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
-                      "label": "Testudo graeca",
-                      "nameComplete": "Testudo graeca",
+                      "label": "Testudo graeca graeca",
+                      "nameComplete": "Testudo graeca graeca",
                       "genusPart": "Testudo",
-                      "specificEpithet": "graeca"
+                      "specificEpithet": "graeca",
+                      "subspecificEpithet": "graeca"
                   }
               }
             ],
