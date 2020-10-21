@@ -52,12 +52,15 @@ describe('bin/resolve.js', function () {
       resultObj = JSON.parse(result.stdout);
     }).to.not.throw(SyntaxError);
 
+    console.log(`Result object: ${JSON.stringify(resultObj, null, 2)}`);
+
     expect(lodash.keys(resultObj)).to.have.members([
       'Alligatoridae',
       'Alligatorinae',
       'Caimaninae',
       'Crocodyloidea',
       'Crocodylidae',
+      'Diplocynodontinae',
     ]);
 
     expect(resultObj.Alligatoridae[0].resolved).to.include({
@@ -71,6 +74,9 @@ describe('bin/resolve.js', function () {
     expect(resultObj.Crocodylidae[0].resolved).to.include({
       '@id': 'https://tree.opentreeoflife.org/opentree/argus/opentree12.3@ott1092501',
       label: 'Longirostres',
+    });
+    expect(resultObj.Diplocynodontinae[0]).to.include({
+      error: 'no_mrca_found:400',
     });
   });
 });
