@@ -1,6 +1,51 @@
 {
     "@context": "../../docs/context/v0.3.0/phyx.json",
     "phylorefs": [
+      {
+          "label": "SingleSpecifier",
+          "cladeDefinition": "A phyloreferences that produces a 404 error on the Open Tree of Life. It was adapted from the Regnum definition of 'Sauria' (#114).",
+          "internalSpecifiers": [
+              {
+                  "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                  "hasName": {
+                      "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                      "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                      "label": "Alligator mississippiensis",
+                      "nameComplete": "Alligator mississippiensis",
+                      "genusPart": "Alligator",
+                      "specificEpithet": "mississippiensis"
+                  }
+              }
+          ]
+        },
+        {
+            "label": "TaxonNameNotFound",
+            "cladeDefinition": "A phyloreferences that produces a 404 error on the Open Tree of Life. It was adapted from the Regnum definition of 'Sauria' (#114).",
+            "internalSpecifiers": [
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Alligator mississippiensis",
+                        "nameComplete": "Alligator mississippiensis",
+                        "genusPart": "Alligator",
+                        "specificEpithet": "mississippiensis"
+                    }
+                },
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "label": "Aus bus",
+                        "nameComplete": "Aus bus",
+                        "genusPart": "Aus",
+                        "specificEpithet": "bus"
+                    }
+                }
+            ]
+          },
         {
             "label": "Produces404OnOTR",
             "cladeDefinition": "A phyloreferences that produces a 404 error on the Open Tree of Life. It was adapted from the Regnum definition of 'Sauria' (#114).",

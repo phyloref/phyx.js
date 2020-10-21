@@ -134,6 +134,8 @@ function resolvePhyx(filename) {
 
             if (ottIds.length > 1) debug(`     - Taxon name ${nameComplete} resolved to multiple OTT Ids: ${ottIds.join(', ')}.`)
 
+            if (ottIds.length == 0) return undefined;
+
             const result = {};
             result[nameComplete] = ottIds;
             return result;
@@ -141,14 +143,14 @@ function resolvePhyx(filename) {
         }
       }
 
-      debug(`   - Internal specifiers:`);
       const internalOTTs = wrappedPhyloref.internalSpecifiers.map(specifierToOTLId);
       const internalOTTids = lodash.flattenDeep(internalOTTs.map(ott => lodash.head(lodash.values(ott))));
+      debug(`   - Internal specifiers: ${internalOTTids.join(', ')}`);
       // console.log(internalOTTids);
 
-      debug(`   - External specifiers:`);
       const externalOTTs = wrappedPhyloref.externalSpecifiers.map(specifierToOTLId);
       const externalOTTids = lodash.flattenDeep(externalOTTs.map(ott => lodash.head(lodash.values(ott))));
+      debug(`   - External specifiers: ${externalOTTids.join(', ')}`);
       // console.log(externalOTTids);
 
       if (internalOTTids.filter(x => x === undefined).length > 0) {
@@ -172,6 +174,13 @@ function resolvePhyx(filename) {
           phyloref,
           error: 'no_internal_specifiers',
         };
+      } else if (internalOTTids.length === 1 && externalOTTids.length === 0) {
+          debug('Cannot resolve phyloreference with a single internal specifier, skipping.');
+          return {
+            filename,
+            phyloref,
+            error: 'one_internal_specifier_with_no_external_specifiers',
+          };
       } else {
         // debug('Request: ', { node_ids: internalOTTids, excluded_node_ids: externalOTTids });
         const result = retus("https://api.opentreeoflife.org/v3/tree_of_life/mrca", {
@@ -193,7 +202,7 @@ function resolvePhyx(filename) {
           // The API returns 400/404 codes when it can't find the MRCA. I think that:
           //  400 means that one of the OTT IDs is not present on the synthetic tree.
           //  404 means that the constraints couldn't be met, i.e. you can't exclude those node IDs.
-          debug(`   -> Could not find a MRCA: ${result}.`);
+          debug(`   -> Could not find a MRCA: ${JSON.stringify(result, null, 2)}.`);
           return {
             filename,
             phyloref,

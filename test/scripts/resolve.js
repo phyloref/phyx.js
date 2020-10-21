@@ -77,12 +77,12 @@ describe('bin/resolve.js', function () {
       error: 'no_mrca_found:400',
     });
   });
-  it('should produce a 404 error instead of a 400 error on certain phyloreferences', function () {
+  it('should correctly report errors with certain phyloreferences', function () {
     var resultObj; // eslint-disable-line no-var
 
     this.timeout(20000); // Take up to 20 seconds to run this.
 
-    const result = child.spawnSync(RESOLVE_JS, [path.resolve(__dirname, '../examples/produces-404-on-otr.json')], {
+    const result = child.spawnSync(RESOLVE_JS, [path.resolve(__dirname, '../examples/otl-resolution-errors.json')], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
@@ -94,8 +94,20 @@ describe('bin/resolve.js', function () {
     }).to.not.throw(SyntaxError);
 
     expect(lodash.keys(resultObj)).to.have.members([
+      'SingleSpecifier',
+      'TaxonNameNotFound',
       'Produces404OnOTR',
     ]);
+
+    console.log(JSON.stringify(resultObj, null, 2));
+
+    expect(resultObj.SingleSpecifier[0]).to.include({
+      error: 'one_internal_specifier_with_no_external_specifiers',
+    });
+
+    expect(resultObj.TaxonNameNotFound[0]).to.include({
+      error: 'internal_specifiers_missing',
+    });
 
     expect(resultObj.Produces404OnOTR[0]).to.include({
       error: 'no_mrca_found:404',
