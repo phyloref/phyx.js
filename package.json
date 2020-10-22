@@ -3,11 +3,15 @@
   "version": "0.2.1",
   "description": "Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files",
   "main": "src/index.js",
+  "bin": {
+    "resolve": "bin/resolve.js"
+  },
   "scripts": {
     "lint": "eslint \"src/**/*.js\" \"test/**/*.js\"",
     "pretest": "npm run lint",
     "test": "mocha",
-    "docs": "esdoc"
+    "docs": "esdoc",
+    "resolve": "node bin/resolve.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +32,9 @@
   "dependencies": {
     "lodash": "^4.17.15",
     "moment": "^2.23.0",
-    "newick-js": "^1.1.0"
+    "newick-js": "^1.1.0",
+    "retus": "^1.1.1",
+    "yargs": "^15.3.1"
   },
   "devDependencies": {
     "ajv": "^6.12.2",
