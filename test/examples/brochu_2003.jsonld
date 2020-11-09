@@ -2299,6 +2299,89 @@
           }
         }
       ]
+    },
+    {
+      "label": "Diplocynodontinae",
+      "cladeDefinition": "Diplocynodontinae (Brochu 1999).\n\nDiplocynodon ratelii and all crocodylians closer to it than to Alligator mississippiensis.",
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Diplocynodon ratelii",
+            "nameComplete": "Diplocynodon ratelii",
+            "genusPart": "Diplocynodon",
+            "specificEpithet": "ratelii"
+          }
+        }
+      ],
+      "externalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis",
+            "genusPart": "Alligator",
+            "specificEpithet": "mississippiensis"
+          }
+        }
+      ],
+      "pso:holdsStatusInTime": [
+        {
+          "@type": "http://purl.org/spar/pso/StatusInTime",
+          "pso:withStatus": {
+            "@id": "pso:submitted"
+          },
+          "tvc:atTime": {
+            "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:22.452Z"
+          }
+        }
+      ],
+      "expectedResolution": {
+        "#phylogeny0": {
+          "nodeLabel": "Diplocynodon ratelii"
+        }
+      },
+      "@id": "http://example.org/brochu_2003.json#phyloref5",
+      "@type": "owl:Class",
+      "subClassOf": "phyloref:Phyloreference",
+      "hasAdditionalClass": [],
+      "equivalentClass": [
+        {
+          "@type": "owl:Class",
+          "intersectionOf": [
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "phyloref:includes_TU",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Diplocynodon ratelii"
+                }
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "phyloref:excludes_TU",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Alligator mississippiensis"
+                }
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "defaultNomenclaturalCodeURI": "http://purl.obolibrary.org/obo/NOMEN_0000107",

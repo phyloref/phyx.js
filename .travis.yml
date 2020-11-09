@@ -2,16 +2,13 @@
 
 language: node_js
 
-node_js:
-  - '11' # Current release (according to https://github.com/nodejs/Release)
-  - '10' # Active LTS until April 2020
-  - '8' # Maintenance LTS until December 2019
-  - '6' # Maintenance LTS until April 2019
-
-before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
+node_js: # Releases from https://github.com/nodejs/Release
+  - '14' # Current until April 2023
+  - '12' # Active LTS until April 2022
+  - '10' # Maintenance until April 2021
 
 cache:
   directories:
-    - node_modules
+  - "$HOME/.npm"
 
 sudo: false
