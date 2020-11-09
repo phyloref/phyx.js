@@ -1,5 +1,5 @@
 {
-    "@context": "../../docs/context/v0.3.0/phyx.json",
+    "@context": "https://www.phyloref.org/phyx.js/context/v0.2.0/phyx.json",
     "phylorefs": [
       {
           "label": "SingleSpecifier",
