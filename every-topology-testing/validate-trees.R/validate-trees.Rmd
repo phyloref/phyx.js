@@ -30,14 +30,22 @@ We need a function to identify the differences between two lists of phylogenies.
 
 ```{r}
 subtractPhylogenies <- function (mp1, mp2) {
+  print(paste("mp1 has length", length(mp1)));
+  print(paste("mp2 has length", length(mp2)));
+  
   # Simplest possible algorithm: remove all sequences from mp1 that are present somewhere in mp2.
   # Would be nice if we had a way of hashing mp2, but I don't know of one right now.
-  return(mp1 %>% discard (function (phylogeny1) {
+  # return(mp1 %>% discard (function (phylogeny1) {
+  results = c()
+  for (phylogeny1 in mp1) {
     for (phylogeny2 in mp2) {
-      if (all.equal.phylo(phylogeny1, phylogeny2)) return(TRUE);
+      print(paste("Comparing", phylogeny1, "with", phylogeny2));
+      if (!all.equal.phylo(phylogeny1, phylogeny2)) {
+        print(paste(" - Found discrepency:", phylogeny1, "is not equal to", phylogeny2));
+      }
     }
-    return(FALSE);
-  }))
+  }
+  # }))
 }
 ```
 
@@ -95,7 +103,7 @@ compareToExpected <- function(count, filename) {
 We now run our tests over all the NEXUS files in all the phylogenies.
 
 ```{r}
-for(count in 3:7) {
+for(count in 3:6) {
   nexusFile <- file.path("..", paste("n", count, sep=""), "trees.nex")
   print(nexusFile)
   checkForDuplicates(nexusFile)
