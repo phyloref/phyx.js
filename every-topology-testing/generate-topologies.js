@@ -273,7 +273,7 @@ normalizedUniqTrees.forEach((uniqTree, index) => {
     if (tree.length === 1) return tree[0];
     return `(${tree.map(treeToNewick).join(', ')})`;
   }
-  nexusFile += `  TREE T${index} = ${treeToNewick(uniqTree)};\n`;
+  nexusFile += `  TREE T${index} = [&R] ${treeToNewick(uniqTree)};\n`;
 });
 nexusFile += "\nEND;\n";
 const filename = path.resolve(pathToScript, `n${nodeCount}`, 'trees.nex');
