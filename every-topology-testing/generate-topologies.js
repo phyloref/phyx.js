@@ -379,7 +379,7 @@ normalizedUniqTrees.forEach((tree, index) => {
   };
 
   // Convert this Phyx document into a JSON-LD ontology and write it into a file.
-  const phyx = require('../../src');
+  const phyx = require('../src');
   console.log(`Wrapping Phyx for Newick: ${newick}`);
   const jsonld = new phyx.PhyxWrapper(phyx_document).asOWLOntology();
 
