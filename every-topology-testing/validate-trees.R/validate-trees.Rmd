@@ -107,7 +107,7 @@ for(count in 3:6) {
   nexusFile <- file.path("..", paste("n", count, sep=""), "trees.nex")
   print(nexusFile)
   checkForDuplicates(nexusFile)
-  compareToExpected(count, nexusFile)
+  # compareToExpected(count, nexusFile)
 }
 ```
 
