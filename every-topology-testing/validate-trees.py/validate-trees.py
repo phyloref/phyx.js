@@ -38,20 +38,20 @@ def is_identical(t1, t2):
   return tree_diff(t1, t2) == 0
 
 # Test whether the provided tree is bifurcating.
+# There doesn't appear to be a dendropy method to do this, so
+# we do it by checking whether every node in this tree is
+# either:
+#   (1) A child node, or
+#   (2) Has exactly two children.
 def is_bifurcating(tree):
-  def does_node_have_two_children(node):
-    return (
-      # Is this a leaf node?
-      len(node.child_nodes()) == 0 or
-      # If not, does all of this node's children have
-      # exactly two children or is a leaf node itself?
-      (len(node.child_nodes()) == 2 and
-      filter(does_node_have_two_children, node.child_nodes()))
-    )
+  return len(list(filter(lambda node: (
+    # Is this a leaf node?
+    len(node.child_nodes()) == 0 or
+    # If not, does it have exactly two children?
+    len(node.child_nodes()) == 2
+  ), tree.nodes()))) == len(tree.nodes())
 
-  return len(list(filter(does_node_have_two_children, tree.nodes()))) == len(tree.nodes())
-
-# Validate the provided NEXUS file. This includes:
+# Validate the provided Nexus file. This includes:
 #   - Counting the number of total trees, bifurcating and multifurcating trees
 #     in the Nexus file.
 #   - Comparing every tree to every other tree to ensure that they are not identical.
@@ -62,7 +62,7 @@ def validateNexusFile(nexusFilePath):
   # Load trees.
   trees = dendropy.TreeList.get(path=nexusFilePath, schema="nexus", taxon_namespace=taxa)
 
-  # Load
+  # Count bifurcating and multifurcating trees, count taxa, and report counts.
   bifurcating_trees = list(tree for tree in trees if is_bifurcating(tree))
   multifurcating_trees = list(tree for tree in trees if not is_bifurcating(tree))
   print(f"Loaded {len(trees)} ({len(bifurcating_trees)} bifurcating, {len(multifurcating_trees)} multifurcating) trees from {nexusFilePath} with taxon namespace {taxa} ({len(taxa)} taxa).")
@@ -70,20 +70,31 @@ def validateNexusFile(nexusFilePath):
   # Are all trees unique? If not, which ones are duplicates?
   duplicate_count = 0
   for index1, t1 in enumerate(trees, start=1):
+    # is_identical() can't work unless we calculate bipartitions first.
+    t1.encode_bipartitions()
     for index2, t2 in enumerate(trees, start=1):
-      t1.encode_bipartitions()
       t2.encode_bipartitions()
+
+      # Don't compare a tree to itself.
       if t1 != t2:
         if is_identical(t1, t2):
-          print(f"Duplicate found: {t1} ({index1}) is identical to {t2} ({index2}): {tree_diff(t1, t2)}")
+          print(f"Duplicate found: {t1} ({t1.label}, index {index1}) is identical to {t2} ({t2.label}, index {index2}): {tree_diff(t1, t2)}")
           duplicate_count += 1
         else:
           # print(f"Duplicate not found: {t1} ({index1}) is different from {t2} ({index2}): {tree_diff(t1, t2)}")
           continue
+
   if duplicate_count == 0:
     print(f"No duplicates found in {nexusFilePath}.")
   else:
-    print(f"WARNING: {duplicate_count} duplicates found in {nexusFilePath}.")
+    print(f"WARNING: {duplicate_count} duplicates found in {nexusFilePath}.\n")
 
-for n in range(3, 7):
+# We start by trying to validate 'duplicates.nex',
+# which is based on n4/trees.nex but includes some
+# duplicates.
+validateNexusFile("./duplicates.nex")
+
+# We validate every file from n3 to n6.
+maxN = 6
+for n in range(3, maxN + 1):
   validateNexusFile(f"../n{n}/trees.nex")
