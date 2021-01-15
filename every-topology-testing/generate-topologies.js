@@ -52,29 +52,28 @@ console.log(`Expected bifurcating trees = ${expectedBifurcatingTrees}`);
 
 // I tried to calculate this using the formula in
 // https://academic.oup.com/sysbio/article/27/1/27/1626689, but I didn't get it
-// working correctly. So for now I'm just hardcoding these numbers from
-// https://en.wikipedia.org/wiki/Phylogenetic_tree#Enumerating_trees
-const multifurcatingTreeCounts = [
-  0,
-  0,
+// working correctly. So for now I'm just hardcoding these numbers from table 1
+// of this paper.
+const allTreeCounts = [
   0,
   1,
-  11,
-  131,
-  1807,
-  28813,
-  524897,
-  10791887,
-  247678399,
-]
+  1,
+  4,
+  26,
+  236,
+  2752,
+  39208,
+  660032,
+  12818912,
+  282137824,
+];
 if (nodeCount > 10) {
   throw new Error("We only support multifurcating trees up to n=10");
 }
-const expectedMultifurcatingTrees = multifurcatingTreeCounts[nodeCount];
+const allTrees = allTreeCounts[nodeCount]
+const expectedMultifurcatingTrees = allTrees - expectedBifurcatingTrees;
 console.log(`Expected multifurcating trees = ${expectedMultifurcatingTrees}`);
-
-const expectedTotalTrees = expectedBifurcatingTrees + expectedMultifurcatingTrees
-console.log(`Expected total trees = ${expectedTotalTrees}`);
+console.log(`Expected total trees = ${allTrees}`);
 
 /*
  * Generate bifurcating phylogenies.
