@@ -70,13 +70,13 @@ const allTreeCounts = [
 if (nodeCount > 10) {
   throw new Error("We only support multifurcating trees up to n=10");
 }
-const allTrees = allTreeCounts[nodeCount]
-const expectedMultifurcatingTrees = allTrees - expectedBifurcatingTrees;
+const expectedTotalTrees = allTreeCounts[nodeCount]
+const expectedMultifurcatingTrees = expectedTotalTrees - expectedBifurcatingTrees;
 console.log(`Expected multifurcating trees = ${expectedMultifurcatingTrees}`);
-console.log(`Expected total trees = ${allTrees}`);
+console.log(`Expected total trees = ${expectedTotalTrees}`);
 
 /*
- * Generate bifurcating phylogenies.
+ * Generate bifurcating and multifurcating phylogenies.
  */
 
 // Generate a list of leaf node labels to use. We use characters from 'A' to 'Z'.
@@ -195,7 +195,7 @@ assert.deepEqual(normalizeTree([[2, 1], [[6, 7], 4, [3, 5]]]), [[1, 2], [[3, 5],
 assert.deepEqual(normalizeTree([[4, [5, 3], [7, 6]], [1, 2]]), [[1, 2], [[3, 5], 4, [6, 7]]]);
 
 /*
- * Given a phylogeny, this method will rearrange it into every possible binary
+ * Given a phylogeny, this method will rearrange it into every possible
  * combination. We use selectN to select groups of nodes from 1 to nodeLength,
  * and then call ourselves recursively to find every combination of the two
  * groups provided.
@@ -211,7 +211,7 @@ function generateTrees(nodes) {
     const groups = selectN(i, nodes);
     // We end up generating duplicate phylogenies here; to avoid generating a
     // large number of duplicates, we'll use `uniqWith` to remove duplicates.
-    const bifurcatingTrees = uniqWith(
+    const generatedTrees = uniqWith(
       groups.map(result =>
         // Result is a tuple with $i nodes in $results[0]
         // and the remainder in $results[1]. We call
@@ -233,7 +233,7 @@ function generateTrees(nodes) {
     );
 
     // console.log(`select(${i}, ${JSON.stringify(nodes)}) generated ${JSON.stringify(temp)}.`);
-    results = results.concat(bifurcatingTrees);
+    results = results.concat(generatedTrees);
   }
 
   // console.log(`From ${JSON.stringify(nodes)} generated ${JSON.stringify(results)}.`);
