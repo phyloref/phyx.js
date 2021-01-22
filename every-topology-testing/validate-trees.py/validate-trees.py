@@ -67,6 +67,11 @@ def validateNexusFile(nexusFilePath):
   multifurcating_trees = list(tree for tree in trees if not is_bifurcating(tree))
   print(f"Loaded {len(trees)} ({len(bifurcating_trees)} bifurcating, {len(multifurcating_trees)} multifurcating) trees from {nexusFilePath} with taxon namespace {taxa} ({len(taxa)} taxa).")
 
+  # Make sure that every tree has the same number of leaf nodes.
+  leaf_node_counts = set(len(tree.leaf_nodes()) for tree in trees)
+  if len(leaf_node_counts) != 1 or not (len(taxa) in leaf_node_counts):
+    print(f"Every tree should have the same leaf node count ({len(taxa)}), but instead we have: {leaf_node_counts}\n")
+
   # Are all trees unique? If not, which ones are duplicates?
   duplicate_count = 0
   for index1, t1 in enumerate(trees, start=1):
