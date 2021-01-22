@@ -7,8 +7,8 @@ BEGIN TREES;
   TREE T0 = [&R](A, (B, (C, D)));
   TREE T1 = [&R](((C, D), B), A);   [! Should be identical to T0 ]
   TREE T2 = [&R]((B, (C, D)), A);   [! Should be identical to T0 ]
-  TREE T3 = [&R](A, B, C, D);
-  TREE T4 = [&R](A, ((B, D), C));
+  TREE T3 = [&R](A, B, C);	    [! Should trigger an error as it has too few leaf nodes. ]
+  TREE T4 = [&R](A, ((B, D), C, E)); [! Should trigger an error as it has too many leaf nodes. ]
   TREE T5 = [&R](A, (B, D), C);
   TREE T6 = [&R](A, ((B, C), D));
   TREE T7 = [&R](A, (B, C), D);
