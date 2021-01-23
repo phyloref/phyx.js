@@ -223,7 +223,7 @@
       "description": "Every Phyx file should have a @context, making it a valid JSON-LD file.",
       "minLength": 1
     },
-    "source": {
+    "citation": {
       "description": "A citation to the source of this Phyx file.",
       "$ref": "#/definitions/citation"
     },
