@@ -1,44 +1,5 @@
 {
   "@context": "../../docs/context/v0.3.0/phyx.json",
-  "source": {
-    "type": "article",
-    "title": "Phylogenetic approaches toward crocodylian history",
-    "authors": [
-      {
-        "name": "Christopher A. Brochu",
-        "alternate": [
-          "Brochu, Christopher A."
-        ],
-        "firstname": "Christopher",
-        "middlename": "A.",
-        "lastname": "Brochu"
-      }
-    ],
-    "year": 2003,
-    "figure": "1",
-    "identifier": [
-      {
-        "type": "doi",
-        "id": "10.1146/annurev.earth.31.100901.141308"
-      }
-    ],
-    "link": [
-      {
-        "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
-      }
-    ],
-    "journal": {
-      "name": "Annual Review of Earth and Planetary Sciences",
-      "volume": "31",
-      "pages": "357--397",
-      "identifier": [
-        {
-          "type": "eISSN",
-          "id": "1545-4495"
-        }
-      ]
-    }
-  },
   "phylogenies": [
     {
       "newick": "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;",
@@ -1210,6 +1171,45 @@
     {
       "label": "Alligatoridae",
       "cladeDefinition": "Alligatoridae (Cuvier 1807).\n\nLast common ancestor of Alligator mississippiensis and Caiman crocodilus and all of its descendents.",
+      "definitionSource": {
+        "type": "article",
+        "title": "Phylogenetic approaches toward crocodylian history",
+        "authors": [
+          {
+            "name": "Christopher A. Brochu",
+            "alternate": [
+              "Brochu, Christopher A."
+            ],
+            "firstname": "Christopher",
+            "middlename": "A.",
+            "lastname": "Brochu"
+          }
+        ],
+        "year": 2003,
+        "figure": "1",
+        "identifier": [
+          {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "link": [
+          {
+            "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "journal": {
+          "name": "Annual Review of Earth and Planetary Sciences",
+          "volume": "31",
+          "pages": "357--397",
+          "identifier": [
+            {
+              "type": "eISSN",
+              "id": "1545-4495"
+            }
+          ]
+        }
+      },
       "internalSpecifiers": [
         {
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
@@ -1292,6 +1292,45 @@
     {
       "label": "Alligatorinae",
       "cladeDefinition": "Alligatorinae (Kälin 1940).\n\nAlligator mississippiensis and all crocodylians closer to it than to Caiman crocodilus.",
+      "definitionSource": {
+        "type": "article",
+        "title": "Phylogenetic approaches toward crocodylian history",
+        "authors": [
+          {
+            "name": "Christopher A. Brochu",
+            "alternate": [
+              "Brochu, Christopher A."
+            ],
+            "firstname": "Christopher",
+            "middlename": "A.",
+            "lastname": "Brochu"
+          }
+        ],
+        "year": 2003,
+        "figure": "1",
+        "identifier": [
+          {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "link": [
+          {
+            "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "journal": {
+          "name": "Annual Review of Earth and Planetary Sciences",
+          "volume": "31",
+          "pages": "357--397",
+          "identifier": [
+            {
+              "type": "eISSN",
+              "id": "1545-4495"
+            }
+          ]
+        }
+      },
       "internalSpecifiers": [
         {
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
@@ -1376,6 +1415,45 @@
     {
       "label": "Caimaninae",
       "cladeDefinition": "Caimaninae (Norell 1988).\n\nCaiman crocodilus and all crocodylians closer to it than to Alligator mississippiensis.",
+      "definitionSource": {
+        "type": "article",
+        "title": "Phylogenetic approaches toward crocodylian history",
+        "authors": [
+          {
+            "name": "Christopher A. Brochu",
+            "alternate": [
+              "Brochu, Christopher A."
+            ],
+            "firstname": "Christopher",
+            "middlename": "A.",
+            "lastname": "Brochu"
+          }
+        ],
+        "year": 2003,
+        "figure": "1",
+        "identifier": [
+          {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "link": [
+          {
+            "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "journal": {
+          "name": "Annual Review of Earth and Planetary Sciences",
+          "volume": "31",
+          "pages": "357--397",
+          "identifier": [
+            {
+              "type": "eISSN",
+              "id": "1545-4495"
+            }
+          ]
+        }
+      },
       "internalSpecifiers": [
         {
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
@@ -1695,6 +1773,45 @@
     {
       "label": "Crocodylidae",
       "cladeDefinition": "Crocodylidae (Cuvier 1807). Definition dependent on phylogenetic context.\n\nLast common ancestor of Crocodylus niloticus, Osteolaemus tetraspis, and Tomistoma schlegelii and all of its descendents.",
+      "definitionSource": {
+        "type": "article",
+        "title": "Phylogenetic approaches toward crocodylian history",
+        "authors": [
+          {
+            "name": "Christopher A. Brochu",
+            "alternate": [
+              "Brochu, Christopher A."
+            ],
+            "firstname": "Christopher",
+            "middlename": "A.",
+            "lastname": "Brochu"
+          }
+        ],
+        "year": 2003,
+        "figure": "1",
+        "identifier": [
+          {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "link": [
+          {
+            "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "journal": {
+          "name": "Annual Review of Earth and Planetary Sciences",
+          "volume": "31",
+          "pages": "357--397",
+          "identifier": [
+            {
+              "type": "eISSN",
+              "id": "1545-4495"
+            }
+          ]
+        }
+      },
       "internalSpecifiers": [
         {
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
@@ -2303,6 +2420,45 @@
     {
       "label": "Diplocynodontinae",
       "cladeDefinition": "Diplocynodontinae (Brochu 1999).\n\nDiplocynodon ratelii and all crocodylians closer to it than to Alligator mississippiensis.",
+      "definitionSource": {
+        "type": "article",
+        "title": "Phylogenetic approaches toward crocodylian history",
+        "authors": [
+          {
+            "name": "Christopher A. Brochu",
+            "alternate": [
+              "Brochu, Christopher A."
+            ],
+            "firstname": "Christopher",
+            "middlename": "A.",
+            "lastname": "Brochu"
+          }
+        ],
+        "year": 2003,
+        "figure": "1",
+        "identifier": [
+          {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "link": [
+          {
+            "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "journal": {
+          "name": "Annual Review of Earth and Planetary Sciences",
+          "volume": "31",
+          "pages": "357--397",
+          "identifier": [
+            {
+              "type": "eISSN",
+              "id": "1545-4495"
+            }
+          ]
+        }
+      },
       "internalSpecifiers": [
         {
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
