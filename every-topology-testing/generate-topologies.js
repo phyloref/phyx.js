@@ -406,7 +406,7 @@ BEGIN TREES;
 
 `;
 labeledNewicks.forEach((result, index) => {
-  nexusContent += `  TREE T${result.index} = [&R] ${result.newick}; # Labeled: ${result.summary}; Expected resolution: ${result.labeledNewick}\n`;
+  nexusContent += `  TREE T${result.index} = [&R] ${result.newick}; # Labeled: ${result.labeledNewick}; Expected resolution: ${result.summary}\n`;
 });
 nexusContent += "\nEND;\n";
 const nexusFilename = path.resolve(pathToScript, `n${nodeCount}`, 'trees.nex');
