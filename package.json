@@ -11,7 +11,8 @@
     "pretest": "npm run lint",
     "test": "mocha --recursive",
     "docs": "esdoc",
-    "resolve": "node bin/resolve.js"
+    "resolve": "node bin/resolve.js",
+    "generate-every-topology": "every-topology-testing/generate-topologies.js"
   },
   "repository": {
     "type": "git",
@@ -31,8 +32,8 @@
   "homepage": "https://github.com/phyloref/phyx.js#readme",
   "dependencies": {
     "lodash": "^4.17.20",
-    "moment": "^2.29.1",
-    "newick-js": "^1.1.0",
+    "moment": "^2.27.0",
+    "newick-js": "^1.1.1",
     "retus": "^1.1.1",
     "yargs": "^15.4.1"
   },
@@ -40,14 +41,15 @@
     "ajv": "^6.12.2",
     "chai": "^4.2.0",
     "esdoc": "^1.1.0",
-    "esdoc-node": "^1.0.4",
+    "esdoc-node": "^1.0.5",
     "esdoc-standard-plugin": "^1.0.0",
-    "eslint": "^5.12.0",
-    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-mocha": "^5.2.1",
+    "eslint-plugin-mocha": "^5.3.0",
     "jsonld": "^3.1.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "yargs": "^15.3.1"
   },
   "esdoc": {
     "source": "./src",

@@ -380,7 +380,7 @@ class PhylogenyWrapper {
 
         // Add nodeAsJSONLD to list
         if (has(nodesById, nodeURI)) {
-          throw new Error('Error in programming: duplicate node URI generated');
+          throw new Error(`Error in programming: duplicate node URI generated (${nodeURI})`);
         }
         nodesById[nodeURI] = nodeAsJSONLD;
         nodes.push(nodeAsJSONLD);

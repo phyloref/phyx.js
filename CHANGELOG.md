@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 ## [Unreleased]
 - Fixed a bug in which phyloref and phylogeny `@id` values were being overwritten when generating JSON-LD.
+- Added scripts to generate every possible topology from n=2 to n=6 with expected resolution and to test them with JPhyloRef.
 
 ## [0.2.1] - 2019-08-15
 - Updated all NPM packages to their latest version.
