@@ -159,6 +159,8 @@
         "@type": "xsd:string"
     },
 
+    "source": "http://purl.org/dc/elements/1.1/source",
+
     "curator": {
         "@id": "opentree:curatorName",
         "@type": "xsd:string"
@@ -184,6 +186,8 @@
         "@type": "xsd:string"
     },
 
-    "title": "dct:title"
+    "title": "dct:title",
+
+    "representsTaxonomicUnits": "obo:CDAO_0000187"
   }
 }
