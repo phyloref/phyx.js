@@ -160,7 +160,6 @@
 
     "source": "http://purl.org/dc/elements/1.1/source",
 
-
     "curator": {
         "@id": "opentree:curatorName",
         "@type": "xsd:string"
@@ -184,6 +183,8 @@
     "malformedPhyloreference": {
         "@id": "testcase:malformed_phyloreference",
         "@type": "xsd:string"
-    }
+    },
+
+    "representsTaxonomicUnits": "obo:CDAO_0000187"
   }
 }

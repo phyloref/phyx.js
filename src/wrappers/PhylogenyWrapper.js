@@ -205,9 +205,9 @@ class PhylogenyWrapper {
     }
 
     // If there are explicit taxonomic units in the
-    // cdao:represents_TU property, we need to use those.
-    if (has(additionalNodeProperties, 'cdao:represents_TU')) {
-      return additionalNodeProperties['cdao:represents_TU'];
+    // representsTaxonomicUnits property, we need to use those.
+    if (has(additionalNodeProperties, 'representsTaxonomicUnits')) {
+      return additionalNodeProperties.representsTaxonomicUnits;
     }
 
     // If that doesn't work, we can try to extract scientific names from
@@ -345,10 +345,10 @@ class PhylogenyWrapper {
           }
 
           // Add taxonomic units into the metadata.
-          nodeAsJSONLD['cdao:represents_TU'] = this.getTaxonomicUnitsForNodeLabel(node.name);
+          nodeAsJSONLD.representsTaxonomicUnits = this.getTaxonomicUnitsForNodeLabel(node.name);
 
           // Add it into the @type so we can reason over it.
-          nodeAsJSONLD['cdao:represents_TU'].forEach((tu) => {
+          nodeAsJSONLD.representsTaxonomicUnits.forEach((tu) => {
             const wrappedTUnit = new TaxonomicUnitWrapper(tu);
 
             if (wrappedTUnit) {
