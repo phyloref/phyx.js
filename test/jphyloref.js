@@ -6,7 +6,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const child_process = require('child_process');
+const childProcess = require('child_process');
 
 const Downloader = require('nodejs-file-downloader');
 const chai = require('chai');
@@ -60,7 +60,7 @@ describe('JPhyloRef', function () {
 
           // Start JPhyloRef to test filename.
           const filePath = path.resolve(__dirname, path.join('examples', filename));
-          const child = child_process.spawnSync(
+          const child = childProcess.spawnSync(
             `java`,
             [
               '-jar', JPHYLOREF_PATH,
