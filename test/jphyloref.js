@@ -53,7 +53,7 @@ describe('JPhyloRef', function () {
 
   describe('test example JSON-LD files using JPhyloRef', function () {
     fs.readdirSync(path.resolve(__dirname, 'examples'))
-      .filter(filename => filename.endsWith('.jsonld'))
+      .filter(filename => filename.endsWith('.nq'))
       .forEach(filename => {
         it(`should test ${filename}`, function () {
           this.timeout(20000);
@@ -64,8 +64,7 @@ describe('JPhyloRef', function () {
             `java`,
             [
               '-jar', JPHYLOREF_PATH,
-              'test', filePath,
-              '-j'
+              'test', filePath
             ],
             {
               shell: true
