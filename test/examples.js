@@ -19,7 +19,7 @@ const expect = chai.expect;
 // If REPLACE_EXISTING is set to true, we replace the existing JSON-LD and N-Quads
 // files rather than comparing them -- not a good way to test, but useful when
 // the output has changed.
-const REPLACE_EXISTING = false;
+const REPLACE_EXISTING = true;
 
 /**
  * Test whether conversion of Phyx files to an OWL ontology occurs predictably.
@@ -41,6 +41,7 @@ describe('PhyxWrapper', function () {
     it('should be able to convert brochu_2003.json to an OWL Ontology', function () {
       this.timeout(10000);
       brochu2003owl = new phyx.PhyxWrapper(brochu2003).asOWLOntology('http://example.org/brochu_2003.json#');
+
       if (REPLACE_EXISTING) {
         fs.writeFileSync(
           jsonldFilename,
@@ -57,12 +58,6 @@ describe('PhyxWrapper', function () {
   });
   describe('convert brochu_2003.jsonld to n-quads', function () {
     const nqFilename = path.resolve(__dirname, './examples/correct/brochu_2003.nq');
-
-    let context;
-    it('should be able to load the current context file (docs/context/development)', function () {
-      context = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../docs/context/development/phyx.json')));
-      expect(context).to.be.an('object');
-    });
 
     let brochu2003nq;
     it('should be able to convert brochu_2003.json via JSON-LD to n-quads', function () {
