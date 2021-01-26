@@ -23,24 +23,24 @@ const argv = require('yargs')
  * Get a list of all files in a directory. We will recurse into directories and choose
  * files that meet the criteria in the function `check(filename) => boolean`.
  */
-function getFilesInDir(path, check = (filename => filename.toLowerCase().endsWith(".json"))) {
+function getFilesInDir(filePath, check = (filename => filename.toLowerCase().endsWith(".json"))) {
   // console.debug(`Processing file: ${dir}`)
-  if (!fs.existsSync(path)) return [];
+  if (!fs.existsSync(filePath)) return [];
 
-  const lsync = fs.lstatSync(path);
+  const lsync = fs.lstatSync(filePath);
   if (lsync.isFile()) {
     // If `path` is a file, check if it meets the provided requirement. If so,
     // add it to the list of collected files.
-    if (!check(path)) {
+    if (!check(filePath)) {
       // console.log(`Skipping ${dir}.`)
       return [];
     } else {
-      return [path];
+      return [filePath];
     }
   } else if (lsync.isDirectory()) {
     // If `path` is a directory, recurse into every file in that directory.
-    const files = fs.readdirSync(path);
-    return files.map(file => getFilesInDir(path.join(path, file), check))
+    const files = fs.readdirSync(filePath);
+    return files.map(file => getFilesInDir(path.join(filePath, file), check))
       .reduce((acc, curr) => acc.concat(curr), [])
       .filter(filename => filename);
   } else {
