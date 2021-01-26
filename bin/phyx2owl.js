@@ -10,7 +10,7 @@ const phyx = require('..');
 
 // Read command line arguments.
 const argv = require('yargs')
-  .usage("$0 [files to convert into OWL ontologies]")
+  .usage("$0 [files or directories to convert into OWL ontologies]")
   .describe('max-internal-specifiers', 'The maximum number of internal specifiers (phylorefs with more than this number will be ignored)')
   .default('max-internal-specifiers', 8)
   .describe('max-external-specifiers', 'The maximum number of external specifiers (phylorefs with more than this number will be ignored)')
@@ -19,27 +19,28 @@ const argv = require('yargs')
   .alias('h', 'help')
   .argv
 
-const filenames = argv._;
-
 /*
- * Get a list of all files in a directory. We will recurse into directories and choose files that meet the
- * criteria in the function `check(filename) => boolean`.
+ * Get a list of all files in a directory. We will recurse into directories and choose
+ * files that meet the criteria in the function `check(filename) => boolean`.
  */
-function getFilesInDir(dir, check = (filename => filename.toLowerCase().endsWith(".json"))) {
+function getFilesInDir(path, check = (filename => filename.toLowerCase().endsWith(".json"))) {
   // console.debug(`Processing file: ${dir}`)
-  if (!fs.existsSync(dir)) return [];
+  if (!fs.existsSync(path)) return [];
 
-  const lsync = fs.lstatSync(dir);
+  const lsync = fs.lstatSync(path);
   if (lsync.isFile()) {
-    if (!check(dir)) {
+    // If `path` is a file, check if it meets the provided requirement. If so,
+    // add it to the list of collected files.
+    if (!check(path)) {
       // console.log(`Skipping ${dir}.`)
       return [];
     } else {
-      return [dir];
+      return [path];
     }
   } else if (lsync.isDirectory()) {
-    const files = fs.readdirSync(dir);
-    return files.map(file => getFilesInDir(path.join(dir, file), check))
+    // If `path` is a directory, recurse into every file in that directory.
+    const files = fs.readdirSync(path);
+    return files.map(file => getFilesInDir(path.join(path, file), check))
       .reduce((acc, curr) => acc.concat(curr), [])
       .filter(filename => filename);
   } else {
@@ -47,6 +48,10 @@ function getFilesInDir(dir, check = (filename => filename.toLowerCase().endsWith
     return [];
   }
 }
+
+// Get a list of all the files requested for processing on the command line.
+// At this point, we convert directories into lists of files.
+const filenames = argv._;
 const files = filenames.map(filename => getFilesInDir(filename)).reduce((acc, curr) => acc.concat(curr), []);
 // console.debug(`Files to process: ${files.join(", ")}`);
 
@@ -88,6 +93,7 @@ function convertFileToOWL(filename, argOutputFilename = "") {
     });
     phyxContent.phylorefs = filteredPhylorefs;
 
+    // Convert the Phyx file into JSON-LD.
     const wrappedPhyx = new phyx.PhyxWrapper(phyxContent);
     const owlOntology = wrappedPhyx.asOWLOntology();
     const owlOntologyStr = JSON.stringify(owlOntology, null, 2);
@@ -96,6 +102,7 @@ function convertFileToOWL(filename, argOutputFilename = "") {
       owlOntologyStr
     );
 
+    // Report on whether any phyloreferences were converted.
     if (filteredPhylorefs.length == 0) {
         console.warn(`No phyloreferences in ${filename} were converted to ${outputFilename}, as they were all filtered out.`);
         return false;
@@ -113,6 +120,8 @@ function convertFileToOWL(filename, argOutputFilename = "") {
   }
   return false;
 }
+
+// Count and report all the successes in converting files to OWL.
 const successes = files.map(file => convertFileToOWL(file));
 if(successes.every(x => x)) {
   console.log(`${successes.length} files converted successfully.`);
