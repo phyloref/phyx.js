@@ -1,5 +1,5 @@
 {
-    "@context": "../../docs/context/v0.3.0/phyx.json",
+    "@context": "../../docs/context/development/phyx.json",
     "source": {
       "type": "article",
       "title": "Phylogenetic approaches toward crocodylian history",
