@@ -199,8 +199,8 @@ class PhyxWrapper {
 
             specifierTUs.forEach((specifierTU) => {
               phylogeny.nodes.forEach((node) => {
-                if (!has(node, 'representsTaxonomicUnits')) return;
-                const nodeTUs = node.representsTaxonomicUnits;
+                if (!has(node, 'cdao:represents_TU')) return;
+                const nodeTUs = node['cdao:represents_TU'];
 
                 nodeTUs.forEach((nodeTU) => {
                   const matcher = new TaxonomicUnitMatcher(specifierTU, nodeTU);
