@@ -471,7 +471,8 @@
             ],
             "expectedResolution": {
                 "#phylogeny0": {
-                    "nodeLabel": "Diplocynodon ratelii"
+                    "nodeLabel": "Diplocynodon ratelii",
+                    "description": "Only representative of the Diplocynodontinae clade in this phylogeny."
                 }
             }
         }
