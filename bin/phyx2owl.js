@@ -89,7 +89,7 @@ function convertFileToOWL(filename, argOutputFilename = "") {
     phyxContent.phylorefs = filteredPhylorefs;
 
     const wrappedPhyx = new phyx.PhyxWrapper(phyxContent);
-    const owlOntology = wrappedPhyx.asJSONLD();
+    const owlOntology = wrappedPhyx.asOWLOntology();
     const owlOntologyStr = JSON.stringify(owlOntology, null, 2);
     fs.writeFileSync(
       outputFilename,
