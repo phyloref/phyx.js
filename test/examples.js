@@ -19,7 +19,7 @@ const expect = chai.expect;
 // If REPLACE_EXISTING is set to true, we replace the existing JSON-LD and N-Quads
 // files rather than comparing them -- not a good way to test, but useful when
 // the output has changed.
-const REPLACE_EXISTING = false;
+const REPLACE_EXISTING = true;
 
 /**
  * Test whether conversion of Phyx files to an OWL ontology occurs predictably.
@@ -42,12 +42,6 @@ describe('PhyxWrapper', function () {
       this.timeout(10000);
       brochu2003owl = new phyx.PhyxWrapper(brochu2003).asOWLOntology('http://example.org/brochu_2003.json#');
 
-      // JSON-LD readers don't usually handle relative @context easily, so
-      // instead let's replace the entire @context with the local context file.
-      brochu2003owl['@context'] = JSON.parse(fs.readFileSync(
-        path.resolve(__dirname, path.join('examples', brochu2003owl['@context']))
-      ))['@context'];
-
       if (REPLACE_EXISTING) {
         fs.writeFileSync(
           jsonldFilename,
@@ -68,6 +62,13 @@ describe('PhyxWrapper', function () {
     let brochu2003nq;
     it('should be able to convert brochu_2003.json via JSON-LD to n-quads', function () {
       this.timeout(10000);
+
+      // JSON-LD readers don't usually handle relative @context easily, so
+      // instead let's replace the entire @context with the local context file.
+      brochu2003owl['@context'] = JSON.parse(fs.readFileSync(
+        path.resolve(__dirname, path.join('examples', brochu2003owl['@context']))
+      ))['@context'];
+
       return jsonld.toRDF(brochu2003owl, { format: 'application/n-quads' }).then((rdf) => {
         brochu2003nq = rdf;
         if (REPLACE_EXISTING) fs.writeFileSync(nqFilename, brochu2003nq);
