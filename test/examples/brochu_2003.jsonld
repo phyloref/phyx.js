@@ -402,6 +402,25 @@
                     "@type": "owl:Restriction",
                     "onProperty": "obo:OBI_0000293",
                     "someValuesFrom": {
+                      "@id": "http://example.org/brochu_2003.json#phyloref3"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:OBI_0000312",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@id": "obo:OBI_0302910"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:OBI_0000293",
+                    "someValuesFrom": {
                       "@id": "http://example.org/brochu_2003.json#phyloref4"
                     }
                   }
@@ -732,6 +751,25 @@
                   "hasValue": "Caiman crocodilus"
                 }
               }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:OBI_0000312",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@id": "obo:OBI_0302910"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:OBI_0000293",
+                    "someValuesFrom": {
+                      "@id": "http://example.org/brochu_2003.json#phyloref2"
+                    }
+                  }
+                ]
+              }
             }
           ],
           "labels": [
@@ -774,6 +812,25 @@
                   "hasValue": "Alligator mississippiensis"
                 }
               }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:OBI_0000312",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@id": "obo:OBI_0302910"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:OBI_0000293",
+                    "someValuesFrom": {
+                      "@id": "http://example.org/brochu_2003.json#phyloref1"
+                    }
+                  }
+                ]
+              }
             }
           ],
           "labels": [
@@ -815,6 +872,25 @@
                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
                   "hasValue": "Diplocynodon ratelii"
                 }
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:OBI_0000312",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@id": "obo:OBI_0302910"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:OBI_0000293",
+                    "someValuesFrom": {
+                      "@id": "http://example.org/brochu_2003.json#phyloref5"
+                    }
+                  }
+                ]
               }
             }
           ],
