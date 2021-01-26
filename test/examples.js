@@ -41,7 +41,6 @@ describe('PhyxWrapper', function () {
     it('should be able to convert brochu_2003.json to an OWL Ontology', function () {
       this.timeout(10000);
       brochu2003owl = new phyx.PhyxWrapper(brochu2003).asOWLOntology('http://example.org/brochu_2003.json#');
-
       if (REPLACE_EXISTING) {
         fs.writeFileSync(
           jsonldFilename,
