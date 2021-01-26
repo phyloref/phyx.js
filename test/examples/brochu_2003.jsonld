@@ -1,5 +1,193 @@
 {
-  "@context": "../../docs/context/v0.3.0/phyx.json",
+  "@context": {
+    "@context": {
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "owl": "http://www.w3.org/2002/07/owl#",
+      "obo": "http://purl.obolibrary.org/obo/",
+      "dwc": "http://rs.tdwg.org/dwc/terms/",
+      "tn": "http://rs.tdwg.org/ontology/voc/TaxonName#",
+      "testcase": "http://vocab.phyloref.org/phyloref/testcase.owl#",
+      "pso": "http://purl.org/spar/pso/",
+      "tvc": "http://www.essepuntato.it/2012/04/tvc/",
+      "timeinterval": "http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#",
+      "phyloref": "http://ontology.phyloref.org/phyloref.owl#",
+      "opentree": "http://purl.org/opentree/nexson#",
+      "label": {
+        "@id": "rdfs:label",
+        "@type": "xsd:string"
+      },
+      "labels": {
+        "@id": "rdfs:label",
+        "@type": "xsd:string",
+        "@container": "@set"
+      },
+      "namePublishedIn": "dwc:namePublishedIn",
+      "definitionSource": "obo:IAO_0000119",
+      "definition": {
+        "@id": "obo:IAO_0000115",
+        "@type": "xsd:string"
+      },
+      "internalSpecifiers": {
+        "@id": "testcase:internal_specifier",
+        "@container": "@set"
+      },
+      "externalSpecifiers": {
+        "@id": "testcase:external_specifier",
+        "@container": "@set"
+      },
+      "hasUnmatchedSpecifiers": {
+        "@id": "testcase:has_unmatched_specifier",
+        "@container": "@set"
+      },
+      "hasAdditionalClass": {
+        "@id": "testcase:has_additional_class",
+        "@container": "@set"
+      },
+      "hasName": {
+        "@id": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName"
+      },
+      "nameComplete": {
+        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+        "@type": "xsd:string"
+      },
+      "nomenclaturalCode": {
+        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+        "@type": "@id"
+      },
+      "scientificName": {
+        "@id": "dwc:scientificName",
+        "@type": "xsd:string"
+      },
+      "genusPart": {
+        "@id": "tn:genusPart",
+        "@type": "xsd:string"
+      },
+      "specificEpithet": {
+        "@id": "tn:specificEpithet",
+        "@type": "xsd:string"
+      },
+      "occurrenceID": "dwc:occurrenceID",
+      "catalogNumber": "dwc:catalogNumber",
+      "collectionCode": "dwc:collectionCode",
+      "institutionCode": "dwc:institutionCode",
+      "subClassOf": {
+        "@id": "rdfs:subClassOf",
+        "@type": "@id"
+      },
+      "parent": {
+        "@id": "obo:CDAO_0000179",
+        "@type": "@id"
+      },
+      "children": {
+        "@id": "obo:CDAO_0000149",
+        "@type": "@id"
+      },
+      "siblings": {
+        "@id": "phyloref:has_Sibling",
+        "@type": "@id"
+      },
+      "owl:imports": {
+        "@id": "owl:imports",
+        "@type": "@id"
+      },
+      "equivalentClass": "owl:equivalentClass",
+      "intersectionOf": {
+        "@id": "owl:intersectionOf",
+        "@container": "@list"
+      },
+      "onProperty": {
+        "@id": "owl:onProperty",
+        "@type": "@id"
+      },
+      "someValuesFrom": {
+        "@id": "owl:someValuesFrom",
+        "@container": "@set"
+      },
+      "unionOf": {
+        "@id": "owl:unionOf",
+        "@container": "@list"
+      },
+      "hasValue": {
+        "@id": "owl:hasValue",
+        "@type": "xsd:string"
+      },
+      "nodes": {
+        "@id": "testcase:has_node",
+        "@container": "@set"
+      },
+      "hasRootNode": {
+        "@id": "testcase:has_root_node",
+        "@type": "@id"
+      },
+      "newick": {
+        "@id": "phyloref:newick_expression",
+        "@type": "xsd:string"
+      },
+      "source": "http://purl.org/dc/elements/1.1/source",
+      "curator": {
+        "@id": "opentree:curatorName",
+        "@type": "xsd:string"
+      },
+      "scientificNameAuthorship": {
+        "@id": "dwc:scientificNameAuthorship",
+        "@type": "xsd:string"
+      },
+      "phylogenies": {
+        "@id": "testcase:has_phylogeny",
+        "@container": "@set"
+      },
+      "phylorefs": {
+        "@id": "testcase:has_phyloreference",
+        "@container": "@set"
+      },
+      "malformedPhyloreference": {
+        "@id": "testcase:malformed_phyloreference",
+        "@type": "xsd:string"
+      }
+    }
+  },
+  "source": {
+    "type": "article",
+    "title": "Phylogenetic approaches toward crocodylian history",
+    "authors": [
+      {
+        "name": "Christopher A. Brochu",
+        "alternate": [
+          "Brochu, Christopher A."
+        ],
+        "firstname": "Christopher",
+        "middlename": "A.",
+        "lastname": "Brochu"
+      }
+    ],
+    "year": 2003,
+    "figure": "1",
+    "identifier": [
+      {
+        "type": "doi",
+        "id": "10.1146/annurev.earth.31.100901.141308"
+      }
+    ],
+    "link": [
+      {
+        "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+      }
+    ],
+    "journal": {
+      "name": "Annual Review of Earth and Planetary Sciences",
+      "volume": "31",
+      "pages": "357--397",
+      "identifier": [
+        {
+          "type": "eISSN",
+          "id": "1545-4495"
+        }
+      ]
+    }
+  },
   "phylogenies": [
     {
       "newick": "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;",
