@@ -1325,7 +1325,9 @@
       ],
       "@id": "http://example.org/brochu_2003.json#phyloref0",
       "@type": "owl:Class",
-      "subClassOf": "phyloref:Phyloreference",
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "hasAdditionalClass": [],
       "equivalentClass": [
         {
@@ -1452,7 +1454,9 @@
       },
       "@id": "http://example.org/brochu_2003.json#phyloref1",
       "@type": "owl:Class",
-      "subClassOf": "phyloref:Phyloreference",
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "hasAdditionalClass": [],
       "equivalentClass": [
         {
@@ -1574,7 +1578,9 @@
       },
       "@id": "http://example.org/brochu_2003.json#phyloref2",
       "@type": "owl:Class",
-      "subClassOf": "phyloref:Phyloreference",
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "hasAdditionalClass": [],
       "equivalentClass": [
         {
@@ -1670,12 +1676,14 @@
       },
       "@id": "http://example.org/brochu_2003.json#phyloref3",
       "@type": "owl:Class",
-      "subClassOf": "phyloref:Phyloreference",
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "hasAdditionalClass": [
         {
           "@id": "http://example.org/brochu_2003.json#phyloref3_additional1",
           "@type": "owl:Class",
-          "subClassOf": "phyloref:PhyloreferenceUsingMinimumClade",
+          "label": "(Crocodylus niloticus ~ Alligator mississippiensis)",
           "equivalentClass": [
             {
               "@type": "owl:Class",
@@ -1709,12 +1717,14 @@
               ]
             }
           ],
-          "label": "(Crocodylus niloticus ~ Alligator mississippiensis)"
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMaximumClade"
+          ]
         },
         {
           "@id": "http://example.org/brochu_2003.json#phyloref3_additional2",
           "@type": "owl:Class",
-          "subClassOf": "phyloref:PhyloreferenceUsingMinimumClade",
+          "label": "(Crocodylus niloticus ~ Gavialis gangeticus)",
           "equivalentClass": [
             {
               "@type": "owl:Class",
@@ -1748,7 +1758,9 @@
               ]
             }
           ],
-          "label": "(Crocodylus niloticus ~ Gavialis gangeticus)"
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMaximumClade"
+          ]
         }
       ],
       "equivalentClass": [
@@ -1939,7 +1951,9 @@
       ],
       "@id": "http://example.org/brochu_2003.json#phyloref4",
       "@type": "owl:Class",
-      "subClassOf": "phyloref:Phyloreference",
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "hasAdditionalClass": [],
       "equivalentClass": [
         {
@@ -2580,7 +2594,9 @@
       },
       "@id": "http://example.org/brochu_2003.json#phyloref5",
       "@type": "owl:Class",
-      "subClassOf": "phyloref:Phyloreference",
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "hasAdditionalClass": [],
       "equivalentClass": [
         {
