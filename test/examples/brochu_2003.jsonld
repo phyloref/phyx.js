@@ -1366,14 +1366,14 @@
             }
           },
           "subClassOf": [
-            "phyloref:PhyloreferenceUsingMinimumClade"
+            "phyloref:PhyloreferenceUsingMinimumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref0"
+            }
           ]
         }
       ],
       "subClassOf": [
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref0_additional1"
-        },
         "phyloref:Phyloreference"
       ]
     },
@@ -1462,14 +1462,14 @@
             ]
           },
           "subClassOf": [
-            "phyloref:PhyloreferenceUsingMaximumClade"
+            "phyloref:PhyloreferenceUsingMaximumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref1"
+            }
           ]
         }
       ],
       "subClassOf": [
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref1_additional1"
-        },
         "phyloref:Phyloreference"
       ]
     },
@@ -1557,14 +1557,14 @@
             ]
           },
           "subClassOf": [
-            "phyloref:PhyloreferenceUsingMaximumClade"
+            "phyloref:PhyloreferenceUsingMaximumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref2"
+            }
           ]
         }
       ],
       "subClassOf": [
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref2_additional1"
-        },
         "phyloref:Phyloreference"
       ]
     },
@@ -1737,23 +1737,118 @@
             ]
           },
           "subClassOf": [
-            "phyloref:PhyloreferenceUsingMaximumClade"
+            "phyloref:PhyloreferenceUsingMaximumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref3"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/brochu_2003.json#phyloref3_additional4",
+          "@type": "owl:Class",
+          "label": "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)",
+          "equivalentClass": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@id": "http://example.org/brochu_2003.json#phyloref3_additional1"
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Gavialis gangeticus"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMaximumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref3"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/brochu_2003.json#phyloref3_additional5",
+          "@type": "owl:Class",
+          "label": "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)",
+          "equivalentClass": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@id": "http://example.org/brochu_2003.json#phyloref3_additional2"
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Alligator mississippiensis"
+                  }
+                }
+              }
+            ]
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMaximumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref3"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/brochu_2003.json#phyloref3_additional6",
+          "@type": "owl:Class",
+          "label": "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)",
+          "equivalentClass": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@id": "http://example.org/brochu_2003.json#phyloref3_additional2"
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Alligator mississippiensis"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMaximumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref3"
+            }
           ]
         }
       ],
       "subClassOf": [
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref3_additional3"
-        },
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref3_additional3"
-        },
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref3_additional3"
-        },
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref3_additional3"
-        },
         "phyloref:Phyloreference"
       ]
     },
@@ -1878,38 +1973,590 @@
             }
           },
           "subClassOf": [
-            "phyloref:PhyloreferenceUsingMinimumClade"
+            "phyloref:PhyloreferenceUsingMinimumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref4"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/brochu_2003.json#phyloref4_additional2",
+          "@type": "owl:Class",
+          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "equivalentClass": {
+            "@type": "owl:Restriction",
+            "onProperty": "obo:CDAO_0000149",
+            "someValuesFrom": {
+              "@type": "owl:Class",
+              "intersectionOf": [
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_lineage_to",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "phyloref:includes_TU",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                        "hasValue": "Crocodylus niloticus"
+                      }
+                    }
+                  }
+                },
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "obo:CDAO_0000149",
+                  "someValuesFrom": {
+                    "@type": "owl:Class",
+                    "intersectionOf": [
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:excludes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Tomistoma schlegelii"
+                          }
+                        }
+                      },
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:includes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Osteolaemus tetraspis"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMinimumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref4"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/brochu_2003.json#phyloref4_additional3",
+          "@type": "owl:Class",
+          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "equivalentClass": {
+            "@type": "owl:Restriction",
+            "onProperty": "obo:CDAO_0000149",
+            "someValuesFrom": {
+              "@type": "owl:Class",
+              "intersectionOf": [
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_lineage_to",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "phyloref:includes_TU",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                        "hasValue": "Osteolaemus tetraspis"
+                      }
+                    }
+                  }
+                },
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "obo:CDAO_0000149",
+                  "someValuesFrom": {
+                    "@type": "owl:Class",
+                    "intersectionOf": [
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:excludes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Tomistoma schlegelii"
+                          }
+                        }
+                      },
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:includes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Crocodylus niloticus"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMinimumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref4"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/brochu_2003.json#phyloref4_additional4",
+          "@type": "owl:Class",
+          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "equivalentClass": {
+            "@type": "owl:Restriction",
+            "onProperty": "obo:CDAO_0000149",
+            "someValuesFrom": {
+              "@type": "owl:Class",
+              "intersectionOf": [
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_lineage_to",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:CDAO_0000149",
+                    "someValuesFrom": {
+                      "@type": "owl:Class",
+                      "intersectionOf": [
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "phyloref:excludes_TU",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                            "someValuesFrom": {
+                              "@type": "owl:Restriction",
+                              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                              "hasValue": "Tomistoma schlegelii"
+                            }
+                          }
+                        },
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "phyloref:includes_TU",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                            "someValuesFrom": {
+                              "@type": "owl:Restriction",
+                              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                              "hasValue": "Crocodylus niloticus"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:includes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Osteolaemus tetraspis"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMinimumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref4"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/brochu_2003.json#phyloref4_additional5",
+          "@type": "owl:Class",
+          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "equivalentClass": {
+            "@type": "owl:Restriction",
+            "onProperty": "obo:CDAO_0000149",
+            "someValuesFrom": {
+              "@type": "owl:Class",
+              "intersectionOf": [
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_lineage_to",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "phyloref:includes_TU",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                        "hasValue": "Crocodylus niloticus"
+                      }
+                    }
+                  }
+                },
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "obo:CDAO_0000149",
+                  "someValuesFrom": {
+                    "@type": "owl:Class",
+                    "intersectionOf": [
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:excludes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Osteolaemus tetraspis"
+                          }
+                        }
+                      },
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:includes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Tomistoma schlegelii"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMinimumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref4"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/brochu_2003.json#phyloref4_additional6",
+          "@type": "owl:Class",
+          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "equivalentClass": {
+            "@type": "owl:Restriction",
+            "onProperty": "obo:CDAO_0000149",
+            "someValuesFrom": {
+              "@type": "owl:Class",
+              "intersectionOf": [
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_lineage_to",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "phyloref:includes_TU",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                        "hasValue": "Tomistoma schlegelii"
+                      }
+                    }
+                  }
+                },
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "obo:CDAO_0000149",
+                  "someValuesFrom": {
+                    "@type": "owl:Class",
+                    "intersectionOf": [
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:excludes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Osteolaemus tetraspis"
+                          }
+                        }
+                      },
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:includes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Crocodylus niloticus"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMinimumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref4"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/brochu_2003.json#phyloref4_additional7",
+          "@type": "owl:Class",
+          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "equivalentClass": {
+            "@type": "owl:Restriction",
+            "onProperty": "obo:CDAO_0000149",
+            "someValuesFrom": {
+              "@type": "owl:Class",
+              "intersectionOf": [
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_lineage_to",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:CDAO_0000149",
+                    "someValuesFrom": {
+                      "@type": "owl:Class",
+                      "intersectionOf": [
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "phyloref:excludes_TU",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                            "someValuesFrom": {
+                              "@type": "owl:Restriction",
+                              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                              "hasValue": "Tomistoma schlegelii"
+                            }
+                          }
+                        },
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "phyloref:includes_TU",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                            "someValuesFrom": {
+                              "@type": "owl:Restriction",
+                              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                              "hasValue": "Osteolaemus tetraspis"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:includes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Crocodylus niloticus"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMinimumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref4"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/brochu_2003.json#phyloref4_additional8",
+          "@type": "owl:Class",
+          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "equivalentClass": {
+            "@type": "owl:Restriction",
+            "onProperty": "obo:CDAO_0000149",
+            "someValuesFrom": {
+              "@type": "owl:Class",
+              "intersectionOf": [
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_lineage_to",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "phyloref:includes_TU",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                        "hasValue": "Osteolaemus tetraspis"
+                      }
+                    }
+                  }
+                },
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "obo:CDAO_0000149",
+                  "someValuesFrom": {
+                    "@type": "owl:Class",
+                    "intersectionOf": [
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:excludes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Crocodylus niloticus"
+                          }
+                        }
+                      },
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:includes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Tomistoma schlegelii"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMinimumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref4"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/brochu_2003.json#phyloref4_additional9",
+          "@type": "owl:Class",
+          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "equivalentClass": {
+            "@type": "owl:Restriction",
+            "onProperty": "obo:CDAO_0000149",
+            "someValuesFrom": {
+              "@type": "owl:Class",
+              "intersectionOf": [
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_lineage_to",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "phyloref:includes_TU",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                      "someValuesFrom": {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                        "hasValue": "Tomistoma schlegelii"
+                      }
+                    }
+                  }
+                },
+                {
+                  "@type": "owl:Restriction",
+                  "onProperty": "obo:CDAO_0000149",
+                  "someValuesFrom": {
+                    "@type": "owl:Class",
+                    "intersectionOf": [
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:excludes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Crocodylus niloticus"
+                          }
+                        }
+                      },
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "phyloref:includes_TU",
+                        "someValuesFrom": {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                          "someValuesFrom": {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Osteolaemus tetraspis"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMinimumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref4"
+            }
           ]
         }
       ],
       "subClassOf": [
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional1"
-        },
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional1"
-        },
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional1"
-        },
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional1"
-        },
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional1"
-        },
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional1"
-        },
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional1"
-        },
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional1"
-        },
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional1"
-        },
         "phyloref:Phyloreference"
       ]
     },
@@ -1998,14 +2645,14 @@
             ]
           },
           "subClassOf": [
-            "phyloref:PhyloreferenceUsingMaximumClade"
+            "phyloref:PhyloreferenceUsingMaximumClade",
+            {
+              "@id": "http://example.org/brochu_2003.json#phyloref5"
+            }
           ]
         }
       ],
       "subClassOf": [
-        {
-          "@id": "http://example.org/brochu_2003.json#phyloref5_additional1"
-        },
         "phyloref:Phyloreference"
       ]
     }
