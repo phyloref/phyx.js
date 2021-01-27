@@ -296,7 +296,7 @@ class PhylorefWrapper {
    *   for. We mainly use this to retrieve its '@id'.
    * - internalSpecifiers: The set of internal specifiers for this additional class.
    * - externalSpecifiers: The set of external specifiers for this additional class.
-   * - equivClassFunc: The equivalent class expression for this additional class as a function
+   * - equivClass: The equivalent class expression for this additional class as a function
    *   that returns the expression as a string.
    */
   static createAdditionalClass(jsonld, internalSpecifiers, externalSpecifiers, equivClass) {
@@ -644,10 +644,7 @@ class PhylorefWrapper {
     if (!has(phylorefAsJSONLD, '@id')) phylorefAsJSONLD['@id'] = fallbackIRI;
     phylorefAsJSONLD['@type'] = 'owl:Class';
 
-    // All phyloreferences are subclasses of phyloref:Phyloreference.
-    phylorefAsJSONLD.subClassOf = 'phyloref:Phyloreference';
-
-    // Construct an equivalentClass expression for this phyloreference.
+    // Construct a class expression for this phyloreference.
     const internalSpecifiers = phylorefAsJSONLD.internalSpecifiers || [];
     const externalSpecifiers = phylorefAsJSONLD.externalSpecifiers || [];
 
