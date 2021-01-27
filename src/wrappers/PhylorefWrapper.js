@@ -654,11 +654,6 @@ class PhylorefWrapper {
     PhylorefWrapper.additionalClassesByLabel = {};
     phylorefAsJSONLD.hasAdditionalClass = [];
 
-    // Every phyloreference is a subclass of phyloref:Phyloreference.
-    phylorefAsJSONLD.subClassOf = [
-      'phyloref:Phyloreference'
-    ];
-
     if (internalSpecifiers.length === 0) {
       // We can't handle phyloreferences without at least one internal specifier.
       phylorefAsJSONLD.malformedPhyloreference = 'No internal specifiers provided';
@@ -670,29 +665,50 @@ class PhylorefWrapper {
       //  phyloref:includes_TU some [internal2] and ...
       // To which we can then add the external specifiers.
       if (internalSpecifiers.length === 1) {
-        phylorefAsJSONLD.equivalentClass = PhylorefWrapper.createClassExpressionsForExternals(
+        phylorefAsJSONLD.subClassOf = PhylorefWrapper.createClassExpressionsForExternals(
           phylorefAsJSONLD,
           PhylorefWrapper.getIncludesRestrictionForTU(internalSpecifiers[0]),
           externalSpecifiers,
           []
-        );
+        ).map(classExpr => PhylorefWrapper.createAdditionalClass(
+          phylorefAsJSONLD,
+          internalSpecifiers,
+          externalSpecifiers,
+          classExpr
+        ));
       } else {
         const expressionForInternals = {
           '@type': 'owl:Class',
           intersectionOf: internalSpecifiers.map(PhylorefWrapper.getIncludesRestrictionForTU),
         };
 
-        phylorefAsJSONLD.equivalentClass = PhylorefWrapper.createClassExpressionsForExternals(
+        phylorefAsJSONLD.subClassOf = PhylorefWrapper.createClassExpressionsForExternals(
           phylorefAsJSONLD, expressionForInternals, externalSpecifiers, []
-        );
+        ).map(classExpr => PhylorefWrapper.createAdditionalClass(
+          phylorefAsJSONLD,
+          internalSpecifiers,
+          externalSpecifiers,
+          classExpr
+        ));
       }
     } else {
       // We only have internal specifiers. We therefore need to use the algorithm in
       // PhylorefWrapper.createClassExpressionsForInternals() to create this expression.
-      phylorefAsJSONLD.equivalentClass = PhylorefWrapper.createClassExpressionsForInternals(
+      phylorefAsJSONLD.subClassOf = PhylorefWrapper.createClassExpressionsForInternals(
         phylorefAsJSONLD, internalSpecifiers, []
-      );
+      ).map(classExpr => PhylorefWrapper.createAdditionalClass(
+        phylorefAsJSONLD,
+        internalSpecifiers,
+        externalSpecifiers,
+        classExpr
+      ));
     }
+
+    // Every phyloreference is a subclass of phyloref:Phyloreference.
+    if (!phylorefAsJSONLD.subClassOf) phylorefAsJSONLD.subClassOf = [];
+    if (!Array.isArray(phylorefAsJSONLD.subClassOf))
+      phylorefAsJSONLD.subClassOf = [phylorefAsJSONLD.subClassOf];
+    phylorefAsJSONLD.subClassOf.push('phyloref:Phyloreference');
 
     return phylorefAsJSONLD;
   }
