@@ -298,8 +298,13 @@ class PhylorefWrapper {
    * - externalSpecifiers: The set of external specifiers for this additional class.
    * - equivClass: The equivalent class expression for this additional class as a function
    *   that returns the expression as a string.
+   * - reusePrevious (default: true): If true, we reuse previous expressions with the
+   *   same set of included and excluded specifiers. If false, we always generate a new
+   *   additional class for this expression.
+   * - parentClass: If not undefined, provides a JSON-LD definition of the class to set as the
+   *   parent class of this additional class. We only use the ['@id'].
    */
-  static createAdditionalClass(jsonld, internalSpecifiers, externalSpecifiers, equivClass) {
+  static createAdditionalClass(jsonld, internalSpecifiers, externalSpecifiers, equivClass, reusePrevious = true, parentClass = undefined) {
     if (internalSpecifiers.length === 0) throw new Error('Cannot create additional class without any internal specifiers');
     if (internalSpecifiers.length === 1 && externalSpecifiers.length === 0) throw new Error('Cannot create additional class with a single internal specifiers and no external specifiers');
 
@@ -327,7 +332,7 @@ class PhylorefWrapper {
 
     // TODO We need to replace this with an actual object-based comparison,
     // rather than trusting the labels to tell us everything.
-    if (has(PhylorefWrapper.additionalClassesByLabel, additionalClassLabel)) {
+    if (reusePrevious && has(PhylorefWrapper.additionalClassesByLabel, additionalClassLabel)) {
       // If we see the same label again, return the previously defined additional class.
       return { '@id': PhylorefWrapper.additionalClassesByLabel[additionalClassLabel]['@id'] };
     }
@@ -343,6 +348,10 @@ class PhylorefWrapper {
     additionalClass.equivalentClass = equivClass;
     if (externalSpecifiers.length > 0) additionalClass.subClassOf = ['phyloref:PhyloreferenceUsingMaximumClade'];
     else additionalClass.subClassOf = ['phyloref:PhyloreferenceUsingMinimumClade'];
+
+    if(parentClass) additionalClass.subClassOf.push({
+      '@id': parentClass['@id']
+    });
 
     jsonld.hasAdditionalClass.push(additionalClass);
     PhylorefWrapper.additionalClassesByLabel[additionalClassLabel] = additionalClass;
@@ -646,6 +655,14 @@ class PhylorefWrapper {
     const internalSpecifiers = phylorefAsJSONLD.internalSpecifiers || [];
     const externalSpecifiers = phylorefAsJSONLD.externalSpecifiers || [];
 
+    // In the following section: we ran into a bug (https://github.com/phyloref/phyx.js/issues/57)
+    // that was caused by OWL reasoners deciding that two phylorefs were identical
+    // because they shared an equivalentClass expression. To prevent this from
+    // happening, we now set up each phyloreference as a subclass of every logical
+    // expression that evaluates to it. We use the createAdditionalClass() method
+    // to do that, passing it `false` to ensure that it doesn't just reuse existing
+    // additional classes when doing this.
+
     // We might need to make additional JSON-LD.
     // So we reset our additional class counts and records.
     PhylorefWrapper.additionalClassCount = 0;
@@ -663,16 +680,18 @@ class PhylorefWrapper {
       //  phyloref:includes_TU some [internal2] and ...
       // To which we can then add the external specifiers.
       if (internalSpecifiers.length === 1) {
-        phylorefAsJSONLD.subClassOf = PhylorefWrapper.createClassExpressionsForExternals(
+        PhylorefWrapper.createClassExpressionsForExternals(
           phylorefAsJSONLD,
           PhylorefWrapper.getIncludesRestrictionForTU(internalSpecifiers[0]),
           externalSpecifiers,
           []
-        ).map(classExpr => PhylorefWrapper.createAdditionalClass(
+        ).forEach(classExpr => PhylorefWrapper.createAdditionalClass(
           phylorefAsJSONLD,
           internalSpecifiers,
           externalSpecifiers,
-          classExpr
+          classExpr,
+          false,
+          phylorefAsJSONLD
         ));
       } else {
         const expressionForInternals = {
@@ -680,25 +699,29 @@ class PhylorefWrapper {
           intersectionOf: internalSpecifiers.map(PhylorefWrapper.getIncludesRestrictionForTU),
         };
 
-        phylorefAsJSONLD.subClassOf = PhylorefWrapper.createClassExpressionsForExternals(
+        PhylorefWrapper.createClassExpressionsForExternals(
           phylorefAsJSONLD, expressionForInternals, externalSpecifiers, []
-        ).map(classExpr => PhylorefWrapper.createAdditionalClass(
+        ).forEach(classExpr => PhylorefWrapper.createAdditionalClass(
           phylorefAsJSONLD,
           internalSpecifiers,
           externalSpecifiers,
-          classExpr
+          classExpr,
+          false,
+          phylorefAsJSONLD
         ));
       }
     } else {
       // We only have internal specifiers. We therefore need to use the algorithm in
       // PhylorefWrapper.createClassExpressionsForInternals() to create this expression.
-      phylorefAsJSONLD.subClassOf = PhylorefWrapper.createClassExpressionsForInternals(
+      PhylorefWrapper.createClassExpressionsForInternals(
         phylorefAsJSONLD, internalSpecifiers, []
-      ).map(classExpr => PhylorefWrapper.createAdditionalClass(
+      ).forEach(classExpr => PhylorefWrapper.createAdditionalClass(
         phylorefAsJSONLD,
         internalSpecifiers,
         externalSpecifiers,
-        classExpr
+        classExpr,
+        false,
+        phylorefAsJSONLD
       ));
     }
 
