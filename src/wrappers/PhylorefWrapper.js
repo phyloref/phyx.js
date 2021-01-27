@@ -339,13 +339,14 @@ class PhylorefWrapper {
     // process.stderr.write(`Creating new additionalClass with id: ${additionalClass['@id']}`);
 
     additionalClass['@type'] = 'owl:Class';
-    additionalClass.subClassOf = (
-      externalSpecifiers.length > 0 ? 'phyloref:PhyloreferenceUsingMinimumClade' : 'phyloref:PhyloreferenceUsingMaximumClade'
-    );
-    additionalClass.equivalentClass = equivClass;
     additionalClass.label = additionalClassLabel;
-    jsonld.hasAdditionalClass.push(additionalClass);
+    additionalClass.equivalentClass = equivClass;
+    if(externalSpecifiers.length > 0)
+      additionalClass.subClassOf = ['phyloref:PhyloreferenceUsingMaximumClade'];
+    else
+      additionalClass.subClassOf = ['phyloref:PhyloreferenceUsingMinimumClade'];
 
+    jsonld.hasAdditionalClass.push(additionalClass);
     PhylorefWrapper.additionalClassesByLabel[additionalClassLabel] = additionalClass;
 
     return { '@id': additionalClass['@id'] };
