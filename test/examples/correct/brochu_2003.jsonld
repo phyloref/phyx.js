@@ -1253,6 +1253,9 @@
         "phyloref:Phyloreference"
       ],
       "hasAdditionalClass": [],
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "equivalentClass": [
         {
           "@type": "owl:Restriction",
@@ -1382,6 +1385,9 @@
         "phyloref:Phyloreference"
       ],
       "hasAdditionalClass": [],
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "equivalentClass": [
         {
           "@type": "owl:Class",
@@ -1506,6 +1512,9 @@
         "phyloref:Phyloreference"
       ],
       "hasAdditionalClass": [],
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "equivalentClass": [
         {
           "@type": "owl:Class",
@@ -1686,6 +1695,9 @@
             "phyloref:PhyloreferenceUsingMaximumClade"
           ]
         }
+      ],
+      "subClassOf": [
+        "phyloref:Phyloreference"
       ],
       "equivalentClass": [
         {
@@ -1879,6 +1891,9 @@
         "phyloref:Phyloreference"
       ],
       "hasAdditionalClass": [],
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "equivalentClass": [
         {
           "@type": "owl:Restriction",
@@ -2521,6 +2536,9 @@
         "phyloref:Phyloreference"
       ],
       "hasAdditionalClass": [],
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "equivalentClass": [
         {
           "@type": "owl:Class",

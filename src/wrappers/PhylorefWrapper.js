@@ -654,6 +654,11 @@ class PhylorefWrapper {
     PhylorefWrapper.additionalClassesByLabel = {};
     phylorefAsJSONLD.hasAdditionalClass = [];
 
+    // Every phyloreference is a subclass of phyloref:Phyloreference.
+    phylorefAsJSONLD.subClassOf = [
+      'phyloref:Phyloreference'
+    ];
+
     if (internalSpecifiers.length === 0) {
       // We can't handle phyloreferences without at least one internal specifier.
       phylorefAsJSONLD.malformedPhyloreference = 'No internal specifiers provided';
