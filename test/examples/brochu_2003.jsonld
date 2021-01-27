@@ -1326,6 +1326,9 @@
       "@id": "http://example.org/brochu_2003.json#phyloref0",
       "@type": "owl:Class",
       "hasAdditionalClass": [],
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "equivalentClass": [
         {
           "@type": "owl:Restriction",
@@ -1362,9 +1365,6 @@
             ]
           }
         }
-      ],
-      "subClassOf": [
-        "phyloref:Phyloreference"
       ]
     },
     {
@@ -1416,6 +1416,9 @@
       "@id": "http://example.org/brochu_2003.json#phyloref1",
       "@type": "owl:Class",
       "hasAdditionalClass": [],
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "equivalentClass": [
         {
           "@type": "owl:Class",
@@ -1448,9 +1451,6 @@
             }
           ]
         }
-      ],
-      "subClassOf": [
-        "phyloref:Phyloreference"
       ]
     },
     {
@@ -1501,6 +1501,9 @@
       "@id": "http://example.org/brochu_2003.json#phyloref2",
       "@type": "owl:Class",
       "hasAdditionalClass": [],
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "equivalentClass": [
         {
           "@type": "owl:Class",
@@ -1533,9 +1536,6 @@
             }
           ]
         }
-      ],
-      "subClassOf": [
-        "phyloref:Phyloreference"
       ]
     },
     {
@@ -1682,6 +1682,9 @@
           ]
         }
       ],
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "equivalentClass": [
         {
           "@type": "owl:Class",
@@ -1775,9 +1778,6 @@
             }
           ]
         }
-      ],
-      "subClassOf": [
-        "phyloref:Phyloreference"
       ]
     },
     {
@@ -1835,6 +1835,9 @@
       "@id": "http://example.org/brochu_2003.json#phyloref4",
       "@type": "owl:Class",
       "hasAdditionalClass": [],
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "equivalentClass": [
         {
           "@type": "owl:Restriction",
@@ -2385,9 +2388,6 @@
             ]
           }
         }
-      ],
-      "subClassOf": [
-        "phyloref:Phyloreference"
       ]
     },
     {
@@ -2439,6 +2439,9 @@
       "@id": "http://example.org/brochu_2003.json#phyloref5",
       "@type": "owl:Class",
       "hasAdditionalClass": [],
+      "subClassOf": [
+        "phyloref:Phyloreference"
+      ],
       "equivalentClass": [
         {
           "@type": "owl:Class",
@@ -2471,9 +2474,6 @@
             }
           ]
         }
-      ],
-      "subClassOf": [
-        "phyloref:Phyloreference"
       ]
     }
   ],
