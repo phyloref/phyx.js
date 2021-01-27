@@ -685,6 +685,9 @@ class PhylorefWrapper {
           )
         ).reduce((acc, val) => acc.concat(val), []);
       }
+
+      // All phyloreferences are subclasses of phyloref:Phyloreference.
+      phylorefAsJSONLD.subClassOf = ['phyloref:Phyloreference'];
     }
 
     return phylorefAsJSONLD;

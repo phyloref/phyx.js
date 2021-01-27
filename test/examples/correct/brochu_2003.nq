@@ -264,11 +264,11 @@
 <http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b153 .
 <http://example.org/brochu_2003.json#phyloref3_additional1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref3_additional1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis)" .
-<http://example.org/brochu_2003.json#phyloref3_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref3_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/brochu_2003.json#phyloref3_additional1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b124 .
 <http://example.org/brochu_2003.json#phyloref3_additional2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref3_additional2> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Gavialis gangeticus)" .
-<http://example.org/brochu_2003.json#phyloref3_additional2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref3_additional2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/brochu_2003.json#phyloref3_additional2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b131 .
 <http://example.org/brochu_2003.json#phyloref4> <http://purl.obolibrary.org/obo/IAO_0000119> _:b158 .
 <http://example.org/brochu_2003.json#phyloref4> <http://purl.org/spar/pso/holdsStatusInTime> _:b159 .
