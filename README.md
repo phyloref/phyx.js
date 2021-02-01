@@ -1,13 +1,13 @@
 # phyx.js
 
+[![Build Status](https://github.com/phyloref/phyx.js/workflows/Test%20with%20NPM/badge.svg)](https://github.com/phyloref/phyx.js/actions?query=workflow%3A%22Test+with+NPM%22)
+
 The Phyloreference Exchange (PHYX) format is a JSON representation that can be
 used to store and transfer definitions of [phyloreferences]. This library provides
 classes to help interpret some parts of these files, and for transforming an
 entire Phyx file into a [JSON-LD] representation that can be reasoned over with
 an [OWL 2 DL] reasoner. See the [Phyloreference Curation Tool] or the [Clade Ontology]
 for examples of its usage.
-
-[![Build Status](https://travis-ci.org/phyloref/phyx.js.svg?branch=master)](https://travis-ci.org/phyloref/phyx.js)
 
 ## Funding
 Funded by the US National Science Foundation through collaborative grants [DBI-1458484]
