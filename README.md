@@ -1,6 +1,6 @@
 # phyx.js
 
-[![Build Status](https://github.com/phyloref/phyx.js/workflows/Test%20with%20NPM/badge.svg)](https://github.com/phyloref/phyx.js/actions?query=workflow%3A%22Test+with+NPM%22)
+[![Build Status](https://github.com/phyloref/phyx.js/workflows/Build%20and%20Test/badge.svg)](https://github.com/phyloref/phyx.js/actions?query=workflow%3A%22Build+and+Test%22)
 
 The Phyloreference Exchange (PHYX) format is a JSON representation that can be
 used to store and transfer definitions of [phyloreferences]. This library provides
