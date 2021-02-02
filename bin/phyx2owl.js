@@ -25,7 +25,7 @@ const argv = require('yargs')
  * files that meet the criteria in the function `check(filename) => boolean`.
  */
 function getFilesInDir(filePath, check = (filename => filename.toLowerCase().endsWith(".json"))) {
-  // console.debug(`Processing file: ${dir}`)
+  // console.debug(`Processing file: ${filePath}`)
   if (!fs.existsSync(filePath)) return [];
 
   const lsync = fs.lstatSync(filePath);
@@ -33,7 +33,7 @@ function getFilesInDir(filePath, check = (filename => filename.toLowerCase().end
     // If `path` is a file, check if it meets the provided requirement. If so,
     // add it to the list of collected files.
     if (!check(filePath)) {
-      // console.log(`Skipping ${dir}.`)
+      // console.debug(`Skipping ${filePath}.`)
       return [];
     } else {
       return [filePath];
@@ -45,7 +45,7 @@ function getFilesInDir(filePath, check = (filename => filename.toLowerCase().end
       .reduce((acc, curr) => acc.concat(curr), [])
       .filter(filename => filename);
   } else {
-    // console.debug(`${dir} is neither a file nor a directory; skipping.`);
+    // console.debug(`${filePath} is neither a file nor a directory; skipping.`);
     return [];
   }
 }
