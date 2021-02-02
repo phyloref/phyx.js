@@ -52,8 +52,18 @@ function getFilesInDir(filePath, check = (filename => filename.toLowerCase().end
 // Get a list of all the files requested for processing on the command line.
 // At this point, we convert directories into lists of files.
 const filenames = argv._;
+if (filenames.length === 0) {
+  console.error("No input files provided.");
+  process.exit(1);
+}
+
 const files = filenames.map(filename => getFilesInDir(filename)).reduce((acc, curr) => acc.concat(curr), []);
 // console.debug(`Files to process: ${files.join(", ")}`);
+
+if (files.length === 0) {
+  console.error(`Input files do not exist or consist of directories that do not contain JSON files: ${filenames.join(', ')}`);
+  process.exit(1);
+}
 
 /*
  * Convert the input file into the output filename.
