@@ -6,7 +6,6 @@ const child = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
-const lodash = require('lodash');
 const chai = require('chai');
 
 const expect = chai.expect;
@@ -90,7 +89,7 @@ describe(PHYX2OWL_JS, function () {
       .filter(fileName => fileName.toLowerCase().endsWith('.owl'))
       .map(owlFilename => JSON.parse(fs.readFileSync(path.resolve(EXAMPLE_DIR, owlFilename), 'utf8')));
 
-    jsonldInExamples.forEach(jsonld => {
+    jsonldInExamples.forEach((jsonld) => {
       expect(jsonld).to.be.an('object').that.has.any.keys('@context');
       expect(jsonld['@context']).to.not.be.empty;
     });
