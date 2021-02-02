@@ -15,6 +15,7 @@ const argv = require('yargs')
   .default('max-internal-specifiers', 8)
   .describe('max-external-specifiers', 'The maximum number of external specifiers (phylorefs with more than this number will be ignored)')
   .default('max-external-specifiers', 8)
+  .describe('base-uri', 'The base URI to use for the input files')
   .help()
   .alias('h', 'help')
   .argv
@@ -105,7 +106,7 @@ function convertFileToOWL(filename, argOutputFilename = "") {
 
     // Convert the Phyx file into JSON-LD.
     const wrappedPhyx = new phyx.PhyxWrapper(phyxContent);
-    const owlOntology = wrappedPhyx.asOWLOntology();
+    const owlOntology = wrappedPhyx.asOWLOntology(argv.baseUri);
     const owlOntologyStr = JSON.stringify(owlOntology, null, 2);
     fs.writeFileSync(
       outputFilename,
