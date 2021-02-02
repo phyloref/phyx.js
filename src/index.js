@@ -47,6 +47,9 @@ const { PhylorefWrapper } = require('./wrappers/PhylorefWrapper');
 /** A PhyxWrapper for wrapping an entire Phyx document. */
 const { PhyxWrapper } = require('./wrappers/PhyxWrapper');
 
+/** A CitationWrapper for wrapping a citation. */
+const { CitationWrapper } = require('./wrappers/CitationWrapper');
+
 /* Exports */
 module.exports = {
   TaxonConceptWrapper,
@@ -57,6 +60,7 @@ module.exports = {
   PhylogenyWrapper,
   PhylorefWrapper,
   PhyxWrapper,
+  CitationWrapper,
   PhyxCacheManager,
   clearCaches() {
     // Clear the caches in the PhyxCacheManager.
