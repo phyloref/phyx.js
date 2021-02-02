@@ -42,8 +42,7 @@ function getFilesInDir(filePath, check = (filename => filename.toLowerCase().end
     // If `path` is a directory, recurse into every file in that directory.
     const files = fs.readdirSync(filePath);
     return files.map(file => getFilesInDir(path.join(filePath, file), check))
-      .reduce((acc, curr) => acc.concat(curr), [])
-      .filter(filename => filename);
+      .reduce((acc, curr) => acc.concat(curr), []);
   } else {
     // console.debug(`${filePath} is neither a file nor a directory; skipping.`);
     return [];
@@ -58,7 +57,9 @@ if (filenames.length === 0) {
   process.exit(1);
 }
 
-const files = filenames.map(filename => getFilesInDir(filename)).reduce((acc, curr) => acc.concat(curr), []);
+const files = filenames
+  .map(filename => getFilesInDir(filename))
+  .reduce((acc, curr) => acc.concat(curr), []);
 // console.debug(`Files to process: ${files.join(", ")}`);
 
 if (files.length === 0) {
