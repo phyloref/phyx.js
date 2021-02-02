@@ -99,7 +99,7 @@ describe('bin/resolve.js', function () {
       'Produces404OnOTR',
     ]);
 
-    console.log(JSON.stringify(resultObj, null, 2));
+    // console.log(JSON.stringify(resultObj, null, 2));
 
     expect(resultObj.SingleSpecifier[0]).to.include({
       error: 'one_internal_specifier_with_no_external_specifiers',
