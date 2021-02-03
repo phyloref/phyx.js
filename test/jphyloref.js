@@ -67,12 +67,25 @@ describe('JPhyloRef', function () {
               'test', filePath,
             ],
             {
+              encoding: 'utf8',
               shell: true,
             }
           );
           const matches = /Testing complete:(\d+) successes, (\d+) failures, (\d+) failures marked TODO, (\d+) skipped./.exec(child.stderr);
 
+          expect(child.stdout).to.not.match(/^not ok/m);
+
           expect(matches, `Test result line not found in STDERR <${child.stderr}>`).to.have.lengthOf(5);
+
+          const countSuccess = Number(matches[1]);
+          const countFailure = Number(matches[2]);
+          const countTODOs = Number(matches[3]);
+          // const countSkipped = Number(matches[4]);
+
+          expect(countSuccess, 'Expected one or more successes').to.be.greaterThan(0);
+          expect(countFailure, 'Expected zero failures').to.equal(0);
+          expect(countTODOs, 'Expected zero TODOs').to.equal(0);
+
           expect(child.status).to.equal(0);
         });
       });
