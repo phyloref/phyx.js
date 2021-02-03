@@ -152,9 +152,9 @@ class PhyxWrapper {
               // information must be identical to one of the labels of this phylogeny node.
 
               // Figure out which phylogenyId was matched here.
-              const nodeLabel = has(phyloref.expectedResolution, phylogenyId) ?
-                phyloref.expectedResolution[phylogenyId].nodeLabel :
-                phyloref.expectedResolution[makeIDRelative(phylogenyId)].nodeLabel;
+              const nodeLabel = has(phyloref.expectedResolution, phylogenyId)
+                ? phyloref.expectedResolution[phylogenyId].nodeLabel
+                : phyloref.expectedResolution[makeIDRelative(phylogenyId)].nodeLabel;
 
               if (nodeLabel && (node.labels || []).includes(nodeLabel)) {
                 flagNodeExpectsPhyloref = true;

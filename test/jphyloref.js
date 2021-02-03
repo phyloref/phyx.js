@@ -32,8 +32,8 @@ describe('JPhyloRef', function () {
   describe('download JPhyloRef', function () {
     // TODO: we should eventually use SHA to ensure that we have the expected file.
     if (
-      fs.existsSync(JPHYLOREF_PATH) &&
-      fs.statSync(JPHYLOREF_PATH).size > 0
+      fs.existsSync(JPHYLOREF_PATH)
+      && fs.statSync(JPHYLOREF_PATH).size > 0
     ) {
       it('has already been downloaded', function () {
         expect(true);
@@ -45,7 +45,7 @@ describe('JPhyloRef', function () {
         return new Downloader({
           url: JPHYLOREF_URL,
           directory: path.dirname(JPHYLOREF_PATH),
-          fileName: path.basename(JPHYLOREF_PATH)
+          fileName: path.basename(JPHYLOREF_PATH),
         }).download();
       });
     }
@@ -54,20 +54,20 @@ describe('JPhyloRef', function () {
   describe('test example JSON-LD files using JPhyloRef', function () {
     fs.readdirSync(path.resolve(__dirname, 'examples'))
       .filter(filename => filename.endsWith('.nq'))
-      .forEach(filename => {
+      .forEach((filename) => {
         it(`should test ${filename}`, function () {
           this.timeout(20000);
 
           // Start JPhyloRef to test filename.
           const filePath = path.resolve(__dirname, path.join('examples', filename));
           const child = childProcess.spawnSync(
-            `java`,
+            'java',
             [
               '-jar', JPHYLOREF_PATH,
-              'test', filePath
+              'test', filePath,
             ],
             {
-              shell: true
+              shell: true,
             }
           );
           const matches = /Testing complete:(\d+) successes, (\d+) failures, (\d+) failures marked TODO, (\d+) skipped./.exec(child.stderr);
