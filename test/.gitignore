@@ -1,0 +1,2 @@
+# Don't include any JPhyloRefs that we've downloaded.
+jphyloref-*.jar
