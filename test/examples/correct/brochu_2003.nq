@@ -227,43 +227,28 @@
 <http://example.org/brochu_2003.json#phylogeny0_node9> <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylidae" .
 <http://example.org/brochu_2003.json#phyloref0> <http://purl.obolibrary.org/obo/IAO_0000119> _:b75 .
 <http://example.org/brochu_2003.json#phyloref0> <http://purl.org/spar/pso/holdsStatusInTime> _:b76 .
-<http://example.org/brochu_2003.json#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref0_additional1> .
-<http://example.org/brochu_2003.json#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b86 .
-<http://example.org/brochu_2003.json#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b88 .
+<http://example.org/brochu_2003.json#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b78 .
+<http://example.org/brochu_2003.json#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b80 .
 <http://example.org/brochu_2003.json#phyloref0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref0> <http://www.w3.org/2000/01/rdf-schema#label> "Alligatoridae" .
 <http://example.org/brochu_2003.json#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
-<http://example.org/brochu_2003.json#phyloref0_additional1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref0_additional1> <http://www.w3.org/2000/01/rdf-schema#label> "(Alligator mississippiensis & Caiman crocodilus)" .
-<http://example.org/brochu_2003.json#phyloref0_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref0> .
-<http://example.org/brochu_2003.json#phyloref0_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
-<http://example.org/brochu_2003.json#phyloref0_additional1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b78 .
+<http://example.org/brochu_2003.json#phyloref0> <http://www.w3.org/2002/07/owl#equivalentClass> _:b82 .
 <http://example.org/brochu_2003.json#phyloref1> <http://purl.obolibrary.org/obo/IAO_0000119> _:b90 .
 <http://example.org/brochu_2003.json#phyloref1> <http://purl.org/spar/pso/holdsStatusInTime> _:b91 .
 <http://example.org/brochu_2003.json#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b93 .
-<http://example.org/brochu_2003.json#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref1_additional1> .
-<http://example.org/brochu_2003.json#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b102 .
+<http://example.org/brochu_2003.json#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b95 .
 <http://example.org/brochu_2003.json#phyloref1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref1> <http://www.w3.org/2000/01/rdf-schema#label> "Alligatorinae" .
 <http://example.org/brochu_2003.json#phyloref1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
-<http://example.org/brochu_2003.json#phyloref1_additional1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref1_additional1> <http://www.w3.org/2000/01/rdf-schema#label> "(Alligator mississippiensis ~ Caiman crocodilus)" .
-<http://example.org/brochu_2003.json#phyloref1_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref1> .
-<http://example.org/brochu_2003.json#phyloref1_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/brochu_2003.json#phyloref1_additional1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b95 .
+<http://example.org/brochu_2003.json#phyloref1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b97 .
 <http://example.org/brochu_2003.json#phyloref2> <http://purl.obolibrary.org/obo/IAO_0000119> _:b104 .
 <http://example.org/brochu_2003.json#phyloref2> <http://purl.org/spar/pso/holdsStatusInTime> _:b105 .
 <http://example.org/brochu_2003.json#phyloref2> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b107 .
-<http://example.org/brochu_2003.json#phyloref2> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref2_additional1> .
-<http://example.org/brochu_2003.json#phyloref2> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b116 .
+<http://example.org/brochu_2003.json#phyloref2> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b109 .
 <http://example.org/brochu_2003.json#phyloref2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref2> <http://www.w3.org/2000/01/rdf-schema#label> "Caimaninae" .
 <http://example.org/brochu_2003.json#phyloref2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
-<http://example.org/brochu_2003.json#phyloref2_additional1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref2_additional1> <http://www.w3.org/2000/01/rdf-schema#label> "(Caiman crocodilus ~ Alligator mississippiensis)" .
-<http://example.org/brochu_2003.json#phyloref2_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref2> .
-<http://example.org/brochu_2003.json#phyloref2_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/brochu_2003.json#phyloref2_additional1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b109 .
+<http://example.org/brochu_2003.json#phyloref2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b111 .
 <http://example.org/brochu_2003.json#phyloref3> <http://purl.org/spar/pso/holdsStatusInTime> _:b118 .
 <http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b120 .
 <http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b122 .
@@ -370,16 +355,11 @@
 <http://example.org/brochu_2003.json#phyloref5> <http://purl.obolibrary.org/obo/IAO_0000119> _:b293 .
 <http://example.org/brochu_2003.json#phyloref5> <http://purl.org/spar/pso/holdsStatusInTime> _:b294 .
 <http://example.org/brochu_2003.json#phyloref5> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b296 .
-<http://example.org/brochu_2003.json#phyloref5> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref5_additional1> .
-<http://example.org/brochu_2003.json#phyloref5> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b305 .
+<http://example.org/brochu_2003.json#phyloref5> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b298 .
 <http://example.org/brochu_2003.json#phyloref5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref5> <http://www.w3.org/2000/01/rdf-schema#label> "Diplocynodontinae" .
 <http://example.org/brochu_2003.json#phyloref5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
-<http://example.org/brochu_2003.json#phyloref5_additional1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref5_additional1> <http://www.w3.org/2000/01/rdf-schema#label> "(Diplocynodon ratelii ~ Alligator mississippiensis)" .
-<http://example.org/brochu_2003.json#phyloref5_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref5> .
-<http://example.org/brochu_2003.json#phyloref5_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/brochu_2003.json#phyloref5_additional1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b298 .
+<http://example.org/brochu_2003.json#phyloref5> <http://www.w3.org/2002/07/owl#equivalentClass> _:b300 .
 _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b0 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b0 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b1 .
@@ -390,19 +370,17 @@ _:b10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b10 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b10 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b11 .
 _:b100 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b100 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b100 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b101 .
+_:b100 <http://www.w3.org/2002/07/owl#hasValue> "Alligator mississippiensis" .
+_:b100 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b101 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b101 <http://www.w3.org/2002/07/owl#hasValue> "Caiman crocodilus" .
-_:b101 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b102 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b103 .
-_:b102 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b103 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Alligator" .
-_:b103 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Alligator mississippiensis" .
-_:b103 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
-_:b103 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "mississippiensis" .
-_:b103 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b103 <http://www.w3.org/2000/01/rdf-schema#label> "Alligator mississippiensis" .
+_:b101 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b101 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b102 .
+_:b102 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b102 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b102 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b103 .
+_:b103 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b103 <http://www.w3.org/2002/07/owl#hasValue> "Caiman crocodilus" .
+_:b103 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b104 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b105 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b105 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b106 .
@@ -416,37 +394,37 @@ _:b108 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://pur
 _:b108 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "mississippiensis" .
 _:b108 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b108 <http://www.w3.org/2000/01/rdf-schema#label> "Alligator mississippiensis" .
-_:b109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b109 <http://www.w3.org/2002/07/owl#intersectionOf> _:b307 .
+_:b109 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b110 .
+_:b109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b11 <http://www.w3.org/2002/07/owl#hasValue> "Eusuchia" .
 _:b11 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b110 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b110 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
-_:b110 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b111 .
-_:b111 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b111 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b111 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b112 .
+_:b110 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Caiman" .
+_:b110 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Caiman crocodilus" .
+_:b110 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
+_:b110 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "crocodilus" .
+_:b110 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
+_:b110 <http://www.w3.org/2000/01/rdf-schema#label> "Caiman crocodilus" .
+_:b111 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b111 <http://www.w3.org/2002/07/owl#intersectionOf> _:b307 .
 _:b112 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b112 <http://www.w3.org/2002/07/owl#hasValue> "Caiman crocodilus" .
-_:b112 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b112 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b112 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b113 .
 _:b113 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b113 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b113 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b113 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b114 .
 _:b114 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b114 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b114 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b115 .
+_:b114 <http://www.w3.org/2002/07/owl#hasValue> "Caiman crocodilus" .
+_:b114 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b115 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b115 <http://www.w3.org/2002/07/owl#hasValue> "Alligator mississippiensis" .
-_:b115 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b116 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b117 .
-_:b116 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b117 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Caiman" .
-_:b117 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Caiman crocodilus" .
-_:b117 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
-_:b117 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "crocodilus" .
-_:b117 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b117 <http://www.w3.org/2000/01/rdf-schema#label> "Caiman crocodilus" .
+_:b115 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b115 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b116 .
+_:b116 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b116 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b116 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b117 .
+_:b117 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b117 <http://www.w3.org/2002/07/owl#hasValue> "Alligator mississippiensis" .
+_:b117 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b118 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/under-review> .
 _:b118 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b119 .
 _:b118 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/spar/pso/StatusInTime> .
@@ -1027,43 +1005,43 @@ _:b297 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://pur
 _:b297 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "mississippiensis" .
 _:b297 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b297 <http://www.w3.org/2000/01/rdf-schema#label> "Alligator mississippiensis" .
-_:b298 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b298 <http://www.w3.org/2002/07/owl#intersectionOf> _:b359 .
-_:b299 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b299 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
-_:b299 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b300 .
+_:b298 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b299 .
+_:b298 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b299 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Diplocynodon" .
+_:b299 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Diplocynodon ratelii" .
+_:b299 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
+_:b299 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "ratelii" .
+_:b299 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
+_:b299 <http://www.w3.org/2000/01/rdf-schema#label> "Diplocynodon ratelii" .
 _:b3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b3 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b3 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b4 .
 _:b30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b30 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b30 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b31 .
-_:b300 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b300 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b300 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b301 .
+_:b300 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b300 <http://www.w3.org/2002/07/owl#intersectionOf> _:b359 .
 _:b301 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b301 <http://www.w3.org/2002/07/owl#hasValue> "Diplocynodon ratelii" .
-_:b301 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b301 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b301 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b302 .
 _:b302 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b302 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b302 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b302 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b303 .
 _:b303 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b303 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b303 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b304 .
+_:b303 <http://www.w3.org/2002/07/owl#hasValue> "Diplocynodon ratelii" .
+_:b303 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b304 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b304 <http://www.w3.org/2002/07/owl#hasValue> "Alligator mississippiensis" .
-_:b304 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b305 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b306 .
-_:b305 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b306 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Diplocynodon" .
-_:b306 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Diplocynodon ratelii" .
-_:b306 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
-_:b306 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "ratelii" .
-_:b306 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b306 <http://www.w3.org/2000/01/rdf-schema#label> "Diplocynodon ratelii" .
-_:b307 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b110 .
+_:b304 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b304 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b305 .
+_:b305 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b305 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b305 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b306 .
+_:b306 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b306 <http://www.w3.org/2002/07/owl#hasValue> "Alligator mississippiensis" .
+_:b306 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b307 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b112 .
 _:b307 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b308 .
-_:b308 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b113 .
+_:b308 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b115 .
 _:b308 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b309 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b125 .
 _:b309 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b310 .
@@ -1180,24 +1158,24 @@ _:b357 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b281 .
 _:b357 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b358 .
 _:b358 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b284 .
 _:b358 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b359 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b299 .
+_:b359 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b301 .
 _:b359 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b360 .
 _:b36 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b36 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b36 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b37 .
-_:b360 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b302 .
+_:b360 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b304 .
 _:b360 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b361 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.obolibrary.org/obo/OBI_0302910> .
 _:b361 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b362 .
 _:b362 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b44 .
 _:b362 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b363 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b80 .
+_:b363 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b84 .
 _:b363 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b364 .
-_:b364 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b83 .
+_:b364 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b87 .
 _:b364 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b365 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b96 .
+_:b365 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b98 .
 _:b365 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b366 .
-_:b366 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b99 .
+_:b366 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b101 .
 _:b366 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b37 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b37 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
@@ -1329,49 +1307,49 @@ _:b76 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted>
 _:b76 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b77 .
 _:b76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/spar/pso/StatusInTime> .
 _:b77 <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalStartDate> "2018-06-11T22:49:31.471Z" .
-_:b78 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b78 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
-_:b78 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b79 .
-_:b79 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b79 <http://www.w3.org/2002/07/owl#intersectionOf> _:b363 .
+_:b78 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b79 .
+_:b78 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b79 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Caiman" .
+_:b79 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Caiman crocodilus" .
+_:b79 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
+_:b79 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "crocodilus" .
+_:b79 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
+_:b79 <http://www.w3.org/2000/01/rdf-schema#label> "Caiman crocodilus" .
 _:b8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b8 <http://www.w3.org/2002/07/owl#hasValue> "Mesoeucrocodylia" .
 _:b8 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b80 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b80 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b80 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b81 .
-_:b81 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b81 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b81 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b82 .
+_:b80 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b81 .
+_:b80 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b80 <http://www.w3.org/2000/01/rdf-schema#label> "Alligator mississippiensis" .
+_:b81 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Alligator" .
+_:b81 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Alligator mississippiensis" .
+_:b81 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
+_:b81 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "mississippiensis" .
+_:b81 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
+_:b81 <http://www.w3.org/2000/01/rdf-schema#label> "Alligator mississippiensis" .
 _:b82 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b82 <http://www.w3.org/2002/07/owl#hasValue> "Caiman crocodilus" .
-_:b82 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b83 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
-_:b83 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b84 .
+_:b82 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b82 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b83 .
+_:b83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b83 <http://www.w3.org/2002/07/owl#intersectionOf> _:b363 .
 _:b84 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b84 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b84 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b84 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b85 .
 _:b85 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b85 <http://www.w3.org/2002/07/owl#hasValue> "Alligator mississippiensis" .
-_:b85 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b86 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b87 .
-_:b86 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b87 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Caiman" .
-_:b87 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Caiman crocodilus" .
-_:b87 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
-_:b87 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "crocodilus" .
-_:b87 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b87 <http://www.w3.org/2000/01/rdf-schema#label> "Caiman crocodilus" .
-_:b88 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b89 .
-_:b88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b88 <http://www.w3.org/2000/01/rdf-schema#label> "Alligator mississippiensis" .
-_:b89 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Alligator" .
-_:b89 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Alligator mississippiensis" .
-_:b89 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
-_:b89 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "mississippiensis" .
-_:b89 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b89 <http://www.w3.org/2000/01/rdf-schema#label> "Alligator mississippiensis" .
+_:b85 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b85 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b86 .
+_:b86 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b86 <http://www.w3.org/2002/07/owl#hasValue> "Caiman crocodilus" .
+_:b86 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b87 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b87 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b87 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b88 .
+_:b88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b88 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b88 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b89 .
+_:b89 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b89 <http://www.w3.org/2002/07/owl#hasValue> "Alligator mississippiensis" .
+_:b89 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b9 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b9 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b10 .
@@ -1389,17 +1367,19 @@ _:b94 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl
 _:b94 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "crocodilus" .
 _:b94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b94 <http://www.w3.org/2000/01/rdf-schema#label> "Caiman crocodilus" .
-_:b95 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b95 <http://www.w3.org/2002/07/owl#intersectionOf> _:b365 .
-_:b96 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b96 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
-_:b96 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b97 .
-_:b97 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b97 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b97 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b98 .
+_:b95 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b96 .
+_:b95 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b96 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Alligator" .
+_:b96 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Alligator mississippiensis" .
+_:b96 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
+_:b96 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "mississippiensis" .
+_:b96 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
+_:b96 <http://www.w3.org/2000/01/rdf-schema#label> "Alligator mississippiensis" .
+_:b97 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b97 <http://www.w3.org/2002/07/owl#intersectionOf> _:b365 .
 _:b98 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b98 <http://www.w3.org/2002/07/owl#hasValue> "Alligator mississippiensis" .
-_:b98 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b98 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b98 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b99 .
 _:b99 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b99 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b99 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b99 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b100 .
