@@ -4,7 +4,8 @@
   "description": "Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files",
   "main": "src/index.js",
   "bin": {
-    "resolve": "bin/resolve.js"
+    "resolve": "bin/resolve.js",
+    "phyx2owl": "bin/phyx2owl.js"
   },
   "scripts": {
     "lint": "eslint \"src/**/*.js\" \"test/**/*.js\"",
@@ -12,7 +13,8 @@
     "test": "mocha --recursive",
     "docs": "esdoc",
     "resolve": "node bin/resolve.js",
-    "generate-every-topology": "every-topology-testing/generate-topologies.js"
+    "generate-every-topology": "every-topology-testing/generate-topologies.js",
+    "phyx2owl": "node bin/phyx2owl.js"
   },
   "repository": {
     "type": "git",
