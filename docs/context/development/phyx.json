@@ -7,6 +7,7 @@
 
     "obo": "http://purl.obolibrary.org/obo/",
     "dwc": "http://rs.tdwg.org/dwc/terms/",
+    "dct": "http://purl.org/dc/terms/",
     "tn": "http://rs.tdwg.org/ontology/voc/TaxonName#",
     "testcase": "http://vocab.phyloref.org/phyloref/testcase.owl#",
 
@@ -158,9 +159,6 @@
         "@type": "xsd:string"
     },
 
-    "source": "http://purl.org/dc/elements/1.1/source",
-
-
     "curator": {
         "@id": "opentree:curatorName",
         "@type": "xsd:string"
@@ -184,6 +182,8 @@
     "malformedPhyloreference": {
         "@id": "testcase:malformed_phyloreference",
         "@type": "xsd:string"
-    }
+    },
+
+    "title": "dct:title"
   }
 }
