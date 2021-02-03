@@ -40,13 +40,8 @@ describe('PhyxWrapper', function () {
 
     it('should be able to convert brochu_2003.json to an OWL Ontology', function () {
       this.timeout(10000);
-      brochu2003owl = new phyx.PhyxWrapper(brochu2003).asOWLOntology('http://example.org/brochu_2003.json#');
 
-      // JSON-LD readers don't usually handle relative @context easily, so
-      // instead let's replace the entire @context with the local context file.
-      brochu2003owl['@context'] = JSON.parse(fs.readFileSync(
-        path.resolve(__dirname, path.join('examples', brochu2003owl['@context']))
-      ));
+      brochu2003owl = new phyx.PhyxWrapper(brochu2003).asOWLOntology('http://example.org/brochu_2003.json#');
 
       if (REPLACE_EXISTING) {
         fs.writeFileSync(
@@ -68,6 +63,13 @@ describe('PhyxWrapper', function () {
     let brochu2003nq;
     it('should be able to convert brochu_2003.json via JSON-LD to n-quads', function () {
       this.timeout(10000);
+
+      // JSON-LD readers don't usually handle relative @context easily, so
+      // instead let's replace the entire @context with the local context file.
+      brochu2003owl['@context'] = JSON.parse(fs.readFileSync(
+        path.resolve(__dirname, path.join('examples', brochu2003owl['@context']))
+      ));
+
       return jsonld.toRDF(brochu2003owl, { format: 'application/n-quads' }).then((rdf) => {
         brochu2003nq = rdf;
         if (REPLACE_EXISTING) fs.writeFileSync(nqFilename, brochu2003nq);
