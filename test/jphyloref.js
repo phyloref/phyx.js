@@ -59,14 +59,14 @@ describe('JPhyloRef', function () {
   });
 
   describe('test example JSON-LD files using JPhyloRef', function () {
-    fs.readdirSync(relativeToTestFile('examples'))
+    fs.readdirSync(relativeToTestFile('examples/correct'))
       .filter(filename => filename.endsWith('.nq'))
       .forEach((filename) => {
         it(`should test ${filename}`, function () {
           this.timeout(20000);
 
           // Start JPhyloRef to test filename.
-          const filePath = relativeToTestFile(`examples/${filename}`);
+          const filePath = relativeToTestFile(`examples/correct/${filename}`);
           const child = childProcess.spawnSync(
             'java',
             [
