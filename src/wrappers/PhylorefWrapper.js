@@ -341,10 +341,8 @@ class PhylorefWrapper {
     additionalClass['@type'] = 'owl:Class';
     additionalClass.label = additionalClassLabel;
     additionalClass.equivalentClass = equivClass;
-    if(externalSpecifiers.length > 0)
-      additionalClass.subClassOf = ['phyloref:PhyloreferenceUsingMaximumClade'];
-    else
-      additionalClass.subClassOf = ['phyloref:PhyloreferenceUsingMinimumClade'];
+    if (externalSpecifiers.length > 0) additionalClass.subClassOf = ['phyloref:PhyloreferenceUsingMaximumClade'];
+    else additionalClass.subClassOf = ['phyloref:PhyloreferenceUsingMinimumClade'];
 
     jsonld.hasAdditionalClass.push(additionalClass);
     PhylorefWrapper.additionalClassesByLabel[additionalClassLabel] = additionalClass;
