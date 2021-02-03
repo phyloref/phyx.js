@@ -136,7 +136,8 @@ class PhyxWrapper {
             // that this node expects to resolve to this phyloreference.
             let flagNodeExpectsPhyloref = false;
 
-            // console.log(`Testing expected resolution of '${phylorefId}' on '${phylogenyId}' (${makeIDRelative(phylogenyId)}).`);
+            // console.log(`Testing expected resolution of '${phylorefId}' on `
+            // + `'${phylogenyId}' (${makeIDRelative(phylogenyId)}).`);
 
             if (
               has(phyloref, 'expectedResolution')
