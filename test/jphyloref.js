@@ -71,9 +71,8 @@ describe('JPhyloRef', function () {
             }
           );
           const matches = /Testing complete:(\d+) successes, (\d+) failures, (\d+) failures marked TODO, (\d+) skipped./.exec(child.stderr);
-          if (matches === null) console.log(`Test result line not found in STDERR <${child.stderr}>`);
-          console.log(`For ${filename}: ${matches}`);
 
+          expect(matches, `Test result line not found in STDERR <${child.stderr}>`).to.have.lengthOf(5);
           expect(child.status).to.equal(0);
         });
       });

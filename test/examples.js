@@ -19,7 +19,7 @@ const expect = chai.expect;
 // If REPLACE_EXISTING is set to true, we replace the existing JSON-LD and N-Quads
 // files rather than comparing them -- not a good way to test, but useful when
 // the output has changed.
-const REPLACE_EXISTING = true;
+const REPLACE_EXISTING = false;
 
 /**
  * Test whether conversion of Phyx files to an OWL ontology occurs predictably.
