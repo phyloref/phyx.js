@@ -304,7 +304,14 @@ class PhylorefWrapper {
    * - parentClass: If not undefined, provides a JSON-LD definition of the class to set as the
    *   parent class of this additional class. We only use the ['@id'].
    */
-  static createAdditionalClass(jsonld, internalSpecifiers, externalSpecifiers, equivClass, reusePrevious = true, parentClass = undefined) {
+  static createAdditionalClass(
+    jsonld,
+    internalSpecifiers,
+    externalSpecifiers,
+    equivClass,
+    reusePrevious = true,
+    parentClass = undefined
+  ) {
     if (internalSpecifiers.length === 0) throw new Error('Cannot create additional class without any internal specifiers');
     if (internalSpecifiers.length === 1 && externalSpecifiers.length === 0) throw new Error('Cannot create additional class with a single internal specifiers and no external specifiers');
 
@@ -349,9 +356,11 @@ class PhylorefWrapper {
     if (externalSpecifiers.length > 0) additionalClass.subClassOf = ['phyloref:PhyloreferenceUsingMaximumClade'];
     else additionalClass.subClassOf = ['phyloref:PhyloreferenceUsingMinimumClade'];
 
-    if(parentClass) additionalClass.subClassOf.push({
-      '@id': parentClass['@id']
-    });
+    if (parentClass) {
+      additionalClass.subClassOf.push({
+        '@id': parentClass['@id'],
+      });
+    }
 
     jsonld.hasAdditionalClass.push(additionalClass);
     PhylorefWrapper.additionalClassesByLabel[additionalClassLabel] = additionalClass;
