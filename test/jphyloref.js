@@ -27,7 +27,7 @@ function relativeToTestFile(relativePath) {
 }
 
 // The URL from where JPhyloRef should be downloaded.
-const JPHYLOREF_URL = `https://repo.maven.apache.org/maven2/org/phyloref/jphyloref/0.3.1/jphyloref-${JPHYLOREF_VERSION}.jar`;
+const JPHYLOREF_URL = `https://repo.maven.apache.org/maven2/org/phyloref/jphyloref/${JPHYLOREF_VERSION}/jphyloref-${JPHYLOREF_VERSION}.jar`;
 // Where should the JPhyloRef be stored?
 const JPHYLOREF_PATH = relativeToTestFile(`jphyloref-${JPHYLOREF_VERSION}.jar`);
 
