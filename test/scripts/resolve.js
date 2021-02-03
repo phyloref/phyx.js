@@ -41,7 +41,7 @@ describe('bin/resolve.js', function () {
 
     this.timeout(20000); // Take up to 20 seconds to run this.
 
-    const result = child.spawnSync(RESOLVE_JS, [path.resolve(__dirname, '../examples/brochu_2003.json')], {
+    const result = child.spawnSync(RESOLVE_JS, [path.resolve(__dirname, '../examples/correct/brochu_2003.json')], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
@@ -82,7 +82,7 @@ describe('bin/resolve.js', function () {
 
     this.timeout(20000); // Take up to 20 seconds to run this.
 
-    const result = child.spawnSync(RESOLVE_JS, [path.resolve(__dirname, '../examples/otl-resolution-errors.json')], {
+    const result = child.spawnSync(RESOLVE_JS, [path.resolve(__dirname, '../examples/incorrect/otl-resolution-errors.json')], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });

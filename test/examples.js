@@ -28,8 +28,8 @@ const REPLACE_EXISTING = false;
 describe('PhyxWrapper', function () {
   let brochu2003owl;
   describe('convert brochu_2003.json to an OWL ontology', function () {
-    const jsonFilename = path.resolve(__dirname, './examples/brochu_2003.json');
-    const jsonldFilename = path.resolve(__dirname, './examples/brochu_2003.jsonld');
+    const jsonFilename = path.resolve(__dirname, './examples/correct/brochu_2003.json');
+    const jsonldFilename = path.resolve(__dirname, './examples/correct/brochu_2003.jsonld');
 
     let brochu2003;
 
@@ -56,7 +56,7 @@ describe('PhyxWrapper', function () {
     });
   });
   describe('convert brochu_2003.jsonld to n-quads', function () {
-    const nqFilename = path.resolve(__dirname, './examples/brochu_2003.nq');
+    const nqFilename = path.resolve(__dirname, './examples/correct/brochu_2003.nq');
 
     let context;
     it('should be able to load the current context file (docs/context/development)', function () {
@@ -67,8 +67,13 @@ describe('PhyxWrapper', function () {
     let brochu2003nq;
     it('should be able to convert brochu_2003.json via JSON-LD to n-quads', function () {
       this.timeout(10000);
-      // Replace the @context on the fly.
-      brochu2003owl['@context'] = context['@context'];
+
+      // JSON-LD readers don't usually handle relative @context easily, so
+      // instead let's replace the entire @context with the local context file.
+      brochu2003owl['@context'] = JSON.parse(fs.readFileSync(
+        path.resolve(__dirname, path.join('examples', 'correct', brochu2003owl['@context']))
+      ));
+
       return jsonld.toRDF(brochu2003owl, { format: 'application/n-quads' }).then((rdf) => {
         brochu2003nq = rdf;
         if (REPLACE_EXISTING) fs.writeFileSync(nqFilename, brochu2003nq);
@@ -99,7 +104,7 @@ describe('PhyxWrapper', function () {
         it('should validate against our JSON schema', function () {
           const phyxContent = JSON.parse(
             fs.readFileSync(
-              path.resolve(__dirname, `./examples/${filename}`)
+              path.resolve(__dirname, `./examples/correct/${filename}`)
             )
           );
           const valid = validator(phyxContent);

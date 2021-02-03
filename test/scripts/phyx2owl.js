@@ -36,9 +36,9 @@ describe(PHYX2OWL_JS, function () {
     expect(result.stdout).to.contain('phyx2owl.js [files or directories to convert into OWL ontologies]');
   });
   it('should be able to convert `brochu_2003.json`', function () {
-    const PHYX_FILE = path.resolve(__dirname, '../examples/brochu_2003.json');
-    const OWL_FILE = path.resolve(__dirname, '../examples/brochu_2003.owl');
-    const EXPECTED_OWL_FILE = path.resolve(__dirname, '../examples/brochu_2003.jsonld');
+    const PHYX_FILE = path.resolve(__dirname, '../examples/correct/brochu_2003.json');
+    const OWL_FILE = path.resolve(__dirname, '../examples/correct/brochu_2003.owl');
+    const EXPECTED_OWL_FILE = path.resolve(__dirname, '../examples/correct/brochu_2003.jsonld');
 
     // If there is already a '../examples/brochu_2003.json' file, we should delete it.
     if (fs.existsSync(OWL_FILE)) fs.unlinkSync(OWL_FILE);
@@ -66,8 +66,8 @@ describe(PHYX2OWL_JS, function () {
     const expectedContent = JSON.parse(fs.readFileSync(EXPECTED_OWL_FILE, 'utf8'));
     expect(jsonldContent).to.deep.equal(expectedContent);
   });
-  it('should be able to convert the entire `test/examples` directory', function () {
-    const EXAMPLE_DIR = path.resolve(__dirname, '../examples');
+  it('should be able to convert the entire `test/examples/correct` directory', function () {
+    const EXAMPLE_DIR = path.resolve(__dirname, '../examples/correct');
     const jsonFilesInExamples = fs.readdirSync(EXAMPLE_DIR, 'utf8')
       .filter(fileName => fileName.toLowerCase().endsWith('.json'));
 
