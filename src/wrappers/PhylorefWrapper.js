@@ -654,7 +654,7 @@ class PhylorefWrapper {
 
     // Every phyloreference is a subclass of phyloref:Phyloreference.
     phylorefAsJSONLD.subClassOf = [
-      'phyloref:Phyloreference'
+      'phyloref:Phyloreference',
     ];
 
     if (internalSpecifiers.length === 0) {

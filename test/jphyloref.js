@@ -6,7 +6,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const child_process = require('child_process');
+const childProcess = require('child_process');
 
 const Downloader = require('nodejs-file-downloader');
 const chai = require('chai');
@@ -19,17 +19,17 @@ const expect = chai.expect;
 // The version of JPhyloRef to download.
 const JPHYLOREF_VERSION = '0.3.1';
 
-// The URL from where JPhyloRef should be downloaded.
-const JPHYLOREF_URL = `https://repo.maven.apache.org/maven2/org/phyloref/jphyloref/0.3.1/jphyloref-${JPHYLOREF_VERSION}.jar`;
-// Where should the JPhyloRef be stored?
-const JPHYLOREF_PATH = relativeToTestFile(`jphyloref-${JPHYLOREF_VERSION}.jar`);
-
 /*
  * Create a path relative to the directory that this test file is in.
  */
 function relativeToTestFile(relativePath) {
   return path.join(path.dirname(__filename), relativePath);
 }
+
+// The URL from where JPhyloRef should be downloaded.
+const JPHYLOREF_URL = `https://repo.maven.apache.org/maven2/org/phyloref/jphyloref/0.3.1/jphyloref-${JPHYLOREF_VERSION}.jar`;
+// Where should the JPhyloRef be stored?
+const JPHYLOREF_PATH = relativeToTestFile(`jphyloref-${JPHYLOREF_VERSION}.jar`);
 
 /**
  * Test whether the expected JSON-LD files pass testing using JPhyloRef.
@@ -61,12 +61,12 @@ describe('JPhyloRef', function () {
   describe('test example JSON-LD files using JPhyloRef', function () {
     fs.readdirSync(relativeToTestFile('examples'))
       .filter(filename => filename.endsWith('.nq'))
-      .forEach(filename => {
+      .forEach((filename) => {
         it(`should test ${filename}`, function () {
           this.timeout(20000);
 
           // Start JPhyloRef to test filename.
-          const filePath = relativeToTestFile('examples/' + filename);
+          const filePath = relativeToTestFile(`examples/${filename}`);
           const child = childProcess.spawnSync(
             'java',
             [
