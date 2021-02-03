@@ -28,8 +28,8 @@ const REPLACE_EXISTING = true;
 describe('PhyxWrapper', function () {
   let brochu2003owl;
   describe('convert brochu_2003.json to an OWL ontology', function () {
-    const jsonFilename = path.resolve(__dirname, './examples/brochu_2003.json');
-    const jsonldFilename = path.resolve(__dirname, './examples/brochu_2003.jsonld');
+    const jsonFilename = path.resolve(__dirname, './examples/correct/brochu_2003.json');
+    const jsonldFilename = path.resolve(__dirname, './examples/correct/brochu_2003.jsonld');
 
     let brochu2003;
 
@@ -58,7 +58,7 @@ describe('PhyxWrapper', function () {
     });
   });
   describe('convert brochu_2003.jsonld to n-quads', function () {
-    const nqFilename = path.resolve(__dirname, './examples/brochu_2003.nq');
+    const nqFilename = path.resolve(__dirname, './examples/correct/brochu_2003.nq');
 
     let brochu2003nq;
     it('should be able to convert brochu_2003.json via JSON-LD to n-quads', function () {
@@ -67,7 +67,7 @@ describe('PhyxWrapper', function () {
       // JSON-LD readers don't usually handle relative @context easily, so
       // instead let's replace the entire @context with the local context file.
       brochu2003owl['@context'] = JSON.parse(fs.readFileSync(
-        path.resolve(__dirname, path.join('examples', brochu2003owl['@context']))
+        path.resolve(__dirname, path.join('examples', 'correct', brochu2003owl['@context']))
       ));
 
       return jsonld.toRDF(brochu2003owl, { format: 'application/n-quads' }).then((rdf) => {
@@ -100,7 +100,7 @@ describe('PhyxWrapper', function () {
         it('should validate against our JSON schema', function () {
           const phyxContent = JSON.parse(
             fs.readFileSync(
-              path.resolve(__dirname, `./examples/${filename}`)
+              path.resolve(__dirname, `./examples/correct/${filename}`)
             )
           );
           const valid = validator(phyxContent);
