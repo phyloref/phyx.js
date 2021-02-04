@@ -52,14 +52,14 @@ describe('JPhyloRef', function () {
   });
 
   describe('test example JSON-LD files using JPhyloRef', function () {
-    fs.readdirSync(path.resolve(__dirname, 'examples'))
+    fs.readdirSync(path.resolve(__dirname, 'examples', 'correct'))
       .filter(filename => filename.endsWith('.nq'))
       .forEach((filename) => {
-        it(`should test ${filename}`, function () {
+        it(`testing ${filename}`, function () {
           this.timeout(20000);
 
           // Start JPhyloRef to test filename.
-          const filePath = path.resolve(__dirname, path.join('examples', filename));
+          const filePath = path.resolve(__dirname, 'examples', 'correct', filename);
           const child = childProcess.spawnSync(
             'java',
             [
@@ -72,8 +72,6 @@ describe('JPhyloRef', function () {
             }
           );
           const matches = /Testing complete:(\d+) successes, (\d+) failures, (\d+) failures marked TODO, (\d+) skipped./.exec(child.stderr);
-
-          expect(child.stdout).to.not.match(/^not ok/m);
 
           expect(matches, `Test result line not found in STDERR <${child.stderr}>`).to.have.lengthOf(5);
 
