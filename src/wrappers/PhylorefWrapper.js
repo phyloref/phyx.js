@@ -679,7 +679,7 @@ class PhylorefWrapper {
     phylorefAsJSONLD.hasAdditionalClass = [];
 
     // The list of logical expressions generated for this phyloref.
-    let logicalExpressions;
+    let logicalExpressions = [];
 
     if (internalSpecifiers.length === 0) {
       // We can't handle phyloreferences without at least one internal specifier.
@@ -716,7 +716,7 @@ class PhylorefWrapper {
       );
     }
 
-    if (logicalExpressions && logicalExpressions.length > 0) {
+    if (logicalExpressions.length > 0) {
       // If we have a single logical expression, we set that as an equivalentClass
       // expression. If we have more than one, we produce multiple additional classes
       // to represent it.
