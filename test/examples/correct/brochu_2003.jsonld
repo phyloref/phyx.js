@@ -1325,7 +1325,7 @@
       ],
       "@id": "http://example.org/brochu_2003.json#phyloref0",
       "@type": "owl:Class",
-      "hasAdditionalClass": [],
+      "hasComponentClass": [],
       "equivalentClass": {
         "@type": "owl:Restriction",
         "onProperty": "obo:CDAO_0000149",
@@ -1452,7 +1452,7 @@
       },
       "@id": "http://example.org/brochu_2003.json#phyloref1",
       "@type": "owl:Class",
-      "hasAdditionalClass": [],
+      "hasComponentClass": [],
       "equivalentClass": {
         "@type": "owl:Class",
         "intersectionOf": [
@@ -1574,7 +1574,7 @@
       },
       "@id": "http://example.org/brochu_2003.json#phyloref2",
       "@type": "owl:Class",
-      "hasAdditionalClass": [],
+      "hasComponentClass": [],
       "equivalentClass": {
         "@type": "owl:Class",
         "intersectionOf": [
@@ -1670,9 +1670,9 @@
       },
       "@id": "http://example.org/brochu_2003.json#phyloref3",
       "@type": "owl:Class",
-      "hasAdditionalClass": [
+      "hasComponentClass": [
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref3_additional1",
+          "@id": "http://example.org/brochu_2003.json#phyloref3_component1",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus ~ Alligator mississippiensis)",
           "equivalentClass": [
@@ -1713,7 +1713,7 @@
           ]
         },
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref3_additional2",
+          "@id": "http://example.org/brochu_2003.json#phyloref3_component2",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus ~ Gavialis gangeticus)",
           "equivalentClass": [
@@ -1754,14 +1754,14 @@
           ]
         },
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref3_additional3",
+          "@id": "http://example.org/brochu_2003.json#phyloref3_component3",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)",
           "equivalentClass": {
             "@type": "owl:Class",
             "intersectionOf": [
               {
-                "@id": "http://example.org/brochu_2003.json#phyloref3_additional1"
+                "@id": "http://example.org/brochu_2003.json#phyloref3_component1"
               },
               {
                 "@type": "owl:Restriction",
@@ -1786,14 +1786,14 @@
           ]
         },
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref3_additional4",
+          "@id": "http://example.org/brochu_2003.json#phyloref3_component4",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)",
           "equivalentClass": {
             "@type": "owl:Class",
             "intersectionOf": [
               {
-                "@id": "http://example.org/brochu_2003.json#phyloref3_additional1"
+                "@id": "http://example.org/brochu_2003.json#phyloref3_component1"
               },
               {
                 "@type": "owl:Restriction",
@@ -1822,14 +1822,14 @@
           ]
         },
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref3_additional5",
+          "@id": "http://example.org/brochu_2003.json#phyloref3_component5",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)",
           "equivalentClass": {
             "@type": "owl:Class",
             "intersectionOf": [
               {
-                "@id": "http://example.org/brochu_2003.json#phyloref3_additional2"
+                "@id": "http://example.org/brochu_2003.json#phyloref3_component2"
               },
               {
                 "@type": "owl:Restriction",
@@ -1854,14 +1854,14 @@
           ]
         },
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref3_additional6",
+          "@id": "http://example.org/brochu_2003.json#phyloref3_component6",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)",
           "equivalentClass": {
             "@type": "owl:Class",
             "intersectionOf": [
               {
-                "@id": "http://example.org/brochu_2003.json#phyloref3_additional2"
+                "@id": "http://example.org/brochu_2003.json#phyloref3_component2"
               },
               {
                 "@type": "owl:Restriction",
@@ -1987,9 +1987,9 @@
       ],
       "@id": "http://example.org/brochu_2003.json#phyloref4",
       "@type": "owl:Class",
-      "hasAdditionalClass": [
+      "hasComponentClass": [
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional1",
+          "@id": "http://example.org/brochu_2003.json#phyloref4_component1",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
           "equivalentClass": {
@@ -2061,7 +2061,7 @@
           ]
         },
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional2",
+          "@id": "http://example.org/brochu_2003.json#phyloref4_component2",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
           "equivalentClass": {
@@ -2133,7 +2133,7 @@
           ]
         },
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional3",
+          "@id": "http://example.org/brochu_2003.json#phyloref4_component3",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
           "equivalentClass": {
@@ -2205,7 +2205,7 @@
           ]
         },
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional4",
+          "@id": "http://example.org/brochu_2003.json#phyloref4_component4",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
           "equivalentClass": {
@@ -2277,7 +2277,7 @@
           ]
         },
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional5",
+          "@id": "http://example.org/brochu_2003.json#phyloref4_component5",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
           "equivalentClass": {
@@ -2349,7 +2349,7 @@
           ]
         },
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional6",
+          "@id": "http://example.org/brochu_2003.json#phyloref4_component6",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
           "equivalentClass": {
@@ -2421,7 +2421,7 @@
           ]
         },
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional7",
+          "@id": "http://example.org/brochu_2003.json#phyloref4_component7",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
           "equivalentClass": {
@@ -2493,7 +2493,7 @@
           ]
         },
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional8",
+          "@id": "http://example.org/brochu_2003.json#phyloref4_component8",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
           "equivalentClass": {
@@ -2565,7 +2565,7 @@
           ]
         },
         {
-          "@id": "http://example.org/brochu_2003.json#phyloref4_additional9",
+          "@id": "http://example.org/brochu_2003.json#phyloref4_component9",
           "@type": "owl:Class",
           "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
           "equivalentClass": {
@@ -2728,7 +2728,7 @@
       },
       "@id": "http://example.org/brochu_2003.json#phyloref5",
       "@type": "owl:Class",
-      "hasAdditionalClass": [],
+      "hasComponentClass": [],
       "equivalentClass": {
         "@type": "owl:Class",
         "intersectionOf": [
