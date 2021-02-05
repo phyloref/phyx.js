@@ -716,26 +716,44 @@ class PhylorefWrapper {
       );
     }
 
-    if (logicalExpressions.length > 0) {
-      // If we have a single logical expression, we set that as an equivalentClass
-      // expression. If we have more than one, we produce multiple additional classes
-      // to represent it.
-      if (logicalExpressions.length === 1) {
-        phylorefAsJSONLD.equivalentClass = logicalExpressions[0];
-      } else {
-        // We don't have to change anything here since createAdditionalClass()
-        // makes the additional class a subclass of this phyloreference.
-        logicalExpressions.forEach(classExpr => PhylorefWrapper.createAdditionalClass(
-          phylorefAsJSONLD,
-          internalSpecifiers,
-          externalSpecifiers,
-          classExpr,
-          // Do not reuse an existing additional class for this set of internal/external specifiers.
-          false,
-          // Make the new additional class a subclass of this phyloreference.
-          phylorefAsJSONLD
-        ));
+    // If we have a single logical expression, we set that as an equivalentClass
+    // expression. If we have more than one, we produce multiple additional classes
+    // to represent it.
+    if (logicalExpressions.length === 0) {
+      // This is fine, as long as there is an explanation in
+      // phyloref.malformedPhyloreference explaining why no logical expressions
+      // could be generated. Otherwise, throw an error.
+      if (!has(phylorefAsJSONLD, 'malformedPhyloreference')) {
+        throw new Error(`No logical expressions generated for phyloref ${this.label}, but no explanation was provided either.`);
       }
+    } else if (logicalExpressions.length === 1) {
+      // If we have a single logical expression, then that is what this phyloref
+      // is equivalent to.
+      phylorefAsJSONLD.equivalentClass = logicalExpressions[0];
+    } else {
+      // If we have multiple logical expressions, then we *don't* want to state
+      // that all those logical expressions are equivalent to each other. Instead,
+      // we create subclasses for each of those logical expressions.
+      //
+      // Note that there are two differences from the way in which we usually call
+      // PhylorefWrapper.createAdditionalClass():
+      //  1. Usually, createAdditionalClass() reuses logical expressions with the
+      //     same sets of internal and external specifiers. That won't work here,
+      //     since *all* these logical expressions have the same specifiers. So,
+      //     we turn off caching.
+      //  2. We need to set each of these additional classes to be a subclass of
+      //     this phyloreference so that it can include instances from each of the
+      //     logical expressions.
+      logicalExpressions.forEach(classExpr => PhylorefWrapper.createAdditionalClass(
+        phylorefAsJSONLD,
+        internalSpecifiers,
+        externalSpecifiers,
+        classExpr,
+        // False in order to turn off caching by internal and external specifiers.
+        false,
+        // Make the new additional class a subclass of this phyloreference.
+        phylorefAsJSONLD
+      ));
     }
 
     // Every phyloreference is a subclass of phyloref:Phyloreference.
