@@ -52,8 +52,8 @@
         "@container": "@set"
     },
 
-    "hasAdditionalClass": {
-        "@id": "testcase:has_additional_class",
+    "hasComponentClass": {
+        "@id": "testcase:has_component_class",
         "@container": "@set"
     },
 

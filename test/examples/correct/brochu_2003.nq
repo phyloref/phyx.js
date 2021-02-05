@@ -252,106 +252,106 @@
 <http://example.org/brochu_2003.json#phyloref3> <http://purl.org/spar/pso/holdsStatusInTime> _:b118 .
 <http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b120 .
 <http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b122 .
-<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref3_additional1> .
-<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref3_additional2> .
-<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref3_additional3> .
-<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref3_additional4> .
-<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref3_additional5> .
-<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref3_additional6> .
+<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref3_component1> .
+<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref3_component2> .
+<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref3_component3> .
+<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref3_component4> .
+<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref3_component5> .
+<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref3_component6> .
 <http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b156 .
 <http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/2000/01/rdf-schema#label> "Crocodyloidea" .
 <http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
-<http://example.org/brochu_2003.json#phyloref3_additional1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref3_additional1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis)" .
-<http://example.org/brochu_2003.json#phyloref3_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/brochu_2003.json#phyloref3_additional1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b124 .
-<http://example.org/brochu_2003.json#phyloref3_additional2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref3_additional2> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Gavialis gangeticus)" .
-<http://example.org/brochu_2003.json#phyloref3_additional2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/brochu_2003.json#phyloref3_additional2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b131 .
-<http://example.org/brochu_2003.json#phyloref3_additional3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref3_additional3> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
-<http://example.org/brochu_2003.json#phyloref3_additional3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref3> .
-<http://example.org/brochu_2003.json#phyloref3_additional3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/brochu_2003.json#phyloref3_additional3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b138 .
-<http://example.org/brochu_2003.json#phyloref3_additional4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref3_additional4> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
-<http://example.org/brochu_2003.json#phyloref3_additional4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref3> .
-<http://example.org/brochu_2003.json#phyloref3_additional4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/brochu_2003.json#phyloref3_additional4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b142 .
-<http://example.org/brochu_2003.json#phyloref3_additional5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref3_additional5> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
-<http://example.org/brochu_2003.json#phyloref3_additional5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref3> .
-<http://example.org/brochu_2003.json#phyloref3_additional5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/brochu_2003.json#phyloref3_additional5> <http://www.w3.org/2002/07/owl#equivalentClass> _:b147 .
-<http://example.org/brochu_2003.json#phyloref3_additional6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref3_additional6> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
-<http://example.org/brochu_2003.json#phyloref3_additional6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref3> .
-<http://example.org/brochu_2003.json#phyloref3_additional6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/brochu_2003.json#phyloref3_additional6> <http://www.w3.org/2002/07/owl#equivalentClass> _:b151 .
+<http://example.org/brochu_2003.json#phyloref3_component1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref3_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis)" .
+<http://example.org/brochu_2003.json#phyloref3_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
+<http://example.org/brochu_2003.json#phyloref3_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b124 .
+<http://example.org/brochu_2003.json#phyloref3_component2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref3_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Gavialis gangeticus)" .
+<http://example.org/brochu_2003.json#phyloref3_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
+<http://example.org/brochu_2003.json#phyloref3_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b131 .
+<http://example.org/brochu_2003.json#phyloref3_component3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref3_component3> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
+<http://example.org/brochu_2003.json#phyloref3_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref3> .
+<http://example.org/brochu_2003.json#phyloref3_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
+<http://example.org/brochu_2003.json#phyloref3_component3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b138 .
+<http://example.org/brochu_2003.json#phyloref3_component4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref3_component4> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
+<http://example.org/brochu_2003.json#phyloref3_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref3> .
+<http://example.org/brochu_2003.json#phyloref3_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
+<http://example.org/brochu_2003.json#phyloref3_component4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b142 .
+<http://example.org/brochu_2003.json#phyloref3_component5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref3_component5> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
+<http://example.org/brochu_2003.json#phyloref3_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref3> .
+<http://example.org/brochu_2003.json#phyloref3_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
+<http://example.org/brochu_2003.json#phyloref3_component5> <http://www.w3.org/2002/07/owl#equivalentClass> _:b147 .
+<http://example.org/brochu_2003.json#phyloref3_component6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref3_component6> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
+<http://example.org/brochu_2003.json#phyloref3_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref3> .
+<http://example.org/brochu_2003.json#phyloref3_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
+<http://example.org/brochu_2003.json#phyloref3_component6> <http://www.w3.org/2002/07/owl#equivalentClass> _:b151 .
 <http://example.org/brochu_2003.json#phyloref4> <http://purl.obolibrary.org/obo/IAO_0000119> _:b158 .
 <http://example.org/brochu_2003.json#phyloref4> <http://purl.org/spar/pso/holdsStatusInTime> _:b159 .
-<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref4_additional1> .
-<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref4_additional2> .
-<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref4_additional3> .
-<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref4_additional4> .
-<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref4_additional5> .
-<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref4_additional6> .
-<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref4_additional7> .
-<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref4_additional8> .
-<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref4_additional9> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component1> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component2> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component3> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component4> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component5> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component6> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component7> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component8> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component9> .
 <http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b287 .
 <http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b289 .
 <http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b291 .
 <http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylidae" .
 <http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
-<http://example.org/brochu_2003.json#phyloref4_additional1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref4_additional1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
-<http://example.org/brochu_2003.json#phyloref4_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
-<http://example.org/brochu_2003.json#phyloref4_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
-<http://example.org/brochu_2003.json#phyloref4_additional1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b161 .
-<http://example.org/brochu_2003.json#phyloref4_additional2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref4_additional2> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
-<http://example.org/brochu_2003.json#phyloref4_additional2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
-<http://example.org/brochu_2003.json#phyloref4_additional2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
-<http://example.org/brochu_2003.json#phyloref4_additional2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b175 .
-<http://example.org/brochu_2003.json#phyloref4_additional3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref4_additional3> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
-<http://example.org/brochu_2003.json#phyloref4_additional3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
-<http://example.org/brochu_2003.json#phyloref4_additional3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
-<http://example.org/brochu_2003.json#phyloref4_additional3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b189 .
-<http://example.org/brochu_2003.json#phyloref4_additional4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref4_additional4> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
-<http://example.org/brochu_2003.json#phyloref4_additional4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
-<http://example.org/brochu_2003.json#phyloref4_additional4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
-<http://example.org/brochu_2003.json#phyloref4_additional4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b203 .
-<http://example.org/brochu_2003.json#phyloref4_additional5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref4_additional5> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
-<http://example.org/brochu_2003.json#phyloref4_additional5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
-<http://example.org/brochu_2003.json#phyloref4_additional5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
-<http://example.org/brochu_2003.json#phyloref4_additional5> <http://www.w3.org/2002/07/owl#equivalentClass> _:b217 .
-<http://example.org/brochu_2003.json#phyloref4_additional6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref4_additional6> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
-<http://example.org/brochu_2003.json#phyloref4_additional6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
-<http://example.org/brochu_2003.json#phyloref4_additional6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
-<http://example.org/brochu_2003.json#phyloref4_additional6> <http://www.w3.org/2002/07/owl#equivalentClass> _:b231 .
-<http://example.org/brochu_2003.json#phyloref4_additional7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref4_additional7> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
-<http://example.org/brochu_2003.json#phyloref4_additional7> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
-<http://example.org/brochu_2003.json#phyloref4_additional7> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
-<http://example.org/brochu_2003.json#phyloref4_additional7> <http://www.w3.org/2002/07/owl#equivalentClass> _:b245 .
-<http://example.org/brochu_2003.json#phyloref4_additional8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref4_additional8> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
-<http://example.org/brochu_2003.json#phyloref4_additional8> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
-<http://example.org/brochu_2003.json#phyloref4_additional8> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
-<http://example.org/brochu_2003.json#phyloref4_additional8> <http://www.w3.org/2002/07/owl#equivalentClass> _:b259 .
-<http://example.org/brochu_2003.json#phyloref4_additional9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref4_additional9> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
-<http://example.org/brochu_2003.json#phyloref4_additional9> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
-<http://example.org/brochu_2003.json#phyloref4_additional9> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
-<http://example.org/brochu_2003.json#phyloref4_additional9> <http://www.w3.org/2002/07/owl#equivalentClass> _:b273 .
+<http://example.org/brochu_2003.json#phyloref4_component1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b161 .
+<http://example.org/brochu_2003.json#phyloref4_component2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b175 .
+<http://example.org/brochu_2003.json#phyloref4_component3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component3> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b189 .
+<http://example.org/brochu_2003.json#phyloref4_component4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component4> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b203 .
+<http://example.org/brochu_2003.json#phyloref4_component5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component5> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component5> <http://www.w3.org/2002/07/owl#equivalentClass> _:b217 .
+<http://example.org/brochu_2003.json#phyloref4_component6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component6> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component6> <http://www.w3.org/2002/07/owl#equivalentClass> _:b231 .
+<http://example.org/brochu_2003.json#phyloref4_component7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component7> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component7> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component7> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component7> <http://www.w3.org/2002/07/owl#equivalentClass> _:b245 .
+<http://example.org/brochu_2003.json#phyloref4_component8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component8> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component8> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component8> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component8> <http://www.w3.org/2002/07/owl#equivalentClass> _:b259 .
+<http://example.org/brochu_2003.json#phyloref4_component9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component9> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component9> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component9> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component9> <http://www.w3.org/2002/07/owl#equivalentClass> _:b273 .
 <http://example.org/brochu_2003.json#phyloref5> <http://purl.obolibrary.org/obo/IAO_0000119> _:b293 .
 <http://example.org/brochu_2003.json#phyloref5> <http://purl.org/spar/pso/holdsStatusInTime> _:b294 .
 <http://example.org/brochu_2003.json#phyloref5> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b296 .
@@ -1054,19 +1054,19 @@ _:b311 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b132 .
 _:b311 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b312 .
 _:b312 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b135 .
 _:b312 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b313 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_additional1> .
+_:b313 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_component1> .
 _:b313 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b314 .
 _:b314 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b139 .
 _:b314 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b315 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_additional1> .
+_:b315 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_component1> .
 _:b315 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b316 .
 _:b316 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b143 .
 _:b316 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b317 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_additional2> .
+_:b317 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_component2> .
 _:b317 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b318 .
 _:b318 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b148 .
 _:b318 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b319 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_additional2> .
+_:b319 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_component2> .
 _:b319 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b320 .
 _:b32 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b32 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
