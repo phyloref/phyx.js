@@ -219,7 +219,7 @@ describe('PhylorefWrapper', function () {
         externalSpecifiers: [specifier2],
       }).asJSONLD('#');
       expect(jsonld).to.have.property('equivalentClass');
-      expect(jsonld.equivalentClass).to.deep.equal([{
+      expect(jsonld.equivalentClass).to.deep.equal({
         '@type': owlterms.OWL_CLASS,
         intersectionOf: [
           {
@@ -241,7 +241,7 @@ describe('PhylorefWrapper', function () {
             },
           },
         ],
-      }]);
+      });
     });
 
     it('should generate the expected equivClass expression for 2 int phyloref', function () {
@@ -249,7 +249,7 @@ describe('PhylorefWrapper', function () {
         internalSpecifiers: [specifier2, specifier3],
       }).asJSONLD('#');
       expect(jsonld).to.have.property('equivalentClass');
-      expect(jsonld.equivalentClass).to.deep.equal([{
+      expect(jsonld.equivalentClass).to.deep.equal({
         '@type': owlterms.OWL_RESTRICTION,
         onProperty: owlterms.CDAO_HAS_CHILD,
         someValuesFrom: {
@@ -279,7 +279,7 @@ describe('PhylorefWrapper', function () {
             },
           ],
         },
-      }]);
+      });
     });
   });
 });

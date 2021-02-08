@@ -288,67 +288,84 @@ class PhylorefWrapper {
   }
 
   /**
-   * Create an additional class for the set of internal and external specifiers provided.
+   * Create a component class for the set of internal and external specifiers provided.
    * We turn this into a label (in the form `A & B ~ C V D`), which we use to ensure that
    * we don't create more than one class for a particular set of internal and external
    * specifiers.
-   * - jsonld: The JSON-LD representation of the Phyloreference this is an additional class
+   * - jsonld: The JSON-LD representation of the Phyloreference this is an component class
    *   for. We mainly use this to retrieve its '@id'.
-   * - internalSpecifiers: The set of internal specifiers for this additional class.
-   * - externalSpecifiers: The set of external specifiers for this additional class.
-   * - equivClassFunc: The equivalent class expression for this additional class as a function
+   * - internalSpecifiers: The set of internal specifiers for this component class.
+   * - externalSpecifiers: The set of external specifiers for this component class.
+   * - equivClass: The equivalent class expression for this component class as a function
    *   that returns the expression as a string.
+   * - reusePrevious (default: true): If true, we reuse previous expressions with the
+   *   same set of included and excluded specifiers. If false, we always generate a new
+   *   component class for this expression.
+   * - parentClass: If not undefined, provides a JSON-LD definition of the class to set as the
+   *   parent class of this component class. We only use the ['@id'].
    */
-  static createAdditionalClass(jsonld, internalSpecifiers, externalSpecifiers, equivClass) {
-    if (internalSpecifiers.length === 0) throw new Error('Cannot create additional class without any internal specifiers');
-    if (internalSpecifiers.length === 1 && externalSpecifiers.length === 0) throw new Error('Cannot create additional class with a single internal specifiers and no external specifiers');
+  static createComponentClass(
+    jsonld,
+    internalSpecifiers,
+    externalSpecifiers,
+    equivClass,
+    reusePrevious = true,
+    parentClass = undefined
+  ) {
+    if (internalSpecifiers.length === 0) throw new Error('Cannot create component class without any internal specifiers');
+    if (internalSpecifiers.length === 1 && externalSpecifiers.length === 0) throw new Error('Cannot create component class with a single internal specifiers and no external specifiers');
 
-    /* Generate a label that represents this additional class. */
+    /* Generate a label that represents this component class. */
 
     // Start with the internal specifiers, concatenated with '&'.
     const internalSpecifierLabel = internalSpecifiers
       .map(i => new TaxonomicUnitWrapper(i).label || '(error)')
       .sort()
       .join(' & ');
-    let additionalClassLabel = `(${internalSpecifierLabel}`;
+    let componentClassLabel = `(${internalSpecifierLabel}`;
 
     if (externalSpecifiers.length === 0) {
-      additionalClassLabel += ')';
+      componentClassLabel += ')';
     } else {
       // Add the external specifiers, concatenated with 'V'.
       const externalSpecifierLabel = externalSpecifiers
         .map(i => new TaxonomicUnitWrapper(i).label || '(error)')
         .sort()
         .join(' V ');
-      additionalClassLabel += ` ~ ${externalSpecifierLabel})`;
+      componentClassLabel += ` ~ ${externalSpecifierLabel})`;
     }
 
-    // process.stderr.write(`Additional class label: ${additionalClassLabel}\n`);
+    // process.stderr.write(`component class label: ${componentClassLabel}\n`);
 
     // TODO We need to replace this with an actual object-based comparison,
     // rather than trusting the labels to tell us everything.
-    if (has(PhylorefWrapper.additionalClassesByLabel, additionalClassLabel)) {
-      // If we see the same label again, return the previously defined additional class.
-      return { '@id': PhylorefWrapper.additionalClassesByLabel[additionalClassLabel]['@id'] };
+    if (reusePrevious && has(PhylorefWrapper.componentClassesByLabel, componentClassLabel)) {
+      // If we see the same label again, return the previously defined component class.
+      return { '@id': PhylorefWrapper.componentClassesByLabel[componentClassLabel]['@id'] };
     }
 
-    // Create a new additional class for this set of internal and external specifiers.
-    PhylorefWrapper.additionalClassCount += 1;
-    const additionalClass = {};
-    additionalClass['@id'] = `${jsonld['@id']}_additional${PhylorefWrapper.additionalClassCount}`;
-    // process.stderr.write(`Creating new additionalClass with id: ${additionalClass['@id']}`);
+    // Create a new component class for this set of internal and external specifiers.
+    PhylorefWrapper.componentClassCount += 1;
+    const componentClass = {};
+    componentClass['@id'] = `${jsonld['@id']}_component${PhylorefWrapper.componentClassCount}`;
+    // process.stderr.write(`Creating new componentClass with id: ${componentClass['@id']}`);
 
-    additionalClass['@type'] = 'owl:Class';
-    additionalClass.subClassOf = (
-      externalSpecifiers.length > 0 ? 'phyloref:PhyloreferenceUsingMinimumClade' : 'phyloref:PhyloreferenceUsingMaximumClade'
-    );
-    additionalClass.equivalentClass = equivClass;
-    additionalClass.label = additionalClassLabel;
-    jsonld.hasAdditionalClass.push(additionalClass);
+    componentClass['@type'] = 'owl:Class';
+    componentClass.label = componentClassLabel;
+    componentClass.equivalentClass = equivClass;
+    if (externalSpecifiers.length > 0) componentClass.subClassOf = ['phyloref:PhyloreferenceUsingMaximumClade'];
+    else componentClass.subClassOf = ['phyloref:PhyloreferenceUsingMinimumClade'];
 
-    PhylorefWrapper.additionalClassesByLabel[additionalClassLabel] = additionalClass;
+    if (parentClass) {
+      componentClass.subClassOf.push({
+        '@id': parentClass['@id'],
+      });
+    }
 
-    return { '@id': additionalClass['@id'] };
+    jsonld.hasComponentClass.push(componentClass);
+    PhylorefWrapper.componentClassesByLabel[componentClassLabel] = componentClass;
+
+    return { '@id': componentClass['@id'] };
   }
 
   static getIncludesRestrictionForTU(tu) {
@@ -437,7 +454,7 @@ class PhylorefWrapper {
           remainingInternals[1]
         );
       } else {
-        remainingInternalsExpr = PhylorefWrapper.createAdditionalClass(
+        remainingInternalsExpr = PhylorefWrapper.createComponentClass(
           jsonld,
           remainingInternals,
           [],
@@ -451,7 +468,7 @@ class PhylorefWrapper {
       } else if (selected.length === 2) {
         selectedExpr = PhylorefWrapper.getMRCARestrictionOfTwoTUs(selected[0], selected[1]);
       } else {
-        selectedExpr = PhylorefWrapper.createAdditionalClass(
+        selectedExpr = PhylorefWrapper.createComponentClass(
           jsonld,
           selected,
           [],
@@ -596,9 +613,9 @@ class PhylorefWrapper {
         // ${remainingExternals.filter(i => i !== newlySelected).length},
         // selected: ${selected.concat([newlySelected]).length}\n`);
 
-        // Create a new additional class for the accumulated expression plus the
+        // Create a new component class for the accumulated expression plus the
         // newly selected external specifier.
-        const newlyAccumulatedExpr = PhylorefWrapper.createAdditionalClass(
+        const newlyAccumulatedExpr = PhylorefWrapper.createComponentClass(
           jsonld,
           jsonld.internalSpecifiers,
           selected.concat([newlySelected]),
@@ -643,48 +660,107 @@ class PhylorefWrapper {
     if (!has(phylorefAsJSONLD, '@id')) phylorefAsJSONLD['@id'] = fallbackIRI;
     phylorefAsJSONLD['@type'] = 'owl:Class';
 
-    // All phyloreferences are subclasses of phyloref:Phyloreference.
-    phylorefAsJSONLD.subClassOf = 'phyloref:Phyloreference';
-
-    // Construct an equivalentClass expression for this phyloreference.
+    // Construct a class expression for this phyloreference.
     const internalSpecifiers = phylorefAsJSONLD.internalSpecifiers || [];
     const externalSpecifiers = phylorefAsJSONLD.externalSpecifiers || [];
 
-    // We might need to make additional JSON-LD.
-    // So we reset our additional class counts and records.
-    PhylorefWrapper.additionalClassCount = 0;
-    PhylorefWrapper.additionalClassesByLabel = {};
-    phylorefAsJSONLD.hasAdditionalClass = [];
+    // We might need to make component classes.
+    // So we reset our component class counts and records.
+    PhylorefWrapper.componentClassCount = 0;
+    PhylorefWrapper.componentClassesByLabel = {};
+    phylorefAsJSONLD.hasComponentClass = [];
+
+    // The list of logical expressions generated for this phyloref.
+    let logicalExpressions = [];
 
     if (internalSpecifiers.length === 0) {
       // We can't handle phyloreferences without at least one internal specifier.
       phylorefAsJSONLD.malformedPhyloreference = 'No internal specifiers provided';
-    } else {
-      // Step 1. Construct an expression for all internal specifiers.
-      let expressionsForInternals;
+    } else if (externalSpecifiers.length > 0) {
+      // If the phyloreference has at least one external specifier, we
+      // can provide a simplified expression for the internal specifier,
+      // in the form:
+      //  phyloref:includes_TU some [internal1] and
+      //  phyloref:includes_TU some [internal2] and ...
+      // To which we can then add the external specifiers.
       if (internalSpecifiers.length === 1) {
-        expressionsForInternals = [
+        logicalExpressions = PhylorefWrapper.createClassExpressionsForExternals(
+          phylorefAsJSONLD,
           PhylorefWrapper.getIncludesRestrictionForTU(internalSpecifiers[0]),
-        ];
+          externalSpecifiers,
+          []
+        );
       } else {
-        expressionsForInternals = PhylorefWrapper.createClassExpressionsForInternals(
-          phylorefAsJSONLD, internalSpecifiers, []
+        const expressionForInternals = {
+          '@type': 'owl:Class',
+          intersectionOf: internalSpecifiers.map(PhylorefWrapper.getIncludesRestrictionForTU),
+        };
+
+        logicalExpressions = PhylorefWrapper.createClassExpressionsForExternals(
+          phylorefAsJSONLD, expressionForInternals, externalSpecifiers, []
         );
       }
-
-      if (externalSpecifiers.length === 0) {
-        // If we don't have external specifiers, we can just use the expression
-        // for the internal specifier.
-        phylorefAsJSONLD.equivalentClass = expressionsForInternals;
-      } else {
-        // Step 2. Create alternate class expressions for external specifiers.
-        phylorefAsJSONLD.equivalentClass = expressionsForInternals.map(
-          exprForInternal => PhylorefWrapper.createClassExpressionsForExternals(
-            phylorefAsJSONLD, exprForInternal, externalSpecifiers, []
-          )
-        ).reduce((acc, val) => acc.concat(val), []);
-      }
+    } else {
+      // We only have internal specifiers. We therefore need to use the algorithm in
+      // PhylorefWrapper.createClassExpressionsForInternals() to create this expression.
+      logicalExpressions = PhylorefWrapper.createClassExpressionsForInternals(
+        phylorefAsJSONLD, internalSpecifiers, []
+      );
     }
+
+    // If we have a single logical expression, we set that as an equivalentClass
+    // expression. If we have more than one, we produce multiple component classes
+    // to represent it.
+    if (logicalExpressions.length === 0) {
+      // This is fine, as long as there is an explanation in
+      // phyloref.malformedPhyloreference explaining why no logical expressions
+      // could be generated. Otherwise, throw an error.
+      if (!has(phylorefAsJSONLD, 'malformedPhyloreference')) {
+        throw new Error(
+          `Phyloref ${this.label} was generated by Phyx.js with neither logical expressions nor an explanation for the lack of logical expressions. `
+          + 'This indicates an error in the Phyx.js library. Please report this bug at https://github.com/phyloref/phyx.js/issues.'
+        );
+      }
+    } else if (logicalExpressions.length === 1) {
+      // If we have a single logical expression, then that is what this phyloref
+      // is equivalent to.
+      phylorefAsJSONLD.equivalentClass = logicalExpressions[0];
+    } else {
+      // If we have multiple logical expressions, the phyloreference can be
+      // represented by any of them. We model this by creating subclasses of
+      // the phyloreference for each logical expression -- that way, it's clear
+      // that these expressions aren't equivalent to each other (which is what
+      // caused https://github.com/phyloref/phyx.js/issues/57), but nodes
+      // resolved by any of those expressions will also be included in the
+      // phyloreference itself.
+      //
+      // Note that there are two differences from the way in which we usually call
+      // PhylorefWrapper.createComponentClass():
+      //  1. Usually, createComponentClass() reuses logical expressions with the
+      //     same sets of internal and external specifiers. That won't work here,
+      //     since *all* these logical expressions have the same specifiers. So,
+      //     we turn off caching.
+      //  2. We need to set each of these component classes to be a subclass of
+      //     this phyloreference so that it can include instances from each of the
+      //     logical expressions.
+      logicalExpressions.forEach(classExpr => PhylorefWrapper.createComponentClass(
+        phylorefAsJSONLD,
+        internalSpecifiers,
+        externalSpecifiers,
+        classExpr,
+        // False in order to turn off caching by internal and external specifiers.
+        false,
+        // Make the new component class a subclass of this phyloreference.
+        phylorefAsJSONLD
+      ));
+    }
+
+    // Every phyloreference is a subclass of phyloref:Phyloreference.
+    if (!phylorefAsJSONLD.subClassOf) phylorefAsJSONLD.subClassOf = [];
+    if (!Array.isArray(phylorefAsJSONLD.subClassOf)) {
+      phylorefAsJSONLD.subClassOf = [phylorefAsJSONLD.subClassOf];
+    }
+    phylorefAsJSONLD.subClassOf.push('phyloref:Phyloreference');
 
     return phylorefAsJSONLD;
   }

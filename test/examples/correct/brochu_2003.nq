@@ -252,41 +252,106 @@
 <http://example.org/brochu_2003.json#phyloref3> <http://purl.org/spar/pso/holdsStatusInTime> _:b118 .
 <http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b120 .
 <http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b122 .
-<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref3_additional1> .
-<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_additional_class> <http://example.org/brochu_2003.json#phyloref3_additional2> .
-<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b138 .
+<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref3_component1> .
+<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref3_component2> .
+<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref3_component3> .
+<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref3_component4> .
+<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref3_component5> .
+<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref3_component6> .
+<http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b156 .
 <http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/2000/01/rdf-schema#label> "Crocodyloidea" .
 <http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
-<http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b140 .
-<http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b144 .
-<http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b149 .
-<http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b153 .
-<http://example.org/brochu_2003.json#phyloref3_additional1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref3_additional1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis)" .
-<http://example.org/brochu_2003.json#phyloref3_additional1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
-<http://example.org/brochu_2003.json#phyloref3_additional1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b124 .
-<http://example.org/brochu_2003.json#phyloref3_additional2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/brochu_2003.json#phyloref3_additional2> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Gavialis gangeticus)" .
-<http://example.org/brochu_2003.json#phyloref3_additional2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
-<http://example.org/brochu_2003.json#phyloref3_additional2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b131 .
+<http://example.org/brochu_2003.json#phyloref3_component1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref3_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis)" .
+<http://example.org/brochu_2003.json#phyloref3_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
+<http://example.org/brochu_2003.json#phyloref3_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b124 .
+<http://example.org/brochu_2003.json#phyloref3_component2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref3_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Gavialis gangeticus)" .
+<http://example.org/brochu_2003.json#phyloref3_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
+<http://example.org/brochu_2003.json#phyloref3_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b131 .
+<http://example.org/brochu_2003.json#phyloref3_component3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref3_component3> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
+<http://example.org/brochu_2003.json#phyloref3_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref3> .
+<http://example.org/brochu_2003.json#phyloref3_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
+<http://example.org/brochu_2003.json#phyloref3_component3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b138 .
+<http://example.org/brochu_2003.json#phyloref3_component4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref3_component4> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
+<http://example.org/brochu_2003.json#phyloref3_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref3> .
+<http://example.org/brochu_2003.json#phyloref3_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
+<http://example.org/brochu_2003.json#phyloref3_component4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b142 .
+<http://example.org/brochu_2003.json#phyloref3_component5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref3_component5> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
+<http://example.org/brochu_2003.json#phyloref3_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref3> .
+<http://example.org/brochu_2003.json#phyloref3_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
+<http://example.org/brochu_2003.json#phyloref3_component5> <http://www.w3.org/2002/07/owl#equivalentClass> _:b147 .
+<http://example.org/brochu_2003.json#phyloref3_component6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref3_component6> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
+<http://example.org/brochu_2003.json#phyloref3_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref3> .
+<http://example.org/brochu_2003.json#phyloref3_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
+<http://example.org/brochu_2003.json#phyloref3_component6> <http://www.w3.org/2002/07/owl#equivalentClass> _:b151 .
 <http://example.org/brochu_2003.json#phyloref4> <http://purl.obolibrary.org/obo/IAO_0000119> _:b158 .
 <http://example.org/brochu_2003.json#phyloref4> <http://purl.org/spar/pso/holdsStatusInTime> _:b159 .
-<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b161 .
-<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b163 .
-<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b165 .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component1> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component2> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component3> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component4> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component5> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component6> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component7> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component8> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component9> .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b287 .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b289 .
+<http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b291 .
 <http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylidae" .
 <http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
-<http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b167 .
-<http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b181 .
-<http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b195 .
-<http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b209 .
-<http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b223 .
-<http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b237 .
-<http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b251 .
-<http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b265 .
-<http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b279 .
+<http://example.org/brochu_2003.json#phyloref4_component1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b161 .
+<http://example.org/brochu_2003.json#phyloref4_component2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b175 .
+<http://example.org/brochu_2003.json#phyloref4_component3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component3> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b189 .
+<http://example.org/brochu_2003.json#phyloref4_component4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component4> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b203 .
+<http://example.org/brochu_2003.json#phyloref4_component5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component5> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component5> <http://www.w3.org/2002/07/owl#equivalentClass> _:b217 .
+<http://example.org/brochu_2003.json#phyloref4_component6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component6> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component6> <http://www.w3.org/2002/07/owl#equivalentClass> _:b231 .
+<http://example.org/brochu_2003.json#phyloref4_component7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component7> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component7> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component7> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component7> <http://www.w3.org/2002/07/owl#equivalentClass> _:b245 .
+<http://example.org/brochu_2003.json#phyloref4_component8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component8> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component8> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component8> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component8> <http://www.w3.org/2002/07/owl#equivalentClass> _:b259 .
+<http://example.org/brochu_2003.json#phyloref4_component9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/brochu_2003.json#phyloref4_component9> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/brochu_2003.json#phyloref4_component9> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
+<http://example.org/brochu_2003.json#phyloref4_component9> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
+<http://example.org/brochu_2003.json#phyloref4_component9> <http://www.w3.org/2002/07/owl#equivalentClass> _:b273 .
 <http://example.org/brochu_2003.json#phyloref5> <http://purl.obolibrary.org/obo/IAO_0000119> _:b293 .
 <http://example.org/brochu_2003.json#phyloref5> <http://purl.org/spar/pso/holdsStatusInTime> _:b294 .
 <http://example.org/brochu_2003.json#phyloref5> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b296 .
@@ -428,70 +493,70 @@ _:b136 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b137 .
 _:b137 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b137 <http://www.w3.org/2002/07/owl#hasValue> "Gavialis gangeticus" .
 _:b137 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b138 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b139 .
-_:b138 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b139 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Crocodylus" .
-_:b139 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Crocodylus niloticus" .
-_:b139 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
-_:b139 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "niloticus" .
-_:b139 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b139 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylus niloticus" .
+_:b138 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b138 <http://www.w3.org/2002/07/owl#intersectionOf> _:b313 .
+_:b139 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b139 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b139 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b140 .
 _:b14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b14 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylia" .
 _:b14 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b140 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b140 <http://www.w3.org/2002/07/owl#intersectionOf> _:b313 .
+_:b140 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b140 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b140 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b141 .
 _:b141 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b141 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b141 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b142 .
-_:b142 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b142 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b142 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b143 .
+_:b141 <http://www.w3.org/2002/07/owl#hasValue> "Gavialis gangeticus" .
+_:b141 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b142 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b142 <http://www.w3.org/2002/07/owl#intersectionOf> _:b315 .
 _:b143 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b143 <http://www.w3.org/2002/07/owl#hasValue> "Gavialis gangeticus" .
-_:b143 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b144 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b144 <http://www.w3.org/2002/07/owl#intersectionOf> _:b315 .
+_:b143 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b143 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b144 .
+_:b144 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b144 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b144 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b145 .
 _:b145 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b145 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b145 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b145 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b146 .
 _:b146 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b146 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b146 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b147 .
-_:b147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b147 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b147 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b148 .
+_:b146 <http://www.w3.org/2002/07/owl#hasValue> "Gavialis gangeticus" .
+_:b146 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b147 <http://www.w3.org/2002/07/owl#intersectionOf> _:b317 .
 _:b148 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b148 <http://www.w3.org/2002/07/owl#hasValue> "Gavialis gangeticus" .
-_:b148 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b149 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b149 <http://www.w3.org/2002/07/owl#intersectionOf> _:b317 .
+_:b148 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b148 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b149 .
+_:b149 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b149 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b149 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b150 .
 _:b15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b15 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b15 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b16 .
 _:b150 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b150 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b150 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b151 .
-_:b151 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b151 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b151 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b152 .
+_:b150 <http://www.w3.org/2002/07/owl#hasValue> "Alligator mississippiensis" .
+_:b150 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b151 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b151 <http://www.w3.org/2002/07/owl#intersectionOf> _:b319 .
 _:b152 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b152 <http://www.w3.org/2002/07/owl#hasValue> "Alligator mississippiensis" .
-_:b152 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b153 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b153 <http://www.w3.org/2002/07/owl#intersectionOf> _:b319 .
+_:b152 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b152 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b153 .
+_:b153 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b153 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b153 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b154 .
 _:b154 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b154 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b154 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b154 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b155 .
 _:b155 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b155 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b155 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b156 .
-_:b156 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b156 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b156 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b157 .
-_:b157 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b157 <http://www.w3.org/2002/07/owl#hasValue> "Alligator mississippiensis" .
-_:b157 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b155 <http://www.w3.org/2002/07/owl#hasValue> "Alligator mississippiensis" .
+_:b155 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b156 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b157 .
+_:b156 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b157 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Crocodylus" .
+_:b157 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Crocodylus niloticus" .
+_:b157 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
+_:b157 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "niloticus" .
+_:b157 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
+_:b157 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylus niloticus" .
 _:b158 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b159 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b159 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b160 .
@@ -500,66 +565,57 @@ _:b16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b16 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b16 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b17 .
 _:b160 <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalStartDate> "2018-06-11T22:49:51.960Z" .
-_:b161 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b162 .
-_:b161 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b162 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Tomistoma" .
-_:b162 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Tomistoma schlegelii" .
-_:b162 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
-_:b162 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "schlegelii" .
-_:b162 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b162 <http://www.w3.org/2000/01/rdf-schema#label> "Tomistoma schlegelii" .
-_:b163 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b164 .
-_:b163 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b163 <http://www.w3.org/2000/01/rdf-schema#label> "Osteolaemus tetraspis" .
-_:b164 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Osteolaemus" .
-_:b164 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Osteolaemus tetraspis" .
-_:b164 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
-_:b164 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "tetraspis" .
-_:b164 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b164 <http://www.w3.org/2000/01/rdf-schema#label> "Osteolaemus tetraspis" .
-_:b165 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b166 .
-_:b165 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b165 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylus niloticus" .
-_:b166 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Crocodylus" .
-_:b166 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Crocodylus niloticus" .
-_:b166 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
-_:b166 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "niloticus" .
-_:b166 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b166 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylus niloticus" .
+_:b161 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b161 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b161 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b162 .
+_:b162 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b162 <http://www.w3.org/2002/07/owl#intersectionOf> _:b321 .
+_:b163 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b163 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b163 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b164 .
+_:b164 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b164 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b164 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b165 .
+_:b165 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b165 <http://www.w3.org/2002/07/owl#intersectionOf> _:b323 .
+_:b166 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b166 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b166 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b167 .
 _:b167 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b167 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b167 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b167 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b168 .
-_:b168 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b168 <http://www.w3.org/2002/07/owl#intersectionOf> _:b321 .
+_:b168 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b168 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
+_:b168 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b169 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b169 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b169 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b169 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b170 .
 _:b17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b17 <http://www.w3.org/2002/07/owl#hasValue> "Brevirostres" .
 _:b17 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b170 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b170 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b170 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b170 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b171 .
-_:b171 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b171 <http://www.w3.org/2002/07/owl#intersectionOf> _:b323 .
+_:b171 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b171 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
+_:b171 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b172 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b172 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b172 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b172 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b173 .
 _:b173 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b173 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b173 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b174 .
 _:b174 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b174 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
+_:b174 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
 _:b174 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b175 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b175 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b175 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b175 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b176 .
-_:b176 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b176 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b176 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b177 .
+_:b176 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b176 <http://www.w3.org/2002/07/owl#intersectionOf> _:b325 .
 _:b177 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b177 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
-_:b177 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b177 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b177 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b178 .
 _:b178 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b178 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b178 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b179 .
@@ -570,42 +626,42 @@ _:b18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b18 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b18 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b19 .
 _:b180 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b180 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
+_:b180 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
 _:b180 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b181 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b181 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b181 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b182 .
 _:b182 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b182 <http://www.w3.org/2002/07/owl#intersectionOf> _:b325 .
+_:b182 <http://www.w3.org/2002/07/owl#intersectionOf> _:b327 .
 _:b183 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b183 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b183 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b183 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b184 .
 _:b184 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b184 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b184 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b184 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b185 .
 _:b185 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b185 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b185 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b186 .
+_:b185 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
+_:b185 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b186 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b186 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
-_:b186 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b186 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b186 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b187 .
 _:b187 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b187 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b187 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b187 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b188 .
-_:b188 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b188 <http://www.w3.org/2002/07/owl#intersectionOf> _:b327 .
+_:b188 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b188 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
+_:b188 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b189 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b189 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b189 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b189 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b190 .
 _:b19 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b19 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b19 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b20 .
-_:b190 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b190 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b190 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b191 .
+_:b190 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b190 <http://www.w3.org/2002/07/owl#intersectionOf> _:b329 .
 _:b191 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b191 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
-_:b191 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b191 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b191 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b192 .
 _:b192 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b192 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b192 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b193 .
@@ -619,16 +675,16 @@ _:b195 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b195 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b195 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b196 .
 _:b196 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b196 <http://www.w3.org/2002/07/owl#intersectionOf> _:b329 .
+_:b196 <http://www.w3.org/2002/07/owl#intersectionOf> _:b331 .
 _:b197 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b197 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b197 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b197 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b198 .
 _:b198 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b198 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b198 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b198 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b199 .
 _:b199 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b199 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b199 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b200 .
+_:b199 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
+_:b199 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b2 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylomorpha" .
 _:b2 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -636,67 +692,67 @@ _:b20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b20 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylidae" .
 _:b20 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b200 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b200 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
-_:b200 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b200 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b200 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b201 .
 _:b201 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b201 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b201 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b201 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b202 .
-_:b202 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b202 <http://www.w3.org/2002/07/owl#intersectionOf> _:b331 .
+_:b202 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b202 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
+_:b202 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b203 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b203 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b203 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b203 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b204 .
-_:b204 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b204 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b204 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b205 .
+_:b204 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b204 <http://www.w3.org/2002/07/owl#intersectionOf> _:b333 .
 _:b205 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b205 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
-_:b205 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b205 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b205 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b206 .
 _:b206 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b206 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b206 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b206 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b207 .
-_:b207 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b207 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b207 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b208 .
+_:b207 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b207 <http://www.w3.org/2002/07/owl#intersectionOf> _:b335 .
 _:b208 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b208 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
-_:b208 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b208 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b208 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b209 .
 _:b209 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b209 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b209 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b209 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b210 .
 _:b21 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b21 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/OBI_0000312> .
 _:b21 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b22 .
-_:b210 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b210 <http://www.w3.org/2002/07/owl#intersectionOf> _:b333 .
+_:b210 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b210 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
+_:b210 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b211 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b211 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b211 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b211 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b212 .
 _:b212 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b212 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b212 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b212 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b213 .
-_:b213 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b213 <http://www.w3.org/2002/07/owl#intersectionOf> _:b335 .
+_:b213 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b213 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
+_:b213 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b214 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b214 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b214 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b214 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b215 .
 _:b215 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b215 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b215 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b216 .
 _:b216 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b216 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
+_:b216 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
 _:b216 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b217 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b217 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b217 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b217 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b218 .
-_:b218 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b218 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b218 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b219 .
+_:b218 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b218 <http://www.w3.org/2002/07/owl#intersectionOf> _:b337 .
 _:b219 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b219 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
-_:b219 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b219 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b219 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b220 .
 _:b22 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b22 <http://www.w3.org/2002/07/owl#intersectionOf> _:b337 .
+_:b22 <http://www.w3.org/2002/07/owl#intersectionOf> _:b339 .
 _:b220 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b220 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b220 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b221 .
@@ -704,42 +760,42 @@ _:b221 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b221 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b221 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b222 .
 _:b222 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b222 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
+_:b222 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
 _:b222 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b223 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b223 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b223 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b224 .
 _:b224 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b224 <http://www.w3.org/2002/07/owl#intersectionOf> _:b339 .
+_:b224 <http://www.w3.org/2002/07/owl#intersectionOf> _:b341 .
 _:b225 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b225 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b225 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b225 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b226 .
 _:b226 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b226 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b226 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b226 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b227 .
 _:b227 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b227 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b227 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b228 .
+_:b227 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
+_:b227 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b228 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b228 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
-_:b228 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b228 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b228 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b229 .
 _:b229 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b229 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b229 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b229 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b230 .
 _:b23 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b23 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/OBI_0000293> .
 _:b23 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://example.org/brochu_2003.json#phyloref4> .
-_:b230 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b230 <http://www.w3.org/2002/07/owl#intersectionOf> _:b341 .
+_:b230 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b230 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
+_:b230 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b231 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b231 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b231 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b231 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b232 .
-_:b232 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b232 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b232 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b233 .
+_:b232 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b232 <http://www.w3.org/2002/07/owl#intersectionOf> _:b343 .
 _:b233 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b233 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
-_:b233 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b233 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b233 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b234 .
 _:b234 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b234 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b234 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b235 .
@@ -753,82 +809,82 @@ _:b237 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b237 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b237 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b238 .
 _:b238 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b238 <http://www.w3.org/2002/07/owl#intersectionOf> _:b343 .
+_:b238 <http://www.w3.org/2002/07/owl#intersectionOf> _:b345 .
 _:b239 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b239 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b239 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b239 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b240 .
 _:b24 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b24 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b24 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b25 .
 _:b240 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b240 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b240 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b240 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b241 .
 _:b241 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b241 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b241 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b242 .
+_:b241 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
+_:b241 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b242 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b242 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
-_:b242 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b242 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b242 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b243 .
 _:b243 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b243 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b243 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b243 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b244 .
-_:b244 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b244 <http://www.w3.org/2002/07/owl#intersectionOf> _:b345 .
+_:b244 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b244 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
+_:b244 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b245 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b245 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b245 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b245 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b246 .
-_:b246 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b246 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b246 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b247 .
+_:b246 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b246 <http://www.w3.org/2002/07/owl#intersectionOf> _:b347 .
 _:b247 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b247 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
-_:b247 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b247 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b247 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b248 .
 _:b248 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b248 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b248 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b248 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b249 .
-_:b249 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b249 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b249 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b250 .
+_:b249 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b249 <http://www.w3.org/2002/07/owl#intersectionOf> _:b349 .
 _:b25 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b25 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b25 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b26 .
 _:b250 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b250 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
-_:b250 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b250 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b250 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b251 .
 _:b251 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b251 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b251 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b251 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b252 .
-_:b252 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b252 <http://www.w3.org/2002/07/owl#intersectionOf> _:b347 .
+_:b252 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b252 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
+_:b252 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b253 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b253 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b253 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b253 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b254 .
 _:b254 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b254 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b254 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b254 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b255 .
-_:b255 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b255 <http://www.w3.org/2002/07/owl#intersectionOf> _:b349 .
+_:b255 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b255 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
+_:b255 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b256 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b256 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b256 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b256 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b257 .
 _:b257 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b257 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b257 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b258 .
 _:b258 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b258 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
+_:b258 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
 _:b258 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b259 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b259 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b259 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b259 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b260 .
 _:b26 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b26 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylinae" .
 _:b26 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b260 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b260 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b260 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b261 .
+_:b260 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b260 <http://www.w3.org/2002/07/owl#intersectionOf> _:b351 .
 _:b261 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b261 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
-_:b261 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b261 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b261 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b262 .
 _:b262 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b262 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b262 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b263 .
@@ -836,42 +892,42 @@ _:b263 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b263 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b263 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b264 .
 _:b264 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b264 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
+_:b264 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
 _:b264 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b265 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b265 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b265 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b266 .
 _:b266 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b266 <http://www.w3.org/2002/07/owl#intersectionOf> _:b351 .
+_:b266 <http://www.w3.org/2002/07/owl#intersectionOf> _:b353 .
 _:b267 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b267 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b267 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b267 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b268 .
 _:b268 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b268 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b268 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b268 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b269 .
 _:b269 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b269 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b269 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b270 .
+_:b269 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
+_:b269 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b27 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b27 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b28 .
 _:b270 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b270 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
-_:b270 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b270 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b270 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b271 .
 _:b271 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b271 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b271 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b271 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b272 .
-_:b272 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b272 <http://www.w3.org/2002/07/owl#intersectionOf> _:b353 .
+_:b272 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b272 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
+_:b272 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b273 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b273 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b273 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
 _:b273 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b274 .
-_:b274 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b274 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b274 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b275 .
+_:b274 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b274 <http://www.w3.org/2002/07/owl#intersectionOf> _:b355 .
 _:b275 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b275 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
-_:b275 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b275 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b275 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b276 .
 _:b276 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b276 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b276 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b277 .
@@ -888,45 +944,54 @@ _:b28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b28 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b28 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b29 .
 _:b280 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b280 <http://www.w3.org/2002/07/owl#intersectionOf> _:b355 .
+_:b280 <http://www.w3.org/2002/07/owl#intersectionOf> _:b357 .
 _:b281 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b281 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_lineage_to> .
+_:b281 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b281 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b282 .
 _:b282 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b282 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b282 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b282 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b283 .
 _:b283 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b283 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b283 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b284 .
+_:b283 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
+_:b283 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b284 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b284 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
-_:b284 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b284 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b284 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b285 .
 _:b285 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b285 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000149> .
+_:b285 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b285 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b286 .
-_:b286 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b286 <http://www.w3.org/2002/07/owl#intersectionOf> _:b357 .
-_:b287 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b287 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b287 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b288 .
-_:b288 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b288 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b288 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b289 .
-_:b289 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b289 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
-_:b289 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b286 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b286 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
+_:b286 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b287 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b288 .
+_:b287 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b288 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Tomistoma" .
+_:b288 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Tomistoma schlegelii" .
+_:b288 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
+_:b288 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "schlegelii" .
+_:b288 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
+_:b288 <http://www.w3.org/2000/01/rdf-schema#label> "Tomistoma schlegelii" .
+_:b289 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b290 .
+_:b289 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b289 <http://www.w3.org/2000/01/rdf-schema#label> "Osteolaemus tetraspis" .
 _:b29 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b29 <http://www.w3.org/2002/07/owl#hasValue> "Crocodylus niloticus" .
 _:b29 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b290 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b290 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
-_:b290 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b291 .
-_:b291 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b291 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b291 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b292 .
-_:b292 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b292 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
-_:b292 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b290 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Osteolaemus" .
+_:b290 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Osteolaemus tetraspis" .
+_:b290 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
+_:b290 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "tetraspis" .
+_:b290 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
+_:b290 <http://www.w3.org/2000/01/rdf-schema#label> "Osteolaemus tetraspis" .
+_:b291 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b292 .
+_:b291 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b291 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylus niloticus" .
+_:b292 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Crocodylus" .
+_:b292 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Crocodylus niloticus" .
+_:b292 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
+_:b292 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "niloticus" .
+_:b292 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
+_:b292 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylus niloticus" .
 _:b293 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b294 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b294 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b295 .
@@ -989,109 +1054,109 @@ _:b311 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b132 .
 _:b311 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b312 .
 _:b312 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b135 .
 _:b312 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b313 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_additional1> .
+_:b313 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_component1> .
 _:b313 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b314 .
-_:b314 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b141 .
+_:b314 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b139 .
 _:b314 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b315 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_additional1> .
+_:b315 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_component1> .
 _:b315 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b316 .
-_:b316 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b145 .
+_:b316 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b143 .
 _:b316 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b317 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_additional2> .
+_:b317 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_component2> .
 _:b317 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b318 .
-_:b318 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b150 .
+_:b318 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b148 .
 _:b318 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b319 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_additional2> .
+_:b319 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://example.org/brochu_2003.json#phyloref3_component2> .
 _:b319 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b320 .
 _:b32 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b32 <http://www.w3.org/2002/07/owl#hasValue> "Osteolaemus tetraspis" .
 _:b32 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b320 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b154 .
+_:b320 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b152 .
 _:b320 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b321 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b169 .
+_:b321 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b163 .
 _:b321 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b322 .
-_:b322 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b178 .
+_:b322 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b172 .
 _:b322 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b323 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b172 .
+_:b323 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b166 .
 _:b323 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b324 .
-_:b324 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b175 .
+_:b324 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b169 .
 _:b324 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b325 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b183 .
+_:b325 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b177 .
 _:b325 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b326 .
-_:b326 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b187 .
+_:b326 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b181 .
 _:b326 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b327 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b189 .
+_:b327 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b183 .
 _:b327 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b328 .
-_:b328 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b192 .
+_:b328 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b186 .
 _:b328 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b329 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b197 .
+_:b329 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b191 .
 _:b329 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b330 .
 _:b33 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b33 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b33 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b34 .
-_:b330 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b201 .
+_:b330 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b195 .
 _:b330 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b331 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b203 .
+_:b331 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b197 .
 _:b331 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b332 .
-_:b332 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b206 .
+_:b332 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b200 .
 _:b332 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b333 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b211 .
+_:b333 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b205 .
 _:b333 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b334 .
-_:b334 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b220 .
+_:b334 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b214 .
 _:b334 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b335 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b214 .
+_:b335 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b208 .
 _:b335 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b336 .
-_:b336 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b217 .
+_:b336 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b211 .
 _:b336 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b337 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.obolibrary.org/obo/OBI_0302910> .
+_:b337 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b219 .
 _:b337 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b338 .
-_:b338 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b23 .
+_:b338 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b223 .
 _:b338 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b339 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b225 .
+_:b339 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.obolibrary.org/obo/OBI_0302910> .
 _:b339 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b340 .
 _:b34 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b34 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b34 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b35 .
-_:b340 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b229 .
+_:b340 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b23 .
 _:b340 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b341 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b231 .
+_:b341 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b225 .
 _:b341 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b342 .
-_:b342 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b234 .
+_:b342 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b228 .
 _:b342 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b343 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b239 .
+_:b343 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b233 .
 _:b343 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b344 .
-_:b344 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b243 .
+_:b344 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b237 .
 _:b344 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b345 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b245 .
+_:b345 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b239 .
 _:b345 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b346 .
-_:b346 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b248 .
+_:b346 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b242 .
 _:b346 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b347 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b253 .
+_:b347 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b247 .
 _:b347 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b348 .
-_:b348 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b262 .
+_:b348 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b256 .
 _:b348 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b349 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b256 .
+_:b349 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b250 .
 _:b349 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b350 .
 _:b35 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b35 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
 _:b35 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b350 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b259 .
+_:b350 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b253 .
 _:b350 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b351 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b267 .
+_:b351 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b261 .
 _:b351 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b352 .
-_:b352 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b271 .
+_:b352 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b265 .
 _:b352 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b353 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b273 .
+_:b353 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b267 .
 _:b353 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b354 .
-_:b354 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b276 .
+_:b354 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b270 .
 _:b354 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b355 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b281 .
+_:b355 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b275 .
 _:b355 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b356 .
-_:b356 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b285 .
+_:b356 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b279 .
 _:b356 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b357 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b287 .
+_:b357 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b281 .
 _:b357 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b358 .
-_:b358 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b290 .
+_:b358 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b284 .
 _:b358 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b359 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b301 .
 _:b359 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b360 .
