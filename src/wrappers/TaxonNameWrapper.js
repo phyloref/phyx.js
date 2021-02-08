@@ -40,9 +40,10 @@ class TaxonNameWrapper {
    * Create a new taxon name wrapper around the JSON representation of
    * a taxon name.
    */
-  constructor(txname) {
+  constructor(txname, defaultNomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
     if (txname === undefined) throw new Error('TaxonNameWrapper tried to wrap undefined');
     this.txname = txname;
+    this.defaultNomenCode = defaultNomenCode;
   }
 
   /**
@@ -122,14 +123,14 @@ class TaxonNameWrapper {
    * Returns the nomenclatural code of this taxon name.
    */
   get nomenclaturalCode() {
-    return this.txname.nomenclaturalCode;
+    return this.txname.nomenclaturalCode || this.defaultNomenCode;
   }
 
   /**
    * Returns the nomenclatural code of this taxon name as a URI.
    */
   get nomenclaturalCodeAsObject() {
-    const nomenCode = this.txname.nomenclaturalCode;
+    const nomenCode = this.nomenclaturalCode;
     if (!nomenCode) return undefined;
 
     const nomenObj = TaxonNameWrapper.getNomenCodeAsObject(nomenCode);
@@ -421,12 +422,29 @@ class TaxonNameWrapper {
     // No complete name, can't return anything.
     if (!this.nameComplete) return undefined;
 
-    // Note that until we figure out how to set up nomenclatural codes on
-    // phylogenies, we don't incorporate that into the OWL equiv class.
+    // Do we have a nomenclaturalCode?
+    if (!this.nomenclaturalCode) {
+      return {
+        '@type': 'owl:Restriction',
+        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+        hasValue: this.nameComplete,
+      };
+    }
+
+    // If we do have a nomenclatural code, incorporate that into the logical
+    // expression as well.
     return {
-      '@type': 'owl:Restriction',
-      onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
-      hasValue: this.nameComplete,
+      '@type': 'owl:Class',
+      intersectionOf: [{
+        '@type': 'owl:Restriction',
+        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+        hasValue: this.nameComplete,
+      }, {
+        '@type': 'owl:Restriction',
+        onProperty: owlterms.NOMENCLATURAL_CODE,
+        hasValue: this.nomenclaturalCode,
+      },
+      ],
     };
   }
 }

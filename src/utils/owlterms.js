@@ -40,6 +40,7 @@ module.exports = {
   DWC_OCCURRENCE_ID: 'http://rs.tdwg.org/dwc/terms/occurrenceID',
 
   // Nomenclatural codes from Nomen.
+  NOMENCLATURAL_CODE: 'http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode',
   NAME_IN_UNKNOWN_CODE: 'http://purl.obolibrary.org/obo/NOMEN_0000036', // NOMEN:scientific name
   ICZN_NAME: 'http://purl.obolibrary.org/obo/NOMEN_0000107',
   ICN_NAME: 'http://purl.obolibrary.org/obo/NOMEN_0000109',
