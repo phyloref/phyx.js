@@ -63,6 +63,24 @@ class TaxonConceptWrapper {
   }
 
   /**
+   * Return the nomenclatural code of this taxon concept as a string.
+   */
+  get nomenCode() {
+    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName).nomenclaturalCode;
+
+    return undefined;
+  }
+
+  /**
+   * Return the nomenclatural code of this taxon concept as an object.
+   */
+  get nomenCodeAsObject() {
+    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName).nomenclaturalCodeAsObject;
+
+    return undefined;
+  }
+
+  /**
    * Return the accordingTo information (if any) as an object.
    *
    * For now, we return this verbatim. Once we close #15, we should parse raw labels
