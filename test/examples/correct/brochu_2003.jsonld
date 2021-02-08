@@ -5,6 +5,45 @@
       "newick": "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;",
       "label": "Fig 1 from Brochu 2003",
       "@id": "http://example.org/brochu_2003.json#phylogeny0",
+      "citation": {
+        "type": "article",
+        "title": "Phylogenetic approaches toward crocodylian history",
+        "authors": [
+          {
+            "name": "Christopher A. Brochu",
+            "alternate": [
+              "Brochu, Christopher A."
+            ],
+            "firstname": "Christopher",
+            "middlename": "A.",
+            "lastname": "Brochu"
+          }
+        ],
+        "year": 2003,
+        "figure": "1",
+        "identifier": [
+          {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "link": [
+          {
+            "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "journal": {
+          "name": "Annual Review of Earth and Planetary Sciences",
+          "volume": "31",
+          "pages": "357--397",
+          "identifier": [
+            {
+              "type": "eISSN",
+              "id": "1545-4495"
+            }
+          ]
+        }
+      },
       "@type": "testcase:PhyloreferenceTestPhylogeny",
       "nodes": [
         {
@@ -1240,7 +1279,8 @@
       ],
       "hasRootNode": {
         "@id": "http://example.org/brochu_2003.json#phylogeny0_node0"
-      }
+      },
+      "bibliographicCitation": "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
     }
   ],
   "phylorefs": [

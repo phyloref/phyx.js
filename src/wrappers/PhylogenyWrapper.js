@@ -12,6 +12,7 @@ const owlterms = require('../utils/owlterms');
 
 const { TaxonomicUnitWrapper } = require('./TaxonomicUnitWrapper');
 const { TaxonomicUnitMatcher } = require('../matchers/TaxonomicUnitMatcher');
+const { CitationWrapper } = require('./CitationWrapper');
 
 class PhylogenyWrapper {
   // Wraps a Phylogeny in a PHYX file and provides access to node, node labels
@@ -433,6 +434,12 @@ class PhylogenyWrapper {
       phylogenyAsJSONLD.hasRootNode = {
         '@id': phylogenyAsJSONLD.nodes[0]['@id'],
       };
+    }
+
+    // Add a bibliographicCitation if this phylogeny has a `citation`.
+    if (!has(phylogenyAsJSONLD, 'bibliographicCitation') && has(phylogenyAsJSONLD, 'citation')) {
+      phylogenyAsJSONLD.bibliographicCitation = new CitationWrapper(phylogenyAsJSONLD.citation)
+        .toString();
     }
 
     return phylogenyAsJSONLD;
