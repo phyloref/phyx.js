@@ -59,6 +59,18 @@ class PhyxWrapper {
       return `#phylogeny${index}`;
     }
 
+    // Given a relative ID (e.g. '#phylo1') make it absolute (`${baseURI}phylo1`).
+    function makeIDAbsolute(phylogenyId) {
+      if (baseURI && phylogenyId.startsWith('#')) return `${baseURI}${phylogenyId.substring(1)}`; // Remove the initial '#'.
+      return phylogenyId;
+    }
+
+    // Given an absolute ID (`${baseURI}phylo1`) make it relative (e.g. '#phylo1').
+    function makeIDRelative(phylogenyId) {
+      if (phylogenyId.startsWith(baseURI)) return `#${phylogenyId.substring(baseURI.length)}`;
+      return phylogenyId;
+    }
+
     if (has(jsonld, 'phylorefs')) {
       // We might have phyloref IDs set to relative URIs (e.g. "#phyloref0").
       // If the baseURI is set to '', that's fine. But if not, we'll add it
@@ -68,7 +80,7 @@ class PhyxWrapper {
         jsonld.phylorefs = jsonld.phylorefs.map((phyloref) => {
           if ((phyloref['@id'] || '').startsWith('#')) {
             const modifiedPhyloref = cloneDeep(phyloref);
-            modifiedPhyloref['@id'] = baseURI + phyloref['@id'].substring(1); // Remove the initial '#'.
+            modifiedPhyloref['@id'] = makeIDAbsolute(phyloref['@id']);
             return modifiedPhyloref;
           }
           return phyloref;
@@ -91,7 +103,7 @@ class PhyxWrapper {
         jsonld.phylogenies = jsonld.phylogenies.map((phylogeny) => {
           if ((phylogeny['@id'] || '').startsWith('#')) {
             const modifiedPhylogeny = cloneDeep(phylogeny);
-            modifiedPhylogeny['@id'] = baseURI + phylogeny['@id'].substring(1); // Remove the initial '#'.
+            modifiedPhylogeny['@id'] = makeIDAbsolute(phylogeny['@id']);
             return modifiedPhylogeny;
           }
           return phylogeny;
@@ -124,13 +136,26 @@ class PhyxWrapper {
             // that this node expects to resolve to this phyloreference.
             let flagNodeExpectsPhyloref = false;
 
+            // console.log(`Testing expected resolution of '${phylorefId}' on `
+            // + `'${phylogenyId}' (${makeIDRelative(phylogenyId)}).`);
+
             if (
               has(phyloref, 'expectedResolution')
-              && has(phyloref.expectedResolution, phylogenyId)
+              && (
+                // The user might have used the absolute phylogeny ID here.
+                has(phyloref.expectedResolution, phylogenyId)
+
+                // Or they might have used a relative phylogeny ID.
+                || has(phyloref.expectedResolution, makeIDRelative(phylogenyId))
+              )
             ) {
               // Expected resolution information set! The node label mentioned in that
               // information must be identical to one of the labels of this phylogeny node.
-              const nodeLabel = phyloref.expectedResolution[phylogenyId].nodeLabel;
+
+              // Figure out which phylogenyId was matched here.
+              const nodeLabel = has(phyloref.expectedResolution, phylogenyId)
+                ? phyloref.expectedResolution[phylogenyId].nodeLabel
+                : phyloref.expectedResolution[makeIDRelative(phylogenyId)].nodeLabel;
 
               if (nodeLabel && (node.labels || []).includes(nodeLabel)) {
                 flagNodeExpectsPhyloref = true;

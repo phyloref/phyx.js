@@ -184,6 +184,8 @@
         "@type": "xsd:string"
     },
 
-    "title": "dct:title"
+    "title": "dct:title",
+
+    "representsTaxonomicUnits": "obo:CDAO_0000187"
   }
 }

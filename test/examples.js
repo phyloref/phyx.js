@@ -58,12 +58,6 @@ describe('PhyxWrapper', function () {
   describe('convert brochu_2003.jsonld to n-quads', function () {
     const nqFilename = path.resolve(__dirname, './examples/correct/brochu_2003.nq');
 
-    let context;
-    it('should be able to load the current context file (docs/context/development)', function () {
-      context = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../docs/context/development/phyx.json')));
-      expect(context).to.be.an('object');
-    });
-
     let brochu2003nq;
     it('should be able to convert brochu_2003.json via JSON-LD to n-quads', function () {
       this.timeout(10000);
