@@ -1,8 +1,10 @@
 /** Used to parse timestamps for phyloref statuses. */
 const moment = require('moment');
-const { has, cloneDeep } = require('lodash');
+const { has, cloneDeep, uniq } = require('lodash');
 
+const owlterms = require('../utils/owlterms');
 const { TaxonomicUnitWrapper } = require('./TaxonomicUnitWrapper');
+const { TaxonConceptWrapper } = require('./TaxonConceptWrapper');
 const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 const { CitationWrapper } = require('./CitationWrapper');
 
@@ -286,6 +288,28 @@ class PhylorefWrapper {
         'timeinterval:hasIntervalStartDate': currentTime,
       },
     });
+  }
+
+  /**
+   * Returns the nomenclatural code used by this phyloref.
+   *
+   * If all of the specifiers are taxon concepts with the same nomenclatural code,
+   * this will return that nomenclatural code. Otherwise, this will return
+   * owlterms.NAME_IN_UNKNOWN_CODE.
+   */
+  get nomenCode() {
+    // Get all nomenclatural codes for specifiers.
+    const nomenCodes = this.specifiers.map(specifier => {
+      const taxonConcept = new TaxonomicUnitWrapper(specifier).taxonConcept;
+      if (!taxonConcept) return undefined;
+      const nomenCode = new TaxonConceptWrapper(taxonConcept).nomenCode;
+      if (!nomenCode) return undefined;
+      return nomenCode;
+    });
+
+    const uniqNomenCodes = uniq(nomenCodes);
+    if (uniqNomenCodes.length === 1) return uniqNomenCodes[0];
+    return owlterms.NAME_IN_UNKNOWN_CODE;
   }
 
   /**

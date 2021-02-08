@@ -24,6 +24,10 @@ const expect = chai.expect;
  */
 
 describe('PhylorefWrapper', function () {
+  // Nomenclatural codes.
+  const NOMEN_CODE_UNKNOWN = 'http://purl.obolibrary.org/obo/NOMEN_0000036';
+  const NOMEN_CODE_ICZN = 'http://purl.obolibrary.org/obo/NOMEN_0000107';
+
   // Some specifiers to use in testing.
   const specifier1 = {
     '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
@@ -35,7 +39,11 @@ describe('PhylorefWrapper', function () {
   };
   const specifier3 = {
     '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
-    nameString: 'Rana boylii',
+    hasName: {
+      '@type': phyx.TaxonNameWrapper.TYPE_TAXON_NAME,
+      nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000107',
+      nameComplete: 'Rana boylii',
+    }
   };
 
   describe('given an empty phyloreference', function () {
@@ -63,10 +71,18 @@ describe('PhylorefWrapper', function () {
         expect(wrapper.specifiers).to.be.empty;
       });
 
+      it('should initially return a nomenclatural code of unknown', function () {
+        expect(wrapper.nomenCode).to.equal(NOMEN_CODE_UNKNOWN);
+      });
+
       describe('when a new external specifier is added using .externalSpecifiers', function () {
         it('should return a list with the new specifier', function () {
           wrapper.externalSpecifiers.push(specifier3);
           expect(wrapper.specifiers).to.deep.equal([specifier3]);
+        });
+
+        it('should return a nomenclatural code of ICZN', function () {
+          expect(wrapper.nomenCode).to.equal(NOMEN_CODE_ICZN);
         });
       });
 
@@ -74,6 +90,10 @@ describe('PhylorefWrapper', function () {
         it('should return a list with the new specifier', function () {
           wrapper.externalSpecifiers.push(specifier2);
           expect(wrapper.specifiers).to.deep.equal([specifier3, specifier2]);
+        });
+
+        it('should return a nomenclatural code of unknown', function () {
+          expect(wrapper.nomenCode).to.equal(NOMEN_CODE_UNKNOWN);
         });
       });
 
