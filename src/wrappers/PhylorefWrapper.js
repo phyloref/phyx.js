@@ -664,14 +664,6 @@ class PhylorefWrapper {
     const internalSpecifiers = phylorefAsJSONLD.internalSpecifiers || [];
     const externalSpecifiers = phylorefAsJSONLD.externalSpecifiers || [];
 
-    // In the following section: we ran into a bug (https://github.com/phyloref/phyx.js/issues/57)
-    // that was caused by OWL reasoners deciding that two phylorefs were identical
-    // because they shared an equivalentClass expression. To prevent this from
-    // happening, we now set up each phyloreference as a subclass of every logical
-    // expression that evaluates to it. We use the createComponentClass() method
-    // to do that, passing it `false` to ensure that it doesn't just reuse existing
-    // component classes when doing this.
-
     // We might need to make component classes.
     // So we reset our component class counts and records.
     PhylorefWrapper.componentClassCount = 0;
@@ -731,9 +723,13 @@ class PhylorefWrapper {
       // is equivalent to.
       phylorefAsJSONLD.equivalentClass = logicalExpressions[0];
     } else {
-      // If we have multiple logical expressions, then we *don't* want to state
-      // that all those logical expressions are equivalent to each other. Instead,
-      // we create subclasses for each of those logical expressions.
+      // If we have multiple logical expressions, the phyloreference can be
+      // represented by any of them. We model this by creating subclasses of
+      // the phyloreference for each logical expression -- that way, it's clear
+      // that these expressions aren't equivalent to each other (which is what
+      // caused https://github.com/phyloref/phyx.js/issues/57), but nodes
+      // resolved by any of those expressions will also be included in the
+      // phyloreference itself.
       //
       // Note that there are two differences from the way in which we usually call
       // PhylorefWrapper.createComponentClass():
