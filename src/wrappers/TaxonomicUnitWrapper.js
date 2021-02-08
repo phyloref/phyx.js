@@ -131,21 +131,21 @@ class TaxonomicUnitWrapper {
 
   /**
    * Given a label, attempt to parse it into a taxonomic unit, whether a scientific
-   * name or a specimen identifier.
+   * name or a specimen identifier. The provided nomenclatural code is used.
    *
    * @return A taxonomic unit that this label could be parsed as.
    */
-  static fromLabel(nodeLabel) {
+  static fromLabel(nodeLabel, nomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
     if (nodeLabel === undefined || nodeLabel === null || nodeLabel.trim() === '') return undefined;
 
     // Rather than figuring out with this label, check to see if we've parsed
     // this before.
-    if (PhyxCacheManager.has('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel)) {
-      return PhyxCacheManager.get('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel);
+    if (PhyxCacheManager.has(`TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache.${nomenCode}`, nodeLabel)) {
+      return PhyxCacheManager.get(`TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache.${nomenCode}`, nodeLabel);
     }
 
     // Look for taxon concept.
-    const taxonConcept = TaxonConceptWrapper.fromLabel(nodeLabel);
+    const taxonConcept = TaxonConceptWrapper.fromLabel(nodeLabel, nomenCode);
 
     // Look for specimen information.
     let specimen;
@@ -192,7 +192,7 @@ class TaxonomicUnitWrapper {
     }
 
     // Record in the cache
-    PhyxCacheManager.put('TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache', nodeLabel, tunit);
+    PhyxCacheManager.put(`TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache.${nomenCode}`, nodeLabel, tunit);
 
     return tunit;
   }
