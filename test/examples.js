@@ -110,19 +110,30 @@ describe('PhyxWrapper', function () {
 
   describe('Test incorrect example Phyx files that should fail validation', function () {
     const filesThatShouldFailValidation = [
-      'examples/incorrect/no-context.json',
+      {
+        fileName: 'examples/incorrect/no-context.json',
+        expectedErrors: [{
+          dataPath: '',
+          keyword: 'required',
+          message: "should have required property '@context'",
+          params: {
+            missingProperty: '@context',
+          },
+          schemaPath: '#/required'
+        }],
+      },
     ];
 
-    filesThatShouldFailValidation.forEach((filename) => {
-      describe(`Example file ${filename}`, function () {
+    filesThatShouldFailValidation.forEach((entry) => {
+      describe(`Example file ${entry.fileName}`, function () {
         it('should not validate against our JSON schema', function () {
           const phyxContent = JSON.parse(
             fs.readFileSync(
-              path.resolve(__dirname, filename)
+              path.resolve(__dirname, entry.fileName)
             )
           );
           const valid = validator(phyxContent);
-          expect(validator.errors).to.not.be.null;
+          expect(validator.errors).to.deep.equal(entry.expectedErrors);
           expect(valid).to.not.be.true;
         });
       });
