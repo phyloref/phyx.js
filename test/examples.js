@@ -119,7 +119,7 @@ describe('PhyxWrapper', function () {
           params: {
             missingProperty: '@context',
           },
-          schemaPath: '#/required'
+          schemaPath: '#/required',
         }],
       },
       {
@@ -141,8 +141,8 @@ describe('PhyxWrapper', function () {
             params: {
               missingProperty: 'nomenclaturalCode',
             },
-            schemaPath: '#/definitions/taxonomic_unit/properties/hasName/required'
-          }
+            schemaPath: '#/definitions/taxonomic_unit/properties/hasName/required',
+          },
         ],
       },
     ];
