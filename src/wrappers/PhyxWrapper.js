@@ -1,5 +1,5 @@
-/** Used to make deep copies of objects. */
-const { has, cloneDeep } = require('lodash');
+/** Helper methods from lodash. */
+const { has, cloneDeep, uniq } = require('lodash');
 
 const owlterms = require('../utils/owlterms');
 
@@ -71,6 +71,23 @@ class PhyxWrapper {
       return phylogenyId;
     }
 
+    // Determine a 'default nomenclatural code' for this Phyx file. There are
+    // two ways to do this:
+    //  1. If the Phyx file has a 'defaultNomenclaturalCodeURI' property, we use that.
+    //  2. Otherwise, we check to see if every phyloref in this file has the same
+    //     nomenclatural code. If so, we can use that code. If not, i.e. if any of
+    //     the phylorefs are missing a nomenclatural code or include a specifier,
+    //     we default to owlterms.NAME_IN_UNKNOWN_CODE.
+    function determineDefaultNomenCode() {
+      if (has(jsonld, 'defaultNomenclaturalCodeURI')) return jsonld.defaultNomenclaturalCodeURI;
+      const nomenCodes = (jsonld.phylorefs || [])
+        .map(phyloref => new PhylorefWrapper(phyloref).nomenCode);
+      const uniqNomenCodes = uniq(nomenCodes);
+      if (uniqNomenCodes.length === 1) return uniqNomenCodes[0];
+      return owlterms.NAME_IN_UNKNOWN_CODE;
+    }
+    const defaultNomenCode = determineDefaultNomenCode();
+
     if (has(jsonld, 'phylorefs')) {
       // We might have phyloref IDs set to relative URIs (e.g. "#phyloref0").
       // If the baseURI is set to '', that's fine. But if not, we'll add it
@@ -89,7 +106,7 @@ class PhyxWrapper {
 
       // Convert phyloreferences into an OWL class restriction
       jsonld.phylorefs = jsonld.phylorefs.map(
-        (phyloref, countPhyloref) => new PhylorefWrapper(phyloref)
+        (phyloref, countPhyloref) => new PhylorefWrapper(phyloref, defaultNomenCode)
           .asJSONLD(getBaseURIForPhyloref(countPhyloref))
       );
     }
@@ -112,7 +129,7 @@ class PhyxWrapper {
 
       // Add descriptions for individual nodes in each phylogeny.
       jsonld.phylogenies = jsonld.phylogenies.map(
-        (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny)
+        (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny, defaultNomenCode)
           .asJSONLD(getBaseURIForPhylogeny(countPhylogeny), this.newickParser)
       );
 
