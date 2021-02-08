@@ -513,6 +513,7 @@ _:b131 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b132 .
 _:b132 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b132 <http://www.w3.org/2002/07/owl#hasValue> "Parasuchia" .
 _:b132 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b133 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b133 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b134 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b134 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b135 .
@@ -561,6 +562,7 @@ _:b146 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b147 .
 _:b147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b147 <http://www.w3.org/2002/07/owl#hasValue> "Alligator mississippiensis" .
 _:b147 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b148 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b148 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b149 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b149 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b150 .
@@ -610,6 +612,7 @@ _:b160 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b161 .
 _:b161 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b161 <http://www.w3.org/2002/07/owl#hasValue> "Caiman crocodilus" .
 _:b161 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b162 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b162 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b163 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b163 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b164 .
@@ -790,6 +793,7 @@ _:b215 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://pur
 _:b215 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "niloticus" .
 _:b215 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b215 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylus niloticus" .
+_:b216 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b216 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b217 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b217 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b218 .
@@ -1228,6 +1232,7 @@ _:b350 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://pur
 _:b350 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "niloticus" .
 _:b350 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b350 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylus niloticus" .
+_:b351 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b351 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b352 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b352 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b353 .
