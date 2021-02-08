@@ -436,10 +436,13 @@ class PhylogenyWrapper {
       };
     }
 
-    // Add a bibliographicCitation if this phylogeny has a `citation`.
-    if (!has(phylogenyAsJSONLD, 'bibliographicCitation') && has(phylogenyAsJSONLD, 'citation')) {
-      phylogenyAsJSONLD.bibliographicCitation = new CitationWrapper(phylogenyAsJSONLD.citation)
-        .toString();
+    // Add a bibliographicCitation to the source if it is a Citation.
+    if (has(phylogenyAsJSONLD, 'source')) {
+      const source = phylogenyAsJSONLD.source;
+
+      if (!has(source, 'bibliographicCitation')) {
+        source.bibliographicCitation = new CitationWrapper(source).toString();
+      }
     }
 
     return phylogenyAsJSONLD;

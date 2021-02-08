@@ -185,6 +185,7 @@
     },
 
     "title": "dct:title",
+    "source": "dct:source",
     "bibliographicCitation": "dct:bibliographicCitation",
 
     "representsTaxonomicUnits": "obo:CDAO_0000187"
