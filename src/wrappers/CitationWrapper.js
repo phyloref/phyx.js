@@ -17,6 +17,9 @@ class CitationWrapper {
   toString() {
     if (!this.citation || isEmpty(this.citation)) return undefined;
 
+    // If we already have a bibliographic citation, we can just return that.
+    if (has(this.citation, 'bibliographicCitation')) return this.citation.bibliographicCitation;
+
     let authors = (this.citation.authors || []).map(author => author.name);
     if (authors.length === 0) authors = ['Anonymous'];
     if (authors.length > 2) authors = [`${authors[0]} et al`];
