@@ -43,7 +43,7 @@ describe('PhylorefWrapper', function () {
       '@type': phyx.TaxonNameWrapper.TYPE_TAXON_NAME,
       nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000107',
       nameComplete: 'Rana boylii',
-    }
+    },
   };
 
   describe('given an empty phyloreference', function () {
