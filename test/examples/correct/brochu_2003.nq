@@ -410,7 +410,7 @@ _:b10 <http://www.w3.org/2002/07/owl#hasValue> "Crocodyliformes" .
 _:b10 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b100 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Gavialis" .
 _:b100 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Gavialis gangeticus" .
-_:b100 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b100 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b100 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "gangeticus" .
 _:b100 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b100 <http://www.w3.org/2000/01/rdf-schema#label> "Gavialis gangeticus" .
@@ -427,7 +427,7 @@ _:b104 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b105 .
 _:b104 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b104 <http://www.w3.org/2000/01/rdf-schema#label> "Allodaposuchus" .
 _:b105 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Allodaposuchus" .
-_:b105 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b105 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b105 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b105 <http://www.w3.org/2000/01/rdf-schema#label> "Allodaposuchus" .
 _:b106 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
@@ -446,7 +446,7 @@ _:b11 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b12 .
 _:b11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b11 <http://www.w3.org/2000/01/rdf-schema#label> "Mesoeucrocodylia" .
 _:b110 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Stomatosuchus" .
-_:b110 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b110 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b110 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b110 <http://www.w3.org/2000/01/rdf-schema#label> "Stomatosuchus" .
 _:b111 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
@@ -462,7 +462,7 @@ _:b114 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b115 .
 _:b114 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b114 <http://www.w3.org/2000/01/rdf-schema#label> "Aegyptosuchus" .
 _:b115 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Aegyptosuchus" .
-_:b115 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b115 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b115 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b115 <http://www.w3.org/2000/01/rdf-schema#label> "Aegyptosuchus" .
 _:b116 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
@@ -478,11 +478,11 @@ _:b119 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b120 .
 _:b119 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b119 <http://www.w3.org/2000/01/rdf-schema#label> "Hylaeochampsa" .
 _:b12 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Mesoeucrocodylia" .
-_:b12 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b12 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b12 <http://www.w3.org/2000/01/rdf-schema#label> "Mesoeucrocodylia" .
 _:b120 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Hylaeochampsa" .
-_:b120 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b120 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b120 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b120 <http://www.w3.org/2000/01/rdf-schema#label> "Hylaeochampsa" .
 _:b121 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
@@ -498,7 +498,7 @@ _:b124 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b125 .
 _:b124 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b124 <http://www.w3.org/2000/01/rdf-schema#label> "Aetosauria" .
 _:b125 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Aetosauria" .
-_:b125 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b125 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b125 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b125 <http://www.w3.org/2000/01/rdf-schema#label> "Aetosauria" .
 _:b126 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
@@ -517,7 +517,7 @@ _:b13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b13 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b13 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b14 .
 _:b130 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Parasuchia" .
-_:b130 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b130 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b130 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b130 <http://www.w3.org/2000/01/rdf-schema#label> "Parasuchia" .
 _:b131 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
@@ -650,7 +650,7 @@ _:b169 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "crocodilus" 
 _:b169 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b169 <http://www.w3.org/2000/01/rdf-schema#label> "Caiman crocodilus" .
 _:b17 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Eusuchia" .
-_:b17 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b17 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b17 <http://www.w3.org/2000/01/rdf-schema#label> "Eusuchia" .
 _:b170 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
@@ -750,7 +750,7 @@ _:b199 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b199 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b199 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b200 .
 _:b2 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Crocodylomorpha" .
-_:b2 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b2 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b2 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylomorpha" .
 _:b20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
@@ -816,7 +816,7 @@ _:b218 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b219 .
 _:b218 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/spar/pso/StatusInTime> .
 _:b219 <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalStartDate> "2018-06-11T22:49:51.960Z" .
 _:b22 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Crocodylia" .
-_:b22 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b22 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b22 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b22 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylia" .
 _:b220 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
@@ -974,7 +974,7 @@ _:b269 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b269 <http://www.w3.org/2002/07/owl#hasValue> "Tomistoma schlegelii" .
 _:b269 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b27 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Brevirostres" .
-_:b27 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b27 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b27 <http://www.w3.org/2000/01/rdf-schema#label> "Brevirostres" .
 _:b270 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
@@ -1136,7 +1136,7 @@ _:b318 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b319 .
 _:b319 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 _:b319 <http://www.w3.org/2002/07/owl#intersectionOf> _:b412 .
 _:b32 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Crocodylidae" .
-_:b32 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b32 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b32 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b32 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylidae" .
 _:b320 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
@@ -1442,7 +1442,7 @@ _:b428 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b429 .
 _:b429 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b82 .
 _:b429 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b43 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Crocodylinae" .
-_:b43 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b43 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b43 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylinae" .
 _:b430 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.obolibrary.org/obo/OBI_0302910> .
@@ -1467,7 +1467,7 @@ _:b47 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/onto
 _:b47 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylus niloticus" .
 _:b48 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Crocodylus" .
 _:b48 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Crocodylus niloticus" .
-_:b48 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b48 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b48 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "niloticus" .
 _:b48 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b48 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylus niloticus" .
@@ -1488,7 +1488,7 @@ _:b52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/onto
 _:b52 <http://www.w3.org/2000/01/rdf-schema#label> "Osteolaemus tetraspis" .
 _:b53 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Osteolaemus" .
 _:b53 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Osteolaemus tetraspis" .
-_:b53 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b53 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b53 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "tetraspis" .
 _:b53 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b53 <http://www.w3.org/2000/01/rdf-schema#label> "Osteolaemus tetraspis" .
@@ -1506,7 +1506,7 @@ _:b57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/onto
 _:b57 <http://www.w3.org/2000/01/rdf-schema#label> "Tomistoma schlegelii" .
 _:b58 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Tomistoma" .
 _:b58 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Tomistoma schlegelii" .
-_:b58 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b58 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b58 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "schlegelii" .
 _:b58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b58 <http://www.w3.org/2000/01/rdf-schema#label> "Tomistoma schlegelii" .
@@ -1526,7 +1526,7 @@ _:b62 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b63 .
 _:b62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b62 <http://www.w3.org/2000/01/rdf-schema#label> "Alligatoroidea" .
 _:b63 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Alligatoroidea" .
-_:b63 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b63 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b63 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b63 <http://www.w3.org/2000/01/rdf-schema#label> "Alligatoroidea" .
 _:b64 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
@@ -1542,14 +1542,14 @@ _:b67 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b68 .
 _:b67 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b67 <http://www.w3.org/2000/01/rdf-schema#label> "Alligatoridae" .
 _:b68 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Alligatoridae" .
-_:b68 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b68 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b68 <http://www.w3.org/2000/01/rdf-schema#label> "Alligatoridae" .
 _:b69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b69 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b69 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b70 .
 _:b7 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Crocodyliformes" .
-_:b7 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b7 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b7 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodyliformes" .
 _:b70 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
@@ -1571,7 +1571,7 @@ _:b75 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/onto
 _:b75 <http://www.w3.org/2000/01/rdf-schema#label> "Caiman crocodilus" .
 _:b76 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Caiman" .
 _:b76 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Caiman crocodilus" .
-_:b76 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b76 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b76 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "crocodilus" .
 _:b76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b76 <http://www.w3.org/2000/01/rdf-schema#label> "Caiman crocodilus" .
@@ -1600,7 +1600,7 @@ _:b83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/onto
 _:b83 <http://www.w3.org/2000/01/rdf-schema#label> "Alligator mississippiensis" .
 _:b84 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Alligator" .
 _:b84 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Alligator mississippiensis" .
-_:b84 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b84 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b84 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "mississippiensis" .
 _:b84 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b84 <http://www.w3.org/2000/01/rdf-schema#label> "Alligator mississippiensis" .
@@ -1629,7 +1629,7 @@ _:b91 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/onto
 _:b91 <http://www.w3.org/2000/01/rdf-schema#label> "Diplocynodon ratelii" .
 _:b92 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Diplocynodon" .
 _:b92 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Diplocynodon ratelii" .
-_:b92 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000036> .
+_:b92 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b92 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "ratelii" .
 _:b92 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b92 <http://www.w3.org/2000/01/rdf-schema#label> "Diplocynodon ratelii" .
