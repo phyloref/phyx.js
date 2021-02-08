@@ -54,8 +54,9 @@ class TaxonomicUnitWrapper {
   }
 
   /** Wrap a taxonomic unit. */
-  constructor(tunit) {
+  constructor(tunit, defaultNomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
     this.tunit = tunit;
+    this.defaultNomenCode = defaultNomenCode;
   }
 
   /**
@@ -228,7 +229,7 @@ class TaxonomicUnitWrapper {
    */
   get asOWLEquivClass() {
     if (this.types.includes(TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT)) {
-      return new TaxonConceptWrapper(this.tunit).asOWLEquivClass;
+      return new TaxonConceptWrapper(this.tunit, this.defaultNomenCode).asOWLEquivClass;
     }
 
     if (this.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN)) {

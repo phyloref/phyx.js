@@ -29,8 +29,9 @@ class TaxonConceptWrapper {
   }
 
   /** Create a TaxonConceptWrapper around a taxon concept. */
-  constructor(tunit) {
+  constructor(tunit, defaultNomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
     this.tunit = tunit;
+    this.defaultNomenCode = defaultNomenCode;
   }
 
   /**
@@ -183,7 +184,7 @@ class TaxonConceptWrapper {
     return {
       '@type': 'owl:Restriction',
       onProperty: owlterms.TDWG_VOC_HAS_NAME,
-      someValuesFrom: new TaxonNameWrapper(this.taxonName).asOWLEquivClass,
+      someValuesFrom: new TaxonNameWrapper(this.taxonName, this.defaultNomenCode).asOWLEquivClass,
     };
   }
 }

@@ -398,7 +398,7 @@ class PhylorefWrapper {
     return {
       '@type': 'owl:Restriction',
       onProperty: 'phyloref:includes_TU',
-      someValuesFrom: new TaxonomicUnitWrapper(tu).asOWLEquivClass,
+      someValuesFrom: new TaxonomicUnitWrapper(tu, this.nomenCode).asOWLEquivClass,
     };
   }
 
@@ -416,7 +416,7 @@ class PhylorefWrapper {
           {
             '@type': 'owl:Restriction',
             onProperty: 'phyloref:excludes_TU',
-            someValuesFrom: new TaxonomicUnitWrapper(tu1).asOWLEquivClass,
+            someValuesFrom: new TaxonomicUnitWrapper(tu1, this.nomenCode).asOWLEquivClass,
           },
           PhylorefWrapper.getIncludesRestrictionForTU(tu2),
         ],
@@ -559,7 +559,7 @@ class PhylorefWrapper {
         {
           '@type': 'owl:Restriction',
           onProperty: 'phyloref:excludes_TU',
-          someValuesFrom: new TaxonomicUnitWrapper(tu).asOWLEquivClass,
+          someValuesFrom: new TaxonomicUnitWrapper(tu, this.nomenCode).asOWLEquivClass,
         },
       ],
     }];
@@ -578,7 +578,7 @@ class PhylorefWrapper {
             someValuesFrom: {
               '@type': 'owl:Restriction',
               onProperty: 'phyloref:excludes_TU',
-              someValuesFrom: new TaxonomicUnitWrapper(tu).asOWLEquivClass,
+              someValuesFrom: new TaxonomicUnitWrapper(tu, this.nomenCode).asOWLEquivClass,
             },
           },
         ],
