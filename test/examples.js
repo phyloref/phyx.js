@@ -122,6 +122,29 @@ describe('PhyxWrapper', function () {
           schemaPath: '#/required'
         }],
       },
+      {
+        fileName: 'examples/incorrect/invalid-specifier.json',
+        expectedErrors: [
+          {
+            dataPath: '.phylorefs[0].internalSpecifiers',
+            keyword: 'minItems',
+            message: 'should NOT have fewer than 1 items',
+            params: {
+              limit: 1,
+            },
+            schemaPath: '#/properties/phylorefs/items/properties/internalSpecifiers/minItems',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0].hasName',
+            keyword: 'required',
+            message: "should have required property 'nomenclaturalCode'",
+            params: {
+              missingProperty: 'nomenclaturalCode',
+            },
+            schemaPath: '#/definitions/taxonomic_unit/properties/hasName/required'
+          }
+        ],
+      },
     ];
 
     filesThatShouldFailValidation.forEach((entry) => {
