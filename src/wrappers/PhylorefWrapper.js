@@ -16,9 +16,10 @@ const { CitationWrapper } = require('./CitationWrapper');
 class PhylorefWrapper {
   // Wraps a phyloreference in a PHYX model.
 
-  constructor(phyloref) {
+  constructor(phyloref, defaultNomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
     // Wraps the provided phyloreference
     this.phyloref = phyloref;
+    this.defaultNomenCode = defaultNomenCode;
   }
 
   /** Return the internal specifiers of this phyloref (if any). */
@@ -131,7 +132,7 @@ class PhylorefWrapper {
     const phylorefLabel = this.label;
     const nodeLabels = new Set();
 
-    new PhylogenyWrapper(phylogeny).getNodeLabels().forEach((nodeLabel) => {
+    new PhylogenyWrapper(phylogeny, this.nomenCode).getNodeLabels().forEach((nodeLabel) => {
       // Is this node label identical to the phyloreference name?
       if (nodeLabel === phylorefLabel) {
         nodeLabels.add(nodeLabel);
@@ -294,12 +295,12 @@ class PhylorefWrapper {
    * Returns the nomenclatural code used by this phyloref.
    *
    * If all of the specifiers are taxon concepts with the same nomenclatural code,
-   * this will return that nomenclatural code. Otherwise, this will return
-   * owlterms.NAME_IN_UNKNOWN_CODE.
+   * this will return that nomenclatural code. Otherwise, this will return the
+   * defaultNomenCode set when this phyloref was created.
    */
   get nomenCode() {
     // Get all nomenclatural codes for specifiers.
-    const nomenCodes = this.specifiers.map(specifier => {
+    const nomenCodes = this.specifiers.map((specifier) => {
       const taxonConcept = new TaxonomicUnitWrapper(specifier).taxonConcept;
       if (!taxonConcept) return undefined;
       const nomenCode = new TaxonConceptWrapper(taxonConcept).nomenCode;
@@ -309,7 +310,7 @@ class PhylorefWrapper {
 
     const uniqNomenCodes = uniq(nomenCodes);
     if (uniqNomenCodes.length === 1) return uniqNomenCodes[0];
-    return owlterms.NAME_IN_UNKNOWN_CODE;
+    return this.defaultNomenCode;
   }
 
   /**
