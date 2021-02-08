@@ -294,23 +294,25 @@ class PhylorefWrapper {
   /**
    * Returns the nomenclatural code used by this phyloref.
    *
-   * If all of the specifiers are taxon concepts with the same nomenclatural code,
-   * this will return that nomenclatural code. Otherwise, this will return the
-   * defaultNomenCode set when this phyloref was created.
+   * If all of the specifiers are taxon concepts with the same nomenclatural code
+   * (using the default nomenclatural code set during constructions of this object
+   * when one isn't provided), this will return that nomenclatural code. Otherwise,
+   * this method will return owlterms.NAME_IN_UNKNOWN_CODE.
    */
   get nomenCode() {
     // Get all nomenclatural codes for specifiers.
     const nomenCodes = this.specifiers.map((specifier) => {
-      const taxonConcept = new TaxonomicUnitWrapper(specifier).taxonConcept;
+      const taxonConcept = new TaxonomicUnitWrapper(specifier, this.defaultNomenCode).taxonConcept;
       if (!taxonConcept) return undefined;
-      const nomenCode = new TaxonConceptWrapper(taxonConcept).nomenCode;
+      const nomenCode = new TaxonConceptWrapper(taxonConcept, this.defaultNomenCode).nomenCode;
       if (!nomenCode) return undefined;
       return nomenCode;
     });
 
+    // Check to see if we have a single nomenclatural code to use.
     const uniqNomenCodes = uniq(nomenCodes);
     if (uniqNomenCodes.length === 1) return uniqNomenCodes[0];
-    return this.defaultNomenCode;
+    return owlterms.NAME_IN_UNKNOWN_CODE;
   }
 
   /**
