@@ -11,6 +11,7 @@
 <http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b3 .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#label> "Testudinata" .
+<http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingApomorphy> .
 <http://purl.obolibrary.org/obo/UBERON_0008271> <http://purl.obolibrary.org/obo/IAO_0000115> "A 'complete turtle shell' is herein defined as a composite structure consisting of a carapace with interlocking costals, neurals, peripherals, and a nuchal, together with the plastron comprising interlocking epi-, hyo-, meso- (lost in Testudo graeca), hypo-, xiphiplastra and an entoplastron. These are articulated with one another along a bridge. Additional elements may be present as well." .
 <http://purl.obolibrary.org/obo/UBERON_0008271> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://semanticscience.org/resource/SIO_010056> .
@@ -23,7 +24,7 @@ _:b3 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b4 .
 _:b3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b4 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Testudo" .
 _:b4 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Testudo graeca" .
-_:b4 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICZN> .
+_:b4 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://purl.obolibrary.org/obo/NOMEN_0000107> .
 _:b4 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "graeca" .
 _:b4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b4 <http://www.w3.org/2000/01/rdf-schema#label> "Testudo graeca Linnaeus 1758" .
