@@ -253,6 +253,7 @@
 <http://example.org/brochu_2003.json#phylogeny0_node9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b36 .
 <http://example.org/brochu_2003.json#phylogeny0_node9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b39 .
 <http://example.org/brochu_2003.json#phylogeny0_node9> <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylidae" .
+<http://example.org/brochu_2003.json#phyloref0> <http://purl.obolibrary.org/obo/IAO_0000115> "Alligatoridae (Cuvier 1807).\n\nLast common ancestor of Alligator mississippiensis and Caiman crocodilus and all of its descendents." .
 <http://example.org/brochu_2003.json#phyloref0> <http://purl.obolibrary.org/obo/IAO_0000119> _:b134 .
 <http://example.org/brochu_2003.json#phyloref0> <http://purl.org/spar/pso/holdsStatusInTime> _:b135 .
 <http://example.org/brochu_2003.json#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b137 .
@@ -261,6 +262,7 @@
 <http://example.org/brochu_2003.json#phyloref0> <http://www.w3.org/2000/01/rdf-schema#label> "Alligatoridae" .
 <http://example.org/brochu_2003.json#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/brochu_2003.json#phyloref0> <http://www.w3.org/2002/07/owl#equivalentClass> _:b141 .
+<http://example.org/brochu_2003.json#phyloref1> <http://purl.obolibrary.org/obo/IAO_0000115> "Alligatorinae (Kälin 1940).\n\nAlligator mississippiensis and all crocodylians closer to it than to Caiman crocodilus." .
 <http://example.org/brochu_2003.json#phyloref1> <http://purl.obolibrary.org/obo/IAO_0000119> _:b149 .
 <http://example.org/brochu_2003.json#phyloref1> <http://purl.org/spar/pso/holdsStatusInTime> _:b150 .
 <http://example.org/brochu_2003.json#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b152 .
@@ -269,6 +271,7 @@
 <http://example.org/brochu_2003.json#phyloref1> <http://www.w3.org/2000/01/rdf-schema#label> "Alligatorinae" .
 <http://example.org/brochu_2003.json#phyloref1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/brochu_2003.json#phyloref1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b156 .
+<http://example.org/brochu_2003.json#phyloref2> <http://purl.obolibrary.org/obo/IAO_0000115> "Caimaninae (Norell 1988).\n\nCaiman crocodilus and all crocodylians closer to it than to Alligator mississippiensis." .
 <http://example.org/brochu_2003.json#phyloref2> <http://purl.obolibrary.org/obo/IAO_0000119> _:b163 .
 <http://example.org/brochu_2003.json#phyloref2> <http://purl.org/spar/pso/holdsStatusInTime> _:b164 .
 <http://example.org/brochu_2003.json#phyloref2> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b166 .
@@ -277,6 +280,7 @@
 <http://example.org/brochu_2003.json#phyloref2> <http://www.w3.org/2000/01/rdf-schema#label> "Caimaninae" .
 <http://example.org/brochu_2003.json#phyloref2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/brochu_2003.json#phyloref2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b170 .
+<http://example.org/brochu_2003.json#phyloref3> <http://purl.obolibrary.org/obo/IAO_0000115> "Crocodyloidea (Fitzinger 1826).\n\nCrocodylus niloticus and all crocodylians closer to it than to Alligator mississippiensis or Gavialis gangeticus." .
 <http://example.org/brochu_2003.json#phyloref3> <http://purl.org/spar/pso/holdsStatusInTime> _:b177 .
 <http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b179 .
 <http://example.org/brochu_2003.json#phyloref3> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b181 .
@@ -318,6 +322,7 @@
 <http://example.org/brochu_2003.json#phyloref3_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref3> .
 <http://example.org/brochu_2003.json#phyloref3_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/brochu_2003.json#phyloref3_component6> <http://www.w3.org/2002/07/owl#equivalentClass> _:b210 .
+<http://example.org/brochu_2003.json#phyloref4> <http://purl.obolibrary.org/obo/IAO_0000115> "Crocodylidae (Cuvier 1807). Definition dependent on phylogenetic context.\n\nLast common ancestor of Crocodylus niloticus, Osteolaemus tetraspis, and Tomistoma schlegelii and all of its descendents." .
 <http://example.org/brochu_2003.json#phyloref4> <http://purl.obolibrary.org/obo/IAO_0000119> _:b217 .
 <http://example.org/brochu_2003.json#phyloref4> <http://purl.org/spar/pso/holdsStatusInTime> _:b218 .
 <http://example.org/brochu_2003.json#phyloref4> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/brochu_2003.json#phyloref4_component1> .
@@ -380,6 +385,7 @@
 <http://example.org/brochu_2003.json#phyloref4_component9> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
 <http://example.org/brochu_2003.json#phyloref4_component9> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
 <http://example.org/brochu_2003.json#phyloref4_component9> <http://www.w3.org/2002/07/owl#equivalentClass> _:b332 .
+<http://example.org/brochu_2003.json#phyloref5> <http://purl.obolibrary.org/obo/IAO_0000115> "Diplocynodontinae (Brochu 1999).\n\nDiplocynodon ratelii and all crocodylians closer to it than to Alligator mississippiensis." .
 <http://example.org/brochu_2003.json#phyloref5> <http://purl.obolibrary.org/obo/IAO_0000119> _:b352 .
 <http://example.org/brochu_2003.json#phyloref5> <http://purl.org/spar/pso/holdsStatusInTime> _:b353 .
 <http://example.org/brochu_2003.json#phyloref5> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b355 .
