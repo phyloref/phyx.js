@@ -285,6 +285,14 @@
             "description": "The identifier of this clade definition in the Regnum database",
             "minLength": 1
           },
+          "phylorefType": {
+            "description": "The type of this phyloreference.",
+            "enum": [
+              "phyloref:PhyloreferenceUsingMaximumClade",
+              "phyloref:PhyloreferenceUsingMinimumClade",
+              "phyloref:PhyloreferenceUsingApomorphy"
+            ]
+          },
           "label": {
             "type": "string",
             "description": "The name or label of this phyloreference."
