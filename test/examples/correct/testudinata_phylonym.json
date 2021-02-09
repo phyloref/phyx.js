@@ -10,54 +10,49 @@
               "title": "Testudinata (#273)",
               "authors": [
                 {
-                  "first_name": "W.",
-                  "middle_name": "G.",
-                  "last_name": "Joyce"
+                  "firstname": "W.",
+                  "middlename": "G.",
+                  "lastname": "Joyce"
                 },
                 {
-                  "first_name": "J.",
-                  "middle_name": "F.",
-                  "last_name": "Parham"
+                  "firstname": "J.",
+                  "middlename": "F.",
+                  "lastname": "Parham"
                 },
                 {
-                  "first_name": "J.",
-                  "middle_name": "",
-                  "last_name": "Anquetin"
+                  "firstname": "J.",
+                  "lastname": "Anquetin"
                 },
                 {
-                  "first_name": "J.",
-                  "middle_name": "",
-                  "last_name": "Claude"
+                  "firstname": "J.",
+                  "lastname": "Claude"
                 },
                 {
-                  "first_name": "I.",
-                  "middle_name": "G.",
-                  "last_name": "Danilov"
+                  "firstname": "I.",
+                  "middlename": "G.",
+                  "lastname": "Danilov"
                 },
                 {
-                  "first_name": "J.",
-                  "middle_name": "B.",
-                  "last_name": "Iverson"
+                  "firstname": "J.",
+                  "middlename": "B.",
+                  "lastname": "Iverson"
                 },
                 {
-                  "first_name": "B.",
-                  "middle_name": "",
-                  "last_name": "Kear"
+                  "firstname": "B.",
+                  "lastname": "Kear"
                 },
                 {
-                  "first_name": "T.",
-                  "middle_name": "R.",
-                  "last_name": "Lyson"
+                  "firstname": "T.",
+                  "middlename": "R.",
+                  "lastname": "Lyson"
                 },
                 {
-                  "first_name": "M.",
-                  "middle_name": "",
-                  "last_name": "Rabi"
+                  "firstname": "M.",
+                  "lastname": "Rabi"
                 },
                 {
-                  "first_name": "J.",
-                  "middle_name": "",
-                  "last_name": "Sterli"
+                  "firstname": "J.",
+                  "lastname": "Sterli"
                 }
               ],
               "year": 2020,
@@ -69,30 +64,29 @@
               ],
               "editors": [
                 {
-                  "first_name": "K.",
-                  "middle_name": "",
-                  "last_name": "de Queiroz"
+                  "firstname": "K.",
+                  "lastname": "de Queiroz"
                 },
                 {
-                  "first_name": "P.",
-                  "middle_name": "D.",
-                  "last_name": "Cantino"
+                  "firstname": "P.",
+                  "middlename": "D.",
+                  "lastname": "Cantino"
                 },
                 {
-                  "first_name": "J.",
-                  "middle_name": "A.",
-                  "last_name": "Gauthier"
+                  "firstname": "J.",
+                  "middlename": "A.",
+                  "lastname": "Gauthier"
                 }
               ],
+              "publisher": "CRC Press",
+              "city": "Boca Raton, FL",
               "journal": {
                 "name": "Phylonyms: a companion to the PhyloCode",
                 "pages": "1045--1048",
                 "identifier": [{
                   "type": "ISBN",
                   "id": "9781138332935"
-                }],
-                "publisher": "CRC Press",
-                "city": "Boca Raton, FL"
+                }]
               }
             },
             "apomorphy": {
@@ -105,7 +99,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                         "label": "Testudo graeca Linnaeus 1758",
                         "nameComplete": "Testudo graeca",
                         "genusPart": "Testudo",
@@ -126,5 +120,5 @@
             ]
         }
     ],
-    "defaultNomenclaturalCodeURI": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+    "defaultNomenclaturalCodeURI": "http://purl.obolibrary.org/obo/NOMEN_0000107"
 }

@@ -111,9 +111,7 @@
             }
           },
           "required": [
-            "name",
-            "volume",
-            "identifier"
+            "name"
           ]
         },
         "identifier": {
