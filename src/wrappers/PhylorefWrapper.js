@@ -738,6 +738,7 @@ class PhylorefWrapper {
     ) {
       // This is an apomorphy-based definition!
       phylorefAsJSONLD.subClassOf = [
+        'phyloref:Phyloreference',
         'phyloref:PhyloreferenceUsingApomorphy',
       ];
 
