@@ -670,13 +670,19 @@ class PhylorefWrapper {
     PhylorefWrapper.componentClassesByLabel = {};
     phylorefAsJSONLD.hasComponentClass = [];
 
+    // The type of this phyloreference.
+    let calculatedPhylorefType;
+
     // The list of logical expressions generated for this phyloref.
     let logicalExpressions = [];
 
     if (internalSpecifiers.length === 0) {
       // We can't handle phyloreferences without at least one internal specifier.
+      calculatedPhylorefType = 'phyloref:MalformedPhyloreference';
       phylorefAsJSONLD.malformedPhyloreference = 'No internal specifiers provided';
     } else if (externalSpecifiers.length > 0) {
+      calculatedPhylorefType = 'phyloref:PhyloreferenceUsingMaximumClade';
+
       // If the phyloreference has at least one external specifier, we
       // can provide a simplified expression for the internal specifier,
       // in the form:
@@ -701,6 +707,8 @@ class PhylorefWrapper {
         );
       }
     } else {
+      calculatedPhylorefType = 'phyloref:PhyloreferenceUsingMinimumClade';
+
       // We only have internal specifiers. We therefore need to use the algorithm in
       // PhylorefWrapper.createClassExpressionsForInternals() to create this expression.
       logicalExpressions = PhylorefWrapper.createClassExpressionsForInternals(
@@ -761,6 +769,15 @@ class PhylorefWrapper {
       phylorefAsJSONLD.subClassOf = [phylorefAsJSONLD.subClassOf];
     }
     phylorefAsJSONLD.subClassOf.push('phyloref:Phyloreference');
+
+    // If the this Phyloref has a phylorefType that differs from the calculated
+    // phyloref type, throw an error.
+    if (has(phylorefAsJSONLD, 'phylorefType') && phylorefAsJSONLD.phylorefType !== calculatedPhylorefType) {
+      throw new Error(
+        `Phyloref ${this.label} has phylorefType set to '${phylorefAsJSONLD.phylorefType}', but it appears to be a '${calculatedPhylorefType}'.`
+      );
+    }
+    phylorefAsJSONLD.subClassOf.push(calculatedPhylorefType);
 
     return phylorefAsJSONLD;
   }

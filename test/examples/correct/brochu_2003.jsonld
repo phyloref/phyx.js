@@ -1246,6 +1246,7 @@
   "phylorefs": [
     {
       "label": "Alligatoridae",
+      "phylorefType": "phyloref:PhyloreferenceUsingMinimumClade",
       "cladeDefinition": "Alligatoridae (Cuvier 1807).\n\nLast common ancestor of Alligator mississippiensis and Caiman crocodilus and all of its descendents.",
       "definitionSource": {
         "type": "article",
@@ -1362,11 +1363,13 @@
         }
       },
       "subClassOf": [
-        "phyloref:Phyloreference"
+        "phyloref:Phyloreference",
+        "phyloref:PhyloreferenceUsingMinimumClade"
       ]
     },
     {
       "label": "Alligatorinae",
+      "phylorefType": "phyloref:PhyloreferenceUsingMaximumClade",
       "cladeDefinition": "Alligatorinae (Kälin 1940).\n\nAlligator mississippiensis and all crocodylians closer to it than to Caiman crocodilus.",
       "definitionSource": {
         "type": "article",
@@ -1485,11 +1488,13 @@
         ]
       },
       "subClassOf": [
-        "phyloref:Phyloreference"
+        "phyloref:Phyloreference",
+        "phyloref:PhyloreferenceUsingMaximumClade"
       ]
     },
     {
       "label": "Caimaninae",
+      "phylorefType": "phyloref:PhyloreferenceUsingMaximumClade",
       "cladeDefinition": "Caimaninae (Norell 1988).\n\nCaiman crocodilus and all crocodylians closer to it than to Alligator mississippiensis.",
       "definitionSource": {
         "type": "article",
@@ -1607,11 +1612,13 @@
         ]
       },
       "subClassOf": [
-        "phyloref:Phyloreference"
+        "phyloref:Phyloreference",
+        "phyloref:PhyloreferenceUsingMaximumClade"
       ]
     },
     {
       "label": "Crocodyloidea",
+      "phylorefType": "phyloref:PhyloreferenceUsingMaximumClade",
       "cladeDefinition": "Crocodyloidea (Fitzinger 1826).\n\nCrocodylus niloticus and all crocodylians closer to it than to Alligator mississippiensis or Gavialis gangeticus.",
       "internalSpecifiers": [
         {
@@ -1891,11 +1898,13 @@
         }
       ],
       "subClassOf": [
-        "phyloref:Phyloreference"
+        "phyloref:Phyloreference",
+        "phyloref:PhyloreferenceUsingMaximumClade"
       ]
     },
     {
       "label": "Crocodylidae",
+      "phylorefType": "phyloref:PhyloreferenceUsingMinimumClade",
       "cladeDefinition": "Crocodylidae (Cuvier 1807). Definition dependent on phylogenetic context.\n\nLast common ancestor of Crocodylus niloticus, Osteolaemus tetraspis, and Tomistoma schlegelii and all of its descendents.",
       "definitionSource": {
         "type": "article",
@@ -2638,11 +2647,13 @@
         }
       ],
       "subClassOf": [
-        "phyloref:Phyloreference"
+        "phyloref:Phyloreference",
+        "phyloref:PhyloreferenceUsingMinimumClade"
       ]
     },
     {
       "label": "Diplocynodontinae",
+      "phylorefType": "phyloref:PhyloreferenceUsingMaximumClade",
       "cladeDefinition": "Diplocynodontinae (Brochu 1999).\n\nDiplocynodon ratelii and all crocodylians closer to it than to Alligator mississippiensis.",
       "definitionSource": {
         "type": "article",
@@ -2761,7 +2772,8 @@
         ]
       },
       "subClassOf": [
-        "phyloref:Phyloreference"
+        "phyloref:Phyloreference",
+        "phyloref:PhyloreferenceUsingMaximumClade"
       ]
     }
   ],
