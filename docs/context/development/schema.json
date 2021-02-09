@@ -277,7 +277,7 @@
       "minItems": 0,
       "items": {
         "required": [
-          "cladeDefinition"
+          "definition"
         ],
         "properties": {
           "regnumId": {
