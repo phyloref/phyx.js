@@ -137,9 +137,9 @@ describe('PhyxWrapper', function () {
           {
             dataPath: '.phylorefs[0].externalSpecifiers[0].hasName',
             keyword: 'required',
-            message: "should have required property 'nomenclaturalCode'",
+            message: "should have required property 'nameComplete'",
             params: {
-              missingProperty: 'nomenclaturalCode',
+              missingProperty: 'nameComplete',
             },
             schemaPath: '#/definitions/taxonomic_unit/properties/hasName/required',
           },

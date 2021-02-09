@@ -53,7 +53,6 @@
                   "hasName": {
                       "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
                       "label": "Caiman crocodilus",
-                      "nameComplete": "Caiman crocodilus",
                       "genusPart": "Caiman",
                       "specificEpithet": "crocodilus"
                   },
