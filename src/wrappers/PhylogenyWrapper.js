@@ -20,7 +20,7 @@ class PhylogenyWrapper {
   // additionalNodeProperties object which provides additional properties for
   // nodes.
 
-  constructor(phylogeny, defaultNomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
+  constructor(phylogeny, defaultNomenCode = owlterms.UNKNOWN_CODE) {
     // Construct a phylogeny based on a Phylogeny object in a PHYX phylogeny.
     // Note that this version ONLY uses the `newick` property to determine the
     // phylogeny: if other representations are included (such as a node-based

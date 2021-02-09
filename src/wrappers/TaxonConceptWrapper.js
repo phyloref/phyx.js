@@ -29,7 +29,7 @@ class TaxonConceptWrapper {
   }
 
   /** Create a TaxonConceptWrapper around a taxon concept. */
-  constructor(tunit, defaultNomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
+  constructor(tunit, defaultNomenCode = owlterms.UNKNOWN_CODE) {
     this.tunit = tunit;
     this.defaultNomenCode = defaultNomenCode;
   }

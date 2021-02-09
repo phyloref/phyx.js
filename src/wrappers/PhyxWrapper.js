@@ -77,14 +77,14 @@ class PhyxWrapper {
     //  2. Otherwise, we check to see if every phyloref in this file has the same
     //     nomenclatural code. If so, we can use that code. If not, i.e. if any of
     //     the phylorefs are missing a nomenclatural code or include a specifier,
-    //     we default to owlterms.NAME_IN_UNKNOWN_CODE.
+    //     we default to owlterms.UNKNOWN_CODE.
     function determineDefaultNomenCode() {
       if (has(jsonld, 'defaultNomenclaturalCodeURI')) return jsonld.defaultNomenclaturalCodeURI;
       const nomenCodes = (jsonld.phylorefs || [])
         .map(phyloref => new PhylorefWrapper(phyloref).nomenCode);
       const uniqNomenCodes = uniq(nomenCodes);
       if (uniqNomenCodes.length === 1) return uniqNomenCodes[0];
-      return owlterms.NAME_IN_UNKNOWN_CODE;
+      return owlterms.UNKNOWN_CODE;
     }
     const defaultNomenCode = determineDefaultNomenCode();
 

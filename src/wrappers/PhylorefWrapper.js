@@ -16,7 +16,7 @@ const { CitationWrapper } = require('./CitationWrapper');
 class PhylorefWrapper {
   // Wraps a phyloreference in a PHYX model.
 
-  constructor(phyloref, defaultNomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
+  constructor(phyloref, defaultNomenCode = owlterms.UNKNOWN_CODE) {
     // Wraps the provided phyloreference
     this.phyloref = phyloref;
     this.defaultNomenCode = defaultNomenCode;
@@ -297,7 +297,7 @@ class PhylorefWrapper {
    * If all of the specifiers are taxon concepts with the same nomenclatural code
    * (using the default nomenclatural code set during constructions of this object
    * when one isn't provided), this will return that nomenclatural code. Otherwise,
-   * this method will return owlterms.NAME_IN_UNKNOWN_CODE.
+   * this method will return owlterms.UNKNOWN_CODE.
    */
   get nomenCode() {
     // Get all nomenclatural codes for specifiers.
@@ -312,7 +312,7 @@ class PhylorefWrapper {
     // Check to see if we have a single nomenclatural code to use.
     const uniqNomenCodes = uniq(nomenCodes);
     if (uniqNomenCodes.length === 1) return uniqNomenCodes[0];
-    return owlterms.NAME_IN_UNKNOWN_CODE;
+    return owlterms.UNKNOWN_CODE;
   }
 
   /**
