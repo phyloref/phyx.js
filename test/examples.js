@@ -59,7 +59,10 @@ describe('PhyxWrapper', function () {
 
         it('should validate against our JSON schema', function () {
           const valid = validator(json);
-          expect(validator.errors).to.be.null;
+          expect(
+            validator.errors,
+            `The following validation errors were generated: ${JSON.stringify(validator.errors, null, 2)}`
+          ).to.be.null;
           expect(valid).to.be.true;
         });
 
