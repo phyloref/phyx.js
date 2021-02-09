@@ -8,9 +8,6 @@ const phyx = require('../src');
 // Use Chai's expect API.
 const expect = chai.expect;
 
-// Some constants.
-const NOMEN_CODE_UNKNOWN = 'http://purl.obolibrary.org/obo/NOMEN_0000036';
-
 /*
  * We primarily test two classes here:
  *  - TaxonomicUnitWrapper, which wraps a taxonomic unit and determines if it
@@ -122,7 +119,6 @@ describe('TaxonomicUnitWrapper', function () {
           label: 'Rana luteiventris MVZ225749',
           hasName: {
             '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
-            nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
             label: 'Rana luteiventris MVZ225749',
             genusPart: 'Rana',
             specificEpithet: 'luteiventris',
@@ -138,7 +134,6 @@ describe('TaxonomicUnitWrapper', function () {
           hasName: {
             '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
             label: 'Rana_luteiventris_MVZ_225749',
-            nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
             nameComplete: 'Rana luteiventris',
             genusPart: 'Rana',
             specificEpithet: 'luteiventris',
@@ -156,18 +151,9 @@ describe('TaxonomicUnitWrapper', function () {
         '@type': 'owl:Restriction',
         onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
         someValuesFrom: {
-          '@type': 'owl:Class',
-          intersectionOf: [{
-            '@type': 'owl:Restriction',
-            onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete',
-            hasValue: 'Rana luteiventris',
-          }, {
-            '@type': 'owl:Restriction',
-            hasValue: {
-              '@id': NOMEN_CODE_UNKNOWN,
-            },
-            onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode',
-          }],
+          '@type': 'owl:Restriction',
+          onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete',
+          hasValue: 'Rana luteiventris',
         },
       });
     });

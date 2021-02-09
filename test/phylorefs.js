@@ -24,10 +24,6 @@ const expect = chai.expect;
  */
 
 describe('PhylorefWrapper', function () {
-  // Nomenclatural codes.
-  const NOMEN_CODE_UNKNOWN = 'http://purl.obolibrary.org/obo/NOMEN_0000036';
-  const NOMEN_CODE_ICZN = 'http://purl.obolibrary.org/obo/NOMEN_0000107';
-
   // Some specifiers to use in testing.
   const specifier1 = {
     '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
@@ -41,7 +37,7 @@ describe('PhylorefWrapper', function () {
     '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
     hasName: {
       '@type': phyx.TaxonNameWrapper.TYPE_TAXON_NAME,
-      nomenclaturalCode: owlterms.ICZN_NAME,
+      nomenclaturalCode: owlterms.ICZN_CODE,
       nameComplete: 'Rana boylii',
     },
   };
@@ -72,7 +68,7 @@ describe('PhylorefWrapper', function () {
       });
 
       it('should initially return a nomenclatural code of unknown', function () {
-        expect(wrapper.nomenCode).to.equal(NOMEN_CODE_UNKNOWN);
+        expect(wrapper.nomenCode).to.equal(owlterms.UNKNOWN_CODE);
       });
 
       describe('when a new external specifier is added using .externalSpecifiers', function () {
@@ -82,7 +78,7 @@ describe('PhylorefWrapper', function () {
         });
 
         it('should return a nomenclatural code of ICZN', function () {
-          expect(wrapper.nomenCode).to.equal(NOMEN_CODE_ICZN);
+          expect(wrapper.nomenCode).to.equal(owlterms.ICZN_CODE);
         });
       });
 
@@ -93,7 +89,7 @@ describe('PhylorefWrapper', function () {
         });
 
         it('should return a nomenclatural code of unknown', function () {
-          expect(wrapper.nomenCode).to.equal(NOMEN_CODE_UNKNOWN);
+          expect(wrapper.nomenCode).to.equal(owlterms.UNKNOWN_CODE);
         });
       });
 
@@ -299,7 +295,7 @@ describe('PhylorefWrapper', function () {
                   }, {
                     '@type': owlterms.OWL_RESTRICTION,
                     hasValue: {
-                      '@id': owlterms.ICZN_NAME,
+                      '@id': owlterms.ICZN_CODE,
                     },
                     onProperty: owlterms.NOMENCLATURAL_CODE,
                   }],
