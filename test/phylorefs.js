@@ -41,7 +41,7 @@ describe('PhylorefWrapper', function () {
     '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
     hasName: {
       '@type': phyx.TaxonNameWrapper.TYPE_TAXON_NAME,
-      nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000107',
+      nomenclaturalCode: owlterms.ICZN_NAME,
       nameComplete: 'Rana boylii',
     },
   };
@@ -273,7 +273,7 @@ describe('PhylorefWrapper', function () {
         '@type': owlterms.OWL_RESTRICTION,
         onProperty: owlterms.CDAO_HAS_CHILD,
         someValuesFrom: {
-          '@type': 'owl:Class',
+          '@type': owlterms.OWL_CLASS,
           intersectionOf: [
             {
               '@type': owlterms.OWL_RESTRICTION,
@@ -291,9 +291,16 @@ describe('PhylorefWrapper', function () {
                 '@type': owlterms.OWL_RESTRICTION,
                 onProperty: owlterms.TDWG_VOC_HAS_NAME,
                 someValuesFrom: {
-                  '@type': owlterms.OWL_RESTRICTION,
-                  hasValue: 'Rana boylii',
-                  onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                  '@type': owlterms.OWL_CLASS,
+                  intersectionOf: [{
+                    '@type': owlterms.OWL_RESTRICTION,
+                    hasValue: 'Rana boylii',
+                    onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                  }, {
+                    '@type': owlterms.OWL_RESTRICTION,
+                    hasValue: owlterms.ICZN_NAME,
+                    onProperty: owlterms.NOMENCLATURAL_CODE,
+                  }],
                 },
               },
             },
