@@ -104,7 +104,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -123,7 +123,7 @@
                 "label": "Crocodylomorpha",
                 "nameComplete": "Crocodylomorpha",
                 "uninomial": "Crocodylomorpha",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Crocodylomorpha"
             }
@@ -162,7 +162,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -181,7 +181,7 @@
                 "label": "Crocodyliformes",
                 "nameComplete": "Crocodyliformes",
                 "uninomial": "Crocodyliformes",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Crocodyliformes"
             }
@@ -219,7 +219,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -238,7 +238,7 @@
                 "label": "Mesoeucrocodylia",
                 "nameComplete": "Mesoeucrocodylia",
                 "uninomial": "Mesoeucrocodylia",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Mesoeucrocodylia"
             }
@@ -276,7 +276,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -295,7 +295,7 @@
                 "label": "Eusuchia",
                 "nameComplete": "Eusuchia",
                 "uninomial": "Eusuchia",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Eusuchia"
             }
@@ -353,7 +353,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -372,7 +372,7 @@
                 "label": "Crocodylia",
                 "nameComplete": "Crocodylia",
                 "uninomial": "Crocodylia",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Crocodylia"
             }
@@ -410,7 +410,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -429,7 +429,7 @@
                 "label": "Brevirostres",
                 "nameComplete": "Brevirostres",
                 "uninomial": "Brevirostres",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Brevirostres"
             }
@@ -467,7 +467,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -524,7 +524,7 @@
                 "label": "Crocodylidae",
                 "nameComplete": "Crocodylidae",
                 "uninomial": "Crocodylidae",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Crocodylidae"
             }
@@ -562,7 +562,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -581,7 +581,7 @@
                 "label": "Crocodylinae",
                 "nameComplete": "Crocodylinae",
                 "uninomial": "Crocodylinae",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Crocodylinae"
             }
@@ -619,7 +619,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -639,7 +639,7 @@
                 "nameComplete": "Crocodylus niloticus",
                 "genusPart": "Crocodylus",
                 "specificEpithet": "niloticus",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Crocodylus niloticus"
             }
@@ -673,7 +673,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -693,7 +693,7 @@
                 "nameComplete": "Osteolaemus tetraspis",
                 "genusPart": "Osteolaemus",
                 "specificEpithet": "tetraspis",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Osteolaemus tetraspis"
             }
@@ -727,7 +727,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -747,7 +747,7 @@
                 "nameComplete": "Tomistoma schlegelii",
                 "genusPart": "Tomistoma",
                 "specificEpithet": "schlegelii",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Tomistoma schlegelii"
             }
@@ -781,7 +781,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -800,7 +800,7 @@
                 "label": "Alligatoroidea",
                 "nameComplete": "Alligatoroidea",
                 "uninomial": "Alligatoroidea",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Alligatoroidea"
             }
@@ -838,7 +838,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -876,7 +876,7 @@
                 "label": "Alligatoridae",
                 "nameComplete": "Alligatoridae",
                 "uninomial": "Alligatoridae",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Alligatoridae"
             }
@@ -914,7 +914,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -953,7 +953,7 @@
                 "nameComplete": "Caiman crocodilus",
                 "genusPart": "Caiman",
                 "specificEpithet": "crocodilus",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Caiman crocodilus"
             }
@@ -987,7 +987,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -1026,7 +1026,7 @@
                 "nameComplete": "Alligator mississippiensis",
                 "genusPart": "Alligator",
                 "specificEpithet": "mississippiensis",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Alligator mississippiensis"
             }
@@ -1060,7 +1060,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -1099,7 +1099,7 @@
                 "nameComplete": "Diplocynodon ratelii",
                 "genusPart": "Diplocynodon",
                 "specificEpithet": "ratelii",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Diplocynodon ratelii"
             }
@@ -1133,7 +1133,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -1153,7 +1153,7 @@
                 "nameComplete": "Gavialis gangeticus",
                 "genusPart": "Gavialis",
                 "specificEpithet": "gangeticus",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Gavialis gangeticus"
             }
@@ -1187,7 +1187,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -1206,7 +1206,7 @@
                 "label": "Allodaposuchus",
                 "nameComplete": "Allodaposuchus",
                 "uninomial": "Allodaposuchus",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Allodaposuchus"
             }
@@ -1240,7 +1240,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -1259,7 +1259,7 @@
                 "label": "Stomatosuchus",
                 "nameComplete": "Stomatosuchus",
                 "uninomial": "Stomatosuchus",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Stomatosuchus"
             }
@@ -1295,7 +1295,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -1314,7 +1314,7 @@
                 "label": "Aegyptosuchus",
                 "nameComplete": "Aegyptosuchus",
                 "uninomial": "Aegyptosuchus",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Aegyptosuchus"
             }
@@ -1350,7 +1350,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -1369,7 +1369,7 @@
                 "label": "Hylaeochampsa",
                 "nameComplete": "Hylaeochampsa",
                 "uninomial": "Hylaeochampsa",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Hylaeochampsa"
             }
@@ -1453,7 +1453,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -1472,7 +1472,7 @@
                 "label": "Aetosauria",
                 "nameComplete": "Aetosauria",
                 "uninomial": "Aetosauria",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Aetosauria"
             }
@@ -1524,7 +1524,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -1543,7 +1543,7 @@
                 "label": "Parasuchia",
                 "nameComplete": "Parasuchia",
                 "uninomial": "Parasuchia",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Parasuchia"
             }
@@ -1609,7 +1609,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Caiman crocodilus",
             "nameComplete": "Caiman crocodilus",
             "genusPart": "Caiman",
@@ -1620,7 +1620,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Alligator mississippiensis",
             "nameComplete": "Alligator mississippiensis",
             "genusPart": "Alligator",
@@ -1668,7 +1668,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -1693,7 +1693,7 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                       "hasValue": {
-                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                       }
                     }
                   ]
@@ -1757,7 +1757,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Alligator mississippiensis",
             "nameComplete": "Alligator mississippiensis",
             "genusPart": "Alligator",
@@ -1770,7 +1770,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Caiman crocodilus",
             "nameComplete": "Caiman crocodilus",
             "genusPart": "Caiman",
@@ -1819,7 +1819,7 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                     "hasValue": {
-                      "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                     }
                   }
                 ]
@@ -1844,7 +1844,7 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                     "hasValue": {
-                      "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                     }
                   }
                 ]
@@ -1907,7 +1907,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Caiman crocodilus",
             "nameComplete": "Caiman crocodilus",
             "genusPart": "Caiman",
@@ -1920,7 +1920,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Alligator mississippiensis",
             "nameComplete": "Alligator mississippiensis",
             "genusPart": "Alligator",
@@ -1968,7 +1968,7 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                     "hasValue": {
-                      "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                     }
                   }
                 ]
@@ -1993,7 +1993,7 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                     "hasValue": {
-                      "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                     }
                   }
                 ]
@@ -2016,7 +2016,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Crocodylus niloticus",
             "nameComplete": "Crocodylus niloticus",
             "genusPart": "Crocodylus",
@@ -2029,7 +2029,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Alligator mississippiensis",
             "nameComplete": "Alligator mississippiensis",
             "genusPart": "Alligator",
@@ -2041,7 +2041,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Gavialis gangeticus",
             "nameComplete": "Gavialis gangeticus",
             "genusPart": "Gavialis",
@@ -2095,7 +2095,7 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                           "hasValue": {
-                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                           }
                         }
                       ]
@@ -2120,7 +2120,7 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                           "hasValue": {
-                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                           }
                         }
                       ]
@@ -2160,7 +2160,7 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                           "hasValue": {
-                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                           }
                         }
                       ]
@@ -2185,7 +2185,7 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                           "hasValue": {
-                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                           }
                         }
                       ]
@@ -2227,7 +2227,7 @@
                         "@type": "owl:Restriction",
                         "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                         "hasValue": {
-                          "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                         }
                       }
                     ]
@@ -2274,7 +2274,7 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                           "hasValue": {
-                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                           }
                         }
                       ]
@@ -2319,7 +2319,7 @@
                         "@type": "owl:Restriction",
                         "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                         "hasValue": {
-                          "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                         }
                       }
                     ]
@@ -2366,7 +2366,7 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                           "hasValue": {
-                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                           }
                         }
                       ]
@@ -2438,7 +2438,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Tomistoma schlegelii",
             "nameComplete": "Tomistoma schlegelii",
             "genusPart": "Tomistoma",
@@ -2449,7 +2449,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Osteolaemus tetraspis",
             "nameComplete": "Osteolaemus tetraspis",
             "genusPart": "Osteolaemus",
@@ -2461,7 +2461,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Crocodylus niloticus",
             "nameComplete": "Crocodylus niloticus",
             "genusPart": "Crocodylus",
@@ -2522,7 +2522,7 @@
                                   "@type": "owl:Restriction",
                                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                   "hasValue": {
-                                    "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                    "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                   }
                                 }
                               ]
@@ -2547,7 +2547,7 @@
                                   "@type": "owl:Restriction",
                                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                   "hasValue": {
-                                    "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                    "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                   }
                                 }
                               ]
@@ -2576,7 +2576,7 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                           "hasValue": {
-                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                           }
                         }
                       ]
@@ -2624,7 +2624,7 @@
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                             "hasValue": {
-                              "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                             }
                           }
                         ]
@@ -2656,7 +2656,7 @@
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                 "hasValue": {
-                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                 }
                               }
                             ]
@@ -2681,7 +2681,7 @@
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                 "hasValue": {
-                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                 }
                               }
                             ]
@@ -2732,7 +2732,7 @@
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                             "hasValue": {
-                              "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                             }
                           }
                         ]
@@ -2764,7 +2764,7 @@
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                 "hasValue": {
-                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                 }
                               }
                             ]
@@ -2789,7 +2789,7 @@
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                 "hasValue": {
-                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                 }
                               }
                             ]
@@ -2846,7 +2846,7 @@
                                   "@type": "owl:Restriction",
                                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                   "hasValue": {
-                                    "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                    "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                   }
                                 }
                               ]
@@ -2871,7 +2871,7 @@
                                   "@type": "owl:Restriction",
                                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                   "hasValue": {
-                                    "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                    "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                   }
                                 }
                               ]
@@ -2900,7 +2900,7 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                           "hasValue": {
-                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                           }
                         }
                       ]
@@ -2948,7 +2948,7 @@
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                             "hasValue": {
-                              "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                             }
                           }
                         ]
@@ -2980,7 +2980,7 @@
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                 "hasValue": {
-                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                 }
                               }
                             ]
@@ -3005,7 +3005,7 @@
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                 "hasValue": {
-                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                 }
                               }
                             ]
@@ -3056,7 +3056,7 @@
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                             "hasValue": {
-                              "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                             }
                           }
                         ]
@@ -3088,7 +3088,7 @@
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                 "hasValue": {
-                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                 }
                               }
                             ]
@@ -3113,7 +3113,7 @@
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                 "hasValue": {
-                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                 }
                               }
                             ]
@@ -3170,7 +3170,7 @@
                                   "@type": "owl:Restriction",
                                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                   "hasValue": {
-                                    "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                    "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                   }
                                 }
                               ]
@@ -3195,7 +3195,7 @@
                                   "@type": "owl:Restriction",
                                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                   "hasValue": {
-                                    "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                    "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                   }
                                 }
                               ]
@@ -3224,7 +3224,7 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                           "hasValue": {
-                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                           }
                         }
                       ]
@@ -3272,7 +3272,7 @@
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                             "hasValue": {
-                              "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                             }
                           }
                         ]
@@ -3304,7 +3304,7 @@
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                 "hasValue": {
-                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                 }
                               }
                             ]
@@ -3329,7 +3329,7 @@
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                 "hasValue": {
-                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                 }
                               }
                             ]
@@ -3380,7 +3380,7 @@
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                             "hasValue": {
-                              "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                             }
                           }
                         ]
@@ -3412,7 +3412,7 @@
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                 "hasValue": {
-                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                 }
                               }
                             ]
@@ -3437,7 +3437,7 @@
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                                 "hasValue": {
-                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                                 }
                               }
                             ]
@@ -3512,7 +3512,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Diplocynodon ratelii",
             "nameComplete": "Diplocynodon ratelii",
             "genusPart": "Diplocynodon",
@@ -3525,7 +3525,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Alligator mississippiensis",
             "nameComplete": "Alligator mississippiensis",
             "genusPart": "Alligator",
@@ -3574,7 +3574,7 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                     "hasValue": {
-                      "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                     }
                   }
                 ]
@@ -3599,7 +3599,7 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
                     "hasValue": {
-                      "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
                     }
                   }
                 ]
@@ -3614,7 +3614,7 @@
       ]
     }
   ],
-  "defaultNomenclaturalCodeURI": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+  "defaultNomenclaturalCodeURI": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
   "hasTaxonomicUnitMatches": [],
   "@id": "http://example.org/brochu_2003.json#",
   "@type": [

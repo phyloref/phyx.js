@@ -87,7 +87,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Caiman crocodilus",
                         "nameComplete": "Caiman crocodilus",
                         "genusPart": "Caiman",
@@ -98,7 +98,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Alligator mississippiensis",
                         "nameComplete": "Alligator mississippiensis",
                         "genusPart": "Alligator",
@@ -164,7 +164,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Alligator mississippiensis",
                         "nameComplete": "Alligator mississippiensis",
                         "genusPart": "Alligator",
@@ -177,7 +177,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Caiman crocodilus",
                         "nameComplete": "Caiman crocodilus",
                         "genusPart": "Caiman",
@@ -247,7 +247,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Caiman crocodilus",
                         "nameComplete": "Caiman crocodilus",
                         "genusPart": "Caiman",
@@ -260,7 +260,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Alligator mississippiensis",
                         "nameComplete": "Alligator mississippiensis",
                         "genusPart": "Alligator",
@@ -294,7 +294,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Crocodylus niloticus",
                         "nameComplete": "Crocodylus niloticus",
                         "genusPart": "Crocodylus",
@@ -307,7 +307,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Alligator mississippiensis",
                         "nameComplete": "Alligator mississippiensis",
                         "genusPart": "Alligator",
@@ -319,7 +319,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Gavialis gangeticus",
                         "nameComplete": "Gavialis gangeticus",
                         "genusPart": "Gavialis",
@@ -389,7 +389,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Tomistoma schlegelii",
                         "nameComplete": "Tomistoma schlegelii",
                         "genusPart": "Tomistoma",
@@ -400,7 +400,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Osteolaemus tetraspis",
                         "nameComplete": "Osteolaemus tetraspis",
                         "genusPart": "Osteolaemus",
@@ -412,7 +412,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Crocodylus niloticus",
                         "nameComplete": "Crocodylus niloticus",
                         "genusPart": "Crocodylus",
@@ -478,7 +478,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Diplocynodon ratelii",
                         "nameComplete": "Diplocynodon ratelii",
                         "genusPart": "Diplocynodon",
@@ -491,7 +491,7 @@
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
                         "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
                         "label": "Alligator mississippiensis",
                         "nameComplete": "Alligator mississippiensis",
                         "genusPart": "Alligator",
@@ -518,5 +518,5 @@
             }
         }
     ],
-    "defaultNomenclaturalCodeURI": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+    "defaultNomenclaturalCodeURI": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
 }
