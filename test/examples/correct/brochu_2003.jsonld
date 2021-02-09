@@ -120,10 +120,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Crocodylomorpha",
                 "nameComplete": "Crocodylomorpha",
-                "uninomial": "Crocodylomorpha"
+                "uninomial": "Crocodylomorpha",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Crocodylomorpha"
             }
@@ -178,10 +178,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Crocodyliformes",
                 "nameComplete": "Crocodyliformes",
-                "uninomial": "Crocodyliformes"
+                "uninomial": "Crocodyliformes",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Crocodyliformes"
             }
@@ -235,10 +235,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Mesoeucrocodylia",
                 "nameComplete": "Mesoeucrocodylia",
-                "uninomial": "Mesoeucrocodylia"
+                "uninomial": "Mesoeucrocodylia",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Mesoeucrocodylia"
             }
@@ -292,10 +292,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Eusuchia",
                 "nameComplete": "Eusuchia",
-                "uninomial": "Eusuchia"
+                "uninomial": "Eusuchia",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Eusuchia"
             }
@@ -369,10 +369,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Crocodylia",
                 "nameComplete": "Crocodylia",
-                "uninomial": "Crocodylia"
+                "uninomial": "Crocodylia",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Crocodylia"
             }
@@ -426,10 +426,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Brevirostres",
                 "nameComplete": "Brevirostres",
-                "uninomial": "Brevirostres"
+                "uninomial": "Brevirostres",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Brevirostres"
             }
@@ -521,10 +521,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Crocodylidae",
                 "nameComplete": "Crocodylidae",
-                "uninomial": "Crocodylidae"
+                "uninomial": "Crocodylidae",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Crocodylidae"
             }
@@ -578,10 +578,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Crocodylinae",
                 "nameComplete": "Crocodylinae",
-                "uninomial": "Crocodylinae"
+                "uninomial": "Crocodylinae",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Crocodylinae"
             }
@@ -635,11 +635,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Crocodylus niloticus",
                 "nameComplete": "Crocodylus niloticus",
                 "genusPart": "Crocodylus",
-                "specificEpithet": "niloticus"
+                "specificEpithet": "niloticus",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Crocodylus niloticus"
             }
@@ -689,11 +689,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Osteolaemus tetraspis",
                 "nameComplete": "Osteolaemus tetraspis",
                 "genusPart": "Osteolaemus",
-                "specificEpithet": "tetraspis"
+                "specificEpithet": "tetraspis",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Osteolaemus tetraspis"
             }
@@ -743,11 +743,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Tomistoma schlegelii",
                 "nameComplete": "Tomistoma schlegelii",
                 "genusPart": "Tomistoma",
-                "specificEpithet": "schlegelii"
+                "specificEpithet": "schlegelii",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Tomistoma schlegelii"
             }
@@ -797,10 +797,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Alligatoroidea",
                 "nameComplete": "Alligatoroidea",
-                "uninomial": "Alligatoroidea"
+                "uninomial": "Alligatoroidea",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Alligatoroidea"
             }
@@ -873,10 +873,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Alligatoridae",
                 "nameComplete": "Alligatoridae",
-                "uninomial": "Alligatoridae"
+                "uninomial": "Alligatoridae",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Alligatoridae"
             }
@@ -949,11 +949,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Caiman crocodilus",
                 "nameComplete": "Caiman crocodilus",
                 "genusPart": "Caiman",
-                "specificEpithet": "crocodilus"
+                "specificEpithet": "crocodilus",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Caiman crocodilus"
             }
@@ -1022,11 +1022,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Alligator mississippiensis",
                 "nameComplete": "Alligator mississippiensis",
                 "genusPart": "Alligator",
-                "specificEpithet": "mississippiensis"
+                "specificEpithet": "mississippiensis",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Alligator mississippiensis"
             }
@@ -1095,11 +1095,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Diplocynodon ratelii",
                 "nameComplete": "Diplocynodon ratelii",
                 "genusPart": "Diplocynodon",
-                "specificEpithet": "ratelii"
+                "specificEpithet": "ratelii",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Diplocynodon ratelii"
             }
@@ -1149,11 +1149,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Gavialis gangeticus",
                 "nameComplete": "Gavialis gangeticus",
                 "genusPart": "Gavialis",
-                "specificEpithet": "gangeticus"
+                "specificEpithet": "gangeticus",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Gavialis gangeticus"
             }
@@ -1203,10 +1203,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Allodaposuchus",
                 "nameComplete": "Allodaposuchus",
-                "uninomial": "Allodaposuchus"
+                "uninomial": "Allodaposuchus",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Allodaposuchus"
             }
@@ -1256,10 +1256,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Stomatosuchus",
                 "nameComplete": "Stomatosuchus",
-                "uninomial": "Stomatosuchus"
+                "uninomial": "Stomatosuchus",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Stomatosuchus"
             }
@@ -1311,10 +1311,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Aegyptosuchus",
                 "nameComplete": "Aegyptosuchus",
-                "uninomial": "Aegyptosuchus"
+                "uninomial": "Aegyptosuchus",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Aegyptosuchus"
             }
@@ -1366,10 +1366,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Hylaeochampsa",
                 "nameComplete": "Hylaeochampsa",
-                "uninomial": "Hylaeochampsa"
+                "uninomial": "Hylaeochampsa",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Hylaeochampsa"
             }
@@ -1469,10 +1469,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Aetosauria",
                 "nameComplete": "Aetosauria",
-                "uninomial": "Aetosauria"
+                "uninomial": "Aetosauria",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Aetosauria"
             }
@@ -1540,10 +1540,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
                 "label": "Parasuchia",
                 "nameComplete": "Parasuchia",
-                "uninomial": "Parasuchia"
+                "uninomial": "Parasuchia",
+                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107"
               },
               "label": "Parasuchia"
             }

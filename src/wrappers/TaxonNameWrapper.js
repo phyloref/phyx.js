@@ -40,7 +40,7 @@ class TaxonNameWrapper {
    * Create a new taxon name wrapper around the JSON representation of
    * a taxon name.
    */
-  constructor(txname, defaultNomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
+  constructor(txname, defaultNomenCode = owlterms.UNKNOWN_CODE) {
     if (txname === undefined) throw new Error('TaxonNameWrapper tried to wrap undefined');
     this.txname = txname;
     this.defaultNomenCode = defaultNomenCode;
@@ -56,9 +56,20 @@ class TaxonNameWrapper {
   /**
    * The URI for an unknown nomenclatural code (i.e. all we know is that it's a scientific name).
    */
-  static get NAME_IN_UNKNOWN_CODE() {
-    return owlterms.NAME_IN_UNKNOWN_CODE;
+  static get UNKNOWN_CODE() {
+    return owlterms.UNKNOWN_CODE;
   }
+
+  /* Directly access URIs for nomenclatural codes. */
+  static get ICZN_CODE() { return owlterms.ICZN_CODE; }
+
+  static get ICN_CODE() { return owlterms.ICN_CODE; }
+
+  static get ICNP_CODE() { return owlterms.ICNP_CODE; }
+
+  static get ICTV_CODE() { return owlterms.ICTV_CODE; }
+
+  static get ICNCP_CODE() { return owlterms.ICNCP_CODE; }
 
   /**
    * Return a list of all supported nomenclatural code. Each entry will have
@@ -104,7 +115,7 @@ class TaxonNameWrapper {
         title: 'International Code of Cultivated Plants',
       },
       {
-        uri: owlterms.NAME_IN_UNKNOWN_CODE,
+        uri: owlterms.UNKNOWN_CODE,
         shortName: 'Code not known',
         label: 'Nomenclatural code not known',
         title: 'Nomenclatural code not known',
@@ -155,7 +166,7 @@ class TaxonNameWrapper {
   /**
    * Parses a verbatim taxon name into an (unwrapped) TaxonName.
    */
-  static fromVerbatimName(verbatimName, nomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
+  static fromVerbatimName(verbatimName, nomenCode = owlterms.UNKNOWN_CODE) {
     // Have we already parsed this verbatim name?
     if (PhyxCacheManager.has(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName)) {
       return PhyxCacheManager.get(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName);
@@ -170,7 +181,6 @@ class TaxonNameWrapper {
     if (results) {
       txname = {
         '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
-        nomenclaturalCode: nomenCode,
         label: verbatimName,
         nameComplete: `${results[1]} ${results[2]} ${results[3]}`.trim(),
         genusPart: results[1],
@@ -186,7 +196,6 @@ class TaxonNameWrapper {
       if (results) {
         txname = {
           '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
-          nomenclaturalCode: nomenCode,
           label: verbatimName,
           nameComplete: `${results[1]} ${results[2]}`.trim(),
           genusPart: results[1],
@@ -202,12 +211,16 @@ class TaxonNameWrapper {
       if (results) {
         txname = {
           '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
-          nomenclaturalCode: nomenCode,
           label: verbatimName,
           nameComplete: results[1],
           uninomial: results[1],
         };
       }
+    }
+
+    // Add a nomenclatural code if possible.
+    if (txname && nomenCode) {
+      txname.nomenclaturalCode = nomenCode;
     }
 
     // Store in the cache.
