@@ -729,6 +729,21 @@ class PhylorefWrapper {
     const internalSpecifiers = phylorefAsJSONLD.internalSpecifiers || [];
     const externalSpecifiers = phylorefAsJSONLD.externalSpecifiers || [];
 
+    // If it is an apomorphy-based class expression, we can't generate logical
+    // expressions for it anyway.
+    const phylorefType = phylorefAsJSONLD.phylorefType;
+    if (
+      (phylorefType && phylorefType === 'phyloref:PhyloreferenceUsingApomorphy')
+      || (has(phylorefAsJSONLD, 'apomorphy'))
+    ) {
+      // This is an apomorphy-based definition!
+      phylorefAsJSONLD.subClassOf = [
+        'phyloref:PhyloreferenceUsingApomorphy',
+      ];
+
+      return phylorefAsJSONLD;
+    }
+
     // We might need to make component classes.
     // So we reset our component class counts and records.
     PhylorefWrapper.componentClassCount = 0;
