@@ -66,7 +66,7 @@ describe('PhyxWrapper', function () {
         it('should be able to convertible to an OWL Ontology', function () {
           this.timeout(10000);
           jsonld = new phyx.PhyxWrapper(json)
-            .asOWLOntology('http://example.org/examples#');
+            .asOWLOntology('http://example.org/phyx.js/example#');
           if (REPLACE_EXISTING) {
             fs.writeFileSync(
               jsonldFilename,
@@ -87,7 +87,7 @@ describe('PhyxWrapper', function () {
           // JSON-LD readers don't usually handle relative @context easily, so
           // instead let's replace the entire @context with the local context file.
           jsonld['@context'] = JSON.parse(fs.readFileSync(
-            path.resolve(__dirname, path.join('examples', 'correct', jsonld['@context']))
+            path.resolve(__dirname, 'examples', 'correct', jsonld['@context'])
           ));
 
           return JSONLD.toRDF(jsonld, { format: 'application/n-quads' }).then((rdf) => {

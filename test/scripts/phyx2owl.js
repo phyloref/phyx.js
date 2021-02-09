@@ -40,14 +40,14 @@ describe(PHYX2OWL_JS, function () {
     const OWL_FILE = path.resolve(__dirname, '../examples/correct/brochu_2003.owl');
     const EXPECTED_OWL_FILE = path.resolve(__dirname, '../examples/correct/brochu_2003.jsonld');
 
-    // If there is already a '../examples/brochu_2003.json' file, we should delete it.
+    // If there is already a '../examples/brochu_2003.owl' file, we should delete it.
     if (fs.existsSync(OWL_FILE)) fs.unlinkSync(OWL_FILE);
     expect(fs.existsSync(OWL_FILE)).to.be.false;
 
     // Convert brochu_2003.json to brochu_2003.owl.
     // Because of the way in which we test brochu_2003.owl in test/examples.js,
     // we need to set a base URI as well.
-    const result = child.spawnSync(PHYX2OWL_JS, [PHYX_FILE, '--base-uri', 'http://example.org/brochu_2003.json#'], {
+    const result = child.spawnSync(PHYX2OWL_JS, [PHYX_FILE, '--base-uri', 'http://example.org/phyx.js/example#'], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
@@ -71,7 +71,7 @@ describe(PHYX2OWL_JS, function () {
     const jsonFilesInExamples = fs.readdirSync(EXAMPLE_DIR, 'utf8')
       .filter(fileName => fileName.toLowerCase().endsWith('.json'));
 
-    const result = child.spawnSync(PHYX2OWL_JS, [EXAMPLE_DIR], {
+    const result = child.spawnSync(PHYX2OWL_JS, [EXAMPLE_DIR, '--base-uri', 'http://example.org/phyx.js/example#'], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
