@@ -186,6 +186,8 @@
 
     "title": "dct:title",
 
-    "representsTaxonomicUnits": "obo:CDAO_0000187"
+    "representsTaxonomicUnits": "obo:CDAO_0000187",
+
+    "apomorphy": "example:apomorphy"
   }
 }
