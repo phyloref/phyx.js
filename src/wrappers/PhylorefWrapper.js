@@ -743,6 +743,7 @@ class PhylorefWrapper {
 
     if (internalSpecifiers.length === 0) {
       // We can't handle phyloreferences without at least one internal specifier.
+      calculatedPhylorefType = 'phyloref:MalformedPhyloreference';
       phylorefAsJSONLD.malformedPhyloreference = 'No internal specifiers provided';
     } else if (externalSpecifiers.length > 0) {
       calculatedPhylorefType = 'phyloref:PhyloreferenceUsingMaximumClade';
