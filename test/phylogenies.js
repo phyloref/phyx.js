@@ -296,7 +296,9 @@ describe('PhylogenyWrapper', function () {
                           onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
                         }, {
                           '@type': owlterms.OWL_RESTRICTION,
-                          hasValue: owlterms.ICZN_NAME,
+                          hasValue: {
+                            '@id': owlterms.ICZN_NAME,
+                          },
                           onProperty: owlterms.NOMENCLATURAL_CODE,
                         }],
                       },
@@ -344,7 +346,9 @@ describe('PhylogenyWrapper', function () {
                           onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
                         }, {
                           '@type': owlterms.OWL_RESTRICTION,
-                          hasValue: owlterms.ICZN_NAME,
+                          hasValue: {
+                            '@id': owlterms.ICZN_NAME,
+                          },
                           onProperty: owlterms.NOMENCLATURAL_CODE,
                         }],
                       },
@@ -385,7 +389,9 @@ describe('PhylogenyWrapper', function () {
                           onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
                         }, {
                           '@type': owlterms.OWL_RESTRICTION,
-                          hasValue: owlterms.ICZN_NAME,
+                          hasValue: {
+                            '@id': owlterms.ICZN_NAME,
+                          },
                           onProperty: owlterms.NOMENCLATURAL_CODE,
                         }],
                       },

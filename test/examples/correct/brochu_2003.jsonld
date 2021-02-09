@@ -103,7 +103,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -159,7 +161,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -214,7 +218,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -269,7 +275,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -344,7 +352,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -399,7 +409,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -454,7 +466,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -547,7 +561,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -602,7 +618,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -654,7 +672,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -706,7 +726,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -758,7 +780,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -813,7 +837,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -887,7 +913,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -958,7 +986,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -1029,7 +1059,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -1100,7 +1132,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -1152,7 +1186,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -1203,7 +1239,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -1256,7 +1294,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -1309,7 +1349,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -1410,7 +1452,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -1479,7 +1523,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -1621,7 +1667,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -1644,7 +1692,9 @@
                     {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                      "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      "hasValue": {
+                        "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                      }
                     }
                   ]
                 }
@@ -1768,7 +1818,9 @@
                   {
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                    "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                    "hasValue": {
+                      "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                    }
                   }
                 ]
               }
@@ -1791,7 +1843,9 @@
                   {
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                    "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                    "hasValue": {
+                      "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                    }
                   }
                 ]
               }
@@ -1913,7 +1967,9 @@
                   {
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                    "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                    "hasValue": {
+                      "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                    }
                   }
                 ]
               }
@@ -1936,7 +1992,9 @@
                   {
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                    "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                    "hasValue": {
+                      "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                    }
                   }
                 ]
               }
@@ -2036,7 +2094,9 @@
                         {
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                          "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          "hasValue": {
+                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          }
                         }
                       ]
                     }
@@ -2059,7 +2119,9 @@
                         {
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                          "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          "hasValue": {
+                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          }
                         }
                       ]
                     }
@@ -2097,7 +2159,9 @@
                         {
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                          "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          "hasValue": {
+                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          }
                         }
                       ]
                     }
@@ -2120,7 +2184,9 @@
                         {
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                          "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          "hasValue": {
+                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          }
                         }
                       ]
                     }
@@ -2160,7 +2226,9 @@
                       {
                         "@type": "owl:Restriction",
                         "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                        "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "hasValue": {
+                          "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        }
                       }
                     ]
                   }
@@ -2205,7 +2273,9 @@
                         {
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                          "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          "hasValue": {
+                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          }
                         }
                       ]
                     }
@@ -2248,7 +2318,9 @@
                       {
                         "@type": "owl:Restriction",
                         "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                        "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        "hasValue": {
+                          "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                        }
                       }
                     ]
                   }
@@ -2293,7 +2365,9 @@
                         {
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                          "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          "hasValue": {
+                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          }
                         }
                       ]
                     }
@@ -2447,7 +2521,9 @@
                                 {
                                   "@type": "owl:Restriction",
                                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                  "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "hasValue": {
+                                    "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  }
                                 }
                               ]
                             }
@@ -2470,7 +2546,9 @@
                                 {
                                   "@type": "owl:Restriction",
                                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                  "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "hasValue": {
+                                    "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  }
                                 }
                               ]
                             }
@@ -2497,7 +2575,9 @@
                         {
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                          "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          "hasValue": {
+                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          }
                         }
                       ]
                     }
@@ -2543,7 +2623,9 @@
                           {
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                            "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "hasValue": {
+                              "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            }
                           }
                         ]
                       }
@@ -2573,7 +2655,9 @@
                               {
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                "hasValue": {
+                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                }
                               }
                             ]
                           }
@@ -2596,7 +2680,9 @@
                               {
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                "hasValue": {
+                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                }
                               }
                             ]
                           }
@@ -2645,7 +2731,9 @@
                           {
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                            "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "hasValue": {
+                              "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            }
                           }
                         ]
                       }
@@ -2675,7 +2763,9 @@
                               {
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                "hasValue": {
+                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                }
                               }
                             ]
                           }
@@ -2698,7 +2788,9 @@
                               {
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                "hasValue": {
+                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                }
                               }
                             ]
                           }
@@ -2753,7 +2845,9 @@
                                 {
                                   "@type": "owl:Restriction",
                                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                  "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "hasValue": {
+                                    "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  }
                                 }
                               ]
                             }
@@ -2776,7 +2870,9 @@
                                 {
                                   "@type": "owl:Restriction",
                                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                  "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "hasValue": {
+                                    "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  }
                                 }
                               ]
                             }
@@ -2803,7 +2899,9 @@
                         {
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                          "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          "hasValue": {
+                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          }
                         }
                       ]
                     }
@@ -2849,7 +2947,9 @@
                           {
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                            "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "hasValue": {
+                              "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            }
                           }
                         ]
                       }
@@ -2879,7 +2979,9 @@
                               {
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                "hasValue": {
+                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                }
                               }
                             ]
                           }
@@ -2902,7 +3004,9 @@
                               {
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                "hasValue": {
+                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                }
                               }
                             ]
                           }
@@ -2951,7 +3055,9 @@
                           {
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                            "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "hasValue": {
+                              "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            }
                           }
                         ]
                       }
@@ -2981,7 +3087,9 @@
                               {
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                "hasValue": {
+                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                }
                               }
                             ]
                           }
@@ -3004,7 +3112,9 @@
                               {
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                "hasValue": {
+                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                }
                               }
                             ]
                           }
@@ -3059,7 +3169,9 @@
                                 {
                                   "@type": "owl:Restriction",
                                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                  "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "hasValue": {
+                                    "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  }
                                 }
                               ]
                             }
@@ -3082,7 +3194,9 @@
                                 {
                                   "@type": "owl:Restriction",
                                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                  "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  "hasValue": {
+                                    "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                  }
                                 }
                               ]
                             }
@@ -3109,7 +3223,9 @@
                         {
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                          "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          "hasValue": {
+                            "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                          }
                         }
                       ]
                     }
@@ -3155,7 +3271,9 @@
                           {
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                            "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "hasValue": {
+                              "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            }
                           }
                         ]
                       }
@@ -3185,7 +3303,9 @@
                               {
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                "hasValue": {
+                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                }
                               }
                             ]
                           }
@@ -3208,7 +3328,9 @@
                               {
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                "hasValue": {
+                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                }
                               }
                             ]
                           }
@@ -3257,7 +3379,9 @@
                           {
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                            "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            "hasValue": {
+                              "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                            }
                           }
                         ]
                       }
@@ -3287,7 +3411,9 @@
                               {
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                "hasValue": {
+                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                }
                               }
                             ]
                           }
@@ -3310,7 +3436,9 @@
                               {
                                 "@type": "owl:Restriction",
                                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                                "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                "hasValue": {
+                                  "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                                }
                               }
                             ]
                           }
@@ -3445,7 +3573,9 @@
                   {
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                    "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                    "hasValue": {
+                      "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                    }
                   }
                 ]
               }
@@ -3468,7 +3598,9 @@
                   {
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                    "hasValue": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                    "hasValue": {
+                      "@id": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+                    }
                   }
                 ]
               }

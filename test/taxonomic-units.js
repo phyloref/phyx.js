@@ -163,7 +163,9 @@ describe('TaxonomicUnitWrapper', function () {
             hasValue: 'Rana luteiventris',
           }, {
             '@type': 'owl:Restriction',
-            hasValue: NOMEN_CODE_UNKNOWN,
+            hasValue: {
+              '@id': NOMEN_CODE_UNKNOWN,
+            },
             onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode',
           }],
         },

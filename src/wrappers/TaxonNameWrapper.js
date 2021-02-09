@@ -442,9 +442,10 @@ class TaxonNameWrapper {
       }, {
         '@type': 'owl:Restriction',
         onProperty: owlterms.NOMENCLATURAL_CODE,
-        hasValue: this.nomenclaturalCode,
-      },
-      ],
+        hasValue: {
+          '@id': this.nomenclaturalCode,
+        },
+      }],
     };
   }
 }
