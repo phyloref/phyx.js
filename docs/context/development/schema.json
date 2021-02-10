@@ -1,5 +1,23 @@
 {
   "definitions": {
+    "id": {
+      "type": "object",
+      "description": "Any entity that can be identified by a URI.",
+      "additionalProperties": false,
+      "properties": {
+        "@id": {
+          "type": "string",
+          "description": "The URI used to identify this entity.",
+          "minLength": 1
+        },
+        "@type": {
+          "type": "string",
+          "description": "The type of this entity.",
+          "minLength": 1
+        }
+      },
+      "required": [ "@id" ]
+    },
     "agent": {
       "type": "object",
       "description": "A person or entity.",
@@ -162,6 +180,9 @@
             "http://rs.tdwg.org/dwc/terms/Occurrence"
           ]
         },
+        "rdf:ID": {
+          "$ref": "#/definitions/id"
+        },
         "label": {
           "type": "string",
           "minLength": 1
@@ -199,8 +220,6 @@
           },
           "required": [
             "@type",
-            "nomenclaturalCode",
-            "label",
             "nameComplete"
           ]
         }
@@ -319,7 +338,10 @@
             "uniqueItems": true,
             "minItems": 1,
             "items": {
-              "$ref": "#/definitions/taxonomic_unit"
+              "anyOf": [
+                { "$ref": "#/definitions/taxonomic_unit" },
+                { "$ref": "#/definitions/id" }
+              ]
             }
           },
           "externalSpecifiers": {
@@ -328,7 +350,10 @@
             "uniqueItems": true,
             "minItems": 0,
             "items": {
-              "$ref": "#/definitions/taxonomic_unit"
+              "anyOf": [
+                { "$ref": "#/definitions/taxonomic_unit" },
+                { "$ref": "#/definitions/id" }
+              ]
             }
           }
         }
