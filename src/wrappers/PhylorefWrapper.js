@@ -399,8 +399,6 @@ class PhylorefWrapper {
   static getExcludesRestrictionForTU(tu) {
     const tunit = new TaxonomicUnitWrapper(tu).asOWLEquivClass;
 
-    // console.log(`getExcludesRestrictionForTU(${JSON.stringify(tu, null, 2)}) => ${JSON.stringify(tunit, null, 2)}`)
-
     if (has(tunit, '@id')) {
       // This is a reference! So we treat it differently.
       const type = tunit['@type'] || '';
