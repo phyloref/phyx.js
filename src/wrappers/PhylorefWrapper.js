@@ -2,6 +2,7 @@
 const moment = require('moment');
 const { has, cloneDeep } = require('lodash');
 
+const owlterms = require('../utils/owlterms');
 const { TaxonomicUnitWrapper } = require('./TaxonomicUnitWrapper');
 const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 
@@ -369,10 +370,58 @@ class PhylorefWrapper {
   }
 
   static getIncludesRestrictionForTU(tu) {
+    const tunit = new TaxonomicUnitWrapper(tu).asOWLEquivClass;
+
+    if (has(tunit, '@id')) {
+      // This is a reference! So we treat it differently.
+      const type = tunit['@type'] || '';
+      if (type === 'phyloref:Phyloreference') {
+        // Phyloreferences need to be incorporated directly with a `some` clause.
+        return {
+          '@type': 'owl:Restriction',
+          onProperty: owlterms.CDAO_HAS_DESCENDANT,
+          someValuesFrom: tunit,
+        };
+      }
+
+      // If it's not a Phyloreference, we assume that it is an opaque taxonomic
+      // unit that has been identified with its own URI. In that case, we need
+      // to use the same EXCLUDES_TU property that we usually use.
+    }
+
     return {
       '@type': 'owl:Restriction',
-      onProperty: 'phyloref:includes_TU',
-      someValuesFrom: new TaxonomicUnitWrapper(tu).asOWLEquivClass,
+      onProperty: owlterms.PHYLOREF_INCLUDES_TU,
+      someValuesFrom: tunit,
+    };
+  }
+
+  static getExcludesRestrictionForTU(tu) {
+    const tunit = new TaxonomicUnitWrapper(tu).asOWLEquivClass;
+
+    // console.log(`getExcludesRestrictionForTU(${JSON.stringify(tu, null, 2)}) => ${JSON.stringify(tunit, null, 2)}`)
+
+    if (has(tunit, '@id')) {
+      // This is a reference! So we treat it differently.
+      const type = tunit['@type'] || '';
+      if (type === 'phyloref:Phyloreference') {
+        // Phyloreferences need to be incorporated directly with a `some` clause.
+        return {
+          '@type': 'owl:Restriction',
+          onProperty: owlterms.PHYLOREF_EXCLUDES_LINEAGE_TO,
+          someValuesFrom: tunit,
+        };
+      }
+
+      // If it's not a Phyloreference, we assume that it is an opaque taxonomic
+      // unit that has been identified with its own URI. In that case, we need
+      // to use the same EXCLUDES_TU property that we usually use.
+    }
+
+    return {
+      '@type': 'owl:Restriction',
+      onProperty: owlterms.PHYLOREF_EXCLUDES_TU,
+      someValuesFrom: tunit,
     };
   }
 
@@ -387,11 +436,7 @@ class PhylorefWrapper {
       someValuesFrom: {
         '@type': 'owl:Class',
         intersectionOf: [
-          {
-            '@type': 'owl:Restriction',
-            onProperty: 'phyloref:excludes_TU',
-            someValuesFrom: new TaxonomicUnitWrapper(tu1).asOWLEquivClass,
-          },
+          PhylorefWrapper.getExcludesRestrictionForTU(tu1),
           PhylorefWrapper.getIncludesRestrictionForTU(tu2),
         ],
       },
@@ -530,11 +575,7 @@ class PhylorefWrapper {
       '@type': 'owl:Class',
       intersectionOf: [
         includedExpr,
-        {
-          '@type': 'owl:Restriction',
-          onProperty: 'phyloref:excludes_TU',
-          someValuesFrom: new TaxonomicUnitWrapper(tu).asOWLEquivClass,
-        },
+        PhylorefWrapper.getExcludesRestrictionForTU(tu),
       ],
     }];
 
@@ -549,11 +590,7 @@ class PhylorefWrapper {
           {
             '@type': 'owl:Restriction',
             onProperty: 'obo:CDAO_0000144', // has_Ancestor
-            someValuesFrom: {
-              '@type': 'owl:Restriction',
-              onProperty: 'phyloref:excludes_TU',
-              someValuesFrom: new TaxonomicUnitWrapper(tu).asOWLEquivClass,
-            },
+            someValuesFrom: PhylorefWrapper.getExcludesRestrictionForTU(tu),
           },
         ],
       });
