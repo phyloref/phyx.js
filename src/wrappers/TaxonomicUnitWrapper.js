@@ -235,6 +235,10 @@ class TaxonomicUnitWrapper {
       return new SpecimenWrapper(this.specimen).asOWLEquivClass;
     }
 
+    // Is this just a reference (i.e. { "@id": <URI> })? If so, return that
+    // unchanged.
+    if (has(this.tunit, '@id')) return this.tunit;
+
     // Nothing we can do, so just ignore it.
     return undefined;
   }

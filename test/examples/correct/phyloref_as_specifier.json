@@ -1,0 +1,49 @@
+{
+    "@context": "../../../docs/context/development/phyx.json",
+    "phylogenies": [{
+      "newick": "(((Aa_a, Bb_b)Phyloreference_as_specifier_example, (Cc_c, Dd_d)Specifier_phyloref), Ee_e);"
+    }],
+    "phylorefs": [
+        {
+          "@id": "#phyloref1",
+          "label": "Phyloreference as specifier example",
+          "definition": "The maximum clade that includes 'Aa a' but excludes phyloref 'Specifier phyloref' (#phyloref2), defined elsewhere in this file.",
+          "internalSpecifiers": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nameComplete": "Aa a"
+              }
+            }
+          ],
+          "externalSpecifiers": [
+            {
+              "@id": "http://example.org/phyx.js/example#phyloref2",
+              "@type": "phyloref:Phyloreference"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phyloref2",
+          "label": "Specifier phyloref",
+          "definition": "Most recent common ancestor of 'Cc c' and 'Dd d'",
+          "internalSpecifiers": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nameComplete": "Cc c"
+              }
+            },
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nameComplete": "Dd d"
+              }
+            }
+          ]
+        }
+    ]
+}
