@@ -261,6 +261,7 @@
 <http://example.org/brochu_2003.json#phyloref0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref0> <http://www.w3.org/2000/01/rdf-schema#label> "Alligatoridae" .
 <http://example.org/brochu_2003.json#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
+<http://example.org/brochu_2003.json#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
 <http://example.org/brochu_2003.json#phyloref0> <http://www.w3.org/2002/07/owl#equivalentClass> _:b141 .
 <http://example.org/brochu_2003.json#phyloref1> <http://purl.obolibrary.org/obo/IAO_0000115> "Alligatorinae (Kälin 1940).\n\nAlligator mississippiensis and all crocodylians closer to it than to Caiman crocodilus." .
 <http://example.org/brochu_2003.json#phyloref1> <http://purl.obolibrary.org/obo/IAO_0000119> _:b149 .
@@ -270,6 +271,7 @@
 <http://example.org/brochu_2003.json#phyloref1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref1> <http://www.w3.org/2000/01/rdf-schema#label> "Alligatorinae" .
 <http://example.org/brochu_2003.json#phyloref1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
+<http://example.org/brochu_2003.json#phyloref1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/brochu_2003.json#phyloref1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b156 .
 <http://example.org/brochu_2003.json#phyloref2> <http://purl.obolibrary.org/obo/IAO_0000115> "Caimaninae (Norell 1988).\n\nCaiman crocodilus and all crocodylians closer to it than to Alligator mississippiensis." .
 <http://example.org/brochu_2003.json#phyloref2> <http://purl.obolibrary.org/obo/IAO_0000119> _:b163 .
@@ -279,6 +281,7 @@
 <http://example.org/brochu_2003.json#phyloref2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref2> <http://www.w3.org/2000/01/rdf-schema#label> "Caimaninae" .
 <http://example.org/brochu_2003.json#phyloref2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
+<http://example.org/brochu_2003.json#phyloref2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/brochu_2003.json#phyloref2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b170 .
 <http://example.org/brochu_2003.json#phyloref3> <http://purl.obolibrary.org/obo/IAO_0000115> "Crocodyloidea (Fitzinger 1826).\n\nCrocodylus niloticus and all crocodylians closer to it than to Alligator mississippiensis or Gavialis gangeticus." .
 <http://example.org/brochu_2003.json#phyloref3> <http://purl.org/spar/pso/holdsStatusInTime> _:b177 .
@@ -294,6 +297,7 @@
 <http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/2000/01/rdf-schema#label> "Crocodyloidea" .
 <http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
+<http://example.org/brochu_2003.json#phyloref3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/brochu_2003.json#phyloref3_component1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref3_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis)" .
 <http://example.org/brochu_2003.json#phyloref3_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
@@ -340,6 +344,7 @@
 <http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylidae" .
 <http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
+<http://example.org/brochu_2003.json#phyloref4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
 <http://example.org/brochu_2003.json#phyloref4_component1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref4_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
 <http://example.org/brochu_2003.json#phyloref4_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/brochu_2003.json#phyloref4> .
@@ -393,6 +398,7 @@
 <http://example.org/brochu_2003.json#phyloref5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/brochu_2003.json#phyloref5> <http://www.w3.org/2000/01/rdf-schema#label> "Diplocynodontinae" .
 <http://example.org/brochu_2003.json#phyloref5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
+<http://example.org/brochu_2003.json#phyloref5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/brochu_2003.json#phyloref5> <http://www.w3.org/2002/07/owl#equivalentClass> _:b359 .
 _:b0 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b0 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
