@@ -4,6 +4,7 @@ const { has, cloneDeep } = require('lodash');
 
 const { TaxonomicUnitWrapper } = require('./TaxonomicUnitWrapper');
 const { PhylogenyWrapper } = require('./PhylogenyWrapper');
+const { CitationWrapper } = require('./CitationWrapper');
 
 /**
  * PhylorefWrapper
@@ -660,6 +661,15 @@ class PhylorefWrapper {
     if (!has(phylorefAsJSONLD, '@id')) phylorefAsJSONLD['@id'] = fallbackIRI;
     phylorefAsJSONLD['@type'] = 'owl:Class';
 
+    // If we don't have a bibliographicCitation but we do have a definition source,
+    // then generate a bibliographicCitation for the source.
+    if (has(phylorefAsJSONLD, 'definitionSource')) {
+      const definitionSource = phylorefAsJSONLD.definitionSource;
+      if (!has(definitionSource, 'bibliographicCitation')) {
+        definitionSource.bibliographicCitation = new CitationWrapper(definitionSource).toString();
+      }
+    }
+
     // Construct a class expression for this phyloreference.
     const internalSpecifiers = phylorefAsJSONLD.internalSpecifiers || [];
     const externalSpecifiers = phylorefAsJSONLD.externalSpecifiers || [];
@@ -761,6 +771,9 @@ class PhylorefWrapper {
       phylorefAsJSONLD.subClassOf = [phylorefAsJSONLD.subClassOf];
     }
     phylorefAsJSONLD.subClassOf.push('phyloref:Phyloreference');
+
+    // Metadata.
+
 
     return phylorefAsJSONLD;
   }
