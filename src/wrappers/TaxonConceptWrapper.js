@@ -75,8 +75,8 @@ class TaxonConceptWrapper {
   /**
    * Return the nomenclatural code of this taxon concept as an object.
    */
-  get nomenCodeAsObject() {
-    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName).nomenclaturalCodeAsObject;
+  get nomenCodeDetails() {
+    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName).nomenclaturalCodeDetails;
 
     return undefined;
   }

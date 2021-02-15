@@ -126,7 +126,7 @@ class TaxonNameWrapper {
   /**
    * Returns the nomenclatural code entry for a code.
    */
-  static getNomenCodeAsObject(nomenCodeURI) {
+  static getNomenCodeDetails(nomenCodeURI) {
     const codes = TaxonNameWrapper.getNomenclaturalCodes();
 
     // Look for the entry with the same URI as the provided URI.
@@ -146,11 +146,11 @@ class TaxonNameWrapper {
   /**
    * Returns the nomenclatural code of this taxon name as a URI.
    */
-  get nomenclaturalCodeAsObject() {
+  get nomenclaturalCodeDetails() {
     const nomenCode = this.nomenclaturalCode;
     if (!nomenCode) return undefined;
 
-    const nomenObj = TaxonNameWrapper.getNomenCodeAsObject(nomenCode);
+    const nomenObj = TaxonNameWrapper.getNomenCodeDetails(nomenCode);
     if (!nomenObj) return undefined;
 
     return nomenObj;

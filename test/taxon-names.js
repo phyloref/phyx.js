@@ -4,6 +4,7 @@
 
 const chai = require('chai');
 const phyx = require('../src');
+const owlterms = require('../src/utils/owlterms');
 
 const expect = chai.expect;
 
@@ -52,6 +53,16 @@ describe('TaxonNameWrapper', function () {
       expect(taxonName.specificEpithet).to.equal('musculus');
       expect(taxonName.infraspecificEpithet).to.be.undefined;
       expect(taxonName.uninomial).to.be.undefined;
+    });
+    it('should be able to use default nomenclatural codes', function () {
+      const taxonName = phyx.TaxonNameWrapper.fromVerbatimName('Mus musculus Linnaeus, 1758', owlterms.ICZN_CODE);
+      expect(taxonName.nameComplete).to.equal('Mus musculus');
+      expect(taxonName.nomenclaturalCode).to.equal(owlterms.ICZN_CODE);
+
+      const wrappedTaxonName = new phyx.TaxonNameWrapper(taxonName);
+      expect(wrappedTaxonName.nomenclaturalCode).to.equal(owlterms.ICZN_CODE);
+      expect(wrappedTaxonName.nomenclaturalCodeDetails).to.have.own.property('title');
+      expect(wrappedTaxonName.nomenclaturalCodeDetails.title).to.equal('International Code of Zoological Nomenclature');
     });
   });
 });
