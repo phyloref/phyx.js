@@ -132,7 +132,10 @@ class PhylorefWrapper {
     const phylorefLabel = this.label;
     const nodeLabels = new Set();
 
-    new PhylogenyWrapper(phylogeny, this.nomenCode).getNodeLabels().forEach((nodeLabel) => {
+    new PhylogenyWrapper(
+      phylogeny,
+      this.summarizedNomenCode
+    ).getNodeLabels().forEach((nodeLabel) => {
       // Is this node label identical to the phyloreference name?
       if (nodeLabel === phylorefLabel) {
         nodeLabels.add(nodeLabel);
@@ -292,26 +295,31 @@ class PhylorefWrapper {
   }
 
   /**
-   * Returns the nomenclatural code used by this phyloref.
-   *
-   * If all of the specifiers are taxon concepts with the same nomenclatural code
-   * (using the default nomenclatural code set during constructions of this object
-   * when one isn't provided), this will return that nomenclatural code. Otherwise,
-   * this method will return owlterms.UNKNOWN_CODE.
+   * Return a list of all the unique nomenclatural codes used by this phyloreference.
+   * The default nomenclatural code used in creating the PhylorefWrapper will be used
+   * for any taxonomic units that don't have any nomenclatural code set. If any
+   * specifiers are not taxon concepts, they will be represented in the returned
+   * list as owlterms.UNKNOWN_CODE.
    */
-  get nomenCode() {
-    // Get all nomenclatural codes for specifiers.
-    const nomenCodes = this.specifiers.map((specifier) => {
+  get uniqNomenCodes() {
+    return uniq(this.specifiers.map((specifier) => {
       const taxonConcept = new TaxonomicUnitWrapper(specifier, this.defaultNomenCode).taxonConcept;
-      if (!taxonConcept) return undefined;
+      if (!taxonConcept) return owlterms.UNKNOWN_CODE;
       const nomenCode = new TaxonConceptWrapper(taxonConcept, this.defaultNomenCode).nomenCode;
-      if (!nomenCode) return undefined;
+      if (!nomenCode) return owlterms.UNKNOWN_CODE;
       return nomenCode;
-    });
+    }));
+  }
 
+  /**
+   * Returns a summarized nomenclatural code for this phyloref. If all of the
+   * specifiers are taxon concepts with the same nomenclatural code, this getter
+   * will return that nomenclatural code. Otherwise, this method will return
+   * owlterms.UNKNOWN_CODE.
+   */
+  get summarizedNomenCode() {
     // Check to see if we have a single nomenclatural code to use.
-    const uniqNomenCodes = uniq(nomenCodes);
-    if (uniqNomenCodes.length === 1) return uniqNomenCodes[0];
+    if (this.uniqNomenCodes.length === 1) return this.uniqNomenCodes[0];
     return owlterms.UNKNOWN_CODE;
   }
 
@@ -400,7 +408,7 @@ class PhylorefWrapper {
     return {
       '@type': 'owl:Restriction',
       onProperty: 'phyloref:includes_TU',
-      someValuesFrom: new TaxonomicUnitWrapper(tu, this.nomenCode).asOWLEquivClass,
+      someValuesFrom: new TaxonomicUnitWrapper(tu, this.summarizedNomenCode).asOWLEquivClass,
     };
   }
 
@@ -418,7 +426,7 @@ class PhylorefWrapper {
           {
             '@type': 'owl:Restriction',
             onProperty: 'phyloref:excludes_TU',
-            someValuesFrom: new TaxonomicUnitWrapper(tu1, this.nomenCode).asOWLEquivClass,
+            someValuesFrom: new TaxonomicUnitWrapper(tu1, this.summarizedNomenCode).asOWLEquivClass,
           },
           PhylorefWrapper.getIncludesRestrictionForTU(tu2),
         ],
@@ -561,7 +569,7 @@ class PhylorefWrapper {
         {
           '@type': 'owl:Restriction',
           onProperty: 'phyloref:excludes_TU',
-          someValuesFrom: new TaxonomicUnitWrapper(tu, this.nomenCode).asOWLEquivClass,
+          someValuesFrom: new TaxonomicUnitWrapper(tu, this.summarizedNomenCode).asOWLEquivClass,
         },
       ],
     }];
@@ -580,7 +588,10 @@ class PhylorefWrapper {
             someValuesFrom: {
               '@type': 'owl:Restriction',
               onProperty: 'phyloref:excludes_TU',
-              someValuesFrom: new TaxonomicUnitWrapper(tu, this.nomenCode).asOWLEquivClass,
+              someValuesFrom: new TaxonomicUnitWrapper(
+                tu,
+                this.summarizedNomenCode
+              ).asOWLEquivClass,
             },
           },
         ],

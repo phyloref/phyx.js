@@ -81,7 +81,7 @@ class PhyxWrapper {
     function determineDefaultNomenCode() {
       if (has(jsonld, 'defaultNomenclaturalCodeURI')) return jsonld.defaultNomenclaturalCodeURI;
       const nomenCodes = (jsonld.phylorefs || [])
-        .map(phyloref => new PhylorefWrapper(phyloref).nomenCode);
+        .map(phyloref => new PhylorefWrapper(phyloref).summarizedNomenCode);
       const uniqNomenCodes = uniq(nomenCodes);
       if (uniqNomenCodes.length === 1) return uniqNomenCodes[0];
       return owlterms.UNKNOWN_CODE;

@@ -68,7 +68,7 @@ describe('PhylorefWrapper', function () {
       });
 
       it('should initially return a nomenclatural code of unknown', function () {
-        expect(wrapper.nomenCode).to.equal(owlterms.UNKNOWN_CODE);
+        expect(wrapper.summarizedNomenCode).to.equal(owlterms.UNKNOWN_CODE);
       });
 
       describe('when a new external specifier is added using .externalSpecifiers', function () {
@@ -78,7 +78,7 @@ describe('PhylorefWrapper', function () {
         });
 
         it('should return a nomenclatural code of ICZN', function () {
-          expect(wrapper.nomenCode).to.equal(owlterms.ICZN_CODE);
+          expect(wrapper.summarizedNomenCode).to.equal(owlterms.ICZN_CODE);
         });
       });
 
@@ -88,8 +88,14 @@ describe('PhylorefWrapper', function () {
           expect(wrapper.specifiers).to.deep.equal([specifier3, specifier2]);
         });
 
+        it('should return two nomenclatural codes, one for each specifier', function () {
+          expect(wrapper.uniqNomenCodes).to.have.lengthOf(2);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.ICZN_CODE);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.UNKNOWN_CODE);
+        });
+
         it('should return a nomenclatural code of unknown', function () {
-          expect(wrapper.nomenCode).to.equal(owlterms.UNKNOWN_CODE);
+          expect(wrapper.summarizedNomenCode).to.equal(owlterms.UNKNOWN_CODE);
         });
       });
 
