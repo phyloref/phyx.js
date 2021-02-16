@@ -126,12 +126,12 @@ class TaxonNameWrapper {
   /**
    * Returns the nomenclatural code entry for a code.
    */
-  static getNomenCodeDetails(nomenCodeURI) {
+  static getNomenCodeDetails(nomenCode) {
     const codes = TaxonNameWrapper.getNomenclaturalCodes();
 
     // Look for the entry with the same URI as the provided URI.
     const matchingCode = codes
-      .find(code => code.uri.toLowerCase() === nomenCodeURI.toLowerCase());
+      .find(code => code.uri.toLowerCase() === nomenCode.toLowerCase());
     if (matchingCode) return matchingCode;
     return undefined;
   }
