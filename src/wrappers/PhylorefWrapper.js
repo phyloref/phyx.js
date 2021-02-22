@@ -16,10 +16,10 @@ const { CitationWrapper } = require('./CitationWrapper');
 class PhylorefWrapper {
   // Wraps a phyloreference in a PHYX model.
 
-  constructor(phyloref, defaultNomenCode = owlterms.UNKNOWN_CODE) {
+  constructor(phyloref, phyxDefaultNomenCode = owlterms.UNKNOWN_CODE) {
     // Wraps the provided phyloreference
     this.phyloref = phyloref;
-    this.defaultNomenCode = defaultNomenCode;
+    this.phyxDefaultNomenCode = phyxDefaultNomenCode;
   }
 
   /** Return the internal specifiers of this phyloref (if any). */
@@ -134,7 +134,7 @@ class PhylorefWrapper {
 
     new PhylogenyWrapper(
       phylogeny,
-      this.summarizedNomenCode
+      this.defaultNomenCode
     ).getNodeLabels().forEach((nodeLabel) => {
       // Is this node label identical to the phyloreference name?
       if (nodeLabel === phylorefLabel) {
@@ -303,10 +303,18 @@ class PhylorefWrapper {
    */
   get uniqNomenCodes() {
     return uniq(this.specifiers.map((specifier) => {
-      const taxonConcept = new TaxonomicUnitWrapper(specifier, this.defaultNomenCode).taxonConcept;
+      const taxonConcept = new TaxonomicUnitWrapper(
+        specifier,
+        this.phyxDefaultNomenCode
+      ).taxonConcept;
       if (!taxonConcept) return owlterms.UNKNOWN_CODE;
-      const nomenCode = new TaxonConceptWrapper(taxonConcept, this.defaultNomenCode).nomenCode;
+
+      const nomenCode = new TaxonConceptWrapper(
+        taxonConcept,
+        this.phyxDefaultNomenCode
+      ).nomenCode;
       if (!nomenCode) return owlterms.UNKNOWN_CODE;
+
       return nomenCode;
     }));
   }
@@ -317,7 +325,7 @@ class PhylorefWrapper {
    * will return that nomenclatural code. Otherwise, this method will return
    * owlterms.UNKNOWN_CODE.
    */
-  get summarizedNomenCode() {
+  get defaultNomenCode() {
     // Check to see if we have a single nomenclatural code to use.
     if (this.uniqNomenCodes.length === 1) return this.uniqNomenCodes[0];
     return owlterms.UNKNOWN_CODE;
@@ -408,7 +416,7 @@ class PhylorefWrapper {
     return {
       '@type': 'owl:Restriction',
       onProperty: 'phyloref:includes_TU',
-      someValuesFrom: new TaxonomicUnitWrapper(tu, this.summarizedNomenCode).asOWLEquivClass,
+      someValuesFrom: new TaxonomicUnitWrapper(tu, this.defaultNomenCode).asOWLEquivClass,
     };
   }
 
@@ -426,7 +434,7 @@ class PhylorefWrapper {
           {
             '@type': 'owl:Restriction',
             onProperty: 'phyloref:excludes_TU',
-            someValuesFrom: new TaxonomicUnitWrapper(tu1, this.summarizedNomenCode).asOWLEquivClass,
+            someValuesFrom: new TaxonomicUnitWrapper(tu1, this.defaultNomenCode).asOWLEquivClass,
           },
           PhylorefWrapper.getIncludesRestrictionForTU(tu2),
         ],
@@ -569,7 +577,7 @@ class PhylorefWrapper {
         {
           '@type': 'owl:Restriction',
           onProperty: 'phyloref:excludes_TU',
-          someValuesFrom: new TaxonomicUnitWrapper(tu, this.summarizedNomenCode).asOWLEquivClass,
+          someValuesFrom: new TaxonomicUnitWrapper(tu, this.defaultNomenCode).asOWLEquivClass,
         },
       ],
     }];
@@ -590,7 +598,7 @@ class PhylorefWrapper {
               onProperty: 'phyloref:excludes_TU',
               someValuesFrom: new TaxonomicUnitWrapper(
                 tu,
-                this.summarizedNomenCode
+                this.defaultNomenCode
               ).asOWLEquivClass,
             },
           },
