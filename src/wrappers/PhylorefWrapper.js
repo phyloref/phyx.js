@@ -321,13 +321,23 @@ class PhylorefWrapper {
 
   /**
    * Returns a summarized nomenclatural code for this phyloref. If all of the
-   * specifiers are taxon concepts with the same nomenclatural code, this getter
-   * will return that nomenclatural code. Otherwise, this method will return
-   * owlterms.UNKNOWN_CODE.
+   * specifiers have either the same nomenclatural code or `undefined`,
+   * this getter will return that nomenclatural code. Otherwise, this method
+   * will return owlterms.UNKNOWN_CODE.
    */
   get defaultNomenCode() {
     // Check to see if we have a single nomenclatural code to use.
     if (this.uniqNomenCodes.length === 1) return this.uniqNomenCodes[0];
+
+    // If one or more of our specifiers have no nomenclatural code (e.g. if
+    // they are specimens), they will show up as owlterms.UNKNOWN_CODE.
+    // If we have a single nomenclatural code *apart* from all the
+    // owlterms.UNKNOWN_CODEs, then that is still usable as a default
+    // nomenclatural code for this phyloreference.
+    const uniqNomenCodesNoUnknowns = this.uniqNomenCodes
+      .filter(code => code !== owlterms.UNKNOWN_CODE);
+    if (uniqNomenCodesNoUnknowns.length === 1) return uniqNomenCodesNoUnknowns[0];
+
     return owlterms.UNKNOWN_CODE;
   }
 

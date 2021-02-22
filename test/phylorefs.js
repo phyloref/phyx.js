@@ -94,8 +94,8 @@ describe('PhylorefWrapper', function () {
           expect(wrapper.uniqNomenCodes).to.include(owlterms.UNKNOWN_CODE);
         });
 
-        it('should return a nomenclatural code of unknown', function () {
-          expect(wrapper.defaultNomenCode).to.equal(owlterms.UNKNOWN_CODE);
+        it('should still return a nomenclatural code of ICZN', function () {
+          expect(wrapper.defaultNomenCode).to.equal(owlterms.ICZN_CODE);
         });
       });
 
