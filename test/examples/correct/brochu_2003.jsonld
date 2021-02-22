@@ -1,5 +1,10 @@
 {
-  "@context": "../../../docs/context/development/phyx.json",
+  "@context": [
+    "../../../docs/context/development/phyx.json",
+    {
+      "@base": "http://example.org/brochu_2003.json#"
+    }
+  ],
   "phylogenies": [
     {
       "newick": "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;",
@@ -3492,7 +3497,6 @@
   ],
   "defaultNomenclaturalCodeIRI": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
   "hasTaxonomicUnitMatches": [],
-  "@id": "http://example.org/phyx.js/example#",
   "@type": [
     "testcase:PhyloreferenceTestCase",
     "owl:Ontology"
