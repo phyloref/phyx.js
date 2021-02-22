@@ -285,16 +285,7 @@ class PhyxWrapper {
 
     // If the '@context' is missing, add it here.
     if (!has(jsonld, '@context')) {
-      jsonld['@context'] = [owlterms.PHYX_CONTEXT_JSON];
-    }
-    if (!Array.isArray(jsonld['@context'])) jsonld['@context'] = [jsonld['@context']];
-
-    // Add the base IRI if provided. As per https://www.w3.org/TR/json-ld11/#base-iri,
-    // this needs to be added to the '@context', not the JSON-LD document.
-    if (baseIRI) {
-      jsonld['@context'].push({
-        '@base': baseIRI,
-      });
+      jsonld['@context'] = owlterms.PHYX_CONTEXT_JSON;
     }
 
     return jsonld;
