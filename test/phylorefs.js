@@ -41,6 +41,14 @@ describe('PhylorefWrapper', function () {
       nameComplete: 'Rana boylii',
     },
   };
+  const specifier4 = {
+    '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+    hasName: {
+      '@type': phyx.TaxonNameWrapper.TYPE_TAXON_NAME,
+      nomenclaturalCode: owlterms.ICN_CODE,
+      nameComplete: 'Mangifera indica',
+    },
+  };
 
   describe('given an empty phyloreference', function () {
     const wrapper = new phyx.PhylorefWrapper({});
@@ -99,9 +107,32 @@ describe('PhylorefWrapper', function () {
         });
       });
 
-      describe('when a specifier is deleted using .deleteSpecifier', function () {
+      describe('when a new internal specifier is added using .internalSpecifiers', function () {
+        it('should return a list with the new specifier', function () {
+          wrapper.internalSpecifiers.push(specifier4);
+          expect(wrapper.specifiers).to.deep.equal([specifier4, specifier3, specifier2]);
+        });
+
+        it('should return three nomenclatural codes, one for each specifier', function () {
+          expect(wrapper.uniqNomenCodes).to.have.lengthOf(3);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.ICZN_CODE);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.UNKNOWN_CODE);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.ICN_CODE);
+        });
+
+        it('should change to a default nomenclatural code of owlterms.UNKNOWN_CODE', function () {
+          expect(wrapper.defaultNomenCode).to.equal(owlterms.UNKNOWN_CODE);
+        });
+      });
+
+      describe('when specifiers are deleted using .deleteSpecifier', function () {
         it('should return the updated list', function () {
+          // Delete an external specifier.
           wrapper.deleteSpecifier(specifier2);
+          // Delete an internal specifier.
+          wrapper.deleteSpecifier(specifier4);
+
+          // Only the first specifier should be left.
           expect(wrapper.specifiers).to.deep.equal([specifier3]);
         });
       });
