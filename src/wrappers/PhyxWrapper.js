@@ -73,13 +73,13 @@ class PhyxWrapper {
 
     // Determine a 'default nomenclatural code' for this Phyx file. There are
     // two ways to do this:
-    //  1. If the Phyx file has a 'defaultNomenclaturalCodeURI' property, we use that.
+    //  1. If the Phyx file has a 'defaultNomenclaturalCodeIRI' property, we use that.
     //  2. Otherwise, we check to see if every phyloref in this file has the same
     //     nomenclatural code. If so, we can use that code. If not, i.e. if any of
     //     the phylorefs are missing a nomenclatural code or include a specifier,
     //     we default to owlterms.UNKNOWN_CODE.
     function determineDefaultNomenCode() {
-      if (has(jsonld, 'defaultNomenclaturalCodeURI')) return jsonld.defaultNomenclaturalCodeURI;
+      if (has(jsonld, 'defaultNomenclaturalCodeIRI')) return jsonld.defaultNomenclaturalCodeIRI;
       const nomenCodes = (jsonld.phylorefs || [])
         .map(phyloref => new PhylorefWrapper(phyloref).defaultNomenCode);
       const uniqNomenCodes = uniq(nomenCodes);

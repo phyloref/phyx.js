@@ -227,7 +227,7 @@
       "description": "Every Phyx file should have a @context, making it a valid JSON-LD file.",
       "minLength": 1
     },
-    "defaultNomenclaturalCodeURI": {
+    "defaultNomenclaturalCodeIRI": {
       "description": "The default nomenclatural code to use for new phyloreferences in this Phyx file.",
       "enum": [
         "http://purl.obolibrary.org/obo/NOMEN_0000036",
