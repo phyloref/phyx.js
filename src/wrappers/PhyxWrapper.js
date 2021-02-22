@@ -37,37 +37,37 @@ class PhyxWrapper {
    *    2. We have to convert phylogenies into OWL restrictions.
    *    3. Insert all matches between taxonomic units in this file.
    *
-   * @param {string} [baseURI=""] - The base URI to use when generating this Phyx document.
+   * @param {string} [baseIRI=""] - The base IRI to use when generating this Phyx document.
    *    This should include a trailing '#' or '/'. Use '' to indicate that relative IDs
    *    should be generated in the produced ontology (e.g. '#phylogeny1'). Note that if a
-   *    baseURI is provided, then relative IDs already in the Phyx file (identified by an
+   *    baseIRI is provided, then relative IDs already in the Phyx file (identified by an
    *    initial '#') will be turned into absolute IDs by removing the initial `#` and
-   *    prepending them with the baseURI.
+   *    prepending them with the baseIRI.
    * @return {Object} This Phyx document as an OWL ontology as a JSON-LD object.
    */
-  asOWLOntology(baseURI = '') {
+  asOWLOntology(baseIRI = '') {
     const jsonld = cloneDeep(this.phyx);
 
-    // Some helper methods for generating base URIs for phylorefs and phylogenies.
-    function getBaseURIForPhyloref(index) {
-      if (baseURI) return `${baseURI}phyloref${index}`;
+    // Some helper methods for generating base IRIs for phylorefs and phylogenies.
+    function getBaseIRIForPhyloref(index) {
+      if (baseIRI) return `${baseIRI}phyloref${index}`;
       return `#phyloref${index}`;
     }
 
-    function getBaseURIForPhylogeny(index) {
-      if (baseURI) return `${baseURI}phylogeny${index}`;
+    function getBaseIRIForPhylogeny(index) {
+      if (baseIRI) return `${baseIRI}phylogeny${index}`;
       return `#phylogeny${index}`;
     }
 
-    // Given a relative ID (e.g. '#phylo1') make it absolute (`${baseURI}phylo1`).
+    // Given a relative ID (e.g. '#phylo1') make it absolute (`${baseIRI}phylo1`).
     function makeIDAbsolute(phylogenyId) {
-      if (baseURI && phylogenyId.startsWith('#')) return `${baseURI}${phylogenyId.substring(1)}`; // Remove the initial '#'.
+      if (baseIRI && phylogenyId.startsWith('#')) return `${baseIRI}${phylogenyId.substring(1)}`; // Remove the initial '#'.
       return phylogenyId;
     }
 
-    // Given an absolute ID (`${baseURI}phylo1`) make it relative (e.g. '#phylo1').
+    // Given an absolute ID (`${baseIRI}phylo1`) make it relative (e.g. '#phylo1').
     function makeIDRelative(phylogenyId) {
-      if (phylogenyId.startsWith(baseURI)) return `#${phylogenyId.substring(baseURI.length)}`;
+      if (phylogenyId.startsWith(baseIRI)) return `#${phylogenyId.substring(baseIRI.length)}`;
       return phylogenyId;
     }
 
@@ -89,11 +89,11 @@ class PhyxWrapper {
     const defaultNomenCode = determineDefaultNomenCode();
 
     if (has(jsonld, 'phylorefs')) {
-      // We might have phyloref IDs set to relative URIs (e.g. "#phyloref0").
-      // If the baseURI is set to '', that's fine. But if not, we'll add it
-      // to the relative URI to make it absolute. This seems to avoid problems
+      // We might have phyloref IDs set to relative IRIs (e.g. "#phyloref0").
+      // If the baseIRI is set to '', that's fine. But if not, we'll add it
+      // to the relative IRI to make it absolute. This seems to avoid problems
       // with some JSON-LD parsers.
-      if (baseURI) {
+      if (baseIRI) {
         jsonld.phylorefs = jsonld.phylorefs.map((phyloref) => {
           if ((phyloref['@id'] || '').startsWith('#')) {
             const modifiedPhyloref = cloneDeep(phyloref);
@@ -107,16 +107,16 @@ class PhyxWrapper {
       // Convert phyloreferences into an OWL class restriction
       jsonld.phylorefs = jsonld.phylorefs.map(
         (phyloref, countPhyloref) => new PhylorefWrapper(phyloref, defaultNomenCode)
-          .asJSONLD(getBaseURIForPhyloref(countPhyloref))
+          .asJSONLD(getBaseIRIForPhyloref(countPhyloref))
       );
     }
 
     if (has(jsonld, 'phylogenies')) {
-      // We might have phyloref IDs set to relative URIs (e.g. "#phyloref0").
-      // If the baseURI is set to '', that's fine. But if not, we'll add it
-      // to the relative URI to make it absolute. This seems to avoid problems
+      // We might have phyloref IDs set to relative IRIs (e.g. "#phyloref0").
+      // If the baseIRI is set to '', that's fine. But if not, we'll add it
+      // to the relative IRI to make it absolute. This seems to avoid problems
       // with some JSON-LD parsers.
-      if (baseURI) {
+      if (baseIRI) {
         jsonld.phylogenies = jsonld.phylogenies.map((phylogeny) => {
           if ((phylogeny['@id'] || '').startsWith('#')) {
             const modifiedPhylogeny = cloneDeep(phylogeny);
@@ -130,7 +130,7 @@ class PhyxWrapper {
       // Add descriptions for individual nodes in each phylogeny.
       jsonld.phylogenies = jsonld.phylogenies.map(
         (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny, defaultNomenCode)
-          .asJSONLD(getBaseURIForPhylogeny(countPhylogeny), this.newickParser)
+          .asJSONLD(getBaseIRIForPhylogeny(countPhylogeny), this.newickParser)
       );
 
       // Go through all the nodes and add information on expected resolution.
@@ -248,7 +248,7 @@ class PhyxWrapper {
                   const matcher = new TaxonomicUnitMatcher(specifierTU, nodeTU);
                   if (matcher.matched) {
                     const tuMatchAsJSONLD = matcher.asJSONLD(
-                      PhyxWrapper.getBaseURIForTUMatch(countTaxonomicUnitMatches)
+                      PhyxWrapper.getBaseIRIForTUMatch(countTaxonomicUnitMatches)
                     );
                     jsonld.hasTaxonomicUnitMatches.push(tuMatchAsJSONLD);
                     nodesMatchedCount += 1;
@@ -269,7 +269,7 @@ class PhyxWrapper {
     }
 
     // Finally, add the base URI as an ontology.
-    if (baseURI) jsonld['@id'] = baseURI;
+    if (baseIRI) jsonld['@id'] = baseIRI;
     jsonld['@type'] = [owlterms.PHYLOREFERENCE_TEST_CASE, 'owl:Ontology'];
     jsonld['owl:imports'] = [
       'http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl',

@@ -699,7 +699,7 @@ class PhylorefWrapper {
   }
 
   /*
-   * Phyloref.asJSONLD(phylorefURI)
+   * Phyloref.asJSONLD(fallbackIRI)
    *
    * Export this phylogeny as JSON-LD.
    *
@@ -709,7 +709,6 @@ class PhylorefWrapper {
    */
   asJSONLD(fallbackIRI) {
     // Keep all currently extant data.
-    // - baseURI: the base URI for this phyloreference
     const phylorefAsJSONLD = cloneDeep(this.phyloref);
 
     // Set the @id and @type. If we don't already have an '@id', use the

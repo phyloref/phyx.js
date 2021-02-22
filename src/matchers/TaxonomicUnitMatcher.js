@@ -32,11 +32,11 @@ class TaxonomicUnitMatcher {
   }
 
   /** Return this TUMatch as a JSON object for insertion into the PHYX file. */
-  asJSONLD(idURI) {
+  asJSONLD(idIRI) {
     if (!this.matched) return undefined;
 
     return {
-      '@id': idURI,
+      '@id': idIRI,
       '@type': 'testcase:TUMatch',
       reason: this.matchReason,
       matchesTaxonomicUnits: [
