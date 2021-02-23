@@ -3614,7 +3614,7 @@
       ]
     }
   ],
-  "defaultNomenclaturalCodeURI": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+  "defaultNomenclaturalCodeIRI": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
   "hasTaxonomicUnitMatches": [],
   "@id": "http://example.org/brochu_2003.json#",
   "@type": [

@@ -46,8 +46,8 @@ describe(PHYX2OWL_JS, function () {
 
     // Convert brochu_2003.json to brochu_2003.owl.
     // Because of the way in which we test brochu_2003.owl in test/examples.js,
-    // we need to set a base URI as well.
-    const result = child.spawnSync(PHYX2OWL_JS, [PHYX_FILE, '--base-uri', 'http://example.org/brochu_2003.json#'], {
+    // we need to set a base IRI as well.
+    const result = child.spawnSync(PHYX2OWL_JS, [PHYX_FILE, '--base-iri', 'http://example.org/brochu_2003.json#'], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });

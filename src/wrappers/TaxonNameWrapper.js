@@ -54,13 +54,13 @@ class TaxonNameWrapper {
   }
 
   /**
-   * The URI for an unknown nomenclatural code (i.e. all we know is that it's a scientific name).
+   * The IRI for an unknown nomenclatural code (i.e. all we know is that it's a scientific name).
    */
   static get UNKNOWN_CODE() {
     return owlterms.UNKNOWN_CODE;
   }
 
-  /* Directly access URIs for nomenclatural codes. */
+  /* Directly access IRIs for nomenclatural codes. */
   static get ICZN_CODE() { return owlterms.ICZN_CODE; }
 
   static get ICN_CODE() { return owlterms.ICN_CODE; }
@@ -77,7 +77,7 @@ class TaxonNameWrapper {
    *  - code: A list of short names that can be used to represent this nomenclatural code.
    *  - label: An informal name of this nomenclatural code in English.
    *  - title: The formal name of this nomenclatural code in English.
-   *  - uri: The URI of this nomenclatural code.
+   *  - iri: The IRI of this nomenclatural code.
    *
    * This will be used in drawing user interfaces, so this should be in order
    * of likelihood of use.
@@ -85,37 +85,37 @@ class TaxonNameWrapper {
   static getNomenclaturalCodes() {
     return [
       {
-        uri: owlterms.ICZN_CODE,
+        iri: owlterms.ICZN_CODE,
         shortName: 'ICZN',
         label: 'Animals (ICZN)',
         title: 'International Code of Zoological Nomenclature',
       },
       {
-        uri: owlterms.ICN_CODE,
+        iri: owlterms.ICN_CODE,
         shortName: 'ICN',
         label: 'Algae, fungi and plants (ICN, previously ICBN)',
         title: 'International Code of Nomenclature for algae, fungi, and plants',
       },
       {
-        uri: owlterms.ICNP_CODE,
+        iri: owlterms.ICNP_CODE,
         shortName: 'ICNP',
         label: 'Prokaryotes (ICNP)',
         title: 'International Code of Nomenclature of Prokaryotes',
       },
       {
-        uri: owlterms.ICTV_CODE,
+        iri: owlterms.ICTV_CODE,
         shortName: 'ICTV',
         label: 'Viruses (ICTV)',
         title: 'International Committee on Taxonomy of Viruses',
       },
       {
-        uri: owlterms.ICNCP_CODE,
+        iri: owlterms.ICNCP_CODE,
         shortName: 'ICNCP',
         label: 'Cultivated plants (ICNCP)',
         title: 'International Code of Cultivated Plants',
       },
       {
-        uri: owlterms.UNKNOWN_CODE,
+        iri: owlterms.UNKNOWN_CODE,
         shortName: 'Code not known',
         label: 'Nomenclatural code not known',
         title: 'Nomenclatural code not known',
@@ -129,9 +129,9 @@ class TaxonNameWrapper {
   static getNomenCodeDetails(nomenCode) {
     const codes = TaxonNameWrapper.getNomenclaturalCodes();
 
-    // Look for the entry with the same URI as the provided URI.
+    // Look for the entry with the same IRI as the provided IRI.
     const matchingCode = codes
-      .find(code => code.uri.toLowerCase() === nomenCode.toLowerCase());
+      .find(code => code.iri.toLowerCase() === nomenCode.toLowerCase());
     if (matchingCode) return matchingCode;
     return undefined;
   }
@@ -144,7 +144,7 @@ class TaxonNameWrapper {
   }
 
   /**
-   * Returns the nomenclatural code of this taxon name as a URI.
+   * Returns the nomenclatural code of this taxon name as a IRI.
    */
   get nomenclaturalCodeDetails() {
     const nomenCode = this.nomenclaturalCode;
