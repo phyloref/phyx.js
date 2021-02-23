@@ -13,7 +13,7 @@
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#label> "Testudinata" .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingApomorphy> .
-_:b0 <http://purl.org/dc/terms/bibliographicCitation> "undefined et al (2020) Testudinata (#273) [eds:  and  and ] CRC Press, Boca Raton, FL " .
+_:b0 <http://purl.org/dc/terms/bibliographicCitation> "W. G. Joyce et al (2020) Testudinata (#273) [eds: K. de Queiroz and P. D. Cantino and J. A. Gauthier] CRC Press, Boca Raton, FL " .
 _:b0 <http://purl.org/dc/terms/title> "Testudinata (#273)" .
 _:b1 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b1 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b2 .
