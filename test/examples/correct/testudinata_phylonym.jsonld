@@ -121,7 +121,6 @@
           }
         }
       ],
-      "externalSpecifiers": [],
       "@id": "http://example.org/phyx.js/example#phyloref0",
       "@type": "owl:Class",
       "subClassOf": [
