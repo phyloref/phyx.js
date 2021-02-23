@@ -120,5 +120,5 @@
             ]
         }
     ],
-    "defaultNomenclaturalCodeURI": "http://purl.obolibrary.org/obo/NOMEN_0000107"
+    "defaultNomenclaturalCodeIRI": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
 }
