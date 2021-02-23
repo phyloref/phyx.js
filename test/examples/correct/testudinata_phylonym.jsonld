@@ -102,7 +102,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Testudo graeca Linnaeus 1758",
             "nameComplete": "Testudo graeca",
             "genusPart": "Testudo",
@@ -121,6 +121,7 @@
           }
         }
       ],
+      "externalSpecifiers": [],
       "@id": "http://example.org/phyx.js/example#phyloref0",
       "@type": "owl:Class",
       "subClassOf": [
