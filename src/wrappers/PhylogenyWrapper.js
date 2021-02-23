@@ -20,7 +20,7 @@ class PhylogenyWrapper {
   // additionalNodeProperties object which provides additional properties for
   // nodes.
 
-  constructor(phylogeny) {
+  constructor(phylogeny, defaultNomenCode = owlterms.UNKNOWN_CODE) {
     // Construct a phylogeny based on a Phylogeny object in a PHYX phylogeny.
     // Note that this version ONLY uses the `newick` property to determine the
     // phylogeny: if other representations are included (such as a node-based
@@ -31,6 +31,7 @@ class PhylogenyWrapper {
     // This ensures that we don't need to reconcile between different
     // possible representations of a phylogeny.
     this.phylogeny = phylogeny;
+    this.defaultNomenCode = defaultNomenCode;
   }
 
   static getErrorsInNewickString(newick) {
@@ -193,9 +194,15 @@ class PhylogenyWrapper {
     throw new Error(`Unknown nodeType: '${nodeType}'`);
   }
 
+  /**
+   * Return a list of taxonomic units for a node label.
+   *
+   * If the additionalNodeProperties for this node label includes taxonomic units
+   * (using `representsTaxonomicUnits` = obo:CDAO_0000187), then those taxonomic
+   * units are used. Otherwise, one will be constructed using the default
+   * nomenclatural code set up when this PhylogenyWrapper was set up.
+   */
   getTaxonomicUnitsForNodeLabel(nodeLabel) {
-    // Return a list of taxonomic units for a node label.
-
     // Look up additional node properties.
     let additionalNodeProperties = {};
     if (
@@ -217,7 +224,7 @@ class PhylogenyWrapper {
     //
     // Note that old-style taxonomic units were lists while new-style taxonomic
     // units are single objects. So we turn it into a single entry list here.
-    const tunit = TaxonomicUnitWrapper.fromLabel(nodeLabel.trim());
+    const tunit = TaxonomicUnitWrapper.fromLabel(nodeLabel.trim(), this.defaultNomenCode);
     if (tunit) return [tunit];
     return []; // No TUnit? Return the empty list.
   }

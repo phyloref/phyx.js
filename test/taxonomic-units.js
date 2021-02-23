@@ -119,7 +119,6 @@ describe('TaxonomicUnitWrapper', function () {
           label: 'Rana luteiventris MVZ225749',
           hasName: {
             '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
-            nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
             label: 'Rana luteiventris MVZ225749',
             genusPart: 'Rana',
             specificEpithet: 'luteiventris',
@@ -135,7 +134,6 @@ describe('TaxonomicUnitWrapper', function () {
           hasName: {
             '@type': 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
             label: 'Rana_luteiventris_MVZ_225749',
-            nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
             nameComplete: 'Rana luteiventris',
             genusPart: 'Rana',
             specificEpithet: 'luteiventris',

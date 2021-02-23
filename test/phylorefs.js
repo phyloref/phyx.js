@@ -35,7 +35,19 @@ describe('PhylorefWrapper', function () {
   };
   const specifier3 = {
     '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
-    nameString: 'Rana boylii',
+    hasName: {
+      '@type': phyx.TaxonNameWrapper.TYPE_TAXON_NAME,
+      nomenclaturalCode: owlterms.ICZN_CODE,
+      nameComplete: 'Rana boylii',
+    },
+  };
+  const specifier4 = {
+    '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+    hasName: {
+      '@type': phyx.TaxonNameWrapper.TYPE_TAXON_NAME,
+      nomenclaturalCode: owlterms.ICN_CODE,
+      nameComplete: 'Mangifera indica',
+    },
   };
 
   describe('given an empty phyloreference', function () {
@@ -63,10 +75,18 @@ describe('PhylorefWrapper', function () {
         expect(wrapper.specifiers).to.be.empty;
       });
 
+      it('should initially return a nomenclatural code of unknown', function () {
+        expect(wrapper.defaultNomenCode).to.equal(owlterms.UNKNOWN_CODE);
+      });
+
       describe('when a new external specifier is added using .externalSpecifiers', function () {
         it('should return a list with the new specifier', function () {
           wrapper.externalSpecifiers.push(specifier3);
           expect(wrapper.specifiers).to.deep.equal([specifier3]);
+        });
+
+        it('should return a nomenclatural code of ICZN', function () {
+          expect(wrapper.defaultNomenCode).to.equal(owlterms.ICZN_CODE);
         });
       });
 
@@ -75,11 +95,44 @@ describe('PhylorefWrapper', function () {
           wrapper.externalSpecifiers.push(specifier2);
           expect(wrapper.specifiers).to.deep.equal([specifier3, specifier2]);
         });
+
+        it('should return two nomenclatural codes, one for each specifier', function () {
+          expect(wrapper.uniqNomenCodes).to.have.lengthOf(2);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.ICZN_CODE);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.UNKNOWN_CODE);
+        });
+
+        it('should still return a nomenclatural code of ICZN', function () {
+          expect(wrapper.defaultNomenCode).to.equal(owlterms.ICZN_CODE);
+        });
       });
 
-      describe('when a specifier is deleted using .deleteSpecifier', function () {
+      describe('when a new internal specifier is added using .internalSpecifiers', function () {
+        it('should return a list with the new specifier', function () {
+          wrapper.internalSpecifiers.push(specifier4);
+          expect(wrapper.specifiers).to.deep.equal([specifier4, specifier3, specifier2]);
+        });
+
+        it('should return three nomenclatural codes, one for each specifier', function () {
+          expect(wrapper.uniqNomenCodes).to.have.lengthOf(3);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.ICZN_CODE);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.UNKNOWN_CODE);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.ICN_CODE);
+        });
+
+        it('should change to a default nomenclatural code of owlterms.UNKNOWN_CODE', function () {
+          expect(wrapper.defaultNomenCode).to.equal(owlterms.UNKNOWN_CODE);
+        });
+      });
+
+      describe('when specifiers are deleted using .deleteSpecifier', function () {
         it('should return the updated list', function () {
+          // Delete an external specifier.
           wrapper.deleteSpecifier(specifier2);
+          // Delete an internal specifier.
+          wrapper.deleteSpecifier(specifier4);
+
+          // Only the first specifier should be left.
           expect(wrapper.specifiers).to.deep.equal([specifier3]);
         });
       });
@@ -253,7 +306,7 @@ describe('PhylorefWrapper', function () {
         '@type': owlterms.OWL_RESTRICTION,
         onProperty: owlterms.CDAO_HAS_CHILD,
         someValuesFrom: {
-          '@type': 'owl:Class',
+          '@type': owlterms.OWL_CLASS,
           intersectionOf: [
             {
               '@type': owlterms.OWL_RESTRICTION,
@@ -271,9 +324,18 @@ describe('PhylorefWrapper', function () {
                 '@type': owlterms.OWL_RESTRICTION,
                 onProperty: owlterms.TDWG_VOC_HAS_NAME,
                 someValuesFrom: {
-                  '@type': owlterms.OWL_RESTRICTION,
-                  hasValue: 'Rana boylii',
-                  onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                  '@type': owlterms.OWL_CLASS,
+                  intersectionOf: [{
+                    '@type': owlterms.OWL_RESTRICTION,
+                    hasValue: 'Rana boylii',
+                    onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                  }, {
+                    '@type': owlterms.OWL_RESTRICTION,
+                    hasValue: {
+                      '@id': owlterms.ICZN_CODE,
+                    },
+                    onProperty: owlterms.NOMENCLATURAL_CODE,
+                  }],
                 },
               },
             },

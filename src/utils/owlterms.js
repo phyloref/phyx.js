@@ -40,11 +40,13 @@ module.exports = {
   DWC_OCCURRENCE_ID: 'http://rs.tdwg.org/dwc/terms/occurrenceID',
 
   // Nomenclatural codes from Nomen.
-  NAME_IN_UNKNOWN_CODE: 'http://purl.obolibrary.org/obo/NOMEN_0000036', // NOMEN:scientific name
-  ICZN_NAME: 'http://purl.obolibrary.org/obo/NOMEN_0000107',
-  ICN_NAME: 'http://purl.obolibrary.org/obo/NOMEN_0000109',
-  ICNP_NAME: 'http://purl.obolibrary.org/obo/NOMEN_0000110',
-  ICTV_NAME: 'http://purl.obolibrary.org/obo/NOMEN_0000111',
+  NOMENCLATURAL_CODE: 'http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode',
+  UNKNOWN_CODE: undefined,
+  ICZN_CODE: 'http://rs.tdwg.org/ontology/voc/TaxonName#ICZN',
+  ICN_CODE: 'http://rs.tdwg.org/ontology/voc/TaxonName#ICBN',
+  ICNP_CODE: 'http://ontology.phyloref.org/tcan.owl#ICNP',
+  ICTV_CODE: 'http://ontology.phyloref.org/tcan.owl#ICTV',
+  ICNCP_CODE: 'http://rs.tdwg.org/ontology/voc/TaxonName#ICNCP',
 
   // Terms from the Ontology for Biomedical Investigations.
   OBI_HAS_SPECIFIED_INPUT: 'obo:OBI_0000293',

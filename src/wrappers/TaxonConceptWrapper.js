@@ -29,8 +29,9 @@ class TaxonConceptWrapper {
   }
 
   /** Create a TaxonConceptWrapper around a taxon concept. */
-  constructor(tunit) {
+  constructor(tunit, defaultNomenCode = owlterms.UNKNOWN_CODE) {
     this.tunit = tunit;
+    this.defaultNomenCode = defaultNomenCode;
   }
 
   /**
@@ -59,6 +60,24 @@ class TaxonConceptWrapper {
     if (has(this.tunit, 'nameString')) return TaxonNameWrapper.fromVerbatimName(this.tunit.nameString).nameComplete;
 
     // If not, we have no name!
+    return undefined;
+  }
+
+  /**
+   * Return the nomenclatural code of this taxon concept as a string.
+   */
+  get nomenCode() {
+    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName).nomenclaturalCode;
+
+    return undefined;
+  }
+
+  /**
+   * Return the nomenclatural code of this taxon concept as an object.
+   */
+  get nomenCodeDetails() {
+    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName).nomenclaturalCodeDetails;
+
     return undefined;
   }
 
@@ -165,7 +184,7 @@ class TaxonConceptWrapper {
     return {
       '@type': 'owl:Restriction',
       onProperty: owlterms.TDWG_VOC_HAS_NAME,
-      someValuesFrom: new TaxonNameWrapper(this.taxonName).asOWLEquivClass,
+      someValuesFrom: new TaxonNameWrapper(this.taxonName, this.defaultNomenCode).asOWLEquivClass,
     };
   }
 }

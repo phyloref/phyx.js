@@ -1,8 +1,10 @@
 /** Used to parse timestamps for phyloref statuses. */
 const moment = require('moment');
-const { has, cloneDeep } = require('lodash');
+const { has, cloneDeep, uniq } = require('lodash');
 
+const owlterms = require('../utils/owlterms');
 const { TaxonomicUnitWrapper } = require('./TaxonomicUnitWrapper');
+const { TaxonConceptWrapper } = require('./TaxonConceptWrapper');
 const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 const { CitationWrapper } = require('./CitationWrapper');
 
@@ -14,9 +16,10 @@ const { CitationWrapper } = require('./CitationWrapper');
 class PhylorefWrapper {
   // Wraps a phyloreference in a PHYX model.
 
-  constructor(phyloref) {
+  constructor(phyloref, phyxDefaultNomenCode = owlterms.UNKNOWN_CODE) {
     // Wraps the provided phyloreference
     this.phyloref = phyloref;
+    this.phyxDefaultNomenCode = phyxDefaultNomenCode;
   }
 
   /** Return the internal specifiers of this phyloref (if any). */
@@ -129,7 +132,10 @@ class PhylorefWrapper {
     const phylorefLabel = this.label;
     const nodeLabels = new Set();
 
-    new PhylogenyWrapper(phylogeny).getNodeLabels().forEach((nodeLabel) => {
+    new PhylogenyWrapper(
+      phylogeny,
+      this.defaultNomenCode
+    ).getNodeLabels().forEach((nodeLabel) => {
       // Is this node label identical to the phyloreference name?
       if (nodeLabel === phylorefLabel) {
         nodeLabels.add(nodeLabel);
@@ -289,6 +295,53 @@ class PhylorefWrapper {
   }
 
   /**
+   * Return a list of all the unique nomenclatural codes used by this phyloreference.
+   * The default nomenclatural code used in creating the PhylorefWrapper will be used
+   * for any taxonomic units that don't have any nomenclatural code set. If any
+   * specifiers are not taxon concepts, they will be represented in the returned
+   * list as owlterms.UNKNOWN_CODE.
+   */
+  get uniqNomenCodes() {
+    return uniq(this.specifiers.map((specifier) => {
+      const taxonConcept = new TaxonomicUnitWrapper(
+        specifier,
+        this.phyxDefaultNomenCode
+      ).taxonConcept;
+      if (!taxonConcept) return owlterms.UNKNOWN_CODE;
+
+      const nomenCode = new TaxonConceptWrapper(
+        taxonConcept,
+        this.phyxDefaultNomenCode
+      ).nomenCode;
+      if (!nomenCode) return owlterms.UNKNOWN_CODE;
+
+      return nomenCode;
+    }));
+  }
+
+  /**
+   * Returns a summarized nomenclatural code for this phyloref. If all of the
+   * specifiers have either the same nomenclatural code or `undefined`,
+   * this getter will return that nomenclatural code. Otherwise, this method
+   * will return owlterms.UNKNOWN_CODE.
+   */
+  get defaultNomenCode() {
+    // Check to see if we have a single nomenclatural code to use.
+    if (this.uniqNomenCodes.length === 1) return this.uniqNomenCodes[0];
+
+    // If one or more of our specifiers have no nomenclatural code (e.g. if
+    // they are specimens), they will show up as owlterms.UNKNOWN_CODE.
+    // If we have a single nomenclatural code *apart* from all the
+    // owlterms.UNKNOWN_CODEs, then that is still usable as a default
+    // nomenclatural code for this phyloreference.
+    const uniqNomenCodesNoUnknowns = this.uniqNomenCodes
+      .filter(code => code !== owlterms.UNKNOWN_CODE);
+    if (uniqNomenCodesNoUnknowns.length === 1) return uniqNomenCodesNoUnknowns[0];
+
+    return owlterms.UNKNOWN_CODE;
+  }
+
+  /**
    * Create a component class for the set of internal and external specifiers provided.
    * We turn this into a label (in the form `A & B ~ C V D`), which we use to ensure that
    * we don't create more than one class for a particular set of internal and external
@@ -373,7 +426,7 @@ class PhylorefWrapper {
     return {
       '@type': 'owl:Restriction',
       onProperty: 'phyloref:includes_TU',
-      someValuesFrom: new TaxonomicUnitWrapper(tu).asOWLEquivClass,
+      someValuesFrom: new TaxonomicUnitWrapper(tu, this.defaultNomenCode).asOWLEquivClass,
     };
   }
 
@@ -391,7 +444,7 @@ class PhylorefWrapper {
           {
             '@type': 'owl:Restriction',
             onProperty: 'phyloref:excludes_TU',
-            someValuesFrom: new TaxonomicUnitWrapper(tu1).asOWLEquivClass,
+            someValuesFrom: new TaxonomicUnitWrapper(tu1, this.defaultNomenCode).asOWLEquivClass,
           },
           PhylorefWrapper.getIncludesRestrictionForTU(tu2),
         ],
@@ -534,7 +587,7 @@ class PhylorefWrapper {
         {
           '@type': 'owl:Restriction',
           onProperty: 'phyloref:excludes_TU',
-          someValuesFrom: new TaxonomicUnitWrapper(tu).asOWLEquivClass,
+          someValuesFrom: new TaxonomicUnitWrapper(tu, this.defaultNomenCode).asOWLEquivClass,
         },
       ],
     }];
@@ -553,7 +606,10 @@ class PhylorefWrapper {
             someValuesFrom: {
               '@type': 'owl:Restriction',
               onProperty: 'phyloref:excludes_TU',
-              someValuesFrom: new TaxonomicUnitWrapper(tu).asOWLEquivClass,
+              someValuesFrom: new TaxonomicUnitWrapper(
+                tu,
+                this.defaultNomenCode
+              ).asOWLEquivClass,
             },
           },
         ],

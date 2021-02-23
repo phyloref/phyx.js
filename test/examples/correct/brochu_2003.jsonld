@@ -93,9 +93,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Crocodylomorpha"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Crocodylomorpha"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -108,10 +120,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Crocodylomorpha",
                 "nameComplete": "Crocodylomorpha",
-                "uninomial": "Crocodylomorpha"
+                "uninomial": "Crocodylomorpha",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Crocodylomorpha"
             }
@@ -139,9 +151,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Crocodyliformes"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Crocodyliformes"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -154,10 +178,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Crocodyliformes",
                 "nameComplete": "Crocodyliformes",
-                "uninomial": "Crocodyliformes"
+                "uninomial": "Crocodyliformes",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Crocodyliformes"
             }
@@ -184,9 +208,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Mesoeucrocodylia"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mesoeucrocodylia"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -199,10 +235,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Mesoeucrocodylia",
                 "nameComplete": "Mesoeucrocodylia",
-                "uninomial": "Mesoeucrocodylia"
+                "uninomial": "Mesoeucrocodylia",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Mesoeucrocodylia"
             }
@@ -229,9 +265,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Eusuchia"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Eusuchia"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -244,10 +292,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Eusuchia",
                 "nameComplete": "Eusuchia",
-                "uninomial": "Eusuchia"
+                "uninomial": "Eusuchia",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Eusuchia"
             }
@@ -294,9 +342,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Crocodylia"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Crocodylia"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -309,10 +369,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Crocodylia",
                 "nameComplete": "Crocodylia",
-                "uninomial": "Crocodylia"
+                "uninomial": "Crocodylia",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Crocodylia"
             }
@@ -339,9 +399,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Brevirostres"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Brevirostres"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -354,10 +426,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Brevirostres",
                 "nameComplete": "Brevirostres",
-                "uninomial": "Brevirostres"
+                "uninomial": "Brevirostres",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Brevirostres"
             }
@@ -384,9 +456,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Crocodylidae"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Crocodylidae"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             },
@@ -437,10 +521,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Crocodylidae",
                 "nameComplete": "Crocodylidae",
-                "uninomial": "Crocodylidae"
+                "uninomial": "Crocodylidae",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Crocodylidae"
             }
@@ -467,9 +551,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Crocodylinae"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Crocodylinae"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -482,10 +578,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Crocodylinae",
                 "nameComplete": "Crocodylinae",
-                "uninomial": "Crocodylinae"
+                "uninomial": "Crocodylinae",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Crocodylinae"
             }
@@ -512,9 +608,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Crocodylus niloticus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Crocodylus niloticus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -527,11 +635,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Crocodylus niloticus",
                 "nameComplete": "Crocodylus niloticus",
                 "genusPart": "Crocodylus",
-                "specificEpithet": "niloticus"
+                "specificEpithet": "niloticus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Crocodylus niloticus"
             }
@@ -554,9 +662,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Osteolaemus tetraspis"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Osteolaemus tetraspis"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -569,11 +689,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Osteolaemus tetraspis",
                 "nameComplete": "Osteolaemus tetraspis",
                 "genusPart": "Osteolaemus",
-                "specificEpithet": "tetraspis"
+                "specificEpithet": "tetraspis",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Osteolaemus tetraspis"
             }
@@ -596,9 +716,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Tomistoma schlegelii"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Tomistoma schlegelii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -611,11 +743,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Tomistoma schlegelii",
                 "nameComplete": "Tomistoma schlegelii",
                 "genusPart": "Tomistoma",
-                "specificEpithet": "schlegelii"
+                "specificEpithet": "schlegelii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Tomistoma schlegelii"
             }
@@ -638,9 +770,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Alligatoroidea"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Alligatoroidea"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -653,10 +797,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Alligatoroidea",
                 "nameComplete": "Alligatoroidea",
-                "uninomial": "Alligatoroidea"
+                "uninomial": "Alligatoroidea",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Alligatoroidea"
             }
@@ -683,9 +827,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Alligatoridae"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Alligatoridae"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             },
@@ -717,10 +873,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Alligatoridae",
                 "nameComplete": "Alligatoridae",
-                "uninomial": "Alligatoridae"
+                "uninomial": "Alligatoridae",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Alligatoridae"
             }
@@ -747,9 +903,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Caiman crocodilus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Caiman crocodilus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             },
@@ -781,11 +949,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Caiman crocodilus",
                 "nameComplete": "Caiman crocodilus",
                 "genusPart": "Caiman",
-                "specificEpithet": "crocodilus"
+                "specificEpithet": "crocodilus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Caiman crocodilus"
             }
@@ -808,9 +976,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Alligator mississippiensis"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Alligator mississippiensis"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             },
@@ -842,11 +1022,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Alligator mississippiensis",
                 "nameComplete": "Alligator mississippiensis",
                 "genusPart": "Alligator",
-                "specificEpithet": "mississippiensis"
+                "specificEpithet": "mississippiensis",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Alligator mississippiensis"
             }
@@ -869,9 +1049,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Diplocynodon ratelii"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Diplocynodon ratelii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             },
@@ -903,11 +1095,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Diplocynodon ratelii",
                 "nameComplete": "Diplocynodon ratelii",
                 "genusPart": "Diplocynodon",
-                "specificEpithet": "ratelii"
+                "specificEpithet": "ratelii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Diplocynodon ratelii"
             }
@@ -930,9 +1122,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Gavialis gangeticus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Gavialis gangeticus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -945,11 +1149,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Gavialis gangeticus",
                 "nameComplete": "Gavialis gangeticus",
                 "genusPart": "Gavialis",
-                "specificEpithet": "gangeticus"
+                "specificEpithet": "gangeticus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Gavialis gangeticus"
             }
@@ -972,9 +1176,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Allodaposuchus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Allodaposuchus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -987,10 +1203,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Allodaposuchus",
                 "nameComplete": "Allodaposuchus",
-                "uninomial": "Allodaposuchus"
+                "uninomial": "Allodaposuchus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Allodaposuchus"
             }
@@ -1013,9 +1229,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Stomatosuchus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Stomatosuchus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1028,10 +1256,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Stomatosuchus",
                 "nameComplete": "Stomatosuchus",
-                "uninomial": "Stomatosuchus"
+                "uninomial": "Stomatosuchus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Stomatosuchus"
             }
@@ -1056,9 +1284,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Aegyptosuchus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Aegyptosuchus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1071,10 +1311,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Aegyptosuchus",
                 "nameComplete": "Aegyptosuchus",
-                "uninomial": "Aegyptosuchus"
+                "uninomial": "Aegyptosuchus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Aegyptosuchus"
             }
@@ -1099,9 +1339,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Hylaeochampsa"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Hylaeochampsa"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1114,10 +1366,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Hylaeochampsa",
                 "nameComplete": "Hylaeochampsa",
-                "uninomial": "Hylaeochampsa"
+                "uninomial": "Hylaeochampsa",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Hylaeochampsa"
             }
@@ -1190,9 +1442,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Aetosauria"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Aetosauria"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1205,10 +1469,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Aetosauria",
                 "nameComplete": "Aetosauria",
-                "uninomial": "Aetosauria"
+                "uninomial": "Aetosauria",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Aetosauria"
             }
@@ -1249,9 +1513,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Parasuchia"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Parasuchia"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1264,10 +1540,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Parasuchia",
                 "nameComplete": "Parasuchia",
-                "uninomial": "Parasuchia"
+                "uninomial": "Parasuchia",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
               },
               "label": "Parasuchia"
             }
@@ -1333,7 +1609,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Caiman crocodilus",
             "nameComplete": "Caiman crocodilus",
             "genusPart": "Caiman",
@@ -1344,7 +1620,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Alligator mississippiensis",
             "nameComplete": "Alligator mississippiensis",
             "genusPart": "Alligator",
@@ -1381,9 +1657,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Caiman crocodilus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Caiman crocodilus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             },
@@ -1394,9 +1682,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Alligator mississippiensis"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Alligator mississippiensis"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1457,7 +1757,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Alligator mississippiensis",
             "nameComplete": "Alligator mississippiensis",
             "genusPart": "Alligator",
@@ -1470,7 +1770,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Caiman crocodilus",
             "nameComplete": "Caiman crocodilus",
             "genusPart": "Caiman",
@@ -1508,9 +1808,21 @@
               "@type": "owl:Restriction",
               "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
               "someValuesFrom": {
-                "@type": "owl:Restriction",
-                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                "hasValue": "Alligator mississippiensis"
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Alligator mississippiensis"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                    }
+                  }
+                ]
               }
             }
           },
@@ -1521,9 +1833,21 @@
               "@type": "owl:Restriction",
               "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
               "someValuesFrom": {
-                "@type": "owl:Restriction",
-                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                "hasValue": "Caiman crocodilus"
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Caiman crocodilus"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                    }
+                  }
+                ]
               }
             }
           }
@@ -1583,7 +1907,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Caiman crocodilus",
             "nameComplete": "Caiman crocodilus",
             "genusPart": "Caiman",
@@ -1596,7 +1920,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Alligator mississippiensis",
             "nameComplete": "Alligator mississippiensis",
             "genusPart": "Alligator",
@@ -1633,9 +1957,21 @@
               "@type": "owl:Restriction",
               "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
               "someValuesFrom": {
-                "@type": "owl:Restriction",
-                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                "hasValue": "Caiman crocodilus"
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Caiman crocodilus"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                    }
+                  }
+                ]
               }
             }
           },
@@ -1646,9 +1982,21 @@
               "@type": "owl:Restriction",
               "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
               "someValuesFrom": {
-                "@type": "owl:Restriction",
-                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                "hasValue": "Alligator mississippiensis"
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Alligator mississippiensis"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                    }
+                  }
+                ]
               }
             }
           }
@@ -1668,7 +2016,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Crocodylus niloticus",
             "nameComplete": "Crocodylus niloticus",
             "genusPart": "Crocodylus",
@@ -1681,7 +2029,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Alligator mississippiensis",
             "nameComplete": "Alligator mississippiensis",
             "genusPart": "Alligator",
@@ -1693,7 +2041,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Gavialis gangeticus",
             "nameComplete": "Gavialis gangeticus",
             "genusPart": "Gavialis",
@@ -1736,9 +2084,21 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                     "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                      "hasValue": "Crocodylus niloticus"
+                      "@type": "owl:Class",
+                      "intersectionOf": [
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Crocodylus niloticus"
+                        },
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                          "hasValue": {
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                          }
+                        }
+                      ]
                     }
                   }
                 },
@@ -1749,9 +2109,21 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                     "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                      "hasValue": "Alligator mississippiensis"
+                      "@type": "owl:Class",
+                      "intersectionOf": [
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Alligator mississippiensis"
+                        },
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                          "hasValue": {
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                          }
+                        }
+                      ]
                     }
                   }
                 }
@@ -1777,9 +2149,21 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                     "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                      "hasValue": "Crocodylus niloticus"
+                      "@type": "owl:Class",
+                      "intersectionOf": [
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Crocodylus niloticus"
+                        },
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                          "hasValue": {
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                          }
+                        }
+                      ]
                     }
                   }
                 },
@@ -1790,9 +2174,21 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                     "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                      "hasValue": "Gavialis gangeticus"
+                      "@type": "owl:Class",
+                      "intersectionOf": [
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Gavialis gangeticus"
+                        },
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                          "hasValue": {
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                          }
+                        }
+                      ]
                     }
                   }
                 }
@@ -1820,9 +2216,21 @@
                   "@type": "owl:Restriction",
                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                   "someValuesFrom": {
-                    "@type": "owl:Restriction",
-                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                    "hasValue": "Gavialis gangeticus"
+                    "@type": "owl:Class",
+                    "intersectionOf": [
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                        "hasValue": "Gavialis gangeticus"
+                      },
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                        "hasValue": {
+                          "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                        }
+                      }
+                    ]
                   }
                 }
               }
@@ -1855,9 +2263,21 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                     "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                      "hasValue": "Gavialis gangeticus"
+                      "@type": "owl:Class",
+                      "intersectionOf": [
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Gavialis gangeticus"
+                        },
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                          "hasValue": {
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                          }
+                        }
+                      ]
                     }
                   }
                 }
@@ -1888,9 +2308,21 @@
                   "@type": "owl:Restriction",
                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                   "someValuesFrom": {
-                    "@type": "owl:Restriction",
-                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                    "hasValue": "Alligator mississippiensis"
+                    "@type": "owl:Class",
+                    "intersectionOf": [
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                        "hasValue": "Alligator mississippiensis"
+                      },
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                        "hasValue": {
+                          "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                        }
+                      }
+                    ]
                   }
                 }
               }
@@ -1923,9 +2355,21 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                     "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                      "hasValue": "Alligator mississippiensis"
+                      "@type": "owl:Class",
+                      "intersectionOf": [
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Alligator mississippiensis"
+                        },
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                          "hasValue": {
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                          }
+                        }
+                      ]
                     }
                   }
                 }
@@ -1994,7 +2438,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Tomistoma schlegelii",
             "nameComplete": "Tomistoma schlegelii",
             "genusPart": "Tomistoma",
@@ -2005,7 +2449,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Osteolaemus tetraspis",
             "nameComplete": "Osteolaemus tetraspis",
             "genusPart": "Osteolaemus",
@@ -2017,7 +2461,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Crocodylus niloticus",
             "nameComplete": "Crocodylus niloticus",
             "genusPart": "Crocodylus",
@@ -2067,9 +2511,21 @@
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                             "someValuesFrom": {
-                              "@type": "owl:Restriction",
-                              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                              "hasValue": "Osteolaemus tetraspis"
+                              "@type": "owl:Class",
+                              "intersectionOf": [
+                                {
+                                  "@type": "owl:Restriction",
+                                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                  "hasValue": "Osteolaemus tetraspis"
+                                },
+                                {
+                                  "@type": "owl:Restriction",
+                                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                  "hasValue": {
+                                    "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                  }
+                                }
+                              ]
                             }
                           }
                         },
@@ -2080,9 +2536,21 @@
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                             "someValuesFrom": {
-                              "@type": "owl:Restriction",
-                              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                              "hasValue": "Crocodylus niloticus"
+                              "@type": "owl:Class",
+                              "intersectionOf": [
+                                {
+                                  "@type": "owl:Restriction",
+                                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                  "hasValue": "Crocodylus niloticus"
+                                },
+                                {
+                                  "@type": "owl:Restriction",
+                                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                  "hasValue": {
+                                    "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                  }
+                                }
+                              ]
                             }
                           }
                         }
@@ -2097,9 +2565,21 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                     "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                      "hasValue": "Tomistoma schlegelii"
+                      "@type": "owl:Class",
+                      "intersectionOf": [
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Tomistoma schlegelii"
+                        },
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                          "hasValue": {
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                          }
+                        }
+                      ]
                     }
                   }
                 }
@@ -2133,9 +2613,21 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                       "someValuesFrom": {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                        "hasValue": "Crocodylus niloticus"
+                        "@type": "owl:Class",
+                        "intersectionOf": [
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Crocodylus niloticus"
+                          },
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                            "hasValue": {
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -2153,9 +2645,21 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                           "someValuesFrom": {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Tomistoma schlegelii"
+                            "@type": "owl:Class",
+                            "intersectionOf": [
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                "hasValue": "Tomistoma schlegelii"
+                              },
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                "hasValue": {
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                }
+                              }
+                            ]
                           }
                         }
                       },
@@ -2166,9 +2670,21 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                           "someValuesFrom": {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Osteolaemus tetraspis"
+                            "@type": "owl:Class",
+                            "intersectionOf": [
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                "hasValue": "Osteolaemus tetraspis"
+                              },
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                "hasValue": {
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                }
+                              }
+                            ]
                           }
                         }
                       }
@@ -2205,9 +2721,21 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                       "someValuesFrom": {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                        "hasValue": "Osteolaemus tetraspis"
+                        "@type": "owl:Class",
+                        "intersectionOf": [
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Osteolaemus tetraspis"
+                          },
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                            "hasValue": {
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -2225,9 +2753,21 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                           "someValuesFrom": {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Tomistoma schlegelii"
+                            "@type": "owl:Class",
+                            "intersectionOf": [
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                "hasValue": "Tomistoma schlegelii"
+                              },
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                "hasValue": {
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                }
+                              }
+                            ]
                           }
                         }
                       },
@@ -2238,9 +2778,21 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                           "someValuesFrom": {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Crocodylus niloticus"
+                            "@type": "owl:Class",
+                            "intersectionOf": [
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                "hasValue": "Crocodylus niloticus"
+                              },
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                "hasValue": {
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                }
+                              }
+                            ]
                           }
                         }
                       }
@@ -2283,9 +2835,21 @@
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                             "someValuesFrom": {
-                              "@type": "owl:Restriction",
-                              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                              "hasValue": "Tomistoma schlegelii"
+                              "@type": "owl:Class",
+                              "intersectionOf": [
+                                {
+                                  "@type": "owl:Restriction",
+                                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                  "hasValue": "Tomistoma schlegelii"
+                                },
+                                {
+                                  "@type": "owl:Restriction",
+                                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                  "hasValue": {
+                                    "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                  }
+                                }
+                              ]
                             }
                           }
                         },
@@ -2296,9 +2860,21 @@
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                             "someValuesFrom": {
-                              "@type": "owl:Restriction",
-                              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                              "hasValue": "Crocodylus niloticus"
+                              "@type": "owl:Class",
+                              "intersectionOf": [
+                                {
+                                  "@type": "owl:Restriction",
+                                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                  "hasValue": "Crocodylus niloticus"
+                                },
+                                {
+                                  "@type": "owl:Restriction",
+                                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                  "hasValue": {
+                                    "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                  }
+                                }
+                              ]
                             }
                           }
                         }
@@ -2313,9 +2889,21 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                     "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                      "hasValue": "Osteolaemus tetraspis"
+                      "@type": "owl:Class",
+                      "intersectionOf": [
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Osteolaemus tetraspis"
+                        },
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                          "hasValue": {
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                          }
+                        }
+                      ]
                     }
                   }
                 }
@@ -2349,9 +2937,21 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                       "someValuesFrom": {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                        "hasValue": "Crocodylus niloticus"
+                        "@type": "owl:Class",
+                        "intersectionOf": [
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Crocodylus niloticus"
+                          },
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                            "hasValue": {
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -2369,9 +2969,21 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                           "someValuesFrom": {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Osteolaemus tetraspis"
+                            "@type": "owl:Class",
+                            "intersectionOf": [
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                "hasValue": "Osteolaemus tetraspis"
+                              },
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                "hasValue": {
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                }
+                              }
+                            ]
                           }
                         }
                       },
@@ -2382,9 +2994,21 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                           "someValuesFrom": {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Tomistoma schlegelii"
+                            "@type": "owl:Class",
+                            "intersectionOf": [
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                "hasValue": "Tomistoma schlegelii"
+                              },
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                "hasValue": {
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                }
+                              }
+                            ]
                           }
                         }
                       }
@@ -2421,9 +3045,21 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                       "someValuesFrom": {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                        "hasValue": "Tomistoma schlegelii"
+                        "@type": "owl:Class",
+                        "intersectionOf": [
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Tomistoma schlegelii"
+                          },
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                            "hasValue": {
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -2441,9 +3077,21 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                           "someValuesFrom": {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Osteolaemus tetraspis"
+                            "@type": "owl:Class",
+                            "intersectionOf": [
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                "hasValue": "Osteolaemus tetraspis"
+                              },
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                "hasValue": {
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                }
+                              }
+                            ]
                           }
                         }
                       },
@@ -2454,9 +3102,21 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                           "someValuesFrom": {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Crocodylus niloticus"
+                            "@type": "owl:Class",
+                            "intersectionOf": [
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                "hasValue": "Crocodylus niloticus"
+                              },
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                "hasValue": {
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                }
+                              }
+                            ]
                           }
                         }
                       }
@@ -2499,9 +3159,21 @@
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                             "someValuesFrom": {
-                              "@type": "owl:Restriction",
-                              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                              "hasValue": "Tomistoma schlegelii"
+                              "@type": "owl:Class",
+                              "intersectionOf": [
+                                {
+                                  "@type": "owl:Restriction",
+                                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                  "hasValue": "Tomistoma schlegelii"
+                                },
+                                {
+                                  "@type": "owl:Restriction",
+                                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                  "hasValue": {
+                                    "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                  }
+                                }
+                              ]
                             }
                           }
                         },
@@ -2512,9 +3184,21 @@
                             "@type": "owl:Restriction",
                             "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                             "someValuesFrom": {
-                              "@type": "owl:Restriction",
-                              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                              "hasValue": "Osteolaemus tetraspis"
+                              "@type": "owl:Class",
+                              "intersectionOf": [
+                                {
+                                  "@type": "owl:Restriction",
+                                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                  "hasValue": "Osteolaemus tetraspis"
+                                },
+                                {
+                                  "@type": "owl:Restriction",
+                                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                  "hasValue": {
+                                    "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                  }
+                                }
+                              ]
                             }
                           }
                         }
@@ -2529,9 +3213,21 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                     "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                      "hasValue": "Crocodylus niloticus"
+                      "@type": "owl:Class",
+                      "intersectionOf": [
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Crocodylus niloticus"
+                        },
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                          "hasValue": {
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                          }
+                        }
+                      ]
                     }
                   }
                 }
@@ -2565,9 +3261,21 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                       "someValuesFrom": {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                        "hasValue": "Osteolaemus tetraspis"
+                        "@type": "owl:Class",
+                        "intersectionOf": [
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Osteolaemus tetraspis"
+                          },
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                            "hasValue": {
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -2585,9 +3293,21 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                           "someValuesFrom": {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Crocodylus niloticus"
+                            "@type": "owl:Class",
+                            "intersectionOf": [
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                "hasValue": "Crocodylus niloticus"
+                              },
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                "hasValue": {
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                }
+                              }
+                            ]
                           }
                         }
                       },
@@ -2598,9 +3318,21 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                           "someValuesFrom": {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Tomistoma schlegelii"
+                            "@type": "owl:Class",
+                            "intersectionOf": [
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                "hasValue": "Tomistoma schlegelii"
+                              },
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                "hasValue": {
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                }
+                              }
+                            ]
                           }
                         }
                       }
@@ -2637,9 +3369,21 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                       "someValuesFrom": {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                        "hasValue": "Tomistoma schlegelii"
+                        "@type": "owl:Class",
+                        "intersectionOf": [
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Tomistoma schlegelii"
+                          },
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                            "hasValue": {
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -2657,9 +3401,21 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                           "someValuesFrom": {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Crocodylus niloticus"
+                            "@type": "owl:Class",
+                            "intersectionOf": [
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                "hasValue": "Crocodylus niloticus"
+                              },
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                "hasValue": {
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                }
+                              }
+                            ]
                           }
                         }
                       },
@@ -2670,9 +3426,21 @@
                           "@type": "owl:Restriction",
                           "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                           "someValuesFrom": {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Osteolaemus tetraspis"
+                            "@type": "owl:Class",
+                            "intersectionOf": [
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                                "hasValue": "Osteolaemus tetraspis"
+                              },
+                              {
+                                "@type": "owl:Restriction",
+                                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                                "hasValue": {
+                                  "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                                }
+                              }
+                            ]
                           }
                         }
                       }
@@ -2744,7 +3512,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Diplocynodon ratelii",
             "nameComplete": "Diplocynodon ratelii",
             "genusPart": "Diplocynodon",
@@ -2757,7 +3525,7 @@
           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
           "hasName": {
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Alligator mississippiensis",
             "nameComplete": "Alligator mississippiensis",
             "genusPart": "Alligator",
@@ -2795,9 +3563,21 @@
               "@type": "owl:Restriction",
               "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
               "someValuesFrom": {
-                "@type": "owl:Restriction",
-                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                "hasValue": "Diplocynodon ratelii"
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Diplocynodon ratelii"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                    }
+                  }
+                ]
               }
             }
           },
@@ -2808,9 +3588,21 @@
               "@type": "owl:Restriction",
               "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
               "someValuesFrom": {
-                "@type": "owl:Restriction",
-                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                "hasValue": "Alligator mississippiensis"
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Alligator mississippiensis"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                    }
+                  }
+                ]
               }
             }
           }
@@ -2822,7 +3614,7 @@
       ]
     }
   ],
-  "defaultNomenclaturalCodeURI": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+  "defaultNomenclaturalCodeURI": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
   "hasTaxonomicUnitMatches": [],
   "@id": "http://example.org/brochu_2003.json#",
   "@type": [

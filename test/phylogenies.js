@@ -209,7 +209,6 @@ describe('PhylogenyWrapper', function () {
             nameComplete: 'Rana boylii',
             genusPart: 'Rana',
             specificEpithet: 'boylii',
-            nomenclaturalCode: 'http://purl.obolibrary.org/obo/NOMEN_0000036',
           },
         }]);
       });
@@ -259,7 +258,7 @@ describe('PhylogenyWrapper', function () {
     it('should generate a new @id on input phylorefs', function () {
       const jsonld = new phyx.PhylogenyWrapper({
         newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
-      }).asJSONLD('#phylogeny0');
+      }, owlterms.ICZN_CODE).asJSONLD('#phylogeny0');
       expect(jsonld).to.have.property('@id');
       expect(jsonld['@id']).to.equal('#phylogeny0');
     });
@@ -289,9 +288,18 @@ describe('PhylogenyWrapper', function () {
                       '@type': owlterms.OWL_RESTRICTION,
                       onProperty: owlterms.TDWG_VOC_HAS_NAME,
                       someValuesFrom: {
-                        '@type': owlterms.OWL_RESTRICTION,
-                        hasValue: 'Mus musculus',
-                        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                        '@type': owlterms.OWL_CLASS,
+                        intersectionOf: [{
+                          '@type': owlterms.OWL_RESTRICTION,
+                          hasValue: 'Mus musculus',
+                          onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                        }, {
+                          '@type': owlterms.OWL_RESTRICTION,
+                          hasValue: {
+                            '@id': owlterms.ICZN_CODE,
+                          },
+                          onProperty: owlterms.NOMENCLATURAL_CODE,
+                        }],
                       },
                     },
                   },
@@ -305,7 +313,7 @@ describe('PhylogenyWrapper', function () {
                     genusPart: 'Mus',
                     label: 'Mus_musculus',
                     nameComplete: 'Mus musculus',
-                    nomenclaturalCode: owlterms.NAME_IN_UNKNOWN_CODE,
+                    nomenclaturalCode: owlterms.ICZN_CODE,
                     specificEpithet: 'musculus',
                   },
                   label: 'Mus_musculus',
@@ -330,9 +338,18 @@ describe('PhylogenyWrapper', function () {
                       '@type': owlterms.OWL_RESTRICTION,
                       onProperty: owlterms.TDWG_VOC_HAS_NAME,
                       someValuesFrom: {
-                        '@type': owlterms.OWL_RESTRICTION,
-                        hasValue: 'Panthera tigris',
-                        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                        '@type': owlterms.OWL_CLASS,
+                        intersectionOf: [{
+                          '@type': owlterms.OWL_RESTRICTION,
+                          hasValue: 'Panthera tigris',
+                          onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                        }, {
+                          '@type': owlterms.OWL_RESTRICTION,
+                          hasValue: {
+                            '@id': owlterms.ICZN_CODE,
+                          },
+                          onProperty: owlterms.NOMENCLATURAL_CODE,
+                        }],
                       },
                     },
                   },
@@ -346,7 +363,7 @@ describe('PhylogenyWrapper', function () {
                     genusPart: 'Panthera',
                     label: 'Panthera_tigris',
                     nameComplete: 'Panthera tigris',
-                    nomenclaturalCode: owlterms.NAME_IN_UNKNOWN_CODE,
+                    nomenclaturalCode: owlterms.ICZN_CODE,
                     specificEpithet: 'tigris',
                   },
                   label: 'Panthera_tigris',
@@ -364,9 +381,18 @@ describe('PhylogenyWrapper', function () {
                       '@type': owlterms.OWL_RESTRICTION,
                       onProperty: owlterms.TDWG_VOC_HAS_NAME,
                       someValuesFrom: {
-                        '@type': owlterms.OWL_RESTRICTION,
-                        hasValue: 'Homo sapiens',
-                        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                        '@type': owlterms.OWL_CLASS,
+                        intersectionOf: [{
+                          '@type': owlterms.OWL_RESTRICTION,
+                          hasValue: 'Homo sapiens',
+                          onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                        }, {
+                          '@type': owlterms.OWL_RESTRICTION,
+                          hasValue: {
+                            '@id': owlterms.ICZN_CODE,
+                          },
+                          onProperty: owlterms.NOMENCLATURAL_CODE,
+                        }],
                       },
                     },
                   },
@@ -381,7 +407,7 @@ describe('PhylogenyWrapper', function () {
                       genusPart: 'Homo',
                       label: 'Homo_sapiens',
                       nameComplete: 'Homo sapiens',
-                      nomenclaturalCode: owlterms.NAME_IN_UNKNOWN_CODE,
+                      nomenclaturalCode: owlterms.ICZN_CODE,
                       specificEpithet: 'sapiens',
                     },
                     label: 'Homo_sapiens',
@@ -398,7 +424,7 @@ describe('PhylogenyWrapper', function () {
         const wrapper = new phyx.PhylogenyWrapper({
           '@id': '#',
           newick: expected.newick,
-        });
+        }, owlterms.ICZN_CODE);
         expect(wrapper.asJSONLD('#phylogeny0')).to.deep.equal(expected.jsonld);
       });
     });

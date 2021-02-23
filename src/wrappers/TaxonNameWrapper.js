@@ -40,9 +40,10 @@ class TaxonNameWrapper {
    * Create a new taxon name wrapper around the JSON representation of
    * a taxon name.
    */
-  constructor(txname) {
+  constructor(txname, defaultNomenCode = owlterms.UNKNOWN_CODE) {
     if (txname === undefined) throw new Error('TaxonNameWrapper tried to wrap undefined');
     this.txname = txname;
+    this.defaultNomenCode = defaultNomenCode;
   }
 
   /**
@@ -55,9 +56,20 @@ class TaxonNameWrapper {
   /**
    * The URI for an unknown nomenclatural code (i.e. all we know is that it's a scientific name).
    */
-  static get NAME_IN_UNKNOWN_CODE() {
-    return owlterms.NAME_IN_UNKNOWN_CODE;
+  static get UNKNOWN_CODE() {
+    return owlterms.UNKNOWN_CODE;
   }
+
+  /* Directly access URIs for nomenclatural codes. */
+  static get ICZN_CODE() { return owlterms.ICZN_CODE; }
+
+  static get ICN_CODE() { return owlterms.ICN_CODE; }
+
+  static get ICNP_CODE() { return owlterms.ICNP_CODE; }
+
+  static get ICTV_CODE() { return owlterms.ICTV_CODE; }
+
+  static get ICNCP_CODE() { return owlterms.ICNCP_CODE; }
 
   /**
    * Return a list of all supported nomenclatural code. Each entry will have
@@ -73,31 +85,37 @@ class TaxonNameWrapper {
   static getNomenclaturalCodes() {
     return [
       {
-        uri: owlterms.ICZN_NAME,
+        uri: owlterms.ICZN_CODE,
         shortName: 'ICZN',
-        label: 'Zoological name (ICZN)',
+        label: 'Animals (ICZN)',
         title: 'International Code of Zoological Nomenclature',
       },
       {
-        uri: owlterms.ICN_NAME,
+        uri: owlterms.ICN_CODE,
         shortName: 'ICN',
         label: 'Algae, fungi and plants (ICN, previously ICBN)',
         title: 'International Code of Nomenclature for algae, fungi, and plants',
       },
       {
-        uri: owlterms.ICNP_NAME,
+        uri: owlterms.ICNP_CODE,
         shortName: 'ICNP',
         label: 'Prokaryotes (ICNP)',
         title: 'International Code of Nomenclature of Prokaryotes',
       },
       {
-        uri: owlterms.ICTV_NAME,
+        uri: owlterms.ICTV_CODE,
         shortName: 'ICTV',
         label: 'Viruses (ICTV)',
         title: 'International Committee on Taxonomy of Viruses',
       },
       {
-        uri: owlterms.NAME_IN_UNKNOWN_CODE,
+        uri: owlterms.ICNCP_CODE,
+        shortName: 'ICNCP',
+        label: 'Cultivated plants (ICNCP)',
+        title: 'International Code of Cultivated Plants',
+      },
+      {
+        uri: owlterms.UNKNOWN_CODE,
         shortName: 'Code not known',
         label: 'Nomenclatural code not known',
         title: 'Nomenclatural code not known',
@@ -108,12 +126,12 @@ class TaxonNameWrapper {
   /**
    * Returns the nomenclatural code entry for a code.
    */
-  static getNomenCodeAsObject(nomenCodeURI) {
+  static getNomenCodeDetails(nomenCode) {
     const codes = TaxonNameWrapper.getNomenclaturalCodes();
 
     // Look for the entry with the same URI as the provided URI.
     const matchingCode = codes
-      .find(code => code.uri.toLowerCase() === nomenCodeURI.toLowerCase());
+      .find(code => code.uri.toLowerCase() === nomenCode.toLowerCase());
     if (matchingCode) return matchingCode;
     return undefined;
   }
@@ -122,17 +140,17 @@ class TaxonNameWrapper {
    * Returns the nomenclatural code of this taxon name.
    */
   get nomenclaturalCode() {
-    return this.txname.nomenclaturalCode;
+    return this.txname.nomenclaturalCode || this.defaultNomenCode;
   }
 
   /**
    * Returns the nomenclatural code of this taxon name as a URI.
    */
-  get nomenclaturalCodeAsObject() {
-    const nomenCode = this.txname.nomenclaturalCode;
+  get nomenclaturalCodeDetails() {
+    const nomenCode = this.nomenclaturalCode;
     if (!nomenCode) return undefined;
 
-    const nomenObj = TaxonNameWrapper.getNomenCodeAsObject(nomenCode);
+    const nomenObj = TaxonNameWrapper.getNomenCodeDetails(nomenCode);
     if (!nomenObj) return undefined;
 
     return nomenObj;
@@ -148,7 +166,7 @@ class TaxonNameWrapper {
   /**
    * Parses a verbatim taxon name into an (unwrapped) TaxonName.
    */
-  static fromVerbatimName(verbatimName, nomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
+  static fromVerbatimName(verbatimName, nomenCode = owlterms.UNKNOWN_CODE) {
     // Have we already parsed this verbatim name?
     if (PhyxCacheManager.has(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName)) {
       return PhyxCacheManager.get(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName);
@@ -163,7 +181,6 @@ class TaxonNameWrapper {
     if (results) {
       txname = {
         '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
-        nomenclaturalCode: nomenCode,
         label: verbatimName,
         nameComplete: `${results[1]} ${results[2]} ${results[3]}`.trim(),
         genusPart: results[1],
@@ -179,7 +196,6 @@ class TaxonNameWrapper {
       if (results) {
         txname = {
           '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
-          nomenclaturalCode: nomenCode,
           label: verbatimName,
           nameComplete: `${results[1]} ${results[2]}`.trim(),
           genusPart: results[1],
@@ -195,12 +211,16 @@ class TaxonNameWrapper {
       if (results) {
         txname = {
           '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
-          nomenclaturalCode: nomenCode,
           label: verbatimName,
           nameComplete: results[1],
           uninomial: results[1],
         };
       }
+    }
+
+    // Add a nomenclatural code if possible.
+    if (txname && nomenCode) {
+      txname.nomenclaturalCode = nomenCode;
     }
 
     // Store in the cache.
@@ -421,12 +441,30 @@ class TaxonNameWrapper {
     // No complete name, can't return anything.
     if (!this.nameComplete) return undefined;
 
-    // Note that until we figure out how to set up nomenclatural codes on
-    // phylogenies, we don't incorporate that into the OWL equiv class.
+    // Do we have a nomenclaturalCode?
+    if (!this.nomenclaturalCode) {
+      return {
+        '@type': 'owl:Restriction',
+        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+        hasValue: this.nameComplete,
+      };
+    }
+
+    // If we do have a nomenclatural code, incorporate that into the logical
+    // expression as well.
     return {
-      '@type': 'owl:Restriction',
-      onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
-      hasValue: this.nameComplete,
+      '@type': 'owl:Class',
+      intersectionOf: [{
+        '@type': 'owl:Restriction',
+        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+        hasValue: this.nameComplete,
+      }, {
+        '@type': 'owl:Restriction',
+        onProperty: owlterms.NOMENCLATURAL_CODE,
+        hasValue: {
+          '@id': this.nomenclaturalCode,
+        },
+      }],
     };
   }
 }
