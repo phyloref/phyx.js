@@ -141,7 +141,7 @@ describe('PhyxWrapper', function () {
             params: {
               missingProperty: 'nameComplete',
             },
-            schemaPath: '#/definitions/taxonomic_unit/properties/hasName/required',
+            schemaPath: '#/properties/hasName/required',
           },
         ],
       },

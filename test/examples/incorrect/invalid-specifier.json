@@ -10,7 +10,7 @@
     "phylorefs": [
       {
           "label": "Alligatorinae",
-          "cladeDefinition": "Alligatorinae (Kälin 1940).\n\nAlligator mississippiensis and all crocodylians closer to it than to Caiman crocodilus.",
+          "definition": "Alligatorinae (Kälin 1940).\n\nAlligator mississippiensis and all crocodylians closer to it than to Caiman crocodilus.",
           "definitionSource": {
             "type": "article",
             "title": "Phylogenetic approaches toward crocodylian history",
