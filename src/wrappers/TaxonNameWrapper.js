@@ -138,7 +138,7 @@ class TaxonNameWrapper {
 
     // Look for the entry with the same IRI as the provided IRI.
     const matchingCode = codes
-      .find(code => (code.iri || "").toLowerCase() === nomenCode.toLowerCase());
+      .find(code => (code.iri || '').toLowerCase() === nomenCode.toLowerCase());
     if (matchingCode) return matchingCode;
     return undefined;
   }

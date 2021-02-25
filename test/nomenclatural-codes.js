@@ -6,7 +6,7 @@
  * works correctly at all of these levels.
  */
 
-const { uniq, cloneDeep } = require('lodash');
+const { cloneDeep } = require('lodash');
 
 const chai = require('chai');
 const phyx = require('../src');
@@ -43,9 +43,9 @@ describe('TaxonNameWrapper', function () {
         .to.be.an('array')
         .that.is.not.empty;
 
-      nomenCodes.forEach(nomenCode => {
+      nomenCodes.forEach((nomenCode) => {
         expect(nomenCode).to.have.all.keys(EXPECTED_NOMEN_DETAIL_FIELDS);
-      })
+      });
     });
   });
 
@@ -53,14 +53,14 @@ describe('TaxonNameWrapper', function () {
     it('should provide details for some built-in codes', function () {
       const codesToTest = {
         'Code not known': owlterms.UNKNOWN_CODE,
-        'ICZN': owlterms.ICZN_CODE,
-        'ICN': owlterms.ICN_CODE,
-        'ICNP': owlterms.ICNP_CODE,
-        'ICTV': owlterms.ICTV_CODE,
-        'ICNCP': owlterms.ICNCP_CODE,
+        ICZN: owlterms.ICZN_CODE,
+        ICN: owlterms.ICN_CODE,
+        ICNP: owlterms.ICNP_CODE,
+        ICTV: owlterms.ICTV_CODE,
+        ICNCP: owlterms.ICNCP_CODE,
       };
 
-      Object.keys(codesToTest).forEach(code => {
+      Object.keys(codesToTest).forEach((code) => {
         const uri = codesToTest[code];
         const details = phyx.TaxonNameWrapper.getNomenCodeDetails(uri);
         expect(details).to.have.all.keys(EXPECTED_NOMEN_DETAIL_FIELDS);
@@ -75,7 +75,10 @@ describe('TaxonNameWrapper', function () {
       expect(wrapper.nomenclaturalCode).to.equal(owlterms.UNKNOWN_CODE);
       expect(wrapper.nomenclaturalCodeDetails.shortName).to.equal('Code not known');
 
-      const wrapperWithDefault = new phyx.TaxonNameWrapper(ranaLuteiventris.hasName, owlterms.ICZN_CODE);
+      const wrapperWithDefault = new phyx.TaxonNameWrapper(
+        ranaLuteiventris.hasName,
+        owlterms.ICZN_CODE
+      );
       expect(wrapperWithDefault.nomenclaturalCode).to.equal(owlterms.ICZN_CODE);
       expect(wrapperWithDefault.nomenclaturalCodeDetails.shortName).to.equal('ICZN');
 
