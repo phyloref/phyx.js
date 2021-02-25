@@ -358,7 +358,7 @@ class PhylorefWrapper {
    * - parentClass: If not undefined, provides a JSON-LD definition of the class to set as the
    *   parent class of this component class. We only use the ['@id'].
    */
-  static createComponentClass(
+  createComponentClass(
     jsonld,
     internalSpecifiers,
     externalSpecifiers,
@@ -422,7 +422,7 @@ class PhylorefWrapper {
     return { '@id': componentClass['@id'] };
   }
 
-  static getIncludesRestrictionForTU(tu) {
+  getIncludesRestrictionForTU(tu) {
     return {
       '@type': 'owl:Restriction',
       onProperty: 'phyloref:includes_TU',
@@ -434,7 +434,7 @@ class PhylorefWrapper {
    * Return an OWL restriction for the most recent common ancestor (MRCA)
    * of two taxonomic units.
    */
-  static getMRCARestrictionOfTwoTUs(tu1, tu2) {
+  getMRCARestrictionOfTwoTUs(tu1, tu2) {
     return {
       '@type': 'owl:Restriction',
       onProperty: 'obo:CDAO_0000149', // cdao:has_Child
@@ -446,7 +446,7 @@ class PhylorefWrapper {
             onProperty: 'phyloref:excludes_TU',
             someValuesFrom: new TaxonomicUnitWrapper(tu1, this.defaultNomenCode).asOWLEquivClass,
           },
-          PhylorefWrapper.getIncludesRestrictionForTU(tu2),
+          this.getIncludesRestrictionForTU(tu2),
         ],
       },
     };
@@ -478,7 +478,7 @@ class PhylorefWrapper {
    *     internals -- when there are fewer, we'll just end up with the inverses of the
    *     previous comparisons, which we'll already have covered.
    */
-  static createClassExpressionsForInternals(jsonld, remainingInternals, selected) {
+  createClassExpressionsForInternals(jsonld, remainingInternals, selected) {
     // process.stderr.write(`@id [${jsonld['@id']}] Remaining internals:
     // ${remainingInternals.length}, selected: ${selected.length}\n`);
 
@@ -501,32 +501,32 @@ class PhylorefWrapper {
     if (selected.length > 0) {
       let remainingInternalsExpr = [];
       if (remainingInternals.length === 1) {
-        remainingInternalsExpr = PhylorefWrapper.getIncludesRestrictionForTU(remainingInternals[0]);
+        remainingInternalsExpr = this.getIncludesRestrictionForTU(remainingInternals[0]);
       } else if (remainingInternals.length === 2) {
-        remainingInternalsExpr = PhylorefWrapper.getMRCARestrictionOfTwoTUs(
+        remainingInternalsExpr = this.getMRCARestrictionOfTwoTUs(
           remainingInternals[0],
           remainingInternals[1]
         );
       } else {
-        remainingInternalsExpr = PhylorefWrapper.createComponentClass(
+        remainingInternalsExpr = this.createComponentClass(
           jsonld,
           remainingInternals,
           [],
-          PhylorefWrapper.createClassExpressionsForInternals(jsonld, remainingInternals, [])
+          this.createClassExpressionsForInternals(jsonld, remainingInternals, [])
         );
       }
 
       let selectedExpr = [];
       if (selected.length === 1) {
-        selectedExpr = PhylorefWrapper.getIncludesRestrictionForTU(selected[0]);
+        selectedExpr = this.getIncludesRestrictionForTU(selected[0]);
       } else if (selected.length === 2) {
-        selectedExpr = PhylorefWrapper.getMRCARestrictionOfTwoTUs(selected[0], selected[1]);
+        selectedExpr = this.getMRCARestrictionOfTwoTUs(selected[0], selected[1]);
       } else {
-        selectedExpr = PhylorefWrapper.createComponentClass(
+        selectedExpr = this.createComponentClass(
           jsonld,
           selected,
           [],
-          PhylorefWrapper.createClassExpressionsForInternals(jsonld, selected, [])
+          this.createClassExpressionsForInternals(jsonld, selected, [])
         );
       }
 
@@ -577,7 +577,7 @@ class PhylorefWrapper {
    * class expression:
    *  [includesExpr] and (has_Ancestor some (excludes_TU some [TU]))
    */
-  static getClassExpressionsForExprAndTU(includedExpr, tu) {
+  getClassExpressionsForExprAndTU(includedExpr, tu) {
     if (!includedExpr) throw new Error('Exclusions require an included expression');
 
     const exprs = [{
@@ -646,7 +646,7 @@ class PhylorefWrapper {
    * specifiers, so we can account for cases where some external specifiers are closer
    * to the initial internal-specifier-only expression than others.
    */
-  static createClassExpressionsForExternals(jsonld, accumulatedExpr, remainingExternals, selected) {
+  createClassExpressionsForExternals(jsonld, accumulatedExpr, remainingExternals, selected) {
     // process.stderr.write(`@id [${jsonld['@id']}] Remaining externals:
     // ${remainingExternals.length}, selected: ${selected.length}\n`);
 
@@ -656,7 +656,7 @@ class PhylorefWrapper {
     if (remainingExternals.length === 0) {
       throw new Error('Cannot create class expression when no externals remain');
     } else if (remainingExternals.length === 1) {
-      const remainingExternalsExprs = PhylorefWrapper.getClassExpressionsForExprAndTU(
+      const remainingExternalsExprs = this.getClassExpressionsForExprAndTU(
         accumulatedExpr,
         remainingExternals[0],
         selected.length > 0
@@ -672,17 +672,17 @@ class PhylorefWrapper {
 
         // Create a new component class for the accumulated expression plus the
         // newly selected external specifier.
-        const newlyAccumulatedExpr = PhylorefWrapper.createComponentClass(
+        const newlyAccumulatedExpr = this.createComponentClass(
           jsonld,
           jsonld.internalSpecifiers,
           selected.concat([newlySelected]),
-          PhylorefWrapper.getClassExpressionsForExprAndTU(
+          this.getClassExpressionsForExprAndTU(
             accumulatedExpr, newlySelected, selected.length > 0
           )
         );
 
         // Call ourselves recursively to add the remaining externals.
-        return PhylorefWrapper.createClassExpressionsForExternals(
+        return this.createClassExpressionsForExternals(
           jsonld,
           newlyAccumulatedExpr,
           // The new remaining is the old remaining minus the selected TU.
@@ -771,19 +771,19 @@ class PhylorefWrapper {
       //  phyloref:includes_TU some [internal2] and ...
       // To which we can then add the external specifiers.
       if (internalSpecifiers.length === 1) {
-        logicalExpressions = PhylorefWrapper.createClassExpressionsForExternals(
+        logicalExpressions = this.createClassExpressionsForExternals(
           phylorefAsJSONLD,
-          PhylorefWrapper.getIncludesRestrictionForTU(internalSpecifiers[0]),
+          this.getIncludesRestrictionForTU(internalSpecifiers[0]),
           externalSpecifiers,
           []
         );
       } else {
         const expressionForInternals = {
           '@type': 'owl:Class',
-          intersectionOf: internalSpecifiers.map(PhylorefWrapper.getIncludesRestrictionForTU),
+          intersectionOf: internalSpecifiers.map(sp => this.getIncludesRestrictionForTU(sp)),
         };
 
-        logicalExpressions = PhylorefWrapper.createClassExpressionsForExternals(
+        logicalExpressions = this.createClassExpressionsForExternals(
           phylorefAsJSONLD, expressionForInternals, externalSpecifiers, []
         );
       }
@@ -792,7 +792,7 @@ class PhylorefWrapper {
 
       // We only have internal specifiers. We therefore need to use the algorithm in
       // PhylorefWrapper.createClassExpressionsForInternals() to create this expression.
-      logicalExpressions = PhylorefWrapper.createClassExpressionsForInternals(
+      logicalExpressions = this.createClassExpressionsForInternals(
         phylorefAsJSONLD, internalSpecifiers, []
       );
     }
@@ -832,7 +832,7 @@ class PhylorefWrapper {
       //  2. We need to set each of these component classes to be a subclass of
       //     this phyloreference so that it can include instances from each of the
       //     logical expressions.
-      logicalExpressions.forEach(classExpr => PhylorefWrapper.createComponentClass(
+      logicalExpressions.forEach(classExpr => this.createComponentClass(
         phylorefAsJSONLD,
         internalSpecifiers,
         externalSpecifiers,
