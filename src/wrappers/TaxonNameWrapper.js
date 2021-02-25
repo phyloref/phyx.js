@@ -84,6 +84,7 @@ class TaxonNameWrapper {
    */
   static getNomenclaturalCodes() {
     return [
+      // Note: the unknown code needs to be the first one in this list.
       {
         iri: owlterms.UNKNOWN_CODE,
         shortName: 'Code not known',
@@ -154,8 +155,6 @@ class TaxonNameWrapper {
    */
   get nomenclaturalCodeDetails() {
     const nomenCode = this.nomenclaturalCode;
-    if (!nomenCode) return undefined;
-
     const nomenObj = TaxonNameWrapper.getNomenCodeDetails(nomenCode);
     if (!nomenObj) return undefined;
 
