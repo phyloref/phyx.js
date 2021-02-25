@@ -73,14 +73,17 @@ describe('TaxonNameWrapper', function () {
     it('should provide nomenclatural code details for an example taxon name', function () {
       const wrapper = new phyx.TaxonNameWrapper(ranaLuteiventris.hasName);
       expect(wrapper.nomenclaturalCode).to.equal(owlterms.UNKNOWN_CODE);
+      expect(wrapper.nomenclaturalCodeDetails.shortName).to.equal('Code not known');
 
       const wrapperWithDefault = new phyx.TaxonNameWrapper(ranaLuteiventris.hasName, owlterms.ICZN_CODE);
-      expect(wrapper.nomenclaturalCode).to.equal(owlterms.ICZN_CODE);
+      expect(wrapperWithDefault.nomenclaturalCode).to.equal(owlterms.ICZN_CODE);
+      expect(wrapperWithDefault.nomenclaturalCodeDetails.shortName).to.equal('ICZN');
 
       const nameWithNomenCode = cloneDeep(ranaLuteiventris.hasName);
-      nameWithNomenCode.nomenclaturalCode = ICZN_CODE;
-      expect(new phyx.TaxonNameWrapper(nameWithNomenCode, owlterms.ICN_CODE).nomenclaturalCode)
-        .to.equal(owlterms.ICZN_CODE);
+      nameWithNomenCode.nomenclaturalCode = owlterms.ICZN_CODE;
+      const wrapperWithExplicit = new phyx.TaxonNameWrapper(nameWithNomenCode, owlterms.ICN_CODE);
+      expect(wrapperWithExplicit.nomenclaturalCode).to.equal(owlterms.ICZN_CODE);
+      expect(wrapperWithExplicit.nomenclaturalCodeDetails.shortName).to.equal('ICZN');
     });
   });
 });
