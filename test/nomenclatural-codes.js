@@ -90,3 +90,22 @@ describe('TaxonNameWrapper', function () {
     });
   });
 });
+
+/*
+ * Make sure we can set a default nomenclatural code in TaxonConceptWrapper.
+ */
+describe('TaxonConceptWrapper', function () {
+  describe('#nomenCode', function () {
+    const wrapper = new phyx.TaxonConceptWrapper(ranaLuteiventris);
+
+    it('should return UNKNOWN_CODE if one is not set', function () {
+      expect(wrapper.nomenCode).to.equal(owlterms.UNKNOWN_CODE);
+    });
+
+    it('should return the default nomenclatural code if one is provided', function () {
+      const wrapperWithDefault = new phyx.TaxonConceptWrapper(ranaLuteiventris, owlterms.ICZN_CODE);
+      expect(wrapperWithDefault.nomenCode).to.equal(owlterms.ICZN_CODE);
+      expect(wrapperWithDefault.nomenCodeDetails.shortName).to.equal('ICZN');
+    });
+  });
+});

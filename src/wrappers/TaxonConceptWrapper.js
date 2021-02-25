@@ -69,7 +69,7 @@ class TaxonConceptWrapper {
   get nomenCode() {
     if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName, this.defaultNomenCode).nomenclaturalCode;
 
-    return undefined;
+    return owlterms.UNKNOWN_CODE;
   }
 
   /**
@@ -78,7 +78,7 @@ class TaxonConceptWrapper {
   get nomenCodeDetails() {
     if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName, this.defaultNomenCode).nomenclaturalCodeDetails;
 
-    return undefined;
+    return TaxonNameWrapper.getNomenCodeDetails(owlterms.UNKNOWN_CODE);
   }
 
   /**
