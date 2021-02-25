@@ -371,9 +371,24 @@ class PhylorefWrapper {
 
     /* Generate a label that represents this component class. */
 
+    // By default, taxonomic unit labels don't include the nomenclatural code.
+    // However, we should include that here in order to distinguish between
+    // taxonomic names in different taxonomic codes. This method generates that
+    // name for a specifier.
+    const outerThis = this;
+    function generateSpecifierName(specifier) {
+      const wrapped = new TaxonomicUnitWrapper(specifier, outerThis.defaultNomenCode);
+      if (!wrapped) return '(error)';
+      if (wrapped.taxonConcept) {
+        const nomenCodeDetails = wrapped.taxonConcept.nomenCodeDetails;
+        if (nomenCodeDetails) return `${wrapped.label} (${nomenCodeDetails.shortName})`;
+      }
+      return wrapped.label;
+    }
+
     // Start with the internal specifiers, concatenated with '&'.
     const internalSpecifierLabel = internalSpecifiers
-      .map(i => new TaxonomicUnitWrapper(i).label || '(error)')
+      .map(generateSpecifierName)
       .sort()
       .join(' & ');
     let componentClassLabel = `(${internalSpecifierLabel}`;
@@ -383,13 +398,13 @@ class PhylorefWrapper {
     } else {
       // Add the external specifiers, concatenated with 'V'.
       const externalSpecifierLabel = externalSpecifiers
-        .map(i => new TaxonomicUnitWrapper(i).label || '(error)')
+        .map(generateSpecifierName)
         .sort()
         .join(' V ');
       componentClassLabel += ` ~ ${externalSpecifierLabel})`;
     }
 
-    // process.stderr.write(`component class label: ${componentClassLabel}\n`);
+    process.stderr.write(`component class label: ${componentClassLabel}\n`);
 
     // TODO We need to replace this with an actual object-based comparison,
     // rather than trusting the labels to tell us everything.
@@ -487,7 +502,7 @@ class PhylorefWrapper {
     if (selected.length === 0) {
       if (remainingInternals.length === 2) {
         return [
-          PhylorefWrapper.getMRCARestrictionOfTwoTUs(remainingInternals[0], remainingInternals[1]),
+          this.getMRCARestrictionOfTwoTUs(remainingInternals[0], remainingInternals[1]),
         ];
       } if (remainingInternals.length === 1) {
         throw new Error('Cannot determine class expression for a single specifier');
@@ -550,7 +565,7 @@ class PhylorefWrapper {
     // selected internals -- when there are fewer, we'll just end up with the inverses
     // of the previous comparisons, which we'll already have covered.
     if (remainingInternals.length > 1 && selected.length <= remainingInternals.length) {
-      remainingInternals.map(newlySelected => PhylorefWrapper.createClassExpressionsForInternals(
+      remainingInternals.map(newlySelected => this.createClassExpressionsForInternals(
         jsonld,
         // The new remaining is the old remaining minus the selected TU.
         remainingInternals.filter(i => i !== newlySelected),
@@ -791,7 +806,7 @@ class PhylorefWrapper {
       calculatedPhylorefType = 'phyloref:PhyloreferenceUsingMinimumClade';
 
       // We only have internal specifiers. We therefore need to use the algorithm in
-      // PhylorefWrapper.createClassExpressionsForInternals() to create this expression.
+      // this.createClassExpressionsForInternals() to create this expression.
       logicalExpressions = this.createClassExpressionsForInternals(
         phylorefAsJSONLD, internalSpecifiers, []
       );
@@ -824,7 +839,7 @@ class PhylorefWrapper {
       // phyloreference itself.
       //
       // Note that there are two differences from the way in which we usually call
-      // PhylorefWrapper.createComponentClass():
+      // this.createComponentClass():
       //  1. Usually, createComponentClass() reuses logical expressions with the
       //     same sets of internal and external specifiers. That won't work here,
       //     since *all* these logical expressions have the same specifiers. So,
