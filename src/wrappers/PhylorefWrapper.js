@@ -380,7 +380,7 @@ class PhylorefWrapper {
       const wrapped = new TaxonomicUnitWrapper(specifier, outerThis.defaultNomenCode);
       if (!wrapped) return '(error)';
       if (wrapped.taxonConcept) {
-        const nomenCodeDetails = wrapped.taxonConcept.nomenCodeDetails;
+        const nomenCodeDetails = new TaxonConceptWrapper(wrapped.taxonConcept).nomenCodeDetails;
         if (nomenCodeDetails) return `${wrapped.label} (${nomenCodeDetails.shortName})`;
       }
       return wrapped.label;
@@ -404,7 +404,7 @@ class PhylorefWrapper {
       componentClassLabel += ` ~ ${externalSpecifierLabel})`;
     }
 
-    process.stderr.write(`component class label: ${componentClassLabel}\n`);
+    // process.stderr.write(`component class label: ${componentClassLabel}\n`);
 
     // TODO We need to replace this with an actual object-based comparison,
     // rather than trusting the labels to tell us everything.
