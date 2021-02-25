@@ -42,7 +42,7 @@ class TaxonConceptWrapper {
     if (has(this.tunit, 'hasName')) return this.tunit.hasName;
 
     // Do we have a nameString with a taxon name as string?
-    if (has(this.tunit, 'nameString')) return TaxonNameWrapper.fromVerbatimName(this.tunit.nameString);
+    if (has(this.tunit, 'nameString')) return TaxonNameWrapper.fromVerbatimName(this.tunit.nameString, this.defaultNomenCode);
 
     // If not, we have no name!
     return undefined;
@@ -54,10 +54,10 @@ class TaxonConceptWrapper {
    */
   get nameComplete() {
     // Do we have any names as taxon name objects?
-    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName).nameComplete;
+    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName, this.defaultNomenCode).nameComplete;
 
     // Do we have a nameString with a taxon name as string?
-    if (has(this.tunit, 'nameString')) return TaxonNameWrapper.fromVerbatimName(this.tunit.nameString).nameComplete;
+    if (has(this.tunit, 'nameString')) return TaxonNameWrapper.fromVerbatimName(this.tunit.nameString, this.defaultNomenCode).nameComplete;
 
     // If not, we have no name!
     return undefined;
@@ -67,7 +67,7 @@ class TaxonConceptWrapper {
    * Return the nomenclatural code of this taxon concept as a string.
    */
   get nomenCode() {
-    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName).nomenclaturalCode;
+    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName, this.defaultNomenCode).nomenclaturalCode;
 
     return undefined;
   }
@@ -76,7 +76,7 @@ class TaxonConceptWrapper {
    * Return the nomenclatural code of this taxon concept as an object.
    */
   get nomenCodeDetails() {
-    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName).nomenclaturalCodeDetails;
+    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName, this.defaultNomenCode).nomenclaturalCodeDetails;
 
     return undefined;
   }
@@ -123,10 +123,10 @@ class TaxonConceptWrapper {
     if (this.taxonName) {
       // Do we also have accordingTo information?
       if (this.accordingToString) {
-        return `${new TaxonNameWrapper(this.taxonName).label} sensu ${this.accordingToString}`;
+        return `${new TaxonNameWrapper(this.taxonName, this.defaultNomenCode).label} sensu ${this.accordingToString}`;
       }
 
-      return new TaxonNameWrapper(this.taxonName).label;
+      return new TaxonNameWrapper(this.taxonName, this.defaultNomenCode).label;
     }
 
     return undefined;
@@ -141,7 +141,7 @@ class TaxonConceptWrapper {
    *
    * @return A taxonomic unit that corresponds to this taxon concept.
    */
-  static fromLabel(nodeLabel, nomenCode) {
+  static fromLabel(nodeLabel, nomenCode = owlterms.UNKNOWN_CODE) {
     if (nodeLabel === undefined || nodeLabel === null || nodeLabel.trim() === '') return undefined;
 
     // Check if this label can be divided into a name and a sensu/sec component.

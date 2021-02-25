@@ -85,6 +85,12 @@ class TaxonNameWrapper {
   static getNomenclaturalCodes() {
     return [
       {
+        iri: owlterms.UNKNOWN_CODE,
+        shortName: 'Code not known',
+        label: 'Nomenclatural code not known',
+        title: 'Nomenclatural code not known',
+      },
+      {
         iri: owlterms.ICZN_CODE,
         shortName: 'ICZN',
         label: 'Animals (ICZN)',
@@ -114,12 +120,6 @@ class TaxonNameWrapper {
         label: 'Cultivated plants (ICNCP)',
         title: 'International Code of Cultivated Plants',
       },
-      {
-        iri: owlterms.UNKNOWN_CODE,
-        shortName: 'Code not known',
-        label: 'Nomenclatural code not known',
-        title: 'Nomenclatural code not known',
-      },
     ];
   }
 
@@ -129,9 +129,15 @@ class TaxonNameWrapper {
   static getNomenCodeDetails(nomenCode) {
     const codes = TaxonNameWrapper.getNomenclaturalCodes();
 
+    // If the nomenCode provided is owlterms.UNKNOWN_CODE,
+    // return that entry.
+    if (nomenCode === owlterms.UNKNOWN_CODE) {
+      return codes[0];
+    }
+
     // Look for the entry with the same IRI as the provided IRI.
     const matchingCode = codes
-      .find(code => code.iri.toLowerCase() === nomenCode.toLowerCase());
+      .find(code => (code.iri || "").toLowerCase() === nomenCode.toLowerCase());
     if (matchingCode) return matchingCode;
     return undefined;
   }
