@@ -10,10 +10,8 @@
           "representsTaxonomicUnits": [
             {
               "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
-              "occurrenceID": "urn:catalog:::Wall 2527, Fiji (uc)",
-              "hasName": {
-                "nameComplete": "Exodictyon sp"
-              }
+              "institutionCode": "UC",
+              "catalogNumber": "Wall 2527, Fiji"
             }
           ]
         }
@@ -45,9 +43,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Octoblepharum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Octoblepharum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -60,10 +70,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Octoblepharum",
                 "nameComplete": "Octoblepharum",
-                "uninomial": "Octoblepharum"
+                "uninomial": "Octoblepharum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Octoblepharum"
             }
@@ -90,9 +100,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Octoblepharum albidum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Octoblepharum albidum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -105,11 +127,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Octoblepharum albidum",
                 "nameComplete": "Octoblepharum albidum",
                 "genusPart": "Octoblepharum",
-                "specificEpithet": "albidum"
+                "specificEpithet": "albidum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Octoblepharum albidum"
             }
@@ -132,9 +154,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Octoblepharum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Octoblepharum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -147,10 +181,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Octoblepharum Moorea 445",
                 "nameComplete": "Octoblepharum",
-                "uninomial": "Octoblepharum"
+                "uninomial": "Octoblepharum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Octoblepharum Moorea 445"
             }
@@ -173,9 +207,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperaceae"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperaceae"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -188,10 +234,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperaceae",
                 "nameComplete": "Calymperaceae",
-                "uninomial": "Calymperaceae"
+                "uninomial": "Calymperaceae",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperaceae"
             }
@@ -218,9 +264,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon gardneri"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon gardneri"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -233,11 +291,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon gardneri",
                 "nameComplete": "Syrrhopodon gardneri",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "gardneri"
+                "specificEpithet": "gardneri",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon gardneri"
             }
@@ -276,9 +334,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon japonicus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon japonicus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -291,11 +361,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon japonicus",
                 "nameComplete": "Syrrhopodon japonicus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "japonicus"
+                "specificEpithet": "japonicus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon japonicus"
             }
@@ -334,9 +404,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -349,10 +431,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes",
                 "nameComplete": "Calymperes",
-                "uninomial": "Calymperes"
+                "uninomial": "Calymperes",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes"
             }
@@ -379,9 +461,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon mauritianus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon mauritianus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -394,11 +488,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon mauritianus",
                 "nameComplete": "Syrrhopodon mauritianus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "mauritianus"
+                "specificEpithet": "mauritianus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon mauritianus"
             }
@@ -485,9 +579,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes graffeanum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes graffeanum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -500,11 +606,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes graffeanum",
                 "nameComplete": "Calymperes graffeanum",
                 "genusPart": "Calymperes",
-                "specificEpithet": "graffeanum"
+                "specificEpithet": "graffeanum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes graffeanum"
             }
@@ -543,9 +649,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes afzelii"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes afzelii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -558,11 +676,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes afzelii 165",
                 "nameComplete": "Calymperes afzelii",
                 "genusPart": "Calymperes",
-                "specificEpithet": "afzelii"
+                "specificEpithet": "afzelii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes afzelii 165"
             }
@@ -585,9 +703,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes afzelii"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes afzelii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -600,11 +730,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes afzelii 179",
                 "nameComplete": "Calymperes afzelii",
                 "genusPart": "Calymperes",
-                "specificEpithet": "afzelii"
+                "specificEpithet": "afzelii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes afzelii 179"
             }
@@ -643,9 +773,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes lonchophyllum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes lonchophyllum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -658,11 +800,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes lonchophyllum",
                 "nameComplete": "Calymperes lonchophyllum",
                 "genusPart": "Calymperes",
-                "specificEpithet": "lonchophyllum"
+                "specificEpithet": "lonchophyllum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes lonchophyllum"
             }
@@ -701,9 +843,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes tahitense"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes tahitense"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -716,11 +870,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes tahitense 115",
                 "nameComplete": "Calymperes tahitense",
                 "genusPart": "Calymperes",
-                "specificEpithet": "tahitense"
+                "specificEpithet": "tahitense",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes tahitense 115"
             }
@@ -743,9 +897,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes tahitense"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes tahitense"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -758,11 +924,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes tahitense 320",
                 "nameComplete": "Calymperes tahitense",
                 "genusPart": "Calymperes",
-                "specificEpithet": "tahitense"
+                "specificEpithet": "tahitense",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes tahitense 320"
             }
@@ -817,9 +983,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes moluccense"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes moluccense"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -832,11 +1010,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes moluccense",
                 "nameComplete": "Calymperes moluccense",
                 "genusPart": "Calymperes",
-                "specificEpithet": "moluccense"
+                "specificEpithet": "moluccense",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes moluccense"
             }
@@ -877,9 +1055,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes hispidium"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes hispidium"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -892,11 +1082,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes hispidium",
                 "nameComplete": "Calymperes hispidium",
                 "genusPart": "Calymperes",
-                "specificEpithet": "hispidium"
+                "specificEpithet": "hispidium",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes hispidium"
             }
@@ -939,9 +1129,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes pseudopodianum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes pseudopodianum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -954,11 +1156,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes pseudopodianum",
                 "nameComplete": "Calymperes pseudopodianum",
                 "genusPart": "Calymperes",
-                "specificEpithet": "pseudopodianum"
+                "specificEpithet": "pseudopodianum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes pseudopodianum"
             }
@@ -981,9 +1183,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes tuatomuense"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes tuatomuense"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -996,11 +1210,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes tuatomuense",
                 "nameComplete": "Calymperes tuatomuense",
                 "genusPart": "Calymperes",
-                "specificEpithet": "tuatomuense"
+                "specificEpithet": "tuatomuense",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes tuatomuense"
             }
@@ -1023,9 +1237,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes subintegrum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes subintegrum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1038,11 +1264,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes subintegrum",
                 "nameComplete": "Calymperes subintegrum",
                 "genusPart": "Calymperes",
-                "specificEpithet": "subintegrum"
+                "specificEpithet": "subintegrum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes subintegrum"
             }
@@ -1067,9 +1293,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes tenerum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes tenerum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1082,11 +1320,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes tenerum",
                 "nameComplete": "Calymperes tenerum",
                 "genusPart": "Calymperes",
-                "specificEpithet": "tenerum"
+                "specificEpithet": "tenerum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes tenerum"
             }
@@ -1143,9 +1381,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes robinsonii"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes robinsonii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1158,11 +1408,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes robinsonii",
                 "nameComplete": "Calymperes robinsonii",
                 "genusPart": "Calymperes",
-                "specificEpithet": "robinsonii"
+                "specificEpithet": "robinsonii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes robinsonii"
             }
@@ -1185,9 +1435,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes erosum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes erosum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1200,11 +1462,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes erosum",
                 "nameComplete": "Calymperes erosum",
                 "genusPart": "Calymperes",
-                "specificEpithet": "erosum"
+                "specificEpithet": "erosum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes erosum"
             }
@@ -1243,9 +1505,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes motleyi"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes motleyi"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1258,11 +1532,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes motleyi",
                 "nameComplete": "Calymperes motleyi",
                 "genusPart": "Calymperes",
-                "specificEpithet": "motleyi"
+                "specificEpithet": "motleyi",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes motleyi"
             }
@@ -1301,9 +1575,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes palisotii"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes palisotii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1316,11 +1602,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes palisotii 180",
                 "nameComplete": "Calymperes palisotii",
                 "genusPart": "Calymperes",
-                "specificEpithet": "palisotii"
+                "specificEpithet": "palisotii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes palisotii 180"
             }
@@ -1343,9 +1629,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Calymperes palisotii"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes palisotii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1358,11 +1656,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Calymperes palisotii 159",
                 "nameComplete": "Calymperes palisotii",
                 "genusPart": "Calymperes",
-                "specificEpithet": "palisotii"
+                "specificEpithet": "palisotii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Calymperes palisotii 159"
             }
@@ -1385,9 +1683,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon incompletus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon incompletus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1400,11 +1710,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon incompletus",
                 "nameComplete": "Syrrhopodon incompletus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "incompletus"
+                "specificEpithet": "incompletus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon incompletus"
             }
@@ -1427,9 +1737,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1442,10 +1764,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon",
                 "nameComplete": "Syrrhopodon",
-                "uninomial": "Syrrhopodon"
+                "uninomial": "Syrrhopodon",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon"
             }
@@ -1521,9 +1843,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon fissipapillatus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon fissipapillatus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1536,11 +1870,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon fissipapillatus",
                 "nameComplete": "Syrrhopodon fissipapillatus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "fissipapillatus"
+                "specificEpithet": "fissipapillatus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon fissipapillatus"
             }
@@ -1564,9 +1898,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon apertus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon apertus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1579,11 +1925,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon apertus",
                 "nameComplete": "Syrrhopodon apertus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "apertus"
+                "specificEpithet": "apertus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon apertus"
             }
@@ -1607,9 +1953,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon croceus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon croceus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1622,11 +1980,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon croceus",
                 "nameComplete": "Syrrhopodon croceus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "croceus"
+                "specificEpithet": "croceus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon croceus"
             }
@@ -1650,9 +2008,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon tristichus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon tristichus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1665,11 +2035,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon tristichus",
                 "nameComplete": "Syrrhopodon tristichus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "tristichus"
+                "specificEpithet": "tristichus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon tristichus"
             }
@@ -1692,9 +2062,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Mitthyridium"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1707,10 +2089,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Mitthyridium",
                 "nameComplete": "Mitthyridium",
-                "uninomial": "Mitthyridium"
+                "uninomial": "Mitthyridium",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Mitthyridium"
             }
@@ -1737,9 +2119,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon mahensis"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon mahensis"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1752,11 +2146,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon mahensis",
                 "nameComplete": "Syrrhopodon mahensis",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "mahensis"
+                "specificEpithet": "mahensis",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon mahensis"
             }
@@ -1779,9 +2173,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Mitthyridium as"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium as"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1794,11 +2200,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Mitthyridium_as_per_paper",
                 "nameComplete": "Mitthyridium as",
                 "genusPart": "Mitthyridium",
-                "specificEpithet": "as"
+                "specificEpithet": "as",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Mitthyridium_as_per_paper"
             }
@@ -1841,9 +2247,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Mitthyridium jungquilianum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium jungquilianum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1856,11 +2274,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Mitthyridium jungquilianum",
                 "nameComplete": "Mitthyridium jungquilianum",
                 "genusPart": "Mitthyridium",
-                "specificEpithet": "jungquilianum"
+                "specificEpithet": "jungquilianum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Mitthyridium jungquilianum"
             }
@@ -1883,9 +2301,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Mitthyridium undulatum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium undulatum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1898,11 +2328,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Mitthyridium undulatum",
                 "nameComplete": "Mitthyridium undulatum",
                 "genusPart": "Mitthyridium",
-                "specificEpithet": "undulatum"
+                "specificEpithet": "undulatum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Mitthyridium undulatum"
             }
@@ -1941,9 +2371,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Mitthyridium fasciculatum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium fasciculatum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1956,11 +2398,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Mitthyridium fasciculatum",
                 "nameComplete": "Mitthyridium fasciculatum",
                 "genusPart": "Mitthyridium",
-                "specificEpithet": "fasciculatum"
+                "specificEpithet": "fasciculatum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Mitthyridium fasciculatum"
             }
@@ -1999,9 +2441,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Mitthyridium constrictum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium constrictum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2014,11 +2468,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Mitthyridium constrictum",
                 "nameComplete": "Mitthyridium constrictum",
                 "genusPart": "Mitthyridium",
-                "specificEpithet": "constrictum"
+                "specificEpithet": "constrictum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Mitthyridium constrictum"
             }
@@ -2041,9 +2495,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Mitthyridium obtusifolium"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium obtusifolium"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2056,11 +2522,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Mitthyridium obtusifolium",
                 "nameComplete": "Mitthyridium obtusifolium",
                 "genusPart": "Mitthyridium",
-                "specificEpithet": "obtusifolium"
+                "specificEpithet": "obtusifolium",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Mitthyridium obtusifolium"
             }
@@ -2115,9 +2581,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon fimbriatulus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon fimbriatulus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2130,11 +2608,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon fimbriatulus",
                 "nameComplete": "Syrrhopodon fimbriatulus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "fimbriatulus"
+                "specificEpithet": "fimbriatulus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon fimbriatulus"
             }
@@ -2157,9 +2635,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon armatus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon armatus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2172,11 +2662,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon armatus",
                 "nameComplete": "Syrrhopodon armatus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "armatus"
+                "specificEpithet": "armatus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon armatus"
             }
@@ -2215,9 +2705,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Trachymitrium"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Trachymitrium"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2230,10 +2732,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Trachymitrium",
                 "nameComplete": "Trachymitrium",
-                "uninomial": "Trachymitrium"
+                "uninomial": "Trachymitrium",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Trachymitrium"
             }
@@ -2293,9 +2795,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Leucophanella"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Leucophanella"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2308,10 +2822,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Leucophanella",
                 "nameComplete": "Leucophanella",
-                "uninomial": "Leucophanella"
+                "uninomial": "Leucophanella",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Leucophanella"
             }
@@ -2339,9 +2853,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon involutus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon involutus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2354,11 +2880,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon involutus",
                 "nameComplete": "Syrrhopodon involutus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "involutus"
+                "specificEpithet": "involutus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon involutus"
             }
@@ -2381,9 +2907,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon banksii"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon banksii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2396,11 +2934,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon banksii",
                 "nameComplete": "Syrrhopodon banksii",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "banksii"
+                "specificEpithet": "banksii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon banksii"
             }
@@ -2423,9 +2961,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon trachyphyllus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon trachyphyllus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2438,11 +2988,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon trachyphyllus",
                 "nameComplete": "Syrrhopodon trachyphyllus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "trachyphyllus"
+                "specificEpithet": "trachyphyllus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon trachyphyllus"
             }
@@ -2466,9 +3016,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon parasiticus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon parasiticus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2481,11 +3043,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon parasiticus",
                 "nameComplete": "Syrrhopodon parasiticus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "parasiticus"
+                "specificEpithet": "parasiticus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon parasiticus"
             }
@@ -2525,9 +3087,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon prolifer"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon prolifer"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2540,11 +3114,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon prolifer",
                 "nameComplete": "Syrrhopodon prolifer",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "prolifer"
+                "specificEpithet": "prolifer",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon prolifer"
             }
@@ -2583,9 +3157,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon leprieurii"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon leprieurii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2598,11 +3184,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon leprieurii",
                 "nameComplete": "Syrrhopodon leprieurii",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "leprieurii"
+                "specificEpithet": "leprieurii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon leprieurii"
             }
@@ -2625,9 +3211,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon tortillis"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon tortillis"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2640,11 +3238,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon tortillis",
                 "nameComplete": "Syrrhopodon tortillis",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "tortillis"
+                "specificEpithet": "tortillis",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon tortillis"
             }
@@ -2699,9 +3297,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon albovaginatus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon albovaginatus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2714,11 +3324,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon albovaginatus 162",
                 "nameComplete": "Syrrhopodon albovaginatus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "albovaginatus"
+                "specificEpithet": "albovaginatus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon albovaginatus 162"
             }
@@ -2741,9 +3351,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon albovaginatus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon albovaginatus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2756,11 +3378,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon albovaginatus 446",
                 "nameComplete": "Syrrhopodon albovaginatus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "albovaginatus"
+                "specificEpithet": "albovaginatus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon albovaginatus 446"
             }
@@ -2783,9 +3405,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon ciliatus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon ciliatus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2798,11 +3432,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon ciliatus",
                 "nameComplete": "Syrrhopodon ciliatus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "ciliatus"
+                "specificEpithet": "ciliatus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon ciliatus"
             }
@@ -2841,9 +3475,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon perarmatus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon perarmatus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2856,11 +3502,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon perarmatus",
                 "nameComplete": "Syrrhopodon perarmatus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "perarmatus"
+                "specificEpithet": "perarmatus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon perarmatus"
             }
@@ -2899,9 +3545,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon muelleri"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon muelleri"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2914,11 +3572,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon muelleri",
                 "nameComplete": "Syrrhopodon muelleri",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "muelleri"
+                "specificEpithet": "muelleri",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon muelleri"
             }
@@ -2941,9 +3599,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Albifolium"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Albifolium"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -2956,10 +3626,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Albifolium",
                 "nameComplete": "Albifolium",
-                "uninomial": "Albifolium"
+                "uninomial": "Albifolium",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Albifolium"
             }
@@ -3002,9 +3672,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Leucophanes"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Leucophanes"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             },
@@ -3036,10 +3718,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Leucophanes",
                 "nameComplete": "Leucophanes",
-                "uninomial": "Leucophanes"
+                "uninomial": "Leucophanes",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Leucophanes"
             }
@@ -3066,9 +3748,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Syrrhopodon confertus"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon confertus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -3081,11 +3775,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Syrrhopodon confertus",
                 "nameComplete": "Syrrhopodon confertus",
                 "genusPart": "Syrrhopodon",
-                "specificEpithet": "confertus"
+                "specificEpithet": "confertus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Syrrhopodon confertus"
             }
@@ -3125,9 +3819,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Leucophanes glaucum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Leucophanes glaucum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -3140,11 +3846,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Leucophanes glaucum",
                 "nameComplete": "Leucophanes glaucum",
                 "genusPart": "Leucophanes",
-                "specificEpithet": "glaucum"
+                "specificEpithet": "glaucum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Leucophanes glaucum"
             }
@@ -3185,9 +3891,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Leucophanes albescens"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Leucophanes albescens"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -3200,11 +3918,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Leucophanes albescens",
                 "nameComplete": "Leucophanes albescens",
                 "genusPart": "Leucophanes",
-                "specificEpithet": "albescens"
+                "specificEpithet": "albescens",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Leucophanes albescens"
             }
@@ -3227,9 +3945,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Leucophanes octoblepharoides"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Leucophanes octoblepharoides"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -3242,11 +3972,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Leucophanes octoblepharoides",
                 "nameComplete": "Leucophanes octoblepharoides",
                 "genusPart": "Leucophanes",
-                "specificEpithet": "octoblepharoides"
+                "specificEpithet": "octoblepharoides",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Leucophanes octoblepharoides"
             }
@@ -3269,9 +3999,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Leucophanes seychellarum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Leucophanes seychellarum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -3284,11 +4026,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Leucophanes seychellarum",
                 "nameComplete": "Leucophanes seychellarum",
                 "genusPart": "Leucophanes",
-                "specificEpithet": "seychellarum"
+                "specificEpithet": "seychellarum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Leucophanes seychellarum"
             }
@@ -3311,7 +4053,7 @@
               "someValuesFrom": {
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
-                "hasValue": "urn:catalog:::Wall 2527, Fiji (uc)"
+                "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
               }
             },
             {
@@ -3340,10 +4082,8 @@
           "representsTaxonomicUnits": [
             {
               "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
-              "occurrenceID": "urn:catalog:::Wall 2527, Fiji (uc)",
-              "hasName": {
-                "nameComplete": "Exodictyon sp"
-              }
+              "institutionCode": "UC",
+              "catalogNumber": "Wall 2527, Fiji"
             }
           ],
           "parent": "http://example.org/phyx.js/example#phylogeny0_node91",
@@ -3380,9 +4120,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Exostratum"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Exostratum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -3395,10 +4147,10 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Exostratum",
                 "nameComplete": "Exostratum",
-                "uninomial": "Exostratum"
+                "uninomial": "Exostratum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Exostratum"
             }
@@ -3425,9 +4177,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Exostratum blumii"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Exostratum blumii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -3440,11 +4204,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Exostratum blumii 245",
                 "nameComplete": "Exostratum blumii",
                 "genusPart": "Exostratum",
-                "specificEpithet": "blumii"
+                "specificEpithet": "blumii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Exostratum blumii 245"
             }
@@ -3467,9 +4231,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Exostratum blumii"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Exostratum blumii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -3482,11 +4258,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Exostratum blumii 243",
                 "nameComplete": "Exostratum blumii",
                 "genusPart": "Exostratum",
-                "specificEpithet": "blumii"
+                "specificEpithet": "blumii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Exostratum blumii 243"
             }
@@ -3509,9 +4285,21 @@
                 "@type": "owl:Restriction",
                 "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                 "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                  "hasValue": "Arthrocormus schimperi"
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Arthrocormus schimperi"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -3524,11 +4312,11 @@
               "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
               "hasName": {
                 "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
                 "label": "Arthrocormus schimperi",
                 "nameComplete": "Arthrocormus schimperi",
                 "genusPart": "Arthrocormus",
-                "specificEpithet": "schimperi"
+                "specificEpithet": "schimperi",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
               },
               "label": "Arthrocormus schimperi"
             }
@@ -3556,17 +4344,13 @@
             "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
             "label": "Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)",
             "nameComplete": "Exodictyon"
-          }
+          },
+          "dwc:nameAccordingTo": "Ellis in Lindbergia 11: 16 (1985)"
         },
         {
           "label": "Wall 2527, Fiji (UC)",
           "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
-          "occurrenceID": "urn:catalog:::Wall 2527, Fiji (uc)",
-          "hasName": {
-            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
-            "label": "Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)",
-            "nameComplete": "Exodictyon"
-          }
+          "occurrenceID": "urn:catalog:UC::Wall 2527, Fiji"
         }
       ],
       "externalSpecifiers": [
@@ -3605,9 +4389,21 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                       "someValuesFrom": {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                        "hasValue": "Exodictyon"
+                        "@type": "owl:Class",
+                        "intersectionOf": [
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Exodictyon"
+                          },
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                            "hasValue": {
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                            }
+                          }
+                        ]
                       }
                     }
                   },
@@ -3617,7 +4413,7 @@
                     "someValuesFrom": {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
-                      "hasValue": "urn:catalog:::Wall 2527, Fiji (uc)"
+                      "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
                     }
                   }
                 ]
@@ -3629,9 +4425,21 @@
                   "@type": "owl:Restriction",
                   "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                   "someValuesFrom": {
-                    "@type": "owl:Restriction",
-                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                    "hasValue": "Leucophanes octoblepharoides"
+                    "@type": "owl:Class",
+                    "intersectionOf": [
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                        "hasValue": "Leucophanes octoblepharoides"
+                      },
+                      {
+                        "@type": "owl:Restriction",
+                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                        "hasValue": {
+                          "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                        }
+                      }
+                    ]
                   }
                 }
               }
@@ -3661,9 +4469,21 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                       "someValuesFrom": {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                        "hasValue": "Exodictyon"
+                        "@type": "owl:Class",
+                        "intersectionOf": [
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Exodictyon"
+                          },
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                            "hasValue": {
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                            }
+                          }
+                        ]
                       }
                     }
                   },
@@ -3673,7 +4493,7 @@
                     "someValuesFrom": {
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
-                      "hasValue": "urn:catalog:::Wall 2527, Fiji (uc)"
+                      "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
                     }
                   }
                 ]
@@ -3688,9 +4508,21 @@
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                     "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                      "hasValue": "Leucophanes octoblepharoides"
+                      "@type": "owl:Class",
+                      "intersectionOf": [
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                          "hasValue": "Leucophanes octoblepharoides"
+                        },
+                        {
+                          "@type": "owl:Restriction",
+                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                          "hasValue": {
+                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                          }
+                        }
+                      ]
                     }
                   }
                 }
@@ -3740,8 +4572,8 @@
         {
           "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
           "dwc:basisOfRecord": "PreservedSpecimen",
-          "occurrenceID": "::Wall 2527, Fiji (uc)",
-          "catalogNumber": "Wall 2527, Fiji (uc)",
+          "institutionCode": "UC",
+          "catalogNumber": "Wall 2527, Fiji",
           "label": "Wall 2527, Fiji (uc)"
         }
       ],
@@ -3765,9 +4597,21 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                       "someValuesFrom": {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                        "hasValue": "Leucophanes octoblepharoides"
+                        "@type": "owl:Class",
+                        "intersectionOf": [
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Leucophanes octoblepharoides"
+                          },
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                            "hasValue": {
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                            }
+                          }
+                        ]
                       }
                     }
                   },
@@ -3778,9 +4622,21 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                       "someValuesFrom": {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                        "hasValue": "Leucophanes seychellarum"
+                        "@type": "owl:Class",
+                        "intersectionOf": [
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Leucophanes seychellarum"
+                          },
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                            "hasValue": {
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -3792,7 +4648,7 @@
                 "someValuesFrom": {
                   "@type": "owl:Restriction",
                   "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
-                  "hasValue": "::Wall 2527, Fiji (uc)"
+                  "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
                 }
               }
             ]
@@ -3821,9 +4677,21 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                       "someValuesFrom": {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                        "hasValue": "Leucophanes octoblepharoides"
+                        "@type": "owl:Class",
+                        "intersectionOf": [
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Leucophanes octoblepharoides"
+                          },
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                            "hasValue": {
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                            }
+                          }
+                        ]
                       }
                     }
                   },
@@ -3834,9 +4702,21 @@
                       "@type": "owl:Restriction",
                       "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
                       "someValuesFrom": {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                        "hasValue": "Leucophanes seychellarum"
+                        "@type": "owl:Class",
+                        "intersectionOf": [
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                            "hasValue": "Leucophanes seychellarum"
+                          },
+                          {
+                            "@type": "owl:Restriction",
+                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                            "hasValue": {
+                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                            }
+                          }
+                        ]
                       }
                     }
                   }
@@ -3851,7 +4731,7 @@
                   "someValuesFrom": {
                     "@type": "owl:Restriction",
                     "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
-                    "hasValue": "::Wall 2527, Fiji (uc)"
+                    "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
                   }
                 }
               }
