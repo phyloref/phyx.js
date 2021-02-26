@@ -206,7 +206,6 @@
           },
           "required": [
             "@type",
-            "nomenclaturalCode",
             "label",
             "nameComplete"
           ]
