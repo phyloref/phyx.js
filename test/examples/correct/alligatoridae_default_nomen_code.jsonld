@@ -1533,17 +1533,6 @@
         }
       ],
       "externalSpecifiers": [],
-      "pso:holdsStatusInTime": [
-        {
-          "@type": "http://purl.org/spar/pso/StatusInTime",
-          "pso:withStatus": {
-            "@id": "pso:submitted"
-          },
-          "tvc:atTime": {
-            "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:31.471Z"
-          }
-        }
-      ],
       "@id": "http://example.org/phyx.js/example#phyloref0",
       "@type": "owl:Class",
       "hasComponentClass": [],
