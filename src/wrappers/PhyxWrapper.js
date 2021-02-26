@@ -29,6 +29,22 @@ class PhyxWrapper {
     this.newickParser = newickParser;
   }
 
+  // Determine a 'default nomenclatural code' for this Phyx file. There are
+  // two ways to do this:
+  //  1. If the Phyx file has a 'defaultNomenclaturalCodeIRI' property, we use that.
+  //  2. Otherwise, we check to see if every phyloref in this file has the same
+  //     nomenclatural code. If so, we can use that code. If not, i.e. if any of
+  //     the phylorefs are missing a nomenclatural code or include a specifier,
+  //     we default to owlterms.UNKNOWN_CODE.
+  get defaultNomenCode() {
+    if (has(this.phyx, 'defaultNomenclaturalCodeIRI')) return this.phyx.defaultNomenclaturalCodeIRI;
+    const nomenCodes = (this.phyx.phylorefs || [])
+      .map(phyloref => new PhylorefWrapper(phyloref).defaultNomenCode);
+    const uniqNomenCodes = uniq(nomenCodes);
+    if (uniqNomenCodes.length === 1) return uniqNomenCodes[0];
+    return owlterms.UNKNOWN_CODE;
+  }
+
   /**
    * Generate an executable ontology from this Phyx document. The document is mostly in JSON-LD
    * already, except for three important things:
@@ -71,23 +87,6 @@ class PhyxWrapper {
       return phylogenyId;
     }
 
-    // Determine a 'default nomenclatural code' for this Phyx file. There are
-    // two ways to do this:
-    //  1. If the Phyx file has a 'defaultNomenclaturalCodeIRI' property, we use that.
-    //  2. Otherwise, we check to see if every phyloref in this file has the same
-    //     nomenclatural code. If so, we can use that code. If not, i.e. if any of
-    //     the phylorefs are missing a nomenclatural code or include a specifier,
-    //     we default to owlterms.UNKNOWN_CODE.
-    function determineDefaultNomenCode() {
-      if (has(jsonld, 'defaultNomenclaturalCodeIRI')) return jsonld.defaultNomenclaturalCodeIRI;
-      const nomenCodes = (jsonld.phylorefs || [])
-        .map(phyloref => new PhylorefWrapper(phyloref).defaultNomenCode);
-      const uniqNomenCodes = uniq(nomenCodes);
-      if (uniqNomenCodes.length === 1) return uniqNomenCodes[0];
-      return owlterms.UNKNOWN_CODE;
-    }
-    const defaultNomenCode = determineDefaultNomenCode();
-
     if (has(jsonld, 'phylorefs')) {
       // We might have phyloref IDs set to relative IRIs (e.g. "#phyloref0").
       // If the baseIRI is set to '', that's fine. But if not, we'll add it
@@ -106,7 +105,7 @@ class PhyxWrapper {
 
       // Convert phyloreferences into an OWL class restriction
       jsonld.phylorefs = jsonld.phylorefs.map(
-        (phyloref, countPhyloref) => new PhylorefWrapper(phyloref, defaultNomenCode)
+        (phyloref, countPhyloref) => new PhylorefWrapper(phyloref, this.defaultNomenCode)
           .asJSONLD(getBaseIRIForPhyloref(countPhyloref))
       );
     }
@@ -129,7 +128,7 @@ class PhyxWrapper {
 
       // Add descriptions for individual nodes in each phylogeny.
       jsonld.phylogenies = jsonld.phylogenies.map(
-        (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny, defaultNomenCode)
+        (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny, this.defaultNomenCode)
           .asJSONLD(getBaseIRIForPhylogeny(countPhylogeny), this.newickParser)
       );
 
