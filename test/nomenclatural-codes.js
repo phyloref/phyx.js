@@ -46,9 +46,9 @@ describe('TaxonNameWrapper', function () {
         .to.be.an('array')
         .that.is.not.empty;
 
-      nomenCodes.forEach((nomenCode) => {
+      nomenCodes.forEach(nomenCode => {
         expect(nomenCode).to.have.all.keys(EXPECTED_NOMEN_DETAIL_FIELDS);
-      });
+      })
     });
   });
 
@@ -56,14 +56,14 @@ describe('TaxonNameWrapper', function () {
     it('should provide details for some built-in codes', function () {
       const codesToTest = {
         'Code not known': owlterms.UNKNOWN_CODE,
-        ICZN: owlterms.ICZN_CODE,
-        ICN: owlterms.ICN_CODE,
-        ICNP: owlterms.ICNP_CODE,
-        ICTV: owlterms.ICTV_CODE,
-        ICNCP: owlterms.ICNCP_CODE,
+        'ICZN': owlterms.ICZN_CODE,
+        'ICN': owlterms.ICN_CODE,
+        'ICNP': owlterms.ICNP_CODE,
+        'ICTV': owlterms.ICTV_CODE,
+        'ICNCP': owlterms.ICNCP_CODE,
       };
 
-      Object.keys(codesToTest).forEach((code) => {
+      Object.keys(codesToTest).forEach(code => {
         const uri = codesToTest[code];
         const details = phyx.TaxonNameWrapper.getNomenCodeDetails(uri);
         expect(details).to.have.all.keys(EXPECTED_NOMEN_DETAIL_FIELDS);
@@ -136,18 +136,44 @@ describe('PhyxWrapper', function () {
     const defaultNomenclaturalCodeIRI = json.defaultNomenclaturalCodeIRI;
 
     const jsonld = new phyx.PhyxWrapper(json).asOWLOntology();
+
+    // Step 1. Check the phyloreferences. Neither specifier has a nomenclatural code,
+    // but they should pick up the default nomenclatural code for the Phyx file.
+    expect(jsonld.phylorefs).to.be.an('array').of.length(1);
+    const phyloref1 = jsonld.phylorefs[0];
+    expect(phyloref1).to.be.an('object').and.to.include.key('equivalentClass');
+
+    const equivalentClass = phyloref1.equivalentClass;
+    const specifierExprs = equivalentClass.someValuesFrom.intersectionOf;
+    expect(specifierExprs).to.be.an('array').with.length(2);
+
+    specifierExprs.forEach(specifierExpr => {
+      const nameExprs = specifierExpr.someValuesFrom.someValuesFrom.intersectionOf;
+
+      expect(nameExprs).to.be.an('array').with.length(2).and.to.deep.include(
+        {
+          "@type": "owl:Restriction",
+          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+          "hasValue": {
+            "@id": defaultNomenclaturalCodeIRI
+          }
+        }
+        );
+    });
+
+    // Step 2. Check the phylogenies.
     expect(jsonld).to.include.key('phylogenies');
     expect(jsonld.phylogenies).to.be.an('array').with.length(1);
 
     const phylogeny1 = jsonld.phylogenies[0];
     expect(phylogeny1).to.include.key('nodes');
 
-    phylogeny1.nodes.forEach((node) => {
+    phylogeny1.nodes.forEach(node => {
       const nodeType = node['rdf:type'];
 
       // There should be at least one type definition: obo:CDAO_0000140.
       expect(nodeType[0]).to.deep.equal({
-        '@id': 'obo:CDAO_0000140',
+        "@id": "obo:CDAO_0000140"
       });
 
       // The second type definition -- if it exists -- must be a name entry,
@@ -156,11 +182,11 @@ describe('PhyxWrapper', function () {
         const nameEntry = nodeType[1];
         expect(nameEntry.someValuesFrom.someValuesFrom.intersectionOf).to.deep.include(
           {
-            '@type': 'owl:Restriction',
-            onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode',
-            hasValue: {
-              '@id': defaultNomenclaturalCodeIRI,
-            },
+            "@type": "owl:Restriction",
+            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+            "hasValue": {
+              "@id": defaultNomenclaturalCodeIRI
+            }
           }
         );
       }
@@ -184,18 +210,45 @@ describe('PhyxWrapper', function () {
     expect(inferredNomenCode).to.equal(owlterms.ICZN_CODE);
 
     const jsonld = wrapped.asOWLOntology();
+
+    // Step 1. Check the phyloreferences. Since only *Caiman crocodilus* has a
+    // nomenclatural code set, we should make sure that the other specifier
+    // picks up the inferred nomenclatural code of the entire file.
+    expect(jsonld.phylorefs).to.be.an('array').of.length(1);
+    const phyloref1 = jsonld.phylorefs[0];
+    expect(phyloref1).to.be.an('object').and.to.include.key('equivalentClass');
+
+    const equivalentClass = phyloref1.equivalentClass;
+    const specifierExprs = equivalentClass.someValuesFrom.intersectionOf;
+    expect(specifierExprs).to.be.an('array').with.length(2);
+
+    specifierExprs.forEach(specifierExpr => {
+      const nameExprs = specifierExpr.someValuesFrom.someValuesFrom.intersectionOf;
+
+      expect(nameExprs).to.be.an('array').with.length(2).and.to.deep.include(
+        {
+          "@type": "owl:Restriction",
+          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+          "hasValue": {
+            "@id": inferredNomenCode
+          }
+        }
+        );
+    });
+
+    // Step 2. Check the phylogenies.
     expect(jsonld).to.include.key('phylogenies');
     expect(jsonld.phylogenies).to.be.an('array').with.length(1);
 
     const phylogeny1 = jsonld.phylogenies[0];
     expect(phylogeny1).to.include.key('nodes');
 
-    phylogeny1.nodes.forEach((node) => {
+    phylogeny1.nodes.forEach(node => {
       const nodeType = node['rdf:type'];
 
       // There should be at least one type definition: obo:CDAO_0000140.
       expect(nodeType[0]).to.deep.equal({
-        '@id': 'obo:CDAO_0000140',
+        "@id": "obo:CDAO_0000140"
       });
 
       // The second type definition -- if it exists -- must be a name entry,
@@ -204,11 +257,11 @@ describe('PhyxWrapper', function () {
         const nameEntry = nodeType[1];
         expect(nameEntry.someValuesFrom.someValuesFrom.intersectionOf).to.deep.include(
           {
-            '@type': 'owl:Restriction',
-            onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode',
-            hasValue: {
-              '@id': inferredNomenCode,
-            },
+            "@type": "owl:Restriction",
+            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+            "hasValue": {
+              "@id": inferredNomenCode
+            }
           }
         );
       }
