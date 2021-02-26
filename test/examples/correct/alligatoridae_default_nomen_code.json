@@ -105,18 +105,7 @@
                     "label": "Alligator mississippiensis"
                 }
             ],
-            "externalSpecifiers": [],
-            "pso:holdsStatusInTime": [
-                {
-                    "@type": "http://purl.org/spar/pso/StatusInTime",
-                    "pso:withStatus": {
-                        "@id": "pso:submitted"
-                    },
-                    "tvc:atTime": {
-                        "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:31.471Z"
-                    }
-                }
-            ]
+            "externalSpecifiers": []
         }
     ],
     "defaultNomenclaturalCodeIRI": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
