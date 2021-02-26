@@ -46,9 +46,9 @@ describe('TaxonNameWrapper', function () {
         .to.be.an('array')
         .that.is.not.empty;
 
-      nomenCodes.forEach(nomenCode => {
+      nomenCodes.forEach((nomenCode) => {
         expect(nomenCode).to.have.all.keys(EXPECTED_NOMEN_DETAIL_FIELDS);
-      })
+      });
     });
   });
 
@@ -56,14 +56,14 @@ describe('TaxonNameWrapper', function () {
     it('should provide details for some built-in codes', function () {
       const codesToTest = {
         'Code not known': owlterms.UNKNOWN_CODE,
-        'ICZN': owlterms.ICZN_CODE,
-        'ICN': owlterms.ICN_CODE,
-        'ICNP': owlterms.ICNP_CODE,
-        'ICTV': owlterms.ICTV_CODE,
-        'ICNCP': owlterms.ICNCP_CODE,
+        ICZN: owlterms.ICZN_CODE,
+        ICN: owlterms.ICN_CODE,
+        ICNP: owlterms.ICNP_CODE,
+        ICTV: owlterms.ICTV_CODE,
+        ICNCP: owlterms.ICNCP_CODE,
       };
 
-      Object.keys(codesToTest).forEach(code => {
+      Object.keys(codesToTest).forEach((code) => {
         const uri = codesToTest[code];
         const details = phyx.TaxonNameWrapper.getNomenCodeDetails(uri);
         expect(details).to.have.all.keys(EXPECTED_NOMEN_DETAIL_FIELDS);
@@ -142,12 +142,12 @@ describe('PhyxWrapper', function () {
     const phylogeny1 = jsonld.phylogenies[0];
     expect(phylogeny1).to.include.key('nodes');
 
-    phylogeny1.nodes.forEach(node => {
+    phylogeny1.nodes.forEach((node) => {
       const nodeType = node['rdf:type'];
 
       // There should be at least one type definition: obo:CDAO_0000140.
       expect(nodeType[0]).to.deep.equal({
-        "@id": "obo:CDAO_0000140"
+        '@id': 'obo:CDAO_0000140',
       });
 
       // The second type definition -- if it exists -- must be a name entry,
@@ -156,11 +156,11 @@ describe('PhyxWrapper', function () {
         const nameEntry = nodeType[1];
         expect(nameEntry.someValuesFrom.someValuesFrom.intersectionOf).to.deep.include(
           {
-            "@type": "owl:Restriction",
-            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-            "hasValue": {
-              "@id": defaultNomenclaturalCodeIRI
-            }
+            '@type': 'owl:Restriction',
+            onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode',
+            hasValue: {
+              '@id': defaultNomenclaturalCodeIRI,
+            },
           }
         );
       }
@@ -190,12 +190,12 @@ describe('PhyxWrapper', function () {
     const phylogeny1 = jsonld.phylogenies[0];
     expect(phylogeny1).to.include.key('nodes');
 
-    phylogeny1.nodes.forEach(node => {
+    phylogeny1.nodes.forEach((node) => {
       const nodeType = node['rdf:type'];
 
       // There should be at least one type definition: obo:CDAO_0000140.
       expect(nodeType[0]).to.deep.equal({
-        "@id": "obo:CDAO_0000140"
+        '@id': 'obo:CDAO_0000140',
       });
 
       // The second type definition -- if it exists -- must be a name entry,
@@ -204,11 +204,11 @@ describe('PhyxWrapper', function () {
         const nameEntry = nodeType[1];
         expect(nameEntry.someValuesFrom.someValuesFrom.intersectionOf).to.deep.include(
           {
-            "@type": "owl:Restriction",
-            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-            "hasValue": {
-              "@id": inferredNomenCode
-            }
+            '@type': 'owl:Restriction',
+            onProperty: 'http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode',
+            hasValue: {
+              '@id': inferredNomenCode,
+            },
           }
         );
       }
