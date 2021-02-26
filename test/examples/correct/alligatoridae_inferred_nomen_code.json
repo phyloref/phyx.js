@@ -101,8 +101,7 @@
                         "label": "Alligator mississippiensis",
                         "nameComplete": "Alligator mississippiensis",
                         "genusPart": "Alligator",
-                        "specificEpithet": "mississippiensis",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+                        "specificEpithet": "mississippiensis"
                     },
                     "label": "Alligator mississippiensis"
                 }

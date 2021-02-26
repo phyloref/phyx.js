@@ -494,7 +494,6 @@ _:b168 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ont
 _:b168 <http://www.w3.org/2000/01/rdf-schema#label> "Alligator mississippiensis" .
 _:b169 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Alligator" .
 _:b169 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Alligator mississippiensis" .
-_:b169 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICZN> .
 _:b169 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "mississippiensis" .
 _:b169 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b169 <http://www.w3.org/2000/01/rdf-schema#label> "Alligator mississippiensis" .
