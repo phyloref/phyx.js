@@ -93,9 +93,29 @@
         "bibliographicCitation": "W. G. Joyce et al (2020) Testudinata (#273) [eds: K. de Queiroz and P. D. Cantino and J. A. Gauthier] CRC Press, Boca Raton, FL "
       },
       "apomorphy": {
-        "@type": "https://semanticscience.org/resource/SIO_010056",
-        "exactMatch": "http://purl.obolibrary.org/obo/UBERON_0008271",
-        "definition": "A 'complete turtle shell' is herein defined as a composite structure consisting of a carapace with interlocking costals, neurals, peripherals, and a nuchal, together with the plastron comprising interlocking epi-, hyo-, meso- (lost in Testudo graeca), hypo-, xiphiplastra and an entoplastron. These are articulated with one another along a bridge. Additional elements may be present as well."
+        "phenotype": "http://purl.obolibrary.org/obo/UBERON_0008271",
+        "definition": "A 'complete turtle shell' is herein defined as a composite structure consisting of a carapace with interlocking costals, neurals, peripherals, and a nuchal, together with the plastron comprising interlocking epi-, hyo-, meso- (lost in Testudo graeca), hypo-, xiphiplastra and an entoplastron. These are articulated with one another along a bridge. Additional elements may be present as well.",
+        "@type": [
+          "owl:Class"
+        ],
+        "subClassOf": [
+          "https://semanticscience.org/resource/SIO_010056"
+        ],
+        "equivalentClass": {
+          "@type": "owl:Class",
+          "intersectionOf": [
+            {
+              "@id": "obo:PATO_0000467"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:RO_0000052",
+              "someValuesFrom": {
+                "@id": "http://purl.obolibrary.org/obo/UBERON_0008271"
+              }
+            }
+          ]
+        }
       },
       "internalSpecifiers": [
         {

@@ -729,8 +729,8 @@ class PhylorefWrapper {
     const internalSpecifiers = phylorefAsJSONLD.internalSpecifiers || [];
     const externalSpecifiers = phylorefAsJSONLD.externalSpecifiers || [];
 
-    // If it is an apomorphy-based class expression, we can't generate logical
-    // expressions for it anyway.
+    // If it is an apomorphy-based class expression, we should generate a
+    // logical expression that describes the apomorphy.
     const phylorefType = phylorefAsJSONLD.phylorefType;
     if (
       (phylorefType && phylorefType === 'phyloref:PhyloreferenceUsingApomorphy')
@@ -741,6 +741,41 @@ class PhylorefWrapper {
         'phyloref:Phyloreference',
         'phyloref:PhyloreferenceUsingApomorphy',
       ];
+
+      // Generate a logical expression for the apomorphy.
+      if (has(phylorefAsJSONLD, 'apomorphy')) {
+        const apomorphy = phylorefAsJSONLD.apomorphy;
+
+        if (has(apomorphy, 'phenotype')) {
+          if (!has(apomorphy, '@type')) apomorphy['@type'] = [];
+          if (!Array.isArray(apomorphy['@type'])) apomorphy['@type'] = [apomorphy['@type']];
+          apomorphy['@type'].push('owl:Class');
+
+          if (!has(apomorphy, 'subClassOf')) apomorphy.subClassOf = [];
+          if (!Array.isArray(apomorphy.subClassOf)) apomorphy.subClassOf = [apomorphy.subClassOf];
+          apomorphy.subClassOf.push('https://semanticscience.org/resource/SIO_010056');
+
+          // Use PATO:present as a phenotypic quality unless one is specified.
+          const phenotypicQuality = (
+            apomorphy.phenotypicQuality
+            || 'obo:PATO_0000467' // PATO:present
+          );
+
+          apomorphy.equivalentClass = {
+            '@type': 'owl:Class',
+            intersectionOf: [
+              { '@id': phenotypicQuality },
+              {
+                '@type': 'owl:Restriction',
+                onProperty: 'obo:RO_0000052', // RO:inheres in
+                someValuesFrom: {
+                  '@id': apomorphy.phenotype,
+                },
+              },
+            ],
+          };
+        }
+      }
 
       return phylorefAsJSONLD;
     }

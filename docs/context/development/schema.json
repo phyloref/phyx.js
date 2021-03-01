@@ -331,6 +331,25 @@
             "items": {
               "$ref": "#/definitions/taxonomic_unit"
             }
+          },
+          "apomorphy": {
+            "type": "object",
+            "description": "For a phyloreference using an apomorphy, this field describes the character being used as the apomorphy",
+            "additionalProperties": true,
+            "properties": {
+              "definition": {
+                "description": "A description of this apomorphy."
+              },
+              "phenotypicQuality": {
+                "description": "The quality of this phenotype. Must be a subclass of pato:quality."
+              },
+              "phenotype": {
+                "description": "The phenotype being used as an apomorphy."
+              }
+            },
+            "required": [
+              "definition"
+            ]
           }
         }
       }

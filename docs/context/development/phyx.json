@@ -191,10 +191,6 @@
 
     "representsTaxonomicUnits": "obo:CDAO_0000187",
 
-    "apomorphy": "phyloref:apomorphy",
-    "exactMatch": {
-      "@id": "skos:exactMatch",
-      "@type": "@id"
-    }
+    "apomorphy": "phyloref:apomorphy"
   }
 }
