@@ -3,7 +3,10 @@
 <http://example.org/phyx.js/example#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
 <http://example.org/phyx.js/example#> <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/phyloref.owl> .
 <http://example.org/phyx.js/example#> <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/tcan.owl> .
+<http://example.org/phyx.js/example#> <http://www.w3.org/2002/07/owl#imports> <http://purl.obolibrary.org/obo/pato.owl> .
+<http://example.org/phyx.js/example#> <http://www.w3.org/2002/07/owl#imports> <http://purl.obolibrary.org/obo/uberon.owl> .
 <http://example.org/phyx.js/example#> <http://www.w3.org/2002/07/owl#imports> <http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl> .
+<http://example.org/phyx.js/example#> <http://www.w3.org/2002/07/owl#imports> <http://semanticscience.org/ontology/sio.owl> .
 <http://example.org/phyx.js/example#phyloref0> <http://ontology.phyloref.org/phyloref.owl#apomorphy> _:b0 .
 <http://example.org/phyx.js/example#phyloref0> <http://purl.obolibrary.org/obo/IAO_0000115> "The apomorphy-based clade name, for which a complete turtle shell, as inherited by Testudo graeca Linnaeus 1758 is an apomorphy. A 'complete turtle shell' is herein defined as a composite structure consisting of a carapace with interlocking costals, neurals, peripherals, and a nuchal, together with the plastron comprising interlocking epi-, hyo-, meso- (lost in Testudo graeca), hypo-, xiphiplastra and an entoplastron." .
 <http://example.org/phyx.js/example#phyloref0> <http://purl.obolibrary.org/obo/IAO_0000119> _:b3 .

@@ -236,6 +236,14 @@
       "description": "The default nomenclatural code to use for new phyloreferences in this Phyx file.",
       "$ref": "#/definitions/nomenclaturalCodes"
     },
+    "@type": {
+      "type": "array",
+      "description": "Addition RDF types for the top-level object. `owl:Ontology` is added automatically."
+    },
+    "owl:imports": {
+      "type": "array",
+      "description": "A list of additional OWL imports to be added in this ontology."
+    },
     "phylogenies": {
       "type": "array",
       "description": "A phylogeny is an evolutionary hypothesis that can be used to test Phyx files.",

@@ -270,12 +270,19 @@ class PhyxWrapper {
 
     // Finally, add the base URI as an ontology.
     if (baseIRI) jsonld['@id'] = baseIRI;
-    jsonld['@type'] = [owlterms.PHYLOREFERENCE_TEST_CASE, 'owl:Ontology'];
-    jsonld['owl:imports'] = [
-      'http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl',
-      'http://ontology.phyloref.org/2018-12-14/phyloref.owl',
-      'http://ontology.phyloref.org/2018-12-14/tcan.owl',
-    ];
+
+    // Set up the top-level object '@type'. If one is present, we add our terms to that.
+    if (!has(jsonld, '@type')) jsonld['@type'] = [];
+    if (!Array.isArray(jsonld['@type'])) jsonld['@type'] = [jsonld['@type']];
+    jsonld['@type'].push(owlterms.PHYLOREFERENCE_TEST_CASE);
+    jsonld['@type'].push('owl:Ontology');
+
+    // Set up the ontology imports. If one is present, we add our imports to that.
+    if (!has(jsonld, 'owl:imports')) jsonld['owl:imports'] = [];
+    if (!Array.isArray(jsonld['owl:imports'])) jsonld['owl:imports'] = [jsonld['owl:imports']];
+    jsonld['owl:imports'].push('http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl');
+    jsonld['owl:imports'].push('http://ontology.phyloref.org/2018-12-14/phyloref.owl');
+    jsonld['owl:imports'].push('http://ontology.phyloref.org/2018-12-14/tcan.owl');
 
     // If the '@context' is missing, add it here.
     if (!has(jsonld, '@context')) {
