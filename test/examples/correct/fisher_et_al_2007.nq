@@ -767,12 +767,12 @@
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985) & Wall 2527, Fiji (UC) ~ Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826))" .
+<http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985) (ICN) & Wall 2527, Fiji (UC) ~ Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN))" .
 <http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref0> .
 <http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b473 .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985) & Wall 2527, Fiji (UC) ~ Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826))" .
+<http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985) (ICN) & Wall 2527, Fiji (UC) ~ Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN))" .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref0> .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b487 .
@@ -786,12 +786,12 @@
 <http://example.org/phyx.js/example#phyloref1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/phyx.js/example#phyloref1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref1_component1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref1_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) & Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880) ~ Wall 2527, Fiji (uc))" .
+<http://example.org/phyx.js/example#phyloref1_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN) & Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880) (ICN) ~ Wall 2527, Fiji (uc))" .
 <http://example.org/phyx.js/example#phyloref1_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref1> .
 <http://example.org/phyx.js/example#phyloref1_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref1_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b506 .
 <http://example.org/phyx.js/example#phyloref1_component2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref1_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) & Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880) ~ Wall 2527, Fiji (uc))" .
+<http://example.org/phyx.js/example#phyloref1_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN) & Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880) (ICN) ~ Wall 2527, Fiji (uc))" .
 <http://example.org/phyx.js/example#phyloref1_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref1> .
 <http://example.org/phyx.js/example#phyloref1_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref1_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b520 .

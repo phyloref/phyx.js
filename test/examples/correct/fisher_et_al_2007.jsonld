@@ -4375,7 +4375,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref0_component1",
           "@type": "owl:Class",
-          "label": "(Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985) & Wall 2527, Fiji (UC) ~ Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826))",
+          "label": "(Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985) (ICN) & Wall 2527, Fiji (UC) ~ Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN))",
           "equivalentClass": {
             "@type": "owl:Class",
             "intersectionOf": [
@@ -4455,7 +4455,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref0_component2",
           "@type": "owl:Class",
-          "label": "(Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985) & Wall 2527, Fiji (UC) ~ Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826))",
+          "label": "(Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985) (ICN) & Wall 2527, Fiji (UC) ~ Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN))",
           "equivalentClass": {
             "@type": "owl:Class",
             "intersectionOf": [
@@ -4583,7 +4583,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref1_component1",
           "@type": "owl:Class",
-          "label": "(Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) & Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880) ~ Wall 2527, Fiji (uc))",
+          "label": "(Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN) & Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880) (ICN) ~ Wall 2527, Fiji (uc))",
           "equivalentClass": {
             "@type": "owl:Class",
             "intersectionOf": [
@@ -4663,7 +4663,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref1_component2",
           "@type": "owl:Class",
-          "label": "(Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) & Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880) ~ Wall 2527, Fiji (uc))",
+          "label": "(Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN) & Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880) (ICN) ~ Wall 2527, Fiji (uc))",
           "equivalentClass": {
             "@type": "owl:Class",
             "intersectionOf": [
