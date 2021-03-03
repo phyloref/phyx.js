@@ -351,7 +351,7 @@
               "phenotypicQuality": {
                 "description": "The quality of this phenotype. Must be a subclass of pato:quality."
               },
-              "phenotype": {
+              "phenotypeBearer": {
                 "description": "The phenotype being used as an apomorphy."
               }
             },
