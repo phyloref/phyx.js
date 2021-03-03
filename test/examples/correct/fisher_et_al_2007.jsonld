@@ -12,6 +12,15 @@
               "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
               "institutionCode": "UC",
               "catalogNumber": "Wall 2527, Fiji"
+            },
+            {
+              "label": "Sole representative of genus Exodictyon",
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
+                "label": "Exodictyon",
+                "nameComplete": "Exodictyon"
+              }
             }
           ]
         }
@@ -4058,6 +4067,31 @@
             },
             {
               "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Exodictyon"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "@type": "owl:Restriction",
               "onProperty": "obo:OBI_0000312",
               "someValuesFrom": {
                 "@type": "owl:Class",
@@ -4084,6 +4118,15 @@
               "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
               "institutionCode": "UC",
               "catalogNumber": "Wall 2527, Fiji"
+            },
+            {
+              "label": "Sole representative of genus Exodictyon",
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
+                "label": "Exodictyon",
+                "nameComplete": "Exodictyon"
+              }
             }
           ],
           "parent": "http://example.org/phyx.js/example#phylogeny0_node91",

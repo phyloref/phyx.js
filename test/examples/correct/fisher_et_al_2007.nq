@@ -122,9 +122,11 @@
 <http://example.org/phyx.js/example#phylogeny0_node100> <http://ontology.phyloref.org/phyloref.owl#has_Sibling> <http://example.org/phyx.js/example#phylogeny0_node92> .
 <http://example.org/phyx.js/example#phylogeny0_node100> <http://purl.obolibrary.org/obo/CDAO_0000179> <http://example.org/phyx.js/example#phylogeny0_node91> .
 <http://example.org/phyx.js/example#phylogeny0_node100> <http://purl.obolibrary.org/obo/CDAO_0000187> _:b437 .
+<http://example.org/phyx.js/example#phylogeny0_node100> <http://purl.obolibrary.org/obo/CDAO_0000187> _:b438 .
 <http://example.org/phyx.js/example#phylogeny0_node100> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/CDAO_0000140> .
-<http://example.org/phyx.js/example#phylogeny0_node100> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b438 .
 <http://example.org/phyx.js/example#phylogeny0_node100> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b440 .
+<http://example.org/phyx.js/example#phylogeny0_node100> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b442 .
+<http://example.org/phyx.js/example#phylogeny0_node100> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b447 .
 <http://example.org/phyx.js/example#phylogeny0_node100> <http://www.w3.org/2000/01/rdf-schema#label> "Exodictyon incrassatum" .
 <http://example.org/phyx.js/example#phylogeny0_node101> <http://ontology.phyloref.org/phyloref.owl#has_Sibling> <http://example.org/phyx.js/example#phylogeny0_node91> .
 <http://example.org/phyx.js/example#phylogeny0_node101> <http://purl.obolibrary.org/obo/CDAO_0000149> <http://example.org/phyx.js/example#phylogeny0_node102> .
@@ -135,27 +137,27 @@
 <http://example.org/phyx.js/example#phylogeny0_node102> <http://purl.obolibrary.org/obo/CDAO_0000149> <http://example.org/phyx.js/example#phylogeny0_node103> .
 <http://example.org/phyx.js/example#phylogeny0_node102> <http://purl.obolibrary.org/obo/CDAO_0000149> <http://example.org/phyx.js/example#phylogeny0_node104> .
 <http://example.org/phyx.js/example#phylogeny0_node102> <http://purl.obolibrary.org/obo/CDAO_0000179> <http://example.org/phyx.js/example#phylogeny0_node101> .
-<http://example.org/phyx.js/example#phylogeny0_node102> <http://purl.obolibrary.org/obo/CDAO_0000187> _:b443 .
+<http://example.org/phyx.js/example#phylogeny0_node102> <http://purl.obolibrary.org/obo/CDAO_0000187> _:b450 .
 <http://example.org/phyx.js/example#phylogeny0_node102> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/CDAO_0000140> .
-<http://example.org/phyx.js/example#phylogeny0_node102> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b445 .
+<http://example.org/phyx.js/example#phylogeny0_node102> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b452 .
 <http://example.org/phyx.js/example#phylogeny0_node102> <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum" .
 <http://example.org/phyx.js/example#phylogeny0_node103> <http://ontology.phyloref.org/phyloref.owl#has_Sibling> <http://example.org/phyx.js/example#phylogeny0_node104> .
 <http://example.org/phyx.js/example#phylogeny0_node103> <http://purl.obolibrary.org/obo/CDAO_0000179> <http://example.org/phyx.js/example#phylogeny0_node102> .
-<http://example.org/phyx.js/example#phylogeny0_node103> <http://purl.obolibrary.org/obo/CDAO_0000187> _:b450 .
+<http://example.org/phyx.js/example#phylogeny0_node103> <http://purl.obolibrary.org/obo/CDAO_0000187> _:b457 .
 <http://example.org/phyx.js/example#phylogeny0_node103> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/CDAO_0000140> .
-<http://example.org/phyx.js/example#phylogeny0_node103> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b452 .
+<http://example.org/phyx.js/example#phylogeny0_node103> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b459 .
 <http://example.org/phyx.js/example#phylogeny0_node103> <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum blumii 245" .
 <http://example.org/phyx.js/example#phylogeny0_node104> <http://ontology.phyloref.org/phyloref.owl#has_Sibling> <http://example.org/phyx.js/example#phylogeny0_node103> .
 <http://example.org/phyx.js/example#phylogeny0_node104> <http://purl.obolibrary.org/obo/CDAO_0000179> <http://example.org/phyx.js/example#phylogeny0_node102> .
-<http://example.org/phyx.js/example#phylogeny0_node104> <http://purl.obolibrary.org/obo/CDAO_0000187> _:b457 .
+<http://example.org/phyx.js/example#phylogeny0_node104> <http://purl.obolibrary.org/obo/CDAO_0000187> _:b464 .
 <http://example.org/phyx.js/example#phylogeny0_node104> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/CDAO_0000140> .
-<http://example.org/phyx.js/example#phylogeny0_node104> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b459 .
+<http://example.org/phyx.js/example#phylogeny0_node104> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b466 .
 <http://example.org/phyx.js/example#phylogeny0_node104> <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum blumii 243" .
 <http://example.org/phyx.js/example#phylogeny0_node105> <http://ontology.phyloref.org/phyloref.owl#has_Sibling> <http://example.org/phyx.js/example#phylogeny0_node102> .
 <http://example.org/phyx.js/example#phylogeny0_node105> <http://purl.obolibrary.org/obo/CDAO_0000179> <http://example.org/phyx.js/example#phylogeny0_node101> .
-<http://example.org/phyx.js/example#phylogeny0_node105> <http://purl.obolibrary.org/obo/CDAO_0000187> _:b464 .
+<http://example.org/phyx.js/example#phylogeny0_node105> <http://purl.obolibrary.org/obo/CDAO_0000187> _:b471 .
 <http://example.org/phyx.js/example#phylogeny0_node105> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/CDAO_0000140> .
-<http://example.org/phyx.js/example#phylogeny0_node105> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b466 .
+<http://example.org/phyx.js/example#phylogeny0_node105> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b473 .
 <http://example.org/phyx.js/example#phylogeny0_node105> <http://www.w3.org/2000/01/rdf-schema#label> "Arthrocormus schimperi" .
 <http://example.org/phyx.js/example#phylogeny0_node10> <http://ontology.phyloref.org/phyloref.owl#has_Sibling> <http://example.org/phyx.js/example#phylogeny0_node11> .
 <http://example.org/phyx.js/example#phylogeny0_node10> <http://purl.obolibrary.org/obo/CDAO_0000179> <http://example.org/phyx.js/example#phylogeny0_node9> .
@@ -757,11 +759,11 @@
 <http://example.org/phyx.js/example#phylogeny0_node9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/CDAO_0000140> .
 <http://example.org/phyx.js/example#phylogeny0_node9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b44 .
 <http://example.org/phyx.js/example#phylogeny0_node9> <http://www.w3.org/2000/01/rdf-schema#label> "Calymperes" .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b471 .
+<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b478 .
 <http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component1> .
 <http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component2> .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b502 .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b504 .
+<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b509 .
+<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b511 .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#label> "Exodictyon" .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
@@ -770,17 +772,17 @@
 <http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985) (ICN) & Wall 2527, Fiji (UC) ~ Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN))" .
 <http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref0> .
 <http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b473 .
+<http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b480 .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985) (ICN) & Wall 2527, Fiji (UC) ~ Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN))" .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref0> .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b487 .
-<http://example.org/phyx.js/example#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b505 .
+<http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b494 .
+<http://example.org/phyx.js/example#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b512 .
 <http://example.org/phyx.js/example#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref1_component1> .
 <http://example.org/phyx.js/example#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref1_component2> .
-<http://example.org/phyx.js/example#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b535 .
-<http://example.org/phyx.js/example#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b537 .
+<http://example.org/phyx.js/example#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b542 .
+<http://example.org/phyx.js/example#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b544 .
 <http://example.org/phyx.js/example#phyloref1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref1> <http://www.w3.org/2000/01/rdf-schema#label> "Leucophanes" .
 <http://example.org/phyx.js/example#phyloref1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
@@ -789,12 +791,12 @@
 <http://example.org/phyx.js/example#phyloref1_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN) & Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880) (ICN) ~ Wall 2527, Fiji (uc))" .
 <http://example.org/phyx.js/example#phyloref1_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref1> .
 <http://example.org/phyx.js/example#phyloref1_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/phyx.js/example#phyloref1_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b506 .
+<http://example.org/phyx.js/example#phyloref1_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b513 .
 <http://example.org/phyx.js/example#phyloref1_component2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref1_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN) & Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880) (ICN) ~ Wall 2527, Fiji (uc))" .
 <http://example.org/phyx.js/example#phyloref1_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref1> .
 <http://example.org/phyx.js/example#phyloref1_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/phyx.js/example#phyloref1_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b520 .
+<http://example.org/phyx.js/example#phyloref1_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b527 .
 _:b0 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b1 .
 _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b0 <http://www.w3.org/2000/01/rdf-schema#label> "Octoblepharum" .
@@ -812,7 +814,7 @@ _:b101 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b101 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b101 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b102 .
 _:b102 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b102 <http://www.w3.org/2002/07/owl#intersectionOf> _:b539 .
+_:b102 <http://www.w3.org/2002/07/owl#intersectionOf> _:b546 .
 _:b103 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b103 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes moluccense" .
 _:b103 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -835,9 +837,9 @@ _:b108 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b108 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b108 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b109 .
 _:b109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b109 <http://www.w3.org/2002/07/owl#intersectionOf> _:b541 .
+_:b109 <http://www.w3.org/2002/07/owl#intersectionOf> _:b548 .
 _:b11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b11 <http://www.w3.org/2002/07/owl#intersectionOf> _:b543 .
+_:b11 <http://www.w3.org/2002/07/owl#intersectionOf> _:b550 .
 _:b110 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b110 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes hispidium" .
 _:b110 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -860,7 +862,7 @@ _:b115 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b115 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b115 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b116 .
 _:b116 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b116 <http://www.w3.org/2002/07/owl#intersectionOf> _:b545 .
+_:b116 <http://www.w3.org/2002/07/owl#intersectionOf> _:b552 .
 _:b117 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b117 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes pseudopodianum" .
 _:b117 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -886,7 +888,7 @@ _:b122 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b122 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b122 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b123 .
 _:b123 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b123 <http://www.w3.org/2002/07/owl#intersectionOf> _:b547 .
+_:b123 <http://www.w3.org/2002/07/owl#intersectionOf> _:b554 .
 _:b124 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b124 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes tuatomuense" .
 _:b124 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -912,7 +914,7 @@ _:b13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b13 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b13 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
 _:b130 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b130 <http://www.w3.org/2002/07/owl#intersectionOf> _:b549 .
+_:b130 <http://www.w3.org/2002/07/owl#intersectionOf> _:b556 .
 _:b131 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b131 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes subintegrum" .
 _:b131 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -935,7 +937,7 @@ _:b136 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b136 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b136 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b137 .
 _:b137 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b137 <http://www.w3.org/2002/07/owl#intersectionOf> _:b551 .
+_:b137 <http://www.w3.org/2002/07/owl#intersectionOf> _:b558 .
 _:b138 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b138 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes tenerum" .
 _:b138 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -961,7 +963,7 @@ _:b143 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b143 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b143 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b144 .
 _:b144 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b144 <http://www.w3.org/2002/07/owl#intersectionOf> _:b553 .
+_:b144 <http://www.w3.org/2002/07/owl#intersectionOf> _:b560 .
 _:b145 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b145 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes robinsonii" .
 _:b145 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -988,7 +990,7 @@ _:b150 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b150 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b150 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b151 .
 _:b151 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b151 <http://www.w3.org/2002/07/owl#intersectionOf> _:b555 .
+_:b151 <http://www.w3.org/2002/07/owl#intersectionOf> _:b562 .
 _:b152 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b152 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes erosum" .
 _:b152 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1011,7 +1013,7 @@ _:b157 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b157 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b157 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b158 .
 _:b158 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b158 <http://www.w3.org/2002/07/owl#intersectionOf> _:b557 .
+_:b158 <http://www.w3.org/2002/07/owl#intersectionOf> _:b564 .
 _:b159 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b159 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes motleyi" .
 _:b159 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1037,7 +1039,7 @@ _:b164 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b164 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b164 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b165 .
 _:b165 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b165 <http://www.w3.org/2002/07/owl#intersectionOf> _:b559 .
+_:b165 <http://www.w3.org/2002/07/owl#intersectionOf> _:b566 .
 _:b166 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b166 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes palisotii" .
 _:b166 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1063,7 +1065,7 @@ _:b171 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b171 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b171 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b172 .
 _:b172 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b172 <http://www.w3.org/2002/07/owl#intersectionOf> _:b561 .
+_:b172 <http://www.w3.org/2002/07/owl#intersectionOf> _:b568 .
 _:b173 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b173 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes palisotii" .
 _:b173 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1086,9 +1088,9 @@ _:b178 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b178 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b178 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b179 .
 _:b179 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b179 <http://www.w3.org/2002/07/owl#intersectionOf> _:b563 .
+_:b179 <http://www.w3.org/2002/07/owl#intersectionOf> _:b570 .
 _:b18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b18 <http://www.w3.org/2002/07/owl#intersectionOf> _:b565 .
+_:b18 <http://www.w3.org/2002/07/owl#intersectionOf> _:b572 .
 _:b180 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b180 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon incompletus" .
 _:b180 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1109,7 +1111,7 @@ _:b185 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b185 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b185 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b186 .
 _:b186 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b186 <http://www.w3.org/2002/07/owl#intersectionOf> _:b567 .
+_:b186 <http://www.w3.org/2002/07/owl#intersectionOf> _:b574 .
 _:b187 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b187 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon" .
 _:b187 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1135,7 +1137,7 @@ _:b192 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b192 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b192 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b193 .
 _:b193 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b193 <http://www.w3.org/2002/07/owl#intersectionOf> _:b569 .
+_:b193 <http://www.w3.org/2002/07/owl#intersectionOf> _:b576 .
 _:b194 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b194 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon fissipapillatus" .
 _:b194 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1164,7 +1166,7 @@ _:b20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b20 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b20 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
 _:b200 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b200 <http://www.w3.org/2002/07/owl#intersectionOf> _:b571 .
+_:b200 <http://www.w3.org/2002/07/owl#intersectionOf> _:b578 .
 _:b201 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b201 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon apertus" .
 _:b201 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1187,7 +1189,7 @@ _:b206 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b206 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b206 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b207 .
 _:b207 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b207 <http://www.w3.org/2002/07/owl#intersectionOf> _:b573 .
+_:b207 <http://www.w3.org/2002/07/owl#intersectionOf> _:b580 .
 _:b208 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b208 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon croceus" .
 _:b208 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1213,7 +1215,7 @@ _:b213 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b213 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b213 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b214 .
 _:b214 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b214 <http://www.w3.org/2002/07/owl#intersectionOf> _:b575 .
+_:b214 <http://www.w3.org/2002/07/owl#intersectionOf> _:b582 .
 _:b215 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b215 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon tristichus" .
 _:b215 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1238,7 +1240,7 @@ _:b220 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b220 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b220 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b221 .
 _:b221 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b221 <http://www.w3.org/2002/07/owl#intersectionOf> _:b577 .
+_:b221 <http://www.w3.org/2002/07/owl#intersectionOf> _:b584 .
 _:b222 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b222 <http://www.w3.org/2002/07/owl#hasValue> "Mitthyridium" .
 _:b222 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1261,7 +1263,7 @@ _:b227 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b227 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b227 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b228 .
 _:b228 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b228 <http://www.w3.org/2002/07/owl#intersectionOf> _:b579 .
+_:b228 <http://www.w3.org/2002/07/owl#intersectionOf> _:b586 .
 _:b229 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b229 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon mahensis" .
 _:b229 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1287,7 +1289,7 @@ _:b234 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b234 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b234 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b235 .
 _:b235 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b235 <http://www.w3.org/2002/07/owl#intersectionOf> _:b581 .
+_:b235 <http://www.w3.org/2002/07/owl#intersectionOf> _:b588 .
 _:b236 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b236 <http://www.w3.org/2002/07/owl#hasValue> "Mitthyridium as" .
 _:b236 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1313,7 +1315,7 @@ _:b241 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b241 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b241 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b242 .
 _:b242 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b242 <http://www.w3.org/2002/07/owl#intersectionOf> _:b583 .
+_:b242 <http://www.w3.org/2002/07/owl#intersectionOf> _:b590 .
 _:b243 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b243 <http://www.w3.org/2002/07/owl#hasValue> "Mitthyridium jungquilianum" .
 _:b243 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1336,9 +1338,9 @@ _:b248 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b248 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b248 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b249 .
 _:b249 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b249 <http://www.w3.org/2002/07/owl#intersectionOf> _:b585 .
+_:b249 <http://www.w3.org/2002/07/owl#intersectionOf> _:b592 .
 _:b25 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b25 <http://www.w3.org/2002/07/owl#intersectionOf> _:b587 .
+_:b25 <http://www.w3.org/2002/07/owl#intersectionOf> _:b594 .
 _:b250 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b250 <http://www.w3.org/2002/07/owl#hasValue> "Mitthyridium undulatum" .
 _:b250 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1361,7 +1363,7 @@ _:b255 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b255 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b255 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b256 .
 _:b256 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b256 <http://www.w3.org/2002/07/owl#intersectionOf> _:b589 .
+_:b256 <http://www.w3.org/2002/07/owl#intersectionOf> _:b596 .
 _:b257 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b257 <http://www.w3.org/2002/07/owl#hasValue> "Mitthyridium fasciculatum" .
 _:b257 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1387,7 +1389,7 @@ _:b262 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b262 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b262 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b263 .
 _:b263 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b263 <http://www.w3.org/2002/07/owl#intersectionOf> _:b591 .
+_:b263 <http://www.w3.org/2002/07/owl#intersectionOf> _:b598 .
 _:b264 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b264 <http://www.w3.org/2002/07/owl#hasValue> "Mitthyridium constrictum" .
 _:b264 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1413,7 +1415,7 @@ _:b27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b27 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b27 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
 _:b270 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b270 <http://www.w3.org/2002/07/owl#intersectionOf> _:b593 .
+_:b270 <http://www.w3.org/2002/07/owl#intersectionOf> _:b600 .
 _:b271 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b271 <http://www.w3.org/2002/07/owl#hasValue> "Mitthyridium obtusifolium" .
 _:b271 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1436,7 +1438,7 @@ _:b276 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b276 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b276 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b277 .
 _:b277 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b277 <http://www.w3.org/2002/07/owl#intersectionOf> _:b595 .
+_:b277 <http://www.w3.org/2002/07/owl#intersectionOf> _:b602 .
 _:b278 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b278 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon fimbriatulus" .
 _:b278 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1462,7 +1464,7 @@ _:b283 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b283 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b283 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b284 .
 _:b284 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b284 <http://www.w3.org/2002/07/owl#intersectionOf> _:b597 .
+_:b284 <http://www.w3.org/2002/07/owl#intersectionOf> _:b604 .
 _:b285 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b285 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon armatus" .
 _:b285 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1489,7 +1491,7 @@ _:b290 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b290 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b290 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b291 .
 _:b291 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b291 <http://www.w3.org/2002/07/owl#intersectionOf> _:b599 .
+_:b291 <http://www.w3.org/2002/07/owl#intersectionOf> _:b606 .
 _:b292 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b292 <http://www.w3.org/2002/07/owl#hasValue> "Trachymitrium" .
 _:b292 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1510,7 +1512,7 @@ _:b297 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b297 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b297 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b298 .
 _:b298 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b298 <http://www.w3.org/2002/07/owl#intersectionOf> _:b601 .
+_:b298 <http://www.w3.org/2002/07/owl#intersectionOf> _:b608 .
 _:b299 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b299 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanella" .
 _:b299 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1539,7 +1541,7 @@ _:b304 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b304 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b304 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b305 .
 _:b305 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b305 <http://www.w3.org/2002/07/owl#intersectionOf> _:b603 .
+_:b305 <http://www.w3.org/2002/07/owl#intersectionOf> _:b610 .
 _:b306 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b306 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon involutus" .
 _:b306 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1565,7 +1567,7 @@ _:b311 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b311 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b311 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b312 .
 _:b312 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b312 <http://www.w3.org/2002/07/owl#intersectionOf> _:b605 .
+_:b312 <http://www.w3.org/2002/07/owl#intersectionOf> _:b612 .
 _:b313 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b313 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon banksii" .
 _:b313 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1588,9 +1590,9 @@ _:b318 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b318 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b318 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b319 .
 _:b319 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b319 <http://www.w3.org/2002/07/owl#intersectionOf> _:b607 .
+_:b319 <http://www.w3.org/2002/07/owl#intersectionOf> _:b614 .
 _:b32 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b32 <http://www.w3.org/2002/07/owl#intersectionOf> _:b609 .
+_:b32 <http://www.w3.org/2002/07/owl#intersectionOf> _:b616 .
 _:b320 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b320 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon trachyphyllus" .
 _:b320 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1613,7 +1615,7 @@ _:b325 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b325 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b325 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b326 .
 _:b326 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b326 <http://www.w3.org/2002/07/owl#intersectionOf> _:b611 .
+_:b326 <http://www.w3.org/2002/07/owl#intersectionOf> _:b618 .
 _:b327 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b327 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon parasiticus" .
 _:b327 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1639,7 +1641,7 @@ _:b332 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b332 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b332 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b333 .
 _:b333 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b333 <http://www.w3.org/2002/07/owl#intersectionOf> _:b613 .
+_:b333 <http://www.w3.org/2002/07/owl#intersectionOf> _:b620 .
 _:b334 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b334 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon prolifer" .
 _:b334 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1665,7 +1667,7 @@ _:b34 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b34 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b34 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
 _:b340 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b340 <http://www.w3.org/2002/07/owl#intersectionOf> _:b615 .
+_:b340 <http://www.w3.org/2002/07/owl#intersectionOf> _:b622 .
 _:b341 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b341 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon leprieurii" .
 _:b341 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1688,7 +1690,7 @@ _:b346 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b346 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b346 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b347 .
 _:b347 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b347 <http://www.w3.org/2002/07/owl#intersectionOf> _:b617 .
+_:b347 <http://www.w3.org/2002/07/owl#intersectionOf> _:b624 .
 _:b348 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b348 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon tortillis" .
 _:b348 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1714,7 +1716,7 @@ _:b353 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b353 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b353 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b354 .
 _:b354 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b354 <http://www.w3.org/2002/07/owl#intersectionOf> _:b619 .
+_:b354 <http://www.w3.org/2002/07/owl#intersectionOf> _:b626 .
 _:b355 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b355 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon albovaginatus" .
 _:b355 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1743,7 +1745,7 @@ _:b360 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b360 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b360 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b361 .
 _:b361 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b361 <http://www.w3.org/2002/07/owl#intersectionOf> _:b621 .
+_:b361 <http://www.w3.org/2002/07/owl#intersectionOf> _:b628 .
 _:b362 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b362 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon albovaginatus" .
 _:b362 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1766,7 +1768,7 @@ _:b367 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b367 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b367 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b368 .
 _:b368 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b368 <http://www.w3.org/2002/07/owl#intersectionOf> _:b623 .
+_:b368 <http://www.w3.org/2002/07/owl#intersectionOf> _:b630 .
 _:b369 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b369 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon ciliatus" .
 _:b369 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1792,7 +1794,7 @@ _:b374 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b374 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b374 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b375 .
 _:b375 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b375 <http://www.w3.org/2002/07/owl#intersectionOf> _:b625 .
+_:b375 <http://www.w3.org/2002/07/owl#intersectionOf> _:b632 .
 _:b376 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b376 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon perarmatus" .
 _:b376 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1818,7 +1820,7 @@ _:b381 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b381 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b381 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b382 .
 _:b382 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b382 <http://www.w3.org/2002/07/owl#intersectionOf> _:b627 .
+_:b382 <http://www.w3.org/2002/07/owl#intersectionOf> _:b634 .
 _:b383 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b383 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon muelleri" .
 _:b383 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1839,9 +1841,9 @@ _:b388 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b388 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b388 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b389 .
 _:b389 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b389 <http://www.w3.org/2002/07/owl#intersectionOf> _:b629 .
+_:b389 <http://www.w3.org/2002/07/owl#intersectionOf> _:b636 .
 _:b39 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b39 <http://www.w3.org/2002/07/owl#intersectionOf> _:b631 .
+_:b39 <http://www.w3.org/2002/07/owl#intersectionOf> _:b638 .
 _:b390 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b390 <http://www.w3.org/2002/07/owl#hasValue> "Albifolium" .
 _:b390 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1862,7 +1864,7 @@ _:b395 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b395 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b395 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b396 .
 _:b396 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b396 <http://www.w3.org/2002/07/owl#intersectionOf> _:b633 .
+_:b396 <http://www.w3.org/2002/07/owl#intersectionOf> _:b640 .
 _:b397 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b397 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes" .
 _:b397 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1873,12 +1875,12 @@ _:b399 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b399 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/OBI_0000312> .
 _:b399 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b400 .
 _:b4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b4 <http://www.w3.org/2002/07/owl#intersectionOf> _:b635 .
+_:b4 <http://www.w3.org/2002/07/owl#intersectionOf> _:b642 .
 _:b40 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b40 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon japonicus" .
 _:b40 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b400 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b400 <http://www.w3.org/2002/07/owl#intersectionOf> _:b637 .
+_:b400 <http://www.w3.org/2002/07/owl#intersectionOf> _:b644 .
 _:b401 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b401 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/OBI_0000293> .
 _:b401 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://example.org/phyx.js/example#phyloref1> .
@@ -1898,7 +1900,7 @@ _:b405 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b405 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b405 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b406 .
 _:b406 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b406 <http://www.w3.org/2002/07/owl#intersectionOf> _:b639 .
+_:b406 <http://www.w3.org/2002/07/owl#intersectionOf> _:b646 .
 _:b407 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b407 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon confertus" .
 _:b407 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1924,7 +1926,7 @@ _:b412 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b412 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b412 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b413 .
 _:b413 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b413 <http://www.w3.org/2002/07/owl#intersectionOf> _:b641 .
+_:b413 <http://www.w3.org/2002/07/owl#intersectionOf> _:b648 .
 _:b414 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b414 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes glaucum" .
 _:b414 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1950,7 +1952,7 @@ _:b42 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b43 .
 _:b42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b42 <http://www.w3.org/2000/01/rdf-schema#label> "Calymperes" .
 _:b420 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b420 <http://www.w3.org/2002/07/owl#intersectionOf> _:b643 .
+_:b420 <http://www.w3.org/2002/07/owl#intersectionOf> _:b650 .
 _:b421 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b421 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes albescens" .
 _:b421 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -1973,7 +1975,7 @@ _:b426 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b426 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b426 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b427 .
 _:b427 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b427 <http://www.w3.org/2002/07/owl#intersectionOf> _:b645 .
+_:b427 <http://www.w3.org/2002/07/owl#intersectionOf> _:b652 .
 _:b428 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b428 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes octoblepharoides" .
 _:b428 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -2000,7 +2002,7 @@ _:b433 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b433 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b433 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b434 .
 _:b434 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b434 <http://www.w3.org/2002/07/owl#intersectionOf> _:b647 .
+_:b434 <http://www.w3.org/2002/07/owl#intersectionOf> _:b654 .
 _:b435 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b435 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes seychellarum" .
 _:b435 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -2010,56 +2012,53 @@ _:b436 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/v
 _:b437 <http://rs.tdwg.org/dwc/terms/catalogNumber> "Wall 2527, Fiji" .
 _:b437 <http://rs.tdwg.org/dwc/terms/institutionCode> "UC" .
 _:b437 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/dwc/terms/Occurrence> .
-_:b438 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b438 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
-_:b438 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b439 .
-_:b439 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b439 <http://www.w3.org/2002/07/owl#hasValue> "urn:catalog:UC::Wall 2527, Fiji" .
-_:b439 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/dwc/terms/occurrenceID> .
+_:b438 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b439 .
+_:b438 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b438 <http://www.w3.org/2000/01/rdf-schema#label> "Sole representative of genus Exodictyon" .
+_:b439 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Exodictyon" .
+_:b439 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b439 <http://www.w3.org/2000/01/rdf-schema#label> "Exodictyon" .
 _:b44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b44 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b44 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b45 .
 _:b440 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b440 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/OBI_0000312> .
+_:b440 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b440 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b441 .
-_:b441 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b441 <http://www.w3.org/2002/07/owl#intersectionOf> _:b649 .
+_:b441 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b441 <http://www.w3.org/2002/07/owl#hasValue> "urn:catalog:UC::Wall 2527, Fiji" .
+_:b441 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/dwc/terms/occurrenceID> .
 _:b442 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b442 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/OBI_0000293> .
-_:b442 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://example.org/phyx.js/example#phyloref0> .
-_:b443 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b444 .
-_:b443 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b443 <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum" .
-_:b444 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Exostratum" .
-_:b444 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b444 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b444 <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum" .
+_:b442 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
+_:b442 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b443 .
+_:b443 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b443 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b443 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b444 .
+_:b444 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b444 <http://www.w3.org/2002/07/owl#intersectionOf> _:b656 .
 _:b445 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b445 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
-_:b445 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b446 .
+_:b445 <http://www.w3.org/2002/07/owl#hasValue> "Exodictyon" .
+_:b445 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b446 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b446 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b446 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b447 .
-_:b447 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b447 <http://www.w3.org/2002/07/owl#intersectionOf> _:b651 .
-_:b448 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b448 <http://www.w3.org/2002/07/owl#hasValue> "Exostratum" .
-_:b448 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b446 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b446 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
+_:b447 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b447 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/OBI_0000312> .
+_:b447 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b448 .
+_:b448 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b448 <http://www.w3.org/2002/07/owl#intersectionOf> _:b658 .
 _:b449 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b449 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b449 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
+_:b449 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/OBI_0000293> .
+_:b449 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://example.org/phyx.js/example#phyloref0> .
 _:b45 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b45 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b45 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b46 .
 _:b450 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b451 .
 _:b450 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b450 <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum blumii 245" .
-_:b451 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Exostratum" .
-_:b451 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Exostratum blumii" .
+_:b450 <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum" .
+_:b451 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Exostratum" .
 _:b451 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b451 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "blumii" .
 _:b451 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b451 <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum blumii 245" .
+_:b451 <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum" .
 _:b452 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b452 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b452 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b453 .
@@ -2067,32 +2066,32 @@ _:b453 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b453 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b453 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b454 .
 _:b454 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b454 <http://www.w3.org/2002/07/owl#intersectionOf> _:b653 .
+_:b454 <http://www.w3.org/2002/07/owl#intersectionOf> _:b660 .
 _:b455 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b455 <http://www.w3.org/2002/07/owl#hasValue> "Exostratum blumii" .
+_:b455 <http://www.w3.org/2002/07/owl#hasValue> "Exostratum" .
 _:b455 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b456 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b456 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b456 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
 _:b457 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b458 .
 _:b457 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b457 <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum blumii 243" .
+_:b457 <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum blumii 245" .
 _:b458 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Exostratum" .
 _:b458 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Exostratum blumii" .
 _:b458 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b458 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "blumii" .
 _:b458 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b458 <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum blumii 243" .
+_:b458 <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum blumii 245" .
 _:b459 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b459 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b459 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b460 .
 _:b46 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b46 <http://www.w3.org/2002/07/owl#intersectionOf> _:b655 .
+_:b46 <http://www.w3.org/2002/07/owl#intersectionOf> _:b662 .
 _:b460 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b460 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b460 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b461 .
 _:b461 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b461 <http://www.w3.org/2002/07/owl#intersectionOf> _:b657 .
+_:b461 <http://www.w3.org/2002/07/owl#intersectionOf> _:b664 .
 _:b462 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b462 <http://www.w3.org/2002/07/owl#hasValue> "Exostratum blumii" .
 _:b462 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -2101,13 +2100,13 @@ _:b463 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc
 _:b463 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
 _:b464 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b465 .
 _:b464 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b464 <http://www.w3.org/2000/01/rdf-schema#label> "Arthrocormus schimperi" .
-_:b465 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Arthrocormus" .
-_:b465 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Arthrocormus schimperi" .
+_:b464 <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum blumii 243" .
+_:b465 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Exostratum" .
+_:b465 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Exostratum blumii" .
 _:b465 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b465 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "schimperi" .
+_:b465 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "blumii" .
 _:b465 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b465 <http://www.w3.org/2000/01/rdf-schema#label> "Arthrocormus schimperi" .
+_:b465 <http://www.w3.org/2000/01/rdf-schema#label> "Exostratum blumii 243" .
 _:b466 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b466 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b466 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b467 .
@@ -2115,9 +2114,9 @@ _:b467 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b467 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b467 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b468 .
 _:b468 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b468 <http://www.w3.org/2002/07/owl#intersectionOf> _:b659 .
+_:b468 <http://www.w3.org/2002/07/owl#intersectionOf> _:b666 .
 _:b469 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b469 <http://www.w3.org/2002/07/owl#hasValue> "Arthrocormus schimperi" .
+_:b469 <http://www.w3.org/2002/07/owl#hasValue> "Exostratum blumii" .
 _:b469 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b47 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b47 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes" .
@@ -2127,57 +2126,62 @@ _:b470 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc
 _:b470 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
 _:b471 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b472 .
 _:b471 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b471 <http://www.w3.org/2000/01/rdf-schema#label> "Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)" .
-_:b472 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Leucophanes octoblepharoides" .
+_:b471 <http://www.w3.org/2000/01/rdf-schema#label> "Arthrocormus schimperi" .
+_:b472 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Arthrocormus" .
+_:b472 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Arthrocormus schimperi" .
 _:b472 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b472 <http://www.w3.org/2000/01/rdf-schema#label> "Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)" .
-_:b473 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b473 <http://www.w3.org/2002/07/owl#intersectionOf> _:b661 .
-_:b474 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b474 <http://www.w3.org/2002/07/owl#intersectionOf> _:b663 .
-_:b475 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b475 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
-_:b475 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b476 .
+_:b472 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "schimperi" .
+_:b472 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
+_:b472 <http://www.w3.org/2000/01/rdf-schema#label> "Arthrocormus schimperi" .
+_:b473 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b473 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
+_:b473 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b474 .
+_:b474 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b474 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b474 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b475 .
+_:b475 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b475 <http://www.w3.org/2002/07/owl#intersectionOf> _:b668 .
 _:b476 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b476 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b476 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b477 .
-_:b477 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b477 <http://www.w3.org/2002/07/owl#intersectionOf> _:b665 .
-_:b478 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b478 <http://www.w3.org/2002/07/owl#hasValue> "Exodictyon" .
-_:b478 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b479 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b479 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b479 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
+_:b476 <http://www.w3.org/2002/07/owl#hasValue> "Arthrocormus schimperi" .
+_:b476 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b477 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b477 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b477 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
+_:b478 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b479 .
+_:b478 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b478 <http://www.w3.org/2000/01/rdf-schema#label> "Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)" .
+_:b479 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Leucophanes octoblepharoides" .
+_:b479 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b479 <http://www.w3.org/2000/01/rdf-schema#label> "Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)" .
 _:b48 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b48 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b48 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
-_:b480 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b480 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
-_:b480 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b481 .
-_:b481 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b481 <http://www.w3.org/2002/07/owl#hasValue> "urn:catalog:UC::Wall 2527, Fiji" .
-_:b481 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/dwc/terms/occurrenceID> .
+_:b480 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b480 <http://www.w3.org/2002/07/owl#intersectionOf> _:b670 .
+_:b481 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b481 <http://www.w3.org/2002/07/owl#intersectionOf> _:b672 .
 _:b482 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b482 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b482 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b482 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b483 .
 _:b483 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b483 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b483 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b484 .
 _:b484 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b484 <http://www.w3.org/2002/07/owl#intersectionOf> _:b667 .
+_:b484 <http://www.w3.org/2002/07/owl#intersectionOf> _:b674 .
 _:b485 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b485 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes octoblepharoides" .
+_:b485 <http://www.w3.org/2002/07/owl#hasValue> "Exodictyon" .
 _:b485 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b486 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b486 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b486 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
-_:b487 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b487 <http://www.w3.org/2002/07/owl#intersectionOf> _:b669 .
-_:b488 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b488 <http://www.w3.org/2002/07/owl#intersectionOf> _:b671 .
+_:b487 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b487 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b487 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b488 .
+_:b488 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b488 <http://www.w3.org/2002/07/owl#hasValue> "urn:catalog:UC::Wall 2527, Fiji" .
+_:b488 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/dwc/terms/occurrenceID> .
 _:b489 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b489 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b489 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b489 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b490 .
 _:b49 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b50 .
 _:b49 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
@@ -2186,30 +2190,28 @@ _:b490 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002
 _:b490 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b490 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b491 .
 _:b491 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b491 <http://www.w3.org/2002/07/owl#intersectionOf> _:b673 .
+_:b491 <http://www.w3.org/2002/07/owl#intersectionOf> _:b676 .
 _:b492 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b492 <http://www.w3.org/2002/07/owl#hasValue> "Exodictyon" .
+_:b492 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes octoblepharoides" .
 _:b492 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b493 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b493 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b493 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
-_:b494 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b494 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
-_:b494 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b495 .
-_:b495 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b495 <http://www.w3.org/2002/07/owl#hasValue> "urn:catalog:UC::Wall 2527, Fiji" .
-_:b495 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/dwc/terms/occurrenceID> .
+_:b494 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b494 <http://www.w3.org/2002/07/owl#intersectionOf> _:b678 .
+_:b495 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b495 <http://www.w3.org/2002/07/owl#intersectionOf> _:b680 .
 _:b496 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b496 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b496 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
 _:b496 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b497 .
 _:b497 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b497 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b497 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b497 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b498 .
-_:b498 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b498 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b498 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b499 .
-_:b499 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b499 <http://www.w3.org/2002/07/owl#intersectionOf> _:b675 .
+_:b498 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b498 <http://www.w3.org/2002/07/owl#intersectionOf> _:b682 .
+_:b499 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b499 <http://www.w3.org/2002/07/owl#hasValue> "Exodictyon" .
+_:b499 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b5 <http://www.w3.org/2002/07/owl#hasValue> "Octoblepharum" .
 _:b5 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -2220,531 +2222,555 @@ _:b50 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "mauritianus" 
 _:b50 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b50 <http://www.w3.org/2000/01/rdf-schema#label> "Syrrhopodon mauritianus" .
 _:b500 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b500 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes octoblepharoides" .
-_:b500 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b500 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b500 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
 _:b501 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b501 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b501 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
-_:b502 <http://rs.tdwg.org/dwc/terms/nameAccordingTo> "Ellis in Lindbergia 11: 16 (1985)" .
-_:b502 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b503 .
-_:b502 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b502 <http://www.w3.org/2000/01/rdf-schema#label> "Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)" .
-_:b503 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Exodictyon" .
-_:b503 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b503 <http://www.w3.org/2000/01/rdf-schema#label> "Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)" .
-_:b504 <http://rs.tdwg.org/dwc/terms/occurrenceID> "urn:catalog:UC::Wall 2527, Fiji" .
-_:b504 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/dwc/terms/Occurrence> .
-_:b504 <http://www.w3.org/2000/01/rdf-schema#label> "Wall 2527, Fiji (UC)" .
-_:b505 <http://rs.tdwg.org/dwc/terms/basisOfRecord> "PreservedSpecimen" .
-_:b505 <http://rs.tdwg.org/dwc/terms/catalogNumber> "Wall 2527, Fiji" .
-_:b505 <http://rs.tdwg.org/dwc/terms/institutionCode> "UC" .
-_:b505 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/dwc/terms/Occurrence> .
-_:b505 <http://www.w3.org/2000/01/rdf-schema#label> "Wall 2527, Fiji (uc)" .
+_:b501 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b501 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b502 .
+_:b502 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b502 <http://www.w3.org/2002/07/owl#hasValue> "urn:catalog:UC::Wall 2527, Fiji" .
+_:b502 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/dwc/terms/occurrenceID> .
+_:b503 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b503 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b503 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b504 .
+_:b504 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b504 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b504 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b505 .
+_:b505 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b505 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b505 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b506 .
 _:b506 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b506 <http://www.w3.org/2002/07/owl#intersectionOf> _:b677 .
-_:b507 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b507 <http://www.w3.org/2002/07/owl#intersectionOf> _:b679 .
+_:b506 <http://www.w3.org/2002/07/owl#intersectionOf> _:b684 .
+_:b507 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b507 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes octoblepharoides" .
+_:b507 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b508 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b508 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
-_:b508 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b509 .
-_:b509 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b509 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b509 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b510 .
+_:b508 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b508 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
+_:b509 <http://rs.tdwg.org/dwc/terms/nameAccordingTo> "Ellis in Lindbergia 11: 16 (1985)" .
+_:b509 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b510 .
+_:b509 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b509 <http://www.w3.org/2000/01/rdf-schema#label> "Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)" .
 _:b51 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b51 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b51 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b52 .
-_:b510 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b510 <http://www.w3.org/2002/07/owl#intersectionOf> _:b681 .
-_:b511 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b511 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes octoblepharoides" .
-_:b511 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b512 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b512 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b512 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
-_:b513 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b513 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
-_:b513 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b514 .
-_:b514 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b514 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b514 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b515 .
-_:b515 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b515 <http://www.w3.org/2002/07/owl#intersectionOf> _:b683 .
+_:b510 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Exodictyon" .
+_:b510 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b510 <http://www.w3.org/2000/01/rdf-schema#label> "Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)" .
+_:b511 <http://rs.tdwg.org/dwc/terms/occurrenceID> "urn:catalog:UC::Wall 2527, Fiji" .
+_:b511 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/dwc/terms/Occurrence> .
+_:b511 <http://www.w3.org/2000/01/rdf-schema#label> "Wall 2527, Fiji (UC)" .
+_:b512 <http://rs.tdwg.org/dwc/terms/basisOfRecord> "PreservedSpecimen" .
+_:b512 <http://rs.tdwg.org/dwc/terms/catalogNumber> "Wall 2527, Fiji" .
+_:b512 <http://rs.tdwg.org/dwc/terms/institutionCode> "UC" .
+_:b512 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/dwc/terms/Occurrence> .
+_:b512 <http://www.w3.org/2000/01/rdf-schema#label> "Wall 2527, Fiji (uc)" .
+_:b513 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b513 <http://www.w3.org/2002/07/owl#intersectionOf> _:b686 .
+_:b514 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b514 <http://www.w3.org/2002/07/owl#intersectionOf> _:b688 .
+_:b515 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b515 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b515 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b516 .
 _:b516 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b516 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes seychellarum" .
-_:b516 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b517 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b517 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b517 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
+_:b516 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b516 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b517 .
+_:b517 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b517 <http://www.w3.org/2002/07/owl#intersectionOf> _:b690 .
 _:b518 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b518 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b518 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b519 .
+_:b518 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes octoblepharoides" .
+_:b518 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b519 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b519 <http://www.w3.org/2002/07/owl#hasValue> "urn:catalog:UC::Wall 2527, Fiji" .
-_:b519 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/dwc/terms/occurrenceID> .
+_:b519 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b519 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
 _:b52 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b52 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b52 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b53 .
-_:b520 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b520 <http://www.w3.org/2002/07/owl#intersectionOf> _:b685 .
-_:b521 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b521 <http://www.w3.org/2002/07/owl#intersectionOf> _:b687 .
-_:b522 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b522 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
-_:b522 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b523 .
+_:b520 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b520 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b520 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b521 .
+_:b521 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b521 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b521 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b522 .
+_:b522 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b522 <http://www.w3.org/2002/07/owl#intersectionOf> _:b692 .
 _:b523 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b523 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b523 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b524 .
-_:b524 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b524 <http://www.w3.org/2002/07/owl#intersectionOf> _:b689 .
+_:b523 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes seychellarum" .
+_:b523 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b524 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b524 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b524 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
 _:b525 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b525 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes octoblepharoides" .
-_:b525 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b525 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b525 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b526 .
 _:b526 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b526 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b526 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
-_:b527 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b527 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
-_:b527 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b528 .
-_:b528 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b528 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b528 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b529 .
-_:b529 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b529 <http://www.w3.org/2002/07/owl#intersectionOf> _:b691 .
+_:b526 <http://www.w3.org/2002/07/owl#hasValue> "urn:catalog:UC::Wall 2527, Fiji" .
+_:b526 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/dwc/terms/occurrenceID> .
+_:b527 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b527 <http://www.w3.org/2002/07/owl#intersectionOf> _:b694 .
+_:b528 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b528 <http://www.w3.org/2002/07/owl#intersectionOf> _:b696 .
+_:b529 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b529 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b529 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b530 .
 _:b53 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b53 <http://www.w3.org/2002/07/owl#intersectionOf> _:b693 .
+_:b53 <http://www.w3.org/2002/07/owl#intersectionOf> _:b698 .
 _:b530 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b530 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes seychellarum" .
-_:b530 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b531 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b531 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b531 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
+_:b530 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b530 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b531 .
+_:b531 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b531 <http://www.w3.org/2002/07/owl#intersectionOf> _:b700 .
 _:b532 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b532 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
-_:b532 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b533 .
+_:b532 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes octoblepharoides" .
+_:b532 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b533 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b533 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b533 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b534 .
+_:b533 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b533 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
 _:b534 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b534 <http://www.w3.org/2002/07/owl#hasValue> "urn:catalog:UC::Wall 2527, Fiji" .
-_:b534 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/dwc/terms/occurrenceID> .
-_:b535 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b536 .
-_:b535 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b535 <http://www.w3.org/2000/01/rdf-schema#label> "Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)" .
-_:b536 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Leucophanes octoblepharoides" .
-_:b536 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b536 <http://www.w3.org/2000/01/rdf-schema#label> "Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)" .
-_:b537 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b538 .
-_:b537 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b537 <http://www.w3.org/2000/01/rdf-schema#label> "Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880)" .
-_:b538 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Leucophanes" .
-_:b538 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Leucophanes seychellarum" .
-_:b538 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
-_:b538 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "seychellarum" .
-_:b538 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b538 <http://www.w3.org/2000/01/rdf-schema#label> "Leucophanes seychellarum" .
-_:b539 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b103 .
-_:b539 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b540 .
+_:b534 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b534 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b535 .
+_:b535 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b535 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b535 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b536 .
+_:b536 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b536 <http://www.w3.org/2002/07/owl#intersectionOf> _:b702 .
+_:b537 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b537 <http://www.w3.org/2002/07/owl#hasValue> "Leucophanes seychellarum" .
+_:b537 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b538 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b538 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b538 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
+_:b539 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b539 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b539 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b540 .
 _:b54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b54 <http://www.w3.org/2002/07/owl#hasValue> "Syrrhopodon mauritianus" .
 _:b54 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b540 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b104 .
-_:b540 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b541 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b110 .
-_:b541 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b542 .
-_:b542 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b111 .
-_:b542 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b543 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b12 .
-_:b543 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b544 .
-_:b544 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b13 .
-_:b544 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b545 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b117 .
-_:b545 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b546 .
-_:b546 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b118 .
-_:b546 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b547 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b124 .
-_:b547 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b548 .
-_:b548 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b125 .
-_:b548 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b549 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b131 .
-_:b549 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b550 .
+_:b540 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b540 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b540 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b541 .
+_:b541 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b541 <http://www.w3.org/2002/07/owl#hasValue> "urn:catalog:UC::Wall 2527, Fiji" .
+_:b541 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/dwc/terms/occurrenceID> .
+_:b542 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b543 .
+_:b542 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b542 <http://www.w3.org/2000/01/rdf-schema#label> "Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)" .
+_:b543 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Leucophanes octoblepharoides" .
+_:b543 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b543 <http://www.w3.org/2000/01/rdf-schema#label> "Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)" .
+_:b544 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b545 .
+_:b544 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b544 <http://www.w3.org/2000/01/rdf-schema#label> "Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880)" .
+_:b545 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Leucophanes" .
+_:b545 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Leucophanes seychellarum" .
+_:b545 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b545 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "seychellarum" .
+_:b545 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
+_:b545 <http://www.w3.org/2000/01/rdf-schema#label> "Leucophanes seychellarum" .
+_:b546 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b103 .
+_:b546 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b547 .
+_:b547 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b104 .
+_:b547 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b548 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b110 .
+_:b548 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b549 .
+_:b549 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b111 .
+_:b549 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b55 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b55 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
-_:b550 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b132 .
-_:b550 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b551 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b138 .
-_:b551 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b552 .
-_:b552 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b139 .
-_:b552 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b553 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b145 .
-_:b553 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b554 .
-_:b554 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b146 .
-_:b554 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b555 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b152 .
-_:b555 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b556 .
-_:b556 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b153 .
-_:b556 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b557 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b159 .
-_:b557 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b558 .
-_:b558 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b160 .
-_:b558 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b559 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b166 .
-_:b559 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b560 .
+_:b550 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b12 .
+_:b550 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b551 .
+_:b551 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b13 .
+_:b551 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b552 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b117 .
+_:b552 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b553 .
+_:b553 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b118 .
+_:b553 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b554 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b124 .
+_:b554 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b555 .
+_:b555 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b125 .
+_:b555 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b556 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b131 .
+_:b556 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b557 .
+_:b557 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b132 .
+_:b557 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b558 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b138 .
+_:b558 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b559 .
+_:b559 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b139 .
+_:b559 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b56 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b57 .
 _:b56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b56 <http://www.w3.org/2000/01/rdf-schema#label> "Calymperes graffeanum" .
-_:b560 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b167 .
-_:b560 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b561 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b173 .
-_:b561 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b562 .
-_:b562 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b174 .
-_:b562 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b563 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b180 .
-_:b563 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b564 .
-_:b564 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b181 .
-_:b564 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b565 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b19 .
-_:b565 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b566 .
-_:b566 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b20 .
-_:b566 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b567 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b187 .
-_:b567 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b568 .
-_:b568 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b188 .
-_:b568 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b569 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b194 .
-_:b569 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b570 .
+_:b560 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b145 .
+_:b560 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b561 .
+_:b561 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b146 .
+_:b561 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b562 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b152 .
+_:b562 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b563 .
+_:b563 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b153 .
+_:b563 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b564 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b159 .
+_:b564 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b565 .
+_:b565 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b160 .
+_:b565 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b566 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b166 .
+_:b566 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b567 .
+_:b567 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b167 .
+_:b567 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b568 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b173 .
+_:b568 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b569 .
+_:b569 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b174 .
+_:b569 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b57 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Calymperes" .
 _:b57 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Calymperes graffeanum" .
 _:b57 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b57 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "graffeanum" .
 _:b57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b57 <http://www.w3.org/2000/01/rdf-schema#label> "Calymperes graffeanum" .
-_:b570 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b195 .
-_:b570 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b571 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b201 .
-_:b571 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b572 .
-_:b572 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b202 .
-_:b572 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b573 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b208 .
-_:b573 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b574 .
-_:b574 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b209 .
-_:b574 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b575 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b215 .
-_:b575 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b576 .
-_:b576 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b216 .
-_:b576 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b577 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b222 .
-_:b577 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b578 .
-_:b578 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b223 .
-_:b578 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b579 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b229 .
-_:b579 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b580 .
+_:b570 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b180 .
+_:b570 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b571 .
+_:b571 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b181 .
+_:b571 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b572 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b19 .
+_:b572 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b573 .
+_:b573 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b20 .
+_:b573 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b574 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b187 .
+_:b574 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b575 .
+_:b575 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b188 .
+_:b575 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b576 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b194 .
+_:b576 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b577 .
+_:b577 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b195 .
+_:b577 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b578 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b201 .
+_:b578 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b579 .
+_:b579 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b202 .
+_:b579 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b58 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b58 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b59 .
-_:b580 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b230 .
-_:b580 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b581 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b236 .
-_:b581 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b582 .
-_:b582 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b237 .
-_:b582 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b583 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b243 .
-_:b583 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b584 .
-_:b584 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b244 .
-_:b584 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b585 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b250 .
-_:b585 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b586 .
-_:b586 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b251 .
-_:b586 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b587 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b26 .
-_:b587 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b588 .
-_:b588 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b27 .
-_:b588 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b589 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b257 .
-_:b589 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b590 .
+_:b580 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b208 .
+_:b580 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b581 .
+_:b581 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b209 .
+_:b581 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b582 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b215 .
+_:b582 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b583 .
+_:b583 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b216 .
+_:b583 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b584 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b222 .
+_:b584 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b585 .
+_:b585 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b223 .
+_:b585 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b586 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b229 .
+_:b586 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b587 .
+_:b587 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b230 .
+_:b587 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b588 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b236 .
+_:b588 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b589 .
+_:b589 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b237 .
+_:b589 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b59 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b59 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b59 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b60 .
-_:b590 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b258 .
-_:b590 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b591 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b264 .
-_:b591 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b592 .
-_:b592 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b265 .
-_:b592 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b593 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b271 .
-_:b593 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b594 .
-_:b594 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b272 .
-_:b594 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b595 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b278 .
-_:b595 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b596 .
-_:b596 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b279 .
-_:b596 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b597 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b285 .
-_:b597 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b598 .
-_:b598 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b286 .
-_:b598 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b599 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b292 .
-_:b599 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b600 .
+_:b590 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b243 .
+_:b590 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b591 .
+_:b591 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b244 .
+_:b591 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b592 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b250 .
+_:b592 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b593 .
+_:b593 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b251 .
+_:b593 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b594 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b26 .
+_:b594 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b595 .
+_:b595 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b27 .
+_:b595 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b596 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b257 .
+_:b596 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b597 .
+_:b597 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b258 .
+_:b597 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b598 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b264 .
+_:b598 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b599 .
+_:b599 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b265 .
+_:b599 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b6 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b6 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
 _:b60 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b60 <http://www.w3.org/2002/07/owl#intersectionOf> _:b695 .
-_:b600 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b293 .
-_:b600 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b601 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b299 .
-_:b601 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b602 .
-_:b602 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b300 .
-_:b602 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b603 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b306 .
-_:b603 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b604 .
-_:b604 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b307 .
-_:b604 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b605 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b313 .
-_:b605 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b606 .
-_:b606 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b314 .
-_:b606 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b607 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b320 .
-_:b607 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b608 .
-_:b608 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b321 .
-_:b608 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b609 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b33 .
-_:b609 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b610 .
+_:b60 <http://www.w3.org/2002/07/owl#intersectionOf> _:b704 .
+_:b600 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b271 .
+_:b600 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b601 .
+_:b601 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b272 .
+_:b601 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b602 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b278 .
+_:b602 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b603 .
+_:b603 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b279 .
+_:b603 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b604 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b285 .
+_:b604 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b605 .
+_:b605 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b286 .
+_:b605 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b606 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b292 .
+_:b606 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b607 .
+_:b607 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b293 .
+_:b607 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b608 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b299 .
+_:b608 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b609 .
+_:b609 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b300 .
+_:b609 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b61 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes graffeanum" .
 _:b61 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b610 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b34 .
-_:b610 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b611 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b327 .
-_:b611 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b612 .
-_:b612 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b328 .
-_:b612 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b613 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b334 .
-_:b613 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b614 .
-_:b614 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b335 .
-_:b614 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b615 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b341 .
-_:b615 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b616 .
-_:b616 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b342 .
-_:b616 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b617 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b348 .
-_:b617 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b618 .
-_:b618 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b349 .
-_:b618 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b619 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b355 .
-_:b619 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b620 .
+_:b610 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b306 .
+_:b610 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b611 .
+_:b611 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b307 .
+_:b611 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b612 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b313 .
+_:b612 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b613 .
+_:b613 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b314 .
+_:b613 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b614 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b320 .
+_:b614 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b615 .
+_:b615 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b321 .
+_:b615 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b616 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b33 .
+_:b616 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b617 .
+_:b617 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b34 .
+_:b617 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b618 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b327 .
+_:b618 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b619 .
+_:b619 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b328 .
+_:b619 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b62 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b62 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
-_:b620 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b356 .
-_:b620 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b621 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b362 .
-_:b621 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b622 .
-_:b622 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b363 .
-_:b622 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b623 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b369 .
-_:b623 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b624 .
-_:b624 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b370 .
-_:b624 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b625 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b376 .
-_:b625 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b626 .
-_:b626 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b377 .
-_:b626 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b627 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b383 .
-_:b627 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b628 .
-_:b628 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b384 .
-_:b628 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b629 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b390 .
-_:b629 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b630 .
+_:b620 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b334 .
+_:b620 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b621 .
+_:b621 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b335 .
+_:b621 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b622 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b341 .
+_:b622 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b623 .
+_:b623 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b342 .
+_:b623 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b624 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b348 .
+_:b624 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b625 .
+_:b625 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b349 .
+_:b625 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b626 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b355 .
+_:b626 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b627 .
+_:b627 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b356 .
+_:b627 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b628 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b362 .
+_:b628 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b629 .
+_:b629 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b363 .
+_:b629 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b63 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b64 .
 _:b63 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b63 <http://www.w3.org/2000/01/rdf-schema#label> "Calymperes afzelii 165" .
-_:b630 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b391 .
-_:b630 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b631 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b40 .
-_:b631 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b632 .
-_:b632 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b41 .
-_:b632 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b633 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b397 .
-_:b633 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b634 .
-_:b634 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b398 .
-_:b634 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b635 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b5 .
-_:b635 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b636 .
-_:b636 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b6 .
-_:b636 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b637 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.obolibrary.org/obo/OBI_0302910> .
-_:b637 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b638 .
-_:b638 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b401 .
-_:b638 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b639 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b407 .
-_:b639 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b640 .
+_:b630 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b369 .
+_:b630 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b631 .
+_:b631 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b370 .
+_:b631 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b632 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b376 .
+_:b632 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b633 .
+_:b633 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b377 .
+_:b633 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b634 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b383 .
+_:b634 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b635 .
+_:b635 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b384 .
+_:b635 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b636 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b390 .
+_:b636 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b637 .
+_:b637 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b391 .
+_:b637 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b638 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b40 .
+_:b638 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b639 .
+_:b639 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b41 .
+_:b639 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b64 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Calymperes" .
 _:b64 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Calymperes afzelii" .
 _:b64 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b64 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "afzelii" .
 _:b64 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b64 <http://www.w3.org/2000/01/rdf-schema#label> "Calymperes afzelii 165" .
-_:b640 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b408 .
-_:b640 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b641 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b414 .
-_:b641 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b642 .
-_:b642 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b415 .
-_:b642 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b643 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b421 .
-_:b643 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b644 .
-_:b644 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b422 .
-_:b644 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b645 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b428 .
-_:b645 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b646 .
-_:b646 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b429 .
-_:b646 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b647 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b435 .
-_:b647 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b648 .
-_:b648 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b436 .
-_:b648 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b649 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.obolibrary.org/obo/OBI_0302910> .
-_:b649 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b650 .
+_:b640 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b397 .
+_:b640 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b641 .
+_:b641 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b398 .
+_:b641 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b642 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b5 .
+_:b642 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b643 .
+_:b643 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b6 .
+_:b643 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b644 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.obolibrary.org/obo/OBI_0302910> .
+_:b644 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b645 .
+_:b645 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b401 .
+_:b645 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b646 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b407 .
+_:b646 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b647 .
+_:b647 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b408 .
+_:b647 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b648 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b414 .
+_:b648 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b649 .
+_:b649 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b415 .
+_:b649 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b65 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b65 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b65 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b66 .
-_:b650 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b442 .
-_:b650 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b651 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b448 .
-_:b651 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b652 .
-_:b652 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b449 .
-_:b652 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b653 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b455 .
-_:b653 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b654 .
-_:b654 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b456 .
-_:b654 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b655 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b47 .
-_:b655 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b656 .
-_:b656 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b48 .
-_:b656 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b657 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b462 .
-_:b657 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b658 .
-_:b658 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b463 .
-_:b658 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b659 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b469 .
-_:b659 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b660 .
+_:b650 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b421 .
+_:b650 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b651 .
+_:b651 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b422 .
+_:b651 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b652 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b428 .
+_:b652 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b653 .
+_:b653 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b429 .
+_:b653 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b654 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b435 .
+_:b654 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b655 .
+_:b655 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b436 .
+_:b655 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b656 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b445 .
+_:b656 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b657 .
+_:b657 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b446 .
+_:b657 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b658 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.obolibrary.org/obo/OBI_0302910> .
+_:b658 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b659 .
+_:b659 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b449 .
+_:b659 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b66 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b66 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b66 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b67 .
-_:b660 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b470 .
-_:b660 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b661 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b474 .
-_:b661 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b662 .
-_:b662 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b482 .
-_:b662 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b663 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b475 .
-_:b663 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b664 .
-_:b664 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b480 .
-_:b664 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b665 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b478 .
-_:b665 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b666 .
-_:b666 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b479 .
-_:b666 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b667 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b485 .
-_:b667 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b668 .
-_:b668 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b486 .
-_:b668 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b669 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b488 .
-_:b669 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b670 .
+_:b660 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b455 .
+_:b660 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b661 .
+_:b661 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b456 .
+_:b661 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b662 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b47 .
+_:b662 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b663 .
+_:b663 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b48 .
+_:b663 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b664 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b462 .
+_:b664 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b665 .
+_:b665 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b463 .
+_:b665 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b666 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b469 .
+_:b666 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b667 .
+_:b667 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b470 .
+_:b667 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b668 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b476 .
+_:b668 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b669 .
+_:b669 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b477 .
+_:b669 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b67 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b67 <http://www.w3.org/2002/07/owl#intersectionOf> _:b697 .
-_:b670 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b496 .
-_:b670 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b67 <http://www.w3.org/2002/07/owl#intersectionOf> _:b706 .
+_:b670 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b481 .
+_:b670 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b671 .
 _:b671 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b489 .
-_:b671 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b672 .
-_:b672 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b494 .
-_:b672 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b673 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b492 .
-_:b673 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b674 .
-_:b674 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b493 .
-_:b674 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b675 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b500 .
-_:b675 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b676 .
-_:b676 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b501 .
-_:b676 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b677 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b507 .
-_:b677 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b678 .
-_:b678 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b518 .
-_:b678 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b679 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b508 .
-_:b679 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b680 .
+_:b671 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b672 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b482 .
+_:b672 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b673 .
+_:b673 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b487 .
+_:b673 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b674 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b485 .
+_:b674 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b675 .
+_:b675 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b486 .
+_:b675 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b676 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b492 .
+_:b676 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b677 .
+_:b677 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b493 .
+_:b677 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b678 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b495 .
+_:b678 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b679 .
+_:b679 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b503 .
+_:b679 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b68 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes afzelii" .
 _:b68 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b680 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b513 .
-_:b680 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b681 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b511 .
-_:b681 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b682 .
-_:b682 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b512 .
-_:b682 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b683 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b516 .
-_:b683 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b684 .
-_:b684 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b517 .
-_:b684 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b685 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b521 .
-_:b685 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b686 .
-_:b686 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b532 .
-_:b686 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b687 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b522 .
-_:b687 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b688 .
-_:b688 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b527 .
-_:b688 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b689 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b525 .
-_:b689 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b690 .
+_:b680 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b496 .
+_:b680 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b681 .
+_:b681 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b501 .
+_:b681 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b682 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b499 .
+_:b682 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b683 .
+_:b683 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b500 .
+_:b683 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b684 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b507 .
+_:b684 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b685 .
+_:b685 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b508 .
+_:b685 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b686 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b514 .
+_:b686 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b687 .
+_:b687 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b525 .
+_:b687 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b688 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b515 .
+_:b688 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b689 .
+_:b689 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b520 .
+_:b689 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b69 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b69 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
-_:b690 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b526 .
-_:b690 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b691 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b530 .
-_:b691 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b692 .
-_:b692 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b531 .
-_:b692 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b693 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b54 .
-_:b693 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b694 .
-_:b694 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b55 .
-_:b694 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b695 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b61 .
-_:b695 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b696 .
-_:b696 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b62 .
-_:b696 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b697 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b68 .
-_:b697 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b698 .
-_:b698 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b69 .
-_:b698 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b699 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b75 .
-_:b699 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b700 .
+_:b690 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b518 .
+_:b690 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b691 .
+_:b691 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b519 .
+_:b691 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b692 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b523 .
+_:b692 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b693 .
+_:b693 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b524 .
+_:b693 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b694 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b528 .
+_:b694 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b695 .
+_:b695 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b539 .
+_:b695 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b696 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b529 .
+_:b696 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b697 .
+_:b697 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b534 .
+_:b697 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b698 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b54 .
+_:b698 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b699 .
+_:b699 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b55 .
+_:b699 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b7 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b8 .
 _:b7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b7 <http://www.w3.org/2000/01/rdf-schema#label> "Octoblepharum albidum" .
 _:b70 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b71 .
 _:b70 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b70 <http://www.w3.org/2000/01/rdf-schema#label> "Calymperes afzelii 179" .
-_:b700 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b76 .
-_:b700 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b701 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b82 .
-_:b701 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b702 .
-_:b702 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b83 .
-_:b702 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b703 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b89 .
-_:b703 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b704 .
-_:b704 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b90 .
-_:b704 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b705 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b96 .
-_:b705 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b706 .
-_:b706 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b97 .
-_:b706 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b700 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b532 .
+_:b700 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b701 .
+_:b701 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b533 .
+_:b701 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b702 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b537 .
+_:b702 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b703 .
+_:b703 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b538 .
+_:b703 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b704 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b61 .
+_:b704 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b705 .
+_:b705 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b62 .
+_:b705 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b706 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b68 .
+_:b706 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b707 .
+_:b707 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b69 .
+_:b707 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b708 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b75 .
+_:b708 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b709 .
+_:b709 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b76 .
+_:b709 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b71 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Calymperes" .
 _:b71 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Calymperes afzelii" .
 _:b71 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b71 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "afzelii" .
 _:b71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b71 <http://www.w3.org/2000/01/rdf-schema#label> "Calymperes afzelii 179" .
+_:b710 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b82 .
+_:b710 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b711 .
+_:b711 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b83 .
+_:b711 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b712 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b89 .
+_:b712 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b713 .
+_:b713 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b90 .
+_:b713 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b714 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b96 .
+_:b714 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b715 .
+_:b715 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b97 .
+_:b715 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b72 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b72 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b72 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b73 .
@@ -2752,7 +2778,7 @@ _:b73 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b73 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b73 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b74 .
 _:b74 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b74 <http://www.w3.org/2002/07/owl#intersectionOf> _:b699 .
+_:b74 <http://www.w3.org/2002/07/owl#intersectionOf> _:b708 .
 _:b75 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b75 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes afzelii" .
 _:b75 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -2781,7 +2807,7 @@ _:b80 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b80 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b80 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b81 .
 _:b81 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b81 <http://www.w3.org/2002/07/owl#intersectionOf> _:b701 .
+_:b81 <http://www.w3.org/2002/07/owl#intersectionOf> _:b710 .
 _:b82 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b82 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes lonchophyllum" .
 _:b82 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -2804,7 +2830,7 @@ _:b87 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b87 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b87 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b88 .
 _:b88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b88 <http://www.w3.org/2002/07/owl#intersectionOf> _:b703 .
+_:b88 <http://www.w3.org/2002/07/owl#intersectionOf> _:b712 .
 _:b89 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b89 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes tahitense" .
 _:b89 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
@@ -2830,7 +2856,7 @@ _:b94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b94 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b94 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b95 .
 _:b95 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b95 <http://www.w3.org/2002/07/owl#intersectionOf> _:b705 .
+_:b95 <http://www.w3.org/2002/07/owl#intersectionOf> _:b714 .
 _:b96 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b96 <http://www.w3.org/2002/07/owl#hasValue> "Calymperes tahitense" .
 _:b96 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
