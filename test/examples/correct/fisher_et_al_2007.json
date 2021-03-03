@@ -40,7 +40,7 @@
                       "label": "Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)",
                       "nameComplete": "Exodictyon"
                     },
-                    "dwc:nameAccordingTo": "Ellis in Lindbergia 11: 16 (1985)"
+                    "nameAccordingTo": "Ellis in Lindbergia 11: 16 (1985)"
                 },
                 {
                     "label": "Wall 2527, Fiji (UC)",
@@ -94,7 +94,7 @@
             "externalSpecifiers": [
                 {
                     "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
-                    "dwc:basisOfRecord": "PreservedSpecimen",
+                    "basisOfRecord": "PreservedSpecimen",
                     "institutionCode": "UC",
                     "catalogNumber": "Wall 2527, Fiji",
                     "label": "Wall 2527, Fiji (uc)"

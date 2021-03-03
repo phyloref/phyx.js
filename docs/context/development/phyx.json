@@ -88,6 +88,7 @@
         "@type": "xsd:string"
     },
 
+    "basisOfRecord": "dwc:basisOfRecord",
     "occurrenceID": "dwc:occurrenceID",
     "catalogNumber": "dwc:catalogNumber",
     "collectionCode": "dwc:collectionCode",

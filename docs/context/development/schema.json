@@ -181,12 +181,12 @@
           "minLength": 1,
           "description": "A label for this taxonomic unit."
         },
-        "dwc:nameAccordingTo": {
+        "nameAccordingTo": {
           "type": "string",
           "minLength": 1,
           "description": "For a taxon concept, provides the source in which the specific taxon concept circumscription is defined or implied (i.e. the 'sensu' or 'sec' of the name)."
         },
-        "dwc:basisOfRecord": {
+        "basisOfRecord": {
           "type": "string",
           "minLength": 1,
           "description": "The basis of record for this specimen."
