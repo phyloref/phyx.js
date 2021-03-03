@@ -747,19 +747,16 @@ class PhylorefWrapper {
         const apomorphy = phylorefAsJSONLD.apomorphy;
 
         if (has(apomorphy, 'phenotype')) {
-          if (!has(apomorphy, '@type')) apomorphy['@type'] = [];
-          if (!Array.isArray(apomorphy['@type'])) apomorphy['@type'] = [apomorphy['@type']];
-          apomorphy['@type'].push('owl:Class');
-
-          if (!has(apomorphy, 'subClassOf')) apomorphy.subClassOf = [];
-          if (!Array.isArray(apomorphy.subClassOf)) apomorphy.subClassOf = [apomorphy.subClassOf];
-          apomorphy.subClassOf.push('https://semanticscience.org/resource/SIO_010056');
-
           // Use PATO:present as a phenotypic quality unless one is specified.
-          const phenotypicQuality = (
+          apomorphy.phenotypicQuality = (
             apomorphy.phenotypicQuality
             || 'obo:PATO_0000467' // PATO:present
           );
+
+          /*
+           * Eventually, we might want to represent this phenotype as an OWL
+           * expression, but that's beyond the scope of this project for now.
+           *
 
           apomorphy.equivalentClass = {
             '@type': 'owl:Class',
@@ -774,6 +771,7 @@ class PhylorefWrapper {
               },
             ],
           };
+          */
         }
       }
 
