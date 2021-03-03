@@ -759,6 +759,7 @@
 <http://example.org/phyx.js/example#phylogeny0_node9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/CDAO_0000140> .
 <http://example.org/phyx.js/example#phylogeny0_node9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b44 .
 <http://example.org/phyx.js/example#phylogeny0_node9> <http://www.w3.org/2000/01/rdf-schema#label> "Calymperes" .
+<http://example.org/phyx.js/example#phyloref0> <http://purl.obolibrary.org/obo/IAO_0000115> "nomen cladi conversum, Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)\n\nStem-based definition:\n\ninternal specifier: Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)\ninternal specifier: Wall 2527, Fiji (uc)\nexternal specifier: Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\nIncluded terminal clade:\n\nincrassatum" .
 <http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b478 .
 <http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component1> .
 <http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component2> .
@@ -778,6 +779,7 @@
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref0> .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b494 .
+<http://example.org/phyx.js/example#phyloref1> <http://purl.obolibrary.org/obo/IAO_0000115> "nomen cladi conversum, Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\n\nStem-based definition:\n\ninternal specifier: Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\ninternal specifier: Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880)\nexternal specifier: Wall 2527, Fiji (uc)\nIncluded terminal clades:\n\nconfertus, glaucum, octoblepharoides, seychellarum" .
 <http://example.org/phyx.js/example#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b512 .
 <http://example.org/phyx.js/example#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref1_component1> .
 <http://example.org/phyx.js/example#phyloref1> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref1_component2> .
@@ -2017,6 +2019,7 @@ _:b438 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ont
 _:b438 <http://www.w3.org/2000/01/rdf-schema#label> "Sole representative of genus Exodictyon" .
 _:b439 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Exodictyon" .
 _:b439 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b439 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b439 <http://www.w3.org/2000/01/rdf-schema#label> "Exodictyon" .
 _:b44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b44 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
@@ -2152,6 +2155,7 @@ _:b478 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ont
 _:b478 <http://www.w3.org/2000/01/rdf-schema#label> "Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)" .
 _:b479 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Leucophanes octoblepharoides" .
 _:b479 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b479 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b479 <http://www.w3.org/2000/01/rdf-schema#label> "Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)" .
 _:b48 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b48 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
@@ -2247,7 +2251,6 @@ _:b507 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/v
 _:b508 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b508 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
 _:b508 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
-_:b509 <http://rs.tdwg.org/dwc/terms/nameAccordingTo> "Ellis in Lindbergia 11: 16 (1985)" .
 _:b509 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b510 .
 _:b509 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b509 <http://www.w3.org/2000/01/rdf-schema#label> "Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)" .
@@ -2256,6 +2259,7 @@ _:b51 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo
 _:b51 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b52 .
 _:b510 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Exodictyon" .
 _:b510 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b510 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b510 <http://www.w3.org/2000/01/rdf-schema#label> "Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)" .
 _:b511 <http://rs.tdwg.org/dwc/terms/occurrenceID> "urn:catalog:UC::Wall 2527, Fiji" .
 _:b511 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/dwc/terms/Occurrence> .
@@ -2357,6 +2361,7 @@ _:b542 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ont
 _:b542 <http://www.w3.org/2000/01/rdf-schema#label> "Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)" .
 _:b543 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Leucophanes octoblepharoides" .
 _:b543 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICBN> .
+_:b543 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b543 <http://www.w3.org/2000/01/rdf-schema#label> "Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)" .
 _:b544 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b545 .
 _:b544 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .

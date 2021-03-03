@@ -17,6 +17,7 @@
                           "label": "Sole representative of genus Exodictyon",
                           "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                           "hasName": {
+                            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
                             "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
                             "label": "Exodictyon",
                             "nameComplete": "Exodictyon"
@@ -30,12 +31,13 @@
     "phylorefs": [
         {
             "label": "Exodictyon",
-            "cladeDefinition": "nomen cladi conversum, Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)\n\nStem-based definition:\n\ninternal specifier: Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)\ninternal specifier: Wall 2527, Fiji (uc)\nexternal specifier: Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\nIncluded terminal clade:\n\nincrassatum",
+            "definition": "nomen cladi conversum, Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)\n\nStem-based definition:\n\ninternal specifier: Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)\ninternal specifier: Wall 2527, Fiji (uc)\nexternal specifier: Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\nIncluded terminal clade:\n\nincrassatum",
             "internalSpecifiers": [
                 {
                     "label": "Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)",
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
+                      "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
                       "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
                       "label": "Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)",
                       "nameComplete": "Exodictyon"
@@ -53,6 +55,7 @@
                     "label": "Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)",
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
+                      "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
                       "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
                       "label": "Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)",
                       "nameComplete": "Leucophanes octoblepharoides"
@@ -67,12 +70,13 @@
         },
         {
             "label": "Leucophanes",
-            "cladeDefinition": "nomen cladi conversum, Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\n\nStem-based definition:\n\ninternal specifier: Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\ninternal specifier: Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880)\nexternal specifier: Wall 2527, Fiji (uc)\nIncluded terminal clades:\n\nconfertus, glaucum, octoblepharoides, seychellarum",
+            "definition": "nomen cladi conversum, Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\n\nStem-based definition:\n\ninternal specifier: Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\ninternal specifier: Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880)\nexternal specifier: Wall 2527, Fiji (uc)\nIncluded terminal clades:\n\nconfertus, glaucum, octoblepharoides, seychellarum",
             "internalSpecifiers": [
                 {
                     "label": "Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)",
                     "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
                     "hasName": {
+                      "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
                       "label": "Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)",
                       "nameComplete": "Leucophanes octoblepharoides",
                       "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
