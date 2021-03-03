@@ -37,7 +37,7 @@ describe('PhyxWrapper', function () {
     )
   );
 
-  describe('Test all example Phyx files', function () {
+  describe('Test all correct example Phyx files', function () {
     const examples = fs.readdirSync(path.resolve(__dirname, './examples/correct'))
       .filter(filename => filename.endsWith('.json'));
 
@@ -103,6 +103,27 @@ describe('PhyxWrapper', function () {
         it('should generate the same n-quads ontology as it generated earlier', function () {
           const expectedNQ = fs.readFileSync(nqFilename).toString();
           expect(nq).to.deep.equal(expectedNQ);
+        });
+      });
+    });
+  });
+
+  describe('Test incorrect example Phyx files that should fail validation', function () {
+    const filesThatShouldFailValidation = [
+      'examples/incorrect/no-context.json',
+    ];
+
+    filesThatShouldFailValidation.forEach((filename) => {
+      describe(`Example file ${filename}`, function () {
+        it('should not validate against our JSON schema', function () {
+          const phyxContent = JSON.parse(
+            fs.readFileSync(
+              path.resolve(__dirname, filename)
+            )
+          );
+          const valid = validator(phyxContent);
+          expect(validator.errors).to.not.be.null;
+          expect(valid).to.not.be.true;
         });
       });
     });
