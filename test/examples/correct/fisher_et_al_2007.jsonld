@@ -4418,172 +4418,71 @@
       },
       "@id": "http://example.org/phyx.js/example#phyloref0",
       "@type": "owl:Class",
-      "hasComponentClass": [
-        {
-          "@id": "http://example.org/phyx.js/example#phyloref0_component1",
-          "@type": "owl:Class",
-          "label": "(Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985) (ICN) & Wall 2527, Fiji (UC) ~ Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN))",
-          "equivalentClass": {
-            "@type": "owl:Class",
-            "intersectionOf": [
-              {
+      "hasComponentClass": [],
+      "equivalentClass": {
+        "@type": "owl:Class",
+        "intersectionOf": [
+          {
+            "@type": "owl:Restriction",
+            "onProperty": "phyloref:includes_TU",
+            "someValuesFrom": {
+              "@type": "owl:Restriction",
+              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+              "someValuesFrom": {
                 "@type": "owl:Class",
                 "intersectionOf": [
                   {
                     "@type": "owl:Restriction",
-                    "onProperty": "phyloref:includes_TU",
-                    "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
-                      "someValuesFrom": {
-                        "@type": "owl:Class",
-                        "intersectionOf": [
-                          {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Exodictyon"
-                          },
-                          {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                            "hasValue": {
-                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
-                            }
-                          }
-                        ]
-                      }
-                    }
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Exodictyon"
                   },
                   {
                     "@type": "owl:Restriction",
-                    "onProperty": "phyloref:includes_TU",
-                    "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
-                      "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
                     }
                   }
                 ]
-              },
-              {
-                "@type": "owl:Restriction",
-                "onProperty": "phyloref:excludes_TU",
-                "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
-                  "someValuesFrom": {
-                    "@type": "owl:Class",
-                    "intersectionOf": [
-                      {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                        "hasValue": "Leucophanes octoblepharoides"
-                      },
-                      {
-                        "@type": "owl:Restriction",
-                        "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                        "hasValue": {
-                          "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
-                        }
-                      }
-                    ]
-                  }
-                }
               }
-            ]
-          },
-          "subClassOf": [
-            "phyloref:PhyloreferenceUsingMaximumClade",
-            {
-              "@id": "http://example.org/phyx.js/example#phyloref0"
             }
-          ]
-        },
-        {
-          "@id": "http://example.org/phyx.js/example#phyloref0_component2",
-          "@type": "owl:Class",
-          "label": "(Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985) (ICN) & Wall 2527, Fiji (UC) ~ Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN))",
-          "equivalentClass": {
-            "@type": "owl:Class",
-            "intersectionOf": [
-              {
+          },
+          {
+            "@type": "owl:Restriction",
+            "onProperty": "phyloref:includes_TU",
+            "someValuesFrom": {
+              "@type": "owl:Restriction",
+              "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
+              "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
+            }
+          },
+          {
+            "@type": "owl:Restriction",
+            "onProperty": "phyloref:excludes_TU",
+            "someValuesFrom": {
+              "@type": "owl:Restriction",
+              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+              "someValuesFrom": {
                 "@type": "owl:Class",
                 "intersectionOf": [
                   {
                     "@type": "owl:Restriction",
-                    "onProperty": "phyloref:includes_TU",
-                    "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
-                      "someValuesFrom": {
-                        "@type": "owl:Class",
-                        "intersectionOf": [
-                          {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Exodictyon"
-                          },
-                          {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                            "hasValue": {
-                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
-                            }
-                          }
-                        ]
-                      }
-                    }
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Leucophanes octoblepharoides"
                   },
                   {
                     "@type": "owl:Restriction",
-                    "onProperty": "phyloref:includes_TU",
-                    "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
-                      "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
                     }
                   }
                 ]
-              },
-              {
-                "@type": "owl:Restriction",
-                "onProperty": "obo:CDAO_0000144",
-                "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "phyloref:excludes_TU",
-                  "someValuesFrom": {
-                    "@type": "owl:Restriction",
-                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
-                    "someValuesFrom": {
-                      "@type": "owl:Class",
-                      "intersectionOf": [
-                        {
-                          "@type": "owl:Restriction",
-                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                          "hasValue": "Leucophanes octoblepharoides"
-                        },
-                        {
-                          "@type": "owl:Restriction",
-                          "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                          "hasValue": {
-                            "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
-                          }
-                        }
-                      ]
-                    }
-                  }
-                }
               }
-            ]
-          },
-          "subClassOf": [
-            "phyloref:PhyloreferenceUsingMaximumClade",
-            {
-              "@id": "http://example.org/phyx.js/example#phyloref0"
             }
-          ]
-        }
-      ],
+          }
+        ]
+      },
       "subClassOf": [
         "phyloref:Phyloreference",
         "phyloref:PhyloreferenceUsingMaximumClade"
@@ -4627,172 +4526,71 @@
       ],
       "@id": "http://example.org/phyx.js/example#phyloref1",
       "@type": "owl:Class",
-      "hasComponentClass": [
-        {
-          "@id": "http://example.org/phyx.js/example#phyloref1_component1",
-          "@type": "owl:Class",
-          "label": "(Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN) & Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880) (ICN) ~ Wall 2527, Fiji (uc))",
-          "equivalentClass": {
-            "@type": "owl:Class",
-            "intersectionOf": [
-              {
+      "hasComponentClass": [],
+      "equivalentClass": {
+        "@type": "owl:Class",
+        "intersectionOf": [
+          {
+            "@type": "owl:Restriction",
+            "onProperty": "phyloref:includes_TU",
+            "someValuesFrom": {
+              "@type": "owl:Restriction",
+              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+              "someValuesFrom": {
                 "@type": "owl:Class",
                 "intersectionOf": [
                   {
                     "@type": "owl:Restriction",
-                    "onProperty": "phyloref:includes_TU",
-                    "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
-                      "someValuesFrom": {
-                        "@type": "owl:Class",
-                        "intersectionOf": [
-                          {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Leucophanes octoblepharoides"
-                          },
-                          {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                            "hasValue": {
-                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
-                            }
-                          }
-                        ]
-                      }
-                    }
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Leucophanes octoblepharoides"
                   },
                   {
                     "@type": "owl:Restriction",
-                    "onProperty": "phyloref:includes_TU",
-                    "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
-                      "someValuesFrom": {
-                        "@type": "owl:Class",
-                        "intersectionOf": [
-                          {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Leucophanes seychellarum"
-                          },
-                          {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                            "hasValue": {
-                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
-                            }
-                          }
-                        ]
-                      }
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
                     }
                   }
                 ]
-              },
-              {
-                "@type": "owl:Restriction",
-                "onProperty": "phyloref:excludes_TU",
-                "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
-                  "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
-                }
               }
-            ]
-          },
-          "subClassOf": [
-            "phyloref:PhyloreferenceUsingMaximumClade",
-            {
-              "@id": "http://example.org/phyx.js/example#phyloref1"
             }
-          ]
-        },
-        {
-          "@id": "http://example.org/phyx.js/example#phyloref1_component2",
-          "@type": "owl:Class",
-          "label": "(Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826) (ICN) & Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880) (ICN) ~ Wall 2527, Fiji (uc))",
-          "equivalentClass": {
-            "@type": "owl:Class",
-            "intersectionOf": [
-              {
+          },
+          {
+            "@type": "owl:Restriction",
+            "onProperty": "phyloref:includes_TU",
+            "someValuesFrom": {
+              "@type": "owl:Restriction",
+              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+              "someValuesFrom": {
                 "@type": "owl:Class",
                 "intersectionOf": [
                   {
                     "@type": "owl:Restriction",
-                    "onProperty": "phyloref:includes_TU",
-                    "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
-                      "someValuesFrom": {
-                        "@type": "owl:Class",
-                        "intersectionOf": [
-                          {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Leucophanes octoblepharoides"
-                          },
-                          {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                            "hasValue": {
-                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
-                            }
-                          }
-                        ]
-                      }
-                    }
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Leucophanes seychellarum"
                   },
                   {
                     "@type": "owl:Restriction",
-                    "onProperty": "phyloref:includes_TU",
-                    "someValuesFrom": {
-                      "@type": "owl:Restriction",
-                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
-                      "someValuesFrom": {
-                        "@type": "owl:Class",
-                        "intersectionOf": [
-                          {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
-                            "hasValue": "Leucophanes seychellarum"
-                          },
-                          {
-                            "@type": "owl:Restriction",
-                            "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
-                            "hasValue": {
-                              "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
-                            }
-                          }
-                        ]
-                      }
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
                     }
                   }
                 ]
-              },
-              {
-                "@type": "owl:Restriction",
-                "onProperty": "obo:CDAO_0000144",
-                "someValuesFrom": {
-                  "@type": "owl:Restriction",
-                  "onProperty": "phyloref:excludes_TU",
-                  "someValuesFrom": {
-                    "@type": "owl:Restriction",
-                    "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
-                    "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
-                  }
-                }
               }
-            ]
-          },
-          "subClassOf": [
-            "phyloref:PhyloreferenceUsingMaximumClade",
-            {
-              "@id": "http://example.org/phyx.js/example#phyloref1"
             }
-          ]
-        }
-      ],
+          },
+          {
+            "@type": "owl:Restriction",
+            "onProperty": "phyloref:excludes_TU",
+            "someValuesFrom": {
+              "@type": "owl:Restriction",
+              "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
+              "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
+            }
+          }
+        ]
+      },
       "subClassOf": [
         "phyloref:Phyloreference",
         "phyloref:PhyloreferenceUsingMaximumClade"
