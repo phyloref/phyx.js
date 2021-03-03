@@ -784,24 +784,54 @@ class PhylorefWrapper {
       // in the form:
       //  phyloref:includes_TU some [internal1] and
       //  phyloref:includes_TU some [internal2] and ...
-      // To which we can then add the external specifiers.
-      if (internalSpecifiers.length === 1) {
-        logicalExpressions = this.createClassExpressionsForExternals(
-          phylorefAsJSONLD,
-          this.getIncludesRestrictionForTU(internalSpecifiers[0]),
-          externalSpecifiers,
-          []
-        );
-      } else {
-        const expressionForInternals = {
-          '@type': 'owl:Class',
-          intersectionOf: internalSpecifiers.map(sp => this.getIncludesRestrictionForTU(sp)),
-        };
+      //  phyloref:excludes_TU some [exclusion1] and
+      //  has_Ancestor some (phyloref:excludesTU some [exclusion2]) ...
+      //
+      // Since we don't know which of the external specifiers will actually
+      // be the one that will be used, we need to generate logical expressions
+      // for every possibility.
 
-        logicalExpressions = this.createClassExpressionsForExternals(
-          phylorefAsJSONLD, expressionForInternals, externalSpecifiers, []
+      logicalExpressions = externalSpecifiers.map((selectedExternal) => {
+        // Add the internal specifiers.
+        const intersectionExprs = internalSpecifiers.map(
+          sp => this.getIncludesRestrictionForTU(sp)
         );
-      }
+
+        // Add the selected external specifier.
+        intersectionExprs.push({
+          '@type': 'owl:Restriction',
+          onProperty: 'phyloref:excludes_TU',
+          someValuesFrom: new TaxonomicUnitWrapper(
+            selectedExternal,
+            this.defaultNomenCode
+          ).asOWLEquivClass,
+        });
+
+        // Collect all of the externals that are not selected.
+        const remainingExternals = externalSpecifiers.filter(ex => ex !== selectedExternal);
+
+        // Add the remaining externals, which we assume will resolve outside of
+        // this clade.
+        remainingExternals.forEach((externalTU) => {
+          intersectionExprs.push({
+            '@type': 'owl:Restriction',
+            onProperty: 'obo:CDAO_0000144', // has_Ancestor
+            someValuesFrom: {
+              '@type': 'owl:Restriction',
+              onProperty: 'phyloref:excludes_TU',
+              someValuesFrom: new TaxonomicUnitWrapper(
+                externalTU,
+                this.defaultNomenCode
+              ).asOWLEquivClass,
+            },
+          });
+        });
+
+        return {
+          '@type': 'owl:Class',
+          intersectionOf: intersectionExprs,
+        };
+      });
     } else {
       calculatedPhylorefType = 'phyloref:PhyloreferenceUsingMinimumClade';
 
