@@ -742,38 +742,10 @@ class PhylorefWrapper {
         'phyloref:PhyloreferenceUsingApomorphy',
       ];
 
-      // Generate a logical expression for the apomorphy.
-      if (has(phylorefAsJSONLD, 'apomorphy')) {
-        const apomorphy = phylorefAsJSONLD.apomorphy;
-
-        if (has(apomorphy, 'phenotype')) {
-          // Use PATO:present as a phenotypic quality unless one is specified.
-          apomorphy.phenotypicQuality = (
-            apomorphy.phenotypicQuality
-            || 'obo:PATO_0000467' // PATO:present
-          );
-
-          /*
-           * Eventually, we might want to represent this phenotype as an OWL
-           * expression, but that's beyond the scope of this project for now.
-           *
-
-          apomorphy.equivalentClass = {
-            '@type': 'owl:Class',
-            intersectionOf: [
-              { '@id': phenotypicQuality },
-              {
-                '@type': 'owl:Restriction',
-                onProperty: 'obo:RO_0000052', // RO:inheres in
-                someValuesFrom: {
-                  '@id': apomorphy.phenotype,
-                },
-              },
-            ],
-          };
-          */
-        }
-      }
+      // Someday, we will probably want to turn this apomorphy into a
+      // logical expression so that it can be computed alongside other
+      // OWL ontologies. This is outside our scope for the moment, so
+      // we will simply pass on the phyloreference as-is.
 
       return phylorefAsJSONLD;
     }
