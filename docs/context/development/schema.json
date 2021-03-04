@@ -237,7 +237,6 @@
           },
           "required": [
             "@type",
-            "label",
             "nameComplete"
           ]
         }
