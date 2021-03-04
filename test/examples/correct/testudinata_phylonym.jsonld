@@ -1,13 +1,5 @@
 {
   "@context": "../../../docs/context/development/phyx.json",
-  "owl:imports": [
-    "http://purl.obolibrary.org/obo/pato.owl",
-    "http://purl.obolibrary.org/obo/uberon.owl",
-    "http://semanticscience.org/ontology/sio.owl",
-    "http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl",
-    "http://ontology.phyloref.org/2018-12-14/phyloref.owl",
-    "http://ontology.phyloref.org/2018-12-14/tcan.owl"
-  ],
   "phylorefs": [
     {
       "label": "Testudinata",
@@ -143,5 +135,10 @@
   "@type": [
     "testcase:PhyloreferenceTestCase",
     "owl:Ontology"
+  ],
+  "owl:imports": [
+    "http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl",
+    "http://ontology.phyloref.org/2018-12-14/phyloref.owl",
+    "http://ontology.phyloref.org/2018-12-14/tcan.owl"
   ]
 }
