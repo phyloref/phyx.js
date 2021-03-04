@@ -1,0 +1,1164 @@
+{
+  "@context": "../../../docs/context/development/phyx.json",
+  "phylogenies": [
+    {
+      "newick": "((((Aa_a, Bb_b)Expected, Cc_c), (Dd_d, (Ee_e, Ff_f, (Gg_g, Hh_h)))), Ii_i)",
+      "@id": "http://example.org/phyx.js/example#phylogeny0",
+      "@type": "testcase:PhyloreferenceTestPhylogeny",
+      "nodes": [
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node0",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node1",
+            "http://example.org/phyx.js/example#phylogeny0_node2"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node1",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Ii i"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Ii_i"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Ii_i",
+                "nameComplete": "Ii i",
+                "genusPart": "Ii",
+                "specificEpithet": "i"
+              },
+              "label": "Ii_i"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node0",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node2"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node2",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node0",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node1"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node3",
+            "http://example.org/phyx.js/example#phylogeny0_node11"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node3",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node2",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node11"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node4",
+            "http://example.org/phyx.js/example#phylogeny0_node10"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node4",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node3",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node10"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node5",
+            "http://example.org/phyx.js/example#phylogeny0_node8",
+            "http://example.org/phyx.js/example#phylogeny0_node9"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node5",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node4",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node8",
+            "http://example.org/phyx.js/example#phylogeny0_node9"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node6",
+            "http://example.org/phyx.js/example#phylogeny0_node7"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node6",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Hh h"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Hh_h"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Hh_h",
+                "nameComplete": "Hh h",
+                "genusPart": "Hh",
+                "specificEpithet": "h"
+              },
+              "label": "Hh_h"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node5",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node7"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node7",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Gg g"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Gg_g"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Gg_g",
+                "nameComplete": "Gg g",
+                "genusPart": "Gg",
+                "specificEpithet": "g"
+              },
+              "label": "Gg_g"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node5",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node6"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node8",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Ff f"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Ff_f"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Ff_f",
+                "nameComplete": "Ff f",
+                "genusPart": "Ff",
+                "specificEpithet": "f"
+              },
+              "label": "Ff_f"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node4",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node5",
+            "http://example.org/phyx.js/example#phylogeny0_node9"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node9",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Ee e"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Ee_e"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Ee_e",
+                "nameComplete": "Ee e",
+                "genusPart": "Ee",
+                "specificEpithet": "e"
+              },
+              "label": "Ee_e"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node4",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node5",
+            "http://example.org/phyx.js/example#phylogeny0_node8"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node10",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Dd d"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Dd_d"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Dd_d",
+                "nameComplete": "Dd d",
+                "genusPart": "Dd",
+                "specificEpithet": "d"
+              },
+              "label": "Dd_d"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node3",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node4"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node11",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node2",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node3"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node12",
+            "http://example.org/phyx.js/example#phylogeny0_node13"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node12",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Cc c"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Cc_c"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Cc_c",
+                "nameComplete": "Cc c",
+                "genusPart": "Cc",
+                "specificEpithet": "c"
+              },
+              "label": "Cc_c"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node11",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node13"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node13",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Expected"
+                }
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:OBI_0000312",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@id": "obo:OBI_0302910"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:OBI_0000293",
+                    "someValuesFrom": {
+                      "@id": "http://example.org/phyx.js/example#phyloref0"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "labels": [
+            "Expected"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Expected",
+                "nameComplete": "Expected",
+                "uninomial": "Expected"
+              },
+              "label": "Expected"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node11",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node12"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node14",
+            "http://example.org/phyx.js/example#phylogeny0_node15"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node14",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Bb b"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Bb_b"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Bb_b",
+                "nameComplete": "Bb b",
+                "genusPart": "Bb",
+                "specificEpithet": "b"
+              },
+              "label": "Bb_b"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node13",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node15"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node15",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                  "hasValue": "Aa a"
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Aa_a"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Aa_a",
+                "nameComplete": "Aa a",
+                "genusPart": "Aa",
+                "specificEpithet": "a"
+              },
+              "label": "Aa_a"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node13",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node14"
+          ]
+        }
+      ],
+      "hasRootNode": {
+        "@id": "http://example.org/phyx.js/example#phylogeny0_node0"
+      }
+    }
+  ],
+  "phylorefs": [
+    {
+      "label": "Expected",
+      "definition": "Includes A_a, excludes C_c, D_d, F_f, G_g and I_i.",
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nameComplete": "Aa a"
+          }
+        }
+      ],
+      "externalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nameComplete": "Cc c"
+          }
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nameComplete": "Dd d"
+          }
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nameComplete": "Ff f"
+          }
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nameComplete": "Gg g"
+          }
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nameComplete": "Ii i"
+          }
+        }
+      ],
+      "@id": "http://example.org/phyx.js/example#phyloref0",
+      "@type": "owl:Class",
+      "hasComponentClass": [
+        {
+          "@id": "http://example.org/phyx.js/example#phyloref0_component1",
+          "@type": "owl:Class",
+          "label": "(Aa a (Code not known) ~ Cc c (Code not known) V Dd d (Code not known) V Ff f (Code not known) V Gg g (Code not known) V Ii i (Code not known))",
+          "equivalentClass": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:includes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Aa a"
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Cc c"
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Dd d"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Ff f"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Gg g"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Ii i"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMaximumClade",
+            {
+              "@id": "http://example.org/phyx.js/example#phyloref0"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phyloref0_component2",
+          "@type": "owl:Class",
+          "label": "(Aa a (Code not known) ~ Cc c (Code not known) V Dd d (Code not known) V Ff f (Code not known) V Gg g (Code not known) V Ii i (Code not known))",
+          "equivalentClass": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:includes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Aa a"
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Dd d"
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Cc c"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Ff f"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Gg g"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Ii i"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMaximumClade",
+            {
+              "@id": "http://example.org/phyx.js/example#phyloref0"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phyloref0_component3",
+          "@type": "owl:Class",
+          "label": "(Aa a (Code not known) ~ Cc c (Code not known) V Dd d (Code not known) V Ff f (Code not known) V Gg g (Code not known) V Ii i (Code not known))",
+          "equivalentClass": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:includes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Aa a"
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Ff f"
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Cc c"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Dd d"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Gg g"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Ii i"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMaximumClade",
+            {
+              "@id": "http://example.org/phyx.js/example#phyloref0"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phyloref0_component4",
+          "@type": "owl:Class",
+          "label": "(Aa a (Code not known) ~ Cc c (Code not known) V Dd d (Code not known) V Ff f (Code not known) V Gg g (Code not known) V Ii i (Code not known))",
+          "equivalentClass": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:includes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Aa a"
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Gg g"
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Cc c"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Dd d"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Ff f"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Ii i"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMaximumClade",
+            {
+              "@id": "http://example.org/phyx.js/example#phyloref0"
+            }
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phyloref0_component5",
+          "@type": "owl:Class",
+          "label": "(Aa a (Code not known) ~ Cc c (Code not known) V Dd d (Code not known) V Ff f (Code not known) V Gg g (Code not known) V Ii i (Code not known))",
+          "equivalentClass": {
+            "@type": "owl:Class",
+            "intersectionOf": [
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:includes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Aa a"
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "phyloref:excludes_TU",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Ii i"
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Cc c"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Dd d"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Ff f"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "owl:Restriction",
+                "onProperty": "obo:CDAO_0000144",
+                "someValuesFrom": {
+                  "@type": "owl:Restriction",
+                  "onProperty": "phyloref:excludes_TU",
+                  "someValuesFrom": {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                    "someValuesFrom": {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Gg g"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "subClassOf": [
+            "phyloref:PhyloreferenceUsingMaximumClade",
+            {
+              "@id": "http://example.org/phyx.js/example#phyloref0"
+            }
+          ]
+        }
+      ],
+      "subClassOf": [
+        "phyloref:Phyloreference",
+        "phyloref:PhyloreferenceUsingMaximumClade"
+      ]
+    }
+  ],
+  "hasTaxonomicUnitMatches": [],
+  "@id": "http://example.org/phyx.js/example#",
+  "@type": [
+    "testcase:PhyloreferenceTestCase",
+    "owl:Ontology"
+  ],
+  "owl:imports": [
+    "http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl",
+    "http://ontology.phyloref.org/2018-12-14/phyloref.owl",
+    "http://ontology.phyloref.org/2018-12-14/tcan.owl"
+  ]
+}
