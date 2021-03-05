@@ -78,26 +78,31 @@ describe('JPhyloRef', function () {
             expect(matches, `Test result line not found in STDERR <${child.stderr}>`).to.have.lengthOf(5);
           });
 
-          const countSuccess = Number(matches[1]);
-          const countFailure = Number(matches[2]);
-          const countTODOs = Number(matches[3]);
-          // const countSkipped = Number(matches[4]);
+          // If this is not true, the previous expect with fail. Unfortunately,
+          // code execution continues even if that one `it()` fails, so we need
+          // to test it here as well.
+          if (matches.length === 5) {
+            const countSuccess = Number(matches[1]);
+            const countFailure = Number(matches[2]);
+            const countTODOs = Number(matches[3]);
+            // const countSkipped = Number(matches[4]);
 
-          it('should run without any failures or TODOs', () => {
-            expect(countFailure, 'Expected zero failures').to.equal(0);
-            expect(countTODOs, 'Expected zero TODOs').to.equal(0);
-          });
-
-          // We can't test for one or more successes since some example Phyx file
-          // such as apomorphy-based phyloreferences don't have any successes at all.
-          // But we'll report both.
-          if (countSuccess === 0 && child.status === 255) {
-            it('No phyloreferences resolved successfully');
-          } else {
-            it('should resolve one or more phyloreferences', () => {
-              expect(countSuccess, 'Expected one or more successes').to.be.greaterThan(0);
-              expect(child.status).to.be.oneOf([0, 255]);
+            it('should run without any failures or TODOs', () => {
+              expect(countFailure, 'Expected zero failures').to.equal(0);
+              expect(countTODOs, 'Expected zero TODOs').to.equal(0);
             });
+
+            // We can't test for one or more successes since some example Phyx file
+            // such as apomorphy-based phyloreferences don't have any successes at all.
+            // But we'll report both.
+            if (countSuccess === 0 && child.status === 255) {
+              it('No phyloreferences resolved successfully');
+            } else {
+              it('should resolve one or more phyloreferences', () => {
+                expect(countSuccess, 'Expected one or more successes').to.be.greaterThan(0);
+                expect(child.status).to.be.oneOf([0, 255]);
+              });
+            }
           }
         });
       });
