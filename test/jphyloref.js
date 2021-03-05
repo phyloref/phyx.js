@@ -42,7 +42,7 @@ describe('JPhyloRef', function () {
       it('should be downloadable', function () {
         this.timeout(10000);
         // Download JPhyloRef from Maven and save it to JPHYLOREF_PATH.
-        return new Downloader({
+        new Downloader({
           url: JPHYLOREF_URL,
           directory: path.dirname(JPHYLOREF_PATH),
           fileName: path.basename(JPHYLOREF_PATH),
