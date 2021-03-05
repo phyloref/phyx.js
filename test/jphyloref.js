@@ -24,31 +24,40 @@ const JPHYLOREF_URL = `https://repo.maven.apache.org/maven2/org/phyloref/jphylor
 // Where should the JPhyloRef be stored?
 const JPHYLOREF_PATH = path.resolve(__dirname, `jphyloref-${JPHYLOREF_VERSION}.jar`);
 
+// TODO: we should eventually use SHA to ensure that we have the expected file.
+if (fs.existsSync(JPHYLOREF_PATH) && fs.statSync(JPHYLOREF_PATH).size > 0) {
+  // We've already downloaded it! Nothing to do.
+} else {
+  // Download JPhyloRef from Maven and save it to JPHYLOREF_PATH.
+  // Since Downloader() works asynchronously, we need to wrap it in
+  // an async() here to ensure that it finishes the download *before*
+  // we start the `describe()` below.
+  (async () => {
+    const downloader = new Downloader({
+      url: JPHYLOREF_URL,
+      directory: path.dirname(JPHYLOREF_PATH),
+      fileName: path.basename(JPHYLOREF_PATH),
+    });
+
+    try {
+      await downloader.download();
+    } catch (error) {
+      throw new Error(`Could not download JPhyloRef from Maven: ${error}`);
+    }
+  })();
+}
+
 /**
  * Test whether the expected JSON-LD files pass testing using JPhyloRef.
  */
 
 describe('JPhyloRef', function () {
-  describe('download JPhyloRef', function () {
+  describe('make sure JPhyloRef has been downloaded', function () {
     // TODO: we should eventually use SHA to ensure that we have the expected file.
-    if (
-      fs.existsSync(JPHYLOREF_PATH)
-      && fs.statSync(JPHYLOREF_PATH).size > 0
-    ) {
-      it('has already been downloaded', function () {
-        expect(true);
-      });
-    } else {
-      it('should be downloadable', function () {
-        this.timeout(10000);
-        // Download JPhyloRef from Maven and save it to JPHYLOREF_PATH.
-        new Downloader({
-          url: JPHYLOREF_URL,
-          directory: path.dirname(JPHYLOREF_PATH),
-          fileName: path.basename(JPHYLOREF_PATH),
-        }).download();
-      });
-    }
+    it('has been downloaded', function () {
+      expect(fs.existsSync(JPHYLOREF_PATH)).to.be.true;
+      expect(fs.statSync(JPHYLOREF_PATH).size).to.be.greaterThan(0);
+    });
   });
 
   describe('test example JSON-LD files using JPhyloRef', function () {
