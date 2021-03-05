@@ -81,7 +81,7 @@ describe('JPhyloRef', function () {
           // If this is not true, the previous expect with fail. Unfortunately,
           // code execution continues even if that one `it()` fails, so we need
           // to test it here as well.
-          if (matches.length === 5) {
+          if (matches && matches.length === 5) {
             const countSuccess = Number(matches[1]);
             const countFailure = Number(matches[2]);
             const countTODOs = Number(matches[3]);
