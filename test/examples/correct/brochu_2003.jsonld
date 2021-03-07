@@ -3491,7 +3491,6 @@
     }
   ],
   "defaultNomenclaturalCodeIRI": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-  "hasTaxonomicUnitMatches": [],
   "@type": [
     "testcase:PhyloreferenceTestCase",
     "owl:Ontology"

@@ -4597,7 +4597,6 @@
       ]
     }
   ],
-  "hasTaxonomicUnitMatches": [],
   "@type": [
     "testcase:PhyloreferenceTestCase",
     "owl:Ontology"
