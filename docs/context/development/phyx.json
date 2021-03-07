@@ -48,11 +48,6 @@
         "@container": "@set"
     },
 
-    "hasUnmatchedSpecifiers": {
-        "@id": "testcase:has_unmatched_specifier",
-        "@container": "@set"
-    },
-
     "hasComponentClass": {
         "@id": "testcase:has_component_class",
         "@container": "@set"
