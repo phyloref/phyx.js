@@ -342,7 +342,7 @@
           },
           "apomorphy": {
             "type": "object",
-            "description": "For a phyloreference using an apomorphy, this field describes the character being used as the apomorphy",
+            "description": "For a phyloreference using an apomorphy, this field describes the phenotype (or trait) being used as the apomorphy",
             "additionalProperties": true,
             "properties": {
               "definition": {
