@@ -276,7 +276,6 @@ class PhyxWrapper {
     // Set up the ontology imports. If one is present, we add our imports to that.
     if (!has(jsonld, 'owl:imports')) jsonld['owl:imports'] = [];
     if (!Array.isArray(jsonld['owl:imports'])) jsonld['owl:imports'] = [jsonld['owl:imports']];
-    jsonld['owl:imports'].push('http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl');
     jsonld['owl:imports'].push('http://ontology.phyloref.org/2018-12-14/phyloref.owl');
     jsonld['owl:imports'].push('http://ontology.phyloref.org/2018-12-14/tcan.owl');
 
