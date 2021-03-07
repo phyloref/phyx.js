@@ -142,7 +142,7 @@
     },
 
     "nodes": {
-        "@id": "testcase:has_node",
+        "@id": "obo:CDAO_0000198",
         "@container": "@set"
     },
 
