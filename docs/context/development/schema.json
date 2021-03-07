@@ -346,7 +346,7 @@
             "additionalProperties": true,
             "properties": {
               "definition": {
-                "description": "A description of this apomorphy."
+                "description": "A natural language description of this apomorphy."
               },
               "phenotypicQuality": {
                 "description": "The quality of this phenotype. Must be a subclass of pato:quality."
