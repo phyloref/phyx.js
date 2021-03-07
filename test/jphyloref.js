@@ -24,28 +24,22 @@ const JPHYLOREF_URL = `https://repo.maven.apache.org/maven2/org/phyloref/jphylor
 // Where should the JPhyloRef be stored?
 const JPHYLOREF_PATH = path.resolve(__dirname, `jphyloref-${JPHYLOREF_VERSION}.jar`);
 
-// TODO: we should eventually use SHA to ensure that we have the expected file.
-if (fs.existsSync(JPHYLOREF_PATH) && fs.statSync(JPHYLOREF_PATH).size > 0) {
-  // We've already downloaded it! Nothing to do.
-} else {
-  // Download JPhyloRef from Maven and save it to JPHYLOREF_PATH.
-  // Since Downloader() works asynchronously, we need to wrap it in
-  // an async() here to ensure that it finishes the download *before*
-  // we start the `describe()` below.
-  (async () => {
-    const downloader = new Downloader({
-      url: JPHYLOREF_URL,
-      directory: path.dirname(JPHYLOREF_PATH),
-      fileName: path.basename(JPHYLOREF_PATH),
-    });
+// Download JPhyloRef from Maven and save it to JPHYLOREF_PATH.
+// Since Downloader() works asynchronously, we need to wrap it in
+// an async() here to ensure that it finishes the download *before*
+// we start the `describe()` below.
+const downloader = new Downloader({
+  url: JPHYLOREF_URL,
+  directory: path.dirname(JPHYLOREF_PATH),
+  fileName: path.basename(JPHYLOREF_PATH),
+});
 
-    try {
-      await downloader.download();
-    } catch (error) {
-      throw new Error(`Could not download JPhyloRef from Maven: ${error}`);
-    }
-  })();
-}
+before(function (done) {
+  this.timeout(20000);
+  downloader.download()
+    .then(done)
+    .catch(err => done(err));
+});
 
 /**
  * Test whether the expected JSON-LD files pass testing using JPhyloRef.
