@@ -251,7 +251,6 @@ _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://vocab.phyloref.or
 _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
 _:b0 <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/phyloref.owl> .
 _:b0 <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/tcan.owl> .
-_:b0 <http://www.w3.org/2002/07/owl#imports> <http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl> .
 _:b1 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b1 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b10 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Crocodyliformes" .

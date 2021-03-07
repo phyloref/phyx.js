@@ -159,7 +159,6 @@ _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://vocab.phyloref.or
 _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
 _:b0 <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/phyloref.owl> .
 _:b0 <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/tcan.owl> .
-_:b0 <http://www.w3.org/2002/07/owl#imports> <http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl> .
 _:b1 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b2 .
 _:b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b1 <http://www.w3.org/2000/01/rdf-schema#label> "Ii_i" .
