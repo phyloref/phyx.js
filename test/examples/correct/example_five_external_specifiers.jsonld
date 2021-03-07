@@ -4,6 +4,7 @@
     {
       "newick": "((((Aa_a, Bb_b)Expected, Cc_c), (Dd_d, (Ee_e, Ff_f, (Gg_g, Hh_h)))), Ii_i)",
       "@id": "http://example.org/phyx.js/example#phylogeny0",
+      "@type": "obo:CDAO_0000012",
       "nodes": [
         {
           "@id": "http://example.org/phyx.js/example#phylogeny0_node0",

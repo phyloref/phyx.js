@@ -1,4 +1,5 @@
 <http://example.org/phyx.js/example#phylogeny0> <http://ontology.phyloref.org/phyloref.owl#newick_expression> "((((Aa_a, Bb_b)Expected, Cc_c), (Dd_d, (Ee_e, Ff_f, (Gg_g, Hh_h)))), Ii_i)" .
+<http://example.org/phyx.js/example#phylogeny0> <http://purl.obolibrary.org/obo/CDAO_0000148> <http://example.org/phyx.js/example#phylogeny0_node0> .
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_node> <http://example.org/phyx.js/example#phylogeny0_node0> .
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_node> <http://example.org/phyx.js/example#phylogeny0_node10> .
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_node> <http://example.org/phyx.js/example#phylogeny0_node11> .
@@ -15,7 +16,7 @@
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_node> <http://example.org/phyx.js/example#phylogeny0_node7> .
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_node> <http://example.org/phyx.js/example#phylogeny0_node8> .
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_node> <http://example.org/phyx.js/example#phylogeny0_node9> .
-<http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_root_node> <http://example.org/phyx.js/example#phylogeny0_node0> .
+<http://example.org/phyx.js/example#phylogeny0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/CDAO_0000012> .
 <http://example.org/phyx.js/example#phylogeny0_node0> <http://purl.obolibrary.org/obo/CDAO_0000149> <http://example.org/phyx.js/example#phylogeny0_node1> .
 <http://example.org/phyx.js/example#phylogeny0_node0> <http://purl.obolibrary.org/obo/CDAO_0000149> <http://example.org/phyx.js/example#phylogeny0_node2> .
 <http://example.org/phyx.js/example#phylogeny0_node0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/CDAO_0000140> .

@@ -1,4 +1,5 @@
 <http://example.org/phyx.js/example#phylogeny0> <http://ontology.phyloref.org/phyloref.owl#newick_expression> "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;" .
+<http://example.org/phyx.js/example#phylogeny0> <http://purl.obolibrary.org/obo/CDAO_0000148> <http://example.org/phyx.js/example#phylogeny0_node0> .
 <http://example.org/phyx.js/example#phylogeny0> <http://purl.org/dc/terms/source> _:b1 .
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_node> <http://example.org/phyx.js/example#phylogeny0_node0> .
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_node> <http://example.org/phyx.js/example#phylogeny0_node10> .
@@ -30,7 +31,7 @@
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_node> <http://example.org/phyx.js/example#phylogeny0_node7> .
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_node> <http://example.org/phyx.js/example#phylogeny0_node8> .
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_node> <http://example.org/phyx.js/example#phylogeny0_node9> .
-<http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_root_node> <http://example.org/phyx.js/example#phylogeny0_node0> .
+<http://example.org/phyx.js/example#phylogeny0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/CDAO_0000012> .
 <http://example.org/phyx.js/example#phylogeny0> <http://www.w3.org/2000/01/rdf-schema#label> "Fig 1 from Brochu 2003" .
 <http://example.org/phyx.js/example#phylogeny0_node0> <http://purl.obolibrary.org/obo/CDAO_0000149> <http://example.org/phyx.js/example#phylogeny0_node1> .
 <http://example.org/phyx.js/example#phylogeny0_node0> <http://purl.obolibrary.org/obo/CDAO_0000149> <http://example.org/phyx.js/example#phylogeny0_node29> .

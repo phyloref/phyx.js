@@ -268,6 +268,7 @@ describe('PhylogenyWrapper', function () {
           newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
           jsonld: {
             '@id': '#',
+            '@type': 'obo:CDAO_0000012',
             hasRootNode: { '@id': '#_node0' },
             newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
             nodes: [

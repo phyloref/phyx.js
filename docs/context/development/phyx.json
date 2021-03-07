@@ -147,7 +147,7 @@
     },
 
     "hasRootNode": {
-        "@id": "testcase:has_root_node",
+        "@id": "obo:CDAO_0000148",
         "@type": "@id"
     },
 

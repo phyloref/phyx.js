@@ -24,6 +24,8 @@ module.exports = {
   CDAO_REPRESENTS_TU: 'obo:CDAO_0000187',
   CDAO_HAS_CHILD: 'obo:CDAO_0000149',
   CDAO_HAS_DESCENDANT: 'obo:CDAO_0000174',
+  CDAO_ROOTED_TREE: 'obo:CDAO_0000012',
+  CDAO_HAS_ROOT: 'obo:CDAO_0000148',
 
   // Terms from the TaxonName ontology
   // (https://github.com/tdwg/ontology/blob/master/ontology/voc/TaxonName.rdf).

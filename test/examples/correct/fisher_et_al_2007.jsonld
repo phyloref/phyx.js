@@ -26,6 +26,7 @@
           ]
         }
       },
+      "@type": "obo:CDAO_0000012",
       "nodes": [
         {
           "@id": "http://example.org/phyx.js/example#phylogeny0_node0",
