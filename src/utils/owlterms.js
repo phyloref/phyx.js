@@ -12,9 +12,6 @@ module.exports = {
   PHYLOREF_INCLUDES_TU: 'phyloref:includes_TU',
   PHYLOREF_EXCLUDES_TU: 'phyloref:excludes_TU',
   PHYLOREF_EXCLUDES_LINEAGE_TO: 'phyloref:excludes_lineage_to',
-  PHYLOREFERENCE_TEST_CASE: 'testcase:PhyloreferenceTestCase',
-  PHYLOREFERENCE_PHYLOGENY: 'testcase:PhyloreferenceTestPhylogeny',
-  TESTCASE_SPECIFIER: 'testcase:Specifier',
   TU_HAS_NAME_PROP: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
   TU_SPECIMEN_PROP: 'dwc:organismID',
 

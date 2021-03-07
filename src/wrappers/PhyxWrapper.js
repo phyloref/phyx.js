@@ -221,7 +221,6 @@ class PhyxWrapper {
     // Set up the top-level object '@type'. If one is present, we add our terms to that.
     if (!has(jsonld, '@type')) jsonld['@type'] = [];
     if (!Array.isArray(jsonld['@type'])) jsonld['@type'] = [jsonld['@type']];
-    jsonld['@type'].push(owlterms.PHYLOREFERENCE_TEST_CASE);
     jsonld['@type'].push('owl:Ontology');
 
     // Set up the ontology imports. If one is present, we add our imports to that.

@@ -268,7 +268,6 @@ describe('PhylogenyWrapper', function () {
           newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
           jsonld: {
             '@id': '#',
-            '@type': owlterms.PHYLOREFERENCE_PHYLOGENY,
             hasRootNode: { '@id': '#_node0' },
             newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
             nodes: [

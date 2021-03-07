@@ -8,7 +8,6 @@
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingApomorphy> .
 _:b0 <http://vocab.phyloref.org/phyloref/testcase.owl#has_phyloreference> <http://example.org/phyx.js/example#phyloref0> .
-_:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://vocab.phyloref.org/phyloref/testcase.owl#PhyloreferenceTestCase> .
 _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
 _:b0 <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/phyloref.owl> .
 _:b0 <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/tcan.owl> .

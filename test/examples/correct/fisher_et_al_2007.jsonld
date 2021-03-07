@@ -26,7 +26,6 @@
           ]
         }
       },
-      "@type": "testcase:PhyloreferenceTestPhylogeny",
       "nodes": [
         {
           "@id": "http://example.org/phyx.js/example#phylogeny0_node0",
@@ -4598,7 +4597,6 @@
     }
   ],
   "@type": [
-    "testcase:PhyloreferenceTestCase",
     "owl:Ontology"
   ],
   "owl:imports": [

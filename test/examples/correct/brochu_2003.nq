@@ -31,7 +31,6 @@
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_node> <http://example.org/phyx.js/example#phylogeny0_node8> .
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_node> <http://example.org/phyx.js/example#phylogeny0_node9> .
 <http://example.org/phyx.js/example#phylogeny0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_root_node> <http://example.org/phyx.js/example#phylogeny0_node0> .
-<http://example.org/phyx.js/example#phylogeny0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://vocab.phyloref.org/phyloref/testcase.owl#PhyloreferenceTestPhylogeny> .
 <http://example.org/phyx.js/example#phylogeny0> <http://www.w3.org/2000/01/rdf-schema#label> "Fig 1 from Brochu 2003" .
 <http://example.org/phyx.js/example#phylogeny0_node0> <http://purl.obolibrary.org/obo/CDAO_0000149> <http://example.org/phyx.js/example#phylogeny0_node1> .
 <http://example.org/phyx.js/example#phylogeny0_node0> <http://purl.obolibrary.org/obo/CDAO_0000149> <http://example.org/phyx.js/example#phylogeny0_node29> .
@@ -373,7 +372,6 @@ _:b0 <http://vocab.phyloref.org/phyloref/testcase.owl#has_phyloreference> <http:
 _:b0 <http://vocab.phyloref.org/phyloref/testcase.owl#has_phyloreference> <http://example.org/phyx.js/example#phyloref3> .
 _:b0 <http://vocab.phyloref.org/phyloref/testcase.owl#has_phyloreference> <http://example.org/phyx.js/example#phyloref4> .
 _:b0 <http://vocab.phyloref.org/phyloref/testcase.owl#has_phyloreference> <http://example.org/phyx.js/example#phyloref5> .
-_:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://vocab.phyloref.org/phyloref/testcase.owl#PhyloreferenceTestCase> .
 _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
 _:b0 <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/phyloref.owl> .
 _:b0 <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/tcan.owl> .
