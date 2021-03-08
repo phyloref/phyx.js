@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Manual | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container manual-root manual-index" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html" data-ice="link">Changelog</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-phyloref-phyx-js-compare-v0-2-0---master--unreleased--a-" data-ice="link">Unreleased</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-phyloref-phyx-js-compare-v0-2-0---v0-2-1--0-2-1--a----2019-08-15" data-ice="link">0.2.1 - 2019-08-15</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-phyloref-phyx-js-compare-v0-1-2---v0-2-0--0-2-0--a----2019-07-18" data-ice="link">0.2.0 - 2019-07-18</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#changed" data-ice="link">Changed</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-phyloref-phyx-js-compare-v0-1-1---v0-1-2--0-1-2--a----2019-02-08" data-ice="link">0.1.2 - 2019-02-08</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#added" data-ice="link">Added</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-phyloref-phyx-js-compare-v0-1-0---v0-1-1--0-1-1--a----2019-02-06" data-ice="link">0.1.1 - 2019-02-06</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#added" data-ice="link">Added</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-phyloref-phyx-js-releases-tag-v0-1-0--0-1-0--a----2019-01-27" data-ice="link">0.1.0 - 2019-01-27</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#added" data-ice="link">Added</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#changed" data-ice="link">Changed</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown">
+  
+
+  
+
+  <div class="manual-cards">
+    
+  <div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Changelog</h1><p>All notable changes to this library will be documented in this file.</p><p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a> and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p><h2><a href="https://github.com/phyloref/phyx.js/compare/v0.2.0...master">Unreleased</a></h2><ul>
+<li>Fixed a bug in which phyloref and phylogeny <code>@id</code> values were being overwritten when generating JSON-LD.</li>
+<li>Added scripts to generate every possible topology from n=2 to n=6 with expected resolution and to test them with JPhyloRef.</li>
+</ul><h2><a href="https://github.com/phyloref/phyx.js/compare/v0.2.0...v0.2.1">0.2.1</a> - 2019-08-15</h2><ul>
+<li>Updated all NPM packages to their latest version.</li>
+<li>Fixed a bug in which node&apos;s types were not being correctly set to obo:CDAO_0000140.</li>
+</ul><h2><a href="https://github.com/phyloref/phyx.js/compare/v0.1.2...v0.2.0">0.2.0</a> - 2019-07-18</h2><h3>Changed</h3><ul>
+<li>The single index.js has been split into multiple files, one per class, with documentation using ESdocs (#21).</li>
+<li>Added support for generating &quot;model 2.0&quot; ontologies, which can be reasoned over in an OWL 2 EL reasoner such as Elk (#4). As part of this change, specifiers have been changed so that they are taxonomic units, rather than containing taxonomic units and a new Phyx context file has been created (#19).</li>
+<li>Taxonomic units have been cleaned up, are clearly typed, and taxonomic names now include nomenclatural codes (#18) and support trinomial names (#22).</li>
+</ul><h2><a href="https://github.com/phyloref/phyx.js/compare/v0.1.1...v0.1.2">0.1.2</a> - 2019-02-08</h2><h3>Added</h3><ul>
+<li>Moved Phyx context file for JSON-LD into this repository from the Curation Tool and changed URI to point to it.</li>
+</ul><h2><a href="https://github.com/phyloref/phyx.js/compare/v0.1.0...v0.1.1">0.1.1</a> - 2019-02-06</h2><h3>Added</h3><ul>
+<li>A replacement for the Phylotree.js Newick parser.</li>
+</ul><h2><a href="https://github.com/phyloref/phyx.js/releases/tag/v0.1.0">0.1.0</a> - 2019-01-27</h2><h3>Added</h3><ul>
+<li>Transfered initial code from the <a href="http://github.com/phyloref/curation-tool">Phyloreference Curation Tool</a>. The initial
+release of this package was based on <a href="https://github.com/phyloref/curation-tool/commit/14d2c3d5d12ee4e925e29961bd46587aabfb8cd4">commit 14d2c3d5d1</a> in that repository.</li>
+</ul><h3>Changed</h3><ul>
+<li>Replaced references to the <a href="https://www.npmjs.com/package/phylotree">phylotree</a> library with the <a href="https://www.npmjs.com/package/newick-js">newick-js</a> library.</li>
+<li>Made other changes to the initial code as needed to work as an independent NPM package.</li>
+</ul></div>
+        <a data-ice="link" href="manual/CHANGELOG.html"></a>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

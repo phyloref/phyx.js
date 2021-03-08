@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">test/specimens.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matchers">matchers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matchers/TaxonomicUnitMatcher.js~TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#wrappers">wrappers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html">PhylorefWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html">PhyxWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html">SpecimenWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html">TaxonNameWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/specimens.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*
+ * Test specimen processing.
+ */
+
+const chai = require(&apos;chai&apos;);
+const phyx = require(&apos;../src&apos;);
+
+const expect = chai.expect;
+
+/*
+ * Test whether SpecimenWrapper can parse specimen identifiers from simple specimen
+ * identifiers, from institutionCode:catalogNumber format, and from Darwin Core triples.
+ * However, URNs and HTTP URLs should not be accidentally parsed as Darwin Core triples.
+ */
+
+describe(&apos;SpecimenWrapper&apos;, function () {
+  describe(&apos;#constructor&apos;, function () {
+    it(&apos;should be able to wrap an empty specimen&apos;, function () {
+      const wrapped = new phyx.SpecimenWrapper({});
+
+      expect(wrapped).to.be.an.instanceOf(phyx.SpecimenWrapper);
+      expect(wrapped.occurrenceID).to.be.undefined;
+    });
+    it(&apos;should be able to extract an occurenceID and catalogNumber from simple specimen IDs&apos;, function () {
+      const wrapper = new phyx.SpecimenWrapper({
+        occurrenceID: &apos;Wall 2527, Fiji (uc)&apos;,
+        &apos;dwc:basisOfRecord&apos;: &apos;PreservedSpecimen&apos;,
+      });
+      expect(wrapper.occurrenceID).to.equal(&apos;Wall 2527, Fiji (uc)&apos;);
+      expect(wrapper.catalogNumber).to.equal(&apos;Wall 2527, Fiji (uc)&apos;);
+      expect(wrapper.basisOfRecord).to.equal(&apos;PreservedSpecimen&apos;);
+    });
+    it(&apos;should extract institutionCode and catalogNumber from a institutionCode:catalogNumber combination&apos;, function () {
+      const wrapper = new phyx.SpecimenWrapper({
+        occurrenceID: &apos;FMNH:PR 2081&apos;,
+        &apos;dwc:basisOfRecord&apos;: &apos;PreservedSpecimen&apos;,
+      });
+      expect(wrapper.occurrenceID).to.equal(&apos;FMNH:PR 2081&apos;);
+      expect(wrapper.institutionCode).to.equal(&apos;FMNH&apos;);
+      expect(wrapper.catalogNumber).to.equal(&apos;PR 2081&apos;);
+      expect(wrapper.basisOfRecord).to.equal(&apos;PreservedSpecimen&apos;);
+    });
+    it(&apos;should extract occurenceID, institutionCode and catalogNumber from Darwin Core triples&apos;, function () {
+      const wrapper = new phyx.SpecimenWrapper({
+        occurrenceID: &apos;FMNH:PR:2081&apos;,
+      });
+      expect(wrapper.occurrenceID).to.equal(&apos;FMNH:PR:2081&apos;);
+      expect(wrapper.institutionCode).to.equal(&apos;FMNH&apos;);
+      expect(wrapper.collectionCode).to.equal(&apos;PR&apos;);
+      expect(wrapper.catalogNumber).to.equal(&apos;2081&apos;);
+      expect(wrapper.basisOfRecord).to.be.undefined;
+    });
+    it(&apos;should be able to extract the same occurrenceID from different representations&apos;, function () {
+      expect(new phyx.SpecimenWrapper({ occurrenceID: &apos;urn:catalog:::MVZ225749&apos; }).occurrenceID)
+        .to.equal(&apos;urn:catalog:::MVZ225749&apos;);
+      expect(new phyx.SpecimenWrapper({ catalogNumber: &apos;MVZ225749&apos; }).occurrenceID)
+        .to.equal(&apos;urn:catalog:::MVZ225749&apos;);
+    });
+    it(&apos;should not attempt to split a URN into occurenceID, institutionCode and catalogNumber&apos;, function () {
+      const wrapper = new phyx.SpecimenWrapper({
+        occurrenceID: &apos;urn:lsid:biocol.org:col:34777&apos;,
+      });
+      expect(wrapper.occurrenceID).to.equal(&apos;urn:lsid:biocol.org:col:34777&apos;);
+      expect(wrapper.institutionCode).to.be.undefined;
+      expect(wrapper.collectionCode).to.be.undefined;
+      expect(wrapper.catalogNumber).to.be.undefined;
+    });
+    it(&apos;should not attempt to split a URL into occurenceID, institutionCode and catalogNumber&apos;, function () {
+      const wrapper = new phyx.SpecimenWrapper({
+        occurrenceID: &apos;http://arctos.database.museum/guid/MVZ:Herp:148929?seid=886464&apos;,
+      });
+      expect(wrapper.occurrenceID).to.equal(&apos;http://arctos.database.museum/guid/MVZ:Herp:148929?seid=886464&apos;);
+      expect(wrapper.institutionCode).to.be.undefined;
+      expect(wrapper.collectionCode).to.be.undefined;
+      expect(wrapper.catalogNumber).to.be.undefined;
+    });
+    it(&apos;should be able to create a specimen JSON record from an occurrence ID&apos;, function () {
+      const specimen = phyx.SpecimenWrapper.fromOccurrenceID(&apos;FMNH:PR:2081&apos;);
+      expect(specimen.occurrenceID).to.equal(&apos;FMNH:PR:2081&apos;);
+      expect(specimen.institutionCode).to.equal(&apos;FMNH&apos;);
+      expect(specimen.collectionCode).to.equal(&apos;PR&apos;);
+      expect(specimen.catalogNumber).to.equal(&apos;2081&apos;);
+      expect(specimen[&apos;dwc:basisOfRecord&apos;]).to.equal(&apos;PreservedSpecimen&apos;);
+    });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

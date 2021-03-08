@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href>
+  <title data-ice="title">Test | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matchers">matchers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matchers/TaxonomicUnitMatcher.js~TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#wrappers">wrappers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html">PhylorefWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html">PhyxWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html">SpecimenWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html">TaxonNameWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1>Test</h1>
+<table class="test-summary">
+  <thead>
+    <tr>
+      <td class="test-description">Description</td>
+      <td class="test-target">Identifier</td>
+    </tr>
+  </thead>
+
+  <tbody data-ice="tests"><tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/citations.js.html#lineNumber16"><p>CitationWrapper</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/citations.js.html#lineNumber57"><p>given an empty citation</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/citations.js.html#lineNumber60"><p>#constructor</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/citations.js.html#lineNumber61"><p>should return a CitationWrapper</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/citations.js.html#lineNumber66"><p>#toString</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/citations.js.html#lineNumber67"><p>should return undefined</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/citations.js.html#lineNumber71"><p>should be settable by changing the title</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/citations.js.html#lineNumber79">test/citations.js</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/citations.js.html#lineNumber82"><p>#constructor</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/citations.js.html#lineNumber83"><p>should return a CitationWrapper</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/citations.js.html#lineNumber88"><p>#toString</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/citations.js.html#lineNumber89"><p>should return the expected string</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/examples.js.html#lineNumber28"><p>Test whether conversion of Phyx files to an OWL ontology occurs predictably.</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/examples.js.html#lineNumber30"><p>convert brochu_2003.json to an OWL ontology</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/examples.js.html#lineNumber36"><p>should be able to load brochu_2003.json</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/examples.js.html#lineNumber41"><p>should be able to convert brochu_2003.json to an OWL Ontology</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/examples.js.html#lineNumber53"><p>should generate the same OWL ontology as it generated earlier</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/examples.js.html#lineNumber58"><p>convert brochu_2003.jsonld to n-quads</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/examples.js.html#lineNumber62"><p>should be able to convert brochu_2003.json via JSON-LD to n-quads</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/examples.js.html#lineNumber78"><p>should generate the same n-quads ontology as it generated earlier</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/examples.js.html#lineNumber84"><p>Test all example Phyx files</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/examples.js.html#lineNumber97">test/examples.js</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/examples.js.html#lineNumber98"><p>should validate against our JSON schema</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/jphyloref.js.html#lineNumber31"><p>Test whether the expected JSON-LD files pass testing using JPhyloRef.</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/jphyloref.js.html#lineNumber32"><p>download JPhyloRef</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/jphyloref.js.html#lineNumber38"><p>has already been downloaded</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/jphyloref.js.html#lineNumber42"><p>should be downloadable</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/jphyloref.js.html#lineNumber54"><p>test example JSON-LD files using JPhyloRef</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/jphyloref.js.html#lineNumber58">test/jphyloref.js</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber24"><p>PhylogenyWrapper</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber25"><p>#constructor</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber26"><p>when used to wrap an empty object</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylogenies.js.html#lineNumber27"><p>should return a PhylogenyWrapper object</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber34"><p>#getErrorsInNewickString</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber35"><p>when given a correct Newick string</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylogenies.js.html#lineNumber40"><p>should return an empty list of errors</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber47"><p>when given an empty Newick string</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylogenies.js.html#lineNumber53"><p>should return a single &quot;No phylogeny entered&quot; error</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber62"><p>when given an unbalanced Newick string</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylogenies.js.html#lineNumber78"><p>should report how many parentheses are missing</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber96"><p>when given an incomplete Newick string</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylogenies.js.html#lineNumber102"><p>should report an error parsing the phylogeny</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber114"><p>#getNodeLabels</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber130"><p>For a particular Newick phylogeny</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylogenies.js.html#lineNumber131"><p>should return a list of all node labels by default</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylogenies.js.html#lineNumber136"><p>should return a list of internal labels when asked for internal labels</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylogenies.js.html#lineNumber141"><p>should return a list of terminal labels when asked for terminal labels</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber149"><p>given a particular phylogeny with additional node properties</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber174"><p>#getNodeLabels</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylogenies.js.html#lineNumber175"><p>should return the list of node labels from the Newick string</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber185"><p>#getTaxonomicUnitsForNodeLabel</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylogenies.js.html#lineNumber186"><p>should return the list of taxonomic units using information from additional node properties</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber217"><p>#getNodeLabelsMatchedBySpecifier</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylogenies.js.html#lineNumber218"><p>should match a specifier to MVZ225749 based on occurrence ID</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylogenies.js.html#lineNumber227"><p>should match a specifier to MVZ191016 based on occurrence ID</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylogenies.js.html#lineNumber237"><p>should match a specifier to node &quot;Rana boylii&quot; based on the parsed scientific name</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber249"><p>#asJSONLD</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/phylogenies.js.html#lineNumber250"><p>should preserve an existing @id on input phylogenies</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/phylogenies.js.html#lineNumber258"><p>should generate a new @id on input phylorefs</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/phylogenies.js.html#lineNumber265"><p>should generate the phylogeny in JSON-LD as expected</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylogenies.js.html#lineNumber433"><p>#getParsedNewickWithIRIs</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/phylogenies.js.html#lineNumber468"><p>should be able to parse a provided Newick string as expected</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber26"><p>PhylorefWrapper</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber53"><p>given an empty phyloreference</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber56"><p>#constructor</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylorefs.js.html#lineNumber57"><p>should return a PhylorefWrapper</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber62"><p>#label</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylorefs.js.html#lineNumber63"><p>should return undefined</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylorefs.js.html#lineNumber67"><p>should be settable by assigning to .label</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber73"><p>#specifiers</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylorefs.js.html#lineNumber74"><p>should initially return an empty list</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylorefs.js.html#lineNumber78"><p>should initially return a nomenclatural code of unknown</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber82"><p>when a new external specifier is added using .externalSpecifiers</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="4">
+  <td data-ice="testDescription" style="padding-left: 50px"><span><a href="test-file/test/phylorefs.js.html#lineNumber83"><p>should return a list with the new specifier</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="4">
+  <td data-ice="testDescription" style="padding-left: 50px"><span><a href="test-file/test/phylorefs.js.html#lineNumber88"><p>should return a nomenclatural code of ICZN</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber93"><p>when a new external specifier is added using .externalSpecifiers</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="4">
+  <td data-ice="testDescription" style="padding-left: 50px"><span><a href="test-file/test/phylorefs.js.html#lineNumber94"><p>should return a list with the new specifier</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="4">
+  <td data-ice="testDescription" style="padding-left: 50px"><span><a href="test-file/test/phylorefs.js.html#lineNumber99"><p>should return two nomenclatural codes, one for each specifier</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="4">
+  <td data-ice="testDescription" style="padding-left: 50px"><span><a href="test-file/test/phylorefs.js.html#lineNumber105"><p>should still return a nomenclatural code of ICZN</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber110"><p>when a new internal specifier is added using .internalSpecifiers</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="4">
+  <td data-ice="testDescription" style="padding-left: 50px"><span><a href="test-file/test/phylorefs.js.html#lineNumber111"><p>should return a list with the new specifier</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="4">
+  <td data-ice="testDescription" style="padding-left: 50px"><span><a href="test-file/test/phylorefs.js.html#lineNumber116"><p>should return three nomenclatural codes, one for each specifier</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="4">
+  <td data-ice="testDescription" style="padding-left: 50px"><span><a href="test-file/test/phylorefs.js.html#lineNumber123"><p>should change to a default nomenclatural code of owlterms.UNKNOWN_CODE</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber128"><p>when specifiers are deleted using .deleteSpecifier</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="4">
+  <td data-ice="testDescription" style="padding-left: 50px"><span><a href="test-file/test/phylorefs.js.html#lineNumber129"><p>should return the updated list</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber140"><p>when a specifier is added using .externalSpecifiers</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="4">
+  <td data-ice="testDescription" style="padding-left: 50px"><span><a href="test-file/test/phylorefs.js.html#lineNumber141"><p>should return the updated list</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber147"><p>when a specifier is changed to an internal specifier using .setSpecifierType</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="4">
+  <td data-ice="testDescription" style="padding-left: 50px"><span><a href="test-file/test/phylorefs.js.html#lineNumber148"><p>should remain in the list of specifiers</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber154"><p>when a specifier is added using .internalSpecifiers</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="4">
+  <td data-ice="testDescription" style="padding-left: 50px"><span><a href="test-file/test/phylorefs.js.html#lineNumber155"><p>should be included in the list of all specifiers</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber162"><p>#getSpecifierType</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylorefs.js.html#lineNumber163"><p>should return the correct specifier type for each specifier</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber170"><p>#getSpecifierLabel as TaxonomicUnitWrapper</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylorefs.js.html#lineNumber171"><p>should return the correct label for each specifier</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber179"><p>given a particular phylogeny</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber190"><p>#getExpectedNodeLabels</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylorefs.js.html#lineNumber191"><p>should be able to determine expected node labels for a phylogeny</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber204"><p>given an empty phyloreference</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber207"><p>#getCurrentStatus</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylorefs.js.html#lineNumber208"><p>should return &quot;pso:draft&quot; as the default initial status</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber214"><p>#setStatus</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylorefs.js.html#lineNumber215"><p>should throw an error if given a mistyped status</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber225"><p>#getStatusChanges</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span><a href="test-file/test/phylorefs.js.html#lineNumber226"><p>should return the empty list</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="3">
+  <td data-ice="testDescription" style="padding-left: 40px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber230"><p>when modified by using .setStatus</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="4">
+  <td data-ice="testDescription" style="padding-left: 50px"><span><a href="test-file/test/phylorefs.js.html#lineNumber231"><p>should return the updated list</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/phylorefs.js.html#lineNumber251"><p>#asJSONLD</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/phylorefs.js.html#lineNumber252"><p>should preserve an existing @id on input phylorefs</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/phylorefs.js.html#lineNumber261"><p>should generate a new @id on input phylorefs</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/phylorefs.js.html#lineNumber269"><p>should generate the expected equivClass expression for 1 int, 1 ext phyloref</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/phylorefs.js.html#lineNumber300"><p>should generate the expected equivClass expression for 2 int phyloref</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/scripts/phyx2owl.js.html#lineNumber19">test/scripts/phyx2owl.js</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span><a href="test-file/test/scripts/phyx2owl.js.html#lineNumber20"><p>should work without any arguments</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span><a href="test-file/test/scripts/phyx2owl.js.html#lineNumber29"><p>should support <code>--help</code></p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span><a href="test-file/test/scripts/phyx2owl.js.html#lineNumber38"><p>should be able to convert <code>brochu_2003.json</code></p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span><a href="test-file/test/scripts/phyx2owl.js.html#lineNumber69"><p>should be able to convert the entire <code>test/examples/correct</code> directory</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span><a href="test-file/test/scripts/phyx2owl.js.html#lineNumber103"><p>should give an error if no JSON files could be found</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/scripts/resolve.js.html#lineNumber20"><p>bin/resolve.js</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span><a href="test-file/test/scripts/resolve.js.html#lineNumber21"><p>should work without any arguments</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span><a href="test-file/test/scripts/resolve.js.html#lineNumber30"><p>should support <code>--help</code></p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span><a href="test-file/test/scripts/resolve.js.html#lineNumber39"><p>should provide the expected results on the <code>brochu_2003.json</code> example file</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span><a href="test-file/test/scripts/resolve.js.html#lineNumber80"><p>should correctly report errors with certain phyloreferences</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/specimens.js.html#lineNumber16"><p>SpecimenWrapper</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/specimens.js.html#lineNumber17"><p>#constructor</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/specimens.js.html#lineNumber18"><p>should be able to wrap an empty specimen</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/specimens.js.html#lineNumber24"><p>should be able to extract an occurenceID and catalogNumber from simple specimen IDs</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/specimens.js.html#lineNumber33"><p>should extract institutionCode and catalogNumber from a institutionCode:catalogNumber combination</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/specimens.js.html#lineNumber43"><p>should extract occurenceID, institutionCode and catalogNumber from Darwin Core triples</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/specimens.js.html#lineNumber53"><p>should be able to extract the same occurrenceID from different representations</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/specimens.js.html#lineNumber59"><p>should not attempt to split a URN into occurenceID, institutionCode and catalogNumber</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/specimens.js.html#lineNumber68"><p>should not attempt to split a URL into occurenceID, institutionCode and catalogNumber</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/specimens.js.html#lineNumber77"><p>should be able to create a specimen JSON record from an occurrence ID</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/taxon-names.js.html#lineNumber15"><p>TaxonNameWrapper</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/taxon-names.js.html#lineNumber16"><p>#constructor</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxon-names.js.html#lineNumber17"><p>should accept empty taxon names without errors</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxon-names.js.html#lineNumber23"><p>should be able to parse uninomial names as such</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxon-names.js.html#lineNumber32"><p>should be able to parse binomial names into genus and specific epithet</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxon-names.js.html#lineNumber40"><p>should be able to parse trinomial names into genus, specific epithet and infraspecific epithet</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxon-names.js.html#lineNumber49"><p>should ignore authority after a binomial name</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxon-names.js.html#lineNumber57"><p>should be able to use default nomenclatural codes</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/taxonomic-units.js.html#lineNumber20"><p>TaxonomicUnitWrapper</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/taxonomic-units.js.html#lineNumber21"><p>#constructor given no arguments</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber22"><p>should create an empty TaxonomicUnitWrapper without a defined label</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/taxonomic-units.js.html#lineNumber51"><p>#label given a taxonomic unit</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber52"><p>should return a wrapped scientific name</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber62"><p>should return a wrapped specimen identifier preceded by &quot;Specimen&quot;</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber69"><p>should return specimens with an occurrenceID as well as a taxon concept</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber79"><p>should ignore occurrence ID if typed as a taxon concept</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber87"><p>should return a wrapped external reference by surrounding it with &quot;&lt;&gt;&quot;</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber95"><p>should provide both taxon name and occurrence ID in label, but ignore external reference</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/taxonomic-units.js.html#lineNumber107"><p>#fromLabel</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber108"><p>should return empty lists when inputs are empty or undefined</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber115"><p>when given a scientific name, it should return a list of a single TU wrapping a scientific name</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber129"><p>when given a scientific name separated with underscores, it should return a list of a single TU wrapping the scientific name</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/taxonomic-units.js.html#lineNumber144"><p>#asOWLEquivClass</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber145"><p>when given a taxon concept, only the complete name should be present in the equivClass</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber160"><p>when given a specimen, only the occurrence ID should be present in the equivClass</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="0">
+  <td data-ice="testDescription" style="padding-left: 10px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/taxonomic-units.js.html#lineNumber175"><p>TaxonomicUnitMatcher</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/taxonomic-units.js.html#lineNumber203"><p>#matchByNameComplete</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber204"><p>should be able to match tunit1 and tunit2 by complete name</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/taxonomic-units.js.html#lineNumber210"><p>#matchByExternalReferences</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber211"><p>should be able to match tunit3 and tunit4 by external references</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/taxonomic-units.js.html#lineNumber217"><p>#matchByOccurrenceID</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber218"><p>should be able to match tunit2 and tunit3 by specimen identifiers</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="1">
+  <td data-ice="testDescription" style="padding-left: 20px"><span data-ice="testInterfaceToggle" class="toggle closed"></span><span><a href="test-file/test/taxonomic-units.js.html#lineNumber224"><p>#matched and #matchReason</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber225"><p>should match tunit1 and tunit2 on the basis of identical complete names</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber231"><p>should match tunit3 and tunit4 by identical external reference</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+
+<tr class="test-interface" data-ice="testInterface" style="display: none;" data-test-depth="2">
+  <td data-ice="testDescription" style="padding-left: 30px"><span><a href="test-file/test/taxonomic-units.js.html#lineNumber237"><p>should match tunit2 and tunit3 by identical specimen identifier</p>
+</a></span></td>
+  <td data-ice="testTarget" class="test-target">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

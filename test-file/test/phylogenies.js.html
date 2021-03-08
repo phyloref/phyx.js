@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">test/phylogenies.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matchers">matchers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matchers/TaxonomicUnitMatcher.js~TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#wrappers">wrappers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html">PhylorefWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html">PhyxWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html">SpecimenWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html">TaxonNameWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/phylogenies.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*
+ * Test phylogenies.
+ */
+
+// Load phyx.js, our PHYX library, and chai for testing.
+const chai = require(&apos;chai&apos;);
+const phyx = require(&apos;../src&apos;);
+
+// Make it easier to access owlterms.
+const owlterms = require(&apos;../src/utils/owlterms&apos;);
+
+// Use Chai&apos;s expect API for testing.
+const expect = chai.expect;
+
+/*
+ * These tests focus on three aspects of PhylogenyWrapper:
+ *  - Whether it can detect errors in an input Newick string.
+ *  - Retrieve taxonomic units from the phylogeny based on either their node label
+ *    or on the additional properties associated with the phylogeny.
+ *  - Whether we can match specifiers with nodes on the phylogeny if they share
+ *    taxonomic units that match.
+ */
+
+describe(&apos;PhylogenyWrapper&apos;, function () {
+  describe(&apos;#constructor&apos;, function () {
+    describe(&apos;when used to wrap an empty object&apos;, function () {
+      it(&apos;should return a PhylogenyWrapper object&apos;, function () {
+        expect(new phyx.PhylogenyWrapper({}))
+          .to.be.an.instanceOf(phyx.PhylogenyWrapper);
+      });
+    });
+  });
+
+  describe(&apos;#getErrorsInNewickString&apos;, function () {
+    describe(&apos;when given a correct Newick string&apos;, function () {
+      const correctNewickStrings = [
+        &apos;(A:3, B:5, (C:6, N:7));&apos;,
+      ];
+
+      it(&apos;should return an empty list of errors&apos;, function () {
+        correctNewickStrings.forEach((str) =&gt; {
+          expect(phyx.PhylogenyWrapper.getErrorsInNewickString(str)).to.be.empty;
+        });
+      });
+    });
+
+    describe(&apos;when given an empty Newick string&apos;, function () {
+      const emptyNewickStrings = [
+        &apos;()&apos;,
+        &apos;();  &apos;,
+      ];
+
+      it(&apos;should return a single &quot;No phylogeny entered&quot; error&apos;, function () {
+        emptyNewickStrings.forEach((newick) =&gt; {
+          const errors = phyx.PhylogenyWrapper.getErrorsInNewickString(newick);
+          expect(errors).to.have.length(1);
+          expect(errors[0].title).to.equal(&apos;No phylogeny entered&apos;);
+        });
+      });
+    });
+
+    describe(&apos;when given an unbalanced Newick string&apos;, function () {
+      const unbalancedNewickString = [
+        {
+          newick: &apos;(A, B))&apos;,
+          expected: &apos;You have 1 too few open parentheses&apos;,
+        },
+        {
+          newick: &apos;(A, (B, (C, D))&apos;,
+          expected: &apos;You have 1 too many open parentheses&apos;,
+        },
+        {
+          newick: &apos;(A, (B, (C, (((D))&apos;,
+          expected: &apos;You have 4 too many open parentheses&apos;,
+        },
+      ];
+
+      it(&apos;should report how many parentheses are missing&apos;, function () {
+        unbalancedNewickString.forEach((entry) =&gt; {
+          const errors = phyx.PhylogenyWrapper.getErrorsInNewickString(entry.newick);
+
+          // We should get two errors.
+          expect(errors).to.have.lengthOf(2);
+
+          // Should include an error about the unbalanced parentheses.
+          expect(errors[0].title).to.equal(&apos;Unbalanced parentheses in Newick string&apos;);
+          expect(errors[0].message).to.equal(entry.expected);
+
+          // Should include an error passed on from the Newick parser.
+          expect(errors[1].title).to.equal(&apos;Error parsing phylogeny&apos;);
+          expect(errors[1].message).to.include(&apos;An error occured while parsing this phylogeny:&apos;);
+        });
+      });
+    });
+
+    describe(&apos;when given an incomplete Newick string&apos;, function () {
+      const incompleteNewickStrings = [
+        &apos;;&apos;,
+        &apos;))(A, (B, &apos;,
+      ];
+
+      it(&apos;should report an error parsing the phylogeny&apos;, function () {
+        incompleteNewickStrings.forEach((newick) =&gt; {
+          const errors = phyx.PhylogenyWrapper.getErrorsInNewickString(newick);
+
+          expect(errors).to.have.lengthOf(1);
+          expect(errors[0].title).to.equal(&apos;Error parsing phylogeny&apos;);
+          expect(errors[0].message).to.include(&apos;An error occured while parsing this phylogeny:&apos;);
+        });
+      });
+    });
+  });
+
+  describe(&apos;#getNodeLabels&apos;, function () {
+    const tests = [
+      {
+        // Note that &apos;newick&apos; is the input for this test.
+        newick: &apos;(A, (B, (C, D))E, F, (G, (H, I, J)K, L)M, N)O&apos;,
+        // The following keys indicate the expected all/internal/terminal node labels
+        // for the given Newick string.
+        nodeLabels: [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;, &apos;H&apos;, &apos;I&apos;, &apos;J&apos;, &apos;K&apos;, &apos;L&apos;, &apos;M&apos;, &apos;N&apos;, &apos;O&apos;],
+        internalNodeLabels: [&apos;E&apos;, &apos;K&apos;, &apos;M&apos;, &apos;O&apos;],
+        terminalNodeLabels: [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;F&apos;, &apos;G&apos;, &apos;H&apos;, &apos;I&apos;, &apos;J&apos;, &apos;L&apos;, &apos;N&apos;],
+      },
+    ];
+
+    tests.forEach((test) =&gt; {
+      const wrapper = new phyx.PhylogenyWrapper({ newick: test.newick });
+
+      describe(&apos;For a particular Newick phylogeny&apos;, function () {
+        it(&apos;should return a list of all node labels by default&apos;, function () {
+          expect(wrapper.getNodeLabels().sort())
+            .to.have.members(test.nodeLabels.sort());
+        });
+
+        it(&apos;should return a list of internal labels when asked for internal labels&apos;, function () {
+          expect(wrapper.getNodeLabels(&apos;internal&apos;).sort())
+            .to.have.members(test.internalNodeLabels.sort());
+        });
+
+        it(&apos;should return a list of terminal labels when asked for terminal labels&apos;, function () {
+          expect(wrapper.getNodeLabels(&apos;terminal&apos;).sort())
+            .to.have.members(test.terminalNodeLabels.sort());
+        });
+      });
+    });
+  });
+
+  describe(&apos;given a particular phylogeny with additional node properties&apos;, function () {
+    const wrapper = new phyx.PhylogenyWrapper({
+      newick: &apos;((MVZ225749, MVZ191016), Rana boylii)&apos;,
+      additionalNodeProperties: {
+        MVZ225749: {
+          representsTaxonomicUnits: [{
+            &apos;@type&apos;: [
+              phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+            ],
+            nameString: &apos;Rana luteiventris&apos;,
+            occurrenceID: &apos;MVZ:225749&apos;,
+          }],
+        },
+        MVZ191016: {
+          representsTaxonomicUnits: [{
+            &apos;@type&apos;: [
+              phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+            ],
+            nameString: &apos;Rana luteiventris&apos;,
+            occurrenceID: &apos;MVZ:191016&apos;,
+          }],
+        },
+      },
+    });
+
+    describe(&apos;#getNodeLabels&apos;, function () {
+      it(&apos;should return the list of node labels from the Newick string&apos;, function () {
+        expect(wrapper.getNodeLabels().sort())
+          .to.have.members([
+            &apos;MVZ191016&apos;,
+            &apos;MVZ225749&apos;,
+            &apos;Rana boylii&apos;,
+          ]);
+      });
+    });
+
+    describe(&apos;#getTaxonomicUnitsForNodeLabel&apos;, function () {
+      it(&apos;should return the list of taxonomic units using information from additional node properties&apos;, function () {
+        expect(wrapper.getTaxonomicUnitsForNodeLabel(&apos;MVZ191016&apos;)).to.deep.equal([{
+          &apos;@type&apos;: [
+            phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+          ],
+          nameString: &apos;Rana luteiventris&apos;,
+          occurrenceID: &apos;MVZ:191016&apos;,
+        }]);
+
+        expect(wrapper.getTaxonomicUnitsForNodeLabel(&apos;MVZ225749&apos;)).to.deep.equal([{
+          &apos;@type&apos;: [
+            phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+          ],
+          nameString: &apos;Rana luteiventris&apos;,
+          occurrenceID: &apos;MVZ:225749&apos;,
+        }]);
+
+        expect(wrapper.getTaxonomicUnitsForNodeLabel(&apos;Rana boylii&apos;)).to.deep.equal([{
+          &apos;@type&apos;: owlterms.TDWG_VOC_TAXON_CONCEPT,
+          label: &apos;Rana boylii&apos;,
+          hasName: {
+            &apos;@type&apos;: &apos;http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName&apos;,
+            label: &apos;Rana boylii&apos;,
+            nameComplete: &apos;Rana boylii&apos;,
+            genusPart: &apos;Rana&apos;,
+            specificEpithet: &apos;boylii&apos;,
+          },
+        }]);
+      });
+    });
+
+    describe(&apos;#getNodeLabelsMatchedBySpecifier&apos;, function () {
+      it(&apos;should match a specifier to MVZ225749 based on occurrence ID&apos;, function () {
+        const specifier1 = {
+          &apos;@type&apos;: phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+          occurrenceID: &apos;MVZ:225749&apos;,
+        };
+        expect(wrapper.getNodeLabelsMatchedBySpecifier(specifier1))
+          .to.have.members([&apos;MVZ225749&apos;]);
+      });
+
+      it(&apos;should match a specifier to MVZ191016 based on occurrence ID&apos;, function () {
+        const specifier2 = {
+          &apos;@type&apos;: phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+          occurrenceID: &apos;MVZ:191016&apos;,
+        };
+
+        expect(wrapper.getNodeLabelsMatchedBySpecifier(specifier2))
+          .to.have.members([&apos;MVZ191016&apos;]);
+      });
+
+      it(&apos;should match a specifier to node &quot;Rana boylii&quot; based on the parsed scientific name&apos;, function () {
+        const specifier3 = {
+          &apos;@type&apos;: phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+          nameString: &apos;Rana boylii&apos;,
+        };
+
+        expect(wrapper.getNodeLabelsMatchedBySpecifier(specifier3))
+          .to.have.members([&apos;Rana boylii&apos;]);
+      });
+    });
+  });
+
+  describe(&apos;#asJSONLD&apos;, function () {
+    it(&apos;should preserve an existing @id on input phylogenies&apos;, function () {
+      const jsonld = new phyx.PhylogenyWrapper({
+        &apos;@id&apos;: &apos;#providedId&apos;,
+        newick: &apos;((Homo_sapiens, Panthera_tigris), Mus_musculus)&apos;,
+      }).asJSONLD(&apos;#phylogeny0&apos;);
+      expect(jsonld).to.have.property(&apos;@id&apos;);
+      expect(jsonld[&apos;@id&apos;]).to.equal(&apos;#providedId&apos;);
+    });
+    it(&apos;should generate a new @id on input phylorefs&apos;, function () {
+      const jsonld = new phyx.PhylogenyWrapper({
+        newick: &apos;((Homo_sapiens, Panthera_tigris), Mus_musculus)&apos;,
+      }, owlterms.ICZN_CODE).asJSONLD(&apos;#phylogeny0&apos;);
+      expect(jsonld).to.have.property(&apos;@id&apos;);
+      expect(jsonld[&apos;@id&apos;]).to.equal(&apos;#phylogeny0&apos;);
+    });
+    it(&apos;should generate the phylogeny in JSON-LD as expected&apos;, function () {
+      const expectedResults = [
+        {
+          newick: &apos;((Homo_sapiens, Panthera_tigris), Mus_musculus)&apos;,
+          jsonld: {
+            &apos;@id&apos;: &apos;#&apos;,
+            &apos;@type&apos;: owlterms.PHYLOREFERENCE_PHYLOGENY,
+            hasRootNode: { &apos;@id&apos;: &apos;#_node0&apos; },
+            newick: &apos;((Homo_sapiens, Panthera_tigris), Mus_musculus)&apos;,
+            nodes: [
+              {
+                &apos;@id&apos;: &apos;#_node0&apos;,
+                children: [&apos;#_node1&apos;, &apos;#_node2&apos;],
+                &apos;rdf:type&apos;: [{ &apos;@id&apos;: owlterms.CDAO_NODE }],
+              },
+              {
+                &apos;@id&apos;: &apos;#_node1&apos;,
+                &apos;rdf:type&apos;: [
+                  { &apos;@id&apos;: owlterms.CDAO_NODE },
+                  {
+                    &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                    onProperty: owlterms.CDAO_REPRESENTS_TU,
+                    someValuesFrom: {
+                      &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                      onProperty: owlterms.TDWG_VOC_HAS_NAME,
+                      someValuesFrom: {
+                        &apos;@type&apos;: owlterms.OWL_CLASS,
+                        intersectionOf: [{
+                          &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                          hasValue: &apos;Mus musculus&apos;,
+                          onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                        }, {
+                          &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                          hasValue: {
+                            &apos;@id&apos;: owlterms.ICZN_CODE,
+                          },
+                          onProperty: owlterms.NOMENCLATURAL_CODE,
+                        }],
+                      },
+                    },
+                  },
+                ],
+                labels: [&apos;Mus_musculus&apos;],
+                parent: &apos;#_node0&apos;,
+                representsTaxonomicUnits: [{
+                  &apos;@type&apos;: owlterms.TDWG_VOC_TAXON_CONCEPT,
+                  hasName: {
+                    &apos;@type&apos;: owlterms.TDWG_VOC_TAXON_NAME,
+                    genusPart: &apos;Mus&apos;,
+                    label: &apos;Mus_musculus&apos;,
+                    nameComplete: &apos;Mus musculus&apos;,
+                    nomenclaturalCode: owlterms.ICZN_CODE,
+                    specificEpithet: &apos;musculus&apos;,
+                  },
+                  label: &apos;Mus_musculus&apos;,
+                }],
+                siblings: [&apos;#_node2&apos;],
+              },
+              {
+                &apos;@id&apos;: &apos;#_node2&apos;,
+                children: [&apos;#_node3&apos;, &apos;#_node4&apos;],
+                &apos;rdf:type&apos;: [{ &apos;@id&apos;: owlterms.CDAO_NODE }],
+                parent: &apos;#_node0&apos;,
+                siblings: [&apos;#_node1&apos;],
+              },
+              {
+                &apos;@id&apos;: &apos;#_node3&apos;,
+                &apos;rdf:type&apos;: [
+                  { &apos;@id&apos;: owlterms.CDAO_NODE },
+                  {
+                    &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                    onProperty: owlterms.CDAO_REPRESENTS_TU,
+                    someValuesFrom: {
+                      &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                      onProperty: owlterms.TDWG_VOC_HAS_NAME,
+                      someValuesFrom: {
+                        &apos;@type&apos;: owlterms.OWL_CLASS,
+                        intersectionOf: [{
+                          &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                          hasValue: &apos;Panthera tigris&apos;,
+                          onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                        }, {
+                          &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                          hasValue: {
+                            &apos;@id&apos;: owlterms.ICZN_CODE,
+                          },
+                          onProperty: owlterms.NOMENCLATURAL_CODE,
+                        }],
+                      },
+                    },
+                  },
+                ],
+                labels: [&apos;Panthera_tigris&apos;],
+                parent: &apos;#_node2&apos;,
+                representsTaxonomicUnits: [{
+                  &apos;@type&apos;: owlterms.TDWG_VOC_TAXON_CONCEPT,
+                  hasName: {
+                    &apos;@type&apos;: owlterms.TDWG_VOC_TAXON_NAME,
+                    genusPart: &apos;Panthera&apos;,
+                    label: &apos;Panthera_tigris&apos;,
+                    nameComplete: &apos;Panthera tigris&apos;,
+                    nomenclaturalCode: owlterms.ICZN_CODE,
+                    specificEpithet: &apos;tigris&apos;,
+                  },
+                  label: &apos;Panthera_tigris&apos;,
+                }],
+                siblings: [&apos;#_node4&apos;],
+              },
+              {
+                &apos;@id&apos;: &apos;#_node4&apos;,
+                &apos;rdf:type&apos;: [
+                  { &apos;@id&apos;: owlterms.CDAO_NODE },
+                  {
+                    &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                    onProperty: owlterms.CDAO_REPRESENTS_TU,
+                    someValuesFrom: {
+                      &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                      onProperty: owlterms.TDWG_VOC_HAS_NAME,
+                      someValuesFrom: {
+                        &apos;@type&apos;: owlterms.OWL_CLASS,
+                        intersectionOf: [{
+                          &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                          hasValue: &apos;Homo sapiens&apos;,
+                          onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                        }, {
+                          &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                          hasValue: {
+                            &apos;@id&apos;: owlterms.ICZN_CODE,
+                          },
+                          onProperty: owlterms.NOMENCLATURAL_CODE,
+                        }],
+                      },
+                    },
+                  },
+                ],
+                labels: [&apos;Homo_sapiens&apos;],
+                parent: &apos;#_node2&apos;,
+                representsTaxonomicUnits: [
+                  {
+                    &apos;@type&apos;: owlterms.TDWG_VOC_TAXON_CONCEPT,
+                    hasName: {
+                      &apos;@type&apos;: owlterms.TDWG_VOC_TAXON_NAME,
+                      genusPart: &apos;Homo&apos;,
+                      label: &apos;Homo_sapiens&apos;,
+                      nameComplete: &apos;Homo sapiens&apos;,
+                      nomenclaturalCode: owlterms.ICZN_CODE,
+                      specificEpithet: &apos;sapiens&apos;,
+                    },
+                    label: &apos;Homo_sapiens&apos;,
+                  },
+                ],
+                siblings: [&apos;#_node3&apos;],
+              },
+            ],
+          },
+        },
+      ];
+
+      expectedResults.forEach((expected) =&gt; {
+        const wrapper = new phyx.PhylogenyWrapper({
+          &apos;@id&apos;: &apos;#&apos;,
+          newick: expected.newick,
+        }, owlterms.ICZN_CODE);
+        expect(wrapper.asJSONLD(&apos;#phylogeny0&apos;)).to.deep.equal(expected.jsonld);
+      });
+    });
+  });
+
+  describe(&apos;#getParsedNewickWithIRIs&apos;, function () {
+    const tests = [
+      {
+        newick: &apos;(((A, B)C, D)E, F)G&apos;,
+        result: {
+          json: {
+            &apos;@id&apos;: &apos;_node0&apos;,
+            name: &apos;G&apos;,
+            label: &apos;G&apos;,
+            children: [
+              { &apos;@id&apos;: &apos;_node1&apos;, name: &apos;F&apos;, label: &apos;F&apos; },
+              {
+                &apos;@id&apos;: &apos;_node2&apos;,
+                name: &apos;E&apos;,
+                label: &apos;E&apos;,
+                children: [
+                  { &apos;@id&apos;: &apos;_node3&apos;, name: &apos;D&apos;, label: &apos;D&apos; },
+                  {
+                    &apos;@id&apos;: &apos;_node4&apos;,
+                    name: &apos;C&apos;,
+                    label: &apos;C&apos;,
+                    children: [
+                      { &apos;@id&apos;: &apos;_node5&apos;, name: &apos;B&apos;, label: &apos;B&apos; },
+                      { &apos;@id&apos;: &apos;_node6&apos;, name: &apos;A&apos;, label: &apos;A&apos; },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+    ];
+
+    tests.forEach((test) =&gt; {
+      it(&apos;should be able to parse a provided Newick string as expected&apos;, function () {
+        expect(new phyx.PhylogenyWrapper({ newick: test.newick }).getParsedNewickWithIRIs(&apos;&apos;))
+          .to.deep.equal(test.result);
+      });
+    });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,5 +1,41 @@
 window.esdocSearchIndex = [
   [
+    "",
+    "test-file/test/scripts/phyx2owl.js.html#lineNumber19",
+    "",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/scripts/phyx2owl.js.html#lineNumber38",
+    " should be able to convert `brochu_2003.json`",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/scripts/phyx2owl.js.html#lineNumber69",
+    " should be able to convert the entire `test/examples/correct` directory",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/scripts/phyx2owl.js.html#lineNumber103",
+    " should give an error if no JSON files could be found",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/scripts/phyx2owl.js.html#lineNumber29",
+    " should support `--help`",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/scripts/phyx2owl.js.html#lineNumber20",
+    " should work without any arguments",
+    "test"
+  ],
+  [
     "@phyloref/phyx/src/wrappers/citationwrapper.js~citationwrapper",
     "class/src/wrappers/CitationWrapper.js~CitationWrapper.html",
     "<span>CitationWrapper</span> <span class=\"search-result-import-path\">@phyloref/phyx/src/wrappers/CitationWrapper.js</span>",
@@ -52,6 +88,984 @@ window.esdocSearchIndex = [
     "class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html",
     "<span>TaxonomicUnitWrapper</span> <span class=\"search-result-import-path\">@phyloref/phyx/src/wrappers/TaxonomicUnitWrapper.js</span>",
     "class"
+  ],
+  [
+    "",
+    "test-file/test/citations.js.html#lineNumber16",
+    "CitationWrapper",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/citations.js.html#lineNumber79",
+    "CitationWrapper ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/citations.js.html#lineNumber82",
+    "CitationWrapper  #constructor",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/citations.js.html#lineNumber83",
+    "CitationWrapper  #constructor should return a CitationWrapper",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/citations.js.html#lineNumber88",
+    "CitationWrapper  #toString",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/citations.js.html#lineNumber89",
+    "CitationWrapper  #toString should return the expected string",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/citations.js.html#lineNumber57",
+    "CitationWrapper given an empty citation",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/citations.js.html#lineNumber60",
+    "CitationWrapper given an empty citation #constructor",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/citations.js.html#lineNumber61",
+    "CitationWrapper given an empty citation #constructor should return a CitationWrapper",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/citations.js.html#lineNumber66",
+    "CitationWrapper given an empty citation #toString",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/citations.js.html#lineNumber71",
+    "CitationWrapper given an empty citation #toString should be settable by changing the title",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/citations.js.html#lineNumber67",
+    "CitationWrapper given an empty citation #toString should return undefined",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber24",
+    "PhylogenyWrapper",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber249",
+    "PhylogenyWrapper #asJSONLD",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber258",
+    "PhylogenyWrapper #asJSONLD should generate a new @id on input phylorefs",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber265",
+    "PhylogenyWrapper #asJSONLD should generate the phylogeny in JSON-LD as expected",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber250",
+    "PhylogenyWrapper #asJSONLD should preserve an existing @id on input phylogenies",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber25",
+    "PhylogenyWrapper #constructor",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber26",
+    "PhylogenyWrapper #constructor when used to wrap an empty object",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber27",
+    "PhylogenyWrapper #constructor when used to wrap an empty object should return a PhylogenyWrapper object",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber34",
+    "PhylogenyWrapper #getErrorsInNewickString",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber35",
+    "PhylogenyWrapper #getErrorsInNewickString when given a correct Newick string",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber40",
+    "PhylogenyWrapper #getErrorsInNewickString when given a correct Newick string should return an empty list of errors",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber47",
+    "PhylogenyWrapper #getErrorsInNewickString when given an empty Newick string",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber53",
+    "PhylogenyWrapper #getErrorsInNewickString when given an empty Newick string should return a single \"No phylogeny entered\" error",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber96",
+    "PhylogenyWrapper #getErrorsInNewickString when given an incomplete Newick string",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber102",
+    "PhylogenyWrapper #getErrorsInNewickString when given an incomplete Newick string should report an error parsing the phylogeny",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber62",
+    "PhylogenyWrapper #getErrorsInNewickString when given an unbalanced Newick string",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber78",
+    "PhylogenyWrapper #getErrorsInNewickString when given an unbalanced Newick string should report how many parentheses are missing",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber114",
+    "PhylogenyWrapper #getNodeLabels",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber130",
+    "PhylogenyWrapper #getNodeLabels For a particular Newick phylogeny",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber131",
+    "PhylogenyWrapper #getNodeLabels For a particular Newick phylogeny should return a list of all node labels by default",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber136",
+    "PhylogenyWrapper #getNodeLabels For a particular Newick phylogeny should return a list of internal labels when asked for internal labels",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber141",
+    "PhylogenyWrapper #getNodeLabels For a particular Newick phylogeny should return a list of terminal labels when asked for terminal labels",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber433",
+    "PhylogenyWrapper #getParsedNewickWithIRIs",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber468",
+    "PhylogenyWrapper #getParsedNewickWithIRIs should be able to parse a provided Newick string as expected",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber149",
+    "PhylogenyWrapper given a particular phylogeny with additional node properties",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber174",
+    "PhylogenyWrapper given a particular phylogeny with additional node properties #getNodeLabels",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber175",
+    "PhylogenyWrapper given a particular phylogeny with additional node properties #getNodeLabels should return the list of node labels from the Newick string",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber217",
+    "PhylogenyWrapper given a particular phylogeny with additional node properties #getNodeLabelsMatchedBySpecifier",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber227",
+    "PhylogenyWrapper given a particular phylogeny with additional node properties #getNodeLabelsMatchedBySpecifier should match a specifier to MVZ191016 based on occurrence ID",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber218",
+    "PhylogenyWrapper given a particular phylogeny with additional node properties #getNodeLabelsMatchedBySpecifier should match a specifier to MVZ225749 based on occurrence ID",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber237",
+    "PhylogenyWrapper given a particular phylogeny with additional node properties #getNodeLabelsMatchedBySpecifier should match a specifier to node \"Rana boylii\" based on the parsed scientific name",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber185",
+    "PhylogenyWrapper given a particular phylogeny with additional node properties #getTaxonomicUnitsForNodeLabel",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylogenies.js.html#lineNumber186",
+    "PhylogenyWrapper given a particular phylogeny with additional node properties #getTaxonomicUnitsForNodeLabel should return the list of taxonomic units using information from additional node properties",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber26",
+    "PhylorefWrapper",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber251",
+    "PhylorefWrapper #asJSONLD",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber261",
+    "PhylorefWrapper #asJSONLD should generate a new @id on input phylorefs",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber269",
+    "PhylorefWrapper #asJSONLD should generate the expected equivClass expression for 1 int, 1 ext phyloref",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber300",
+    "PhylorefWrapper #asJSONLD should generate the expected equivClass expression for 2 int phyloref",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber252",
+    "PhylorefWrapper #asJSONLD should preserve an existing @id on input phylorefs",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber179",
+    "PhylorefWrapper given a particular phylogeny",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber190",
+    "PhylorefWrapper given a particular phylogeny #getExpectedNodeLabels",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber191",
+    "PhylorefWrapper given a particular phylogeny #getExpectedNodeLabels should be able to determine expected node labels for a phylogeny",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber53",
+    "PhylorefWrapper given an empty phyloreference",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber204",
+    "PhylorefWrapper given an empty phyloreference",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber56",
+    "PhylorefWrapper given an empty phyloreference #constructor",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber57",
+    "PhylorefWrapper given an empty phyloreference #constructor should return a PhylorefWrapper",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber207",
+    "PhylorefWrapper given an empty phyloreference #getCurrentStatus",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber208",
+    "PhylorefWrapper given an empty phyloreference #getCurrentStatus should return \"pso:draft\" as the default initial status",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber170",
+    "PhylorefWrapper given an empty phyloreference #getSpecifierLabel as TaxonomicUnitWrapper",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber171",
+    "PhylorefWrapper given an empty phyloreference #getSpecifierLabel as TaxonomicUnitWrapper should return the correct label for each specifier",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber162",
+    "PhylorefWrapper given an empty phyloreference #getSpecifierType",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber163",
+    "PhylorefWrapper given an empty phyloreference #getSpecifierType should return the correct specifier type for each specifier",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber225",
+    "PhylorefWrapper given an empty phyloreference #getStatusChanges",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber226",
+    "PhylorefWrapper given an empty phyloreference #getStatusChanges should return the empty list",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber230",
+    "PhylorefWrapper given an empty phyloreference #getStatusChanges when modified by using .setStatus",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber231",
+    "PhylorefWrapper given an empty phyloreference #getStatusChanges when modified by using .setStatus should return the updated list",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber62",
+    "PhylorefWrapper given an empty phyloreference #label",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber67",
+    "PhylorefWrapper given an empty phyloreference #label should be settable by assigning to .label",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber63",
+    "PhylorefWrapper given an empty phyloreference #label should return undefined",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber214",
+    "PhylorefWrapper given an empty phyloreference #setStatus",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber215",
+    "PhylorefWrapper given an empty phyloreference #setStatus should throw an error if given a mistyped status",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber73",
+    "PhylorefWrapper given an empty phyloreference #specifiers",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber78",
+    "PhylorefWrapper given an empty phyloreference #specifiers should initially return a nomenclatural code of unknown",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber74",
+    "PhylorefWrapper given an empty phyloreference #specifiers should initially return an empty list",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber82",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a new external specifier is added using .externalSpecifiers",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber93",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a new external specifier is added using .externalSpecifiers",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber83",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a new external specifier is added using .externalSpecifiers should return a list with the new specifier",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber94",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a new external specifier is added using .externalSpecifiers should return a list with the new specifier",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber88",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a new external specifier is added using .externalSpecifiers should return a nomenclatural code of ICZN",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber99",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a new external specifier is added using .externalSpecifiers should return two nomenclatural codes, one for each specifier",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber105",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a new external specifier is added using .externalSpecifiers should still return a nomenclatural code of ICZN",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber110",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a new internal specifier is added using .internalSpecifiers",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber123",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a new internal specifier is added using .internalSpecifiers should change to a default nomenclatural code of owlterms.UNKNOWN_CODE",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber111",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a new internal specifier is added using .internalSpecifiers should return a list with the new specifier",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber116",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a new internal specifier is added using .internalSpecifiers should return three nomenclatural codes, one for each specifier",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber140",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a specifier is added using .externalSpecifiers",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber141",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a specifier is added using .externalSpecifiers should return the updated list",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber154",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a specifier is added using .internalSpecifiers",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber155",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a specifier is added using .internalSpecifiers should be included in the list of all specifiers",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber147",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a specifier is changed to an internal specifier using .setSpecifierType",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber148",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a specifier is changed to an internal specifier using .setSpecifierType should remain in the list of specifiers",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber128",
+    "PhylorefWrapper given an empty phyloreference #specifiers when specifiers are deleted using .deleteSpecifier",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber129",
+    "PhylorefWrapper given an empty phyloreference #specifiers when specifiers are deleted using .deleteSpecifier should return the updated list",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/specimens.js.html#lineNumber16",
+    "SpecimenWrapper",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/specimens.js.html#lineNumber17",
+    "SpecimenWrapper #constructor",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/specimens.js.html#lineNumber77",
+    "SpecimenWrapper #constructor should be able to create a specimen JSON record from an occurrence ID",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/specimens.js.html#lineNumber24",
+    "SpecimenWrapper #constructor should be able to extract an occurenceID and catalogNumber from simple specimen IDs",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/specimens.js.html#lineNumber53",
+    "SpecimenWrapper #constructor should be able to extract the same occurrenceID from different representations",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/specimens.js.html#lineNumber18",
+    "SpecimenWrapper #constructor should be able to wrap an empty specimen",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/specimens.js.html#lineNumber33",
+    "SpecimenWrapper #constructor should extract institutionCode and catalogNumber from a institutionCode:catalogNumber combination",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/specimens.js.html#lineNumber43",
+    "SpecimenWrapper #constructor should extract occurenceID, institutionCode and catalogNumber from Darwin Core triples",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/specimens.js.html#lineNumber68",
+    "SpecimenWrapper #constructor should not attempt to split a URL into occurenceID, institutionCode and catalogNumber",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/specimens.js.html#lineNumber59",
+    "SpecimenWrapper #constructor should not attempt to split a URN into occurenceID, institutionCode and catalogNumber",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxon-names.js.html#lineNumber15",
+    "TaxonNameWrapper",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxon-names.js.html#lineNumber16",
+    "TaxonNameWrapper #constructor",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxon-names.js.html#lineNumber17",
+    "TaxonNameWrapper #constructor should accept empty taxon names without errors",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxon-names.js.html#lineNumber32",
+    "TaxonNameWrapper #constructor should be able to parse binomial names into genus and specific epithet",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxon-names.js.html#lineNumber40",
+    "TaxonNameWrapper #constructor should be able to parse trinomial names into genus, specific epithet and infraspecific epithet",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxon-names.js.html#lineNumber23",
+    "TaxonNameWrapper #constructor should be able to parse uninomial names as such",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxon-names.js.html#lineNumber57",
+    "TaxonNameWrapper #constructor should be able to use default nomenclatural codes",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxon-names.js.html#lineNumber49",
+    "TaxonNameWrapper #constructor should ignore authority after a binomial name",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber175",
+    "TaxonomicUnitMatcher",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber210",
+    "TaxonomicUnitMatcher #matchByExternalReferences",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber211",
+    "TaxonomicUnitMatcher #matchByExternalReferences should be able to match tunit3 and tunit4 by external references",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber203",
+    "TaxonomicUnitMatcher #matchByNameComplete",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber204",
+    "TaxonomicUnitMatcher #matchByNameComplete should be able to match tunit1 and tunit2 by complete name",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber217",
+    "TaxonomicUnitMatcher #matchByOccurrenceID",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber218",
+    "TaxonomicUnitMatcher #matchByOccurrenceID should be able to match tunit2 and tunit3 by specimen identifiers",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber224",
+    "TaxonomicUnitMatcher #matched and #matchReason",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber225",
+    "TaxonomicUnitMatcher #matched and #matchReason should match tunit1 and tunit2 on the basis of identical complete names",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber237",
+    "TaxonomicUnitMatcher #matched and #matchReason should match tunit2 and tunit3 by identical specimen identifier",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber231",
+    "TaxonomicUnitMatcher #matched and #matchReason should match tunit3 and tunit4 by identical external reference",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber20",
+    "TaxonomicUnitWrapper",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber144",
+    "TaxonomicUnitWrapper #asOWLEquivClass",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber160",
+    "TaxonomicUnitWrapper #asOWLEquivClass when given a specimen, only the occurrence ID should be present in the equivClass",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber145",
+    "TaxonomicUnitWrapper #asOWLEquivClass when given a taxon concept, only the complete name should be present in the equivClass",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber21",
+    "TaxonomicUnitWrapper #constructor given no arguments",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber22",
+    "TaxonomicUnitWrapper #constructor given no arguments should create an empty TaxonomicUnitWrapper without a defined label",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber107",
+    "TaxonomicUnitWrapper #fromLabel",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber108",
+    "TaxonomicUnitWrapper #fromLabel should return empty lists when inputs are empty or undefined",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber129",
+    "TaxonomicUnitWrapper #fromLabel when given a scientific name separated with underscores, it should return a list of a single TU wrapping the scientific name",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber115",
+    "TaxonomicUnitWrapper #fromLabel when given a scientific name, it should return a list of a single TU wrapping a scientific name",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber51",
+    "TaxonomicUnitWrapper #label given a taxonomic unit",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber79",
+    "TaxonomicUnitWrapper #label given a taxonomic unit should ignore occurrence ID if typed as a taxon concept",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber95",
+    "TaxonomicUnitWrapper #label given a taxonomic unit should provide both taxon name and occurrence ID in label, but ignore external reference",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber87",
+    "TaxonomicUnitWrapper #label given a taxonomic unit should return a wrapped external reference by surrounding it with \"<>\"",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber52",
+    "TaxonomicUnitWrapper #label given a taxonomic unit should return a wrapped scientific name",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber62",
+    "TaxonomicUnitWrapper #label given a taxonomic unit should return a wrapped specimen identifier preceded by \"Specimen\"",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/taxonomic-units.js.html#lineNumber69",
+    "TaxonomicUnitWrapper #label given a taxonomic unit should return specimens with an occurrenceID as well as a taxon concept",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber28",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably.",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber84",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all example Phyx files",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber97",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all example Phyx files ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber98",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all example Phyx files  should validate against our JSON schema",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber30",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. convert brochu_2003.json to an OWL ontology",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber41",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. convert brochu_2003.json to an OWL ontology should be able to convert brochu_2003.json to an OWL Ontology",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber36",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. convert brochu_2003.json to an OWL ontology should be able to load brochu_2003.json",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber53",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. convert brochu_2003.json to an OWL ontology should generate the same OWL ontology as it generated earlier",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber58",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. convert brochu_2003.jsonld to n-quads",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber62",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. convert brochu_2003.jsonld to n-quads should be able to convert brochu_2003.json via JSON-LD to n-quads",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber78",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. convert brochu_2003.jsonld to n-quads should generate the same n-quads ontology as it generated earlier",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/jphyloref.js.html#lineNumber31",
+    "Test whether the expected JSON-LD files pass testing using JPhyloRef.",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/jphyloref.js.html#lineNumber32",
+    "Test whether the expected JSON-LD files pass testing using JPhyloRef. download JPhyloRef",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/jphyloref.js.html#lineNumber38",
+    "Test whether the expected JSON-LD files pass testing using JPhyloRef. download JPhyloRef has already been downloaded",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/jphyloref.js.html#lineNumber42",
+    "Test whether the expected JSON-LD files pass testing using JPhyloRef. download JPhyloRef should be downloadable",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/jphyloref.js.html#lineNumber54",
+    "Test whether the expected JSON-LD files pass testing using JPhyloRef. test example JSON-LD files using JPhyloRef",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/jphyloref.js.html#lineNumber58",
+    "Test whether the expected JSON-LD files pass testing using JPhyloRef. test example JSON-LD files using JPhyloRef ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/scripts/resolve.js.html#lineNumber20",
+    "bin/resolve.js",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/scripts/resolve.js.html#lineNumber80",
+    "bin/resolve.js should correctly report errors with certain phyloreferences",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/scripts/resolve.js.html#lineNumber39",
+    "bin/resolve.js should provide the expected results on the `brochu_2003.json` example file",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/scripts/resolve.js.html#lineNumber30",
+    "bin/resolve.js should support `--help`",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/scripts/resolve.js.html#lineNumber21",
+    "bin/resolve.js should work without any arguments",
+    "test"
   ],
   [
     "src/.external-ecmascript.js~array",
@@ -1174,5 +2188,65 @@ window.esdocSearchIndex = [
     "class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html#static-method-fromLabel",
     "src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.fromLabel",
     "method"
+  ],
+  [
+    "test/citations.js",
+    "test-file/test/citations.js.html",
+    "test/citations.js",
+    "testFile"
+  ],
+  [
+    "test/examples.js",
+    "test-file/test/examples.js.html",
+    "test/examples.js",
+    "testFile"
+  ],
+  [
+    "test/jphyloref.js",
+    "test-file/test/jphyloref.js.html",
+    "test/jphyloref.js",
+    "testFile"
+  ],
+  [
+    "test/phylogenies.js",
+    "test-file/test/phylogenies.js.html",
+    "test/phylogenies.js",
+    "testFile"
+  ],
+  [
+    "test/phylorefs.js",
+    "test-file/test/phylorefs.js.html",
+    "test/phylorefs.js",
+    "testFile"
+  ],
+  [
+    "test/scripts/phyx2owl.js",
+    "test-file/test/scripts/phyx2owl.js.html",
+    "test/scripts/phyx2owl.js",
+    "testFile"
+  ],
+  [
+    "test/scripts/resolve.js",
+    "test-file/test/scripts/resolve.js.html",
+    "test/scripts/resolve.js",
+    "testFile"
+  ],
+  [
+    "test/specimens.js",
+    "test-file/test/specimens.js.html",
+    "test/specimens.js",
+    "testFile"
+  ],
+  [
+    "test/taxon-names.js",
+    "test-file/test/taxon-names.js.html",
+    "test/taxon-names.js",
+    "testFile"
+  ],
+  [
+    "test/taxonomic-units.js",
+    "test-file/test/taxonomic-units.js.html",
+    "test/taxonomic-units.js",
+    "testFile"
   ]
 ]

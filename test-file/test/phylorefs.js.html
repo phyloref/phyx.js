@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">test/phylorefs.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matchers">matchers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matchers/TaxonomicUnitMatcher.js~TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#wrappers">wrappers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html">PhylorefWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html">PhyxWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html">SpecimenWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html">TaxonNameWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/phylorefs.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*
+ * Test phyloreferences.
+ */
+
+// Require phyx.js, our PHYX library, and Chai for testing.
+const chai = require(&apos;chai&apos;);
+const phyx = require(&apos;../src&apos;);
+
+// Use owlterms so we don&apos;t have to repeat OWL terms.
+const owlterms = require(&apos;../src/utils/owlterms&apos;);
+
+// We use Chai&apos;s Expect API.
+const expect = chai.expect;
+
+/*
+ * Phyloref tests cover three aspects of phyloreferences:
+ *  - Whether we can create a phyloref with a particular set of specifiers,
+ *    and whether we can correctly change the type of a specifer (from &apos;External&apos;
+ *    to &apos;Internal&apos;), delete specifiers, and retrieve specifier labels.
+ *  - Whether we can determine to which node a phyloref is expected to resolve to
+ *    by using additionalNodeProperties.
+ *  - Whether we can update the phyloref&apos;s status several times and retrieve the
+ *    full history of its status changes.
+ */
+
+describe(&apos;PhylorefWrapper&apos;, function () {
+  // Some specifiers to use in testing.
+  const specifier1 = {
+    &apos;@type&apos;: phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+    occurrenceID: &apos;MVZ:225749&apos;,
+  };
+  const specifier2 = {
+    &apos;@type&apos;: phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+    occurrenceID: &apos;MVZ:191016&apos;,
+  };
+  const specifier3 = {
+    &apos;@type&apos;: phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+    hasName: {
+      &apos;@type&apos;: phyx.TaxonNameWrapper.TYPE_TAXON_NAME,
+      nomenclaturalCode: owlterms.ICZN_CODE,
+      nameComplete: &apos;Rana boylii&apos;,
+    },
+  };
+  const specifier4 = {
+    &apos;@type&apos;: phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+    hasName: {
+      &apos;@type&apos;: phyx.TaxonNameWrapper.TYPE_TAXON_NAME,
+      nomenclaturalCode: owlterms.ICN_CODE,
+      nameComplete: &apos;Mangifera indica&apos;,
+    },
+  };
+
+  describe(&apos;given an empty phyloreference&apos;, function () {
+    const wrapper = new phyx.PhylorefWrapper({});
+
+    describe(&apos;#constructor&apos;, function () {
+      it(&apos;should return a PhylorefWrapper&apos;, function () {
+        expect(wrapper).to.be.an.instanceOf(phyx.PhylorefWrapper);
+      });
+    });
+
+    describe(&apos;#label&apos;, function () {
+      it(&apos;should return undefined&apos;, function () {
+        expect(wrapper.label).to.be.undefined;
+      });
+
+      it(&apos;should be settable by assigning to .label&apos;, function () {
+        wrapper.label = &apos;phyloref1&apos;;
+        expect(wrapper.label).equals(&apos;phyloref1&apos;);
+      });
+    });
+
+    describe(&apos;#specifiers&apos;, function () {
+      it(&apos;should initially return an empty list&apos;, function () {
+        expect(wrapper.specifiers).to.be.empty;
+      });
+
+      it(&apos;should initially return a nomenclatural code of unknown&apos;, function () {
+        expect(wrapper.defaultNomenCode).to.equal(owlterms.UNKNOWN_CODE);
+      });
+
+      describe(&apos;when a new external specifier is added using .externalSpecifiers&apos;, function () {
+        it(&apos;should return a list with the new specifier&apos;, function () {
+          wrapper.externalSpecifiers.push(specifier3);
+          expect(wrapper.specifiers).to.deep.equal([specifier3]);
+        });
+
+        it(&apos;should return a nomenclatural code of ICZN&apos;, function () {
+          expect(wrapper.defaultNomenCode).to.equal(owlterms.ICZN_CODE);
+        });
+      });
+
+      describe(&apos;when a new external specifier is added using .externalSpecifiers&apos;, function () {
+        it(&apos;should return a list with the new specifier&apos;, function () {
+          wrapper.externalSpecifiers.push(specifier2);
+          expect(wrapper.specifiers).to.deep.equal([specifier3, specifier2]);
+        });
+
+        it(&apos;should return two nomenclatural codes, one for each specifier&apos;, function () {
+          expect(wrapper.uniqNomenCodes).to.have.lengthOf(2);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.ICZN_CODE);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.UNKNOWN_CODE);
+        });
+
+        it(&apos;should still return a nomenclatural code of ICZN&apos;, function () {
+          expect(wrapper.defaultNomenCode).to.equal(owlterms.ICZN_CODE);
+        });
+      });
+
+      describe(&apos;when a new internal specifier is added using .internalSpecifiers&apos;, function () {
+        it(&apos;should return a list with the new specifier&apos;, function () {
+          wrapper.internalSpecifiers.push(specifier4);
+          expect(wrapper.specifiers).to.deep.equal([specifier4, specifier3, specifier2]);
+        });
+
+        it(&apos;should return three nomenclatural codes, one for each specifier&apos;, function () {
+          expect(wrapper.uniqNomenCodes).to.have.lengthOf(3);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.ICZN_CODE);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.UNKNOWN_CODE);
+          expect(wrapper.uniqNomenCodes).to.include(owlterms.ICN_CODE);
+        });
+
+        it(&apos;should change to a default nomenclatural code of owlterms.UNKNOWN_CODE&apos;, function () {
+          expect(wrapper.defaultNomenCode).to.equal(owlterms.UNKNOWN_CODE);
+        });
+      });
+
+      describe(&apos;when specifiers are deleted using .deleteSpecifier&apos;, function () {
+        it(&apos;should return the updated list&apos;, function () {
+          // Delete an external specifier.
+          wrapper.deleteSpecifier(specifier2);
+          // Delete an internal specifier.
+          wrapper.deleteSpecifier(specifier4);
+
+          // Only the first specifier should be left.
+          expect(wrapper.specifiers).to.deep.equal([specifier3]);
+        });
+      });
+
+      describe(&apos;when a specifier is added using .externalSpecifiers&apos;, function () {
+        it(&apos;should return the updated list&apos;, function () {
+          wrapper.externalSpecifiers.push(specifier1);
+          expect(wrapper.specifiers).to.deep.equal([specifier3, specifier1]);
+        });
+      });
+
+      describe(&apos;when a specifier is changed to an internal specifier using .setSpecifierType&apos;, function () {
+        it(&apos;should remain in the list of specifiers&apos;, function () {
+          wrapper.setSpecifierType(specifier1, &apos;Internal&apos;);
+          expect(wrapper.specifiers).to.deep.equal([specifier1, specifier3]);
+        });
+      });
+
+      describe(&apos;when a specifier is added using .internalSpecifiers&apos;, function () {
+        it(&apos;should be included in the list of all specifiers&apos;, function () {
+          wrapper.internalSpecifiers.push(specifier2);
+          expect(wrapper.specifiers).to.deep.equal([specifier1, specifier2, specifier3]);
+        });
+      });
+    });
+
+    describe(&apos;#getSpecifierType&apos;, function () {
+      it(&apos;should return the correct specifier type for each specifier&apos;, function () {
+        expect(wrapper.getSpecifierType(specifier1)).to.equal(&apos;Internal&apos;);
+        expect(wrapper.getSpecifierType(specifier2)).to.equal(&apos;Internal&apos;);
+        expect(wrapper.getSpecifierType(specifier3)).to.equal(&apos;External&apos;);
+      });
+    });
+
+    describe(&apos;#getSpecifierLabel as TaxonomicUnitWrapper&apos;, function () {
+      it(&apos;should return the correct label for each specifier&apos;, function () {
+        expect((new phyx.TaxonomicUnitWrapper(specifier1)).label).to.equal(&apos;Specimen MVZ:225749&apos;);
+        expect((new phyx.TaxonomicUnitWrapper(specifier2)).label).to.equal(&apos;Specimen MVZ:191016&apos;);
+        expect((new phyx.TaxonomicUnitWrapper(specifier3)).label).to.equal(&apos;Rana boylii&apos;);
+      });
+    });
+  });
+
+  describe(&apos;given a particular phylogeny&apos;, function () {
+    // Some phylogenies to use in testing.
+    const phylogeny1 = {
+      newick: &apos;((MVZ225749, MVZ191016)Test, &quot;Rana boylii&quot;)&apos;,
+      additionalNodeProperties: {
+        Test: {
+          expectedPhyloreferenceNamed: &apos;phyloref1&apos;,
+        },
+      },
+    };
+
+    describe(&apos;#getExpectedNodeLabels&apos;, function () {
+      it(&apos;should be able to determine expected node labels for a phylogeny&apos;, function () {
+        const phyloref1 = new phyx.PhylorefWrapper({
+          label: &apos;phyloref1&apos;,
+          internalSpecifiers: [specifier1, specifier2],
+          externalSpecifiers: [specifier3],
+        });
+
+        expect(phyloref1.getExpectedNodeLabels(phylogeny1))
+          .to.deep.equal([&apos;Test&apos;]);
+      });
+    });
+  });
+
+  describe(&apos;given an empty phyloreference&apos;, function () {
+    const wrapper = new phyx.PhylorefWrapper({});
+
+    describe(&apos;#getCurrentStatus&apos;, function () {
+      it(&apos;should return &quot;pso:draft&quot; as the default initial status&apos;, function () {
+        // Initially, an empty phyloref should report a status of &apos;pso:draft&apos;.
+        expect(wrapper.getCurrentStatus().statusCURIE).to.equal(&apos;pso:draft&apos;);
+      });
+    });
+
+    describe(&apos;#setStatus&apos;, function () {
+      it(&apos;should throw an error if given a mistyped status&apos;, function () {
+        expect(function () { wrapper.setStatus(&apos;pso:retracted-from_publication&apos;); })
+          .to.throw(
+            TypeError,
+            &apos;setStatus() called with invalid status CURIE \&apos;pso:retracted-from_publication\&apos;&apos;,
+            &apos;PhylorefWrapper throws TypeError on a mistyped status&apos;
+          );
+      });
+    });
+
+    describe(&apos;#getStatusChanges&apos;, function () {
+      it(&apos;should return the empty list&apos;, function () {
+        expect(wrapper.getStatusChanges()).to.be.empty;
+      });
+
+      describe(&apos;when modified by using .setStatus&apos;, function () {
+        it(&apos;should return the updated list&apos;, function () {
+          wrapper.setStatus(&apos;pso:final-draft&apos;);
+          wrapper.setStatus(&apos;pso:under-review&apos;);
+          wrapper.setStatus(&apos;pso:submitted&apos;);
+          wrapper.setStatus(&apos;pso:published&apos;);
+          wrapper.setStatus(&apos;pso:retracted-from-publication&apos;);
+
+          // And see if we get the statuses back in the correct order.
+          const statusChanges = wrapper.getStatusChanges();
+          expect(statusChanges.length, &apos;number of status changes should be 5&apos;).to.equal(5);
+          expect(statusChanges[0].statusCURIE, &apos;first status change should be &quot;pso:final-draft&quot;&apos;).to.equal(&apos;pso:final-draft&apos;);
+          expect(statusChanges[1].statusCURIE, &apos;second status change should be &quot;pso:under-review&quot;&apos;).to.equal(&apos;pso:under-review&apos;);
+          expect(statusChanges[2].statusCURIE, &apos;third status change should be a &quot;pso:submitted&quot;&apos;).to.equal(&apos;pso:submitted&apos;);
+          expect(statusChanges[3].statusCURIE, &apos;fourth status change should be a &quot;pso:published&quot;&apos;).to.equal(&apos;pso:published&apos;);
+          expect(statusChanges[4].statusCURIE, &apos;fifth status change should be a &quot;pso:retracted-from-publication&quot;&apos;).to.equal(&apos;pso:retracted-from-publication&apos;);
+        });
+      });
+    });
+  });
+
+  describe(&apos;#asJSONLD&apos;, function () {
+    it(&apos;should preserve an existing @id on input phylorefs&apos;, function () {
+      const jsonld = new phyx.PhylorefWrapper({
+        &apos;@id&apos;: &apos;#providedId&apos;,
+        internalSpecifiers: [specifier1],
+        externalSpecifiers: [specifier2],
+      }).asJSONLD(&apos;#phyloref0&apos;);
+      expect(jsonld).to.have.property(&apos;@id&apos;);
+      expect(jsonld[&apos;@id&apos;]).to.equal(&apos;#providedId&apos;);
+    });
+    it(&apos;should generate a new @id on input phylorefs&apos;, function () {
+      const jsonld = new phyx.PhylorefWrapper({
+        internalSpecifiers: [specifier1],
+        externalSpecifiers: [specifier2],
+      }).asJSONLD(&apos;#phyloref0&apos;);
+      expect(jsonld).to.have.property(&apos;@id&apos;);
+      expect(jsonld[&apos;@id&apos;]).to.equal(&apos;#phyloref0&apos;);
+    });
+    it(&apos;should generate the expected equivClass expression for 1 int, 1 ext phyloref&apos;, function () {
+      const jsonld = new phyx.PhylorefWrapper({
+        internalSpecifiers: [specifier1],
+        externalSpecifiers: [specifier2],
+      }).asJSONLD(&apos;#&apos;);
+      expect(jsonld).to.have.property(&apos;equivalentClass&apos;);
+      expect(jsonld.equivalentClass).to.deep.equal({
+        &apos;@type&apos;: owlterms.OWL_CLASS,
+        intersectionOf: [
+          {
+            &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+            onProperty: owlterms.PHYLOREF_INCLUDES_TU,
+            someValuesFrom: {
+              &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+              hasValue: &apos;MVZ:225749&apos;,
+              onProperty: owlterms.DWC_OCCURRENCE_ID,
+            },
+          },
+          {
+            &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+            onProperty: owlterms.PHYLOREF_EXCLUDES_TU,
+            someValuesFrom: {
+              &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+              hasValue: &apos;MVZ:191016&apos;,
+              onProperty: owlterms.DWC_OCCURRENCE_ID,
+            },
+          },
+        ],
+      });
+    });
+
+    it(&apos;should generate the expected equivClass expression for 2 int phyloref&apos;, function () {
+      const jsonld = new phyx.PhylorefWrapper({
+        internalSpecifiers: [specifier2, specifier3],
+      }).asJSONLD(&apos;#&apos;);
+      expect(jsonld).to.have.property(&apos;equivalentClass&apos;);
+      expect(jsonld.equivalentClass).to.deep.equal({
+        &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+        onProperty: owlterms.CDAO_HAS_CHILD,
+        someValuesFrom: {
+          &apos;@type&apos;: owlterms.OWL_CLASS,
+          intersectionOf: [
+            {
+              &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+              onProperty: owlterms.PHYLOREF_EXCLUDES_TU,
+              someValuesFrom: {
+                &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                hasValue: &apos;MVZ:191016&apos;,
+                onProperty: owlterms.DWC_OCCURRENCE_ID,
+              },
+            },
+            {
+              &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+              onProperty: owlterms.PHYLOREF_INCLUDES_TU,
+              someValuesFrom: {
+                &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                onProperty: owlterms.TDWG_VOC_HAS_NAME,
+                someValuesFrom: {
+                  &apos;@type&apos;: owlterms.OWL_CLASS,
+                  intersectionOf: [{
+                    &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                    hasValue: &apos;Rana boylii&apos;,
+                    onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+                  }, {
+                    &apos;@type&apos;: owlterms.OWL_RESTRICTION,
+                    hasValue: {
+                      &apos;@id&apos;: owlterms.ICZN_CODE,
+                    },
+                    onProperty: owlterms.NOMENCLATURAL_CODE,
+                  }],
+                },
+              },
+            },
+          ],
+        },
+      });
+    });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
