@@ -1,5 +1,5 @@
 # Ignore esdocs documentation.
-/docs/esdocs/
+/docs/
 
 # Logs
 logs
