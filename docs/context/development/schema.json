@@ -354,10 +354,14 @@
                 "description": "A natural language description of this apomorphy."
               },
               "phenotypicQuality": {
-                "description": "The quality of this phenotype. Must be a subclass of pato:quality."
+                "description": "The quality of this phenotype. Must be a subclass of pato:quality.",
+                "type": "string",
+                "format": "uri"
               },
               "bearingEntity": {
-                "description": "The bearer of the phenotypic quality."
+                "description": "The bearer of the phenotypic quality.",
+                "type": "string",
+                "format": "uri"
               }
             },
             "required": [
