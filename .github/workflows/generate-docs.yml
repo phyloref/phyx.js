@@ -1,11 +1,12 @@
 name: Deploy to GitHub Pages
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
 # Based on https://github.com/marketplace/actions/deploy-to-github-pages#using-an-ssh-deploy-key-
-jobs:  
+jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -13,12 +14,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           persist-credentials: false
-        
+
       - name: Build documentation in /docs
         run: |
           npm install
           npm run docs
-          
+
       - name: Install SSH Client
         uses: webfactory/ssh-agent@v0.2.0 # This step installs the ssh client into the workflow run. There's many options available for this on the action marketplace.
         with:
