@@ -4,23 +4,23 @@
 <http://example.org/phyx.js/example#> <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/phyloref.owl> .
 <http://example.org/phyx.js/example#> <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/tcan.owl> .
 <http://example.org/phyx.js/example#> <http://www.w3.org/2002/07/owl#imports> <http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl> .
-<http://example.org/phyx.js/example#phyloref0> <http://ontology.phyloref.org/phyloref.owl#apomorphy> _:b0 .
 <http://example.org/phyx.js/example#phyloref0> <http://purl.obolibrary.org/obo/IAO_0000115> "The apomorphy-based clade name, for which a complete turtle shell, as inherited by Testudo graeca Linnaeus 1758 is an apomorphy. A 'complete turtle shell' is herein defined as a composite structure consisting of a carapace with interlocking costals, neurals, peripherals, and a nuchal, together with the plastron comprising interlocking epi-, hyo-, meso- (lost in Testudo graeca), hypo-, xiphiplastra and an entoplastron." .
-<http://example.org/phyx.js/example#phyloref0> <http://purl.obolibrary.org/obo/IAO_0000119> _:b1 .
-<http://example.org/phyx.js/example#phyloref0> <http://purl.org/spar/pso/holdsStatusInTime> _:b2 .
+<http://example.org/phyx.js/example#phyloref0> <http://purl.obolibrary.org/obo/IAO_0000119> _:b0 .
+<http://example.org/phyx.js/example#phyloref0> <http://purl.org/spar/pso/holdsStatusInTime> _:b1 .
+<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#apomorphy> _:b3 .
 <http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b4 .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#label> "Testudinata" .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingApomorphy> .
-_:b0 <http://purl.obolibrary.org/obo/IAO_0000115> "A 'complete turtle shell' is herein defined as a composite structure consisting of a carapace with interlocking costals, neurals, peripherals, and a nuchal, together with the plastron comprising interlocking epi-, hyo-, meso- (lost in Testudo graeca), hypo-, xiphiplastra and an entoplastron. These are articulated with one another along a bridge. Additional elements may be present as well." .
-_:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://semanticscience.org/resource/SIO_010056> .
-_:b1 <http://purl.org/dc/terms/bibliographicCitation> "W. G. Joyce et al (2020) Testudinata (#273) [eds: K. de Queiroz and P. D. Cantino and J. A. Gauthier] CRC Press, Boca Raton, FL " .
-_:b1 <http://purl.org/dc/terms/title> "Testudinata (#273)" .
-_:b2 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
-_:b2 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b3 .
-_:b2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/spar/pso/StatusInTime> .
-_:b3 <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalStartDate> "2021-02-09T20:36:09Z" .
+_:b0 <http://purl.org/dc/terms/bibliographicCitation> "W. G. Joyce et al (2020) Testudinata (#273) [eds: K. de Queiroz and P. D. Cantino and J. A. Gauthier] CRC Press, Boca Raton, FL " .
+_:b0 <http://purl.org/dc/terms/title> "Testudinata (#273)" .
+_:b1 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
+_:b1 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b2 .
+_:b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/spar/pso/StatusInTime> .
+_:b2 <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalStartDate> "2021-02-09T20:36:09Z" .
+_:b3 <http://purl.obolibrary.org/obo/IAO_0000115> "A 'complete turtle shell' is herein defined as a composite structure consisting of a carapace with interlocking costals, neurals, peripherals, and a nuchal, together with the plastron comprising interlocking epi-, hyo-, meso- (lost in Testudo graeca), hypo-, xiphiplastra and an entoplastron. These are articulated with one another along a bridge. Additional elements may be present as well." .
+_:b3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://semanticscience.org/resource/SIO_010056> .
 _:b4 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b5 .
 _:b4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b5 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Testudo" .
