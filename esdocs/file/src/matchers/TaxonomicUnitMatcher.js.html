@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/matchers/TaxonomicUnitMatcher.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matchers">matchers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matchers/TaxonomicUnitMatcher.js~TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#wrappers">wrappers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html">PhylorefWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html">PhyxWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html">SpecimenWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html">TaxonNameWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/matchers/TaxonomicUnitMatcher.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const { TaxonomicUnitWrapper } = require(&apos;../wrappers/TaxonomicUnitWrapper&apos;);
+const { TaxonConceptWrapper } = require(&apos;../wrappers/TaxonConceptWrapper&apos;);
+const { SpecimenWrapper } = require(&apos;../wrappers/SpecimenWrapper&apos;);
+
+/**
+ * The TaxonomicUnitMatcher matches pairs of taxonomic units and provides
+ * a consistent report on:
+ *  - Which taxonomic units have matched, and
+ *  - Why the match occurred.
+ *
+ * In Model 2.0, we start by using direct matching in OWL, so this should no longer
+ * be needed. However, I&apos;ll leave this around to provide matching in the
+ * Curation Tool UI and in case it&apos;s needed again later.
+ */
+class TaxonomicUnitMatcher {
+  /**
+   * Create a Taxonomic Unit Matcher to match two taxonomic units. Matching
+   * will occur immediately, so when this method returns, you can check
+   * tuMatch.matched and tuMatch.matchReason to determine if the two TUs matched
+   * and why.
+   */
+  constructor(tunit1, tunit2) {
+    this.tunit1 = tunit1;
+    this.tunit2 = tunit2;
+
+    // Set up places to store the match results.
+    this.matched = undefined; // Boolean variable for storing whether these TUnits matched.
+    this.matchReason = undefined; // The reason provided for this match.
+
+    // Execute the match.
+    this.match();
+  }
+
+  /** Return this TUMatch as a JSON object for insertion into the PHYX file. */
+  asJSONLD(idIRI) {
+    if (!this.matched) return undefined;
+
+    return {
+      &apos;@id&apos;: idIRI,
+      &apos;@type&apos;: &apos;testcase:TUMatch&apos;,
+      reason: this.matchReason,
+      matchesTaxonomicUnits: [
+        { &apos;@id&apos;: this.tunit1[&apos;@id&apos;] },
+        { &apos;@id&apos;: this.tunit2[&apos;@id&apos;] },
+      ],
+    };
+  }
+
+  /** Try to match the two taxonomic units using a number of matching methods. */
+  match() {
+    if (
+      this.matchByNameComplete()
+      || this.matchByExternalReferences()
+      || this.matchByOccurrenceID()
+    ) {
+      this.matched = true;
+    } else {
+      this.matched = false;
+      this.matchReason = undefined;
+    }
+  }
+
+  /** Try to match by nameComplete, and return true if it could be matched. */
+  matchByNameComplete() {
+    // Note that this doesn&apos;t apply just to taxon concepts -- we try to match
+    // any taxonomic units that have nameComplete, which might be taxon concepts
+    // OR specimens with taxonomic units.
+    const wrappedTName1 = new TaxonConceptWrapper(this.tunit1);
+    const wrappedTName2 = new TaxonConceptWrapper(this.tunit2);
+
+    if (
+      wrappedTName1.nameComplete &amp;&amp; wrappedTName2.nameComplete
+      &amp;&amp; wrappedTName1.nameComplete === wrappedTName2.nameComplete
+    ) {
+      this.matchReason = `Taxon name &apos;${wrappedTName1.label}&apos; and taxon name &apos;${wrappedTName2.label}&apos; share the same complete name`;
+      return true;
+    }
+
+    return false;
+  }
+
+  /** Match by external references. */
+  matchByExternalReferences() {
+    const wrappedTUnit1 = new TaxonomicUnitWrapper(this.tunit1);
+    const wrappedTUnit2 = new TaxonomicUnitWrapper(this.tunit2);
+
+    const externalRefs1 = wrappedTUnit1.externalReferences;
+    const externalRefs2 = wrappedTUnit2.externalReferences;
+
+    return externalRefs1.some(
+      extref1 =&gt; externalRefs2.some(
+        (extref2) =&gt; {
+          if (
+            extref1
+            &amp;&amp; extref2
+            &amp;&amp; (extref1.toLowerCase() === extref2.toLowerCase())
+          ) {
+            this.matchReason = `External reference &apos;${extref1}&apos; is shared by taxonomic unit ${this.tunit1} and ${this.tunit2}`;
+            return true;
+          }
+
+          return false;
+        }
+      )
+    );
+  }
+
+  /** Match by occurrence ID */
+  matchByOccurrenceID() {
+    // Are both TUs specimens?
+    const wrappedTUnit1 = new TaxonomicUnitWrapper(this.tunit1);
+    const wrappedTUnit2 = new TaxonomicUnitWrapper(this.tunit2);
+
+    if (!wrappedTUnit1.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN)) return false;
+    if (!wrappedTUnit2.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN)) return false;
+
+    // Occurrence IDs from both taxonomic units.
+    const wrappedSpecimen1 = new SpecimenWrapper(this.tunit1);
+    const wrappedSpecimen2 = new SpecimenWrapper(this.tunit2);
+
+    if (
+      wrappedSpecimen1.occurrenceID &amp;&amp; wrappedSpecimen2.occurrenceID
+      &amp;&amp; wrappedSpecimen1.occurrenceID === wrappedSpecimen2.occurrenceID
+    ) {
+      this.matchReason = `Specimen identifier &apos;${wrappedSpecimen1.occurrenceID}&apos; is shared by taxonomic units`;
+
+      return true;
+    }
+
+    return false;
+  }
+}
+
+module.exports = {
+  TaxonomicUnitMatcher,
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

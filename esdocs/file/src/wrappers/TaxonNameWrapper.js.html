@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/wrappers/TaxonNameWrapper.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matchers">matchers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matchers/TaxonomicUnitMatcher.js~TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#wrappers">wrappers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html">PhylorefWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html">PhyxWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html">SpecimenWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html">TaxonNameWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/wrappers/TaxonNameWrapper.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** Utility functions. */
+const { has, cloneDeep, isArray } = require(&apos;lodash&apos;);
+
+/** OWL/RDF terms. */
+const owlterms = require(&apos;../utils/owlterms&apos;);
+
+/** We need the cache manager to memoize parsing scientific names. */
+const { PhyxCacheManager } = require(&apos;../utils/PhyxCacheManager&apos;);
+
+/**
+ * Wraps a taxon name to provide access to components of
+ * the taxon name. This is based on the TDWG TaxonName standard, as at
+ * https://github.com/tdwg/ontology/blob/master/ontology/voc/TaxonName.rdf.
+ *
+ * Every instance of this class is expected to have some combination of the
+ * following fields:
+ *  - rdfs:label -- the verbatim taxon name
+ *  - nameComplete -- the complete uninomial, binomial or trinomial name.
+ *  - nomenclaturalCode -- the nomenclatural code under which the complete name
+ *    should be interpreted.
+ *
+ * We will also read the following fields if they are present:
+ *  - uninomial: The uninomial name of this taxon, if one is present.
+ *  - genusPart: The genus name.
+ *  - specificEpithet: The specific epithet.
+ *  - infraspecificEpithet: The infraspecific epithet.
+ *
+ * We wrap whatever we&apos;re given, so we won&apos;t assume that these fields are actually
+ * consistent with each other. However, when one of these fields are set, we
+ * overwrite the nameComplete to ensure that they are consistent. Similarly,
+ * changing the nameComplete will overwrite the genusPart, specificEpithet and
+ * infraspecificEpithet.
+ *
+ * Note that the TaxonName ontology recommends dc:title instead of rdfs:label;
+ * however, I like the idea of using dc:title for documents and rdfs:label for
+ * vocabulary terms, so I&apos;m okay with using rdfs:label for the verbatim name.
+ */
+class TaxonNameWrapper {
+  /**
+   * Create a new taxon name wrapper around the JSON representation of
+   * a taxon name.
+   */
+  constructor(txname, defaultNomenCode = owlterms.UNKNOWN_CODE) {
+    if (txname === undefined) throw new Error(&apos;TaxonNameWrapper tried to wrap undefined&apos;);
+    this.txname = txname;
+    this.defaultNomenCode = defaultNomenCode;
+  }
+
+  /**
+   * The type associated with these taxonName objects.
+   */
+  static get TYPE_TAXON_NAME() {
+    return owlterms.TDWG_VOC_TAXON_NAME;
+  }
+
+  /**
+   * The IRI for an unknown nomenclatural code (i.e. all we know is that it&apos;s a scientific name).
+   */
+  static get UNKNOWN_CODE() {
+    return owlterms.UNKNOWN_CODE;
+  }
+
+  /* Directly access IRIs for nomenclatural codes. */
+  static get ICZN_CODE() { return owlterms.ICZN_CODE; }
+
+  static get ICN_CODE() { return owlterms.ICN_CODE; }
+
+  static get ICNP_CODE() { return owlterms.ICNP_CODE; }
+
+  static get ICTV_CODE() { return owlterms.ICTV_CODE; }
+
+  static get ICNCP_CODE() { return owlterms.ICNCP_CODE; }
+
+  /**
+   * Return a list of all supported nomenclatural code. Each entry will have
+   * the following keys:
+   *  - code: A list of short names that can be used to represent this nomenclatural code.
+   *  - label: An informal name of this nomenclatural code in English.
+   *  - title: The formal name of this nomenclatural code in English.
+   *  - iri: The IRI of this nomenclatural code.
+   *
+   * This will be used in drawing user interfaces, so this should be in order
+   * of likelihood of use.
+   */
+  static getNomenclaturalCodes() {
+    return [
+      {
+        iri: owlterms.ICZN_CODE,
+        shortName: &apos;ICZN&apos;,
+        label: &apos;Animals (ICZN)&apos;,
+        title: &apos;International Code of Zoological Nomenclature&apos;,
+      },
+      {
+        iri: owlterms.ICN_CODE,
+        shortName: &apos;ICN&apos;,
+        label: &apos;Algae, fungi and plants (ICN, previously ICBN)&apos;,
+        title: &apos;International Code of Nomenclature for algae, fungi, and plants&apos;,
+      },
+      {
+        iri: owlterms.ICNP_CODE,
+        shortName: &apos;ICNP&apos;,
+        label: &apos;Prokaryotes (ICNP)&apos;,
+        title: &apos;International Code of Nomenclature of Prokaryotes&apos;,
+      },
+      {
+        iri: owlterms.ICTV_CODE,
+        shortName: &apos;ICTV&apos;,
+        label: &apos;Viruses (ICTV)&apos;,
+        title: &apos;International Committee on Taxonomy of Viruses&apos;,
+      },
+      {
+        iri: owlterms.ICNCP_CODE,
+        shortName: &apos;ICNCP&apos;,
+        label: &apos;Cultivated plants (ICNCP)&apos;,
+        title: &apos;International Code of Cultivated Plants&apos;,
+      },
+      {
+        iri: owlterms.UNKNOWN_CODE,
+        shortName: &apos;Code not known&apos;,
+        label: &apos;Nomenclatural code not known&apos;,
+        title: &apos;Nomenclatural code not known&apos;,
+      },
+    ];
+  }
+
+  /**
+   * Returns the nomenclatural code entry for a code.
+   */
+  static getNomenCodeDetails(nomenCode) {
+    const codes = TaxonNameWrapper.getNomenclaturalCodes();
+
+    // Look for the entry with the same IRI as the provided IRI.
+    const matchingCode = codes
+      .find(code =&gt; code.iri.toLowerCase() === nomenCode.toLowerCase());
+    if (matchingCode) return matchingCode;
+    return undefined;
+  }
+
+  /**
+   * Returns the nomenclatural code of this taxon name.
+   */
+  get nomenclaturalCode() {
+    return this.txname.nomenclaturalCode || this.defaultNomenCode;
+  }
+
+  /**
+   * Returns the nomenclatural code of this taxon name as a IRI.
+   */
+  get nomenclaturalCodeDetails() {
+    const nomenCode = this.nomenclaturalCode;
+    if (!nomenCode) return undefined;
+
+    const nomenObj = TaxonNameWrapper.getNomenCodeDetails(nomenCode);
+    if (!nomenObj) return undefined;
+
+    return nomenObj;
+  }
+
+  /**
+   * Set the nomenclatural code of this taxon name.
+   */
+  set nomenclaturalCode(nomenCode) {
+    this.txname.nomenclaturalCode = nomenCode;
+  }
+
+  /**
+   * Parses a verbatim taxon name into an (unwrapped) TaxonName.
+   */
+  static fromVerbatimName(verbatimName, nomenCode = owlterms.UNKNOWN_CODE) {
+    // Have we already parsed this verbatim name?
+    if (PhyxCacheManager.has(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName)) {
+      return PhyxCacheManager.get(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName);
+    }
+
+    // Use a regular expression to parse the verbatimName.
+
+    // Attempt 1. Look for a trinomial name.
+    let txname;
+    let results = /^([A-Z][a-z]+)[ _]([a-z-]+\.?)(?:\b|_)\s*([a-z-]+)\b/.exec(verbatimName);
+
+    if (results) {
+      txname = {
+        &apos;@type&apos;: TaxonNameWrapper.TYPE_TAXON_NAME,
+        label: verbatimName,
+        nameComplete: `${results[1]} ${results[2]} ${results[3]}`.trim(),
+        genusPart: results[1],
+        specificEpithet: results[2],
+        infraspecificEpithet: results[3],
+      };
+    }
+
+    // Attempt 2. Look for a binomial name.
+    if (!txname) {
+      results = /^([A-Z][a-z]+)[ _]([a-z-]+\.?)(?:\b|_)/.exec(verbatimName);
+
+      if (results) {
+        txname = {
+          &apos;@type&apos;: TaxonNameWrapper.TYPE_TAXON_NAME,
+          label: verbatimName,
+          nameComplete: `${results[1]} ${results[2]}`.trim(),
+          genusPart: results[1],
+          specificEpithet: results[2],
+        };
+      }
+    }
+
+    // Attempt 3. Look for a uninomial name.
+    if (!txname) {
+      // Is it a uninomial name?
+      results = /^([A-Z][a-z]+)(?:[_\s]|\b)/.exec(verbatimName);
+      if (results) {
+        txname = {
+          &apos;@type&apos;: TaxonNameWrapper.TYPE_TAXON_NAME,
+          label: verbatimName,
+          nameComplete: results[1],
+          uninomial: results[1],
+        };
+      }
+    }
+
+    // Add a nomenclatural code if possible.
+    if (txname &amp;&amp; nomenCode) {
+      txname.nomenclaturalCode = nomenCode;
+    }
+
+    // Store in the cache.
+    if (txname !== undefined) {
+      PhyxCacheManager.put(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName, txname);
+    }
+
+    return txname;
+  }
+
+  /**
+   * Return the label of this scientific name.
+   */
+  get label() {
+    return this.txname.label || this.nameComplete;
+  }
+
+  /**
+   * Set the label of this scientific name.
+   */
+  set label(lab) {
+    this.txname.label = lab;
+    if (!this.nameComplete) {
+      // If we don&apos;t have a nameComplete, treat this as the name complete.
+      this.nameComplete = lab;
+    }
+  }
+
+  /**
+   * Return the verbatim name of this taxon name.
+   */
+  get verbatimName() {
+    return this.txname.label;
+  }
+
+  /*
+   * Return the complete name (i.e. the uninomial, binomial or trinomial name
+   * without authority information).
+   */
+  get nameComplete() {
+    return this.txname.nameComplete
+      || this.trinomialName
+      || this.binomialName
+      || this.uninomialName;
+  }
+
+  /**
+   * Set the complete name. To do this, we re-parse the provided name.
+   */
+  set nameComplete(name) {
+    this.txname = TaxonNameWrapper.fromVerbatimName(name, this.nomenclaturalCode);
+  }
+
+  /** Return the uninomial name if there is one. */
+  get uninomial() {
+    if (this.txname.uninomial) return this.txname.uninomial;
+
+    // If there is no genus but there is a scientificName, try to extract a genus
+    // from it.
+    if (this.txname.nameComplete) {
+      const txname = TaxonNameWrapper.fromVerbatimName(
+        this.txname.nameComplete,
+        this.nomenclaturalCode
+      );
+      if (has(txname, &apos;uninomial&apos;)) return txname.uninomial;
+    }
+
+    return undefined;
+  }
+
+  /** Set the uninomial name. */
+  set uninomial(uninom) {
+    this.txname.uninomial = uninom;
+    this.txname.nameComplete = uninom;
+  }
+
+  /** Return the binomial name if available. */
+  get binomialName() {
+    // Get the binomial name. Constructed from the genus and specific epithet
+    // if available.
+    if (this.genusPart === undefined || this.specificEpithet === undefined) return undefined;
+    return `${this.genusPart} ${this.specificEpithet}`;
+  }
+
+  /** Set the binomial name. */
+  set binomialName(binom) {
+    this.txname.uninomial = undefined;
+    this.txname.nameComplete = binom;
+  }
+
+  /** Return the trinomial name if available. */
+  get trinomialName() {
+    if (
+      this.infraspecificEpithet === undefined
+      || this.specificEpithet === undefined
+      || this.genusPart === undefined
+    ) return undefined;
+    return `${this.genusPart} ${this.specificEpithet} ${this.infraspecificEpithet}`;
+  }
+
+  /** Set the trinomial name. */
+  set trinomialName(trinom) {
+    this.txname.uninomial = undefined;
+    this.txname.nameComplete = trinom;
+  }
+
+  /** Return the genus part of this scientific name if available. */
+  get genusPart() {
+    // Try to read the genus if available.
+    if (has(this.txname, &apos;genusPart&apos;)) return this.txname.genusPart;
+
+    // If there is no genus but there is a scientificName, try to extract a genus
+    // from it.
+    if (this.txname.nameComplete) {
+      const txname = TaxonNameWrapper.fromVerbatimName(
+        this.txname.nameComplete,
+        this.nomenclaturalCode
+      );
+      if (has(txname, &apos;genusPart&apos;)) return txname.genusPart;
+    }
+
+    return undefined;
+  }
+
+  /** Set the genus part of this name. */
+  set genusPart(genus) {
+    this.txname.genusPart = genus;
+    if (this.specificEpithet) {
+      if (this.infraspecificEpithet) {
+        this.txname.nameComplete = `${genus} ${this.specificEpithet} ${this.infraspecificEpithet}`;
+      } else {
+        this.txname.nameComplete = `${genus} ${this.specificEpithet}`;
+      }
+    }
+  }
+
+  /** Return the specific epithet of this scientific name if available. */
+  get specificEpithet() {
+    // Try to read the specific epithet if available.
+    if (has(this.txname, &apos;specificEpithet&apos;)) return this.txname.specificEpithet;
+
+    // If there is no specific epithet but there is a scientificName, try to
+    // extract a specific epithet from it.
+    if (this.nameComplete) {
+      const txname = TaxonNameWrapper.fromVerbatimName(
+        this.nameComplete,
+        this.nomenclaturalCode
+      );
+      if (has(txname, &apos;specificEpithet&apos;)) return txname.specificEpithet;
+    }
+
+    return undefined;
+  }
+
+  /** Set the specificEpithet part of this name. */
+  set specificEpithet(epithet) {
+    this.txname.specificEpithet = epithet;
+    if (this.genusPart) {
+      if (this.infraspecificEpithet) {
+        this.txname.nameComplete = `${this.genusPart} ${epithet} ${this.infraspecificEpithet}`;
+      } else {
+        this.txname.nameComplete = `${this.genusPart} ${epithet}`;
+      }
+    }
+  }
+
+  /** Return the infraspecific epithet of this scientific name if available. */
+  get infraspecificEpithet() {
+    // Try to read the specific epithet if available.
+    if (has(this.txname, &apos;infraspecificEpithet&apos;)) return this.txname.infraspecificEpithet;
+
+    // If there is no specific epithet but there is a scientificName, try to
+    // extract a specific epithet from it.
+    if (this.txname.nameComplete) {
+      const txname = TaxonNameWrapper.fromVerbatimName(
+        this.nameComplete,
+        this.nomenclaturalCode
+      );
+      if (has(txname, &apos;infraspecificEpithet&apos;)) return txname.infraspecificEpithet;
+    }
+
+    return undefined;
+  }
+
+  /** Set the infraspecificEpithet part of this name. */
+  set infraspecificEpithet(epithet) {
+    this.txname.infraspecificEpithet = epithet;
+    if (this.genusPart) {
+      if (this.specificEpithet) {
+        this.txname.nameComplete = `${this.genusPart} ${this.specificEpithet} ${epithet}`;
+      } else {
+        this.txname.nameComplete = `${this.genusPart} sp. ${epithet}`;
+      }
+    }
+  }
+
+  /**
+   * Return this taxon name in an JSON-LD representation.
+   */
+  get asJSONLD() {
+    const jsonld = cloneDeep(this.txname);
+
+    // Make sure &apos;@type&apos; is an array.
+    if (!has(jsonld, &apos;@type&apos;)) jsonld[&apos;@type&apos;] = [];
+    if (!isArray(jsonld[&apos;@type&apos;])) jsonld[&apos;@type&apos;] = [jsonld[&apos;@type&apos;]];
+
+    // Make it explicit that the type includes the nomenclaturalCode.
+    const nomenCode = this.nomenclaturalCode;
+    if (!jsonld[&apos;@type&apos;].includes(nomenCode)) jsonld[&apos;@type&apos;].push(nomenCode);
+
+    return jsonld;
+  }
+
+  /**
+   * Return this taxon name as an OWL equivalentClass expression.
+   */
+  get asOWLEquivClass() {
+    // No complete name, can&apos;t return anything.
+    if (!this.nameComplete) return undefined;
+
+    // Do we have a nomenclaturalCode?
+    if (!this.nomenclaturalCode) {
+      return {
+        &apos;@type&apos;: &apos;owl:Restriction&apos;,
+        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+        hasValue: this.nameComplete,
+      };
+    }
+
+    // If we do have a nomenclatural code, incorporate that into the logical
+    // expression as well.
+    return {
+      &apos;@type&apos;: &apos;owl:Class&apos;,
+      intersectionOf: [{
+        &apos;@type&apos;: &apos;owl:Restriction&apos;,
+        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+        hasValue: this.nameComplete,
+      }, {
+        &apos;@type&apos;: &apos;owl:Restriction&apos;,
+        onProperty: owlterms.NOMENCLATURAL_CODE,
+        hasValue: {
+          &apos;@id&apos;: this.nomenclaturalCode,
+        },
+      }],
+    };
+  }
+}
+
+module.exports = {
+  TaxonNameWrapper,
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
