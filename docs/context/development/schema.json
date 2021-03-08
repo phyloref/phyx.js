@@ -343,8 +343,13 @@
           "apomorphy": {
             "type": "object",
             "description": "For a phyloreference using an apomorphy, this field describes the phenotype (or trait) being used as the apomorphy",
-            "additionalProperties": true,
+            "additionalProperties": false,
             "properties": {
+              "@type": {
+                "description": "The type of this apomorphy.",
+                "type": "string",
+                "format": "uri"
+              },
               "definition": {
                 "description": "A natural language description of this apomorphy."
               },
@@ -356,6 +361,7 @@
               }
             },
             "required": [
+              "@type",
               "definition"
             ]
           }
