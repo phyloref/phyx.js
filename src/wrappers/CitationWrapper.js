@@ -13,6 +13,27 @@ class CitationWrapper {
     this.citation = citation;
   }
 
+  /**
+   * Helper method to return a single name for a given agent entry.
+   * The algorithm we use is:
+   *  - `name`, if one is present.
+   *  - Some combination of `lastname`, `firstname` and `middlename`, if present.
+   */
+  static getAgentName(agent) {
+    if (has(agent, 'name')) return agent.name;
+    if (has(agent, 'lastname')) {
+      if (has(agent, 'firstname')) {
+        if (has(agent, 'middlename')) {
+          return `${agent.firstname} ${agent.middlename} ${agent.lastname}`;
+        }
+
+        return `${agent.firstname} ${agent.lastname}`;
+      }
+      return `${agent.lastname}`;
+    }
+    return '(Unable to read name)';
+  }
+
   /** Returns a single string with the entire bibliographic citation. */
   toString() {
     if (!this.citation || isEmpty(this.citation)) return undefined;
@@ -20,16 +41,16 @@ class CitationWrapper {
     // If we already have a bibliographic citation, we can just return that.
     if (has(this.citation, 'bibliographicCitation')) return this.citation.bibliographicCitation;
 
-    let authors = (this.citation.authors || []).map(author => author.name);
+    let authors = (this.citation.authors || []).map(CitationWrapper.getAgentName);
     if (authors.length === 0) authors = ['Anonymous'];
     if (authors.length > 2) authors = [`${authors[0]} et al`];
     let authorsAndTitle = `${authors.join(' and ')} (${this.citation.year || 'n.d.'}) ${this.citation.title || 'Untitled'}`;
 
     const editorLists = [];
-    const editors = (this.citation.editors || []).map(editor => editor.name);
+    const editors = (this.citation.editors || []).map(CitationWrapper.getAgentName);
     if (editors.length > 0) editorLists.push(`eds: ${editors.join(' and ')}`);
 
-    const seriesEditors = (this.citation.series_editors || []).map(editor => editor.name);
+    const seriesEditors = (this.citation.series_editors || []).map(CitationWrapper.getAgentName);
     if (seriesEditors.length > 0) editorLists.push(`series eds: ${seriesEditors.join(' and ')}`);
 
     if (editorLists.length > 0) authorsAndTitle += ` [${editorLists.join(', ')}]`;

@@ -729,6 +729,27 @@ class PhylorefWrapper {
     const internalSpecifiers = phylorefAsJSONLD.internalSpecifiers || [];
     const externalSpecifiers = phylorefAsJSONLD.externalSpecifiers || [];
 
+    // If it is an apomorphy-based class expression, we should generate a
+    // logical expression that describes the apomorphy.
+    const phylorefType = phylorefAsJSONLD.phylorefType;
+    if (
+      (phylorefType && phylorefType === 'phyloref:PhyloreferenceUsingApomorphy')
+      || (has(phylorefAsJSONLD, 'apomorphy'))
+    ) {
+      // This is an apomorphy-based definition!
+      phylorefAsJSONLD.subClassOf = [
+        'phyloref:Phyloreference',
+        'phyloref:PhyloreferenceUsingApomorphy',
+      ];
+
+      // Someday, we will probably want to turn this apomorphy into a
+      // logical expression so that it can be computed alongside other
+      // OWL ontologies. This is outside our scope for the moment, so
+      // we will simply pass on the phyloreference as-is.
+
+      return phylorefAsJSONLD;
+    }
+
     // We might need to make component classes.
     // So we reset our component class counts and records.
     PhylorefWrapper.componentClassCount = 0;
@@ -743,6 +764,7 @@ class PhylorefWrapper {
 
     if (internalSpecifiers.length === 0) {
       // We can't handle phyloreferences without at least one internal specifier.
+      calculatedPhylorefType = 'phyloref:MalformedPhyloreference';
       phylorefAsJSONLD.malformedPhyloreference = 'No internal specifiers provided';
     } else if (externalSpecifiers.length > 0) {
       calculatedPhylorefType = 'phyloref:PhyloreferenceUsingMaximumClade';

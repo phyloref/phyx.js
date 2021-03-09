@@ -1,5 +1,15 @@
 {
   "definitions": {
+    "nomenclaturalCodes": {
+      "type": "string",
+      "enum": [
+        "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+        "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
+        "http://ontology.phyloref.org/tcan.owl#ICNP",
+        "http://ontology.phyloref.org/tcan.owl#ICTV",
+        "http://rs.tdwg.org/ontology/voc/TaxonName#ICNCP"
+      ]
+    },
     "agent": {
       "type": "object",
       "description": "A person or entity.",
@@ -115,9 +125,7 @@
             }
           },
           "required": [
-            "name",
-            "volume",
-            "identifier"
+            "name"
           ]
         },
         "identifier": {
@@ -184,15 +192,8 @@
               ]
             },
             "nomenclaturalCode": {
-              "type": "string",
               "description": "The nomenclatural code under which this name is defined.",
-              "enum": [
-                "http://purl.obolibrary.org/obo/NOMEN_0000036",
-                "http://purl.obolibrary.org/obo/NOMEN_0000107",
-                "http://purl.obolibrary.org/obo/NOMEN_0000109",
-                "http://purl.obolibrary.org/obo/NOMEN_0000110",
-                "http://purl.obolibrary.org/obo/NOMEN_0000111"
-              ]
+              "$ref": "#/definitions/nomenclaturalCodes"
             },
             "label": {
               "type": "string",
@@ -227,15 +228,21 @@
       "description": "Every Phyx file should have a @context, making it a valid JSON-LD file.",
       "minLength": 1
     },
+    "citation": {
+      "description": "A citation to the source of this Phyx file.",
+      "$ref": "#/definitions/citation"
+    },
     "defaultNomenclaturalCodeIRI": {
       "description": "The default nomenclatural code to use for new phyloreferences in this Phyx file.",
-      "enum": [
-        "http://purl.obolibrary.org/obo/NOMEN_0000036",
-        "http://purl.obolibrary.org/obo/NOMEN_0000107",
-        "http://purl.obolibrary.org/obo/NOMEN_0000109",
-        "http://purl.obolibrary.org/obo/NOMEN_0000110",
-        "http://purl.obolibrary.org/obo/NOMEN_0000111"
-      ]
+      "$ref": "#/definitions/nomenclaturalCodes"
+    },
+    "@type": {
+      "type": "array",
+      "description": "Addition RDF types for the top-level object. `owl:Ontology` is added automatically."
+    },
+    "owl:imports": {
+      "type": "array",
+      "description": "A list of additional OWL imports to be added in this ontology."
     },
     "phylogenies": {
       "type": "array",
@@ -332,6 +339,35 @@
             "items": {
               "$ref": "#/definitions/taxonomic_unit"
             }
+          },
+          "apomorphy": {
+            "type": "object",
+            "description": "For a phyloreference using an apomorphy, this field describes the phenotype (or trait) being used as the apomorphy",
+            "additionalProperties": false,
+            "properties": {
+              "@type": {
+                "description": "The type of this apomorphy.",
+                "type": "string",
+                "format": "uri"
+              },
+              "definition": {
+                "description": "A natural language description of this apomorphy."
+              },
+              "phenotypicQuality": {
+                "description": "The quality of this phenotype. Must be a subclass of pato:quality.",
+                "type": "string",
+                "format": "uri"
+              },
+              "bearingEntity": {
+                "description": "The bearer of the phenotypic quality.",
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "@type",
+              "definition"
+            ]
           }
         }
       }
