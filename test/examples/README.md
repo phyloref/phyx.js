@@ -34,3 +34,15 @@ of the Phyx Context file.
   [Brochu 2003]: https://doi.org/10.1146/annurev.earth.31.100901.141308
   [Fisher et al 2007]: https://doi.org/10.1639/0007-2745(2007)110[46:POTCWA]2.0.CO;2
   [*Phylonym* book]: https://www.routledge.com/Phylonyms-A-Companion-to-the-PhyloCode/Queiroz-Cantino-Gauthier/p/book/9781138332935
+  [./correct/brochu_2003.json]: ./correct/brochu_2003.json
+  [./correct/brochu_2003.jsonld]: ./correct/brochu_2003.jsonld
+  [./correct/brochu_2003.nq]: ./correct/brochu_2003.nq
+  [./correct/fisher_et_al_2007.json]: ./correct/fisher_et_al_2007.json
+  [./correct/fisher_et_al_2007.jsonld]: ./correct/fisher_et_al_2007.jsonld
+  [./correct/fisher_et_al_2007.nq]: ./correct/fisher_et_al_2007.nq
+  [./correct/testudinata_phylonym.json]: ./correct/testudinata_phylonym.json
+  [./correct/testudinata_phylonym.jsonld]: ./correct/testudinata_phylonym.jsonld
+  [./correct/testudinata_phylonym.nq]: ./correct/testudinata_phylonym.nq
+  [./correct/alligatoridae_default_nomen_code.json]: ./correct/alligatoridae_default_nomen_code.json
+  [./correct/alligatoridae_inferred_nomen_code.json]: ./correct/alligatoridae_inferred_nomen_code.json
+  [./correct/example_five_external_specifiers.json]: ./correct/example_five_external_specifiers.json
