@@ -1,0 +1,4611 @@
+{
+  "@context": "../../../docs/context/development/phyx.json",
+  "phylogenies": [
+    {
+      "@id": "http://example.org/phyx.js/example#phylogeny0",
+      "newick": "((((((((((('Arthrocormus schimperi',('Exostratum blumii 243','Exostratum blumii 245')Exostratum),('Exodictyon incrassatum',(('Leucophanes seychellarum',('Leucophanes octoblepharoides','Leucophanes albescens'),'Leucophanes glaucum'),'Syrrhopodon confertus')Leucophanes))Albifolium,'Syrrhopodon muelleri'),'Syrrhopodon perarmatus'),(('Syrrhopodon ciliatus',('Syrrhopodon albovaginatus 446','Syrrhopodon albovaginatus 162')),((('Syrrhopodon tortillis','Syrrhopodon leprieurii'),'Syrrhopodon prolifer'),('Syrrhopodon parasiticus','Syrrhopodon trachyphyllus',('Syrrhopodon banksii','Syrrhopodon involutus')Leucophanella)))Trachymitrium),('Syrrhopodon armatus','Syrrhopodon fimbriatulus')),((((('Mitthyridium obtusifolium','Mitthyridium constrictum'),'Mitthyridium fasciculatum'),('Mitthyridium undulatum','Mitthyridium jungquilianum'))Mitthyridium_as_per_paper,'Syrrhopodon mahensis')Mitthyridium,('Syrrhopodon tristichus',('Syrrhopodon croceus','Syrrhopodon apertus','Syrrhopodon fissipapillatus'))))Syrrhopodon,(('Syrrhopodon incompletus',((((('Calymperes palisotii 159','Calymperes palisotii 180'),'Calymperes motleyi'),('Calymperes erosum','Calymperes robinsonii')),(('Calymperes tenerum','Calymperes subintegrum',('Calymperes tuatomuense','Calymperes pseudopodianum'),'Calymperes hispidium'),'Calymperes moluccense')),((('Calymperes tahitense 320','Calymperes tahitense 115'),'Calymperes lonchophyllum'),(('Calymperes afzelii 179','Calymperes afzelii 165'),'Calymperes graffeanum')))),'Syrrhopodon mauritianus')Calymperes),'Syrrhopodon japonicus'),'Syrrhopodon gardneri')Calymperaceae,('Octoblepharum Moorea 445','Octoblepharum albidum')Octoblepharum);",
+      "ot:dataDeposit": "https://treebase.org/treebase-web/search/study/taxa.html?id=1624&treeid=748",
+      "additionalNodeProperties": {
+        "Exodictyon incrassatum": {
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
+              "institutionCode": "UC",
+              "catalogNumber": "Wall 2527, Fiji"
+            },
+            {
+              "label": "Sole representative of genus Exodictyon",
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
+                "label": "Exodictyon",
+                "nameComplete": "Exodictyon"
+              }
+            }
+          ]
+        }
+      },
+      "@type": "testcase:PhyloreferenceTestPhylogeny",
+      "nodes": [
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node0",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node1",
+            "http://example.org/phyx.js/example#phylogeny0_node4"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node1",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Octoblepharum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Octoblepharum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Octoblepharum",
+                "nameComplete": "Octoblepharum",
+                "uninomial": "Octoblepharum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Octoblepharum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node0",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node4"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node2",
+            "http://example.org/phyx.js/example#phylogeny0_node3"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node2",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Octoblepharum albidum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Octoblepharum albidum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Octoblepharum albidum",
+                "nameComplete": "Octoblepharum albidum",
+                "genusPart": "Octoblepharum",
+                "specificEpithet": "albidum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Octoblepharum albidum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node1",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node3"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node3",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Octoblepharum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Octoblepharum Moorea 445"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Octoblepharum Moorea 445",
+                "nameComplete": "Octoblepharum",
+                "uninomial": "Octoblepharum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Octoblepharum Moorea 445"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node1",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node2"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node4",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperaceae"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperaceae"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperaceae",
+                "nameComplete": "Calymperaceae",
+                "uninomial": "Calymperaceae",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperaceae"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node0",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node1"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node5",
+            "http://example.org/phyx.js/example#phylogeny0_node6"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node5",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon gardneri"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon gardneri"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon gardneri",
+                "nameComplete": "Syrrhopodon gardneri",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "gardneri",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon gardneri"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node4",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node6"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node6",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node4",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node5"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node7",
+            "http://example.org/phyx.js/example#phylogeny0_node8"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node7",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon japonicus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon japonicus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon japonicus",
+                "nameComplete": "Syrrhopodon japonicus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "japonicus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon japonicus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node6",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node8"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node8",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node6",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node7"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node9",
+            "http://example.org/phyx.js/example#phylogeny0_node44"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node9",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes",
+                "nameComplete": "Calymperes",
+                "uninomial": "Calymperes",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node8",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node44"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node10",
+            "http://example.org/phyx.js/example#phylogeny0_node11"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node10",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon mauritianus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon mauritianus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon mauritianus",
+                "nameComplete": "Syrrhopodon mauritianus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "mauritianus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon mauritianus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node9",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node11"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node11",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node9",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node10"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node12",
+            "http://example.org/phyx.js/example#phylogeny0_node43"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node12",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node11",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node43"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node13",
+            "http://example.org/phyx.js/example#phylogeny0_node24"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node13",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node12",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node24"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node14",
+            "http://example.org/phyx.js/example#phylogeny0_node19"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node14",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node13",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node19"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node15",
+            "http://example.org/phyx.js/example#phylogeny0_node16"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node15",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes graffeanum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes graffeanum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes graffeanum",
+                "nameComplete": "Calymperes graffeanum",
+                "genusPart": "Calymperes",
+                "specificEpithet": "graffeanum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes graffeanum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node14",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node16"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node16",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node14",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node15"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node17",
+            "http://example.org/phyx.js/example#phylogeny0_node18"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node17",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes afzelii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes afzelii 165"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes afzelii 165",
+                "nameComplete": "Calymperes afzelii",
+                "genusPart": "Calymperes",
+                "specificEpithet": "afzelii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes afzelii 165"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node16",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node18"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node18",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes afzelii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes afzelii 179"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes afzelii 179",
+                "nameComplete": "Calymperes afzelii",
+                "genusPart": "Calymperes",
+                "specificEpithet": "afzelii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes afzelii 179"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node16",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node17"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node19",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node13",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node14"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node20",
+            "http://example.org/phyx.js/example#phylogeny0_node21"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node20",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes lonchophyllum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes lonchophyllum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes lonchophyllum",
+                "nameComplete": "Calymperes lonchophyllum",
+                "genusPart": "Calymperes",
+                "specificEpithet": "lonchophyllum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes lonchophyllum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node19",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node21"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node21",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node19",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node20"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node22",
+            "http://example.org/phyx.js/example#phylogeny0_node23"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node22",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes tahitense"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes tahitense 115"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes tahitense 115",
+                "nameComplete": "Calymperes tahitense",
+                "genusPart": "Calymperes",
+                "specificEpithet": "tahitense",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes tahitense 115"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node21",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node23"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node23",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes tahitense"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes tahitense 320"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes tahitense 320",
+                "nameComplete": "Calymperes tahitense",
+                "genusPart": "Calymperes",
+                "specificEpithet": "tahitense",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes tahitense 320"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node21",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node22"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node24",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node12",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node13"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node25",
+            "http://example.org/phyx.js/example#phylogeny0_node34"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node25",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node24",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node34"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node26",
+            "http://example.org/phyx.js/example#phylogeny0_node27"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node26",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes moluccense"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes moluccense"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes moluccense",
+                "nameComplete": "Calymperes moluccense",
+                "genusPart": "Calymperes",
+                "specificEpithet": "moluccense",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes moluccense"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node25",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node27"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node27",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node25",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node26"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node28",
+            "http://example.org/phyx.js/example#phylogeny0_node29",
+            "http://example.org/phyx.js/example#phylogeny0_node32",
+            "http://example.org/phyx.js/example#phylogeny0_node33"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node28",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes hispidium"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes hispidium"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes hispidium",
+                "nameComplete": "Calymperes hispidium",
+                "genusPart": "Calymperes",
+                "specificEpithet": "hispidium",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes hispidium"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node27",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node29",
+            "http://example.org/phyx.js/example#phylogeny0_node32",
+            "http://example.org/phyx.js/example#phylogeny0_node33"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node29",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node27",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node28",
+            "http://example.org/phyx.js/example#phylogeny0_node32",
+            "http://example.org/phyx.js/example#phylogeny0_node33"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node30",
+            "http://example.org/phyx.js/example#phylogeny0_node31"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node30",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes pseudopodianum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes pseudopodianum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes pseudopodianum",
+                "nameComplete": "Calymperes pseudopodianum",
+                "genusPart": "Calymperes",
+                "specificEpithet": "pseudopodianum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes pseudopodianum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node29",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node31"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node31",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes tuatomuense"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes tuatomuense"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes tuatomuense",
+                "nameComplete": "Calymperes tuatomuense",
+                "genusPart": "Calymperes",
+                "specificEpithet": "tuatomuense",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes tuatomuense"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node29",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node30"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node32",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes subintegrum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes subintegrum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes subintegrum",
+                "nameComplete": "Calymperes subintegrum",
+                "genusPart": "Calymperes",
+                "specificEpithet": "subintegrum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes subintegrum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node27",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node28",
+            "http://example.org/phyx.js/example#phylogeny0_node29",
+            "http://example.org/phyx.js/example#phylogeny0_node33"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node33",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes tenerum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes tenerum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes tenerum",
+                "nameComplete": "Calymperes tenerum",
+                "genusPart": "Calymperes",
+                "specificEpithet": "tenerum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes tenerum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node27",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node28",
+            "http://example.org/phyx.js/example#phylogeny0_node29",
+            "http://example.org/phyx.js/example#phylogeny0_node32"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node34",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node24",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node25"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node35",
+            "http://example.org/phyx.js/example#phylogeny0_node38"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node35",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node34",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node38"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node36",
+            "http://example.org/phyx.js/example#phylogeny0_node37"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node36",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes robinsonii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes robinsonii"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes robinsonii",
+                "nameComplete": "Calymperes robinsonii",
+                "genusPart": "Calymperes",
+                "specificEpithet": "robinsonii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes robinsonii"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node35",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node37"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node37",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes erosum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes erosum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes erosum",
+                "nameComplete": "Calymperes erosum",
+                "genusPart": "Calymperes",
+                "specificEpithet": "erosum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes erosum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node35",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node36"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node38",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node34",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node35"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node39",
+            "http://example.org/phyx.js/example#phylogeny0_node40"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node39",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes motleyi"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes motleyi"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes motleyi",
+                "nameComplete": "Calymperes motleyi",
+                "genusPart": "Calymperes",
+                "specificEpithet": "motleyi",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes motleyi"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node38",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node40"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node40",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node38",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node39"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node41",
+            "http://example.org/phyx.js/example#phylogeny0_node42"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node41",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes palisotii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes palisotii 180"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes palisotii 180",
+                "nameComplete": "Calymperes palisotii",
+                "genusPart": "Calymperes",
+                "specificEpithet": "palisotii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes palisotii 180"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node40",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node42"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node42",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Calymperes palisotii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Calymperes palisotii 159"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Calymperes palisotii 159",
+                "nameComplete": "Calymperes palisotii",
+                "genusPart": "Calymperes",
+                "specificEpithet": "palisotii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Calymperes palisotii 159"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node40",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node41"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node43",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon incompletus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon incompletus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon incompletus",
+                "nameComplete": "Syrrhopodon incompletus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "incompletus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon incompletus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node11",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node12"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node44",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon",
+                "nameComplete": "Syrrhopodon",
+                "uninomial": "Syrrhopodon",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node8",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node9"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node45",
+            "http://example.org/phyx.js/example#phylogeny0_node63"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node45",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node44",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node63"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node46",
+            "http://example.org/phyx.js/example#phylogeny0_node52"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node46",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node45",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node52"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node47",
+            "http://example.org/phyx.js/example#phylogeny0_node51"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node47",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node46",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node51"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node48",
+            "http://example.org/phyx.js/example#phylogeny0_node49",
+            "http://example.org/phyx.js/example#phylogeny0_node50"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node48",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon fissipapillatus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon fissipapillatus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon fissipapillatus",
+                "nameComplete": "Syrrhopodon fissipapillatus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "fissipapillatus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon fissipapillatus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node47",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node49",
+            "http://example.org/phyx.js/example#phylogeny0_node50"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node49",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon apertus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon apertus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon apertus",
+                "nameComplete": "Syrrhopodon apertus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "apertus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon apertus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node47",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node48",
+            "http://example.org/phyx.js/example#phylogeny0_node50"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node50",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon croceus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon croceus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon croceus",
+                "nameComplete": "Syrrhopodon croceus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "croceus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon croceus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node47",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node48",
+            "http://example.org/phyx.js/example#phylogeny0_node49"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node51",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon tristichus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon tristichus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon tristichus",
+                "nameComplete": "Syrrhopodon tristichus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "tristichus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon tristichus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node46",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node47"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node52",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Mitthyridium"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Mitthyridium",
+                "nameComplete": "Mitthyridium",
+                "uninomial": "Mitthyridium",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Mitthyridium"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node45",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node46"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node53",
+            "http://example.org/phyx.js/example#phylogeny0_node54"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node53",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon mahensis"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon mahensis"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon mahensis",
+                "nameComplete": "Syrrhopodon mahensis",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "mahensis",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon mahensis"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node52",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node54"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node54",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium as"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Mitthyridium_as_per_paper"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Mitthyridium_as_per_paper",
+                "nameComplete": "Mitthyridium as",
+                "genusPart": "Mitthyridium",
+                "specificEpithet": "as",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Mitthyridium_as_per_paper"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node52",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node53"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node55",
+            "http://example.org/phyx.js/example#phylogeny0_node58"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node55",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node54",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node58"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node56",
+            "http://example.org/phyx.js/example#phylogeny0_node57"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node56",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium jungquilianum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Mitthyridium jungquilianum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Mitthyridium jungquilianum",
+                "nameComplete": "Mitthyridium jungquilianum",
+                "genusPart": "Mitthyridium",
+                "specificEpithet": "jungquilianum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Mitthyridium jungquilianum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node55",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node57"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node57",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium undulatum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Mitthyridium undulatum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Mitthyridium undulatum",
+                "nameComplete": "Mitthyridium undulatum",
+                "genusPart": "Mitthyridium",
+                "specificEpithet": "undulatum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Mitthyridium undulatum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node55",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node56"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node58",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node54",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node55"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node59",
+            "http://example.org/phyx.js/example#phylogeny0_node60"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node59",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium fasciculatum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Mitthyridium fasciculatum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Mitthyridium fasciculatum",
+                "nameComplete": "Mitthyridium fasciculatum",
+                "genusPart": "Mitthyridium",
+                "specificEpithet": "fasciculatum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Mitthyridium fasciculatum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node58",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node60"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node60",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node58",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node59"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node61",
+            "http://example.org/phyx.js/example#phylogeny0_node62"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node61",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium constrictum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Mitthyridium constrictum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Mitthyridium constrictum",
+                "nameComplete": "Mitthyridium constrictum",
+                "genusPart": "Mitthyridium",
+                "specificEpithet": "constrictum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Mitthyridium constrictum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node60",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node62"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node62",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Mitthyridium obtusifolium"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Mitthyridium obtusifolium"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Mitthyridium obtusifolium",
+                "nameComplete": "Mitthyridium obtusifolium",
+                "genusPart": "Mitthyridium",
+                "specificEpithet": "obtusifolium",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Mitthyridium obtusifolium"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node60",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node61"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node63",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node44",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node45"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node64",
+            "http://example.org/phyx.js/example#phylogeny0_node67"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node64",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node63",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node67"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node65",
+            "http://example.org/phyx.js/example#phylogeny0_node66"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node65",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon fimbriatulus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon fimbriatulus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon fimbriatulus",
+                "nameComplete": "Syrrhopodon fimbriatulus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "fimbriatulus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon fimbriatulus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node64",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node66"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node66",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon armatus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon armatus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon armatus",
+                "nameComplete": "Syrrhopodon armatus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "armatus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon armatus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node64",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node65"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node67",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node63",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node64"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node68",
+            "http://example.org/phyx.js/example#phylogeny0_node86"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node68",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Trachymitrium"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Trachymitrium"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Trachymitrium",
+                "nameComplete": "Trachymitrium",
+                "uninomial": "Trachymitrium",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Trachymitrium"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node67",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node86"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node69",
+            "http://example.org/phyx.js/example#phylogeny0_node81"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node69",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node68",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node81"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node70",
+            "http://example.org/phyx.js/example#phylogeny0_node76"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node70",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node69",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node76"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node71",
+            "http://example.org/phyx.js/example#phylogeny0_node74",
+            "http://example.org/phyx.js/example#phylogeny0_node75"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node71",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Leucophanella"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Leucophanella"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Leucophanella",
+                "nameComplete": "Leucophanella",
+                "uninomial": "Leucophanella",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Leucophanella"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node70",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node74",
+            "http://example.org/phyx.js/example#phylogeny0_node75"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node72",
+            "http://example.org/phyx.js/example#phylogeny0_node73"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node72",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon involutus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon involutus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon involutus",
+                "nameComplete": "Syrrhopodon involutus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "involutus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon involutus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node71",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node73"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node73",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon banksii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon banksii"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon banksii",
+                "nameComplete": "Syrrhopodon banksii",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "banksii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon banksii"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node71",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node72"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node74",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon trachyphyllus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon trachyphyllus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon trachyphyllus",
+                "nameComplete": "Syrrhopodon trachyphyllus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "trachyphyllus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon trachyphyllus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node70",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node71",
+            "http://example.org/phyx.js/example#phylogeny0_node75"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node75",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon parasiticus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon parasiticus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon parasiticus",
+                "nameComplete": "Syrrhopodon parasiticus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "parasiticus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon parasiticus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node70",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node71",
+            "http://example.org/phyx.js/example#phylogeny0_node74"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node76",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node69",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node70"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node77",
+            "http://example.org/phyx.js/example#phylogeny0_node78"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node77",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon prolifer"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon prolifer"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon prolifer",
+                "nameComplete": "Syrrhopodon prolifer",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "prolifer",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon prolifer"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node76",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node78"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node78",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node76",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node77"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node79",
+            "http://example.org/phyx.js/example#phylogeny0_node80"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node79",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon leprieurii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon leprieurii"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon leprieurii",
+                "nameComplete": "Syrrhopodon leprieurii",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "leprieurii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon leprieurii"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node78",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node80"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node80",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon tortillis"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon tortillis"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon tortillis",
+                "nameComplete": "Syrrhopodon tortillis",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "tortillis",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon tortillis"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node78",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node79"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node81",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node68",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node69"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node82",
+            "http://example.org/phyx.js/example#phylogeny0_node85"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node82",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node81",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node85"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node83",
+            "http://example.org/phyx.js/example#phylogeny0_node84"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node83",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon albovaginatus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon albovaginatus 162"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon albovaginatus 162",
+                "nameComplete": "Syrrhopodon albovaginatus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "albovaginatus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon albovaginatus 162"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node82",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node84"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node84",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon albovaginatus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon albovaginatus 446"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon albovaginatus 446",
+                "nameComplete": "Syrrhopodon albovaginatus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "albovaginatus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon albovaginatus 446"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node82",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node83"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node85",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon ciliatus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon ciliatus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon ciliatus",
+                "nameComplete": "Syrrhopodon ciliatus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "ciliatus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon ciliatus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node81",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node82"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node86",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node67",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node68"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node87",
+            "http://example.org/phyx.js/example#phylogeny0_node88"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node87",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon perarmatus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon perarmatus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon perarmatus",
+                "nameComplete": "Syrrhopodon perarmatus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "perarmatus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon perarmatus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node86",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node88"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node88",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node86",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node87"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node89",
+            "http://example.org/phyx.js/example#phylogeny0_node90"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node89",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon muelleri"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon muelleri"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon muelleri",
+                "nameComplete": "Syrrhopodon muelleri",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "muelleri",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon muelleri"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node88",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node90"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node90",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Albifolium"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Albifolium"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Albifolium",
+                "nameComplete": "Albifolium",
+                "uninomial": "Albifolium",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Albifolium"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node88",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node89"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node91",
+            "http://example.org/phyx.js/example#phylogeny0_node101"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node91",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node90",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node101"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node92",
+            "http://example.org/phyx.js/example#phylogeny0_node100"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node92",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Leucophanes"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:OBI_0000312",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@id": "obo:OBI_0302910"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:OBI_0000293",
+                    "someValuesFrom": {
+                      "@id": "http://example.org/phyx.js/example#phyloref1"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "labels": [
+            "Leucophanes"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Leucophanes",
+                "nameComplete": "Leucophanes",
+                "uninomial": "Leucophanes",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Leucophanes"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node91",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node100"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node93",
+            "http://example.org/phyx.js/example#phylogeny0_node94"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node93",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Syrrhopodon confertus"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Syrrhopodon confertus"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Syrrhopodon confertus",
+                "nameComplete": "Syrrhopodon confertus",
+                "genusPart": "Syrrhopodon",
+                "specificEpithet": "confertus",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Syrrhopodon confertus"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node92",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node94"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node94",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node92",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node93"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node95",
+            "http://example.org/phyx.js/example#phylogeny0_node96",
+            "http://example.org/phyx.js/example#phylogeny0_node99"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node95",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Leucophanes glaucum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Leucophanes glaucum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Leucophanes glaucum",
+                "nameComplete": "Leucophanes glaucum",
+                "genusPart": "Leucophanes",
+                "specificEpithet": "glaucum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Leucophanes glaucum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node94",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node96",
+            "http://example.org/phyx.js/example#phylogeny0_node99"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node96",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node94",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node95",
+            "http://example.org/phyx.js/example#phylogeny0_node99"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node97",
+            "http://example.org/phyx.js/example#phylogeny0_node98"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node97",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Leucophanes albescens"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Leucophanes albescens"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Leucophanes albescens",
+                "nameComplete": "Leucophanes albescens",
+                "genusPart": "Leucophanes",
+                "specificEpithet": "albescens",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Leucophanes albescens"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node96",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node98"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node98",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Leucophanes octoblepharoides"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Leucophanes octoblepharoides"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Leucophanes octoblepharoides",
+                "nameComplete": "Leucophanes octoblepharoides",
+                "genusPart": "Leucophanes",
+                "specificEpithet": "octoblepharoides",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Leucophanes octoblepharoides"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node96",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node97"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node99",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Leucophanes seychellarum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Leucophanes seychellarum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Leucophanes seychellarum",
+                "nameComplete": "Leucophanes seychellarum",
+                "genusPart": "Leucophanes",
+                "specificEpithet": "seychellarum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Leucophanes seychellarum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node94",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node95",
+            "http://example.org/phyx.js/example#phylogeny0_node96"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node100",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
+                "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Exodictyon"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:OBI_0000312",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@id": "obo:OBI_0302910"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "obo:OBI_0000293",
+                    "someValuesFrom": {
+                      "@id": "http://example.org/phyx.js/example#phyloref0"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "labels": [
+            "Exodictyon incrassatum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
+              "institutionCode": "UC",
+              "catalogNumber": "Wall 2527, Fiji"
+            },
+            {
+              "label": "Sole representative of genus Exodictyon",
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
+                "label": "Exodictyon",
+                "nameComplete": "Exodictyon"
+              }
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node91",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node92"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node101",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node90",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node91"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node102",
+            "http://example.org/phyx.js/example#phylogeny0_node105"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node102",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Exostratum"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Exostratum"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Exostratum",
+                "nameComplete": "Exostratum",
+                "uninomial": "Exostratum",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Exostratum"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node101",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node105"
+          ],
+          "children": [
+            "http://example.org/phyx.js/example#phylogeny0_node103",
+            "http://example.org/phyx.js/example#phylogeny0_node104"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node103",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Exostratum blumii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Exostratum blumii 245"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Exostratum blumii 245",
+                "nameComplete": "Exostratum blumii",
+                "genusPart": "Exostratum",
+                "specificEpithet": "blumii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Exostratum blumii 245"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node102",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node104"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node104",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Exostratum blumii"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Exostratum blumii 243"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Exostratum blumii 243",
+                "nameComplete": "Exostratum blumii",
+                "genusPart": "Exostratum",
+                "specificEpithet": "blumii",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Exostratum blumii 243"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node102",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node103"
+          ]
+        },
+        {
+          "@id": "http://example.org/phyx.js/example#phylogeny0_node105",
+          "rdf:type": [
+            {
+              "@id": "obo:CDAO_0000140"
+            },
+            {
+              "@type": "owl:Restriction",
+              "onProperty": "obo:CDAO_0000187",
+              "someValuesFrom": {
+                "@type": "owl:Restriction",
+                "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+                "someValuesFrom": {
+                  "@type": "owl:Class",
+                  "intersectionOf": [
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                      "hasValue": "Arthrocormus schimperi"
+                    },
+                    {
+                      "@type": "owl:Restriction",
+                      "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                      "hasValue": {
+                        "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "labels": [
+            "Arthrocormus schimperi"
+          ],
+          "representsTaxonomicUnits": [
+            {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+              "hasName": {
+                "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                "label": "Arthrocormus schimperi",
+                "nameComplete": "Arthrocormus schimperi",
+                "genusPart": "Arthrocormus",
+                "specificEpithet": "schimperi",
+                "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+              },
+              "label": "Arthrocormus schimperi"
+            }
+          ],
+          "parent": "http://example.org/phyx.js/example#phylogeny0_node101",
+          "siblings": [
+            "http://example.org/phyx.js/example#phylogeny0_node102"
+          ]
+        }
+      ],
+      "hasRootNode": {
+        "@id": "http://example.org/phyx.js/example#phylogeny0_node0"
+      }
+    }
+  ],
+  "phylorefs": [
+    {
+      "label": "Exodictyon",
+      "definition": "nomen cladi conversum, Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)\n\nStem-based definition:\n\ninternal specifier: Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)\ninternal specifier: Wall 2527, Fiji (uc)\nexternal specifier: Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\nIncluded terminal clade:\n\nincrassatum",
+      "internalSpecifiers": [
+        {
+          "label": "Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)",
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
+            "label": "Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)",
+            "nameComplete": "Exodictyon"
+          },
+          "nameAccordingTo": "Ellis in Lindbergia 11: 16 (1985)"
+        },
+        {
+          "label": "Wall 2527, Fiji (UC)",
+          "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
+          "occurrenceID": "urn:catalog:UC::Wall 2527, Fiji"
+        }
+      ],
+      "externalSpecifiers": [
+        {
+          "label": "Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)",
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
+            "label": "Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)",
+            "nameComplete": "Leucophanes octoblepharoides"
+          }
+        }
+      ],
+      "expectedResolution": {
+        "#phylogeny0": {
+          "nodeLabel": "Exodictyon incrassatum"
+        }
+      },
+      "@id": "http://example.org/phyx.js/example#phyloref0",
+      "@type": "owl:Class",
+      "hasComponentClass": [],
+      "equivalentClass": {
+        "@type": "owl:Class",
+        "intersectionOf": [
+          {
+            "@type": "owl:Restriction",
+            "onProperty": "phyloref:includes_TU",
+            "someValuesFrom": {
+              "@type": "owl:Restriction",
+              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Exodictyon"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "@type": "owl:Restriction",
+            "onProperty": "phyloref:includes_TU",
+            "someValuesFrom": {
+              "@type": "owl:Restriction",
+              "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
+              "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
+            }
+          },
+          {
+            "@type": "owl:Restriction",
+            "onProperty": "phyloref:excludes_TU",
+            "someValuesFrom": {
+              "@type": "owl:Restriction",
+              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Leucophanes octoblepharoides"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "subClassOf": [
+        "phyloref:Phyloreference",
+        "phyloref:PhyloreferenceUsingMaximumClade"
+      ]
+    },
+    {
+      "label": "Leucophanes",
+      "definition": "nomen cladi conversum, Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\n\nStem-based definition:\n\ninternal specifier: Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\ninternal specifier: Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880)\nexternal specifier: Wall 2527, Fiji (uc)\nIncluded terminal clades:\n\nconfertus, glaucum, octoblepharoides, seychellarum",
+      "internalSpecifiers": [
+        {
+          "label": "Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)",
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "label": "Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)",
+            "nameComplete": "Leucophanes octoblepharoides",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+          }
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
+            "label": "Leucophanes seychellarum",
+            "nameComplete": "Leucophanes seychellarum",
+            "genusPart": "Leucophanes",
+            "specificEpithet": "seychellarum"
+          },
+          "label": "Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880)"
+        }
+      ],
+      "externalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
+          "basisOfRecord": "PreservedSpecimen",
+          "institutionCode": "UC",
+          "catalogNumber": "Wall 2527, Fiji",
+          "label": "Wall 2527, Fiji (uc)"
+        }
+      ],
+      "@id": "http://example.org/phyx.js/example#phyloref1",
+      "@type": "owl:Class",
+      "hasComponentClass": [],
+      "equivalentClass": {
+        "@type": "owl:Class",
+        "intersectionOf": [
+          {
+            "@type": "owl:Restriction",
+            "onProperty": "phyloref:includes_TU",
+            "someValuesFrom": {
+              "@type": "owl:Restriction",
+              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Leucophanes octoblepharoides"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "@type": "owl:Restriction",
+            "onProperty": "phyloref:includes_TU",
+            "someValuesFrom": {
+              "@type": "owl:Restriction",
+              "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName",
+              "someValuesFrom": {
+                "@type": "owl:Class",
+                "intersectionOf": [
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete",
+                    "hasValue": "Leucophanes seychellarum"
+                  },
+                  {
+                    "@type": "owl:Restriction",
+                    "onProperty": "http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode",
+                    "hasValue": {
+                      "@id": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "@type": "owl:Restriction",
+            "onProperty": "phyloref:excludes_TU",
+            "someValuesFrom": {
+              "@type": "owl:Restriction",
+              "onProperty": "http://rs.tdwg.org/dwc/terms/occurrenceID",
+              "hasValue": "urn:catalog:UC::Wall 2527, Fiji"
+            }
+          }
+        ]
+      },
+      "subClassOf": [
+        "phyloref:Phyloreference",
+        "phyloref:PhyloreferenceUsingMaximumClade"
+      ]
+    }
+  ],
+  "hasTaxonomicUnitMatches": [],
+  "@id": "http://example.org/phyx.js/example#",
+  "@type": [
+    "testcase:PhyloreferenceTestCase",
+    "owl:Ontology"
+  ],
+  "owl:imports": [
+    "http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl",
+    "http://ontology.phyloref.org/2018-12-14/phyloref.owl",
+    "http://ontology.phyloref.org/2018-12-14/tcan.owl"
+  ]
+}

@@ -178,7 +178,38 @@
         },
         "label": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "description": "A label for this taxonomic unit."
+        },
+        "nameAccordingTo": {
+          "type": "string",
+          "minLength": 1,
+          "description": "For a taxon concept, provides the source in which the specific taxon concept circumscription is defined or implied (i.e. the 'sensu' or 'sec' of the name)."
+        },
+        "basisOfRecord": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The basis of record for this specimen."
+        },
+        "occurrenceID": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The occurrence ID of a specimen."
+        },
+        "institutionCode": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The institution code of a specimen."
+        },
+        "collectionCode": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The collection code of a specimen."
+        },
+        "catalogNumber": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The catalog number of a specimen."
         },
         "hasName": {
           "type": "object",
@@ -206,7 +237,6 @@
           },
           "required": [
             "@type",
-            "label",
             "nameComplete"
           ]
         }

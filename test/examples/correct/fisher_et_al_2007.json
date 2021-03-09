@@ -1,0 +1,109 @@
+{
+    "@context": "../../../docs/context/development/phyx.json",
+    "phylogenies": [
+        {
+            "@id": "#phylogeny0",
+            "newick": "((((((((((('Arthrocormus schimperi',('Exostratum blumii 243','Exostratum blumii 245')Exostratum),('Exodictyon incrassatum',(('Leucophanes seychellarum',('Leucophanes octoblepharoides','Leucophanes albescens'),'Leucophanes glaucum'),'Syrrhopodon confertus')Leucophanes))Albifolium,'Syrrhopodon muelleri'),'Syrrhopodon perarmatus'),(('Syrrhopodon ciliatus',('Syrrhopodon albovaginatus 446','Syrrhopodon albovaginatus 162')),((('Syrrhopodon tortillis','Syrrhopodon leprieurii'),'Syrrhopodon prolifer'),('Syrrhopodon parasiticus','Syrrhopodon trachyphyllus',('Syrrhopodon banksii','Syrrhopodon involutus')Leucophanella)))Trachymitrium),('Syrrhopodon armatus','Syrrhopodon fimbriatulus')),((((('Mitthyridium obtusifolium','Mitthyridium constrictum'),'Mitthyridium fasciculatum'),('Mitthyridium undulatum','Mitthyridium jungquilianum'))Mitthyridium_as_per_paper,'Syrrhopodon mahensis')Mitthyridium,('Syrrhopodon tristichus',('Syrrhopodon croceus','Syrrhopodon apertus','Syrrhopodon fissipapillatus'))))Syrrhopodon,(('Syrrhopodon incompletus',((((('Calymperes palisotii 159','Calymperes palisotii 180'),'Calymperes motleyi'),('Calymperes erosum','Calymperes robinsonii')),(('Calymperes tenerum','Calymperes subintegrum',('Calymperes tuatomuense','Calymperes pseudopodianum'),'Calymperes hispidium'),'Calymperes moluccense')),((('Calymperes tahitense 320','Calymperes tahitense 115'),'Calymperes lonchophyllum'),(('Calymperes afzelii 179','Calymperes afzelii 165'),'Calymperes graffeanum')))),'Syrrhopodon mauritianus')Calymperes),'Syrrhopodon japonicus'),'Syrrhopodon gardneri')Calymperaceae,('Octoblepharum Moorea 445','Octoblepharum albidum')Octoblepharum);",
+            "ot:dataDeposit": "https://treebase.org/treebase-web/search/study/taxa.html?id=1624&treeid=748",
+            "additionalNodeProperties": {
+                "Exodictyon incrassatum": {
+                    "representsTaxonomicUnits": [
+                        {
+                            "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
+                            "institutionCode": "UC",
+                            "catalogNumber": "Wall 2527, Fiji"
+                        },
+                        {
+                          "label": "Sole representative of genus Exodictyon",
+                          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                          "hasName": {
+                            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
+                            "label": "Exodictyon",
+                            "nameComplete": "Exodictyon"
+                          }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "phylorefs": [
+        {
+            "label": "Exodictyon",
+            "definition": "nomen cladi conversum, Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)\n\nStem-based definition:\n\ninternal specifier: Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)\ninternal specifier: Wall 2527, Fiji (uc)\nexternal specifier: Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\nIncluded terminal clade:\n\nincrassatum",
+            "internalSpecifiers": [
+                {
+                    "label": "Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)",
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                      "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                      "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
+                      "label": "Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)",
+                      "nameComplete": "Exodictyon"
+                    },
+                    "nameAccordingTo": "Ellis in Lindbergia 11: 16 (1985)"
+                },
+                {
+                    "label": "Wall 2527, Fiji (UC)",
+                    "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
+                    "occurrenceID": "urn:catalog:UC::Wall 2527, Fiji"
+                }
+            ],
+            "externalSpecifiers": [
+                {
+                    "label": "Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)",
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                      "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                      "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
+                      "label": "Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)",
+                      "nameComplete": "Leucophanes octoblepharoides"
+                    }
+                }
+            ],
+            "expectedResolution": {
+                "#phylogeny0": {
+                    "nodeLabel": "Exodictyon incrassatum"
+                }
+            }
+        },
+        {
+            "label": "Leucophanes",
+            "definition": "nomen cladi conversum, Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\n\nStem-based definition:\n\ninternal specifier: Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\ninternal specifier: Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880)\nexternal specifier: Wall 2527, Fiji (uc)\nIncluded terminal clades:\n\nconfertus, glaucum, octoblepharoides, seychellarum",
+            "internalSpecifiers": [
+                {
+                    "label": "Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)",
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                      "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                      "label": "Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)",
+                      "nameComplete": "Leucophanes octoblepharoides",
+                      "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN"
+                    }
+                },
+                {
+                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+                    "hasName": {
+                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICBN",
+                        "label": "Leucophanes seychellarum",
+                        "nameComplete": "Leucophanes seychellarum",
+                        "genusPart": "Leucophanes",
+                        "specificEpithet": "seychellarum"
+                    },
+                    "label": "Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880)"
+                }
+            ],
+            "externalSpecifiers": [
+                {
+                    "@type": "http://rs.tdwg.org/dwc/terms/Occurrence",
+                    "basisOfRecord": "PreservedSpecimen",
+                    "institutionCode": "UC",
+                    "catalogNumber": "Wall 2527, Fiji",
+                    "label": "Wall 2527, Fiji (uc)"
+                }
+            ]
+        }
+    ]
+}

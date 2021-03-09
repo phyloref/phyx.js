@@ -128,7 +128,8 @@ function convertFileToOWL(filename, argOutputFilename = "") {
 
     return true;
   } catch(e) {
-    console.error(`Could not convert ${filename} to ${outputFilename}: ${e}`);
+    console.error(`Could not convert ${filename} to ${outputFilename}: ${e} at ${e.stack}`);
+    console.error(``)
   }
   return false;
 }
