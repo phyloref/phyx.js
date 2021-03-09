@@ -299,30 +299,30 @@
 <http://example.org/phyx.js/example#phyloref3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/phyx.js/example#phyloref3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref3_component1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref3_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis)" .
+<http://example.org/phyx.js/example#phyloref3_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) ~ Alligator mississippiensis (ICZN))" .
 <http://example.org/phyx.js/example#phyloref3_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref3_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b241 .
 <http://example.org/phyx.js/example#phyloref3_component2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref3_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Gavialis gangeticus)" .
+<http://example.org/phyx.js/example#phyloref3_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) ~ Gavialis gangeticus (ICZN))" .
 <http://example.org/phyx.js/example#phyloref3_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref3_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b252 .
 <http://example.org/phyx.js/example#phyloref3_component3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref3_component3> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
+<http://example.org/phyx.js/example#phyloref3_component3> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) ~ Alligator mississippiensis (ICZN) V Gavialis gangeticus (ICZN))" .
 <http://example.org/phyx.js/example#phyloref3_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref3> .
 <http://example.org/phyx.js/example#phyloref3_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref3_component3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b263 .
 <http://example.org/phyx.js/example#phyloref3_component4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref3_component4> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
+<http://example.org/phyx.js/example#phyloref3_component4> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) ~ Alligator mississippiensis (ICZN) V Gavialis gangeticus (ICZN))" .
 <http://example.org/phyx.js/example#phyloref3_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref3> .
 <http://example.org/phyx.js/example#phyloref3_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref3_component4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b269 .
 <http://example.org/phyx.js/example#phyloref3_component5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref3_component5> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
+<http://example.org/phyx.js/example#phyloref3_component5> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) ~ Alligator mississippiensis (ICZN) V Gavialis gangeticus (ICZN))" .
 <http://example.org/phyx.js/example#phyloref3_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref3> .
 <http://example.org/phyx.js/example#phyloref3_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref3_component5> <http://www.w3.org/2002/07/owl#equivalentClass> _:b276 .
 <http://example.org/phyx.js/example#phyloref3_component6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref3_component6> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)" .
+<http://example.org/phyx.js/example#phyloref3_component6> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) ~ Alligator mississippiensis (ICZN) V Gavialis gangeticus (ICZN))" .
 <http://example.org/phyx.js/example#phyloref3_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref3> .
 <http://example.org/phyx.js/example#phyloref3_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref3_component6> <http://www.w3.org/2002/07/owl#equivalentClass> _:b282 .
@@ -346,47 +346,47 @@
 <http://example.org/phyx.js/example#phyloref4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/phyx.js/example#phyloref4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
 <http://example.org/phyx.js/example#phyloref4_component1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref4_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/phyx.js/example#phyloref4_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))" .
 <http://example.org/phyx.js/example#phyloref4_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref4> .
 <http://example.org/phyx.js/example#phyloref4_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
 <http://example.org/phyx.js/example#phyloref4_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b294 .
 <http://example.org/phyx.js/example#phyloref4_component2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref4_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/phyx.js/example#phyloref4_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))" .
 <http://example.org/phyx.js/example#phyloref4_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref4> .
 <http://example.org/phyx.js/example#phyloref4_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
 <http://example.org/phyx.js/example#phyloref4_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b314 .
 <http://example.org/phyx.js/example#phyloref4_component3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref4_component3> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/phyx.js/example#phyloref4_component3> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))" .
 <http://example.org/phyx.js/example#phyloref4_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref4> .
 <http://example.org/phyx.js/example#phyloref4_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
 <http://example.org/phyx.js/example#phyloref4_component3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b334 .
 <http://example.org/phyx.js/example#phyloref4_component4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref4_component4> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/phyx.js/example#phyloref4_component4> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))" .
 <http://example.org/phyx.js/example#phyloref4_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref4> .
 <http://example.org/phyx.js/example#phyloref4_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
 <http://example.org/phyx.js/example#phyloref4_component4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b354 .
 <http://example.org/phyx.js/example#phyloref4_component5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref4_component5> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/phyx.js/example#phyloref4_component5> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))" .
 <http://example.org/phyx.js/example#phyloref4_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref4> .
 <http://example.org/phyx.js/example#phyloref4_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
 <http://example.org/phyx.js/example#phyloref4_component5> <http://www.w3.org/2002/07/owl#equivalentClass> _:b374 .
 <http://example.org/phyx.js/example#phyloref4_component6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref4_component6> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/phyx.js/example#phyloref4_component6> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))" .
 <http://example.org/phyx.js/example#phyloref4_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref4> .
 <http://example.org/phyx.js/example#phyloref4_component6> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
 <http://example.org/phyx.js/example#phyloref4_component6> <http://www.w3.org/2002/07/owl#equivalentClass> _:b394 .
 <http://example.org/phyx.js/example#phyloref4_component7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref4_component7> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/phyx.js/example#phyloref4_component7> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))" .
 <http://example.org/phyx.js/example#phyloref4_component7> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref4> .
 <http://example.org/phyx.js/example#phyloref4_component7> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
 <http://example.org/phyx.js/example#phyloref4_component7> <http://www.w3.org/2002/07/owl#equivalentClass> _:b414 .
 <http://example.org/phyx.js/example#phyloref4_component8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref4_component8> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/phyx.js/example#phyloref4_component8> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))" .
 <http://example.org/phyx.js/example#phyloref4_component8> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref4> .
 <http://example.org/phyx.js/example#phyloref4_component8> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
 <http://example.org/phyx.js/example#phyloref4_component8> <http://www.w3.org/2002/07/owl#equivalentClass> _:b434 .
 <http://example.org/phyx.js/example#phyloref4_component9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://example.org/phyx.js/example#phyloref4_component9> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)" .
+<http://example.org/phyx.js/example#phyloref4_component9> <http://www.w3.org/2000/01/rdf-schema#label> "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))" .
 <http://example.org/phyx.js/example#phyloref4_component9> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref4> .
 <http://example.org/phyx.js/example#phyloref4_component9> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMinimumClade> .
 <http://example.org/phyx.js/example#phyloref4_component9> <http://www.w3.org/2002/07/owl#equivalentClass> _:b454 .

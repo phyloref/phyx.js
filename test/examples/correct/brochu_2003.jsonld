@@ -2072,7 +2072,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref3_component1",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus ~ Alligator mississippiensis)",
+          "label": "(Crocodylus niloticus (ICZN) ~ Alligator mississippiensis (ICZN))",
           "equivalentClass": [
             {
               "@type": "owl:Class",
@@ -2137,7 +2137,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref3_component2",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus ~ Gavialis gangeticus)",
+          "label": "(Crocodylus niloticus (ICZN) ~ Gavialis gangeticus (ICZN))",
           "equivalentClass": [
             {
               "@type": "owl:Class",
@@ -2202,7 +2202,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref3_component3",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)",
+          "label": "(Crocodylus niloticus (ICZN) ~ Alligator mississippiensis (ICZN) V Gavialis gangeticus (ICZN))",
           "equivalentClass": {
             "@type": "owl:Class",
             "intersectionOf": [
@@ -2246,7 +2246,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref3_component4",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)",
+          "label": "(Crocodylus niloticus (ICZN) ~ Alligator mississippiensis (ICZN) V Gavialis gangeticus (ICZN))",
           "equivalentClass": {
             "@type": "owl:Class",
             "intersectionOf": [
@@ -2294,7 +2294,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref3_component5",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)",
+          "label": "(Crocodylus niloticus (ICZN) ~ Alligator mississippiensis (ICZN) V Gavialis gangeticus (ICZN))",
           "equivalentClass": {
             "@type": "owl:Class",
             "intersectionOf": [
@@ -2338,7 +2338,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref3_component6",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus ~ Alligator mississippiensis V Gavialis gangeticus)",
+          "label": "(Crocodylus niloticus (ICZN) ~ Alligator mississippiensis (ICZN) V Gavialis gangeticus (ICZN))",
           "equivalentClass": {
             "@type": "owl:Class",
             "intersectionOf": [
@@ -2488,7 +2488,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref4_component1",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "label": "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))",
           "equivalentClass": {
             "@type": "owl:Restriction",
             "onProperty": "obo:CDAO_0000149",
@@ -2596,7 +2596,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref4_component2",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "label": "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))",
           "equivalentClass": {
             "@type": "owl:Restriction",
             "onProperty": "obo:CDAO_0000149",
@@ -2704,7 +2704,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref4_component3",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "label": "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))",
           "equivalentClass": {
             "@type": "owl:Restriction",
             "onProperty": "obo:CDAO_0000149",
@@ -2812,7 +2812,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref4_component4",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "label": "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))",
           "equivalentClass": {
             "@type": "owl:Restriction",
             "onProperty": "obo:CDAO_0000149",
@@ -2920,7 +2920,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref4_component5",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "label": "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))",
           "equivalentClass": {
             "@type": "owl:Restriction",
             "onProperty": "obo:CDAO_0000149",
@@ -3028,7 +3028,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref4_component6",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "label": "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))",
           "equivalentClass": {
             "@type": "owl:Restriction",
             "onProperty": "obo:CDAO_0000149",
@@ -3136,7 +3136,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref4_component7",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "label": "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))",
           "equivalentClass": {
             "@type": "owl:Restriction",
             "onProperty": "obo:CDAO_0000149",
@@ -3244,7 +3244,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref4_component8",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "label": "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))",
           "equivalentClass": {
             "@type": "owl:Restriction",
             "onProperty": "obo:CDAO_0000149",
@@ -3352,7 +3352,7 @@
         {
           "@id": "http://example.org/phyx.js/example#phyloref4_component9",
           "@type": "owl:Class",
-          "label": "(Crocodylus niloticus & Osteolaemus tetraspis & Tomistoma schlegelii)",
+          "label": "(Crocodylus niloticus (ICZN) & Osteolaemus tetraspis (ICZN) & Tomistoma schlegelii (ICZN))",
           "equivalentClass": {
             "@type": "owl:Restriction",
             "onProperty": "obo:CDAO_0000149",
