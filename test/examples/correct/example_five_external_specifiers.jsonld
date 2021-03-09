@@ -1151,7 +1151,6 @@
     }
   ],
   "hasTaxonomicUnitMatches": [],
-  "@id": "http://example.org/phyx.js/example#",
   "@type": [
     "testcase:PhyloreferenceTestCase",
     "owl:Ontology"
