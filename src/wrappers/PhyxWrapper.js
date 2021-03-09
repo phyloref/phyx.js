@@ -267,9 +267,6 @@ class PhyxWrapper {
       });
     }
 
-    // Finally, add the base URI as an ontology.
-    if (baseIRI) jsonld['@id'] = baseIRI;
-
     // Set up the top-level object '@type'. If one is present, we add our terms to that.
     if (!has(jsonld, '@type')) jsonld['@type'] = [];
     if (!Array.isArray(jsonld['@type'])) jsonld['@type'] = [jsonld['@type']];
