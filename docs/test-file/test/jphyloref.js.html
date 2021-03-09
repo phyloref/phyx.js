@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">test/jphyloref.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matchers">matchers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matchers/TaxonomicUnitMatcher.js~TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#wrappers">wrappers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html">PhylorefWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html">PhyxWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html">SpecimenWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html">TaxonNameWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/jphyloref.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*
+ * Use JPhyloRef to ensure that the expected JSON-LD files pass testing.
+ * A different test, `examples.js`, will then test whether the current Phyx.js
+ * produces a file identical to the expected JSON-LD files.
+ */
+
+const fs = require(&apos;fs&apos;);
+const path = require(&apos;path&apos;);
+const childProcess = require(&apos;child_process&apos;);
+
+const Downloader = require(&apos;nodejs-file-downloader&apos;);
+const chai = require(&apos;chai&apos;);
+
+const expect = chai.expect;
+
+/*
+ * Constants
+ */
+// The version of JPhyloRef to download.
+const JPHYLOREF_VERSION = &apos;0.4.0&apos;;
+
+// The URL from where JPhyloRef should be downloaded.
+const JPHYLOREF_URL = `https://repo.maven.apache.org/maven2/org/phyloref/jphyloref/${JPHYLOREF_VERSION}/jphyloref-${JPHYLOREF_VERSION}.jar`;
+// Where should the JPhyloRef be stored?
+const JPHYLOREF_PATH = path.resolve(__dirname, `jphyloref-${JPHYLOREF_VERSION}.jar`);
+
+/**
+ * Test whether the expected JSON-LD files pass testing using JPhyloRef.
+ */
+
+describe(&apos;JPhyloRef&apos;, function () {
+  describe(&apos;download JPhyloRef&apos;, function () {
+    // TODO: we should eventually use SHA to ensure that we have the expected file.
+    if (
+      fs.existsSync(JPHYLOREF_PATH)
+      &amp;&amp; fs.statSync(JPHYLOREF_PATH).size &gt; 0
+    ) {
+      it(&apos;has already been downloaded&apos;, function () {
+        expect(true);
+      });
+    } else {
+      it(&apos;should be downloadable&apos;, function () {
+        this.timeout(10000);
+        // Download JPhyloRef from Maven and save it to JPHYLOREF_PATH.
+        return new Downloader({
+          url: JPHYLOREF_URL,
+          directory: path.dirname(JPHYLOREF_PATH),
+          fileName: path.basename(JPHYLOREF_PATH),
+        }).download();
+      });
+    }
+  });
+
+  describe(&apos;test example JSON-LD files using JPhyloRef&apos;, function () {
+    fs.readdirSync(path.resolve(__dirname, &apos;examples&apos;, &apos;correct&apos;))
+      .filter(filename =&gt; filename.endsWith(&apos;.nq&apos;))
+      .forEach((filename) =&gt; {
+        it(`testing ${filename}`, function () {
+          this.timeout(20000);
+
+          // Start JPhyloRef to test filename.
+          const filePath = path.resolve(__dirname, &apos;examples&apos;, &apos;correct&apos;, filename);
+          const child = childProcess.spawnSync(
+            &apos;java&apos;,
+            [
+              &apos;-jar&apos;, JPHYLOREF_PATH,
+              &apos;test&apos;, filePath,
+            ],
+            {
+              encoding: &apos;utf8&apos;,
+              shell: true,
+            }
+          );
+          const matches = /Testing complete:(\d+) successes, (\d+) failures, (\d+) failures marked TODO, (\d+) skipped./.exec(child.stderr);
+
+          expect(matches, `Test result line not found in STDERR &lt;${child.stderr}&gt;`).to.have.lengthOf(5);
+
+          // const countSuccess = Number(matches[1]);
+          const countFailure = Number(matches[2]);
+          const countTODOs = Number(matches[3]);
+          // const countSkipped = Number(matches[4]);
+
+          // We can&apos;t test for one or more successes since some example Phyx file
+          // such as apomorphy-based phyloreferences don&apos;t have any successes at all.
+          // expect(countSuccess, &apos;Expected one or more successes&apos;).to.be.greaterThan(0);
+          expect(countFailure, &apos;Expected zero failures&apos;).to.equal(0);
+          expect(countTODOs, &apos;Expected zero TODOs&apos;).to.equal(0);
+
+          // An exit code of 0 means success. An exit code of 255 means that while
+          // there were no successes, there were also no failures. Either is acceptable here.
+          expect(child.status).to.be.oneOf([0, 255]);
+        });
+      });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

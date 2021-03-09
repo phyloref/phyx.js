@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">test/nomenclatural-codes.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matchers">matchers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matchers/TaxonomicUnitMatcher.js~TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#wrappers">wrappers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html">PhylorefWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html">PhyxWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html">SpecimenWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html">TaxonNameWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/nomenclatural-codes.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*
+ * Test nomenclatural code lookups and fallback behavior. While most of the
+ * nomenclatural code logic is in TaxonNameWrapper, we need to provide fallback
+ * nomenclatural codes in TaxonConceptWrapper, TaxonomicUnitWrapper and
+ * PhylorefWrapper as well. This test file makes sure that this functionality
+ * works correctly at all of these levels.
+ */
+
+const fs = require(&apos;fs&apos;);
+const path = require(&apos;path&apos;);
+
+const { cloneDeep } = require(&apos;lodash&apos;);
+
+const chai = require(&apos;chai&apos;);
+const phyx = require(&apos;../src&apos;);
+const owlterms = require(&apos;../src/utils/owlterms&apos;);
+
+// Use Chai&apos;s expect API.
+const expect = chai.expect;
+
+/* The list of expected fields in nomenclatural details. */
+const EXPECTED_NOMEN_DETAIL_FIELDS = [&apos;iri&apos;, &apos;shortName&apos;, &apos;label&apos;, &apos;title&apos;];
+
+/* Some example taxon names to use. */
+const ranaLuteiventris = {
+  &apos;@type&apos;: [
+    phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+    phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
+  ],
+  hasName: {
+    label: &apos;Rana luteiventris&apos;,
+  },
+  occurrenceID: &apos;MVZ 225749&apos;,
+};
+
+/*
+ * The nomenclatural codes are set up in TaxonNameWrapper, so that&apos;s where
+ * most of the nomenclatural code behavior code exists.
+ */
+describe(&apos;TaxonNameWrapper&apos;, function () {
+  describe(&apos;#getNomenclaturalCodes&apos;, function () {
+    it(&apos;should provide a non-empty list with the expected keys&apos;, function () {
+      const nomenCodes = phyx.TaxonNameWrapper.getNomenclaturalCodes();
+
+      expect(nomenCodes)
+        .to.be.an(&apos;array&apos;)
+        .that.is.not.empty;
+
+      nomenCodes.forEach((nomenCode) =&gt; {
+        expect(nomenCode).to.have.all.keys(EXPECTED_NOMEN_DETAIL_FIELDS);
+      });
+    });
+  });
+
+  describe(&apos;#getNomenCodeDetails&apos;, function () {
+    it(&apos;should provide details for some built-in codes&apos;, function () {
+      const codesToTest = {
+        &apos;Code not known&apos;: owlterms.UNKNOWN_CODE,
+        ICZN: owlterms.ICZN_CODE,
+        ICN: owlterms.ICN_CODE,
+        ICNP: owlterms.ICNP_CODE,
+        ICTV: owlterms.ICTV_CODE,
+        ICNCP: owlterms.ICNCP_CODE,
+      };
+
+      Object.keys(codesToTest).forEach((code) =&gt; {
+        const uri = codesToTest[code];
+        const details = phyx.TaxonNameWrapper.getNomenCodeDetails(uri);
+        expect(details).to.have.all.keys(EXPECTED_NOMEN_DETAIL_FIELDS);
+        expect(details.shortName).to.equal(code);
+      });
+    });
+  });
+
+  describe(&apos;#nomenclaturalCodeDetails&apos;, function () {
+    it(&apos;should provide nomenclatural code details for an example taxon name&apos;, function () {
+      const wrapper = new phyx.TaxonNameWrapper(ranaLuteiventris.hasName);
+      expect(wrapper.nomenclaturalCode).to.equal(owlterms.UNKNOWN_CODE);
+      expect(wrapper.nomenclaturalCodeDetails.shortName).to.equal(&apos;Code not known&apos;);
+
+      const wrapperWithDefault = new phyx.TaxonNameWrapper(
+        ranaLuteiventris.hasName,
+        owlterms.ICZN_CODE
+      );
+      expect(wrapperWithDefault.nomenclaturalCode).to.equal(owlterms.ICZN_CODE);
+      expect(wrapperWithDefault.nomenclaturalCodeDetails.shortName).to.equal(&apos;ICZN&apos;);
+
+      const nameWithNomenCode = cloneDeep(ranaLuteiventris.hasName);
+      nameWithNomenCode.nomenclaturalCode = owlterms.ICZN_CODE;
+      const wrapperWithExplicit = new phyx.TaxonNameWrapper(nameWithNomenCode, owlterms.ICN_CODE);
+      expect(wrapperWithExplicit.nomenclaturalCode).to.equal(owlterms.ICZN_CODE);
+      expect(wrapperWithExplicit.nomenclaturalCodeDetails.shortName).to.equal(&apos;ICZN&apos;);
+    });
+  });
+});
+
+/*
+ * Make sure we can set a default nomenclatural code in TaxonConceptWrapper.
+ */
+describe(&apos;TaxonConceptWrapper&apos;, function () {
+  describe(&apos;#nomenCode&apos;, function () {
+    const wrapper = new phyx.TaxonConceptWrapper(ranaLuteiventris);
+
+    it(&apos;should return UNKNOWN_CODE if one is not set&apos;, function () {
+      expect(wrapper.nomenCode).to.equal(owlterms.UNKNOWN_CODE);
+    });
+
+    it(&apos;should return the default nomenclatural code if one is provided&apos;, function () {
+      const wrapperWithDefault = new phyx.TaxonConceptWrapper(ranaLuteiventris, owlterms.ICZN_CODE);
+      expect(wrapperWithDefault.nomenCode).to.equal(owlterms.ICZN_CODE);
+      expect(wrapperWithDefault.nomenCodeDetails.shortName).to.equal(&apos;ICZN&apos;);
+    });
+  });
+});
+
+/*
+ * There are two ways in which nomenclatural codes can be set at the Phyx level:
+ *  (1) If there is a `defaultNomenclaturalCodeIRI` field at the Phyx level,
+ *      that will be used to provide a nomenclatural code for all specifiers
+ *      without a nomenclatural code as well as for all the phylogeny nodes.
+ *  (2) If no `defaultNomenclaturalCodeIRI` is provided, but all the specifiers
+ *      on all the phylorefs in the file have the same nomenclatural code, then
+ *      that code will be used on all the phylogeny nodes.
+ */
+describe(&apos;PhyxWrapper&apos;, function () {
+  it(&apos;should use the defaultNomenclaturalCodeIRI for phylogeny nodes&apos;, function () {
+    // The examples/correct/alligatoridae_default_nomen_code.json file has
+    // a `defaultNomenclaturalCodeIRI`.
+    const json = JSON.parse(fs.readFileSync(
+      path.resolve(__dirname, &apos;./examples/correct/alligatoridae_default_nomen_code.json&apos;)
+    ));
+
+    // Make sure this is the right example file.
+    expect(json, &apos;Expected alligatoridae_default_nomen_code.json to include a defaultNomenclaturalCodeIRI value.&apos;)
+      .to.include.key(&apos;defaultNomenclaturalCodeIRI&apos;);
+    const defaultNomenclaturalCodeIRI = json.defaultNomenclaturalCodeIRI;
+
+    const jsonld = new phyx.PhyxWrapper(json).asOWLOntology();
+
+    // Step 1. Check the phyloreferences. Neither specifier has a nomenclatural code,
+    // but they should pick up the default nomenclatural code for the Phyx file.
+    expect(jsonld.phylorefs).to.be.an(&apos;array&apos;).of.length(1);
+    const phyloref1 = jsonld.phylorefs[0];
+    expect(phyloref1).to.be.an(&apos;object&apos;).and.to.include.key(&apos;equivalentClass&apos;);
+
+    const equivalentClass = phyloref1.equivalentClass;
+    const specifierExprs = equivalentClass.someValuesFrom.intersectionOf;
+    expect(specifierExprs).to.be.an(&apos;array&apos;).with.length(2);
+
+    specifierExprs.forEach((specifierExpr) =&gt; {
+      const nameExprs = specifierExpr.someValuesFrom.someValuesFrom.intersectionOf;
+
+      expect(nameExprs).to.be.an(&apos;array&apos;).with.length(2).and.to.deep.include(
+        {
+          &apos;@type&apos;: &apos;owl:Restriction&apos;,
+          onProperty: &apos;http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode&apos;,
+          hasValue: {
+            &apos;@id&apos;: defaultNomenclaturalCodeIRI,
+          },
+        }
+      );
+    });
+
+    // Step 2. Check the phylogenies.
+    expect(jsonld).to.include.key(&apos;phylogenies&apos;);
+    expect(jsonld.phylogenies).to.be.an(&apos;array&apos;).with.length(1);
+
+    const phylogeny1 = jsonld.phylogenies[0];
+    expect(phylogeny1).to.include.key(&apos;nodes&apos;);
+
+    phylogeny1.nodes.forEach((node) =&gt; {
+      const nodeType = node[&apos;rdf:type&apos;];
+
+      // There should be at least one type definition: obo:CDAO_0000140.
+      expect(nodeType[0]).to.deep.equal({
+        &apos;@id&apos;: &apos;obo:CDAO_0000140&apos;,
+      });
+
+      // The second type definition -- if it exists -- must be a name entry,
+      // which should include the appropriate nomenclatural code.
+      if (nodeType.length &gt; 1) {
+        const nameEntry = nodeType[1];
+        expect(nameEntry.someValuesFrom.someValuesFrom.intersectionOf).to.deep.include(
+          {
+            &apos;@type&apos;: &apos;owl:Restriction&apos;,
+            onProperty: &apos;http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode&apos;,
+            hasValue: {
+              &apos;@id&apos;: defaultNomenclaturalCodeIRI,
+            },
+          }
+        );
+      }
+    });
+  });
+
+  it(&apos;should use the inferred nomenclatural code for phylogeny nodes&apos;, function () {
+    // The examples/correct/alligatoridae_inferred_nomen_code.json file does not have
+    // a `defaultNomenclaturalCodeIRI`, but the nomenclatural code can be inferred from
+    // its specifiers.
+    const json = JSON.parse(fs.readFileSync(
+      path.resolve(__dirname, &apos;./examples/correct/alligatoridae_inferred_nomen_code.json&apos;)
+    ));
+
+    // Make sure this is the right example file.
+    expect(json, &apos;Expected alligatoridae_inferred_nomen_code.json to not include a defaultNomenclaturalCodeIRI value.&apos;)
+      .to.not.include.key(&apos;defaultNomenclaturalCodeIRI&apos;);
+
+    const wrapped = new phyx.PhyxWrapper(json);
+    const inferredNomenCode = wrapped.defaultNomenCode;
+    expect(inferredNomenCode).to.equal(owlterms.ICZN_CODE);
+
+    const jsonld = wrapped.asOWLOntology();
+
+    // Step 1. Check the phyloreferences. Since only *Caiman crocodilus* has a
+    // nomenclatural code set, we should make sure that the other specifier
+    // picks up the inferred nomenclatural code of the entire file.
+    expect(jsonld.phylorefs).to.be.an(&apos;array&apos;).of.length(1);
+    const phyloref1 = jsonld.phylorefs[0];
+    expect(phyloref1).to.be.an(&apos;object&apos;).and.to.include.key(&apos;equivalentClass&apos;);
+
+    const equivalentClass = phyloref1.equivalentClass;
+    const specifierExprs = equivalentClass.someValuesFrom.intersectionOf;
+    expect(specifierExprs).to.be.an(&apos;array&apos;).with.length(2);
+
+    specifierExprs.forEach((specifierExpr) =&gt; {
+      const nameExprs = specifierExpr.someValuesFrom.someValuesFrom.intersectionOf;
+
+      expect(nameExprs).to.be.an(&apos;array&apos;).with.length(2).and.to.deep.include(
+        {
+          &apos;@type&apos;: &apos;owl:Restriction&apos;,
+          onProperty: &apos;http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode&apos;,
+          hasValue: {
+            &apos;@id&apos;: inferredNomenCode,
+          },
+        }
+      );
+    });
+
+    // Step 2. Check the phylogenies.
+    expect(jsonld).to.include.key(&apos;phylogenies&apos;);
+    expect(jsonld.phylogenies).to.be.an(&apos;array&apos;).with.length(1);
+
+    const phylogeny1 = jsonld.phylogenies[0];
+    expect(phylogeny1).to.include.key(&apos;nodes&apos;);
+
+    phylogeny1.nodes.forEach((node) =&gt; {
+      const nodeType = node[&apos;rdf:type&apos;];
+
+      // There should be at least one type definition: obo:CDAO_0000140.
+      expect(nodeType[0]).to.deep.equal({
+        &apos;@id&apos;: &apos;obo:CDAO_0000140&apos;,
+      });
+
+      // The second type definition -- if it exists -- must be a name entry,
+      // which should include the appropriate nomenclatural code.
+      if (nodeType.length &gt; 1) {
+        const nameEntry = nodeType[1];
+        expect(nameEntry.someValuesFrom.someValuesFrom.intersectionOf).to.deep.include(
+          {
+            &apos;@type&apos;: &apos;owl:Restriction&apos;,
+            onProperty: &apos;http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode&apos;,
+            hasValue: {
+              &apos;@id&apos;: inferredNomenCode,
+            },
+          }
+        );
+      }
+    });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

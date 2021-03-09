@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/wrappers/SpecimenWrapper.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matchers">matchers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matchers/TaxonomicUnitMatcher.js~TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#wrappers">wrappers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html">PhylorefWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html">PhyxWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html">SpecimenWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html">TaxonNameWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/wrappers/SpecimenWrapper.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const { has } = require(&apos;lodash&apos;);
+const { TaxonConceptWrapper } = require(&apos;./TaxonConceptWrapper&apos;);
+const owlterms = require(&apos;../utils/owlterms&apos;);
+const { PhyxCacheManager } = require(&apos;../utils/PhyxCacheManager&apos;);
+
+/**
+ * The SpecimenWrapper wraps specimen taxonomic units. These can be identified
+ * with a &apos;@type&apos; of SpecimenWrapper.TYPE_SPECIMEN (which is currently
+ * https://dwc.tdwg.org/terms/#occurrence).
+ *
+ * - TaxonomicUnitWrapper.TYPE_SPECIMEN: A specimen.
+ *    - Based on http://rs.tdwg.org/dwc/terms/Occurrence
+ *    - Should have a dwc:occurrenceID with the occurrence identifier.
+ *    - Should have a dwc:basisOfRecord to indicate what sort of occurrence this is.
+ *
+ * Since TaxonNameWrapper follows the TDWG ontology, we&apos;d love to do the same for
+ * SpecimenWrapper, but unfortunately the TaxonOccurrence ontology has been deprecated
+ * (see https://github.com/tdwg/ontology). Therefore, it instead improvises a
+ * representation based on dwc:Occurrence.
+ */
+class SpecimenWrapper {
+  /** The &apos;@type&apos; of specimens in JSON-LD document. */
+  static get TYPE_SPECIMEN() {
+    return owlterms.DWC_OCCURRENCE;
+  }
+
+  /** Construct a wrapper around a specimen. */
+  constructor(specimen) {
+    this.specimen = specimen;
+  }
+
+  /**
+   * Parse the provided occurrence ID. The two expected formats are:
+   *  - &apos;urn:catalog:[institutionCode]:[collectionCode]:[catalogNumber]&apos;
+   *      (in which case, we ignore the first two &quot;components&quot; here)
+   *  - &apos;[institutionCode]:[collectionCode]:[catalogNumber]&apos;
+   */
+  static fromOccurrenceID(occurrenceID, basisOfRecord = &apos;PreservedSpecimen&apos;) {
+    // Copy the occurrence ID so we can truncate it if necessary.
+    let occurID = occurrenceID;
+    if (occurID.startsWith(&apos;urn:catalog:&apos;)) occurID = occurID.substr(12);
+
+    // Prepare the specimen.
+    const specimen = {
+      &apos;@type&apos;: SpecimenWrapper.TYPE_SPECIMEN,
+      &apos;dwc:basisOfRecord&apos;: basisOfRecord,
+      occurrenceID: occurID,
+    };
+
+    // Look for certain prefixes that suggest that we&apos;ve been passed a URN or
+    // URL instead. If so, don&apos;t do any further processing!
+    const URL_URN_PREFIXES = [
+      &apos;http://&apos;,
+      &apos;https://&apos;,
+      &apos;ftp://&apos;,
+      &apos;sftp://&apos;,
+      &apos;file://&apos;,
+      &apos;urn:&apos;,
+    ];
+    if (URL_URN_PREFIXES.filter(prefix =&gt; occurID.toLowerCase().startsWith(prefix)).length &gt; 0) {
+      return specimen;
+    }
+
+    // Parsing an occurrence ID takes some time, so we should memoize it.
+    if (PhyxCacheManager.has(&apos;SpecimenWrapper.occurrenceIDCache&apos;, occurID)) {
+      return PhyxCacheManager.get(&apos;SpecimenWrapper.occurrenceIDCache&apos;, occurID);
+    }
+
+    // Split the occurrence ID into components, and store them in the appropriate fields.
+    const comps = occurID.split(/:/);
+    if (comps.length === 1) {
+      // specimen.institutionCode = undefined;
+      // specimen.collectionCode = undefined;
+      [specimen.catalogNumber] = comps;
+    } else if (comps.length === 2) {
+      [specimen.institutionCode, specimen.catalogNumber] = comps;
+    } else if (comps.length &gt;= 3) {
+      let catalogNumValues = []; // Store all split catalog number values.
+      [specimen.institutionCode, specimen.collectionCode, ...catalogNumValues] = comps;
+      specimen.catalogNumber = catalogNumValues.join(&apos;:&apos;);
+    }
+
+    PhyxCacheManager.put(&apos;SpecimenWrapper.occurrenceIDCache&apos;, occurID, specimen);
+    return specimen;
+  }
+
+  /**
+   * Get the catalogNumber if present.
+   */
+  get catalogNumber() {
+    // Get the catalog number from the specimen object if present.
+    if (has(this.specimen, &apos;catalogNumber&apos;)) return this.specimen.catalogNumber;
+
+    // Otherwise, try to parse the occurrenceID and see if we can extract a
+    // catalogNumber from there.
+    if (has(this.specimen, &apos;occurrenceID&apos;)) {
+      const specimen = SpecimenWrapper.fromOccurrenceID(this.specimen.occurrenceID);
+      if (has(specimen, &apos;catalogNumber&apos;)) return specimen.catalogNumber;
+    }
+    return undefined;
+  }
+
+  /**
+   * Get the institutionCode if present.
+   */
+  get institutionCode() {
+    // Get the institution code from the specimen object if present.
+    if (has(this.specimen, &apos;institutionCode&apos;)) return this.specimen.institutionCode;
+
+    // Otherwise, try to parse the occurrenceID and see if we can extract an
+    // occurrenceID from there.
+    if (has(this.specimen, &apos;occurrenceID&apos;)) {
+      const specimen = SpecimenWrapper.fromOccurrenceID(this.specimen.occurrenceID);
+      if (has(specimen, &apos;institutionCode&apos;)) return specimen.institutionCode;
+    }
+    return undefined;
+  }
+
+  /**
+   * Get the collectionCode if present.
+   */
+  get collectionCode() {
+    // Get the collection code from the specimen object if present.
+    if (has(this.specimen, &apos;collectionCode&apos;)) return this.specimen.collectionCode;
+
+    // Otherwise, try to parse the occurrenceID and see if we can extract an
+    // occurrenceID from there.
+    if (has(this.specimen, &apos;occurrenceID&apos;)) {
+      const specimen = SpecimenWrapper.fromOccurrenceID(this.specimen.occurrenceID);
+      if (has(specimen, &apos;collectionCode&apos;)) return specimen.collectionCode;
+    }
+    return undefined;
+  }
+
+  /**
+   * Return the occurrence ID of this specimen, if we have one. Otherwise, we
+   * attempt to construct one in the form:
+   *  &quot;urn:catalog:&quot; + institutionCode (if present) + &apos;:&apos; +
+   *  collectionCode (if present) + &apos;:&apos; + catalogNumber (if present)
+   */
+  get occurrenceID() {
+    // Return the occurrenceID if it exists.
+    if (has(this.specimen, &apos;occurrenceID&apos;) &amp;&amp; this.specimen.occurrenceID.trim() !== &apos;&apos;) {
+      return this.specimen.occurrenceID.trim();
+    }
+
+    // Otherwise, we could try to construct the occurrenceID from its components.
+    if (has(this.specimen, &apos;catalogNumber&apos;)) {
+      if (has(this.specimen, &apos;institutionCode&apos;)) {
+        if (has(this.specimen, &apos;collectionCode&apos;)) {
+          return `urn:catalog:${this.specimen.institutionCode.trim()}:${this.specimen.collectionCode.trim()}:${this.specimen.catalogNumber.trim()}`;
+        }
+        return `urn:catalog:${this.specimen.institutionCode.trim()}::${this.specimen.catalogNumber.trim()}`;
+      }
+      if (has(this.specimen, &apos;collectionCode&apos;)) {
+        return `urn:catalog::${this.specimen.collectionCode.trim()}:${this.specimen.catalogNumber.trim()}`;
+      }
+      return `urn:catalog:::${this.specimen.catalogNumber.trim()}`;
+    }
+
+    // None of our specimen identifier schemes worked.
+    return undefined;
+  }
+
+  /**
+   * Return the basis of record, if one is present.
+   */
+  get basisOfRecord() {
+    if (has(this.specimen, &apos;dwc:basisOfRecord&apos;)) return this.specimen[&apos;dwc:basisOfRecord&apos;];
+    return undefined;
+  }
+
+  /**
+   * Set the basis of record. See http://rs.tdwg.org/dwc/terms/basisOfRecord for
+   * recommended values.
+   */
+  set basisOfRecord(bor) {
+    this.specimen[&apos;dwc:basisOfRecord&apos;] = bor;
+  }
+
+  /** Return this specimen as a taxon concept if it contains taxon name information. */
+  get taxonConcept() {
+    if (has(this.specimen, &apos;hasName&apos;)) return this.specimen;
+    if (has(this.specimen, &apos;nameString&apos;)) return this.specimen;
+    return undefined;
+  }
+
+  /** Return a label for this specimen. */
+  get label() {
+    // We can&apos;t return anything without an occurrenceID.
+    if (!this.occurrenceID) return undefined;
+
+    // Note that specimens may be identified to a taxon concept. If so, we should
+    // include that information in the label.
+    if (this.taxonConcept) {
+      return `Specimen ${this.occurrenceID} identified as ${new TaxonConceptWrapper(this.taxonConcept).label}`;
+    }
+
+    // Return a label for this specimen.
+    return `Specimen ${this.occurrenceID}`;
+  }
+
+  /** Return this specimen as an equivalentClass expression. */
+  get asOWLEquivClass() {
+    // We can&apos;t do anything without an occurrence ID!
+    if (!this.occurrenceID) return undefined;
+
+    // TODO: Should we also match by this.taxonConcept is one is available?
+    // Technically no, but it might be useful. Hmm.
+
+    // Return as an OWL restriction.
+    return {
+      &apos;@type&apos;: &apos;owl:Restriction&apos;,
+      onProperty: owlterms.DWC_OCCURRENCE_ID,
+      hasValue: this.occurrenceID,
+    };
+  }
+}
+
+module.exports = {
+  SpecimenWrapper,
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

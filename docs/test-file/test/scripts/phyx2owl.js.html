@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">test/scripts/phyx2owl.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matchers">matchers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matchers/TaxonomicUnitMatcher.js~TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#wrappers">wrappers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html">PhylorefWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html">PhyxWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html">SpecimenWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html">TaxonNameWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/scripts/phyx2owl.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*
+ * Test conversion to OWL using the phyx2owl.js script.
+ */
+
+const child = require(&apos;child_process&apos;);
+const path = require(&apos;path&apos;);
+const fs = require(&apos;fs&apos;);
+
+const chai = require(&apos;chai&apos;);
+
+const expect = chai.expect;
+
+/*
+ * Test whether we can convert Phyx files to OWL in JSON-LD using phyx2owl.js.
+ */
+
+const PHYX2OWL_JS = &apos;bin/phyx2owl.js&apos;;
+
+describe(PHYX2OWL_JS, function () {
+  it(&apos;should work without any arguments&apos;, function () {
+    const result = child.spawnSync(PHYX2OWL_JS, [], {
+      encoding: &apos;utf-8&apos;,
+      stdio: &apos;pipe&apos;,
+    });
+    expect(result.status).to.equal(1);
+    expect(result.stdout).to.be.empty;
+    expect(result.stderr).to.contain(&apos;No input files provided.&apos;);
+  });
+  it(&apos;should support `--help`&apos;, function () {
+    const result = child.spawnSync(PHYX2OWL_JS, [&apos;--help&apos;], {
+      encoding: &apos;utf-8&apos;,
+      stdio: &apos;pipe&apos;,
+    });
+    expect(result.status).to.equal(0);
+    expect(result.stderr).to.be.empty;
+    expect(result.stdout).to.contain(&apos;phyx2owl.js [files or directories to convert into OWL ontologies]&apos;);
+  });
+  it(&apos;should be able to convert `brochu_2003.json`&apos;, function () {
+    const PHYX_FILE = path.resolve(__dirname, &apos;../examples/correct/brochu_2003.json&apos;);
+    const OWL_FILE = path.resolve(__dirname, &apos;../examples/correct/brochu_2003.owl&apos;);
+    const EXPECTED_OWL_FILE = path.resolve(__dirname, &apos;../examples/correct/brochu_2003.jsonld&apos;);
+
+    // If there is already a &apos;../examples/brochu_2003.owl&apos; file, we should delete it.
+    if (fs.existsSync(OWL_FILE)) fs.unlinkSync(OWL_FILE);
+    expect(fs.existsSync(OWL_FILE)).to.be.false;
+
+    // Convert brochu_2003.json to brochu_2003.owl.
+    // Because of the way in which we test brochu_2003.owl in test/examples.js,
+    // we need to set a base IRI as well.
+    const result = child.spawnSync(PHYX2OWL_JS, [PHYX_FILE, &apos;--base-iri&apos;, &apos;http://example.org/phyx.js/example#&apos;], {
+      encoding: &apos;utf-8&apos;,
+      stdio: &apos;pipe&apos;,
+    });
+    expect(result.status).to.equal(0);
+    expect(result.stdout).to.contain(&apos;1 files converted successfully.&apos;);
+    expect(result.stderr).to.be.empty;
+
+    expect(fs.existsSync(OWL_FILE), `File ${OWL_FILE} was not generated.`).to.be.true;
+
+    // Make sure that the generated file *looks* like a JSON-LD file.
+    const jsonldContent = JSON.parse(fs.readFileSync(OWL_FILE, &apos;utf8&apos;));
+    expect(jsonldContent).to.be.an(&apos;object&apos;).that.has.any.keys(&apos;@context&apos;);
+    expect(jsonldContent[&apos;@context&apos;]).to.not.be.empty;
+
+    // Make sure that the generated file is identical to the expected one.
+    const expectedContent = JSON.parse(fs.readFileSync(EXPECTED_OWL_FILE, &apos;utf8&apos;));
+    expect(jsonldContent).to.deep.equal(expectedContent);
+  });
+  it(&apos;should be able to convert the entire `test/examples/correct` directory&apos;, function () {
+    const EXAMPLE_DIR = path.resolve(__dirname, &apos;../examples/correct&apos;);
+    const jsonFilesInExamples = fs.readdirSync(EXAMPLE_DIR, &apos;utf8&apos;)
+      .filter(fileName =&gt; fileName.toLowerCase().endsWith(&apos;.json&apos;));
+
+    const result = child.spawnSync(PHYX2OWL_JS, [EXAMPLE_DIR, &apos;--base-iri&apos;, &apos;http://example.org/phyx.js/example#&apos;], {
+      encoding: &apos;utf-8&apos;,
+      stdio: &apos;pipe&apos;,
+    });
+    expect(result.status).to.equal(0);
+    expect(result.stdout).to.match(/\d+ files converted successfully./);
+    expect(result.stderr).to.be.empty;
+
+    const regexMatch = result.stdout.match(/(\d+) files converted successfully./);
+    const fileCount = Number(regexMatch[1]);
+    expect(fileCount).to.be.greaterThan(0);
+    expect(fileCount).to.equal(jsonFilesInExamples.length);
+
+    // Make sure that the generated files *look* like JSON-LD files.
+    const jsonldInExamples = fs.readdirSync(EXAMPLE_DIR, &apos;utf8&apos;)
+      .filter(fileName =&gt; fileName.toLowerCase().endsWith(&apos;.owl&apos;))
+      .map(owlFilename =&gt; JSON.parse(fs.readFileSync(path.resolve(EXAMPLE_DIR, owlFilename), &apos;utf8&apos;)));
+
+    jsonldInExamples.forEach((jsonld) =&gt; {
+      expect(jsonld).to.be.an(&apos;object&apos;).that.has.any.keys(&apos;@context&apos;);
+      expect(jsonld[&apos;@context&apos;]).to.not.be.empty;
+    });
+  });
+  // This is where we should test the recursive directory functionality. However,
+  // doing that would require using `test/examples` (which isn&apos;t recursive),
+  // using `test/` or the root project directory (potentially messing with other
+  // test scripts). We could potentially create a separate recursive hierarchy to
+  // test this, but that seems unnecessary. So we won&apos;t test this functionality
+  // for now, but will add a test if we find a replicable bug in the future.
+  it(&apos;should give an error if no JSON files could be found&apos;, function () {
+    const result = child.spawnSync(PHYX2OWL_JS, [__dirname], {
+      encoding: &apos;utf-8&apos;,
+      stdio: &apos;pipe&apos;,
+    });
+    expect(result.status).to.equal(1);
+    expect(result.stdout).to.be.empty;
+    expect(result.stderr).to.contain(&apos;Input files do not exist or consist of directories that do not contain JSON files: &apos;);
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
