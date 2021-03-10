@@ -5,6 +5,9 @@
             "@id": "#phylogeny0",
             "newick": "((((((((((('Arthrocormus schimperi',('Exostratum blumii 243','Exostratum blumii 245')Exostratum),('Exodictyon incrassatum',(('Leucophanes seychellarum',('Leucophanes octoblepharoides','Leucophanes albescens'),'Leucophanes glaucum'),'Syrrhopodon confertus')Leucophanes))Albifolium,'Syrrhopodon muelleri'),'Syrrhopodon perarmatus'),(('Syrrhopodon ciliatus',('Syrrhopodon albovaginatus 446','Syrrhopodon albovaginatus 162')),((('Syrrhopodon tortillis','Syrrhopodon leprieurii'),'Syrrhopodon prolifer'),('Syrrhopodon parasiticus','Syrrhopodon trachyphyllus',('Syrrhopodon banksii','Syrrhopodon involutus')Leucophanella)))Trachymitrium),('Syrrhopodon armatus','Syrrhopodon fimbriatulus')),((((('Mitthyridium obtusifolium','Mitthyridium constrictum'),'Mitthyridium fasciculatum'),('Mitthyridium undulatum','Mitthyridium jungquilianum'))Mitthyridium_as_per_paper,'Syrrhopodon mahensis')Mitthyridium,('Syrrhopodon tristichus',('Syrrhopodon croceus','Syrrhopodon apertus','Syrrhopodon fissipapillatus'))))Syrrhopodon,(('Syrrhopodon incompletus',((((('Calymperes palisotii 159','Calymperes palisotii 180'),'Calymperes motleyi'),('Calymperes erosum','Calymperes robinsonii')),(('Calymperes tenerum','Calymperes subintegrum',('Calymperes tuatomuense','Calymperes pseudopodianum'),'Calymperes hispidium'),'Calymperes moluccense')),((('Calymperes tahitense 320','Calymperes tahitense 115'),'Calymperes lonchophyllum'),(('Calymperes afzelii 179','Calymperes afzelii 165'),'Calymperes graffeanum')))),'Syrrhopodon mauritianus')Calymperes),'Syrrhopodon japonicus'),'Syrrhopodon gardneri')Calymperaceae,('Octoblepharum Moorea 445','Octoblepharum albidum')Octoblepharum);",
             "ot:dataDeposit": "https://treebase.org/treebase-web/search/study/taxa.html?id=1624&treeid=748",
+            "source": {
+              "bibliographicCitation": "Kirsten M. Fisher, Dennis P. Wall, Kwok Leung Yip, Brent D. Mishler (1 March 2007) Phylogeny of the Calymperaceae with a rank-free systematic treatment. The Bryologist, 110(1):46-73, doi: 10.1639/0007-2745(2007)110[46:POTCWA]2.0.CO;2"
+            },
             "additionalNodeProperties": {
                 "Exodictyon incrassatum": {
                     "representsTaxonomicUnits": [
@@ -32,6 +35,9 @@
         {
             "label": "Exodictyon",
             "definition": "nomen cladi conversum, Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)\n\nStem-based definition:\n\ninternal specifier: Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)\ninternal specifier: Wall 2527, Fiji (uc)\nexternal specifier: Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\nIncluded terminal clade:\n\nincrassatum",
+            "definitionSource": {
+              "bibliographicCitation": "Kirsten M. Fisher, Dennis P. Wall, Kwok Leung Yip, Brent D. Mishler (1 March 2007) Phylogeny of the Calymperaceae with a rank-free systematic treatment. The Bryologist, 110(1):46-73, doi: 10.1639/0007-2745(2007)110[46:POTCWA]2.0.CO;2"
+            },
             "internalSpecifiers": [
                 {
                     "label": "Type: Exodictyon Cardot, Rev. Bryol. Lichénol. 26: 6. (1899), excl. parte, emend Ellis in Lindbergia 11: 16 (1985)",
@@ -71,6 +77,9 @@
         {
             "label": "Leucophanes",
             "definition": "nomen cladi conversum, Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\n\nStem-based definition:\n\ninternal specifier: Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)\ninternal specifier: Type: Leucophanes seychellarum Besch., Ann. Sci. Nat., Bot., VI, 9: 337. (1880)\nexternal specifier: Wall 2527, Fiji (uc)\nIncluded terminal clades:\n\nconfertus, glaucum, octoblepharoides, seychellarum",
+            "definitionSource": {
+              "bibliographicCitation": "Kirsten M. Fisher, Dennis P. Wall, Kwok Leung Yip, Brent D. Mishler (1 March 2007) Phylogeny of the Calymperaceae with a rank-free systematic treatment. The Bryologist, 110(1):46-73, doi: 10.1639/0007-2745(2007)110[46:POTCWA]2.0.CO;2"
+            },
             "internalSpecifiers": [
                 {
                     "label": "Type: Leucophanes octoblepharoides Brid., Bryol. Univ. 1: 763. (1826)",
