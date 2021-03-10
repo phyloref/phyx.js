@@ -225,7 +225,7 @@
       "description": "The JSON-LD context, necessary to interpret this JSON file as an RDF file.",
       "minLength": 1,
       "type": "string",
-      "format": "uri"
+      "format": "uri-reference"
     },
     "doi": {
       "description": "The Digital Object Identifier (doi) for this Phyx file.",
