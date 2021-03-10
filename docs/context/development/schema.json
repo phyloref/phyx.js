@@ -96,6 +96,11 @@
           "type": "string",
           "description": "The city in which this publication was published."
         },
+        "pages": {
+          "type": "string",
+          "description": "The page numbers of this publication that this citation refers to.",
+          "minLength": 1
+        },
         "figure": {
           "type": "string",
           "description": "The figure(s) in the work being cited."
@@ -122,7 +127,7 @@
             },
             "pages": {
               "type": "string",
-              "description": "The journal issue number.",
+              "description": "The page numbers of the journal that this citation refers to.",
               "minLength": 1
             },
             "identifier": {
