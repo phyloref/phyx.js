@@ -192,9 +192,67 @@
       }
     },
 
-    "taxonomic_unit": {
+    "taxonomic_unit_by_id": {
       "type": "object",
-      "description": "A unit of taxonomy, i.e. a taxon, taxon concept or specimen.",
+      "description": "A taxonomic unit identified solely by IRI.",
+      "additionalProperties": false,
+      "required": [
+        "@id"
+      ],
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uri",
+          "description": "An opaque identifier for this taxonomic unit."
+        }
+      }
+    },
+
+    "taxon_name": {
+      "type": "object",
+      "description": "A taxonomic name.",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "The type of this taxonomic name.",
+          "enum": [
+            "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName"
+          ]
+        },
+        "nomenclaturalCode": {
+          "description": "The nomenclatural code under which this name is defined.",
+          "$ref": "#/definitions/nomenclaturalCodes"
+        },
+        "label": {
+          "description": "The full taxon name, including an authority or year components.",
+          "type": "string",
+          "minLength": 1
+        },
+        "nameComplete": {
+          "description": "The complete uninomial, binomial or trinomial name without any authority or year components.",
+          "type": "string",
+          "minLength": 1
+        },
+        "genusPart": {
+          "description": "The genus portion of the taxon name.",
+          "type": "string",
+          "minLength": 1
+        },
+        "specificEpithet": {
+          "description": "The genus portion of the taxon name.",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "@type",
+        "nameComplete"
+      ]
+    },
+
+    "taxon_concept": {
+      "type": "object",
+      "description": "A taxon or taxon concept.",
       "additionalProperties": false,
       "required": [
         "@type"
@@ -204,8 +262,7 @@
           "type": "string",
           "description": "The type of this taxonomic unit.",
           "enum": [
-            "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-            "http://rs.tdwg.org/dwc/terms/Occurrence"
+            "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept"
           ]
         },
         "@id": {
@@ -220,52 +277,44 @@
           "minLength": 1
         },
         "hasName": {
-          "type": "object",
-          "description": "The scientific name of this taxon, taxon concept or specimen.",
-          "properties": {
-            "@type": {
-              "type": "string",
-              "description": "The type of this taxonomic name.",
-              "enum": [
-                "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName"
-              ]
-            },
-            "nomenclaturalCode": {
-              "description": "The nomenclatural code under which this name is defined.",
-              "$ref": "#/definitions/nomenclaturalCodes"
-            },
-            "label": {
-              "description": "The full taxon name, including an authority or year components.",
-              "type": "string",
-              "minLength": 1
-            },
-            "nameComplete": {
-              "description": "The complete uninomial, binomial or trinomial name without any authority or year components.",
-              "type": "string",
-              "minLength": 1
-            },
-            "genusPart": {
-              "description": "The genus portion of the taxon name.",
-              "type": "string",
-              "minLength": 1
-            },
-            "specificEpithet": {
-              "description": "The genus portion of the taxon name.",
-              "type": "string",
-              "minLength": 1
-            }
-          },
-          "required": [
-            "@type",
-            "nameComplete"
-          ]
+          "description": "The taxonomic name of this taxon or taxon concept.",
+          "$ref": "#/definitions/taxon_name"
         },
         "nameAccordingTo": {
           "description": "Publication or authors whose circumscription of the taxon is intended to be used. If omitted, the nominal taxon concept (in the sense of Kennedy et al (2006)) will be assumed.",
           "type": "string",
           "minLength": 1
-        },
+        }
+      },
+      "required": [ "@type", "hasName" ]
+    },
 
+    "specimen": {
+      "type": "object",
+      "description": "A taxon or taxon concept.",
+      "additionalProperties": false,
+      "required": [
+        "@type"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "The type of this specimen.",
+          "enum": [
+            "http://rs.tdwg.org/dwc/terms/Occurrence"
+          ]
+        },
+        "@id": {
+          "description": "An identifier for this specimen.",
+          "type": "string",
+          "format": "uri",
+          "minLength": 1
+        },
+        "label": {
+          "description": "A label for describing this specimen.",
+          "type": "string",
+          "minLength": 1
+        },
         "basisOfRecord": {
           "description": "The type of specimen indicated.",
           "type": "string",
@@ -290,8 +339,21 @@
           "description": "An identifier for the Occurrence (as opposed to a particular digital record of the occurrence). In the absence of a persistent GUID, constructed from a unique combination of identifiers in the record, usually the Darwin Core Triplet of institutionCode, collectionCode and catalogNumber.",
           "type": "string",
           "minLength": 1
+        },
+        "hasName": {
+          "description": "Can be used to record the taxon name that this specimen has been identified to.",
+          "$ref": "#/definitions/taxon_name"
         }
       }
+    },
+
+    "taxonomic_unit": {
+      "description": "A unit of taxon: a taxon concept or specimen.",
+      "anyOf": [
+        { "$ref": "#/definitions/taxonomic_unit_by_id" },
+        { "$ref": "#/definitions/taxon_concept" },
+        { "$ref": "#/definitions/specimen" }
+      ]
     }
   },
 
