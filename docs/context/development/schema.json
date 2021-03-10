@@ -436,14 +436,15 @@
       "type": "array",
       "minItems": 0,
       "items": {
+        "additionalProperties": false,
         "required": [
           "definition"
         ],
         "properties": {
-          "regnumId": {
+          "@id": {
             "type": "string",
-            "description": "The identifier of this clade definition in the Regnum database",
-            "minLength": 1
+            "format": "uri-reference",
+            "description": "An IRI that identifies this phyloreference."
           },
           "phylorefType": {
             "description": "The type of this phyloreference.",
@@ -458,21 +459,20 @@
             "description": "The name or label of this phyloreference."
           },
           "scientificNameAuthorship": {
-            "type": "string",
-            "description": "The authors of the scientific name being used as the phyloreference label (if any)",
-            "minLength": 1
+            "description": "The authors who created this clade definition.",
+            "$ref": "#/definitions/citation"
           },
           "namePublishedIn": {
-            "description": "The source of the scientific name being used as the phyloreference label (if any)",
+            "description": "If the label is a scientific name, then this field records the publication in which that name was first published.",
             "$ref": "#/definitions/citation"
           },
           "definition": {
             "type": "string",
-            "description": "A verbatim, free-text definition of this clade.",
+            "description": "A free-text field for storing the verbatim clade definition",
             "minLength": 1
           },
           "definitionSource": {
-            "description": "The source of the clade definition.",
+            "description": "The publication in which this clade definition was first published.",
             "$ref": "#/definitions/citation"
           },
           "internalSpecifiers": {
@@ -495,7 +495,7 @@
           },
           "apomorphy": {
             "type": "object",
-            "description": "For a phyloreference using an apomorphy, this field describes the phenotype (or trait) being used as the apomorphy",
+            "description": "If used, indicates that this phyloreference designates the clade that arises from the first appearance of this trait that is synapomorphic with an internal specifier. In this case, exactly one internal specifier and no external specifiers must be provided.",
             "additionalProperties": false,
             "properties": {
               "@type": {
@@ -507,12 +507,12 @@
                 "description": "A natural language description of this apomorphy."
               },
               "phenotypicQuality": {
-                "description": "The quality of this phenotype. Must be a subclass of pato:quality.",
+                "description": "An opaque IRI that identifies the phenotypic quality if the phenotype referenced by this apomorphy can be decomposed into entity and quality (EQ model).",
                 "type": "string",
                 "format": "uri"
               },
               "bearingEntity": {
-                "description": "The bearer of the phenotypic quality.",
+                "description": "An IRI that identifies the entity bearing the phenotypic quality if the phenotype referenced by this apomorphy can be decomposed into a quality and the entity bearing the quality (EQ model).",
                 "type": "string",
                 "format": "uri"
               }
@@ -521,6 +521,10 @@
               "@type",
               "definition"
             ]
+          },
+          "expectedResolution": {
+            "type": "object",
+            "description": "A dictionary of phylogeny identifiers to objects that record the nodeLabel (the node label on that phylogeny this phylogeny is expected to resolve to) as well as an optional description (describing why that node was chosen)."
           }
         }
       }
