@@ -51,11 +51,11 @@
       "properties": {
         "bibliographicCitation": {
           "type": "string",
-          "description": "A bibliographic reference for the resource. Recommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible (from http://purl.org/dc/terms/bibliographicCitation)."
+          "description": "A bibliographic reference for the resource. If not included, one will be generated from the other fields in this citation."
         },
         "type": {
           "type": "string",
-          "description": "The type of publication. BibTeX entry types (https://en.wikipedia.org/wiki/BibTeX#Entry_types) are recommended.",
+          "description": "The type of this citation. Should be one of the BibTeX entry types (https://www.bibtex.com/e/entry-types/), such as “article”, “book”, “inbook” and so on.",
           "minLength": 1
         },
         "title": {
@@ -69,14 +69,14 @@
         },
         "authors": {
           "type": "array",
-          "description": "The authors of this work.",
+          "description": "The authors of this publication.",
           "items": {
             "$ref": "#/definitions/agent"
           }
         },
         "editors": {
           "type": "array",
-          "description": "The editors of this work.",
+          "description": "The editors of this publication.",
           "items": {
             "$ref": "#/definitions/agent"
           }
@@ -90,11 +90,11 @@
         },
         "publisher": {
           "type": "string",
-          "description": "The publisher of this work."
+          "description": "The publisher of this publication."
         },
         "city": {
           "type": "string",
-          "description": "The city in which this work was published."
+          "description": "The city in which this publication was published."
         },
         "figure": {
           "type": "string",
@@ -102,25 +102,45 @@
         },
         "journal": {
           "type": "object",
+          "description": "An object containing information on the journal this publication belongs to.",
           "additionalProperties": false,
           "properties": {
             "name": {
               "type": "string",
+              "description": "The journal name.",
               "minLength": 1
             },
             "volume": {
               "type": "string",
+              "description": "The journal volume.",
+              "minLength": 1
+            },
+            "number": {
+              "type": "string",
+              "description": "The journal issue number.",
               "minLength": 1
             },
             "pages": {
               "type": "string",
+              "description": "The journal issue number.",
               "minLength": 1
             },
             "identifier": {
               "type": "array",
+              "description": "A list of identifiers for this journal.",
               "items": {
-                "required": [],
-                "properties": {}
+                "additionalProperties": false,
+                "required": ["type", "id"],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "The type of identifier (e.g. 'issn')"
+                  },
+                  "id": {
+                    "type": "string",
+                    "description": "The identifier itself (e.g. '0002-9327')"
+                  }
+                }
               }
             }
           },
@@ -130,7 +150,9 @@
         },
         "identifier": {
           "type": "array",
+          "description": "A list of identifiers for this publication.",
           "items": {
+            "additionalProperties": false,
             "required": ["type", "id"],
             "properties": {
               "type": {
@@ -150,6 +172,7 @@
           "items": {
             "required": ["url"],
             "properties": {
+              "additionalProperties": false,
               "url": {
                 "type": "string",
                 "description": "The URL of this publication."
@@ -242,11 +265,17 @@
     },
     "@type": {
       "type": "array",
-      "description": "Additional RDF types for the top-level object. `owl:Ontology` is added automatically."
+      "description": "Additional RDF types for the top-level object. `owl:Ontology` is added automatically.",
+      "items": {
+        "type": "string"
+      }
     },
     "owl:imports": {
       "type": "array",
-      "description": "A list of additional OWL imports to be added in this ontology."
+      "description": "A list of additional OWL imports to be added in this ontology.",
+      "items": {
+        "format": "uri-reference"
+      }
     },
     "phylogenies": {
       "type": "array",
