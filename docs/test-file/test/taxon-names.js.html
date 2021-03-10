@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">test/taxon-names.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matchers">matchers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matchers/TaxonomicUnitMatcher.js~TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#wrappers">wrappers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html">PhylorefWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html">PhyxWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html">SpecimenWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html">TaxonNameWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/taxon-names.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*
+ * Test taxon name processing.
+ */
+
+const chai = require(&apos;chai&apos;);
+const phyx = require(&apos;../src&apos;);
+const owlterms = require(&apos;../src/utils/owlterms&apos;);
+
+const expect = chai.expect;
+
+/*
+ * Test whether TaxonNameWrapper parses taxon names correctly.
+ */
+
+describe(&apos;TaxonNameWrapper&apos;, function () {
+  describe(&apos;#constructor&apos;, function () {
+    it(&apos;should accept empty taxon names without errors&apos;, function () {
+      const wrapper = new phyx.TaxonNameWrapper({});
+
+      expect(wrapper).to.be.an.instanceOf(phyx.TaxonNameWrapper);
+      expect(wrapper.nameComplete).to.be.undefined;
+    });
+    it(&apos;should be able to parse uninomial names as such&apos;, function () {
+      const wrapper = new phyx.TaxonNameWrapper({
+        nameComplete: &apos;Mus&apos;,
+      });
+
+      expect(wrapper.uninomial).to.equal(&apos;Mus&apos;);
+      expect(wrapper.genusPart).to.be.undefined;
+      expect(wrapper.specificEpithet).to.be.undefined;
+    });
+    it(&apos;should be able to parse binomial names into genus and specific epithet&apos;, function () {
+      const wrapper = new phyx.TaxonNameWrapper({
+        nameComplete: &apos;Mus musculus&apos;,
+      });
+
+      expect(wrapper.genusPart).to.equal(&apos;Mus&apos;);
+      expect(wrapper.specificEpithet).to.equal(&apos;musculus&apos;);
+    });
+    it(&apos;should be able to parse trinomial names into genus, specific epithet and infraspecific epithet&apos;, function () {
+      const wrapper = new phyx.TaxonNameWrapper({
+        nameComplete: &apos;Mus musculus domesticus&apos;,
+      });
+
+      expect(wrapper.genusPart).to.equal(&apos;Mus&apos;);
+      expect(wrapper.specificEpithet).to.equal(&apos;musculus&apos;);
+      expect(wrapper.infraspecificEpithet).to.equal(&apos;domesticus&apos;);
+    });
+    it(&apos;should ignore authority after a binomial name&apos;, function () {
+      const taxonName = phyx.TaxonNameWrapper.fromVerbatimName(&apos;Mus musculus Linnaeus, 1758&apos;);
+      expect(taxonName.nameComplete).to.equal(&apos;Mus musculus&apos;);
+      expect(taxonName.genusPart).to.equal(&apos;Mus&apos;);
+      expect(taxonName.specificEpithet).to.equal(&apos;musculus&apos;);
+      expect(taxonName.infraspecificEpithet).to.be.undefined;
+      expect(taxonName.uninomial).to.be.undefined;
+    });
+    it(&apos;should be able to use default nomenclatural codes&apos;, function () {
+      const taxonName = phyx.TaxonNameWrapper.fromVerbatimName(&apos;Mus musculus Linnaeus, 1758&apos;, owlterms.ICZN_CODE);
+      expect(taxonName.nameComplete).to.equal(&apos;Mus musculus&apos;);
+      expect(taxonName.nomenclaturalCode).to.equal(owlterms.ICZN_CODE);
+
+      const wrappedTaxonName = new phyx.TaxonNameWrapper(taxonName);
+      expect(wrappedTaxonName.nomenclaturalCode).to.equal(owlterms.ICZN_CODE);
+      expect(wrappedTaxonName.nomenclaturalCodeDetails).to.have.own.property(&apos;title&apos;);
+      expect(wrappedTaxonName.nomenclaturalCodeDetails.title).to.equal(&apos;International Code of Zoological Nomenclature&apos;);
+    });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

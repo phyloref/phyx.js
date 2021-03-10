@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/wrappers/PhylogenyWrapper.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matchers">matchers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matchers/TaxonomicUnitMatcher.js~TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#wrappers">wrappers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html">PhylorefWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html">PhyxWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html">SpecimenWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html">TaxonNameWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/wrappers/PhylogenyWrapper.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * PhylogenyWrapper
+ */
+
+const { has } = require(&apos;lodash&apos;);
+
+/** Used to parse Newick strings. */
+const parseNewick = require(&apos;newick-js&apos;).parse;
+
+/** OWL terms to be used here. */
+const owlterms = require(&apos;../utils/owlterms&apos;);
+
+const { TaxonomicUnitWrapper } = require(&apos;./TaxonomicUnitWrapper&apos;);
+const { TaxonomicUnitMatcher } = require(&apos;../matchers/TaxonomicUnitMatcher&apos;);
+const { CitationWrapper } = require(&apos;./CitationWrapper&apos;);
+
+class PhylogenyWrapper {
+  // Wraps a Phylogeny in a PHYX file and provides access to node, node labels
+  // and other information. Remember that a Phylogeny also has the
+  // additionalNodeProperties object which provides additional properties for
+  // nodes.
+
+  constructor(phylogeny, defaultNomenCode = owlterms.UNKNOWN_CODE) {
+    // Construct a phylogeny based on a Phylogeny object in a PHYX phylogeny.
+    // Note that this version ONLY uses the `newick` property to determine the
+    // phylogeny: if other representations are included (such as a node-based
+    // format, as used in JSON-LD), they will be ignored and possibly overwritten
+    // during export. So, to update the phylogeny, please only update the newick
+    // string!
+    //
+    // This ensures that we don&apos;t need to reconcile between different
+    // possible representations of a phylogeny.
+    this.phylogeny = phylogeny;
+    this.defaultNomenCode = defaultNomenCode;
+  }
+
+  static getErrorsInNewickString(newick) {
+    // Given a Newick string, return a list of errors found in parsing this
+    // string. The errors are returned as a list of objects, each of which
+    // has two properties:
+    //  - title: A short title of the error, distinct for each type of error.
+    //  - message: A longer description of the error, which might include
+    //    information specific to a particular error.
+    //
+    // We try to order errors from most helpful (&apos;Unbalanced parentheses in
+    // Newick string&apos;) to least helpful (&apos;Error parsing phylogeny&apos;).
+    const newickTrimmed = newick.trim();
+    const errors = [];
+
+    // Look for an empty Newick string.
+    if (newickTrimmed === &apos;&apos; || newickTrimmed === &apos;()&apos; || newickTrimmed === &apos;();&apos;) {
+      // None of the later errors are relevant here, so bail out now.
+      return [{
+        title: &apos;No phylogeny entered&apos;,
+        message: &apos;Click on &quot;Edit as Newick&quot; to enter a phylogeny below.&apos;,
+      }];
+    }
+
+    // Look for an unbalanced Newick string.
+    let parenLevels = 0;
+    for (let x = 0; x &lt; newickTrimmed.length; x += 1) {
+      if (newickTrimmed[x] === &apos;(&apos;) parenLevels += 1;
+      if (newickTrimmed[x] === &apos;)&apos;) parenLevels -= 1;
+    }
+
+    if (parenLevels !== 0) {
+      errors.push({
+        title: &apos;Unbalanced parentheses in Newick string&apos;,
+        message: (parenLevels &gt; 0
+          ? `You have ${parenLevels} too many open parentheses`
+          : `You have ${-parenLevels} too few open parentheses`
+        ),
+      });
+    }
+
+    // Finally, try parsing it with parseNewick and see if we get an error.
+    try {
+      parseNewick(newickTrimmed);
+    } catch (ex) {
+      errors.push({
+        title: &apos;Error parsing phylogeny&apos;,
+        message: `An error occured while parsing this phylogeny: ${ex.message}`,
+      });
+    }
+
+    return errors;
+  }
+
+  static recurseNodes(node, func, nodeCount = 0, parentCount = undefined) {
+    // Recurse through PhyloTree nodes, executing function on each node.
+    //  - node: The node to recurse from. The function will be called on node
+    //          *before* being called on its children.
+    //  - func: The function to call on `node` and all of its children.
+    //  - nodeCount: `node` will be called with this nodeCount. All of its
+    //          children will be called with consecutively increasing nodeCounts.
+    //  - parentCount: The nodeCount associated with the parent of this node
+    //          within this run of recurseNodes. For instance, immediate children
+    //          of `node` will have a parentCount of 0. By default, `node` itself
+    //          will have a parentCount of `undefined`.
+    // When the function `func` is called, it is given three arguments:
+    //  - The current node object (initially: `node`)
+    //  - The count of the current node object (initially: `nodeCount`)
+    //  - The parent count of the current node object (initially: `parentCount`)
+    func(node, nodeCount, parentCount);
+
+    let nextID = nodeCount + 1;
+
+    // Recurse through all children of this node.
+    if (has(node, &apos;children&apos;)) {
+      node.children.forEach((child) =&gt; {
+        nextID = PhylogenyWrapper.recurseNodes(
+          child,
+          func,
+          nextID,
+          nodeCount
+        );
+      });
+    }
+
+    return nextID;
+  }
+
+  getTaxonomicUnits(nodeType = &apos;both&apos;) {
+    // Return a list of all taxonomic units in this phylogeny.
+    // Node labels will be extracted from:
+    //  - internal nodes only (if nodeType == &apos;internal&apos;)
+    //  - terminal nodes only (if nodeType == &apos;terminal&apos;)
+    //  - both internal and terminal nodes (if nodeType == &apos;both&apos;)
+    //
+    // See `getTaxonomicUnitsForNodeLabel` to see how node labels are converted
+    // into node labels, but in brief:
+    //  1. We look for taxonomic units in the additionalNodeProperties.
+    //  2. If none are found, we attempt to parse the node label as a scientific name.
+    //
+    const nodeLabels = this.getNodeLabels(nodeType);
+    const tunits = new Set();
+
+    nodeLabels.forEach(
+      nodeLabel =&gt; this.getTaxonomicUnitsForNodeLabel(nodeLabel)
+        .forEach(tunit =&gt; tunits.add(tunit))
+    );
+
+    return tunits;
+  }
+
+  getNodeLabels(nodeType = &apos;both&apos;) {
+    // Return a list of all the node labels in this phylogeny.
+    //
+    // nodeType can be one of:
+    // - &apos;internal&apos;: Return node labels on internal nodes.
+    // - &apos;terminal&apos;: Return node labels on terminal nodes.
+    // - &apos;both&apos;: Return node labels on both internal and terminal nodes.
+
+    // Parse the phylogeny (will throw an exception if parsing failed).
+    const { graph } = parseNewick(this.phylogeny.newick || &apos;()&apos;);
+    const [vertices, arcs] = graph;
+
+    if (nodeType === &apos;both&apos;) {
+      // Return all node labels.
+      return Array.from(
+        new Set(
+          Array.from(vertices)
+            .map(vertex =&gt; vertex.label)
+            .filter(label =&gt; label !== undefined)
+        )
+      );
+    }
+
+    if (nodeType === &apos;internal&apos;) {
+      // Return the internal nodes (those with atleast one child).
+      return Array.from(new Set(
+        Array.from(arcs)
+          .map(arc =&gt; arc[0].label) // Retrieve the label of the parent vertex in this arc.
+          .filter(label =&gt; label !== undefined)
+      ));
+    }
+
+    if (nodeType === &apos;terminal&apos;) {
+      // Return the terminal nodes. This would require calculating the children
+      // of every vertex in the graph and then identifying vertices without any
+      // children.
+      //
+      // A quicker and dirtier way to do this is by removing internal labels
+      // from the list of all node labels. This will report an incorrect result
+      // if an internal node has the same label as a terminal node, but at that
+      // point a lot of other assumptions are going to fail, too, so this is
+      // probably good enough for now.
+      const allLabels = this.getNodeLabels(&apos;both&apos;);
+      const internalLabels = new Set(this.getNodeLabels(&apos;internal&apos;));
+
+      return allLabels.filter(label =&gt; !internalLabels.has(label));
+    }
+
+    throw new Error(`Unknown nodeType: &apos;${nodeType}&apos;`);
+  }
+
+  /**
+   * Return a list of taxonomic units for a node label.
+   *
+   * If the additionalNodeProperties for this node label includes taxonomic units
+   * (using `representsTaxonomicUnits` = obo:CDAO_0000187), then those taxonomic
+   * units are used. Otherwise, one will be constructed using the default
+   * nomenclatural code set up when this PhylogenyWrapper was set up.
+   */
+  getTaxonomicUnitsForNodeLabel(nodeLabel) {
+    // Look up additional node properties.
+    let additionalNodeProperties = {};
+    if (
+      has(this.phylogeny, &apos;additionalNodeProperties&apos;)
+      &amp;&amp; has(this.phylogeny.additionalNodeProperties, nodeLabel)
+    ) {
+      additionalNodeProperties = this.phylogeny.additionalNodeProperties[nodeLabel];
+    }
+
+    // If there are explicit taxonomic units in the
+    // representsTaxonomicUnits property, we need to use those.
+    if (has(additionalNodeProperties, &apos;representsTaxonomicUnits&apos;)) {
+      return additionalNodeProperties.representsTaxonomicUnits;
+    }
+
+    // If that doesn&apos;t work, we can try to extract scientific names from
+    // the node label. Note that taxonomic units will NOT be extracted from
+    // the label if there is a taxonomic unit present!
+    //
+    // Note that old-style taxonomic units were lists while new-style taxonomic
+    // units are single objects. So we turn it into a single entry list here.
+    const tunit = TaxonomicUnitWrapper.fromLabel(nodeLabel.trim(), this.defaultNomenCode);
+    if (tunit) return [tunit];
+    return []; // No TUnit? Return the empty list.
+  }
+
+  getNodeLabelsMatchedBySpecifier(specifier) {
+    // Return a list of node labels matched by a given specifier on
+    // a given phylogeny.
+
+    return this.getNodeLabels().filter((nodeLabel) =&gt; {
+      // Find all the taxonomic units associated with the specifier and
+      // with the node.
+      const nodeTUnits = this.getTaxonomicUnitsForNodeLabel(nodeLabel);
+
+      // Attempt pairwise matches between taxonomic units in the specifier
+      // and associated with the node.
+      return nodeTUnits.some(
+        tunit =&gt; new TaxonomicUnitMatcher(specifier, tunit).matched
+      );
+    });
+  }
+
+  static getParsedNewick(newick) {
+    // We previously used phylotree.js&apos;s Newick parser to parse Newick into a
+    // tree-like structure. However, this is difficult to integrate using NPM.
+    // This method provides a similar facility using the newick-js library.
+    //
+    // Throws an exception if the Newick could not be parsed.
+    const { graph, root, rootWeight } = parseNewick(newick);
+    const [, arcs] = graph;
+
+    // Go through the arcs, assigning &apos;children&apos; to the appropriate parent node.
+    arcs.forEach((arc) =&gt; {
+      const [parent, child, weight] = arc;
+
+      // Add child to parent.children.
+      if (!has(parent, &apos;children&apos;)) parent.children = [];
+      parent.children.push(child);
+
+      // Phylotree.js uses &apos;name&apos; instead of &apos;label&apos;.
+      if (has(parent, &apos;label&apos;)) { parent.name = parent.label; }
+      if (has(child, &apos;label&apos;)) { child.name = child.label; }
+
+      // Phylotree.js uses &apos;attribute&apos; to store weights, so we&apos;ll store it there as well.
+      if (!has(child, &apos;attribute&apos;) &amp;&amp; !Number.isNaN(weight)) child.attribute = weight;
+    });
+
+    // Set root &apos;attribute&apos; to root weight.
+    if (!has(root, &apos;attribute&apos;) &amp;&amp; !Number.isNaN(rootWeight)) root.attribute = rootWeight;
+
+    return { json: root };
+  }
+
+  getParsedNewickWithIRIs(baseIRI, newickParser = PhylogenyWrapper.getParsedNewick) {
+    // Return the parsed Newick string, but with EVERY node given an IRI.
+    // - baseIRI: The base IRI to use for node elements (e.g. &apos;:phylogeny1&apos;).
+    //   Node IDs are generated by concatenating `_node${number}` to the end of
+    //   the baseIRI.
+    // - newickParser: A method for converting a Newick string to a object-based
+    //   representation. The static method PhylogenyWrapper.getParsedNewick() is
+    //   used if none is provided.
+
+    const parsed = newickParser(this.phylogeny.newick || &apos;()&apos;);
+    if (has(parsed, &apos;json&apos;)) {
+      PhylogenyWrapper.recurseNodes(parsed.json, (node, nodeCount) =&gt; {
+        // Start with the additional node properties.
+        const nodeAsJSONLD = node;
+
+        // Set @id and @type.
+        const nodeIRI = `${baseIRI}_node${nodeCount}`;
+        nodeAsJSONLD[&apos;@id&apos;] = nodeIRI;
+      });
+    }
+
+    return parsed;
+  }
+
+  getNodesAsJSONLD(baseIRI, newickParser) {
+    // Returns a list of all nodes in this phylogeny as a series of nodes.
+    // - baseIRI: The base IRI to use for node elements (e.g. &apos;:phylogeny1&apos;).
+    //   Node IDs are generated by concatenating `_node${number}` to the end of
+    //   the baseIRI.
+    // - newickParser: A method for converting a Newick string to a object-based
+    //   representation. See PhylogenyWrapper.getParsedNewick() for an example
+    //   implementation.
+
+    // List of nodes we have identified.
+    const nodes = [];
+
+    // We need to track the identifiers we give each node as we go.
+    const nodesById = {};
+    const nodeIdsByParentId = {};
+
+    // Extract the newick string.
+    const { additionalNodeProperties } = this.phylogeny;
+
+    // Parse the Newick string; if parseable, recurse through the nodes,
+    // added them to the list of JSON-LD nodes as we go.
+
+    const parsed = this.getParsedNewickWithIRIs(baseIRI, newickParser);
+    if (has(parsed, &apos;json&apos;)) {
+      PhylogenyWrapper.recurseNodes(parsed.json, (node, nodeCount, parentCount) =&gt; {
+        // Start with the additional node properties.
+        const nodeAsJSONLD = {};
+
+        // Set @id and @type. &apos;@id&apos; should already be set by getParsedNewickWithIRIs()!
+        const nodeIRI = node[&apos;@id&apos;];
+        nodeAsJSONLD[&apos;@id&apos;] = nodeIRI;
+
+        // Since we may need to add multiple classes into the rdf:type, we need
+        // to make @type an array. However, the JSON-LD library we use in JPhyloRef
+        // can&apos;t support @type being an array (despite that being in the standard,
+        // see https://w3c.github.io/json-ld-syntax/#example-14-specifying-multiple-types-for-a-node),
+        // so we fall back to using rdf:type instead.
+        nodeAsJSONLD[owlterms.RDF_TYPE] = [{ &apos;@id&apos;: owlterms.CDAO_NODE }];
+
+        // Add labels, additional node properties and taxonomic units.
+        if (has(node, &apos;name&apos;) &amp;&amp; node.name !== &apos;&apos;) {
+          // Add node label.
+          nodeAsJSONLD.labels = [node.name];
+
+          // Add additional node properties, if any.
+          if (additionalNodeProperties &amp;&amp; has(additionalNodeProperties, node.name)) {
+            Object.keys(additionalNodeProperties[node.name]).forEach((key) =&gt; {
+              nodeAsJSONLD[key] = additionalNodeProperties[node.name][key];
+            });
+          }
+
+          // Add taxonomic units into the metadata.
+          nodeAsJSONLD.representsTaxonomicUnits = this.getTaxonomicUnitsForNodeLabel(node.name);
+
+          // Add it into the @type so we can reason over it.
+          nodeAsJSONLD.representsTaxonomicUnits.forEach((tu) =&gt; {
+            const wrappedTUnit = new TaxonomicUnitWrapper(tu);
+
+            if (wrappedTUnit) {
+              const equivClass = wrappedTUnit.asOWLEquivClass;
+              if (equivClass) {
+                nodeAsJSONLD[owlterms.RDF_TYPE].push(
+                  {
+                    &apos;@type&apos;: &apos;owl:Restriction&apos;,
+                    onProperty: owlterms.CDAO_REPRESENTS_TU,
+                    someValuesFrom: equivClass,
+                  }
+                );
+              }
+            }
+          });
+        }
+
+        // Add references to parents and siblings.
+        if (parentCount !== undefined) {
+          const parentIRI = `${baseIRI}_node${parentCount}`;
+          nodeAsJSONLD.parent = parentIRI;
+
+          // Update list of nodes by parent IDs.
+          if (!has(nodeIdsByParentId, parentIRI)) {
+            nodeIdsByParentId[parentIRI] = new Set();
+          }
+          nodeIdsByParentId[parentIRI].add(nodeIRI);
+        }
+
+        // Add nodeAsJSONLD to list
+        if (has(nodesById, nodeIRI)) {
+          throw new Error(`Error in programming: duplicate node IRI generated (${nodeIRI})`);
+        }
+        nodesById[nodeIRI] = nodeAsJSONLD;
+        nodes.push(nodeAsJSONLD);
+      });
+    }
+
+    // Go through nodes again and set children and sibling relationships.
+    Object.keys(nodeIdsByParentId).forEach((parentId) =&gt; {
+      // What are the children of this parentId?
+      const childrenIDs = Array.from(nodeIdsByParentId[parentId]);
+      const children = childrenIDs.map(childId =&gt; nodesById[childId]);
+
+      // Is this the root node?
+      if (has(nodesById, parentId)) {
+        const parent = nodesById[parentId];
+        parent.children = childrenIDs;
+      }
+
+      children.forEach((child) =&gt; {
+        const childToModify = child;
+        // Add all other sibling to node.siblings, but don&apos;t add this node itself!
+        childToModify.siblings = childrenIDs.filter(childId =&gt; childId !== child[&apos;@id&apos;]);
+      });
+    });
+
+    return nodes;
+  }
+
+  asJSONLD(fallbackIRI, newickParser) {
+    // Export this phylogeny as JSON-LD.
+    // - fallbackIRI: The fallback IRI to use for this phylogeny if it does not
+    //   already have an &apos;@id&apos; set.
+    // - newickParser: A function that parses a Newick string and returns a
+    //   an object based representation of this phylogeny. If not set, the
+    //   static method PhylogenyWrapper.getParsedNewick will be used instead.
+
+    // Create a copy to export.
+    const phylogenyAsJSONLD = JSON.parse(JSON.stringify(this.phylogeny));
+
+    // Set name and class for phylogeny. If no &apos;@id&apos; is set, use the provided
+    // fallbackIRI.
+    if (!has(phylogenyAsJSONLD, &apos;@id&apos;)) phylogenyAsJSONLD[&apos;@id&apos;] = fallbackIRI;
+    phylogenyAsJSONLD[&apos;@type&apos;] = owlterms.PHYLOREFERENCE_PHYLOGENY;
+
+    // Translate nodes into JSON-LD objects.
+    phylogenyAsJSONLD.nodes = this.getNodesAsJSONLD(phylogenyAsJSONLD[&apos;@id&apos;], newickParser);
+    if (phylogenyAsJSONLD.nodes.length &gt; 0) {
+      // We don&apos;t have a better way to identify the root node, so we just
+      // default to the first one.
+      phylogenyAsJSONLD.hasRootNode = {
+        &apos;@id&apos;: phylogenyAsJSONLD.nodes[0][&apos;@id&apos;],
+      };
+    }
+
+    // Add a bibliographicCitation to the source if it is a Citation.
+    if (has(phylogenyAsJSONLD, &apos;source&apos;)) {
+      const source = phylogenyAsJSONLD.source;
+
+      if (!has(source, &apos;bibliographicCitation&apos;)) {
+        source.bibliographicCitation = new CitationWrapper(source).toString();
+      }
+    }
+
+    return phylogenyAsJSONLD;
+  }
+}
+
+module.exports = {
+  PhylogenyWrapper,
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -56,10 +56,21 @@
   },
   "esdoc": {
     "source": "./src",
-    "destination": "./docs/esdocs",
+    "destination": "./docs",
     "plugins": [
       {
-        "name": "esdoc-standard-plugin"
+        "name": "esdoc-standard-plugin",
+        "option": {
+          "manual": {
+            "files": [ "./CHANGELOG.md" ]
+          },
+          "test": {
+            "source": "./test/",
+            "includes": [
+              "\\.js$"
+            ]
+          }
+        }
       },
       {
         "name": "esdoc-node"

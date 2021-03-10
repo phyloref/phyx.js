@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">test/examples.js | @phyloref/phyx</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@phyloref/phyx"><meta property="twitter:description" content="Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/phyloref/phyx.js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#matchers">matchers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/matchers/TaxonomicUnitMatcher.js~TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#wrappers">wrappers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html">PhylorefWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html">PhyxWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html">SpecimenWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html">TaxonNameWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/examples.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*
+ * Test conversion on example files.
+ */
+
+const fs = require(&apos;fs&apos;);
+const path = require(&apos;path&apos;);
+
+const JSONLD = require(&apos;jsonld&apos;);
+const chai = require(&apos;chai&apos;);
+const Ajv = require(&apos;ajv&apos;);
+
+const phyx = require(&apos;../src&apos;);
+
+const expect = chai.expect;
+
+/*
+ * Constants
+ */
+// If REPLACE_EXISTING is set to true, we replace the existing JSON-LD and N-Quads
+// files rather than comparing them -- not a good way to test, but useful when
+// the output has changed.
+const REPLACE_EXISTING = false;
+
+/**
+ * Test whether conversion of Phyx files to an OWL ontology occurs predictably.
+ */
+
+describe(&apos;PhyxWrapper&apos;, function () {
+  const ajv = new Ajv({
+    allErrors: true, // Display all error messages, not just the first.
+  });
+  const validator = ajv.compile(
+    JSON.parse(
+      fs.readFileSync(
+        path.resolve(__dirname, &apos;../docs/context/development/schema.json&apos;)
+      )
+    )
+  );
+
+  describe(&apos;Test all example Phyx files&apos;, function () {
+    const examples = fs.readdirSync(path.resolve(__dirname, &apos;./examples/correct&apos;))
+      .filter(filename =&gt; filename.endsWith(&apos;.json&apos;));
+
+    examples.forEach((example) =&gt; {
+      const basename = path.resolve(__dirname, &apos;./examples/correct&apos;, path.parse(example).name);
+      const jsonFilename = `${basename}.json`;
+      const jsonldFilename = `${basename}.jsonld`;
+      const nqFilename = `${basename}.nq`;
+
+      let json;
+      let jsonld;
+      let nq;
+
+      describe(`Test file &apos;${example}&apos;`, function () {
+        it(&apos;should be loadable&apos;, function () {
+          json = JSON.parse(fs.readFileSync(jsonFilename));
+          expect(json).to.be.an(&apos;object&apos;);
+        });
+
+        it(&apos;should validate against our JSON schema&apos;, function () {
+          const valid = validator(json);
+          expect(
+            validator.errors,
+            `The following validation errors were generated: ${JSON.stringify(validator.errors, null, 2)}`
+          ).to.be.null;
+          expect(valid).to.be.true;
+        });
+
+        it(&apos;should be able to convertible to an OWL Ontology&apos;, function () {
+          this.timeout(10000);
+          jsonld = new phyx.PhyxWrapper(json)
+            .asOWLOntology(&apos;http://example.org/phyx.js/example#&apos;);
+          if (REPLACE_EXISTING) {
+            fs.writeFileSync(
+              jsonldFilename,
+              JSON.stringify(jsonld, null, 2)
+            );
+          }
+          expect(jsonld).to.be.an(&apos;object&apos;);
+        });
+
+        it(&apos;should generate the same OWL ontology as it generated earlier&apos;, function () {
+          const expectedJSONLD = JSON.parse(fs.readFileSync(jsonldFilename));
+          expect(jsonld).to.deep.equal(expectedJSONLD);
+        });
+
+        it(&apos;should be convertible to n-quads&apos;, function () {
+          this.timeout(10000);
+
+          // JSON-LD readers don&apos;t usually handle relative @context easily, so
+          // instead let&apos;s replace the entire @context with the local context file.
+          jsonld[&apos;@context&apos;] = JSON.parse(fs.readFileSync(
+            path.resolve(__dirname, &apos;examples&apos;, &apos;correct&apos;, jsonld[&apos;@context&apos;])
+          ));
+
+          return JSONLD.toRDF(jsonld, { format: &apos;application/n-quads&apos; }).then((rdf) =&gt; {
+            nq = rdf;
+            if (REPLACE_EXISTING) fs.writeFileSync(nqFilename, nq);
+            expect(nq).to.be.a(&apos;string&apos;);
+          });
+        });
+
+        it(&apos;should generate the same n-quads ontology as it generated earlier&apos;, function () {
+          const expectedNQ = fs.readFileSync(nqFilename).toString();
+          expect(nq).to.deep.equal(expectedNQ);
+        });
+      });
+    });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
