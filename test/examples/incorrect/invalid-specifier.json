@@ -59,17 +59,6 @@
                   "label": "Caiman crocodilus"
               }
           ],
-          "pso:holdsStatusInTime": [
-              {
-                  "@type": "http://purl.org/spar/pso/StatusInTime",
-                  "pso:withStatus": {
-                      "@id": "pso:submitted"
-                  },
-                  "tvc:atTime": {
-                      "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:36.063Z"
-                  }
-              }
-          ],
           "expectedResolution": {
               "#phylogeny0": {
                   "nodeLabel": "Alligator mississippiensis"

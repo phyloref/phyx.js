@@ -105,17 +105,6 @@
                         "specificEpithet": "graeca"
                     }
                 }
-            ],
-            "pso:holdsStatusInTime": [
-                {
-                    "@type": "http://purl.org/spar/pso/StatusInTime",
-                    "pso:withStatus": {
-                        "@id": "pso:submitted"
-                    },
-                    "tvc:atTime": {
-                        "timeinterval:hasIntervalStartDate": "2021-02-09T20:36:09Z"
-                    }
-                }
             ]
         }
     ],
