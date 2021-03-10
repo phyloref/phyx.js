@@ -259,6 +259,37 @@
             "@type",
             "nameComplete"
           ]
+        },
+        "nameAccordingTo": {
+          "description": "Publication or authors whose circumscription of the taxon is intended to be used. If omitted, the nominal taxon concept (in the sense of Kennedy et al (2006)) will be assumed.",
+          "type": "string",
+          "minLength": 1
+        },
+
+        "basisOfRecord": {
+          "description": "The type of specimen indicated.",
+          "type": "string",
+          "minLength": 1
+        },
+        "institutionCode": {
+          "description": "The name (or acronym) in use by the institution having custody of the object(s) or information referred to in the record.",
+          "type": "string",
+          "minLength": 1
+        },
+        "collectionCode": {
+          "description": "The name, acronym, code, or initialism identifying the collection or data set from which the record was derived.",
+          "type": "string",
+          "minLength": 1
+        },
+        "catalogNumber": {
+          "description": "An identifier for the record within the data set or collection.",
+          "type": "string",
+          "minLength": 1
+        },
+        "occurrenceID": {
+          "description": "An identifier for the Occurrence (as opposed to a particular digital record of the occurrence). In the absence of a persistent GUID, constructed from a unique combination of identifiers in the record, usually the Darwin Core Triplet of institutionCode, collectionCode and catalogNumber.",
+          "type": "string",
+          "minLength": 1
         }
       }
     }
