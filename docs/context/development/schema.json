@@ -178,38 +178,7 @@
         },
         "label": {
           "type": "string",
-          "minLength": 1,
-          "description": "A label for this taxonomic unit."
-        },
-        "nameAccordingTo": {
-          "type": "string",
-          "minLength": 1,
-          "description": "For a taxon concept, provides the source in which the specific taxon concept circumscription is defined or implied (i.e. the 'sensu' or 'sec' of the name)."
-        },
-        "basisOfRecord": {
-          "type": "string",
-          "minLength": 1,
-          "description": "The basis of record for this specimen."
-        },
-        "occurrenceID": {
-          "type": "string",
-          "minLength": 1,
-          "description": "The occurrence ID of a specimen."
-        },
-        "institutionCode": {
-          "type": "string",
-          "minLength": 1,
-          "description": "The institution code of a specimen."
-        },
-        "collectionCode": {
-          "type": "string",
-          "minLength": 1,
-          "description": "The collection code of a specimen."
-        },
-        "catalogNumber": {
-          "type": "string",
-          "minLength": 1,
-          "description": "The catalog number of a specimen."
+          "minLength": 1
         },
         "hasName": {
           "type": "object",
@@ -237,6 +206,8 @@
           },
           "required": [
             "@type",
+            "nomenclaturalCode",
+            "label",
             "nameComplete"
           ]
         }
@@ -250,24 +221,30 @@
   "required": [
     "@context"
   ],
-  "additionalProperties": false,
+  "additionalProperties": true,
   "properties": {
     "@context": {
+      "description": "The JSON-LD context, necessary to interpret this JSON file as an RDF file.",
+      "minLength": 1,
       "type": "string",
-      "description": "Every Phyx file should have a @context, making it a valid JSON-LD file.",
-      "minLength": 1
+      "format": "uri"
+    },
+    "doi": {
+      "description": "The Digital Object Identifier (doi) for this Phyx file.",
+      "minLength": 1,
+      "type": "string"
     },
     "citation": {
-      "description": "A citation to the source of this Phyx file.",
+      "description": "A citation to this Phyx file.",
       "$ref": "#/definitions/citation"
     },
     "defaultNomenclaturalCodeIRI": {
-      "description": "The default nomenclatural code to use for new phyloreferences in this Phyx file.",
+      "description": "The default nomenclatural code to be used in this file, for both phylogenies and phyloreferences. This will only be used for nodes and taxon concept specifiers that don’t have a nomenclatural code set.",
       "$ref": "#/definitions/nomenclaturalCodes"
     },
     "@type": {
       "type": "array",
-      "description": "Addition RDF types for the top-level object. `owl:Ontology` is added automatically."
+      "description": "Additional RDF types for the top-level object. `owl:Ontology` is added automatically."
     },
     "owl:imports": {
       "type": "array",
