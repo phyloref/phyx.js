@@ -254,9 +254,6 @@
       "type": "object",
       "description": "A taxon or taxon concept.",
       "additionalProperties": false,
-      "required": [
-        "@type"
-      ],
       "properties": {
         "@type": {
           "type": "string",
@@ -350,9 +347,9 @@
     "taxonomic_unit": {
       "description": "A unit of taxon: a taxon concept or specimen.",
       "anyOf": [
-        { "$ref": "#/definitions/taxonomic_unit_by_id" },
         { "$ref": "#/definitions/taxon_concept" },
-        { "$ref": "#/definitions/specimen" }
+        { "$ref": "#/definitions/specimen" },
+        { "$ref": "#/definitions/taxonomic_unit_by_id" }
       ]
     }
   },

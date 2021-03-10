@@ -141,7 +141,70 @@ describe('PhyxWrapper', function () {
             params: {
               missingProperty: 'nameComplete',
             },
-            schemaPath: '#/properties/hasName/required',
+            schemaPath: '#/required',
+          },
+          {
+            dataPath: ".phylorefs[0].externalSpecifiers[0]['@type']",
+            keyword: 'enum',
+            message: 'should be equal to one of the allowed values',
+            params: {
+              allowedValues: [
+                'http://rs.tdwg.org/dwc/terms/Occurrence',
+              ],
+            },
+            schemaPath: '#/properties/%40type/enum',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0].hasName',
+            keyword: 'required',
+            message: "should have required property 'nameComplete'",
+            params: {
+              missingProperty: 'nameComplete',
+            },
+            schemaPath: '#/required',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0]',
+            keyword: 'additionalProperties',
+            message: 'should NOT have additional properties',
+            params: {
+              additionalProperty: '@type',
+            },
+            schemaPath: '#/definitions/taxonomic_unit_by_id/additionalProperties',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0]',
+            keyword: 'additionalProperties',
+            message: 'should NOT have additional properties',
+            params: {
+              additionalProperty: 'hasName',
+            },
+            schemaPath: '#/definitions/taxonomic_unit_by_id/additionalProperties',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0]',
+            keyword: 'additionalProperties',
+            message: 'should NOT have additional properties',
+            params: {
+              additionalProperty: 'label',
+            },
+            schemaPath: '#/definitions/taxonomic_unit_by_id/additionalProperties',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0]',
+            keyword: 'required',
+            message: "should have required property '@id'",
+            params: {
+              missingProperty: '@id',
+            },
+            schemaPath: '#/definitions/taxonomic_unit_by_id/required',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0]',
+            keyword: 'anyOf',
+            message: 'should match some schema in anyOf',
+            params: {},
+            schemaPath: '#/anyOf',
           },
         ],
       },
