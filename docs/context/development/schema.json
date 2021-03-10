@@ -400,10 +400,17 @@
       "description": "A phylogeny is an evolutionary hypothesis that can be used to test Phyx files.",
       "minItems": 0,
       "items": {
+        "type": "object",
+        "additionalProperties": true,
         "required": [
           "newick"
         ],
         "properties": {
+          "@id": {
+            "type": "string",
+            "format": "uri-reference",
+            "description": "The identifier for this phylogeny."
+          },
           "label": {
             "type": "string",
             "description": "The label of this phylogeny.",
@@ -411,21 +418,16 @@
           },
           "newick": {
             "type": "string",
-            "description": "This phylogeny represented as a Newick string (https://en.wikipedia.org/wiki/Newick_format).",
+            "description": "The Newick string.",
             "minLength": 2
           },
-          "phylogenyType": {
-            "type": "string",
-            "description": "Specifies what type of phylogeny this is. All phylogenies are assumed to be 'phylogeny', unless they are a 'reference_phylogeny' or a 'primary_reference_phylogeny'.",
-            "enum": [
-              "primary_reference_phylogeny",
-              "reference_phylogeny",
-              "phylogeny"
-            ]
-          },
           "source": {
-            "description": "A citation to the published source of this phylogeny.",
+            "description": "The source of this phylogeny.",
             "$ref": "#/definitions/citation"
+          },
+          "additionalNodeProperties": {
+            "type": "object",
+            "description": "A dictionary mapping node labels to properties that should be added to the node when converting this Phyx file into an OWL ontology."
           }
         }
       }
