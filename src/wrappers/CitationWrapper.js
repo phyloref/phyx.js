@@ -80,7 +80,7 @@ class CitationWrapper {
     if (has(this.citation, 'journal') && this.citation.type === 'article') {
       const journal = this.citation.journal;
       const journalIssue = (has(journal, 'number')) ? `(${journal.number})` : '';
-      const pages = (has(this.citation, 'pages')) ? `:${this.citation.pages}` : '';
+      const pages = (has(journal, 'pages')) ? `:${journal.pages}` : '';
       additionalInfo += (journal.identifier || [])
         .filter(id => id.type === 'issn')
         .map(issn => `ISSN: ${issn.id} `)

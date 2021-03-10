@@ -651,9 +651,9 @@ _:b179 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/v
 _:b18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b18 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b18 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b19 .
-_:b180 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
+_:b180 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31:357--397  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b180 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
-_:b181 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
+_:b181 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31:357--397  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b181 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b182 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b182 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b183 .
@@ -718,7 +718,7 @@ _:b2 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylomorpha" .
 _:b20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b20 <http://www.w3.org/2002/07/owl#hasValue> "Mesoeucrocodylia" .
 _:b20 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b200 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
+_:b200 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31:357--397  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b200 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b201 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b201 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b202 .
@@ -774,7 +774,7 @@ _:b216 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/v
 _:b217 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b217 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICZN> .
 _:b217 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
-_:b218 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
+_:b218 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31:357--397  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b218 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b219 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b219 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b220 .
@@ -968,7 +968,7 @@ _:b277 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.
 _:b277 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "niloticus" .
 _:b277 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b277 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylus niloticus" .
-_:b278 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
+_:b278 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31:357--397  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b278 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b279 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b279 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b280 .
@@ -1559,7 +1559,7 @@ _:b466 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.
 _:b466 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "niloticus" .
 _:b466 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b466 <http://www.w3.org/2000/01/rdf-schema#label> "Crocodylus niloticus" .
-_:b467 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
+_:b467 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31:357--397  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b467 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b468 <http://purl.org/spar/pso/withStatus> <http://purl.org/spar/pso/submitted> .
 _:b468 <http://www.essepuntato.it/2012/04/tvc/atTime> _:b469 .
