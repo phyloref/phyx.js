@@ -148,6 +148,10 @@
             "name"
           ]
         },
+        "booktitle": {
+          "type": "string",
+          "description": "The title of the book that this publication is part of."
+        },
         "identifier": {
           "type": "array",
           "description": "A list of identifiers for this publication.",

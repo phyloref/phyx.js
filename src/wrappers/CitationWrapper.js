@@ -44,7 +44,11 @@ class CitationWrapper {
     let authors = (this.citation.authors || []).map(CitationWrapper.getAgentName);
     if (authors.length === 0) authors = ['Anonymous'];
     if (authors.length > 2) authors = [`${authors[0]} et al`];
-    let authorsAndTitle = `${authors.join(' and ')} (${this.citation.year || 'n.d.'}) ${this.citation.title || 'Untitled'}`;
+
+    // The title is based on citation.title, but may include citation.section as well.
+    let title = this.citation.title || 'Untitled';
+    if (has(this.citation, 'booktitle')) title = `${title} in ${this.citation.booktitle || 'Untitled book'}`;
+    let authorsAndTitle = `${authors.join(' and ')} (${this.citation.year || 'n.d.'}) ${title}`;
 
     const editorLists = [];
     const editors = (this.citation.editors || []).map(CitationWrapper.getAgentName);
