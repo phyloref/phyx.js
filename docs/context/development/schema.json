@@ -208,7 +208,14 @@
             "http://rs.tdwg.org/dwc/terms/Occurrence"
           ]
         },
+        "@id": {
+          "description": "An opaque identifier for this taxonomic unit.",
+          "type": "string",
+          "format": "uri",
+          "minLength": 1
+        },
         "label": {
+          "description": "A label for describing this taxonomic unit.",
           "type": "string",
           "minLength": 1
         },
@@ -228,10 +235,22 @@
               "$ref": "#/definitions/nomenclaturalCodes"
             },
             "label": {
+              "description": "The full taxon name, including an authority or year components.",
               "type": "string",
               "minLength": 1
             },
             "nameComplete": {
+              "description": "The complete uninomial, binomial or trinomial name without any authority or year components.",
+              "type": "string",
+              "minLength": 1
+            },
+            "genusPart": {
+              "description": "The genus portion of the taxon name.",
+              "type": "string",
+              "minLength": 1
+            },
+            "specificEpithet": {
+              "description": "The genus portion of the taxon name.",
               "type": "string",
               "minLength": 1
             }
