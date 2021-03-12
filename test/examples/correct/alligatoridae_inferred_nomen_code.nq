@@ -31,7 +31,7 @@
 <http://example.org/phyx.js/example#phylogeny0> <http://purl.obolibrary.org/obo/CDAO_0000198> <http://example.org/phyx.js/example#phylogeny0_node8> .
 <http://example.org/phyx.js/example#phylogeny0> <http://purl.obolibrary.org/obo/CDAO_0000198> <http://example.org/phyx.js/example#phylogeny0_node9> .
 <http://example.org/phyx.js/example#phylogeny0> <http://purl.org/dc/terms/source> _:b165 .
-<http://example.org/phyx.js/example#phylogeny0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/CDAO_0000012> .
+<http://example.org/phyx.js/example#phylogeny0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ontology.phyloref.org/phyloref.owl#ReferencePhylogenyEvidence> .
 <http://example.org/phyx.js/example#phylogeny0> <http://www.w3.org/2000/01/rdf-schema#label> "Fig 1 from Brochu 2003" .
 <http://example.org/phyx.js/example#phylogeny0_node0> <http://purl.obolibrary.org/obo/CDAO_0000149> <http://example.org/phyx.js/example#phylogeny0_node1> .
 <http://example.org/phyx.js/example#phylogeny0_node0> <http://purl.obolibrary.org/obo/CDAO_0000149> <http://example.org/phyx.js/example#phylogeny0_node29> .
