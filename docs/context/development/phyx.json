@@ -167,12 +167,12 @@
     },
 
     "phylogenies": {
-        "@id": "testcase:has_phylogeny",
+        "@reverse": "rdfs:isDefinedBy",
         "@container": "@set"
     },
 
     "phylorefs": {
-        "@id": "testcase:has_phyloreference",
+        "@reverse": "rdfs:isDefinedBy",
         "@container": "@set"
     },
 
