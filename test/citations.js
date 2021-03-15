@@ -16,7 +16,7 @@ const expect = chai.expect;
 describe('CitationWrapper', function () {
   // Some citations to use in testing.
   const citations = [{
-    bibliographicCitation: 'Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308',
+    bibliographicCitation: 'Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31:357--397  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308',
     citation: {
       type: 'article',
       title: 'Phylogenetic approaches toward crocodylian history',

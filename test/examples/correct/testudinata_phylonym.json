@@ -78,16 +78,14 @@
                   "lastname": "Gauthier"
                 }
               ],
+              "booktitle": "Phylonyms: a companion to the PhyloCode",
+              "pages": "1045--1048",
+              "identifier": [{
+                "type": "isbn",
+                "id": "9781138332935"
+              }],
               "publisher": "CRC Press",
-              "city": "Boca Raton, FL",
-              "journal": {
-                "name": "Phylonyms: a companion to the PhyloCode",
-                "pages": "1045--1048",
-                "identifier": [{
-                  "type": "ISBN",
-                  "id": "9781138332935"
-                }]
-              }
+              "city": "Boca Raton, FL"
             },
             "apomorphy": {
               "@type": "https://semanticscience.org/resource/SIO_010056",
@@ -105,17 +103,6 @@
                         "nameComplete": "Testudo graeca",
                         "genusPart": "Testudo",
                         "specificEpithet": "graeca"
-                    }
-                }
-            ],
-            "pso:holdsStatusInTime": [
-                {
-                    "@type": "http://purl.org/spar/pso/StatusInTime",
-                    "pso:withStatus": {
-                        "@id": "pso:submitted"
-                    },
-                    "tvc:atTime": {
-                        "timeinterval:hasIntervalStartDate": "2021-02-09T20:36:09Z"
                     }
                 }
             ]

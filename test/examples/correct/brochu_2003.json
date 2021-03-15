@@ -107,18 +107,7 @@
                     "label": "Alligator mississippiensis"
                 }
             ],
-            "externalSpecifiers": [],
-            "pso:holdsStatusInTime": [
-                {
-                    "@type": "http://purl.org/spar/pso/StatusInTime",
-                    "pso:withStatus": {
-                        "@id": "pso:submitted"
-                    },
-                    "tvc:atTime": {
-                        "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:31.471Z"
-                    }
-                }
-            ]
+            "externalSpecifiers": []
         },
         {
             "label": "Alligatorinae",
@@ -184,17 +173,6 @@
                         "specificEpithet": "crocodilus"
                     },
                     "label": "Caiman crocodilus"
-                }
-            ],
-            "pso:holdsStatusInTime": [
-                {
-                    "@type": "http://purl.org/spar/pso/StatusInTime",
-                    "pso:withStatus": {
-                        "@id": "pso:submitted"
-                    },
-                    "tvc:atTime": {
-                        "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:36.063Z"
-                    }
                 }
             ],
             "expectedResolution": {
@@ -268,17 +246,6 @@
                     }
                 }
             ],
-            "pso:holdsStatusInTime": [
-                {
-                    "@type": "http://purl.org/spar/pso/StatusInTime",
-                    "pso:withStatus": {
-                        "@id": "pso:submitted"
-                    },
-                    "tvc:atTime": {
-                        "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:42.007Z"
-                    }
-                }
-            ],
             "expectedResolution": {
                 "#phylogeny0": {
                     "nodeLabel": "Caiman crocodilus"
@@ -326,17 +293,6 @@
                         "specificEpithet": "gangeticus"
                     },
                     "label": "Gavialis gangeticus"
-                }
-            ],
-            "pso:holdsStatusInTime": [
-                {
-                    "@type": "http://purl.org/spar/pso/StatusInTime",
-                    "pso:withStatus": {
-                        "@id": "pso:under-review"
-                    },
-                    "tvc:atTime": {
-                        "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:48.240Z"
-                    }
                 }
             ],
             "expectedResolution": {
@@ -421,18 +377,7 @@
                     "label": "Crocodylus niloticus"
                 }
             ],
-            "externalSpecifiers": [],
-            "pso:holdsStatusInTime": [
-                {
-                    "@type": "http://purl.org/spar/pso/StatusInTime",
-                    "pso:withStatus": {
-                        "@id": "pso:submitted"
-                    },
-                    "tvc:atTime": {
-                        "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:51.960Z"
-                    }
-                }
-            ]
+            "externalSpecifiers": []
         },
         {
             "label": "Diplocynodontinae",
@@ -496,17 +441,6 @@
                         "nameComplete": "Alligator mississippiensis",
                         "genusPart": "Alligator",
                         "specificEpithet": "mississippiensis"
-                    }
-                }
-            ],
-            "pso:holdsStatusInTime": [
-                {
-                    "@type": "http://purl.org/spar/pso/StatusInTime",
-                    "pso:withStatus": {
-                        "@id": "pso:submitted"
-                    },
-                    "tvc:atTime": {
-                        "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:22.452Z"
                     }
                 }
             ],

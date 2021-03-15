@@ -475,9 +475,9 @@ _:b163 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/v
 _:b164 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b164 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICZN> .
 _:b164 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
-_:b165 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
+_:b165 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31:357--397  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b165 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
-_:b166 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
+_:b166 <http://purl.org/dc/terms/bibliographicCitation> "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31:357--397  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308" .
 _:b166 <http://purl.org/dc/terms/title> "Phylogenetic approaches toward crocodylian history" .
 _:b167 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b168 .
 _:b167 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .

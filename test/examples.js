@@ -37,7 +37,7 @@ describe('PhyxWrapper', function () {
     )
   );
 
-  describe('Test all example Phyx files', function () {
+  describe('Test all correct example Phyx files', function () {
     const examples = fs.readdirSync(path.resolve(__dirname, './examples/correct'))
       .filter(filename => filename.endsWith('.json'));
 
@@ -103,6 +103,124 @@ describe('PhyxWrapper', function () {
         it('should generate the same n-quads ontology as it generated earlier', function () {
           const expectedNQ = fs.readFileSync(nqFilename).toString();
           expect(nq).to.deep.equal(expectedNQ);
+        });
+      });
+    });
+  });
+
+  describe('Test incorrect example Phyx files that should fail validation', function () {
+    const filesThatShouldFailValidation = [
+      {
+        fileName: 'examples/incorrect/no-context.json',
+        expectedErrors: [{
+          dataPath: '',
+          keyword: 'required',
+          message: "should have required property '@context'",
+          params: {
+            missingProperty: '@context',
+          },
+          schemaPath: '#/required',
+        }],
+      },
+      {
+        fileName: 'examples/incorrect/invalid-specifier.json',
+        expectedErrors: [
+          {
+            dataPath: '.phylorefs[0].internalSpecifiers',
+            keyword: 'minItems',
+            message: 'should NOT have fewer than 1 items',
+            params: {
+              limit: 1,
+            },
+            schemaPath: '#/properties/phylorefs/items/properties/internalSpecifiers/minItems',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0].hasName',
+            keyword: 'required',
+            message: "should have required property 'nameComplete'",
+            params: {
+              missingProperty: 'nameComplete',
+            },
+            schemaPath: '#/required',
+          },
+          {
+            dataPath: ".phylorefs[0].externalSpecifiers[0]['@type']",
+            keyword: 'enum',
+            message: 'should be equal to one of the allowed values',
+            params: {
+              allowedValues: [
+                'http://rs.tdwg.org/dwc/terms/Occurrence',
+              ],
+            },
+            schemaPath: '#/properties/%40type/enum',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0].hasName',
+            keyword: 'required',
+            message: "should have required property 'nameComplete'",
+            params: {
+              missingProperty: 'nameComplete',
+            },
+            schemaPath: '#/required',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0]',
+            keyword: 'additionalProperties',
+            message: 'should NOT have additional properties',
+            params: {
+              additionalProperty: '@type',
+            },
+            schemaPath: '#/definitions/taxonomic_unit_by_id/additionalProperties',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0]',
+            keyword: 'additionalProperties',
+            message: 'should NOT have additional properties',
+            params: {
+              additionalProperty: 'hasName',
+            },
+            schemaPath: '#/definitions/taxonomic_unit_by_id/additionalProperties',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0]',
+            keyword: 'additionalProperties',
+            message: 'should NOT have additional properties',
+            params: {
+              additionalProperty: 'label',
+            },
+            schemaPath: '#/definitions/taxonomic_unit_by_id/additionalProperties',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0]',
+            keyword: 'required',
+            message: "should have required property '@id'",
+            params: {
+              missingProperty: '@id',
+            },
+            schemaPath: '#/definitions/taxonomic_unit_by_id/required',
+          },
+          {
+            dataPath: '.phylorefs[0].externalSpecifiers[0]',
+            keyword: 'anyOf',
+            message: 'should match some schema in anyOf',
+            params: {},
+            schemaPath: '#/anyOf',
+          },
+        ],
+      },
+    ];
+
+    filesThatShouldFailValidation.forEach((entry) => {
+      describe(`Example file ${entry.fileName}`, function () {
+        it('should not validate against our JSON schema', function () {
+          const phyxContent = JSON.parse(
+            fs.readFileSync(
+              path.resolve(__dirname, entry.fileName)
+            )
+          );
+          const valid = validator(phyxContent);
+          expect(validator.errors).to.deep.equal(entry.expectedErrors);
+          expect(valid).to.not.be.true;
         });
       });
     });
