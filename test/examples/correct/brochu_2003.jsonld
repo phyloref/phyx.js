@@ -45,7 +45,7 @@
         },
         "bibliographicCitation": "Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
       },
-      "@type": "testcase:PhyloreferenceTestPhylogeny",
+      "@type": "phyloref:ReferencePhylogenyEvidence",
       "nodes": [
         {
           "@id": "http://example.org/phyx.js/example#phylogeny0_node0",
@@ -3491,13 +3491,10 @@
     }
   ],
   "defaultNomenclaturalCodeIRI": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-  "hasTaxonomicUnitMatches": [],
   "@type": [
-    "testcase:PhyloreferenceTestCase",
     "owl:Ontology"
   ],
   "owl:imports": [
-    "http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl",
     "http://ontology.phyloref.org/2018-12-14/phyloref.owl",
     "http://ontology.phyloref.org/2018-12-14/tcan.owl"
   ]

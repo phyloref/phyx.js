@@ -12,9 +12,6 @@ module.exports = {
   PHYLOREF_INCLUDES_TU: 'phyloref:includes_TU',
   PHYLOREF_EXCLUDES_TU: 'phyloref:excludes_TU',
   PHYLOREF_EXCLUDES_LINEAGE_TO: 'phyloref:excludes_lineage_to',
-  PHYLOREFERENCE_TEST_CASE: 'testcase:PhyloreferenceTestCase',
-  PHYLOREFERENCE_PHYLOGENY: 'testcase:PhyloreferenceTestPhylogeny',
-  TESTCASE_SPECIFIER: 'testcase:Specifier',
   TU_HAS_NAME_PROP: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
   TU_SPECIMEN_PROP: 'dwc:organismID',
 
@@ -27,6 +24,9 @@ module.exports = {
   CDAO_REPRESENTS_TU: 'obo:CDAO_0000187',
   CDAO_HAS_CHILD: 'obo:CDAO_0000149',
   CDAO_HAS_DESCENDANT: 'obo:CDAO_0000174',
+  CDAO_ROOTED_TREE: 'obo:CDAO_0000012',
+  CDAO_HAS_ROOT: 'obo:CDAO_0000148',
+  CDAO_HAS_ELEMENT: 'obo:CDAO_0000198',
 
   // Terms from the TaxonName ontology
   // (https://github.com/tdwg/ontology/blob/master/ontology/voc/TaxonName.rdf).

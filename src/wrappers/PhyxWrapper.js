@@ -5,7 +5,6 @@ const owlterms = require('../utils/owlterms');
 
 const { PhylorefWrapper } = require('./PhylorefWrapper');
 const { PhylogenyWrapper } = require('./PhylogenyWrapper');
-const { TaxonomicUnitMatcher } = require('../matchers/TaxonomicUnitMatcher');
 
 /**
  * The PhyxWrapper wraps an entire Phyx document.
@@ -211,72 +210,22 @@ class PhyxWrapper {
       });
     }
 
-    // Match all specifiers with nodes.
-    if (has(jsonld, 'phylorefs') && has(jsonld, 'phylogenies')) {
-      jsonld.hasTaxonomicUnitMatches = [];
-
-      // Used to create unique identifiers for each taxonomic unit match.
-      let countTaxonomicUnitMatches = 0;
-
-      jsonld.phylorefs.forEach((phylorefToChange) => {
-        const phyloref = phylorefToChange;
-        let specifiers = [];
-
-        if (has(phyloref, 'internalSpecifiers')) {
-          specifiers = specifiers.concat(phyloref.internalSpecifiers);
-        }
-
-        if (has(phyloref, 'externalSpecifiers')) {
-          specifiers = specifiers.concat(phyloref.externalSpecifiers);
-        }
-
-        specifiers.forEach((specifier) => {
-          if (!has(specifier, 'referencesTaxonomicUnits')) return;
-          const specifierTUs = specifier.referencesTaxonomicUnits;
-          let nodesMatchedCount = 0;
-
-          jsonld.phylogenies.forEach((phylogenyToChange) => {
-            const phylogeny = phylogenyToChange;
-
-            specifierTUs.forEach((specifierTU) => {
-              phylogeny.nodes.forEach((node) => {
-                if (!has(node, 'representsTaxonomicUnits')) return;
-                const nodeTUs = node.representsTaxonomicUnits;
-
-                nodeTUs.forEach((nodeTU) => {
-                  const matcher = new TaxonomicUnitMatcher(specifierTU, nodeTU);
-                  if (matcher.matched) {
-                    const tuMatchAsJSONLD = matcher.asJSONLD(
-                      PhyxWrapper.getBaseIRIForTUMatch(countTaxonomicUnitMatches)
-                    );
-                    jsonld.hasTaxonomicUnitMatches.push(tuMatchAsJSONLD);
-                    nodesMatchedCount += 1;
-                    countTaxonomicUnitMatches += 1;
-                  }
-                });
-              });
-            });
-          });
-
-          if (nodesMatchedCount === 0) {
-            // No nodes matched? Record this as an unmatched specifier.
-            if (!has(phyloref, 'hasUnmatchedSpecifiers')) phyloref.hasUnmatchedSpecifiers = [];
-            phyloref.hasUnmatchedSpecifiers.push(specifier);
-          }
-        });
-      });
-    }
+    // Earlier, we used to generate a list of taxonomic matches here (stored in
+    // jsonld.hasTaxonomicUnitMatches) that logically expressed how taxonomic
+    // units in phyloref specifiers were related to taxonomic units in phylogeny
+    // nodes. This is no longer necessary, since phyloref specifiers are now logical
+    // expressions that directly evaluate to phylogeny nodes. However, if in the
+    // future we decide that we need to perform more advanced TU matching, this
+    // would be the place to implement that.
 
     // Set up the top-level object '@type'. If one is present, we add our terms to that.
     if (!has(jsonld, '@type')) jsonld['@type'] = [];
     if (!Array.isArray(jsonld['@type'])) jsonld['@type'] = [jsonld['@type']];
-    jsonld['@type'].push(owlterms.PHYLOREFERENCE_TEST_CASE);
     jsonld['@type'].push('owl:Ontology');
 
     // Set up the ontology imports. If one is present, we add our imports to that.
     if (!has(jsonld, 'owl:imports')) jsonld['owl:imports'] = [];
     if (!Array.isArray(jsonld['owl:imports'])) jsonld['owl:imports'] = [jsonld['owl:imports']];
-    jsonld['owl:imports'].push('http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl');
     jsonld['owl:imports'].push('http://ontology.phyloref.org/2018-12-14/phyloref.owl');
     jsonld['owl:imports'].push('http://ontology.phyloref.org/2018-12-14/tcan.owl');
 

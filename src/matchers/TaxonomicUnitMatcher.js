@@ -37,7 +37,6 @@ class TaxonomicUnitMatcher {
 
     return {
       '@id': idIRI,
-      '@type': 'testcase:TUMatch',
       reason: this.matchReason,
       matchesTaxonomicUnits: [
         { '@id': this.tunit1['@id'] },

@@ -26,7 +26,7 @@
           ]
         }
       },
-      "@type": "testcase:PhyloreferenceTestPhylogeny",
+      "@type": "phyloref:ReferencePhylogenyEvidence",
       "nodes": [
         {
           "@id": "http://example.org/phyx.js/example#phylogeny0_node0",
@@ -4597,13 +4597,10 @@
       ]
     }
   ],
-  "hasTaxonomicUnitMatches": [],
   "@type": [
-    "testcase:PhyloreferenceTestCase",
     "owl:Ontology"
   ],
   "owl:imports": [
-    "http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl",
     "http://ontology.phyloref.org/2018-12-14/phyloref.owl",
     "http://ontology.phyloref.org/2018-12-14/tcan.owl"
   ]

@@ -431,7 +431,7 @@ class PhylogenyWrapper {
     // Set name and class for phylogeny. If no '@id' is set, use the provided
     // fallbackIRI.
     if (!has(phylogenyAsJSONLD, '@id')) phylogenyAsJSONLD['@id'] = fallbackIRI;
-    phylogenyAsJSONLD['@type'] = owlterms.PHYLOREFERENCE_PHYLOGENY;
+    phylogenyAsJSONLD['@type'] = 'phyloref:ReferencePhylogenyEvidence';
 
     // Translate nodes into JSON-LD objects.
     phylogenyAsJSONLD.nodes = this.getNodesAsJSONLD(phylogenyAsJSONLD['@id'], newickParser);

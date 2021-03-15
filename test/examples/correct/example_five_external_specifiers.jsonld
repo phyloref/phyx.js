@@ -4,7 +4,7 @@
     {
       "newick": "((((Aa_a, Bb_b)Expected, Cc_c), (Dd_d, (Ee_e, Ff_f, (Gg_g, Hh_h)))), Ii_i)",
       "@id": "http://example.org/phyx.js/example#phylogeny0",
-      "@type": "testcase:PhyloreferenceTestPhylogeny",
+      "@type": "phyloref:ReferencePhylogenyEvidence",
       "nodes": [
         {
           "@id": "http://example.org/phyx.js/example#phylogeny0_node0",
@@ -1150,13 +1150,10 @@
       ]
     }
   ],
-  "hasTaxonomicUnitMatches": [],
   "@type": [
-    "testcase:PhyloreferenceTestCase",
     "owl:Ontology"
   ],
   "owl:imports": [
-    "http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl",
     "http://ontology.phyloref.org/2018-12-14/phyloref.owl",
     "http://ontology.phyloref.org/2018-12-14/tcan.owl"
   ]

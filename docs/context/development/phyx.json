@@ -48,11 +48,6 @@
         "@container": "@set"
     },
 
-    "hasUnmatchedSpecifiers": {
-        "@id": "testcase:has_unmatched_specifier",
-        "@container": "@set"
-    },
-
     "hasComponentClass": {
         "@id": "testcase:has_component_class",
         "@container": "@set"
@@ -147,12 +142,12 @@
     },
 
     "nodes": {
-        "@id": "testcase:has_node",
+        "@id": "obo:CDAO_0000198",
         "@container": "@set"
     },
 
     "hasRootNode": {
-        "@id": "testcase:has_root_node",
+        "@id": "obo:CDAO_0000148",
         "@type": "@id"
     },
 
