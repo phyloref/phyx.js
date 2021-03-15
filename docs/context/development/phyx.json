@@ -166,11 +166,6 @@
         "@container": "@set"
     },
 
-    "malformedPhyloreference": {
-        "@id": "testcase:malformed_phyloreference",
-        "@type": "xsd:string"
-    },
-
     "title": "dct:title",
     "source": "dct:source",
     "bibliographicCitation": "dct:bibliographicCitation",
