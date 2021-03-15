@@ -38,16 +38,6 @@
       "@type": "xsd:string"
     },
 
-    "internalSpecifiers": {
-        "@id": "testcase:internal_specifier",
-        "@container": "@set"
-    },
-
-    "externalSpecifiers": {
-        "@id": "testcase:external_specifier",
-        "@container": "@set"
-    },
-
     "hasComponentClass": {
         "@id": "testcase:has_component_class",
         "@container": "@set"

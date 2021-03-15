@@ -114,17 +114,11 @@
 <http://example.org/phyx.js/example#phylogeny0_node9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b23 .
 <http://example.org/phyx.js/example#phylogeny0_node9> <http://www.w3.org/2000/01/rdf-schema#label> "Ee_e" .
 <http://example.org/phyx.js/example#phyloref0> <http://purl.obolibrary.org/obo/IAO_0000115> "Includes A_a, excludes C_c, D_d, F_f, G_g and I_i." .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b54 .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b56 .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b58 .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b60 .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#external_specifier> _:b62 .
 <http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component1> .
 <http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component2> .
 <http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component3> .
 <http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component4> .
 <http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component5> .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b179 .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> _:b0 .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#label> "Expected" .
@@ -134,27 +128,27 @@
 <http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2000/01/rdf-schema#label> "(Aa a (Code not known) ~ Cc c (Code not known) V Dd d (Code not known) V Ff f (Code not known) V Gg g (Code not known) V Ii i (Code not known))" .
 <http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref0> .
 <http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b64 .
+<http://example.org/phyx.js/example#phyloref0_component1> <http://www.w3.org/2002/07/owl#equivalentClass> _:b54 .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2000/01/rdf-schema#label> "(Aa a (Code not known) ~ Cc c (Code not known) V Dd d (Code not known) V Ff f (Code not known) V Gg g (Code not known) V Ii i (Code not known))" .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref0> .
 <http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b87 .
+<http://example.org/phyx.js/example#phyloref0_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b77 .
 <http://example.org/phyx.js/example#phyloref0_component3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref0_component3> <http://www.w3.org/2000/01/rdf-schema#label> "(Aa a (Code not known) ~ Cc c (Code not known) V Dd d (Code not known) V Ff f (Code not known) V Gg g (Code not known) V Ii i (Code not known))" .
 <http://example.org/phyx.js/example#phyloref0_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref0> .
 <http://example.org/phyx.js/example#phyloref0_component3> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/phyx.js/example#phyloref0_component3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b110 .
+<http://example.org/phyx.js/example#phyloref0_component3> <http://www.w3.org/2002/07/owl#equivalentClass> _:b100 .
 <http://example.org/phyx.js/example#phyloref0_component4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref0_component4> <http://www.w3.org/2000/01/rdf-schema#label> "(Aa a (Code not known) ~ Cc c (Code not known) V Dd d (Code not known) V Ff f (Code not known) V Gg g (Code not known) V Ii i (Code not known))" .
 <http://example.org/phyx.js/example#phyloref0_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref0> .
 <http://example.org/phyx.js/example#phyloref0_component4> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/phyx.js/example#phyloref0_component4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b133 .
+<http://example.org/phyx.js/example#phyloref0_component4> <http://www.w3.org/2002/07/owl#equivalentClass> _:b123 .
 <http://example.org/phyx.js/example#phyloref0_component5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref0_component5> <http://www.w3.org/2000/01/rdf-schema#label> "(Aa a (Code not known) ~ Cc c (Code not known) V Dd d (Code not known) V Ff f (Code not known) V Gg g (Code not known) V Ii i (Code not known))" .
 <http://example.org/phyx.js/example#phyloref0_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/phyx.js/example#phyloref0> .
 <http://example.org/phyx.js/example#phyloref0_component5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
-<http://example.org/phyx.js/example#phyloref0_component5> <http://www.w3.org/2002/07/owl#equivalentClass> _:b156 .
+<http://example.org/phyx.js/example#phyloref0_component5> <http://www.w3.org/2002/07/owl#equivalentClass> _:b146 .
 _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
 _:b0 <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/phyloref.owl> .
 _:b0 <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/tcan.owl> .
@@ -164,67 +158,67 @@ _:b1 <http://www.w3.org/2000/01/rdf-schema#label> "Ii_i" .
 _:b10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b10 <http://www.w3.org/2002/07/owl#hasValue> "Hh h" .
 _:b10 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b100 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b100 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b100 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b101 .
+_:b100 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b100 <http://www.w3.org/2002/07/owl#intersectionOf> _:b169 .
 _:b101 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b101 <http://www.w3.org/2002/07/owl#hasValue> "Ff f" .
-_:b101 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b101 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b101 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b102 .
 _:b102 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b102 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b102 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b102 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b103 .
 _:b103 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b103 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b103 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b104 .
+_:b103 <http://www.w3.org/2002/07/owl#hasValue> "Aa a" .
+_:b103 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b104 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b104 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b104 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b104 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b105 .
 _:b105 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b105 <http://www.w3.org/2002/07/owl#hasValue> "Gg g" .
-_:b105 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b105 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b105 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b106 .
 _:b106 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b106 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
-_:b106 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b107 .
+_:b106 <http://www.w3.org/2002/07/owl#hasValue> "Ff f" .
+_:b106 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b107 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b107 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b107 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b107 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b108 .
 _:b108 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b108 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b108 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b108 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b109 .
 _:b109 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b109 <http://www.w3.org/2002/07/owl#hasValue> "Ii i" .
-_:b109 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b109 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b109 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b110 .
 _:b11 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b12 .
 _:b11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b11 <http://www.w3.org/2000/01/rdf-schema#label> "Gg_g" .
-_:b110 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b110 <http://www.w3.org/2002/07/owl#intersectionOf> _:b181 .
+_:b110 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b110 <http://www.w3.org/2002/07/owl#hasValue> "Cc c" .
+_:b110 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b111 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b111 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b111 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b111 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b112 .
 _:b112 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b112 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b112 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b112 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b113 .
 _:b113 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b113 <http://www.w3.org/2002/07/owl#hasValue> "Aa a" .
-_:b113 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b113 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b113 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b114 .
 _:b114 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b114 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b114 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b115 .
+_:b114 <http://www.w3.org/2002/07/owl#hasValue> "Dd d" .
+_:b114 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b115 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b115 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b115 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b115 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b116 .
 _:b116 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b116 <http://www.w3.org/2002/07/owl#hasValue> "Ff f" .
-_:b116 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b116 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b116 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b117 .
 _:b117 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b117 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b117 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b117 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b118 .
 _:b118 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b118 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b118 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b119 .
+_:b118 <http://www.w3.org/2002/07/owl#hasValue> "Gg g" .
+_:b118 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b119 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b119 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b119 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b119 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b120 .
 _:b12 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Gg" .
 _:b12 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Gg g" .
@@ -232,244 +226,234 @@ _:b12 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "g" .
 _:b12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b12 <http://www.w3.org/2000/01/rdf-schema#label> "Gg_g" .
 _:b120 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b120 <http://www.w3.org/2002/07/owl#hasValue> "Cc c" .
-_:b120 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b120 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b120 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b121 .
 _:b121 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b121 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b121 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b121 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b122 .
 _:b122 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b122 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b122 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b123 .
-_:b123 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b123 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b123 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b124 .
+_:b122 <http://www.w3.org/2002/07/owl#hasValue> "Ii i" .
+_:b122 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b123 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b123 <http://www.w3.org/2002/07/owl#intersectionOf> _:b175 .
 _:b124 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b124 <http://www.w3.org/2002/07/owl#hasValue> "Dd d" .
-_:b124 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b124 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b124 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b125 .
 _:b125 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b125 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b125 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b125 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b126 .
 _:b126 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b126 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b126 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b127 .
+_:b126 <http://www.w3.org/2002/07/owl#hasValue> "Aa a" .
+_:b126 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b127 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b127 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b127 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b127 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b128 .
 _:b128 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b128 <http://www.w3.org/2002/07/owl#hasValue> "Gg g" .
-_:b128 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b128 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b128 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b129 .
 _:b129 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b129 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
-_:b129 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b130 .
+_:b129 <http://www.w3.org/2002/07/owl#hasValue> "Gg g" .
+_:b129 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b13 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b13 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b14 .
 _:b130 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b130 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b130 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b130 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b131 .
 _:b131 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b131 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b131 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b131 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b132 .
 _:b132 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b132 <http://www.w3.org/2002/07/owl#hasValue> "Ii i" .
-_:b132 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b133 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b133 <http://www.w3.org/2002/07/owl#intersectionOf> _:b187 .
+_:b132 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b132 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b133 .
+_:b133 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b133 <http://www.w3.org/2002/07/owl#hasValue> "Cc c" .
+_:b133 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b134 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b134 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b134 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b134 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b135 .
 _:b135 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b135 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b135 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b135 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b136 .
 _:b136 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b136 <http://www.w3.org/2002/07/owl#hasValue> "Aa a" .
-_:b136 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b136 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b136 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b137 .
 _:b137 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b137 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b137 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b138 .
+_:b137 <http://www.w3.org/2002/07/owl#hasValue> "Dd d" .
+_:b137 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b138 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b138 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b138 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b138 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b139 .
 _:b139 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b139 <http://www.w3.org/2002/07/owl#hasValue> "Gg g" .
-_:b139 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b139 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b139 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b140 .
 _:b14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b14 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b14 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b15 .
 _:b140 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b140 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b140 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b140 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b141 .
 _:b141 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b141 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b141 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b142 .
+_:b141 <http://www.w3.org/2002/07/owl#hasValue> "Ff f" .
+_:b141 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b142 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b142 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b142 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b142 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b143 .
 _:b143 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b143 <http://www.w3.org/2002/07/owl#hasValue> "Cc c" .
-_:b143 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b143 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b143 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b144 .
 _:b144 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b144 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b144 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b144 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b145 .
 _:b145 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b145 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b145 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b146 .
-_:b146 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b146 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b146 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b147 .
+_:b145 <http://www.w3.org/2002/07/owl#hasValue> "Ii i" .
+_:b145 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b146 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b146 <http://www.w3.org/2002/07/owl#intersectionOf> _:b181 .
 _:b147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b147 <http://www.w3.org/2002/07/owl#hasValue> "Dd d" .
-_:b147 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b147 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b147 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b148 .
 _:b148 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b148 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b148 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b148 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b149 .
 _:b149 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b149 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b149 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b150 .
+_:b149 <http://www.w3.org/2002/07/owl#hasValue> "Aa a" .
+_:b149 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b15 <http://www.w3.org/2002/07/owl#hasValue> "Gg g" .
 _:b15 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b150 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b150 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b150 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b150 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b151 .
 _:b151 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b151 <http://www.w3.org/2002/07/owl#hasValue> "Ff f" .
-_:b151 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b151 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b151 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b152 .
 _:b152 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b152 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
-_:b152 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b153 .
+_:b152 <http://www.w3.org/2002/07/owl#hasValue> "Ii i" .
+_:b152 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b153 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b153 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b153 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b153 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b154 .
 _:b154 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b154 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b154 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b154 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b155 .
 _:b155 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b155 <http://www.w3.org/2002/07/owl#hasValue> "Ii i" .
-_:b155 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b156 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b156 <http://www.w3.org/2002/07/owl#intersectionOf> _:b193 .
+_:b155 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b155 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b156 .
+_:b156 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b156 <http://www.w3.org/2002/07/owl#hasValue> "Cc c" .
+_:b156 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b157 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b157 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b157 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b157 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b158 .
 _:b158 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b158 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b158 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b158 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b159 .
 _:b159 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b159 <http://www.w3.org/2002/07/owl#hasValue> "Aa a" .
-_:b159 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b159 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b159 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b160 .
 _:b16 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b17 .
 _:b16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b16 <http://www.w3.org/2000/01/rdf-schema#label> "Ff_f" .
 _:b160 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b160 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b160 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b161 .
+_:b160 <http://www.w3.org/2002/07/owl#hasValue> "Dd d" .
+_:b160 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b161 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b161 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b161 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b161 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b162 .
 _:b162 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b162 <http://www.w3.org/2002/07/owl#hasValue> "Ii i" .
-_:b162 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b162 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b162 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b163 .
 _:b163 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b163 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b163 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b163 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b164 .
 _:b164 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b164 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b164 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b165 .
+_:b164 <http://www.w3.org/2002/07/owl#hasValue> "Ff f" .
+_:b164 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b165 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b165 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b165 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b165 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b166 .
 _:b166 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b166 <http://www.w3.org/2002/07/owl#hasValue> "Cc c" .
-_:b166 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b166 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b166 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b167 .
 _:b167 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b167 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b167 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b167 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b168 .
 _:b168 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b168 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b168 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b169 .
-_:b169 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b169 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b169 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b170 .
+_:b168 <http://www.w3.org/2002/07/owl#hasValue> "Gg g" .
+_:b168 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b169 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b101 .
+_:b169 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b170 .
 _:b17 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Ff" .
 _:b17 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Ff f" .
 _:b17 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "f" .
 _:b17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b17 <http://www.w3.org/2000/01/rdf-schema#label> "Ff_f" .
-_:b170 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b170 <http://www.w3.org/2002/07/owl#hasValue> "Dd d" .
-_:b170 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b171 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b171 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
-_:b171 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b172 .
-_:b172 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b172 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b172 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b173 .
-_:b173 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b173 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b173 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b174 .
-_:b174 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b174 <http://www.w3.org/2002/07/owl#hasValue> "Ff f" .
-_:b174 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b175 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b175 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
-_:b175 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b176 .
-_:b176 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b176 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b176 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b177 .
-_:b177 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b177 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b177 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b178 .
-_:b178 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b178 <http://www.w3.org/2002/07/owl#hasValue> "Gg g" .
-_:b178 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b179 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b180 .
-_:b179 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
+_:b170 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b104 .
+_:b170 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b171 .
+_:b171 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b107 .
+_:b171 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b172 .
+_:b172 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b111 .
+_:b172 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b173 .
+_:b173 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b115 .
+_:b173 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b174 .
+_:b174 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b119 .
+_:b174 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b175 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b124 .
+_:b175 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b176 .
+_:b176 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b127 .
+_:b176 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b177 .
+_:b177 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b130 .
+_:b177 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b178 .
+_:b178 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b134 .
+_:b178 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b179 .
+_:b179 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b138 .
+_:b179 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b180 .
 _:b18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b18 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b18 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b19 .
-_:b180 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Aa a" .
-_:b180 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b181 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b111 .
+_:b180 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b142 .
+_:b180 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b181 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b147 .
 _:b181 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b182 .
-_:b182 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b114 .
+_:b182 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b150 .
 _:b182 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b183 .
-_:b183 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b117 .
+_:b183 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b153 .
 _:b183 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b184 .
-_:b184 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b121 .
+_:b184 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b157 .
 _:b184 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b185 .
-_:b185 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b125 .
+_:b185 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b161 .
 _:b185 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b186 .
-_:b186 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b129 .
+_:b186 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b165 .
 _:b186 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b187 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b134 .
+_:b187 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.obolibrary.org/obo/OBI_0302910> .
 _:b187 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b188 .
-_:b188 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b137 .
-_:b188 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b189 .
-_:b189 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b140 .
+_:b188 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b43 .
+_:b188 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b189 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b55 .
 _:b189 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b190 .
 _:b19 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b19 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b19 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b20 .
-_:b190 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b144 .
+_:b190 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b58 .
 _:b190 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b191 .
-_:b191 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b148 .
+_:b191 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b61 .
 _:b191 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b192 .
-_:b192 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b152 .
-_:b192 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b193 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b157 .
+_:b192 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b65 .
+_:b192 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b193 .
+_:b193 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b69 .
 _:b193 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b194 .
-_:b194 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b160 .
-_:b194 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b195 .
-_:b195 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b163 .
+_:b194 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b73 .
+_:b194 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:b195 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b78 .
 _:b195 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b196 .
-_:b196 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b167 .
+_:b196 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b81 .
 _:b196 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b197 .
-_:b197 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b171 .
+_:b197 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b84 .
 _:b197 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b198 .
-_:b198 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b175 .
-_:b198 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b199 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://purl.obolibrary.org/obo/OBI_0302910> .
+_:b198 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b88 .
+_:b198 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b199 .
+_:b199 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b92 .
 _:b199 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b200 .
 _:b2 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Ii" .
 _:b2 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Ii i" .
@@ -479,35 +463,11 @@ _:b2 <http://www.w3.org/2000/01/rdf-schema#label> "Ii_i" .
 _:b20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b20 <http://www.w3.org/2002/07/owl#hasValue> "Ff f" .
 _:b20 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b200 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b43 .
+_:b200 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b96 .
 _:b200 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b201 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b65 .
-_:b201 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b202 .
-_:b202 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b68 .
-_:b202 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b203 .
-_:b203 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b71 .
-_:b203 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b204 .
-_:b204 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b75 .
-_:b204 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b205 .
-_:b205 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b79 .
-_:b205 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b206 .
-_:b206 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b83 .
-_:b206 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:b207 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b88 .
-_:b207 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b208 .
-_:b208 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b91 .
-_:b208 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b209 .
-_:b209 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b94 .
-_:b209 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b210 .
 _:b21 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b22 .
 _:b21 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b21 <http://www.w3.org/2000/01/rdf-schema#label> "Ee_e" .
-_:b210 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b98 .
-_:b210 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b211 .
-_:b211 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b102 .
-_:b211 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b212 .
-_:b212 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b106 .
-_:b212 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:b22 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Ee" .
 _:b22 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Ee e" .
 _:b22 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "e" .
@@ -581,7 +541,7 @@ _:b41 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/
 _:b41 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/OBI_0000312> .
 _:b41 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b42 .
 _:b42 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b42 <http://www.w3.org/2002/07/owl#intersectionOf> _:b199 .
+_:b42 <http://www.w3.org/2002/07/owl#intersectionOf> _:b187 .
 _:b43 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b43 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/OBI_0000293> .
 _:b43 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://example.org/phyx.js/example#phyloref0> .
@@ -622,45 +582,55 @@ _:b52 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b53 .
 _:b53 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b53 <http://www.w3.org/2002/07/owl#hasValue> "Aa a" .
 _:b53 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b54 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b55 .
-_:b54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b55 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Cc c" .
-_:b55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b56 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b57 .
-_:b56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b57 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Dd d" .
-_:b57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b58 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b59 .
-_:b58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b59 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Ff f" .
-_:b59 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
+_:b54 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b54 <http://www.w3.org/2002/07/owl#intersectionOf> _:b189 .
+_:b55 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b55 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b55 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b56 .
+_:b56 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b56 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b56 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b57 .
+_:b57 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b57 <http://www.w3.org/2002/07/owl#hasValue> "Aa a" .
+_:b57 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b58 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b58 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b58 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b59 .
+_:b59 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b59 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b59 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b60 .
 _:b6 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b7 .
 _:b6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
 _:b6 <http://www.w3.org/2000/01/rdf-schema#label> "Hh_h" .
-_:b60 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b61 .
-_:b60 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b61 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Gg g" .
-_:b61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b62 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b63 .
-_:b62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b63 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Ii i" .
-_:b63 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b64 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b64 <http://www.w3.org/2002/07/owl#intersectionOf> _:b201 .
+_:b60 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b60 <http://www.w3.org/2002/07/owl#hasValue> "Cc c" .
+_:b60 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b61 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b61 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b61 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b62 .
+_:b62 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b62 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b62 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b63 .
+_:b63 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b63 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b63 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b64 .
+_:b64 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b64 <http://www.w3.org/2002/07/owl#hasValue> "Dd d" .
+_:b64 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b65 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b65 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b65 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b65 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b66 .
 _:b66 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b66 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b66 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b66 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b67 .
 _:b67 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b67 <http://www.w3.org/2002/07/owl#hasValue> "Aa a" .
-_:b67 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b67 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b67 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b68 .
 _:b68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b68 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b68 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b69 .
+_:b68 <http://www.w3.org/2002/07/owl#hasValue> "Ff f" .
+_:b68 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b69 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b69 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b69 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b69 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b70 .
 _:b7 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Hh" .
 _:b7 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Hh h" .
@@ -668,97 +638,97 @@ _:b7 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "h" .
 _:b7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
 _:b7 <http://www.w3.org/2000/01/rdf-schema#label> "Hh_h" .
 _:b70 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b70 <http://www.w3.org/2002/07/owl#hasValue> "Cc c" .
-_:b70 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b70 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b70 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b71 .
 _:b71 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b71 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b71 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b71 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b72 .
 _:b72 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b72 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b72 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b73 .
+_:b72 <http://www.w3.org/2002/07/owl#hasValue> "Gg g" .
+_:b72 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b73 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b73 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b73 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b73 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b74 .
 _:b74 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b74 <http://www.w3.org/2002/07/owl#hasValue> "Dd d" .
-_:b74 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b74 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b74 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b75 .
 _:b75 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b75 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b75 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b75 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b76 .
 _:b76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b76 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b76 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b77 .
-_:b77 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b77 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
-_:b77 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b78 .
+_:b76 <http://www.w3.org/2002/07/owl#hasValue> "Ii i" .
+_:b76 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b77 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:b77 <http://www.w3.org/2002/07/owl#intersectionOf> _:b195 .
 _:b78 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b78 <http://www.w3.org/2002/07/owl#hasValue> "Ff f" .
-_:b78 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b78 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b78 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b79 .
 _:b79 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b79 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b79 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b79 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b80 .
 _:b8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b8 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000187> .
 _:b8 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b9 .
 _:b80 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b80 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b80 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b81 .
+_:b80 <http://www.w3.org/2002/07/owl#hasValue> "Aa a" .
+_:b80 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b81 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b81 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b81 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b81 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b82 .
 _:b82 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b82 <http://www.w3.org/2002/07/owl#hasValue> "Gg g" .
-_:b82 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b82 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b82 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b83 .
 _:b83 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b83 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
-_:b83 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b84 .
+_:b83 <http://www.w3.org/2002/07/owl#hasValue> "Dd d" .
+_:b83 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b84 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b84 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b84 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b84 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b85 .
 _:b85 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b85 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b85 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b85 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b86 .
 _:b86 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b86 <http://www.w3.org/2002/07/owl#hasValue> "Ii i" .
-_:b86 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
-_:b87 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:b87 <http://www.w3.org/2002/07/owl#intersectionOf> _:b207 .
+_:b86 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b86 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b87 .
+_:b87 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:b87 <http://www.w3.org/2002/07/owl#hasValue> "Cc c" .
+_:b87 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b88 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b88 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#includes_TU> .
+_:b88 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b88 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b89 .
 _:b89 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b89 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b89 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
 _:b89 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b90 .
 _:b9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b9 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b9 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b10 .
 _:b90 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b90 <http://www.w3.org/2002/07/owl#hasValue> "Aa a" .
-_:b90 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b90 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b90 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b91 .
 _:b91 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b91 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b91 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b92 .
+_:b91 <http://www.w3.org/2002/07/owl#hasValue> "Ff f" .
+_:b91 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b92 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b92 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b92 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b92 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b93 .
 _:b93 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b93 <http://www.w3.org/2002/07/owl#hasValue> "Dd d" .
-_:b93 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b93 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b93 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b94 .
 _:b94 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b94 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b94 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b94 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b95 .
 _:b95 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b95 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b95 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b96 .
+_:b95 <http://www.w3.org/2002/07/owl#hasValue> "Gg g" .
+_:b95 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
 _:b96 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b96 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
+_:b96 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
 _:b96 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b97 .
 _:b97 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b97 <http://www.w3.org/2002/07/owl#hasValue> "Cc c" .
-_:b97 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
+_:b97 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
+_:b97 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b98 .
 _:b98 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b98 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.obolibrary.org/obo/CDAO_0000144> .
+_:b98 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> .
 _:b98 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b99 .
 _:b99 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
-_:b99 <http://www.w3.org/2002/07/owl#onProperty> <http://ontology.phyloref.org/phyloref.owl#excludes_TU> .
-_:b99 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b100 .
+_:b99 <http://www.w3.org/2002/07/owl#hasValue> "Ii i" .
+_:b99 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> .
