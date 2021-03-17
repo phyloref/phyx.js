@@ -8,7 +8,7 @@
     "phyx2owl": "bin/phyx2owl.js"
   },
   "scripts": {
-    "lint": "eslint \"src/**/*.js\" \"test/**/*.js\"",
+    "lint": "eslint \"src/**/*.js\" \"test/**/*.js\" \"**/*.json\"",
     "pretest": "npm run lint",
     "test": "mocha --recursive",
     "docs": "esdoc",
