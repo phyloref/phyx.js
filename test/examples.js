@@ -69,7 +69,7 @@ describe('PhyxWrapper', function () {
         it('should be able to convertible to an OWL Ontology', function () {
           this.timeout(10000);
           jsonld = new phyx.PhyxWrapper(json)
-            .asOWLOntology('http://example.org/phyx.js/example#');
+            .asJSONLD('http://example.org/phyx.js/example#');
           if (REPLACE_EXISTING) {
             fs.writeFileSync(
               jsonldFilename,

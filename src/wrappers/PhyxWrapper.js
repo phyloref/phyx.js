@@ -1,6 +1,9 @@
 /** Helper methods from lodash. */
 const { has, cloneDeep, uniq } = require('lodash');
 
+/** For NQuads export. */
+const JSONLD = require('jsonld');
+
 const owlterms = require('../utils/owlterms');
 
 const { PhylorefWrapper } = require('./PhylorefWrapper');
@@ -60,7 +63,7 @@ class PhyxWrapper {
    *    prepending them with the baseIRI.
    * @return {Object} This Phyx document as an OWL ontology as a JSON-LD object.
    */
-  asOWLOntology(baseIRI = '') {
+  asJSONLD(baseIRI = '') {
     const jsonld = cloneDeep(this.phyx);
 
     // Some helper methods for generating base IRIs for phylorefs and phylogenies.
@@ -235,6 +238,24 @@ class PhyxWrapper {
     }
 
     return jsonld;
+  }
+
+  /**
+   * Generate an executable ontology from this Phyx document as N-Quads. Under the
+   * hood, we generate an OWL/JSON-LD representation of this Phyx document, and then
+   * convert it into N-Quads so that OWLAPI-supporting tools can directly consume it.
+   *
+   * @param {string} [baseIRI=""] - The base IRI to use when generating this Phyx document.
+   *    This should include a trailing '#' or '/'. Use '' to indicate that relative IDs
+   *    should be generated in the produced ontology (e.g. '#phylogeny1'). Note that if a
+   *    baseIRI is provided, then relative IDs already in the Phyx file (identified by an
+   *    initial '#') will be turned into absolute IDs by removing the initial `#` and
+   *    prepending them with the baseIRI.
+   * @return {Promise[string]} A Promise to return this Phyx document as a string that can
+   *    be written to an N-Quads file.
+   */
+  asNQuads(baseIRI = '') {
+    return JSONLD.toRDF(this.asJSONLD(baseIRI), { format: 'application/n-quads' });
   }
 }
 
