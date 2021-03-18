@@ -748,7 +748,7 @@ class PhylorefWrapper {
       //  2. We need to set each of these component classes to be a subclass of
       //     this phyloreference so that it can include instances from each of the
       //     logical expressions.
-      logicalExpressions.forEach(classExpr => this.createComponentClass(
+      phylorefAsJSONLD.subClasses = logicalExpressions.map(classExpr => this.createComponentClass(
         phylorefAsJSONLD,
         internalSpecifiers,
         externalSpecifiers,
