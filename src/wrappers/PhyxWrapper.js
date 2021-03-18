@@ -259,7 +259,7 @@ class PhyxWrapper {
    * @return {Promise[string]} A Promise to return this Phyx document as a string that can
    *    be written to an N-Quads file.
    */
-  asNQuads(baseIRI = '', filePath = undefined) {
+  toRDF(baseIRI = '', filePath = undefined) {
     const owlJSONLD = this.asJSONLD(baseIRI);
 
     // For the purposes of testing, we are sometimes given a relative path to `@context`,

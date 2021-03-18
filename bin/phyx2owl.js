@@ -107,7 +107,7 @@ function convertFileToOWL(filename, argOutputFilename = "") {
 
     // Convert the Phyx file into JSON-LD.
     const wrappedPhyx = new phyx.PhyxWrapper(phyxContent);
-    wrappedPhyx.asNQuads(argv.baseIri, path.dirname(filename))
+    wrappedPhyx.toRDF(argv.baseIri, path.dirname(filename))
       .then(nquads => {
         fs.writeFileSync(
           outputFilename,

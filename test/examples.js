@@ -87,7 +87,7 @@ describe('PhyxWrapper', function () {
           this.timeout(10000);
 
           return new phyx.PhyxWrapper(json)
-            .asNQuads('http://example.org/phyx.js/example#', path.resolve(__dirname, 'examples', 'correct'))
+            .toRDF('http://example.org/phyx.js/example#', path.resolve(__dirname, 'examples', 'correct'))
             .then((rdf) => {
               nq = rdf;
               if (REPLACE_EXISTING) fs.writeFileSync(nqFilename, nq);
