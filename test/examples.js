@@ -5,7 +5,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const JSONLD = require('jsonld');
 const chai = require('chai');
 const Ajv = require('ajv');
 
@@ -87,17 +86,13 @@ describe('PhyxWrapper', function () {
         it('should be convertible to n-quads', function () {
           this.timeout(10000);
 
-          // JSON-LD readers don't usually handle relative @context easily, so
-          // instead let's replace the entire @context with the local context file.
-          jsonld['@context'] = JSON.parse(fs.readFileSync(
-            path.resolve(__dirname, 'examples', 'correct', jsonld['@context'])
-          ));
-
-          return JSONLD.toRDF(jsonld, { format: 'application/n-quads' }).then((rdf) => {
-            nq = rdf;
-            if (REPLACE_EXISTING) fs.writeFileSync(nqFilename, nq);
-            expect(nq).to.be.a('string');
-          });
+          return new phyx.PhyxWrapper(json)
+            .asNQuads('http://example.org/phyx.js/example#', path.resolve(__dirname, 'examples', 'correct'))
+            .then((rdf) => {
+              nq = rdf;
+              if (REPLACE_EXISTING) fs.writeFileSync(nqFilename, nq);
+              expect(nq).to.be.a('string');
+            });
         });
 
         it('should generate the same n-quads ontology as it generated earlier', function () {
