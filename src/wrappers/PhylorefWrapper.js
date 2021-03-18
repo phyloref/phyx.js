@@ -408,15 +408,15 @@ class PhylorefWrapper {
 
     // TODO We need to replace this with an actual object-based comparison,
     // rather than trusting the labels to tell us everything.
-    if (reusePrevious && has(PhylorefWrapper.componentClassesByLabel, componentClassLabel)) {
+    if (reusePrevious && has(this.componentClassesByLabel, componentClassLabel)) {
       // If we see the same label again, return the previously defined component class.
-      return { '@id': PhylorefWrapper.componentClassesByLabel[componentClassLabel]['@id'] };
+      return { '@id': this.componentClassesByLabel[componentClassLabel]['@id'] };
     }
 
     // Create a new component class for this set of internal and external specifiers.
-    PhylorefWrapper.componentClassCount += 1;
+    this.componentClassCount += 1;
     const componentClass = {};
-    componentClass['@id'] = `${jsonld['@id']}_component${PhylorefWrapper.componentClassCount}`;
+    componentClass['@id'] = `${jsonld['@id']}_component${this.componentClassCount}`;
     // process.stderr.write(`Creating new componentClass with id: ${componentClass['@id']}`);
 
     componentClass['@type'] = 'owl:Class';
@@ -431,7 +431,8 @@ class PhylorefWrapper {
       });
     }
 
-    PhylorefWrapper.componentClassesByLabel[componentClassLabel] = componentClass;
+    // Save it in the cache for later usage.
+    this.componentClassesByLabel[componentClassLabel] = componentClass;
 
     // The first time we create a componentClass, we include it into the logical
     // expression directly. On subsequent calls, we'll only return the `@id`
@@ -635,9 +636,8 @@ class PhylorefWrapper {
 
     // We might need to make component classes.
     // So we reset our component class counts and records.
-    PhylorefWrapper.componentClassCount = 0;
-    PhylorefWrapper.componentClassesByLabel = {};
-    phylorefAsJSONLD.hasComponentClass = [];
+    this.componentClassCount = 0;
+    this.componentClassesByLabel = {};
 
     // The type of this phyloreference.
     let calculatedPhylorefType;

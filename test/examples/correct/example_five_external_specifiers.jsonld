@@ -592,7 +592,7 @@
       ],
       "@id": "http://example.org/phyx.js/example#phyloref0",
       "@type": "owl:Class",
-      "hasComponentClass": [
+      "subClasses": [
         {
           "@id": "http://example.org/phyx.js/example#phyloref0_component1",
           "@type": "owl:Class",
