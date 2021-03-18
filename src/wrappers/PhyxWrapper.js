@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 /** Helper methods from lodash. */
 const { has, cloneDeep, uniq } = require('lodash');
 
@@ -251,11 +254,24 @@ class PhyxWrapper {
    *    baseIRI is provided, then relative IDs already in the Phyx file (identified by an
    *    initial '#') will be turned into absolute IDs by removing the initial `#` and
    *    prepending them with the baseIRI.
+   * @param {string} [filePath=undefined] - The path of the Phyx file being converted.
+   *    Used only if the `@context` of the file is a relative path.
    * @return {Promise[string]} A Promise to return this Phyx document as a string that can
    *    be written to an N-Quads file.
    */
-  asNQuads(baseIRI = '') {
-    return JSONLD.toRDF(this.asJSONLD(baseIRI), { format: 'application/n-quads' });
+  asNQuads(baseIRI = '', filePath = undefined) {
+    const owlJSONLD = this.asJSONLD(baseIRI);
+
+    // For the purposes of testing, we are sometimes given a relative path to `@context`,
+    // but the JSONLD package does not support this. Instead, we'll import the contents
+    // of the relative path on the fly.
+    if (filePath && has(owlJSONLD, '@context') && owlJSONLD['@context'].startsWith('.')) {
+      owlJSONLD['@context'] = JSON.parse(fs.readFileSync(
+        path.resolve(filePath, owlJSONLD['@context'])
+      ));
+    }
+
+    return JSONLD.toRDF(owlJSONLD, { format: 'application/n-quads' });
   }
 }
 
