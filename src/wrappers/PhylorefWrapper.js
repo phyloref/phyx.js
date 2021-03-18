@@ -431,10 +431,12 @@ class PhylorefWrapper {
       });
     }
 
-    jsonld.hasComponentClass.push(componentClass);
     PhylorefWrapper.componentClassesByLabel[componentClassLabel] = componentClass;
 
-    return { '@id': componentClass['@id'] };
+    // The first time we create a componentClass, we include it into the logical
+    // expression directly. On subsequent calls, we'll only return the `@id`
+    // (see above).
+    return componentClass;
   }
 
   getIncludesRestrictionForTU(tu) {
