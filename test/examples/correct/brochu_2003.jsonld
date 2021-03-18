@@ -1632,7 +1632,6 @@
       "externalSpecifiers": [],
       "@id": "http://example.org/phyx.js/example#phyloref0",
       "@type": "owl:Class",
-      "hasComponentClass": [],
       "equivalentClass": {
         "@type": "owl:Restriction",
         "onProperty": "obo:CDAO_0000149",
@@ -1775,7 +1774,6 @@
       },
       "@id": "http://example.org/phyx.js/example#phyloref1",
       "@type": "owl:Class",
-      "hasComponentClass": [],
       "equivalentClass": {
         "@type": "owl:Class",
         "intersectionOf": [
@@ -1913,7 +1911,6 @@
       },
       "@id": "http://example.org/phyx.js/example#phyloref2",
       "@type": "owl:Class",
-      "hasComponentClass": [],
       "equivalentClass": {
         "@type": "owl:Class",
         "intersectionOf": [
@@ -2024,7 +2021,7 @@
       },
       "@id": "http://example.org/phyx.js/example#phyloref3",
       "@type": "owl:Class",
-      "hasComponentClass": [
+      "subClasses": [
         {
           "@id": "http://example.org/phyx.js/example#phyloref3_component1",
           "@type": "owl:Class",
@@ -2305,7 +2302,7 @@
       "externalSpecifiers": [],
       "@id": "http://example.org/phyx.js/example#phyloref4",
       "@type": "owl:Class",
-      "hasComponentClass": [
+      "subClasses": [
         {
           "@id": "http://example.org/phyx.js/example#phyloref4_component1",
           "@type": "owl:Class",
@@ -3362,7 +3359,6 @@
       },
       "@id": "http://example.org/phyx.js/example#phyloref5",
       "@type": "owl:Class",
-      "hasComponentClass": [],
       "equivalentClass": {
         "@type": "owl:Class",
         "intersectionOf": [

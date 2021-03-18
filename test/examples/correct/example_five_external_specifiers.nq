@@ -114,11 +114,6 @@
 <http://example.org/phyx.js/example#phylogeny0_node9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> _:b23 .
 <http://example.org/phyx.js/example#phylogeny0_node9> <http://www.w3.org/2000/01/rdf-schema#label> "Ee_e" .
 <http://example.org/phyx.js/example#phyloref0> <http://purl.obolibrary.org/obo/IAO_0000115> "Includes A_a, excludes C_c, D_d, F_f, G_g and I_i." .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component1> .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component2> .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component3> .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component4> .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#has_component_class> <http://example.org/phyx.js/example#phyloref0_component5> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> _:b0 .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#label> "Expected" .
