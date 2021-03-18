@@ -19,6 +19,10 @@
     "phyloref": "http://ontology.phyloref.org/phyloref.owl#",
     "opentree": "http://purl.org/opentree/nexson#",
 
+    "subClasses": {
+      "@reverse": "rdfs:subClassOf"
+    },
+
     "label": {
       "@id": "rdfs:label",
       "@type": "xsd:string"
@@ -36,21 +40,6 @@
     "definition": {
       "@id": "obo:IAO_0000115",
       "@type": "xsd:string"
-    },
-
-    "internalSpecifiers": {
-        "@id": "testcase:internal_specifier",
-        "@container": "@set"
-    },
-
-    "externalSpecifiers": {
-        "@id": "testcase:external_specifier",
-        "@container": "@set"
-    },
-
-    "hasComponentClass": {
-        "@id": "testcase:has_component_class",
-        "@container": "@set"
     },
 
     "hasName": {
@@ -174,11 +163,6 @@
     "phylorefs": {
         "@reverse": "rdfs:isDefinedBy",
         "@container": "@set"
-    },
-
-    "malformedPhyloreference": {
-        "@id": "testcase:malformed_phyloreference",
-        "@type": "xsd:string"
     },
 
     "title": "dct:title",

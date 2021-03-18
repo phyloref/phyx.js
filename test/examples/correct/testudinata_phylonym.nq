@@ -1,7 +1,6 @@
 <http://example.org/phyx.js/example#phyloref0> <http://ontology.phyloref.org/phyloref.owl#apomorphy> _:b1 .
 <http://example.org/phyx.js/example#phyloref0> <http://purl.obolibrary.org/obo/IAO_0000115> "The apomorphy-based clade name, for which a complete turtle shell, as inherited by Testudo graeca Linnaeus 1758 is an apomorphy. A 'complete turtle shell' is herein defined as a composite structure consisting of a carapace with interlocking costals, neurals, peripherals, and a nuchal, together with the plastron comprising interlocking epi-, hyo-, meso- (lost in Testudo graeca), hypo-, xiphiplastra and an entoplastron." .
 <http://example.org/phyx.js/example#phyloref0> <http://purl.obolibrary.org/obo/IAO_0000119> _:b2 .
-<http://example.org/phyx.js/example#phyloref0> <http://vocab.phyloref.org/phyloref/testcase.owl#internal_specifier> _:b3 .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> _:b0 .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#label> "Testudinata" .
@@ -14,11 +13,3 @@ _:b1 <http://purl.obolibrary.org/obo/IAO_0000115> "A 'complete turtle shell' is 
 _:b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://semanticscience.org/resource/SIO_010056> .
 _:b2 <http://purl.org/dc/terms/bibliographicCitation> "W. G. Joyce et al (2020) Testudinata (#273) in Phylonyms: a companion to the PhyloCode [eds: K. de Queiroz and P. D. Cantino and J. A. Gauthier] CRC Press, Boca Raton, FL  ISBN: 9781138332935 pages: 1045--1048" .
 _:b2 <http://purl.org/dc/terms/title> "Testudinata (#273)" .
-_:b3 <http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName> _:b4 .
-_:b3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept> .
-_:b4 <http://rs.tdwg.org/ontology/voc/TaxonName#genusPart> "Testudo" .
-_:b4 <http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete> "Testudo graeca" .
-_:b4 <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> <http://rs.tdwg.org/ontology/voc/TaxonName#ICZN> .
-_:b4 <http://rs.tdwg.org/ontology/voc/TaxonName#specificEpithet> "graeca" .
-_:b4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName> .
-_:b4 <http://www.w3.org/2000/01/rdf-schema#label> "Testudo graeca Linnaeus 1758" .

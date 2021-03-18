@@ -4424,7 +4424,6 @@
       },
       "@id": "http://example.org/phyx.js/example#phyloref0",
       "@type": "owl:Class",
-      "hasComponentClass": [],
       "equivalentClass": {
         "@type": "owl:Class",
         "intersectionOf": [
@@ -4535,7 +4534,6 @@
       ],
       "@id": "http://example.org/phyx.js/example#phyloref1",
       "@type": "owl:Class",
-      "hasComponentClass": [],
       "equivalentClass": {
         "@type": "owl:Class",
         "intersectionOf": [

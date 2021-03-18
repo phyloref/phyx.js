@@ -1535,7 +1535,6 @@
       "externalSpecifiers": [],
       "@id": "http://example.org/phyx.js/example#phyloref0",
       "@type": "owl:Class",
-      "hasComponentClass": [],
       "equivalentClass": {
         "@type": "owl:Restriction",
         "onProperty": "obo:CDAO_0000149",
