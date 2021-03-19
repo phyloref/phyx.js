@@ -1,490 +1,518 @@
 {
-    "@context": "../../../docs/context/development/phyx.json",
-    "doi": "10.5281/zenodo.4562685",
-    "source": {
-      "authors": [{
+  "@context": "../../../docs/context/development/phyx.json",
+  "doi": "10.5281/zenodo.4562685",
+  "source": {
+    "authors": [
+      {
         "firstname": "Gaurav",
         "lastname": "Vaidya"
-      }],
-      "year": 2021,
-      "title": "Digital representation of some of the clade definitions in Brochu 2003 in the Phyloreference Exchange (Phyx) format",
-      "journal": {
-        "name": "Zenodo"
-      },
-      "identifier": [{
+      }
+    ],
+    "year": 2021,
+    "title": "Digital representation of some of the clade definitions in Brochu 2003 in the Phyloreference Exchange (Phyx) format",
+    "journal": {
+      "name": "Zenodo"
+    },
+    "identifier": [
+      {
         "type": "doi",
         "id": "10.5281/zenodo.4562685"
-      }]
+      }
+    ]
+  },
+  "phylogenies": [
+    {
+      "newick": "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;",
+      "label": "Fig 1 from Brochu 2003",
+      "@id": "#phylogeny0",
+      "source": {
+        "type": "article",
+        "title": "Phylogenetic approaches toward crocodylian history",
+        "authors": [
+          {
+            "name": "Christopher A. Brochu",
+            "alternate": [
+              "Brochu, Christopher A."
+            ],
+            "firstname": "Christopher",
+            "middlename": "A.",
+            "lastname": "Brochu"
+          }
+        ],
+        "year": 2003,
+        "figure": "1",
+        "identifier": [
+          {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "link": [
+          {
+            "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "journal": {
+          "name": "Annual Review of Earth and Planetary Sciences",
+          "volume": "31",
+          "pages": "357--397",
+          "identifier": [
+            {
+              "type": "eISSN",
+              "id": "1545-4495"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "phylorefs": [
+    {
+      "label": "Alligatoridae",
+      "scientificNameAuthorship": {
+        "bibliographicCitation": "(Cuvier 1807)"
+      },
+      "phylorefType": "phyloref:PhyloreferenceUsingMinimumClade",
+      "definition": "Alligatoridae (Cuvier 1807).\n\nLast common ancestor of Alligator mississippiensis and Caiman crocodilus and all of its descendents.",
+      "definitionSource": {
+        "type": "article",
+        "title": "Phylogenetic approaches toward crocodylian history",
+        "authors": [
+          {
+            "name": "Christopher A. Brochu",
+            "alternate": [
+              "Brochu, Christopher A."
+            ],
+            "firstname": "Christopher",
+            "middlename": "A.",
+            "lastname": "Brochu"
+          }
+        ],
+        "year": 2003,
+        "figure": "1",
+        "identifier": [
+          {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "link": [
+          {
+            "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "journal": {
+          "name": "Annual Review of Earth and Planetary Sciences",
+          "volume": "31",
+          "pages": "357--397",
+          "identifier": [
+            {
+              "type": "eISSN",
+              "id": "1545-4495"
+            }
+          ]
+        }
+      },
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Caiman crocodilus",
+            "nameComplete": "Caiman crocodilus",
+            "genusPart": "Caiman",
+            "specificEpithet": "crocodilus"
+          }
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis",
+            "genusPart": "Alligator",
+            "specificEpithet": "mississippiensis"
+          },
+          "label": "Alligator mississippiensis"
+        }
+      ],
+      "externalSpecifiers": []
     },
-    "phylogenies": [
-        {
-            "newick": "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;",
-            "label": "Fig 1 from Brochu 2003",
-            "@id": "#phylogeny0",
-            "source": {
-              "type": "article",
-              "title": "Phylogenetic approaches toward crocodylian history",
-              "authors": [
-                {
-                  "name": "Christopher A. Brochu",
-                  "alternate": [ "Brochu, Christopher A." ],
-                  "firstname": "Christopher",
-                  "middlename": "A.",
-                  "lastname": "Brochu"
-                }
-              ],
-              "year": 2003,
-              "figure": "1",
-              "identifier": [
-                {
-                    "type": "doi",
-                    "id": "10.1146/annurev.earth.31.100901.141308"
-                }
-              ],
-              "link": [
-                {
-                  "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
-                }
-              ],
-              "journal": {
-                "name": "Annual Review of Earth and Planetary Sciences",
-                "volume": "31",
-                "pages": "357--397",
-                "identifier": [{
-                  "type": "eISSN",
-                  "id": "1545-4495"
-                }]
-              }
+    {
+      "label": "Alligatorinae",
+      "scientificNameAuthorship": {
+        "bibliographicCitation": "(Kälin 1940)"
+      },
+      "phylorefType": "phyloref:PhyloreferenceUsingMaximumClade",
+      "definition": "Alligatorinae (Kälin 1940).\n\nAlligator mississippiensis and all crocodylians closer to it than to Caiman crocodilus.",
+      "definitionSource": {
+        "type": "article",
+        "title": "Phylogenetic approaches toward crocodylian history",
+        "authors": [
+          {
+            "name": "Christopher A. Brochu",
+            "alternate": [
+              "Brochu, Christopher A."
+            ],
+            "firstname": "Christopher",
+            "middlename": "A.",
+            "lastname": "Brochu"
+          }
+        ],
+        "year": 2003,
+        "figure": "1",
+        "identifier": [
+          {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "link": [
+          {
+            "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "journal": {
+          "name": "Annual Review of Earth and Planetary Sciences",
+          "volume": "31",
+          "pages": "357--397",
+          "identifier": [
+            {
+              "type": "eISSN",
+              "id": "1545-4495"
             }
+          ]
         }
-    ],
-    "phylorefs": [
+      },
+      "internalSpecifiers": [
         {
-            "label": "Alligatoridae",
-            "scientificNameAuthorship": {
-              "bibliographicCitation": "(Cuvier 1807)"
-            },
-            "phylorefType": "phyloref:PhyloreferenceUsingMinimumClade",
-            "definition": "Alligatoridae (Cuvier 1807).\n\nLast common ancestor of Alligator mississippiensis and Caiman crocodilus and all of its descendents.",
-            "definitionSource": {
-              "type": "article",
-              "title": "Phylogenetic approaches toward crocodylian history",
-              "authors": [
-                {
-                  "name": "Christopher A. Brochu",
-                  "alternate": [ "Brochu, Christopher A." ],
-                  "firstname": "Christopher",
-                  "middlename": "A.",
-                  "lastname": "Brochu"
-                }
-              ],
-              "year": 2003,
-              "figure": "1",
-              "identifier": [
-                {
-                    "type": "doi",
-                    "id": "10.1146/annurev.earth.31.100901.141308"
-                }
-              ],
-              "link": [
-                {
-                  "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
-                }
-              ],
-              "journal": {
-                "name": "Annual Review of Earth and Planetary Sciences",
-                "volume": "31",
-                "pages": "357--397",
-                "identifier": [{
-                  "type": "eISSN",
-                  "id": "1545-4495"
-                }]
-              }
-            },
-            "internalSpecifiers": [
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Caiman crocodilus",
-                        "nameComplete": "Caiman crocodilus",
-                        "genusPart": "Caiman",
-                        "specificEpithet": "crocodilus"
-                    }
-                },
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Alligator mississippiensis",
-                        "nameComplete": "Alligator mississippiensis",
-                        "genusPart": "Alligator",
-                        "specificEpithet": "mississippiensis"
-                    },
-                    "label": "Alligator mississippiensis"
-                }
-            ],
-            "externalSpecifiers": []
-        },
-        {
-            "label": "Alligatorinae",
-            "scientificNameAuthorship": {
-              "bibliographicCitation": "(Kälin 1940)"
-            },
-            "phylorefType": "phyloref:PhyloreferenceUsingMaximumClade",
-            "definition": "Alligatorinae (Kälin 1940).\n\nAlligator mississippiensis and all crocodylians closer to it than to Caiman crocodilus.",
-            "definitionSource": {
-              "type": "article",
-              "title": "Phylogenetic approaches toward crocodylian history",
-              "authors": [
-                {
-                  "name": "Christopher A. Brochu",
-                  "alternate": [ "Brochu, Christopher A." ],
-                  "firstname": "Christopher",
-                  "middlename": "A.",
-                  "lastname": "Brochu"
-                }
-              ],
-              "year": 2003,
-              "figure": "1",
-              "identifier": [
-                {
-                    "type": "doi",
-                    "id": "10.1146/annurev.earth.31.100901.141308"
-                }
-              ],
-              "link": [
-                {
-                  "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
-                }
-              ],
-              "journal": {
-                "name": "Annual Review of Earth and Planetary Sciences",
-                "volume": "31",
-                "pages": "357--397",
-                "identifier": [{
-                  "type": "eISSN",
-                  "id": "1545-4495"
-                }]
-              }
-            },
-            "internalSpecifiers": [
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Alligator mississippiensis",
-                        "nameComplete": "Alligator mississippiensis",
-                        "genusPart": "Alligator",
-                        "specificEpithet": "mississippiensis"
-                    }
-                }
-            ],
-            "externalSpecifiers": [
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Caiman crocodilus",
-                        "nameComplete": "Caiman crocodilus",
-                        "genusPart": "Caiman",
-                        "specificEpithet": "crocodilus"
-                    },
-                    "label": "Caiman crocodilus"
-                }
-            ],
-            "expectedResolution": {
-                "#phylogeny0": {
-                    "nodeLabel": "Alligator mississippiensis"
-                }
-            }
-        },
-        {
-            "label": "Caimaninae",
-            "scientificNameAuthorship": {
-              "bibliographicCitation": "(Norell 1988)"
-            },
-            "phylorefType": "phyloref:PhyloreferenceUsingMaximumClade",
-            "definition": "Caimaninae (Norell 1988).\n\nCaiman crocodilus and all crocodylians closer to it than to Alligator mississippiensis.",
-            "definitionSource": {
-              "type": "article",
-              "title": "Phylogenetic approaches toward crocodylian history",
-              "authors": [
-                {
-                  "name": "Christopher A. Brochu",
-                  "alternate": [ "Brochu, Christopher A." ],
-                  "firstname": "Christopher",
-                  "middlename": "A.",
-                  "lastname": "Brochu"
-                }
-              ],
-              "year": 2003,
-              "figure": "1",
-              "identifier": [
-                {
-                    "type": "doi",
-                    "id": "10.1146/annurev.earth.31.100901.141308"
-                }
-              ],
-              "link": [
-                {
-                  "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
-                }
-              ],
-              "journal": {
-                "name": "Annual Review of Earth and Planetary Sciences",
-                "volume": "31",
-                "pages": "357--397",
-                "identifier": [{
-                  "type": "eISSN",
-                  "id": "1545-4495"
-                }]
-              }
-            },
-            "internalSpecifiers": [
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Caiman crocodilus",
-                        "nameComplete": "Caiman crocodilus",
-                        "genusPart": "Caiman",
-                        "specificEpithet": "crocodilus"
-                    }
-                }
-            ],
-            "externalSpecifiers": [
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Alligator mississippiensis",
-                        "nameComplete": "Alligator mississippiensis",
-                        "genusPart": "Alligator",
-                        "specificEpithet": "mississippiensis"
-                    }
-                }
-            ],
-            "expectedResolution": {
-                "#phylogeny0": {
-                    "nodeLabel": "Caiman crocodilus"
-                }
-            }
-        },
-        {
-            "label": "Crocodyloidea",
-            "scientificNameAuthorship": {
-              "bibliographicCitation": "(Fitzinger 1826)"
-            },
-            "phylorefType": "phyloref:PhyloreferenceUsingMaximumClade",
-            "definition": "Crocodyloidea (Fitzinger 1826).\n\nCrocodylus niloticus and all crocodylians closer to it than to Alligator mississippiensis or Gavialis gangeticus.",
-            "internalSpecifiers": [
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Crocodylus niloticus",
-                        "nameComplete": "Crocodylus niloticus",
-                        "genusPart": "Crocodylus",
-                        "specificEpithet": "niloticus"
-                    }
-                }
-            ],
-            "externalSpecifiers": [
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Alligator mississippiensis",
-                        "nameComplete": "Alligator mississippiensis",
-                        "genusPart": "Alligator",
-                        "specificEpithet": "mississippiensis"
-                    },
-                    "label": "Alligator mississippiensis"
-                },
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Gavialis gangeticus",
-                        "nameComplete": "Gavialis gangeticus",
-                        "genusPart": "Gavialis",
-                        "specificEpithet": "gangeticus"
-                    },
-                    "label": "Gavialis gangeticus"
-                }
-            ],
-            "expectedResolution": {
-                "#phylogeny0": {
-                    "nodeLabel": "Crocodylidae"
-                }
-            }
-        },
-        {
-            "label": "Crocodylidae",
-            "scientificNameAuthorship": {
-              "bibliographicCitation": "(Cuvier 1807)"
-            },
-            "phylorefType": "phyloref:PhyloreferenceUsingMinimumClade",
-            "definition": "Crocodylidae (Cuvier 1807). Definition dependent on phylogenetic context.\n\nLast common ancestor of Crocodylus niloticus, Osteolaemus tetraspis, and Tomistoma schlegelii and all of its descendents.",
-            "definitionSource": {
-              "type": "article",
-              "title": "Phylogenetic approaches toward crocodylian history",
-              "authors": [
-                {
-                  "name": "Christopher A. Brochu",
-                  "alternate": [ "Brochu, Christopher A." ],
-                  "firstname": "Christopher",
-                  "middlename": "A.",
-                  "lastname": "Brochu"
-                }
-              ],
-              "year": 2003,
-              "figure": "1",
-              "identifier": [
-                {
-                    "type": "doi",
-                    "id": "10.1146/annurev.earth.31.100901.141308"
-                }
-              ],
-              "link": [
-                {
-                  "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
-                }
-              ],
-              "journal": {
-                "name": "Annual Review of Earth and Planetary Sciences",
-                "volume": "31",
-                "pages": "357--397",
-                "identifier": [{
-                  "type": "eISSN",
-                  "id": "1545-4495"
-                }]
-              }
-            },
-            "internalSpecifiers": [
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Tomistoma schlegelii",
-                        "nameComplete": "Tomistoma schlegelii",
-                        "genusPart": "Tomistoma",
-                        "specificEpithet": "schlegelii"
-                    }
-                },
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Osteolaemus tetraspis",
-                        "nameComplete": "Osteolaemus tetraspis",
-                        "genusPart": "Osteolaemus",
-                        "specificEpithet": "tetraspis"
-                    },
-                    "label": "Osteolaemus tetraspis"
-                },
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Crocodylus niloticus",
-                        "nameComplete": "Crocodylus niloticus",
-                        "genusPart": "Crocodylus",
-                        "specificEpithet": "niloticus"
-                    },
-                    "label": "Crocodylus niloticus"
-                }
-            ],
-            "externalSpecifiers": []
-        },
-        {
-            "label": "Diplocynodontinae",
-            "scientificNameAuthorship": {
-              "bibliographicCitation": "(Brochu 1999)"
-            },
-            "phylorefType": "phyloref:PhyloreferenceUsingMaximumClade",
-            "definition": "Diplocynodontinae (Brochu 1999).\n\nDiplocynodon ratelii and all crocodylians closer to it than to Alligator mississippiensis.",
-            "definitionSource": {
-              "type": "article",
-              "title": "Phylogenetic approaches toward crocodylian history",
-              "authors": [
-                {
-                  "name": "Christopher A. Brochu",
-                  "alternate": [ "Brochu, Christopher A." ],
-                  "firstname": "Christopher",
-                  "middlename": "A.",
-                  "lastname": "Brochu"
-                }
-              ],
-              "year": 2003,
-              "figure": "1",
-              "identifier": [
-                {
-                    "type": "doi",
-                    "id": "10.1146/annurev.earth.31.100901.141308"
-                }
-              ],
-              "link": [
-                {
-                  "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
-                }
-              ],
-              "journal": {
-                "name": "Annual Review of Earth and Planetary Sciences",
-                "volume": "31",
-                "pages": "357--397",
-                "identifier": [{
-                  "type": "eISSN",
-                  "id": "1545-4495"
-                }]
-              }
-            },
-            "internalSpecifiers": [
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Diplocynodon ratelii",
-                        "nameComplete": "Diplocynodon ratelii",
-                        "genusPart": "Diplocynodon",
-                        "specificEpithet": "ratelii"
-                    }
-                }
-            ],
-            "externalSpecifiers": [
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
-                        "label": "Alligator mississippiensis",
-                        "nameComplete": "Alligator mississippiensis",
-                        "genusPart": "Alligator",
-                        "specificEpithet": "mississippiensis"
-                    }
-                }
-            ],
-            "expectedResolution": {
-                "#phylogeny0": {
-                    "nodeLabel": "Diplocynodon ratelii",
-                    "description": "Only representative of the Diplocynodontinae clade in this phylogeny."
-                }
-            }
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis",
+            "genusPart": "Alligator",
+            "specificEpithet": "mississippiensis"
+          }
         }
-    ],
-    "defaultNomenclaturalCodeIRI": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
+      ],
+      "externalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Caiman crocodilus",
+            "nameComplete": "Caiman crocodilus",
+            "genusPart": "Caiman",
+            "specificEpithet": "crocodilus"
+          },
+          "label": "Caiman crocodilus"
+        }
+      ],
+      "expectedResolution": {
+        "#phylogeny0": {
+          "nodeLabel": "Alligator mississippiensis"
+        }
+      }
+    },
+    {
+      "label": "Caimaninae",
+      "scientificNameAuthorship": {
+        "bibliographicCitation": "(Norell 1988)"
+      },
+      "phylorefType": "phyloref:PhyloreferenceUsingMaximumClade",
+      "definition": "Caimaninae (Norell 1988).\n\nCaiman crocodilus and all crocodylians closer to it than to Alligator mississippiensis.",
+      "definitionSource": {
+        "type": "article",
+        "title": "Phylogenetic approaches toward crocodylian history",
+        "authors": [
+          {
+            "name": "Christopher A. Brochu",
+            "alternate": [
+              "Brochu, Christopher A."
+            ],
+            "firstname": "Christopher",
+            "middlename": "A.",
+            "lastname": "Brochu"
+          }
+        ],
+        "year": 2003,
+        "figure": "1",
+        "identifier": [
+          {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "link": [
+          {
+            "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "journal": {
+          "name": "Annual Review of Earth and Planetary Sciences",
+          "volume": "31",
+          "pages": "357--397",
+          "identifier": [
+            {
+              "type": "eISSN",
+              "id": "1545-4495"
+            }
+          ]
+        }
+      },
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Caiman crocodilus",
+            "nameComplete": "Caiman crocodilus",
+            "genusPart": "Caiman",
+            "specificEpithet": "crocodilus"
+          }
+        }
+      ],
+      "externalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis",
+            "genusPart": "Alligator",
+            "specificEpithet": "mississippiensis"
+          }
+        }
+      ],
+      "expectedResolution": {
+        "#phylogeny0": {
+          "nodeLabel": "Caiman crocodilus"
+        }
+      }
+    },
+    {
+      "label": "Crocodyloidea",
+      "scientificNameAuthorship": {
+        "bibliographicCitation": "(Fitzinger 1826)"
+      },
+      "phylorefType": "phyloref:PhyloreferenceUsingMaximumClade",
+      "definition": "Crocodyloidea (Fitzinger 1826).\n\nCrocodylus niloticus and all crocodylians closer to it than to Alligator mississippiensis or Gavialis gangeticus.",
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Crocodylus niloticus",
+            "nameComplete": "Crocodylus niloticus",
+            "genusPart": "Crocodylus",
+            "specificEpithet": "niloticus"
+          }
+        }
+      ],
+      "externalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis",
+            "genusPart": "Alligator",
+            "specificEpithet": "mississippiensis"
+          },
+          "label": "Alligator mississippiensis"
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Gavialis gangeticus",
+            "nameComplete": "Gavialis gangeticus",
+            "genusPart": "Gavialis",
+            "specificEpithet": "gangeticus"
+          },
+          "label": "Gavialis gangeticus"
+        }
+      ],
+      "expectedResolution": {
+        "#phylogeny0": {
+          "nodeLabel": "Crocodylidae"
+        }
+      }
+    },
+    {
+      "label": "Crocodylidae",
+      "scientificNameAuthorship": {
+        "bibliographicCitation": "(Cuvier 1807)"
+      },
+      "phylorefType": "phyloref:PhyloreferenceUsingMinimumClade",
+      "definition": "Crocodylidae (Cuvier 1807). Definition dependent on phylogenetic context.\n\nLast common ancestor of Crocodylus niloticus, Osteolaemus tetraspis, and Tomistoma schlegelii and all of its descendents.",
+      "definitionSource": {
+        "type": "article",
+        "title": "Phylogenetic approaches toward crocodylian history",
+        "authors": [
+          {
+            "name": "Christopher A. Brochu",
+            "alternate": [
+              "Brochu, Christopher A."
+            ],
+            "firstname": "Christopher",
+            "middlename": "A.",
+            "lastname": "Brochu"
+          }
+        ],
+        "year": 2003,
+        "figure": "1",
+        "identifier": [
+          {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "link": [
+          {
+            "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "journal": {
+          "name": "Annual Review of Earth and Planetary Sciences",
+          "volume": "31",
+          "pages": "357--397",
+          "identifier": [
+            {
+              "type": "eISSN",
+              "id": "1545-4495"
+            }
+          ]
+        }
+      },
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Tomistoma schlegelii",
+            "nameComplete": "Tomistoma schlegelii",
+            "genusPart": "Tomistoma",
+            "specificEpithet": "schlegelii"
+          }
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Osteolaemus tetraspis",
+            "nameComplete": "Osteolaemus tetraspis",
+            "genusPart": "Osteolaemus",
+            "specificEpithet": "tetraspis"
+          },
+          "label": "Osteolaemus tetraspis"
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Crocodylus niloticus",
+            "nameComplete": "Crocodylus niloticus",
+            "genusPart": "Crocodylus",
+            "specificEpithet": "niloticus"
+          },
+          "label": "Crocodylus niloticus"
+        }
+      ],
+      "externalSpecifiers": []
+    },
+    {
+      "label": "Diplocynodontinae",
+      "scientificNameAuthorship": {
+        "bibliographicCitation": "(Brochu 1999)"
+      },
+      "phylorefType": "phyloref:PhyloreferenceUsingMaximumClade",
+      "definition": "Diplocynodontinae (Brochu 1999).\n\nDiplocynodon ratelii and all crocodylians closer to it than to Alligator mississippiensis.",
+      "definitionSource": {
+        "type": "article",
+        "title": "Phylogenetic approaches toward crocodylian history",
+        "authors": [
+          {
+            "name": "Christopher A. Brochu",
+            "alternate": [
+              "Brochu, Christopher A."
+            ],
+            "firstname": "Christopher",
+            "middlename": "A.",
+            "lastname": "Brochu"
+          }
+        ],
+        "year": 2003,
+        "figure": "1",
+        "identifier": [
+          {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "link": [
+          {
+            "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "journal": {
+          "name": "Annual Review of Earth and Planetary Sciences",
+          "volume": "31",
+          "pages": "357--397",
+          "identifier": [
+            {
+              "type": "eISSN",
+              "id": "1545-4495"
+            }
+          ]
+        }
+      },
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Diplocynodon ratelii",
+            "nameComplete": "Diplocynodon ratelii",
+            "genusPart": "Diplocynodon",
+            "specificEpithet": "ratelii"
+          }
+        }
+      ],
+      "externalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis",
+            "genusPart": "Alligator",
+            "specificEpithet": "mississippiensis"
+          }
+        }
+      ],
+      "expectedResolution": {
+        "#phylogeny0": {
+          "nodeLabel": "Diplocynodon ratelii",
+          "description": "Only representative of the Diplocynodontinae clade in this phylogeny."
+        }
+      }
+    }
+  ],
+  "defaultNomenclaturalCodeIRI": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN"
 }

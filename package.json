@@ -2,10 +2,26 @@
   "name": "@phyloref/phyx",
   "version": "0.2.1",
   "description": "Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files",
+  "keywords": [
+    "phylogenetics",
+    "phylogeny",
+    "phylogenetic definitions",
+    "clade definitions"
+  ],
+  "homepage": "https://github.com/phyloref/phyx.js#readme",
+  "bugs": {
+    "url": "https://github.com/phyloref/phyx.js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phyloref/phyx.js.git"
+  },
+  "license": "MIT",
+  "author": "Gaurav Vaidya <gaurav@ggvaidya.com>",
   "main": "src/index.js",
   "bin": {
-    "resolve": "bin/resolve.js",
-    "phyx2owl": "bin/phyx2owl.js"
+    "phyx2owl": "bin/phyx2owl.js",
+    "resolve": "bin/resolve.js"
   },
   "scripts": {
     "lint": "eslint \"src/**/*.js\" \"test/**/*.js\" \"**/*.json\"",
@@ -16,22 +32,6 @@
     "generate-every-topology": "every-topology-testing/generate-topologies.js",
     "phyx2owl": "node bin/phyx2owl.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/phyloref/phyx.js.git"
-  },
-  "keywords": [
-    "phylogenetics",
-    "phylogeny",
-    "phylogenetic definitions",
-    "clade definitions"
-  ],
-  "author": "Gaurav Vaidya <gaurav@ggvaidya.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/phyloref/phyx.js/issues"
-  },
-  "homepage": "https://github.com/phyloref/phyx.js#readme",
   "dependencies": {
     "jsonld": "^5.0.0",
     "lodash": "^4.17.20",
