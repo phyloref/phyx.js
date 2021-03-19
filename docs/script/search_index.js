@@ -13,13 +13,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/scripts/phyx2owl.js.html#lineNumber69",
+    "test-file/test/scripts/phyx2owl.js.html#lineNumber65",
     " should be able to convert the entire `test/examples/correct` directory",
     "test"
   ],
   [
     "",
-    "test-file/test/scripts/phyx2owl.js.html#lineNumber103",
+    "test-file/test/scripts/phyx2owl.js.html#lineNumber102",
     " should give an error if no JSON files could be found",
     "test"
   ],
@@ -1021,56 +1021,74 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/examples.js.html#lineNumber28",
+    "test-file/test/examples.js.html#lineNumber27",
     "Test whether conversion of Phyx files to an OWL ontology occurs predictably.",
     "test"
   ],
   [
     "",
-    "test-file/test/examples.js.html#lineNumber40",
-    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all example Phyx files",
+    "test-file/test/examples.js.html#lineNumber39",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all correct example Phyx files",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber53",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all correct example Phyx files ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber68",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all correct example Phyx files  should be able to convertible to an OWL Ontology",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/examples.js.html#lineNumber86",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all correct example Phyx files  should be convertible to n-quads",
     "test"
   ],
   [
     "",
     "test-file/test/examples.js.html#lineNumber54",
-    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all example Phyx files ",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all correct example Phyx files  should be loadable",
     "test"
   ],
   [
     "",
-    "test-file/test/examples.js.html#lineNumber69",
-    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all example Phyx files  should be able to convertible to an OWL Ontology",
+    "test-file/test/examples.js.html#lineNumber81",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all correct example Phyx files  should generate the same OWL ontology as it generated earlier",
     "test"
   ],
   [
     "",
-    "test-file/test/examples.js.html#lineNumber87",
-    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all example Phyx files  should be convertible to n-quads",
+    "test-file/test/examples.js.html#lineNumber98",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all correct example Phyx files  should generate the same n-quads ontology as it generated earlier",
     "test"
   ],
   [
     "",
-    "test-file/test/examples.js.html#lineNumber55",
-    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all example Phyx files  should be loadable",
+    "test-file/test/examples.js.html#lineNumber59",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all correct example Phyx files  should validate against our JSON schema",
     "test"
   ],
   [
     "",
-    "test-file/test/examples.js.html#lineNumber82",
-    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all example Phyx files  should generate the same OWL ontology as it generated earlier",
+    "test-file/test/examples.js.html#lineNumber106",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test incorrect example Phyx files that should fail validation",
     "test"
   ],
   [
     "",
-    "test-file/test/examples.js.html#lineNumber103",
-    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all example Phyx files  should generate the same n-quads ontology as it generated earlier",
+    "test-file/test/examples.js.html#lineNumber209",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test incorrect example Phyx files that should fail validation ",
     "test"
   ],
   [
     "",
-    "test-file/test/examples.js.html#lineNumber60",
-    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test all example Phyx files  should validate against our JSON schema",
+    "test-file/test/examples.js.html#lineNumber210",
+    "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test incorrect example Phyx files that should fail validation  should not validate against our JSON schema",
     "test"
   ],
   [
@@ -1614,6 +1632,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/wrappers/phylorefwrapper.js~phylorefwrapper#componentclasscount",
+    "class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html#instance-member-componentClassCount",
+    "src/wrappers/PhylorefWrapper.js~PhylorefWrapper#componentClassCount",
+    "member"
+  ],
+  [
+    "src/wrappers/phylorefwrapper.js~phylorefwrapper#componentclassesbylabel",
+    "class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html#instance-member-componentClassesByLabel",
+    "src/wrappers/PhylorefWrapper.js~PhylorefWrapper#componentClassesByLabel",
+    "member"
+  ],
+  [
     "src/wrappers/phylorefwrapper.js~phylorefwrapper#constructor",
     "class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html#instance-constructor-constructor",
     "src/wrappers/PhylorefWrapper.js~PhylorefWrapper#constructor",
@@ -1752,9 +1782,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/wrappers/phyxwrapper.js~phyxwrapper#asowlontology",
-    "class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html#instance-method-asOWLOntology",
-    "src/wrappers/PhyxWrapper.js~PhyxWrapper#asOWLOntology",
+    "src/wrappers/phyxwrapper.js~phyxwrapper#asjsonld",
+    "class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html#instance-method-asJSONLD",
+    "src/wrappers/PhyxWrapper.js~PhyxWrapper#asJSONLD",
     "method"
   ],
   [
@@ -1780,6 +1810,12 @@ window.esdocSearchIndex = [
     "class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html#instance-member-phyx",
     "src/wrappers/PhyxWrapper.js~PhyxWrapper#phyx",
     "member"
+  ],
+  [
+    "src/wrappers/phyxwrapper.js~phyxwrapper#tordf",
+    "class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html#instance-method-toRDF",
+    "src/wrappers/PhyxWrapper.js~PhyxWrapper#toRDF",
+    "method"
   ],
   [
     "src/wrappers/specimenwrapper.js",

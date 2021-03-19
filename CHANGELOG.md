@@ -4,6 +4,12 @@ All notable changes to this library will be documented in this file.
 The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+
+## [1.0.0] - 2021-03-16
+- Many changes across the entire library.
+- Two new scripts: `bin/phyx2owl.js` for converting a Phyx file into OWL/JSON-LD
+  and `bin/resolve.js` to resolve a Phyx file on the Open Tree of Life.
+- Incorporation of JPhyloRef into testing.
 - Fixed a bug in which phyloref and phylogeny `@id` values were being overwritten when generating JSON-LD.
 - Added scripts to generate every possible topology from n=2 to n=6 with expected resolution and to test them with JPhyloRef.
 
@@ -35,6 +41,7 @@ release of this package was based on [commit 14d2c3d5d1] in that repository.
 - Made other changes to the initial code as needed to work as an independent NPM package.
 
   [Unreleased]: https://github.com/phyloref/phyx.js/compare/v0.2.0...master
+  [1.0.0]: https://github.com/phyloref/phyx.js/compare/v0.2.1...v1.0.0
   [0.2.1]: https://github.com/phyloref/phyx.js/compare/v0.2.0...v0.2.1
   [0.2.0]: https://github.com/phyloref/phyx.js/compare/v0.1.2...v0.2.0
   [0.1.2]: https://github.com/phyloref/phyx.js/compare/v0.1.1...v0.1.2

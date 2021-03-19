@@ -43,14 +43,20 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/wrappers/PhyxWrapper.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** Helper methods from lodash. */
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const fs = require(&apos;fs&apos;);
+const path = require(&apos;path&apos;);
+
+/** Helper methods from lodash. */
 const { has, cloneDeep, uniq } = require(&apos;lodash&apos;);
+
+/** For NQuads export. */
+const JSONLD = require(&apos;jsonld&apos;);
 
 const owlterms = require(&apos;../utils/owlterms&apos;);
 
 const { PhylorefWrapper } = require(&apos;./PhylorefWrapper&apos;);
 const { PhylogenyWrapper } = require(&apos;./PhylogenyWrapper&apos;);
-const { TaxonomicUnitMatcher } = require(&apos;../matchers/TaxonomicUnitMatcher&apos;);
+const { CitationWrapper } = require(&apos;./CitationWrapper&apos;);
 
 /**
  * The PhyxWrapper wraps an entire Phyx document.
@@ -106,7 +112,7 @@ class PhyxWrapper {
    *    prepending them with the baseIRI.
    * @return {Object} This Phyx document as an OWL ontology as a JSON-LD object.
    */
-  asOWLOntology(baseIRI = &apos;&apos;) {
+  asJSONLD(baseIRI = &apos;&apos;) {
     const jsonld = cloneDeep(this.phyx);
 
     // Some helper methods for generating base IRIs for phylorefs and phylogenies.
@@ -256,75 +262,27 @@ class PhyxWrapper {
       });
     }
 
-    // Match all specifiers with nodes.
-    if (has(jsonld, &apos;phylorefs&apos;) &amp;&amp; has(jsonld, &apos;phylogenies&apos;)) {
-      jsonld.hasTaxonomicUnitMatches = [];
+    // Earlier, we used to generate a list of taxonomic matches here (stored in
+    // jsonld.hasTaxonomicUnitMatches) that logically expressed how taxonomic
+    // units in phyloref specifiers were related to taxonomic units in phylogeny
+    // nodes. This is no longer necessary, since phyloref specifiers are now logical
+    // expressions that directly evaluate to phylogeny nodes. However, if in the
+    // future we decide that we need to perform more advanced TU matching, this
+    // would be the place to implement that.
 
-      // Used to create unique identifiers for each taxonomic unit match.
-      let countTaxonomicUnitMatches = 0;
-
-      jsonld.phylorefs.forEach((phylorefToChange) =&gt; {
-        const phyloref = phylorefToChange;
-        let specifiers = [];
-
-        if (has(phyloref, &apos;internalSpecifiers&apos;)) {
-          specifiers = specifiers.concat(phyloref.internalSpecifiers);
-        }
-
-        if (has(phyloref, &apos;externalSpecifiers&apos;)) {
-          specifiers = specifiers.concat(phyloref.externalSpecifiers);
-        }
-
-        specifiers.forEach((specifier) =&gt; {
-          if (!has(specifier, &apos;referencesTaxonomicUnits&apos;)) return;
-          const specifierTUs = specifier.referencesTaxonomicUnits;
-          let nodesMatchedCount = 0;
-
-          jsonld.phylogenies.forEach((phylogenyToChange) =&gt; {
-            const phylogeny = phylogenyToChange;
-
-            specifierTUs.forEach((specifierTU) =&gt; {
-              phylogeny.nodes.forEach((node) =&gt; {
-                if (!has(node, &apos;representsTaxonomicUnits&apos;)) return;
-                const nodeTUs = node.representsTaxonomicUnits;
-
-                nodeTUs.forEach((nodeTU) =&gt; {
-                  const matcher = new TaxonomicUnitMatcher(specifierTU, nodeTU);
-                  if (matcher.matched) {
-                    const tuMatchAsJSONLD = matcher.asJSONLD(
-                      PhyxWrapper.getBaseIRIForTUMatch(countTaxonomicUnitMatches)
-                    );
-                    jsonld.hasTaxonomicUnitMatches.push(tuMatchAsJSONLD);
-                    nodesMatchedCount += 1;
-                    countTaxonomicUnitMatches += 1;
-                  }
-                });
-              });
-            });
-          });
-
-          if (nodesMatchedCount === 0) {
-            // No nodes matched? Record this as an unmatched specifier.
-            if (!has(phyloref, &apos;hasUnmatchedSpecifiers&apos;)) phyloref.hasUnmatchedSpecifiers = [];
-            phyloref.hasUnmatchedSpecifiers.push(specifier);
-          }
-        });
-      });
+    // If there is a top-level source, generate a bibliographicCitation for it.
+    if (has(jsonld, &apos;source&apos;)) {
+      jsonld.source.bibliographicCitation = new CitationWrapper(jsonld.source).toString();
     }
-
-    // Finally, add the base URI as an ontology.
-    if (baseIRI) jsonld[&apos;@id&apos;] = baseIRI;
 
     // Set up the top-level object &apos;@type&apos;. If one is present, we add our terms to that.
     if (!has(jsonld, &apos;@type&apos;)) jsonld[&apos;@type&apos;] = [];
     if (!Array.isArray(jsonld[&apos;@type&apos;])) jsonld[&apos;@type&apos;] = [jsonld[&apos;@type&apos;]];
-    jsonld[&apos;@type&apos;].push(owlterms.PHYLOREFERENCE_TEST_CASE);
     jsonld[&apos;@type&apos;].push(&apos;owl:Ontology&apos;);
 
     // Set up the ontology imports. If one is present, we add our imports to that.
     if (!has(jsonld, &apos;owl:imports&apos;)) jsonld[&apos;owl:imports&apos;] = [];
     if (!Array.isArray(jsonld[&apos;owl:imports&apos;])) jsonld[&apos;owl:imports&apos;] = [jsonld[&apos;owl:imports&apos;]];
-    jsonld[&apos;owl:imports&apos;].push(&apos;http://raw.githubusercontent.com/phyloref/curation-workflow/develop/ontologies/phyloref_testcase.owl&apos;);
     jsonld[&apos;owl:imports&apos;].push(&apos;http://ontology.phyloref.org/2018-12-14/phyloref.owl&apos;);
     jsonld[&apos;owl:imports&apos;].push(&apos;http://ontology.phyloref.org/2018-12-14/tcan.owl&apos;);
 
@@ -334,6 +292,37 @@ class PhyxWrapper {
     }
 
     return jsonld;
+  }
+
+  /**
+   * Generate an executable ontology from this Phyx document as N-Quads. Under the
+   * hood, we generate an OWL/JSON-LD representation of this Phyx document, and then
+   * convert it into N-Quads so that OWLAPI-supporting tools can directly consume it.
+   *
+   * @param {string} [baseIRI=&quot;&quot;] - The base IRI to use when generating this Phyx document.
+   *    This should include a trailing &apos;#&apos; or &apos;/&apos;. Use &apos;&apos; to indicate that relative IDs
+   *    should be generated in the produced ontology (e.g. &apos;#phylogeny1&apos;). Note that if a
+   *    baseIRI is provided, then relative IDs already in the Phyx file (identified by an
+   *    initial &apos;#&apos;) will be turned into absolute IDs by removing the initial `#` and
+   *    prepending them with the baseIRI.
+   * @param {string} [filePath=undefined] - The path of the Phyx file being converted.
+   *    Used only if the `@context` of the file is a relative path.
+   * @return {Promise[string]} A Promise to return this Phyx document as a string that can
+   *    be written to an N-Quads file.
+   */
+  toRDF(baseIRI = &apos;&apos;, filePath = undefined) {
+    const owlJSONLD = this.asJSONLD(baseIRI);
+
+    // For the purposes of testing, we are sometimes given a relative path to `@context`,
+    // but the JSONLD package does not support this. Instead, we&apos;ll import the contents
+    // of the relative path on the fly.
+    if (filePath &amp;&amp; has(owlJSONLD, &apos;@context&apos;) &amp;&amp; owlJSONLD[&apos;@context&apos;].startsWith(&apos;.&apos;)) {
+      owlJSONLD[&apos;@context&apos;] = JSON.parse(fs.readFileSync(
+        path.resolve(filePath, owlJSONLD[&apos;@context&apos;])
+      ));
+    }
+
+    return JSONLD.toRDF(owlJSONLD, { format: &apos;application/n-quads&apos; });
   }
 }
 
