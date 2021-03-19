@@ -11,6 +11,7 @@ const owlterms = require('../utils/owlterms');
 
 const { PhylorefWrapper } = require('./PhylorefWrapper');
 const { PhylogenyWrapper } = require('./PhylogenyWrapper');
+const { CitationWrapper } = require('./CitationWrapper');
 
 /**
  * The PhyxWrapper wraps an entire Phyx document.
@@ -223,6 +224,11 @@ class PhyxWrapper {
     // expressions that directly evaluate to phylogeny nodes. However, if in the
     // future we decide that we need to perform more advanced TU matching, this
     // would be the place to implement that.
+
+    // If there is a top-level source, generate a bibliographicCitation for it.
+    if (has(jsonld, 'source')) {
+      jsonld.source.bibliographicCitation = new CitationWrapper(jsonld.source).toString();
+    }
 
     // Set up the top-level object '@type'. If one is present, we add our terms to that.
     if (!has(jsonld, '@type')) jsonld['@type'] = [];

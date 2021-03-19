@@ -373,7 +373,7 @@
       "minLength": 1,
       "type": "string"
     },
-    "citation": {
+    "source": {
       "description": "A citation to this Phyx file.",
       "$ref": "#/definitions/citation"
     },
