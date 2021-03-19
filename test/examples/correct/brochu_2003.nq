@@ -1449,6 +1449,7 @@ _:b45 <http://www.w3.org/2002/07/owl#someValuesFrom> _:b46 .
 _:b450 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:b450 <http://www.w3.org/2002/07/owl#hasValue> <http://rs.tdwg.org/ontology/voc/TaxonName#ICZN> .
 _:b450 <http://www.w3.org/2002/07/owl#onProperty> <http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode> .
+_:b451 <http://purl.org/dc/terms/bibliographicCitation> "Gaurav Vaidya (2021) Digital representation of some of the clade definitions in Brochu 2003 in the Phyloreference Exchange (Phyx) format  doi: 10.5281/zenodo.4562685" .
 _:b451 <http://purl.org/dc/terms/title> "Digital representation of some of the clade definitions in Brochu 2003 in the Phyloreference Exchange (Phyx) format" .
 _:b452 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b106 .
 _:b452 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b453 .
