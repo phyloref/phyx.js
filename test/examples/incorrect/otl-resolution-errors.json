@@ -1,103 +1,103 @@
 {
-    "@context": "https://www.phyloref.org/phyx.js/context/v0.2.0/phyx.json",
-    "phylorefs": [
-      {
-          "label": "SingleSpecifier",
-          "cladeDefinition": "A phyloreferences that produces a 404 error on the Open Tree of Life. It was adapted from the Regnum definition of 'Sauria' (#114).",
-          "internalSpecifiers": [
-              {
-                  "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                  "hasName": {
-                      "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                      "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
-                      "label": "Alligator mississippiensis",
-                      "nameComplete": "Alligator mississippiensis",
-                      "genusPart": "Alligator",
-                      "specificEpithet": "mississippiensis"
-                  }
-              }
-          ]
+  "@context": "https://www.phyloref.org/phyx.js/context/v0.2.0/phyx.json",
+  "phylorefs": [
+    {
+      "label": "SingleSpecifier",
+      "cladeDefinition": "A phyloreferences that produces a 404 error on the Open Tree of Life. It was adapted from the Regnum definition of 'Sauria' (#114).",
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis",
+            "genusPart": "Alligator",
+            "specificEpithet": "mississippiensis"
+          }
+        }
+      ]
+    },
+    {
+      "label": "TaxonNameNotFound",
+      "cladeDefinition": "A phyloreferences that produces a 404 error on the Open Tree of Life. It was adapted from the Regnum definition of 'Sauria' (#114).",
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis",
+            "genusPart": "Alligator",
+            "specificEpithet": "mississippiensis"
+          }
         },
         {
-            "label": "TaxonNameNotFound",
-            "cladeDefinition": "A phyloreferences that produces a 404 error on the Open Tree of Life. It was adapted from the Regnum definition of 'Sauria' (#114).",
-            "internalSpecifiers": [
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
-                        "label": "Alligator mississippiensis",
-                        "nameComplete": "Alligator mississippiensis",
-                        "genusPart": "Alligator",
-                        "specificEpithet": "mississippiensis"
-                    }
-                },
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
-                        "label": "Aus bus",
-                        "nameComplete": "Aus bus",
-                        "genusPart": "Aus",
-                        "specificEpithet": "bus"
-                    }
-                }
-            ]
-          },
-        {
-            "label": "Produces404OnOTR",
-            "cladeDefinition": "A phyloreferences that produces a 404 error on the Open Tree of Life. It was adapted from the Regnum definition of 'Sauria' (#114).",
-            "internalSpecifiers": [
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
-                        "label": "Alligator mississippiensis",
-                        "nameComplete": "Alligator mississippiensis",
-                        "genusPart": "Alligator",
-                        "specificEpithet": "mississippiensis"
-                    }
-                },
-                {
-                    "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                    "hasName": {
-                        "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                        "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
-                        "label": "Lacerta agilis",
-                        "nameComplete": "Lacerta agilis",
-                        "genusPart": "Lacerta",
-                        "specificEpithet": "agilis"
-                    }
-                }
-            ],
-            "externalSpecifiers": [
-              {
-                  "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
-                  "hasName": {
-                      "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
-                      "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
-                      "label": "Testudo graeca graeca",
-                      "nameComplete": "Testudo graeca graeca",
-                      "genusPart": "Testudo",
-                      "specificEpithet": "graeca",
-                      "subspecificEpithet": "graeca"
-                  }
-              }
-            ],
-            "pso:holdsStatusInTime": [
-                {
-                    "@type": "http://purl.org/spar/pso/StatusInTime",
-                    "pso:withStatus": {
-                        "@id": "pso:submitted"
-                    },
-                    "tvc:atTime": {
-                        "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:31.471Z"
-                    }
-                }
-            ]
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Aus bus",
+            "nameComplete": "Aus bus",
+            "genusPart": "Aus",
+            "specificEpithet": "bus"
+          }
         }
-    ]
+      ]
+    },
+    {
+      "label": "Produces404OnOTR",
+      "cladeDefinition": "A phyloreferences that produces a 404 error on the Open Tree of Life. It was adapted from the Regnum definition of 'Sauria' (#114).",
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis",
+            "genusPart": "Alligator",
+            "specificEpithet": "mississippiensis"
+          }
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Lacerta agilis",
+            "nameComplete": "Lacerta agilis",
+            "genusPart": "Lacerta",
+            "specificEpithet": "agilis"
+          }
+        }
+      ],
+      "externalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000107",
+            "label": "Testudo graeca graeca",
+            "nameComplete": "Testudo graeca graeca",
+            "genusPart": "Testudo",
+            "specificEpithet": "graeca",
+            "subspecificEpithet": "graeca"
+          }
+        }
+      ],
+      "pso:holdsStatusInTime": [
+        {
+          "@type": "http://purl.org/spar/pso/StatusInTime",
+          "pso:withStatus": {
+            "@id": "pso:submitted"
+          },
+          "tvc:atTime": {
+            "timeinterval:hasIntervalStartDate": "2018-06-11T22:49:31.471Z"
+          }
+        }
+      ]
+    }
+  ]
 }

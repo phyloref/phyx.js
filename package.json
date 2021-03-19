@@ -2,13 +2,29 @@
   "name": "@phyloref/phyx",
   "version": "0.2.1",
   "description": "Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files",
+  "keywords": [
+    "phylogenetics",
+    "phylogeny",
+    "phylogenetic definitions",
+    "clade definitions"
+  ],
+  "homepage": "https://github.com/phyloref/phyx.js#readme",
+  "bugs": {
+    "url": "https://github.com/phyloref/phyx.js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phyloref/phyx.js.git"
+  },
+  "license": "MIT",
+  "author": "Gaurav Vaidya <gaurav@ggvaidya.com>",
   "main": "src/index.js",
   "bin": {
-    "resolve": "bin/resolve.js",
-    "phyx2owl": "bin/phyx2owl.js"
+    "phyx2owl": "bin/phyx2owl.js",
+    "resolve": "bin/resolve.js"
   },
   "scripts": {
-    "lint": "eslint \"src/**/*.js\" \"test/**/*.js\"",
+    "lint": "eslint \"src/**/*.js\" \"test/**/*.js\" \"**/*.json\"",
     "pretest": "npm run lint",
     "test": "mocha --recursive",
     "docs": "esdoc",
@@ -16,22 +32,6 @@
     "generate-every-topology": "every-topology-testing/generate-topologies.js",
     "phyx2owl": "node bin/phyx2owl.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/phyloref/phyx.js.git"
-  },
-  "keywords": [
-    "phylogenetics",
-    "phylogeny",
-    "phylogenetic definitions",
-    "clade definitions"
-  ],
-  "author": "Gaurav Vaidya <gaurav@ggvaidya.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/phyloref/phyx.js/issues"
-  },
-  "homepage": "https://github.com/phyloref/phyx.js#readme",
   "dependencies": {
     "jsonld": "^5.0.0",
     "lodash": "^4.17.20",
@@ -49,6 +49,7 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-json-format": "^2.0.1",
     "eslint-plugin-mocha": "^5.3.0",
     "mocha": "^5.2.0",
     "nodejs-file-downloader": "^4.1.1",

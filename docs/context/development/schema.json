@@ -135,7 +135,10 @@
               "description": "A list of identifiers for this journal.",
               "items": {
                 "additionalProperties": false,
-                "required": ["type", "id"],
+                "required": [
+                  "type",
+                  "id"
+                ],
                 "properties": {
                   "type": {
                     "type": "string",
@@ -162,7 +165,10 @@
           "description": "A list of identifiers for this publication.",
           "items": {
             "additionalProperties": false,
-            "required": ["type", "id"],
+            "required": [
+              "type",
+              "id"
+            ],
             "properties": {
               "type": {
                 "type": "string",
@@ -179,7 +185,9 @@
           "type": "array",
           "description": "Links to this publication.",
           "items": {
-            "required": ["url"],
+            "required": [
+              "url"
+            ],
             "properties": {
               "additionalProperties": false,
               "url": {
@@ -191,7 +199,6 @@
         }
       }
     },
-
     "taxonomic_unit_by_id": {
       "type": "object",
       "description": "A taxonomic unit identified solely by IRI.",
@@ -207,7 +214,6 @@
         }
       }
     },
-
     "taxon_name": {
       "type": "object",
       "description": "A taxonomic name.",
@@ -249,7 +255,6 @@
         "nameComplete"
       ]
     },
-
     "taxon_concept": {
       "type": "object",
       "description": "A taxon or taxon concept.",
@@ -283,9 +288,11 @@
           "minLength": 1
         }
       },
-      "required": [ "@type", "hasName" ]
+      "required": [
+        "@type",
+        "hasName"
+      ]
     },
-
     "specimen": {
       "type": "object",
       "description": "A taxon or taxon concept.",
@@ -343,17 +350,21 @@
         }
       }
     },
-
     "taxonomic_unit": {
       "description": "A unit of taxon: a taxon concept or specimen.",
       "anyOf": [
-        { "$ref": "#/definitions/taxon_concept" },
-        { "$ref": "#/definitions/specimen" },
-        { "$ref": "#/definitions/taxonomic_unit_by_id" }
+        {
+          "$ref": "#/definitions/taxon_concept"
+        },
+        {
+          "$ref": "#/definitions/specimen"
+        },
+        {
+          "$ref": "#/definitions/taxonomic_unit_by_id"
+        }
       ]
     }
   },
-
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "A Phyx file contains digital clade definitions and optionally phylogenies that indicate where they should resolve. See http://phyloref.org/phyx.js for more information.",
   "type": "object",
