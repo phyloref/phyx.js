@@ -1,5 +1,21 @@
 {
     "@context": "../../../docs/context/development/phyx.json",
+    "doi": "10.5281/zenodo.4562685",
+    "source": {
+      "authors": [{
+        "firstname": "Gaurav",
+        "lastname": "Vaidya"
+      }],
+      "year": 2021,
+      "title": "Digital representation of some of the clade definitions in Brochu 2003 in the Phyloreference Exchange (Phyx) format",
+      "journal": {
+        "name": "Zenodo"
+      },
+      "identifier": [{
+        "type": "doi",
+        "id": "10.5281/zenodo.4562685"
+      }]
+    },
     "phylogenies": [
         {
             "newick": "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;",
