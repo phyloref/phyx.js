@@ -5,7 +5,7 @@ const path = require('path');
 const phyx = require('..');
 
 /*
- * An application for converting input Phyx files to OWL ontologies.
+ * An application for converting input Phyx files to OWL ontologies in N-Quads.
  */
 
 // Read command line arguments.
@@ -107,12 +107,16 @@ function convertFileToOWL(filename, argOutputFilename = "") {
 
     // Convert the Phyx file into JSON-LD.
     const wrappedPhyx = new phyx.PhyxWrapper(phyxContent);
-    const owlOntology = wrappedPhyx.asOWLOntology(argv.baseIri);
-    const owlOntologyStr = JSON.stringify(owlOntology, null, 2);
-    fs.writeFileSync(
-      outputFilename,
-      owlOntologyStr
-    );
+    wrappedPhyx.toRDF(argv.baseIri, path.dirname(filename))
+      .then(nquads => {
+        fs.writeFileSync(
+          outputFilename,
+          nquads
+        );
+      })
+      .catch(err => {
+        throw err;
+      });
 
     // Report on whether any phyloreferences were converted.
     if (filteredPhylorefs.length == 0) {

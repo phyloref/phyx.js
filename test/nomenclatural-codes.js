@@ -135,7 +135,7 @@ describe('PhyxWrapper', function () {
       .to.include.key('defaultNomenclaturalCodeIRI');
     const defaultNomenclaturalCodeIRI = json.defaultNomenclaturalCodeIRI;
 
-    const jsonld = new phyx.PhyxWrapper(json).asOWLOntology();
+    const jsonld = new phyx.PhyxWrapper(json).asJSONLD();
 
     // Step 1. Check the phyloreferences. Neither specifier has a nomenclatural code,
     // but they should pick up the default nomenclatural code for the Phyx file.
@@ -209,7 +209,7 @@ describe('PhyxWrapper', function () {
     const inferredNomenCode = wrapped.defaultNomenCode;
     expect(inferredNomenCode).to.equal(owlterms.ICZN_CODE);
 
-    const jsonld = wrapped.asOWLOntology();
+    const jsonld = wrapped.asJSONLD();
 
     // Step 1. Check the phyloreferences. Since only *Caiman crocodilus* has a
     // nomenclatural code set, we should make sure that the other specifier
