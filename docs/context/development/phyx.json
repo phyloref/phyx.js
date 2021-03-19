@@ -105,7 +105,7 @@
       "@type": "xsd:string"
     },
     "nodes": {
-      "@id": "obo:CDAO_0000198",
+      "@reverse": "obo:CDAO_0000200",
       "@container": "@set"
     },
     "hasRootNode": {
