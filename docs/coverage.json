@@ -1,7 +1,7 @@
 {
-  "coverage": "52.97%",
-  "expectCount": 168,
-  "actualCount": 89,
+  "coverage": "52.63%",
+  "expectCount": 171,
+  "actualCount": 90,
   "files": {
     "src/matchers/TaxonomicUnitMatcher.js": {
       "expectCount": 14,
@@ -49,7 +49,7 @@
       ]
     },
     "src/wrappers/PhylorefWrapper.js": {
-      "expectCount": 29,
+      "expectCount": 31,
       "actualCount": 8,
       "undocumentLines": [
         4,
@@ -70,22 +70,24 @@
         181,
         224,
         258,
-        445,
-        501,
-        596
+        422,
+        448,
+        504,
+        599,
+        645
       ]
     },
     "src/wrappers/PhyxWrapper.js": {
-      "expectCount": 10,
-      "actualCount": 3,
+      "expectCount": 11,
+      "actualCount": 4,
       "undocumentLines": [
-        3,
-        8,
-        10,
-        12,
-        32,
-        33,
-        43
+        6,
+        14,
+        16,
+        18,
+        38,
+        39,
+        49
       ]
     },
     "src/wrappers/SpecimenWrapper.js": {

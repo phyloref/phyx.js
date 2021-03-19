@@ -50,7 +50,6 @@
 const fs = require(&apos;fs&apos;);
 const path = require(&apos;path&apos;);
 
-const JSONLD = require(&apos;jsonld&apos;);
 const chai = require(&apos;chai&apos;);
 const Ajv = require(&apos;ajv&apos;);
 
@@ -82,7 +81,7 @@ describe(&apos;PhyxWrapper&apos;, function () {
     )
   );
 
-  describe(&apos;Test all example Phyx files&apos;, function () {
+  describe(&apos;Test all correct example Phyx files&apos;, function () {
     const examples = fs.readdirSync(path.resolve(__dirname, &apos;./examples/correct&apos;))
       .filter(filename =&gt; filename.endsWith(&apos;.json&apos;));
 
@@ -114,7 +113,7 @@ describe(&apos;PhyxWrapper&apos;, function () {
         it(&apos;should be able to convertible to an OWL Ontology&apos;, function () {
           this.timeout(10000);
           jsonld = new phyx.PhyxWrapper(json)
-            .asOWLOntology(&apos;http://example.org/phyx.js/example#&apos;);
+            .asJSONLD(&apos;http://example.org/phyx.js/example#&apos;);
           if (REPLACE_EXISTING) {
             fs.writeFileSync(
               jsonldFilename,
@@ -132,22 +131,136 @@ describe(&apos;PhyxWrapper&apos;, function () {
         it(&apos;should be convertible to n-quads&apos;, function () {
           this.timeout(10000);
 
-          // JSON-LD readers don&apos;t usually handle relative @context easily, so
-          // instead let&apos;s replace the entire @context with the local context file.
-          jsonld[&apos;@context&apos;] = JSON.parse(fs.readFileSync(
-            path.resolve(__dirname, &apos;examples&apos;, &apos;correct&apos;, jsonld[&apos;@context&apos;])
-          ));
-
-          return JSONLD.toRDF(jsonld, { format: &apos;application/n-quads&apos; }).then((rdf) =&gt; {
-            nq = rdf;
-            if (REPLACE_EXISTING) fs.writeFileSync(nqFilename, nq);
-            expect(nq).to.be.a(&apos;string&apos;);
-          });
+          return new phyx.PhyxWrapper(json)
+            .toRDF(&apos;http://example.org/phyx.js/example#&apos;, path.resolve(__dirname, &apos;examples&apos;, &apos;correct&apos;))
+            .then((rdf) =&gt; {
+              nq = rdf;
+              if (REPLACE_EXISTING) fs.writeFileSync(nqFilename, nq);
+              expect(nq).to.be.a(&apos;string&apos;);
+            });
         });
 
         it(&apos;should generate the same n-quads ontology as it generated earlier&apos;, function () {
           const expectedNQ = fs.readFileSync(nqFilename).toString();
           expect(nq).to.deep.equal(expectedNQ);
+        });
+      });
+    });
+  });
+
+  describe(&apos;Test incorrect example Phyx files that should fail validation&apos;, function () {
+    const filesThatShouldFailValidation = [
+      {
+        fileName: &apos;examples/incorrect/no-context.json&apos;,
+        expectedErrors: [{
+          dataPath: &apos;&apos;,
+          keyword: &apos;required&apos;,
+          message: &quot;should have required property &apos;@context&apos;&quot;,
+          params: {
+            missingProperty: &apos;@context&apos;,
+          },
+          schemaPath: &apos;#/required&apos;,
+        }],
+      },
+      {
+        fileName: &apos;examples/incorrect/invalid-specifier.json&apos;,
+        expectedErrors: [
+          {
+            dataPath: &apos;.phylorefs[0].internalSpecifiers&apos;,
+            keyword: &apos;minItems&apos;,
+            message: &apos;should NOT have fewer than 1 items&apos;,
+            params: {
+              limit: 1,
+            },
+            schemaPath: &apos;#/properties/phylorefs/items/properties/internalSpecifiers/minItems&apos;,
+          },
+          {
+            dataPath: &apos;.phylorefs[0].externalSpecifiers[0].hasName&apos;,
+            keyword: &apos;required&apos;,
+            message: &quot;should have required property &apos;nameComplete&apos;&quot;,
+            params: {
+              missingProperty: &apos;nameComplete&apos;,
+            },
+            schemaPath: &apos;#/required&apos;,
+          },
+          {
+            dataPath: &quot;.phylorefs[0].externalSpecifiers[0][&apos;@type&apos;]&quot;,
+            keyword: &apos;enum&apos;,
+            message: &apos;should be equal to one of the allowed values&apos;,
+            params: {
+              allowedValues: [
+                &apos;http://rs.tdwg.org/dwc/terms/Occurrence&apos;,
+              ],
+            },
+            schemaPath: &apos;#/properties/%40type/enum&apos;,
+          },
+          {
+            dataPath: &apos;.phylorefs[0].externalSpecifiers[0].hasName&apos;,
+            keyword: &apos;required&apos;,
+            message: &quot;should have required property &apos;nameComplete&apos;&quot;,
+            params: {
+              missingProperty: &apos;nameComplete&apos;,
+            },
+            schemaPath: &apos;#/required&apos;,
+          },
+          {
+            dataPath: &apos;.phylorefs[0].externalSpecifiers[0]&apos;,
+            keyword: &apos;additionalProperties&apos;,
+            message: &apos;should NOT have additional properties&apos;,
+            params: {
+              additionalProperty: &apos;@type&apos;,
+            },
+            schemaPath: &apos;#/definitions/taxonomic_unit_by_id/additionalProperties&apos;,
+          },
+          {
+            dataPath: &apos;.phylorefs[0].externalSpecifiers[0]&apos;,
+            keyword: &apos;additionalProperties&apos;,
+            message: &apos;should NOT have additional properties&apos;,
+            params: {
+              additionalProperty: &apos;hasName&apos;,
+            },
+            schemaPath: &apos;#/definitions/taxonomic_unit_by_id/additionalProperties&apos;,
+          },
+          {
+            dataPath: &apos;.phylorefs[0].externalSpecifiers[0]&apos;,
+            keyword: &apos;additionalProperties&apos;,
+            message: &apos;should NOT have additional properties&apos;,
+            params: {
+              additionalProperty: &apos;label&apos;,
+            },
+            schemaPath: &apos;#/definitions/taxonomic_unit_by_id/additionalProperties&apos;,
+          },
+          {
+            dataPath: &apos;.phylorefs[0].externalSpecifiers[0]&apos;,
+            keyword: &apos;required&apos;,
+            message: &quot;should have required property &apos;@id&apos;&quot;,
+            params: {
+              missingProperty: &apos;@id&apos;,
+            },
+            schemaPath: &apos;#/definitions/taxonomic_unit_by_id/required&apos;,
+          },
+          {
+            dataPath: &apos;.phylorefs[0].externalSpecifiers[0]&apos;,
+            keyword: &apos;anyOf&apos;,
+            message: &apos;should match some schema in anyOf&apos;,
+            params: {},
+            schemaPath: &apos;#/anyOf&apos;,
+          },
+        ],
+      },
+    ];
+
+    filesThatShouldFailValidation.forEach((entry) =&gt; {
+      describe(`Example file ${entry.fileName}`, function () {
+        it(&apos;should not validate against our JSON schema&apos;, function () {
+          const phyxContent = JSON.parse(
+            fs.readFileSync(
+              path.resolve(__dirname, entry.fileName)
+            )
+          );
+          const valid = validator(phyxContent);
+          expect(validator.errors).to.deep.equal(entry.expectedErrors);
+          expect(valid).to.not.be.true;
         });
       });
     });

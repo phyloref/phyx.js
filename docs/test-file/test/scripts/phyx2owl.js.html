@@ -82,8 +82,8 @@ describe(PHYX2OWL_JS, function () {
   });
   it(&apos;should be able to convert `brochu_2003.json`&apos;, function () {
     const PHYX_FILE = path.resolve(__dirname, &apos;../examples/correct/brochu_2003.json&apos;);
+    const NQ_FILE = path.resolve(__dirname, &apos;../examples/correct/brochu_2003.nq&apos;);
     const OWL_FILE = path.resolve(__dirname, &apos;../examples/correct/brochu_2003.owl&apos;);
-    const EXPECTED_OWL_FILE = path.resolve(__dirname, &apos;../examples/correct/brochu_2003.jsonld&apos;);
 
     // If there is already a &apos;../examples/brochu_2003.owl&apos; file, we should delete it.
     if (fs.existsSync(OWL_FILE)) fs.unlinkSync(OWL_FILE);
@@ -96,20 +96,16 @@ describe(PHYX2OWL_JS, function () {
       encoding: &apos;utf-8&apos;,
       stdio: &apos;pipe&apos;,
     });
-    expect(result.status).to.equal(0);
-    expect(result.stdout).to.contain(&apos;1 files converted successfully.&apos;);
     expect(result.stderr).to.be.empty;
+    expect(result.stdout).to.contain(&apos;1 files converted successfully.&apos;);
+    expect(result.status).to.equal(0);
 
     expect(fs.existsSync(OWL_FILE), `File ${OWL_FILE} was not generated.`).to.be.true;
 
-    // Make sure that the generated file *looks* like a JSON-LD file.
-    const jsonldContent = JSON.parse(fs.readFileSync(OWL_FILE, &apos;utf8&apos;));
-    expect(jsonldContent).to.be.an(&apos;object&apos;).that.has.any.keys(&apos;@context&apos;);
-    expect(jsonldContent[&apos;@context&apos;]).to.not.be.empty;
-
-    // Make sure that the generated file is identical to the expected one.
-    const expectedContent = JSON.parse(fs.readFileSync(EXPECTED_OWL_FILE, &apos;utf8&apos;));
-    expect(jsonldContent).to.deep.equal(expectedContent);
+    // Make sure that the generated file is identical to the N-Quads file expected./
+    const nqGenerated = fs.readFileSync(OWL_FILE, &apos;utf8&apos;);
+    const nqExpected = fs.readFileSync(NQ_FILE, &apos;utf8&apos;);
+    expect(nqGenerated).to.equal(nqExpected);
   });
   it(&apos;should be able to convert the entire `test/examples/correct` directory&apos;, function () {
     const EXAMPLE_DIR = path.resolve(__dirname, &apos;../examples/correct&apos;);
@@ -130,14 +126,17 @@ describe(PHYX2OWL_JS, function () {
     expect(fileCount).to.equal(jsonFilesInExamples.length);
 
     // Make sure that the generated files *look* like JSON-LD files.
-    const jsonldInExamples = fs.readdirSync(EXAMPLE_DIR, &apos;utf8&apos;)
+    fs.readdirSync(EXAMPLE_DIR, &apos;utf8&apos;)
       .filter(fileName =&gt; fileName.toLowerCase().endsWith(&apos;.owl&apos;))
-      .map(owlFilename =&gt; JSON.parse(fs.readFileSync(path.resolve(EXAMPLE_DIR, owlFilename), &apos;utf8&apos;)));
+      .forEach((owlFilename) =&gt; {
+        const nqGenerated = fs.readFileSync(path.resolve(EXAMPLE_DIR, owlFilename), &apos;utf8&apos;);
 
-    jsonldInExamples.forEach((jsonld) =&gt; {
-      expect(jsonld).to.be.an(&apos;object&apos;).that.has.any.keys(&apos;@context&apos;);
-      expect(jsonld[&apos;@context&apos;]).to.not.be.empty;
-    });
+        // If there&apos;s an .owl file, there should an .nq file with the expected content.
+        const nqFilename = `${owlFilename.substring(0, owlFilename.length - 4)}.nq`;
+        const nqExpected = fs.readFileSync(path.resolve(EXAMPLE_DIR, nqFilename), &apos;utf8&apos;);
+
+        expect(nqGenerated).to.equal(nqExpected);
+      });
   });
   // This is where we should test the recursive directory functionality. However,
   // doing that would require using `test/examples` (which isn&apos;t recursive),
