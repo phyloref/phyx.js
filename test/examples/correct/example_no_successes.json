@@ -1,0 +1,28 @@
+{
+  "@context": "../../../docs/context/development/phyx.json",
+  "phylogenies": [{
+    "newick": "((((Aa_a, Bb_b)Expected, Cc_c), (Dd_d, (Ee_e, Ff_f, (Gg_g, Hh_h)))), Ii_i)"
+  }],
+  "phylorefs": [{
+    "label": "Unexpected",
+    "definition": "Includes A_a, excludes C_c.",
+    "internalSpecifiers": [
+      {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+              "nameComplete": "Aa a"
+          }
+      }
+    ],
+    "externalSpecifiers": [
+      {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+              "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+              "nameComplete": "Cc c"
+          }
+      }
+    ]
+  }]
+}
