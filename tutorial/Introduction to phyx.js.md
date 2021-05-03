@@ -167,6 +167,23 @@ brochu2003.phylorefs.forEach(phyloref => {
     
 
 
+## Accessing citations
+
+Another example of a wrapper that can be used for wrapping a part of a Phyx file is the [CitationWrapper](https://www.phyloref.org/phyx.js/class/src/wrappers/CitationWrapper.js~CitationWrapper.html). This can be used to wrap citations anywhere in the Phyx file to provide a full bibliographic citation for the citation.
+
+
+```javascript
+var wrappedSourceCitation = new phyx.CitationWrapper(brochu2003.source);
+console.log(`The source of this Phyx file is: ${wrappedSourceCitation.toString()}`);
+
+var wrappedPhylogenyCitation = new phyx.CitationWrapper(brochu2003.phylogenies[0].source);
+console.log(`The source of the first phylogeny in this file is: ${wrappedPhylogenyCitation.toString()}`);
+```
+
+    The source of this Phyx file is: Gaurav Vaidya (2021) Digital representation of some of the clade definitions in Brochu 2003 in the Phyloreference Exchange (Phyx) format  doi: 10.5281/zenodo.4562685
+    The source of the first phylogeny in this file is: Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31:357--397  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308
+
+
 ## Converting a Phyx document into OWL
 
 A Phyx document can be converted into OWL by using the `PhyxWrapper`.
