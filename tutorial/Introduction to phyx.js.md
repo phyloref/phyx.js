@@ -1,5 +1,7 @@
 # Introduction to phyx.js
 
+*Written by Gaurav Vaidya, July 26, 2021*
+
 This tutorial provides an introduction to the phyx.js library, and shows you how it can be used to read a Phyx file, check it for validity, examine [phyloreferences](https://www.phyloref.org/), phylogenies and specifiers, and describe how to convert the file into RDF.
 
 ## Starting with Phyx files
@@ -30,9 +32,9 @@ var alligatoridae_brochu2003 = {
             }],
             "journal": {
                 "name": "Annual Review of Earth and Planetary Sciences",
-                  "volume": "31",
-                  "pages": "357--397",
-                  "identifier": [{ "type": "eISSN", "id": "1545-4495" }]
+                "volume": "31",
+                "pages": "357--397",
+                "identifier": [{ "type": "eISSN", "id": "1545-4495" }]
             }
         }
     }],
@@ -94,11 +96,11 @@ var validator = ajv.compile(JSON.parse(fs.readFileSync('../docs/context/v1.0.0/s
 // Attempt to validate the Brochu 2003 example file.
 var result = validator(alligatoridae_brochu2003);
 console.log(`Is alligatoridae_brochu2003 valid? ${result}`);
-console.log('Errors:', validator.errors);
+console.log('Errors:', validator.errors || 'none');
 
 // Let's make an invalid copy of the Brochu 2003 example file to make sure this is working.
 var alligatoridae_brochu2003copy = {...alligatoridae_brochu2003};
-delete alligatoridae_brochu2003copy['@context'];
+delete alligatoridae_brochu2003copy['@context'];  // @context is required for successful validation
 
 var result = validator(alligatoridae_brochu2003copy);
 console.log(`Is alligatoridae_brochu2003copy valid? ${result}`);
@@ -106,7 +108,7 @@ console.log('Errors:', validator.errors);
 ```
 
     Is alligatoridae_brochu2003 valid? true
-    Errors: null
+    Errors: none
     Is alligatoridae_brochu2003copy valid? false
     Errors: [
       {
@@ -121,9 +123,9 @@ console.log('Errors:', validator.errors);
 
 ## Examining phyloreferences, taxonomic units and taxon concepts
 
-The phyx.js library was built in order to simplify the process of working with individual components of Phyx documents, and to facilitate the conversion of a Phyx document into OWL. The library consists of a series of [wrappers](https://www.phyloref.org/phyx.js/identifiers.html#wrappers), each of which wraps part of the document. For example, we can wrap each specifier using the [TaxonomicUnitWrapper](https://www.phyloref.org/phyx.js/class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html).
+The phyx.js library was built in order to simplify the process of working with individual components of Phyx documents, and to facilitate the conversion of a Phyx document into OWL. The library consists of a series of [wrappers](https://www.phyloref.org/phyx.js/identifiers.html#wrappers), each of which wraps part of the document. For example, we can wrap every specifier that is a [taxonomic unit](http://purl.obolibrary.org/obo/CDAO_0000138) using the [TaxonomicUnitWrapper](https://www.phyloref.org/phyx.js/class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html).
 
-This provides a number of convenience methods: for example, `.internalSpecifiers` and `.externalSpecifiers` will always return lists, whether or not these are defined in the underlying phyloreference (in which case they return empty lists). There is also a `.specifiers` method that lists both internal and external specifiers.
+This provides a number of convenience methods: for example, `.internalSpecifiers` and `.externalSpecifiers` will always return lists, whether or not these are defined in the underlying phyloreference (if undefined, the methods return empty lists). There is also a `.specifiers` method that lists both internal and external specifiers.
 
 Furthermore, taxonomic units that are taxon concepts can be wrapped by a [TaxonConceptWrapper](https://www.phyloref.org/phyx.js/class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html), which have methods for accessing the "complete name" (i.e. the monomial, binomial or trinomial name) and the nomenclatural code.
 
@@ -184,7 +186,7 @@ console.log();
 // Display internal and external nodes.
 var wrappedPhylogeny = new phyx.PhylogenyWrapper(phylogeny);
 console.log(`This consists of the following nodes:\n - Internal nodes: ${wrappedPhylogeny.getNodeLabels('internal').join(', ')}`);
-console.log(` - External nodes: ${wrappedPhylogeny.getNodeLabels('terminal').join(', ')}`);
+console.log(` - Terminal nodes: ${wrappedPhylogeny.getNodeLabels('terminal').join(', ')}`);
 console.log();
 
 // Convert the Newick string into a JSON structure for examination.
@@ -196,7 +198,7 @@ console.log();
     
     This consists of the following nodes:
      - Internal nodes: Alligatoridae, Alligatoroidea, Crocodylinae, Crocodylidae, Brevirostres, Crocodylia, Eusuchia, Mesoeucrocodylia, Crocodyliformes, Crocodylomorpha
-     - External nodes: Parasuchia, rauisuchians, Aetosauria, sphenosuchians, protosuchians, mesosuchians, Hylaeochampsa, Aegyptosuchus, Stomatosuchus, Allodaposuchus, Gavialis gangeticus, Diplocynodon ratelii, Alligator mississippiensis, Caiman crocodilus, Tomistoma schlegelii, Osteolaemus tetraspis, Crocodylus niloticus
+     - Terminal nodes: Parasuchia, rauisuchians, Aetosauria, sphenosuchians, protosuchians, mesosuchians, Hylaeochampsa, Aegyptosuchus, Stomatosuchus, Allodaposuchus, Gavialis gangeticus, Diplocynodon ratelii, Alligator mississippiensis, Caiman crocodilus, Tomistoma schlegelii, Osteolaemus tetraspis, Crocodylus niloticus
     
     Newick string as a JSON structure: {
       "json": {
@@ -362,7 +364,7 @@ console.log(`The definition source of the phyloreference in this Phyx document i
 
 ### Converting a Phyx document into OWL
 
-A Phyx document can be converted into OWL by using the `PhyxWrapper` to wrap the entire Phyx document. A base URL can be specified.
+A Phyx document (which is in JSON-LD format) can be converted into OWL/RDF in the form of [N-Quads](https://www.w3.org/TR/n-quads/) by using the `PhyxWrapper` to wrap the entire Phyx document. A base URL can be specified.
 
 
 ```javascript
@@ -409,16 +411,9 @@ nQuads.then(nq => {
 undefined;
 ```
 
-    <http://example.org/phyx-tutorial#phylogeny0> <http://ontology.phyloref.org/phyloref.owl#newick_expression> "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha));";
-        <http://purl.obolibrary.org/obo/CDAO_0000148> <http://example.org/phyx-tutorial#phylogeny0_node0>;
-        <http://purl.org/dc/terms/source> _:b1_b165;
-        a <http://ontology.phyloref.org/phyloref.owl#ReferencePhylogenyEvidence>;
-        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> _:b1_b0.
-
-
 ## Navigating a Phyx document as a JSON file
 
-Most phyx.js wrappers have been designed to help interpret the more complex parts of a Phyx file, such as the phyloreferences, specifiers, phylogenies, citations and the entire Phyx document. However, since every Phyx document is also a JSON document, we encourage the use of standard JSON libraries to access much of the information in the Phyx document. In some cases, as in the demonstration below, this requires more complex code than is necessary by using the phyx.js wrappers.
+Most phyx.js wrappers have been designed to help interpret the more complex parts of a Phyx file, such as the phyloreferences, specifiers, phylogenies, citations and the entire Phyx document. However, since every Phyx document is also a JSON document, much of the information in the Phyx document can be accessed sufficiently easily using standard JSON libraries. In some cases, as in the demonstration below, this requires more complex code than would be necessary by using the phyx.js wrappers.
 
 
 ```javascript
@@ -435,6 +430,11 @@ alligatoridae_brochu2003copy.phylorefs.forEach((phyloref, index) => {
 });
 ```
 
+    <http://example.org/phyx-tutorial#phylogeny0> <http://ontology.phyloref.org/phyloref.owl#newick_expression> "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha));";
+        <http://purl.obolibrary.org/obo/CDAO_0000148> <http://example.org/phyx-tutorial#phylogeny0_node0>;
+        <http://purl.org/dc/terms/source> _:b0_b165;
+        a <http://ontology.phyloref.org/phyloref.owl#ReferencePhylogenyEvidence>;
+        <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> _:b0_b0.
     - Phyloref 1. Alligatoridae:
       - Internal specifier: Caiman crocodilus
       - Internal specifier: Alligator mississippiensis
