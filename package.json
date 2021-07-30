@@ -64,7 +64,8 @@
         "option": {
           "manual": {
             "files": [
-              "./CHANGELOG.md"
+              "./CHANGELOG.md",
+              "./tutorial/Introduction to phyx.js.md"
             ]
           },
           "test": {
