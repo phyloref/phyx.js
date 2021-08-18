@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Introduction to phyx.js</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="introduction-to-phyx.js">Introduction to phyx.js</h1>
+<p><em>Written by Gaurav Vaidya, July 26, 2021</em></p>
+<p>This tutorial provides an introduction to the phyx.js library, and shows you how it can be used to read a Phyx file, check it for validity, examine <a href="https://www.phyloref.org/">phyloreferences</a>, phylogenies and specifiers, and describe how to convert the file into RDF.</p>
+<h2 id="starting-with-phyx-files">Starting with Phyx files</h2>
+<p>Phyx files are digitized clade definitions in a JSON-LD format. While you can use an editor like <a href="https://github.com/phyloref/klados#readme">Klados</a> to create Phyx files, you can also write one by yourself as a JSON document.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> alligatoridae_brochu2003 <span class="op">=</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;@context&quot;</span><span class="op">:</span> <span class="st">&quot;https://www.phyloref.org/phyx.js/context/v1.0.0/phyx.json&quot;</span><span class="op">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Phylogeny from Brochu 2003: https://doi.org/10.1146/annurev.earth.31.100901.141308</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;phylogenies&quot;</span><span class="op">:</span> [{</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;newick&quot;</span><span class="op">:</span> <span class="st">&quot;(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,(&#39;Gavialis gangeticus&#39;,((&#39;Diplocynodon ratelii&#39;,(&#39;Alligator mississippiensis&#39;,&#39;Caiman crocodilus&#39;)Alligatoridae)Alligatoroidea,(&#39;Tomistoma schlegelii&#39;,(&#39;Osteolaemus tetraspis&#39;,&#39;Crocodylus niloticus&#39;)Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha));&quot;</span><span class="op">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;source&quot;</span><span class="op">:</span> {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;type&quot;</span><span class="op">:</span> <span class="st">&quot;article&quot;</span><span class="op">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;title&quot;</span><span class="op">:</span> <span class="st">&quot;Phylogenetic approaches toward crocodylian history&quot;</span><span class="op">,</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;authors&quot;</span><span class="op">:</span> [{</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;firstname&quot;</span><span class="op">:</span> <span class="st">&quot;Christopher&quot;</span><span class="op">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;middlename&quot;</span><span class="op">:</span> <span class="st">&quot;A.&quot;</span><span class="op">,</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;lastname&quot;</span><span class="op">:</span> <span class="st">&quot;Brochu&quot;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            }]<span class="op">,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;year&quot;</span><span class="op">:</span> <span class="dv">2003</span><span class="op">,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;figure&quot;</span><span class="op">:</span> <span class="st">&quot;1&quot;</span><span class="op">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;identifier&quot;</span><span class="op">:</span> [{</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;type&quot;</span><span class="op">:</span> <span class="st">&quot;doi&quot;</span><span class="op">,</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;id&quot;</span><span class="op">:</span> <span class="st">&quot;10.1146/annurev.earth.31.100901.141308&quot;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            }]<span class="op">,</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;journal&quot;</span><span class="op">:</span> {</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;name&quot;</span><span class="op">:</span> <span class="st">&quot;Annual Review of Earth and Planetary Sciences&quot;</span><span class="op">,</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;volume&quot;</span><span class="op">:</span> <span class="st">&quot;31&quot;</span><span class="op">,</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;pages&quot;</span><span class="op">:</span> <span class="st">&quot;357--397&quot;</span><span class="op">,</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;identifier&quot;</span><span class="op">:</span> [{ <span class="st">&quot;type&quot;</span><span class="op">:</span> <span class="st">&quot;eISSN&quot;</span><span class="op">,</span> <span class="st">&quot;id&quot;</span><span class="op">:</span> <span class="st">&quot;1545-4495&quot;</span> }]</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    }]<span class="op">,</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Clade definition from Brochu 2003: Alligatoridae</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;phylorefs&quot;</span><span class="op">:</span> [{</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;label&quot;</span><span class="op">:</span> <span class="st">&quot;Alligatoridae&quot;</span><span class="op">,</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;scientificNameAuthorship&quot;</span><span class="op">:</span> { <span class="st">&quot;bibliographicCitation&quot;</span><span class="op">:</span> <span class="st">&quot;(Cuvier 1807)&quot;</span> }<span class="op">,</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;phylorefType&quot;</span><span class="op">:</span> <span class="st">&quot;phyloref:PhyloreferenceUsingMinimumClade&quot;</span><span class="op">,</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;definition&quot;</span><span class="op">:</span> <span class="st">&quot;Alligatoridae (Cuvier 1807).</span><span class="sc">\n\n</span><span class="st">Last common ancestor of Alligator mississippiensis and Caiman crocodilus and all of its descendents.&quot;</span><span class="op">,</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;definitionSource&quot;</span><span class="op">:</span> {</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;bibliographicCitation&quot;</span><span class="op">:</span> <span class="st">&quot;Brochu (2003) Phylogenetic approaches toward crocodylian history. Annual Review of Earth and Planetary Sciences 31:1, 357-397. doi: 10.1146/annurev.earth.31.100901.141308&quot;</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>          }<span class="op">,</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;internalSpecifiers&quot;</span><span class="op">:</span> [</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>              {</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;@type&quot;</span><span class="op">:</span> <span class="st">&quot;http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept&quot;</span><span class="op">,</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;hasName&quot;</span><span class="op">:</span> {</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;@type&quot;</span><span class="op">:</span> <span class="st">&quot;http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName&quot;</span><span class="op">,</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;nomenclaturalCode&quot;</span><span class="op">:</span> <span class="st">&quot;http://rs.tdwg.org/ontology/voc/TaxonName#ICZN&quot;</span><span class="op">,</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;label&quot;</span><span class="op">:</span> <span class="st">&quot;Caiman crocodilus Linnaeus, 1758&quot;</span><span class="op">,</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;nameComplete&quot;</span><span class="op">:</span> <span class="st">&quot;Caiman crocodilus&quot;</span><span class="op">,</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;genusPart&quot;</span><span class="op">:</span> <span class="st">&quot;Caiman&quot;</span><span class="op">,</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;specificEpithet&quot;</span><span class="op">:</span> <span class="st">&quot;crocodilus&quot;</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>                  }</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>              }<span class="op">,</span> {</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;@type&quot;</span><span class="op">:</span> <span class="st">&quot;http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept&quot;</span><span class="op">,</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;hasName&quot;</span><span class="op">:</span> {</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;@type&quot;</span><span class="op">:</span> <span class="st">&quot;http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName&quot;</span><span class="op">,</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;nomenclaturalCode&quot;</span><span class="op">:</span> <span class="st">&quot;http://rs.tdwg.org/ontology/voc/TaxonName#ICZN&quot;</span><span class="op">,</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;label&quot;</span><span class="op">:</span> <span class="st">&quot;Alligator mississippiensis (Daudin, 1802)&quot;</span><span class="op">,</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;nameComplete&quot;</span><span class="op">:</span> <span class="st">&quot;Alligator mississippiensis&quot;</span><span class="op">,</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;genusPart&quot;</span><span class="op">:</span> <span class="st">&quot;Alligator&quot;</span><span class="op">,</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;specificEpithet&quot;</span><span class="op">:</span> <span class="st">&quot;mississippiensis&quot;</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>                  }</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>              }</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    }]</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="validating-a-phyx-document-using-json-schema">Validating a Phyx document using JSON Schema</h2>
+<p>We publish a <a href="https://json-schema.org/">JSON Schema</a> with phyx.js, which can be used to validate that a Phyx document is correctly formed. We use <a href="https://ajv.js.org/">Ajv</a>, a JSON Schema validator for JavaScript. Note that we use the copy of the context file that is included in this repository, but you can also <a href="https://www.phyloref.org/phyx.js/context/v1.0.0/schema.json">download it from our website</a>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> fs <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;fs&#39;</span>)<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> Ajv <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;ajv&#39;</span>)<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Configure Ajv.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> ajv <span class="op">=</span> <span class="kw">new</span> <span class="fu">Ajv</span>({</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">allErrors</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="co">// Display all error messages, not just the first.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">// We use the JSON Schema included with this repository, but you can download the</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">// Phyx JSON Schema from https://www.phyloref.org/phyx.js/context/v1.0.0/schema.json</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> validator <span class="op">=</span> ajv<span class="op">.</span><span class="fu">compile</span>(<span class="bu">JSON</span><span class="op">.</span><span class="fu">parse</span>(fs<span class="op">.</span><span class="fu">readFileSync</span>(<span class="st">&#39;../docs/context/v1.0.0/schema.json&#39;</span>)))<span class="op">;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">// Attempt to validate the Brochu 2003 example file.</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> result <span class="op">=</span> <span class="fu">validator</span>(alligatoridae_brochu2003)<span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`Is alligatoridae_brochu2003 valid? </span><span class="sc">${</span>result<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;Errors:&#39;</span><span class="op">,</span> validator<span class="op">.</span><span class="at">errors</span> <span class="op">||</span> <span class="st">&#39;none&#39;</span>)<span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Let&#39;s make an invalid copy of the Brochu 2003 example file to make sure this is working.</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> alligatoridae_brochu2003copy <span class="op">=</span> {<span class="op">...</span>alligatoridae_brochu2003}<span class="op">;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="kw">delete</span> alligatoridae_brochu2003copy[<span class="st">&#39;@context&#39;</span>]<span class="op">;</span>  <span class="co">// @context is required for successful validation</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> result <span class="op">=</span> <span class="fu">validator</span>(alligatoridae_brochu2003copy)<span class="op">;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`Is alligatoridae_brochu2003copy valid? </span><span class="sc">${</span>result<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;Errors:&#39;</span><span class="op">,</span> validator<span class="op">.</span><span class="at">errors</span>)<span class="op">;</span></span></code></pre></div>
+<pre><code>Is alligatoridae_brochu2003 valid? true
+Errors: none
+Is alligatoridae_brochu2003copy valid? false
+Errors: [
+  {
+    keyword: &#39;required&#39;,
+    dataPath: &#39;&#39;,
+    schemaPath: &#39;#/required&#39;,
+    params: { missingProperty: &#39;@context&#39; },
+    message: &quot;should have required property &#39;@context&#39;&quot;
+  }
+]</code></pre>
+<h2 id="examining-phyloreferences-taxonomic-units-and-taxon-concepts">Examining phyloreferences, taxonomic units and taxon concepts</h2>
+<p>The phyx.js library was built in order to simplify the process of working with individual components of Phyx documents, and to facilitate the conversion of a Phyx document into OWL. The library consists of a series of <a href="https://www.phyloref.org/phyx.js/identifiers.html#wrappers">wrappers</a>, each of which wraps part of the document. For example, we can wrap every specifier that is a <a href="http://purl.obolibrary.org/obo/CDAO_0000138">taxonomic unit</a> using the <a href="https://www.phyloref.org/phyx.js/class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a>.</p>
+<p>This provides a number of convenience methods: for example, <code>.internalSpecifiers</code> and <code>.externalSpecifiers</code> will always return lists, whether or not these are defined in the underlying phyloreference (if undefined, the methods return empty lists). There is also a <code>.specifiers</code> method that lists both internal and external specifiers.</p>
+<p>Furthermore, taxonomic units that are taxon concepts can be wrapped by a <a href="https://www.phyloref.org/phyx.js/class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a>, which have methods for accessing the “complete name” (i.e. the monomial, binomial or trinomial name) and the nomenclatural code.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Load the Phyx library.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> phyx <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;..&#39;</span>)<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">// List all the phyloreferences along with their specifiers.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>alligatoridae_brochu2003<span class="op">.</span><span class="at">phylorefs</span><span class="op">.</span><span class="fu">forEach</span>(phyloref <span class="kw">=&gt;</span> {</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> wrappedPhyloref <span class="op">=</span> <span class="kw">new</span> phyx<span class="op">.</span><span class="fu">PhylorefWrapper</span>(phyloref)<span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(wrappedPhyloref<span class="op">.</span><span class="at">label</span>)<span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Extract the &quot;complete name&quot; and the nomenclatural code short name for each specifier that is a taxonomic unit.</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    wrappedPhyloref<span class="op">.</span><span class="at">internalSpecifiers</span><span class="op">.</span><span class="fu">forEach</span>(specifier <span class="kw">=&gt;</span> {</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> wrappedSpecifier <span class="op">=</span> <span class="kw">new</span> phyx<span class="op">.</span><span class="fu">TaxonomicUnitWrapper</span>(specifier)<span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (wrappedSpecifier<span class="op">.</span><span class="at">taxonConcept</span>) {</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> wrappedTaxonConcept <span class="op">=</span> <span class="kw">new</span> phyx<span class="op">.</span><span class="fu">TaxonConceptWrapper</span>(wrappedSpecifier<span class="op">.</span><span class="at">taxonConcept</span>)<span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">` - Internal: </span><span class="sc">${</span>wrappedTaxonConcept<span class="op">.</span><span class="at">nameComplete</span><span class="sc">}</span><span class="vs"> (</span><span class="sc">${</span>wrappedTaxonConcept<span class="op">.</span><span class="at">nomenCodeDetails</span><span class="op">.</span><span class="at">shortName</span><span class="sc">}</span><span class="vs">)`</span>)<span class="op">;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">` - Internal: </span><span class="sc">${</span>wrappedSpecifier<span class="op">.</span><span class="at">label</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Note that the phyloref doesn&#39;t have an `externalSpecifiers` key, but the wrapper provides it as an empty list</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">// for ease of use.</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    wrappedPhyloref<span class="op">.</span><span class="at">externalSpecifiers</span><span class="op">.</span><span class="fu">forEach</span>(specifier <span class="kw">=&gt;</span> {</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> wrappedSpecifier <span class="op">=</span> <span class="kw">new</span> phyx<span class="op">.</span><span class="fu">TaxonomicUnitWrapper</span>(specifier)<span class="op">;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (wrappedSpecifier<span class="op">.</span><span class="at">taxonConcept</span>) {</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> wrappedTaxonConcept <span class="op">=</span> <span class="kw">new</span> phyx<span class="op">.</span><span class="fu">TaxonConceptWrapper</span>(wrappedSpecifier<span class="op">.</span><span class="at">taxonConcept</span>)<span class="op">;</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>            <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">` - External: </span><span class="sc">${</span>wrappedTaxonConcept<span class="op">.</span><span class="at">nameComplete</span><span class="sc">}</span><span class="vs"> (</span><span class="sc">${</span>wrappedTaxonConcept<span class="op">.</span><span class="at">nomenCodeDetails</span><span class="op">.</span><span class="at">shortName</span><span class="sc">}</span><span class="vs">)`</span>)<span class="op">;</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>            <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">` - External: </span><span class="sc">${</span>wrappedSpecifier<span class="op">.</span><span class="at">label</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>()<span class="op">;</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<pre><code>Alligatoridae
+ - Internal: Caiman crocodilus (ICZN)
+ - Internal: Alligator mississippiensis (ICZN)</code></pre>
+<h3 id="examining-phylogenies">Examining phylogenies</h3>
+<p>Phylogenies are stored in JSON files as Newick strings, but the <a href="https://www.phyloref.org/phyx.js/class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a> can be used to look at internal and terminal node labels and to translate the Newick string into a JSON structure for use by downstream programs.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> phylogeny <span class="op">=</span> alligatoridae_brochu2003<span class="op">.</span><span class="at">phylogenies</span>[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`The phylogeny is represented by the Newick string: </span><span class="sc">${</span>phylogeny<span class="op">.</span><span class="at">newick</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>()<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Display internal and external nodes.</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> wrappedPhylogeny <span class="op">=</span> <span class="kw">new</span> phyx<span class="op">.</span><span class="fu">PhylogenyWrapper</span>(phylogeny)<span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`This consists of the following nodes:</span><span class="sc">\n</span><span class="vs"> - Internal nodes: </span><span class="sc">${</span>wrappedPhylogeny<span class="op">.</span><span class="fu">getNodeLabels</span>(<span class="st">&#39;internal&#39;</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">&#39;, &#39;</span>)<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">` - Terminal nodes: </span><span class="sc">${</span>wrappedPhylogeny<span class="op">.</span><span class="fu">getNodeLabels</span>(<span class="st">&#39;terminal&#39;</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">&#39;, &#39;</span>)<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>()<span class="op">;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">// Convert the Newick string into a JSON structure for examination.</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`Newick string as a JSON structure: </span><span class="sc">${</span><span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(phyx<span class="op">.</span><span class="at">PhylogenyWrapper</span><span class="op">.</span><span class="fu">getParsedNewick</span>(phylogeny<span class="op">.</span><span class="at">newick</span>)<span class="op">,</span> <span class="kw">undefined</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>()<span class="op">;</span></span></code></pre></div>
+<pre><code>The phylogeny is represented by the Newick string: (Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,(&#39;Gavialis gangeticus&#39;,((&#39;Diplocynodon ratelii&#39;,(&#39;Alligator mississippiensis&#39;,&#39;Caiman crocodilus&#39;)Alligatoridae)Alligatoroidea,(&#39;Tomistoma schlegelii&#39;,(&#39;Osteolaemus tetraspis&#39;,&#39;Crocodylus niloticus&#39;)Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha));
+
+This consists of the following nodes:
+ - Internal nodes: Alligatoridae, Alligatoroidea, Crocodylinae, Crocodylidae, Brevirostres, Crocodylia, Eusuchia, Mesoeucrocodylia, Crocodyliformes, Crocodylomorpha
+ - Terminal nodes: Parasuchia, rauisuchians, Aetosauria, sphenosuchians, protosuchians, mesosuchians, Hylaeochampsa, Aegyptosuchus, Stomatosuchus, Allodaposuchus, Gavialis gangeticus, Diplocynodon ratelii, Alligator mississippiensis, Caiman crocodilus, Tomistoma schlegelii, Osteolaemus tetraspis, Crocodylus niloticus
+
+Newick string as a JSON structure: {
+  &quot;json&quot;: {
+    &quot;children&quot;: [
+      {
+        &quot;children&quot;: [
+          {
+            &quot;label&quot;: &quot;Crocodylomorpha&quot;,
+            &quot;children&quot;: [
+              {
+                &quot;label&quot;: &quot;Crocodyliformes&quot;,
+                &quot;children&quot;: [
+                  {
+                    &quot;label&quot;: &quot;Mesoeucrocodylia&quot;,
+                    &quot;children&quot;: [
+                      {
+                        &quot;label&quot;: &quot;Eusuchia&quot;,
+                        &quot;children&quot;: [
+                          {
+                            &quot;children&quot;: [
+                              {
+                                &quot;label&quot;: &quot;Crocodylia&quot;,
+                                &quot;children&quot;: [
+                                  {
+                                    &quot;label&quot;: &quot;Brevirostres&quot;,
+                                    &quot;children&quot;: [
+                                      {
+                                        &quot;label&quot;: &quot;Crocodylidae&quot;,
+                                        &quot;children&quot;: [
+                                          {
+                                            &quot;label&quot;: &quot;Crocodylinae&quot;,
+                                            &quot;children&quot;: [
+                                              {
+                                                &quot;label&quot;: &quot;Crocodylus niloticus&quot;,
+                                                &quot;name&quot;: &quot;Crocodylus niloticus&quot;
+                                              },
+                                              {
+                                                &quot;label&quot;: &quot;Osteolaemus tetraspis&quot;,
+                                                &quot;name&quot;: &quot;Osteolaemus tetraspis&quot;
+                                              }
+                                            ],
+                                            &quot;name&quot;: &quot;Crocodylinae&quot;
+                                          },
+                                          {
+                                            &quot;label&quot;: &quot;Tomistoma schlegelii&quot;,
+                                            &quot;name&quot;: &quot;Tomistoma schlegelii&quot;
+                                          }
+                                        ],
+                                        &quot;name&quot;: &quot;Crocodylidae&quot;
+                                      },
+                                      {
+                                        &quot;label&quot;: &quot;Alligatoroidea&quot;,
+                                        &quot;children&quot;: [
+                                          {
+                                            &quot;label&quot;: &quot;Alligatoridae&quot;,
+                                            &quot;children&quot;: [
+                                              {
+                                                &quot;label&quot;: &quot;Caiman crocodilus&quot;,
+                                                &quot;name&quot;: &quot;Caiman crocodilus&quot;
+                                              },
+                                              {
+                                                &quot;label&quot;: &quot;Alligator mississippiensis&quot;,
+                                                &quot;name&quot;: &quot;Alligator mississippiensis&quot;
+                                              }
+                                            ],
+                                            &quot;name&quot;: &quot;Alligatoridae&quot;
+                                          },
+                                          {
+                                            &quot;label&quot;: &quot;Diplocynodon ratelii&quot;,
+                                            &quot;name&quot;: &quot;Diplocynodon ratelii&quot;
+                                          }
+                                        ],
+                                        &quot;name&quot;: &quot;Alligatoroidea&quot;
+                                      }
+                                    ],
+                                    &quot;name&quot;: &quot;Brevirostres&quot;
+                                  },
+                                  {
+                                    &quot;label&quot;: &quot;Gavialis gangeticus&quot;,
+                                    &quot;name&quot;: &quot;Gavialis gangeticus&quot;
+                                  }
+                                ],
+                                &quot;name&quot;: &quot;Crocodylia&quot;
+                              },
+                              {
+                                &quot;label&quot;: &quot;Allodaposuchus&quot;,
+                                &quot;name&quot;: &quot;Allodaposuchus&quot;
+                              }
+                            ]
+                          },
+                          {
+                            &quot;label&quot;: &quot;Stomatosuchus&quot;,
+                            &quot;name&quot;: &quot;Stomatosuchus&quot;
+                          },
+                          {
+                            &quot;label&quot;: &quot;Aegyptosuchus&quot;,
+                            &quot;name&quot;: &quot;Aegyptosuchus&quot;
+                          },
+                          {
+                            &quot;label&quot;: &quot;Hylaeochampsa&quot;,
+                            &quot;name&quot;: &quot;Hylaeochampsa&quot;
+                          }
+                        ],
+                        &quot;name&quot;: &quot;Eusuchia&quot;
+                      },
+                      {
+                        &quot;label&quot;: &quot;mesosuchians&quot;,
+                        &quot;name&quot;: &quot;mesosuchians&quot;
+                      }
+                    ],
+                    &quot;name&quot;: &quot;Mesoeucrocodylia&quot;
+                  },
+                  {
+                    &quot;label&quot;: &quot;protosuchians&quot;,
+                    &quot;name&quot;: &quot;protosuchians&quot;
+                  }
+                ],
+                &quot;name&quot;: &quot;Crocodyliformes&quot;
+              },
+              {
+                &quot;label&quot;: &quot;sphenosuchians&quot;,
+                &quot;name&quot;: &quot;sphenosuchians&quot;
+              }
+            ],
+            &quot;name&quot;: &quot;Crocodylomorpha&quot;
+          },
+          {
+            &quot;label&quot;: &quot;Aetosauria&quot;,
+            &quot;name&quot;: &quot;Aetosauria&quot;
+          },
+          {
+            &quot;label&quot;: &quot;rauisuchians&quot;,
+            &quot;name&quot;: &quot;rauisuchians&quot;
+          }
+        ]
+      },
+      {
+        &quot;label&quot;: &quot;Parasuchia&quot;,
+        &quot;name&quot;: &quot;Parasuchia&quot;
+      }
+    ]
+  }
+}</code></pre>
+<h3 id="accessing-citations">Accessing citations</h3>
+<p>Another example of a wrapper that can be used for wrapping a part of a Phyx file is the <a href="https://www.phyloref.org/phyx.js/class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a>. This can be used to wrap citations anywhere in the Phyx file to provide a full bibliographic citation for the citation.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> wrappedPhylogenyCitation <span class="op">=</span> <span class="kw">new</span> phyx<span class="op">.</span><span class="fu">CitationWrapper</span>(alligatoridae_brochu2003<span class="op">.</span><span class="at">phylogenies</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">source</span>)<span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`The source of the phylogeny in this Phyx document is: </span><span class="sc">${</span>wrappedPhylogenyCitation<span class="op">.</span><span class="fu">toString</span>()<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> wrappedPhylorefCitation <span class="op">=</span> <span class="kw">new</span> phyx<span class="op">.</span><span class="fu">CitationWrapper</span>(alligatoridae_brochu2003<span class="op">.</span><span class="at">phylorefs</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">definitionSource</span>)<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`The definition source of the phyloreference in this Phyx document is: </span><span class="sc">${</span>wrappedPhylorefCitation<span class="op">.</span><span class="fu">toString</span>()<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span></code></pre></div>
+<pre><code>The source of the phylogeny in this Phyx document is: Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31:357--397  fig 1 doi: 10.1146/annurev.earth.31.100901.141308
+The definition source of the phyloreference in this Phyx document is: Brochu (2003) Phylogenetic approaches toward crocodylian history. Annual Review of Earth and Planetary Sciences 31:1, 357-397. doi: 10.1146/annurev.earth.31.100901.141308</code></pre>
+<h3 id="converting-a-phyx-document-into-owl">Converting a Phyx document into OWL</h3>
+<p>A Phyx document (which is in JSON-LD format) can be converted into OWL/RDF in the form of <a href="https://www.w3.org/TR/n-quads/">N-Quads</a> by using the <code>PhyxWrapper</code> to wrap the entire Phyx document. A base URL can be specified.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>nQuads <span class="op">=</span> <span class="kw">new</span> phyx<span class="op">.</span><span class="fu">PhyxWrapper</span>(alligatoridae_brochu2003)<span class="op">.</span><span class="fu">toRDF</span>(<span class="st">&#39;http://example.org/phyx-tutorial#&#39;</span>)<span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>nQuads<span class="op">.</span><span class="fu">then</span>(nq <span class="kw">=&gt;</span> <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(nq<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">2500</span>) <span class="op">+</span> <span class="st">&#39;...&#39;</span>))<span class="op">;</span></span></code></pre></div>
+<pre><code>&lt;http://example.org/phyx-tutorial#phylogeny0&gt; &lt;http://ontology.phyloref.org/phyloref.owl#newick_expression&gt; &quot;(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,(&#39;Gavialis gangeticus&#39;,((&#39;Diplocynodon ratelii&#39;,(&#39;Alligator mississippiensis&#39;,&#39;Caiman crocodilus&#39;)Alligatoridae)Alligatoroidea,(&#39;Tomistoma schlegelii&#39;,(&#39;Osteolaemus tetraspis&#39;,&#39;Crocodylus niloticus&#39;)Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha));&quot; .
+&lt;http://example.org/phyx-tutorial#phylogeny0&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000148&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node0&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0&gt; &lt;http://purl.org/dc/terms/source&gt; _:b165 .
+&lt;http://example.org/phyx-tutorial#phylogeny0&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://ontology.phyloref.org/phyloref.owl#ReferencePhylogenyEvidence&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0&gt; &lt;http://www.w3.org/2000/01/rdf-schema#isDefinedBy&gt; _:b0 .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node0&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000149&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node1&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node0&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000149&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node29&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node0&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000200&gt; &lt;http://example.org/phyx-tutorial#phylogeny0&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node0&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000140&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node10&gt; &lt;http://ontology.phyloref.org/phyloref.owl#has_Sibling&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node13&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node10&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000149&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node11&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node10&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000149&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node12&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node10&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000179&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node9&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node10&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000187&gt; _:b50 .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node10&gt; &lt;http://purl.obolibrary.org/obo/CDAO_00002...</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">// We can convert these N-Quads into RDF/Turtle for easier interpretation.</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">// We only convert a few N-Quads as a demonstration.</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> N3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;n3&#39;</span>)<span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> { Readable } <span class="op">=</span> <span class="pp">require</span>(<span class="st">&quot;stream&quot;</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>nQuads<span class="op">.</span><span class="fu">then</span>(nq <span class="kw">=&gt;</span> {</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    someNqs <span class="op">=</span> nq<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">1071</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> streamParser <span class="op">=</span> <span class="kw">new</span> N3<span class="op">.</span><span class="fu">StreamParser</span>()<span class="op">,</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    inputStream <span class="op">=</span> Readable<span class="op">.</span><span class="fu">from</span>([someNqs])<span class="op">,</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    streamWriter <span class="op">=</span> <span class="kw">new</span> N3<span class="op">.</span><span class="fu">StreamWriter</span>()<span class="op">;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    inputStream<span class="op">.</span><span class="fu">pipe</span>(streamParser)<span class="op">;</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    streamParser<span class="op">.</span><span class="fu">pipe</span>(streamWriter)<span class="op">;</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    streamWriter<span class="op">.</span><span class="fu">pipe</span>(<span class="bu">process</span><span class="op">.</span><span class="at">stdout</span>)<span class="op">;</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="kw">undefined</span><span class="op">;</span></span></code></pre></div>
+<h2 id="navigating-a-phyx-document-as-a-json-file">Navigating a Phyx document as a JSON file</h2>
+<p>Most phyx.js wrappers have been designed to help interpret the more complex parts of a Phyx file, such as the phyloreferences, specifiers, phylogenies, citations and the entire Phyx document. However, since every Phyx document is also a JSON document, much of the information in the Phyx document can be accessed sufficiently easily using standard JSON libraries. In some cases, as in the demonstration below, this requires more complex code than would be necessary by using the phyx.js wrappers.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">// List all the phylorefs in a Phyx document.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>alligatoridae_brochu2003copy<span class="op">.</span><span class="at">phylorefs</span><span class="op">.</span><span class="fu">forEach</span>((phyloref<span class="op">,</span> index) <span class="kw">=&gt;</span> {</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`- Phyloref </span><span class="sc">${</span>index <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="vs">. </span><span class="sc">${</span>phyloref<span class="op">.</span><span class="at">label</span><span class="sc">}</span><span class="vs">:`</span>)<span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    (phyloref<span class="op">.</span><span class="at">internalSpecifiers</span> <span class="op">||</span> [])<span class="op">.</span><span class="fu">forEach</span>(specifier <span class="kw">=&gt;</span> {</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`  - Internal specifier: </span><span class="sc">${</span>(specifier<span class="op">.</span><span class="at">hasName</span> <span class="op">||</span> {})<span class="op">.</span><span class="at">nameComplete</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    (phyloref<span class="op">.</span><span class="at">externalSpecifiers</span> <span class="op">||</span> [])<span class="op">.</span><span class="fu">forEach</span>(specifier <span class="kw">=&gt;</span> {</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`  - External specifier: </span><span class="sc">${</span>(specifier<span class="op">.</span><span class="at">hasName</span> <span class="op">||</span> {})<span class="op">.</span><span class="at">nameComplete</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>()<span class="op">;</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<pre><code>&lt;http://example.org/phyx-tutorial#phylogeny0&gt; &lt;http://ontology.phyloref.org/phyloref.owl#newick_expression&gt; &quot;(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,(&#39;Gavialis gangeticus&#39;,((&#39;Diplocynodon ratelii&#39;,(&#39;Alligator mississippiensis&#39;,&#39;Caiman crocodilus&#39;)Alligatoridae)Alligatoroidea,(&#39;Tomistoma schlegelii&#39;,(&#39;Osteolaemus tetraspis&#39;,&#39;Crocodylus niloticus&#39;)Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha));&quot;;
+    &lt;http://purl.obolibrary.org/obo/CDAO_0000148&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node0&gt;;
+    &lt;http://purl.org/dc/terms/source&gt; _:b0_b165;
+    a &lt;http://ontology.phyloref.org/phyloref.owl#ReferencePhylogenyEvidence&gt;;
+    &lt;http://www.w3.org/2000/01/rdf-schema#isDefinedBy&gt; _:b0_b0.
+- Phyloref 1. Alligatoridae:
+  - Internal specifier: Caiman crocodilus
+  - Internal specifier: Alligator mississippiensis</code></pre>
+<h2 id="about-this-notebook">About this notebook</h2>
+<p>This document was created as a <a href="https://jupyter.org/">Jupyter Notebook</a>, and the source file is available in our GitHub repository. We recommend installing <a href="https://formulae.brew.sh/formula/jupyterlab#default">Jupyterlab via Homebrew on Mac</a>, but <a href="https://jupyter.org/install">other installation options are available</a>. Once Jupyter Notebook is set up, you should be able to open this notebook for editing by running <code>jupyter notebook Introduction\ to\ phyx.js.ipynb</code> from the command line.</p>
+<p>We use <a href="https://github.com/n-riesco/ijavascript">IJavascript</a> to use Javascript as a kernel in Jupyter Notebook. If you would like to edit this notebook, you will need to <a href="https://github.com/n-riesco/ijavascript#installation">install this</a> as well.</p>
+</body>
+</html>
