@@ -46,6 +46,20 @@
 <li data-ice="manualNav" class="indent-h3" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#changed" data-ice="link">Changed</a></li>
 </ul>
   </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html" data-ice="link">Introduction to phyx.js</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#starting-with-phyx-files" data-ice="link">Starting with Phyx files</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#validating-a-phyx-document-using-json-schema" data-ice="link">Validating a Phyx document using JSON Schema</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#examining-phyloreferences--taxonomic-units-and-taxon-concepts" data-ice="link">Examining phyloreferences, taxonomic units and taxon concepts</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#examining-phylogenies" data-ice="link">Examining phylogenies</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#accessing-citations" data-ice="link">Accessing citations</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#converting-a-phyx-document-into-owl" data-ice="link">Converting a Phyx document into OWL</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#navigating-a-phyx-document-as-a-json-file" data-ice="link">Navigating a Phyx document as a JSON file</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#about-this-notebook" data-ice="link">About this notebook</a></li>
+</ul>
+  </div>
 </div>
 </nav>
 
@@ -84,6 +98,370 @@ release of this package was based on <a href="https://github.com/phyloref/curati
 <li>Made other changes to the initial code as needed to work as an independent NPM package.</li>
 </ul></div>
         <a data-ice="link" href="manual/CHANGELOG.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Introduction to phyx.js</h1><p><em>Written by Gaurav Vaidya, July 26, 2021</em></p><p>This tutorial provides an introduction to the phyx.js library, and shows you how it can be used to read a Phyx file, check it for validity, examine <a href="https://www.phyloref.org/">phyloreferences</a>, phylogenies and specifiers, and describe how to convert the file into RDF.</p><h2>Starting with Phyx files</h2><p>Phyx files are digitized clade definitions in a JSON-LD format. While you can use an editor like <a href="https://github.com/phyloref/klados#readme">Klados</a> to create Phyx files, you can also write one by yourself as a JSON document.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">var alligatoridae_brochu2003 = {
+    &quot;@context&quot;: &quot;https://www.phyloref.org/phyx.js/context/v1.0.0/phyx.json&quot;,
+
+    // Phylogeny from Brochu 2003: https://doi.org/10.1146/annurev.earth.31.100901.141308
+    &quot;phylogenies&quot;: [{
+        &quot;newick&quot;: &quot;(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,(&apos;Gavialis gangeticus&apos;,((&apos;Diplocynodon ratelii&apos;,(&apos;Alligator mississippiensis&apos;,&apos;Caiman crocodilus&apos;)Alligatoridae)Alligatoroidea,(&apos;Tomistoma schlegelii&apos;,(&apos;Osteolaemus tetraspis&apos;,&apos;Crocodylus niloticus&apos;)Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha));&quot;,
+        &quot;source&quot;: {
+            &quot;type&quot;: &quot;article&quot;,
+            &quot;title&quot;: &quot;Phylogenetic approaches toward crocodylian history&quot;,
+            &quot;authors&quot;: [{
+                &quot;firstname&quot;: &quot;Christopher&quot;,
+                &quot;middlename&quot;: &quot;A.&quot;,
+                &quot;lastname&quot;: &quot;Brochu&quot;
+            }],
+            &quot;year&quot;: 2003,
+            &quot;figure&quot;: &quot;1&quot;,
+            &quot;identifier&quot;: [{
+                &quot;type&quot;: &quot;doi&quot;,
+                &quot;id&quot;: &quot;10.1146/annurev.earth.31.100901.141308&quot;
+            }],
+            &quot;journal&quot;: {
+                &quot;name&quot;: &quot;Annual Review of Earth and Planetary Sciences&quot;,
+                &quot;volume&quot;: &quot;31&quot;,
+                &quot;pages&quot;: &quot;357--397&quot;,
+                &quot;identifier&quot;: [{ &quot;type&quot;: &quot;eISSN&quot;, &quot;id&quot;: &quot;1545-4495&quot; }]
+            }
+        }
+    }],
+
+    // Clade definition from Brochu 2003: Alligatoridae
+    &quot;phylorefs&quot;: [{
+          &quot;label&quot;: &quot;Alligatoridae&quot;,
+          &quot;scientificNameAuthorship&quot;: { &quot;bibliographicCitation&quot;: &quot;(Cuvier 1807)&quot; },
+          &quot;phylorefType&quot;: &quot;phyloref:PhyloreferenceUsingMinimumClade&quot;,
+          &quot;definition&quot;: &quot;Alligatoridae (Cuvier 1807).\n\nLast common ancestor of Alligator mississippiensis and Caiman crocodilus and all of its descendents.&quot;,
+          &quot;definitionSource&quot;: {
+              &quot;bibliographicCitation&quot;: &quot;Brochu (2003) Phylogenetic approaches toward crocodylian history. Annual Review of Earth and Planetary Sciences 31:1, 357-397. doi: 10.1146/annurev.earth.31.100901.141308&quot;
+          },
+          &quot;internalSpecifiers&quot;: [
+              {
+                  &quot;@type&quot;: &quot;http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept&quot;,
+                  &quot;hasName&quot;: {
+                        &quot;@type&quot;: &quot;http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName&quot;,
+                        &quot;nomenclaturalCode&quot;: &quot;http://rs.tdwg.org/ontology/voc/TaxonName#ICZN&quot;,
+                        &quot;label&quot;: &quot;Caiman crocodilus Linnaeus, 1758&quot;,
+                        &quot;nameComplete&quot;: &quot;Caiman crocodilus&quot;,
+                        &quot;genusPart&quot;: &quot;Caiman&quot;,
+                        &quot;specificEpithet&quot;: &quot;crocodilus&quot;
+                  }
+              }, {
+                  &quot;@type&quot;: &quot;http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept&quot;,
+                  &quot;hasName&quot;: {
+                        &quot;@type&quot;: &quot;http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName&quot;,
+                        &quot;nomenclaturalCode&quot;: &quot;http://rs.tdwg.org/ontology/voc/TaxonName#ICZN&quot;,
+                        &quot;label&quot;: &quot;Alligator mississippiensis (Daudin, 1802)&quot;,
+                        &quot;nameComplete&quot;: &quot;Alligator mississippiensis&quot;,
+                        &quot;genusPart&quot;: &quot;Alligator&quot;,
+                        &quot;specificEpithet&quot;: &quot;mississippiensis&quot;
+                  }
+              }
+        ]
+    }]
+}</code>
+</code></pre><h2>Validating a Phyx document using JSON Schema</h2><p>We publish a <a href="https://json-schema.org/">JSON Schema</a> with phyx.js, which can be used to validate that a Phyx document is correctly formed. We use <a href="https://ajv.js.org/">Ajv</a>, a JSON Schema validator for JavaScript. Note that we use the copy of the context file that is included in this repository, but you can also <a href="https://www.phyloref.org/phyx.js/context/v1.0.0/schema.json">download it from our website</a>.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">var fs = require(&apos;fs&apos;);
+var Ajv = require(&apos;ajv&apos;);
+
+// Configure Ajv.
+var ajv = new Ajv({
+    allErrors: true, // Display all error messages, not just the first.
+});
+
+// We use the JSON Schema included with this repository, but you can download the
+// Phyx JSON Schema from https://www.phyloref.org/phyx.js/context/v1.0.0/schema.json
+var validator = ajv.compile(JSON.parse(fs.readFileSync(&apos;../docs/context/v1.0.0/schema.json&apos;)));
+
+// Attempt to validate the Brochu 2003 example file.
+var result = validator(alligatoridae_brochu2003);
+console.log(`Is alligatoridae_brochu2003 valid? ${result}`);
+console.log(&apos;Errors:&apos;, validator.errors || &apos;none&apos;);
+
+// Let&apos;s make an invalid copy of the Brochu 2003 example file to make sure this is working.
+var alligatoridae_brochu2003copy = {...alligatoridae_brochu2003};
+delete alligatoridae_brochu2003copy[&apos;@context&apos;];  // @context is required for successful validation
+
+var result = validator(alligatoridae_brochu2003copy);
+console.log(`Is alligatoridae_brochu2003copy valid? ${result}`);
+console.log(&apos;Errors:&apos;, validator.errors);</code>
+</code></pre><pre><code><code class="source-code prettyprint">Is alligatoridae_brochu2003 valid? true
+Errors: none
+Is alligatoridae_brochu2003copy valid? false
+Errors: [
+  {
+    keyword: &apos;required&apos;,
+    dataPath: &apos;&apos;,
+    schemaPath: &apos;#/required&apos;,
+    params: { missingProperty: &apos;@context&apos; },
+    message: &quot;should have required property &apos;@context&apos;&quot;
+  }
+]</code>
+</code></pre><h2>Examining phyloreferences, taxonomic units and taxon concepts</h2><p>The phyx.js library was built in order to simplify the process of working with individual components of Phyx documents, and to facilitate the conversion of a Phyx document into OWL. The library consists of a series of <a href="https://www.phyloref.org/phyx.js/identifiers.html#wrappers">wrappers</a>, each of which wraps part of the document. For example, we can wrap every specifier that is a <a href="http://purl.obolibrary.org/obo/CDAO_0000138">taxonomic unit</a> using the <a href="https://www.phyloref.org/phyx.js/class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a>.</p><p>This provides a number of convenience methods: for example, <code>.internalSpecifiers</code> and <code>.externalSpecifiers</code> will always return lists, whether or not these are defined in the underlying phyloreference (if undefined, the methods return empty lists). There is also a <code>.specifiers</code> method that lists both internal and external specifiers.</p><p>Furthermore, taxonomic units that are taxon concepts can be wrapped by a <a href="https://www.phyloref.org/phyx.js/class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html">TaxonConceptWrapper</a>, which have methods for accessing the &quot;complete name&quot; (i.e. the monomial, binomial or trinomial name) and the nomenclatural code.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">// Load the Phyx library.
+var phyx = require(&apos;..&apos;);
+
+// List all the phyloreferences along with their specifiers.
+alligatoridae_brochu2003.phylorefs.forEach(phyloref =&gt; {
+    let wrappedPhyloref = new phyx.PhylorefWrapper(phyloref);
+
+    console.log(wrappedPhyloref.label);
+
+    // Extract the &quot;complete name&quot; and the nomenclatural code short name for each specifier that is a taxonomic unit.
+    wrappedPhyloref.internalSpecifiers.forEach(specifier =&gt; {
+        let wrappedSpecifier = new phyx.TaxonomicUnitWrapper(specifier);
+        if (wrappedSpecifier.taxonConcept) {
+            let wrappedTaxonConcept = new phyx.TaxonConceptWrapper(wrappedSpecifier.taxonConcept);
+            console.log(` - Internal: ${wrappedTaxonConcept.nameComplete} (${wrappedTaxonConcept.nomenCodeDetails.shortName})`);
+        } else {
+            console.log(` - Internal: ${wrappedSpecifier.label}`);
+        }
+    });
+
+    // Note that the phyloref doesn&apos;t have an `externalSpecifiers` key, but the wrapper provides it as an empty list
+    // for ease of use.
+    wrappedPhyloref.externalSpecifiers.forEach(specifier =&gt; {
+        let wrappedSpecifier = new phyx.TaxonomicUnitWrapper(specifier);
+        if (wrappedSpecifier.taxonConcept) {
+            let wrappedTaxonConcept = new phyx.TaxonConceptWrapper(wrappedSpecifier.taxonConcept);
+            console.log(` - External: ${wrappedTaxonConcept.nameComplete} (${wrappedTaxonConcept.nomenCodeDetails.shortName})`);
+        } else {
+            console.log(` - External: ${wrappedSpecifier.label}`);
+        }
+    });
+
+    console.log();
+});</code>
+</code></pre><pre><code><code class="source-code prettyprint">Alligatoridae
+ - Internal: Caiman crocodilus (ICZN)
+ - Internal: Alligator mississippiensis (ICZN)</code>
+</code></pre><h3>Examining phylogenies</h3><p>Phylogenies are stored in JSON files as Newick strings, but the <a href="https://www.phyloref.org/phyx.js/class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html">PhylogenyWrapper</a> can be used to look at internal and terminal node labels and to translate the Newick string into a JSON structure for use by downstream programs.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">var phylogeny = alligatoridae_brochu2003.phylogenies[0];
+console.log(`The phylogeny is represented by the Newick string: ${phylogeny.newick}`);
+console.log();
+
+// Display internal and external nodes.
+var wrappedPhylogeny = new phyx.PhylogenyWrapper(phylogeny);
+console.log(`This consists of the following nodes:\n - Internal nodes: ${wrappedPhylogeny.getNodeLabels(&apos;internal&apos;).join(&apos;, &apos;)}`);
+console.log(` - Terminal nodes: ${wrappedPhylogeny.getNodeLabels(&apos;terminal&apos;).join(&apos;, &apos;)}`);
+console.log();
+
+// Convert the Newick string into a JSON structure for examination.
+console.log(`Newick string as a JSON structure: ${JSON.stringify(phyx.PhylogenyWrapper.getParsedNewick(phylogeny.newick), undefined, 2)}`);
+console.log();</code>
+</code></pre><pre><code><code class="source-code prettyprint">The phylogeny is represented by the Newick string: (Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,(&apos;Gavialis gangeticus&apos;,((&apos;Diplocynodon ratelii&apos;,(&apos;Alligator mississippiensis&apos;,&apos;Caiman crocodilus&apos;)Alligatoridae)Alligatoroidea,(&apos;Tomistoma schlegelii&apos;,(&apos;Osteolaemus tetraspis&apos;,&apos;Crocodylus niloticus&apos;)Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha));
+
+This consists of the following nodes:
+ - Internal nodes: Alligatoridae, Alligatoroidea, Crocodylinae, Crocodylidae, Brevirostres, Crocodylia, Eusuchia, Mesoeucrocodylia, Crocodyliformes, Crocodylomorpha
+ - Terminal nodes: Parasuchia, rauisuchians, Aetosauria, sphenosuchians, protosuchians, mesosuchians, Hylaeochampsa, Aegyptosuchus, Stomatosuchus, Allodaposuchus, Gavialis gangeticus, Diplocynodon ratelii, Alligator mississippiensis, Caiman crocodilus, Tomistoma schlegelii, Osteolaemus tetraspis, Crocodylus niloticus
+
+Newick string as a JSON structure: {
+  &quot;json&quot;: {
+    &quot;children&quot;: [
+      {
+        &quot;children&quot;: [
+          {
+            &quot;label&quot;: &quot;Crocodylomorpha&quot;,
+            &quot;children&quot;: [
+              {
+                &quot;label&quot;: &quot;Crocodyliformes&quot;,
+                &quot;children&quot;: [
+                  {
+                    &quot;label&quot;: &quot;Mesoeucrocodylia&quot;,
+                    &quot;children&quot;: [
+                      {
+                        &quot;label&quot;: &quot;Eusuchia&quot;,
+                        &quot;children&quot;: [
+                          {
+                            &quot;children&quot;: [
+                              {
+                                &quot;label&quot;: &quot;Crocodylia&quot;,
+                                &quot;children&quot;: [
+                                  {
+                                    &quot;label&quot;: &quot;Brevirostres&quot;,
+                                    &quot;children&quot;: [
+                                      {
+                                        &quot;label&quot;: &quot;Crocodylidae&quot;,
+                                        &quot;children&quot;: [
+                                          {
+                                            &quot;label&quot;: &quot;Crocodylinae&quot;,
+                                            &quot;children&quot;: [
+                                              {
+                                                &quot;label&quot;: &quot;Crocodylus niloticus&quot;,
+                                                &quot;name&quot;: &quot;Crocodylus niloticus&quot;
+                                              },
+                                              {
+                                                &quot;label&quot;: &quot;Osteolaemus tetraspis&quot;,
+                                                &quot;name&quot;: &quot;Osteolaemus tetraspis&quot;
+                                              }
+                                            ],
+                                            &quot;name&quot;: &quot;Crocodylinae&quot;
+                                          },
+                                          {
+                                            &quot;label&quot;: &quot;Tomistoma schlegelii&quot;,
+                                            &quot;name&quot;: &quot;Tomistoma schlegelii&quot;
+                                          }
+                                        ],
+                                        &quot;name&quot;: &quot;Crocodylidae&quot;
+                                      },
+                                      {
+                                        &quot;label&quot;: &quot;Alligatoroidea&quot;,
+                                        &quot;children&quot;: [
+                                          {
+                                            &quot;label&quot;: &quot;Alligatoridae&quot;,
+                                            &quot;children&quot;: [
+                                              {
+                                                &quot;label&quot;: &quot;Caiman crocodilus&quot;,
+                                                &quot;name&quot;: &quot;Caiman crocodilus&quot;
+                                              },
+                                              {
+                                                &quot;label&quot;: &quot;Alligator mississippiensis&quot;,
+                                                &quot;name&quot;: &quot;Alligator mississippiensis&quot;
+                                              }
+                                            ],
+                                            &quot;name&quot;: &quot;Alligatoridae&quot;
+                                          },
+                                          {
+                                            &quot;label&quot;: &quot;Diplocynodon ratelii&quot;,
+                                            &quot;name&quot;: &quot;Diplocynodon ratelii&quot;
+                                          }
+                                        ],
+                                        &quot;name&quot;: &quot;Alligatoroidea&quot;
+                                      }
+                                    ],
+                                    &quot;name&quot;: &quot;Brevirostres&quot;
+                                  },
+                                  {
+                                    &quot;label&quot;: &quot;Gavialis gangeticus&quot;,
+                                    &quot;name&quot;: &quot;Gavialis gangeticus&quot;
+                                  }
+                                ],
+                                &quot;name&quot;: &quot;Crocodylia&quot;
+                              },
+                              {
+                                &quot;label&quot;: &quot;Allodaposuchus&quot;,
+                                &quot;name&quot;: &quot;Allodaposuchus&quot;
+                              }
+                            ]
+                          },
+                          {
+                            &quot;label&quot;: &quot;Stomatosuchus&quot;,
+                            &quot;name&quot;: &quot;Stomatosuchus&quot;
+                          },
+                          {
+                            &quot;label&quot;: &quot;Aegyptosuchus&quot;,
+                            &quot;name&quot;: &quot;Aegyptosuchus&quot;
+                          },
+                          {
+                            &quot;label&quot;: &quot;Hylaeochampsa&quot;,
+                            &quot;name&quot;: &quot;Hylaeochampsa&quot;
+                          }
+                        ],
+                        &quot;name&quot;: &quot;Eusuchia&quot;
+                      },
+                      {
+                        &quot;label&quot;: &quot;mesosuchians&quot;,
+                        &quot;name&quot;: &quot;mesosuchians&quot;
+                      }
+                    ],
+                    &quot;name&quot;: &quot;Mesoeucrocodylia&quot;
+                  },
+                  {
+                    &quot;label&quot;: &quot;protosuchians&quot;,
+                    &quot;name&quot;: &quot;protosuchians&quot;
+                  }
+                ],
+                &quot;name&quot;: &quot;Crocodyliformes&quot;
+              },
+              {
+                &quot;label&quot;: &quot;sphenosuchians&quot;,
+                &quot;name&quot;: &quot;sphenosuchians&quot;
+              }
+            ],
+            &quot;name&quot;: &quot;Crocodylomorpha&quot;
+          },
+          {
+            &quot;label&quot;: &quot;Aetosauria&quot;,
+            &quot;name&quot;: &quot;Aetosauria&quot;
+          },
+          {
+            &quot;label&quot;: &quot;rauisuchians&quot;,
+            &quot;name&quot;: &quot;rauisuchians&quot;
+          }
+        ]
+      },
+      {
+        &quot;label&quot;: &quot;Parasuchia&quot;,
+        &quot;name&quot;: &quot;Parasuchia&quot;
+      }
+    ]
+  }
+}</code>
+</code></pre><h3>Accessing citations</h3><p>Another example of a wrapper that can be used for wrapping a part of a Phyx file is the <a href="https://www.phyloref.org/phyx.js/class/src/wrappers/CitationWrapper.js~CitationWrapper.html">CitationWrapper</a>. This can be used to wrap citations anywhere in the Phyx file to provide a full bibliographic citation for the citation.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">var wrappedPhylogenyCitation = new phyx.CitationWrapper(alligatoridae_brochu2003.phylogenies[0].source);
+console.log(`The source of the phylogeny in this Phyx document is: ${wrappedPhylogenyCitation.toString()}`);
+
+var wrappedPhylorefCitation = new phyx.CitationWrapper(alligatoridae_brochu2003.phylorefs[0].definitionSource);
+console.log(`The definition source of the phyloreference in this Phyx document is: ${wrappedPhylorefCitation.toString()}`);</code>
+</code></pre><pre><code><code class="source-code prettyprint">The source of the phylogeny in this Phyx document is: Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31:357--397  fig 1 doi: 10.1146/annurev.earth.31.100901.141308
+The definition source of the phyloreference in this Phyx document is: Brochu (2003) Phylogenetic approaches toward crocodylian history. Annual Review of Earth and Planetary Sciences 31:1, 357-397. doi: 10.1146/annurev.earth.31.100901.141308</code>
+</code></pre><h3>Converting a Phyx document into OWL</h3><p>A Phyx document (which is in JSON-LD format) can be converted into OWL/RDF in the form of <a href="https://www.w3.org/TR/n-quads/">N-Quads</a> by using the <code>PhyxWrapper</code> to wrap the entire Phyx document. A base URL can be specified.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">nQuads = new phyx.PhyxWrapper(alligatoridae_brochu2003).toRDF(&apos;http://example.org/phyx-tutorial#&apos;);
+nQuads.then(nq =&gt; console.log(nq.slice(0, 2500) + &apos;...&apos;));</code>
+</code></pre><pre><code><code class="source-code prettyprint">&lt;http://example.org/phyx-tutorial#phylogeny0&gt; &lt;http://ontology.phyloref.org/phyloref.owl#newick_expression&gt; &quot;(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,(&apos;Gavialis gangeticus&apos;,((&apos;Diplocynodon ratelii&apos;,(&apos;Alligator mississippiensis&apos;,&apos;Caiman crocodilus&apos;)Alligatoridae)Alligatoroidea,(&apos;Tomistoma schlegelii&apos;,(&apos;Osteolaemus tetraspis&apos;,&apos;Crocodylus niloticus&apos;)Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha));&quot; .
+&lt;http://example.org/phyx-tutorial#phylogeny0&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000148&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node0&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0&gt; &lt;http://purl.org/dc/terms/source&gt; _:b165 .
+&lt;http://example.org/phyx-tutorial#phylogeny0&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://ontology.phyloref.org/phyloref.owl#ReferencePhylogenyEvidence&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0&gt; &lt;http://www.w3.org/2000/01/rdf-schema#isDefinedBy&gt; _:b0 .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node0&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000149&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node1&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node0&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000149&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node29&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node0&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000200&gt; &lt;http://example.org/phyx-tutorial#phylogeny0&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node0&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000140&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node10&gt; &lt;http://ontology.phyloref.org/phyloref.owl#has_Sibling&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node13&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node10&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000149&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node11&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node10&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000149&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node12&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node10&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000179&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node9&gt; .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node10&gt; &lt;http://purl.obolibrary.org/obo/CDAO_0000187&gt; _:b50 .
+&lt;http://example.org/phyx-tutorial#phylogeny0_node10&gt; &lt;http://purl.obolibrary.org/obo/CDAO_00002...</code>
+</code></pre><pre><code class="lang-javascript"><code class="source-code prettyprint">// We can convert these N-Quads into RDF/Turtle for easier interpretation.
+// We only convert a few N-Quads as a demonstration.
+var N3 = require(&apos;n3&apos;);
+var { Readable } = require(&quot;stream&quot;)
+
+nQuads.then(nq =&gt; {
+    someNqs = nq.slice(0, 1071)
+
+    var streamParser = new N3.StreamParser(),
+    inputStream = Readable.from([someNqs]),
+    streamWriter = new N3.StreamWriter();
+
+    inputStream.pipe(streamParser);
+    streamParser.pipe(streamWriter);
+    streamWriter.pipe(process.stdout);
+});
+
+undefined;</code>
+</code></pre><h2>Navigating a Phyx document as a JSON file</h2><p>Most phyx.js wrappers have been designed to help interpret the more complex parts of a Phyx file, such as the phyloreferences, specifiers, phylogenies, citations and the entire Phyx document. However, since every Phyx document is also a JSON document, much of the information in the Phyx document can be accessed sufficiently easily using standard JSON libraries. In some cases, as in the demonstration below, this requires more complex code than would be necessary by using the phyx.js wrappers.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">// List all the phylorefs in a Phyx document.
+alligatoridae_brochu2003copy.phylorefs.forEach((phyloref, index) =&gt; {
+    console.log(`- Phyloref ${index + 1}. ${phyloref.label}:`);
+    (phyloref.internalSpecifiers || []).forEach(specifier =&gt; {
+        console.log(`  - Internal specifier: ${(specifier.hasName || {}).nameComplete}`);
+    });
+    (phyloref.externalSpecifiers || []).forEach(specifier =&gt; {
+        console.log(`  - External specifier: ${(specifier.hasName || {}).nameComplete}`);
+    });
+    console.log();
+});</code>
+</code></pre><pre><code><code class="source-code prettyprint">&lt;http://example.org/phyx-tutorial#phylogeny0&gt; &lt;http://ontology.phyloref.org/phyloref.owl#newick_expression&gt; &quot;(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,(&apos;Gavialis gangeticus&apos;,((&apos;Diplocynodon ratelii&apos;,(&apos;Alligator mississippiensis&apos;,&apos;Caiman crocodilus&apos;)Alligatoridae)Alligatoroidea,(&apos;Tomistoma schlegelii&apos;,(&apos;Osteolaemus tetraspis&apos;,&apos;Crocodylus niloticus&apos;)Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha));&quot;;
+    &lt;http://purl.obolibrary.org/obo/CDAO_0000148&gt; &lt;http://example.org/phyx-tutorial#phylogeny0_node0&gt;;
+    &lt;http://purl.org/dc/terms/source&gt; _:b0_b165;
+    a &lt;http://ontology.phyloref.org/phyloref.owl#ReferencePhylogenyEvidence&gt;;
+    &lt;http://www.w3.org/2000/01/rdf-schema#isDefinedBy&gt; _:b0_b0.
+- Phyloref 1. Alligatoridae:
+  - Internal specifier: Caiman crocodilus
+  - Internal specifier: Alligator mississippiensis</code>
+</code></pre><h2>About this notebook</h2><p>This document was created as a <a href="https://jupyter.org/">Jupyter Notebook</a>, and the source file is available in our GitHub repository. We recommend installing <a href="https://formulae.brew.sh/formula/jupyterlab#default">Jupyterlab via Homebrew on Mac</a>, but <a href="https://jupyter.org/install">other installation options are available</a>. Once Jupyter Notebook is set up, you should be able to open this notebook for editing by running <code>jupyter notebook Introduction\ to\ phyx.js.ipynb</code> from the command line.</p><p>We use <a href="https://github.com/n-riesco/ijavascript">IJavascript</a> to use Javascript as a kernel in Jupyter Notebook. If you would like to edit this notebook, you will need to <a href="https://github.com/n-riesco/ijavascript#installation">install this</a> as well.</p></div>
+        <a data-ice="link" href="manual/Introduction to phyx.js.html"></a>
       </div>
     </div>
 </div>
