@@ -2,6 +2,7 @@
 title: Introduction to phyx.js
 author: Gaurav Vaidya
 date: August 24, 2021
+code-block-font-size: \footnotesize
 ---
 # Introduction to phyx.js
 
