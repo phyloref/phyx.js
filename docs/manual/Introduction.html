@@ -49,21 +49,25 @@
 <div data-ice="manual">
     <ul class="manual-toc">
       
-    <li data-ice="manualNav" class="indent-h1" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html" data-ice="link">Introduction to phyx.js</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#starting-with-phyx-files" data-ice="link">Starting with Phyx files</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#validating-a-phyx-document-using-json-schema" data-ice="link">Validating a Phyx document using JSON Schema</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#examining-phyloreferences--taxonomic-units-and-taxon-concepts" data-ice="link">Examining phyloreferences, taxonomic units and taxon concepts</a></li>
-<li data-ice="manualNav" class="indent-h3" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#examining-phylogenies" data-ice="link">Examining phylogenies</a></li>
-<li data-ice="manualNav" class="indent-h3" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#accessing-citations" data-ice="link">Accessing citations</a></li>
-<li data-ice="manualNav" class="indent-h3" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#converting-a-phyx-document-into-owl" data-ice="link">Converting a Phyx document into OWL</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#navigating-a-phyx-document-as-a-json-file" data-ice="link">Navigating a Phyx document as a JSON file</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction to phyx.js.html"><a href="manual/Introduction to phyx.js.html#about-this-notebook" data-ice="link">About this notebook</a></li>
+    <li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction.html"><a href="manual/Introduction.html#date--august-24--2021" data-ice="link">date: August 24, 2021</a></li>
+<li data-ice="manualNav" class="indent-h1" data-link="manual/Introduction.html"><a href="manual/Introduction.html" data-ice="link">Introduction to phyx.js</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction.html"><a href="manual/Introduction.html#starting-with-phyx-files" data-ice="link">Starting with Phyx files</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction.html"><a href="manual/Introduction.html#validating-a-phyx-document-using-json-schema" data-ice="link">Validating a Phyx document using JSON Schema</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction.html"><a href="manual/Introduction.html#examining-phyloreferences--taxonomic-units-and-taxon-concepts" data-ice="link">Examining phyloreferences, taxonomic units and taxon concepts</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/Introduction.html"><a href="manual/Introduction.html#examining-phylogenies" data-ice="link">Examining phylogenies</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/Introduction.html"><a href="manual/Introduction.html#accessing-citations" data-ice="link">Accessing citations</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/Introduction.html"><a href="manual/Introduction.html#converting-a-phyx-document-into-owl" data-ice="link">Converting a Phyx document into OWL</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction.html"><a href="manual/Introduction.html#navigating-a-phyx-document-as-a-json-file" data-ice="link">Navigating a Phyx document as a JSON file</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction.html"><a href="manual/Introduction.html#about-this-notebook" data-ice="link">About this notebook</a></li>
 </ul>
   </div>
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="introduction-to-phyx-js">Introduction to phyx.js</h1><p><em>Written by Gaurav Vaidya, July 26, 2021</em></p>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><hr>
+<p>title: Introduction to phyx.js
+author: Gaurav Vaidya</p>
+<h2 id="date--august-24--2021">date: August 24, 2021</h2><h1 id="introduction-to-phyx-js">Introduction to phyx.js</h1><p><em>Written by Gaurav Vaidya. Last updated August 24, 2021</em></p>
 <p>This tutorial provides an introduction to the phyx.js library, and shows you how it can be used to read a Phyx file, check it for validity, examine <a href="https://www.phyloref.org/">phyloreferences</a>, phylogenies and specifiers, and describe how to convert the file into RDF.</p>
 <h2 id="starting-with-phyx-files">Starting with Phyx files</h2><p>Phyx files are digitized clade definitions in a JSON-LD format. While you can use an editor like <a href="https://github.com/phyloref/klados#readme">Klados</a> to create Phyx files, you can also write one by yourself as a JSON document.</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">var alligatoridae_brochu2003 = {
