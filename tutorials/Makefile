@@ -14,7 +14,7 @@ PDFFILES=$(NOTEBOOKS:%.ipynb=%.pdf)
 all: $(PDFFILES) $(MDFILES)
 .PHONY: all clean
 clean:
-	rm *.pdf *.md
+	rm $(MDFILES) $(PDFFILES)
 
 %.pdf:%.md
 	$(PANDOC) $< --output $@ --template eisvogel-small --listings
