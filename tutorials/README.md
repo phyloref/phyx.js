@@ -10,7 +10,7 @@ to build Markdown and PDF versions of these tutorials, using [Jupyter nbconvert]
 prettier PDF.
 
 Only a single, introductory tutorial is currently present:
-- [Introduction.md] - An introduction to phyx.js
+- [Introduction.ipynb] - An introduction to phyx.js ([Introduction.md], [Introduction.pdf])
 
 
   [Jupyter Notebook]: https://jupyter.org/
@@ -19,4 +19,6 @@ Only a single, introductory tutorial is currently present:
   [Jupyter nbconvert]: https://nbconvert.readthedocs.io/
   [pandoc]: https://pandoc.org/
   [eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template/blob/4909f13d58bb4c66243def1f6e01becd1820c767/eisvogel.tex
+  [Introduction.ipynb]: ./Introduction.ipynb
   [Introduction.md]: ./Introduction.md
+  [Introduction.pdf]: ./Introduction.pdf
