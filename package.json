@@ -65,7 +65,7 @@
           "manual": {
             "files": [
               "./CHANGELOG.md",
-              "./tutorial/Introduction.md"
+              "./tutorials/Introduction.md"
             ]
           },
           "test": {
