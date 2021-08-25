@@ -17,7 +17,7 @@ clean:
 	rm $(MDFILES) $(PDFFILES)
 
 %.pdf:%.md
-	$(PANDOC) $< --output $@ --template eisvogel-small --listings
+	$(PANDOC) $< --output $@ --template eisvogel.tex --listings
 
 %.md:%.ipynb
 	$(NBCONVERT) $< --output $@ --to markdown
