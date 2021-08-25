@@ -15,6 +15,8 @@ Only a single, introductory tutorial is currently present:
 
   [Jupyter Notebook]: https://jupyter.org/
   [IJavascript]: https://github.com/n-riesco/ijavascript
+  [Makefile]: ./Makefile
   [Jupyter nbconvert]: https://nbconvert.readthedocs.io/
   [pandoc]: https://pandoc.org/
   [eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template/blob/4909f13d58bb4c66243def1f6e01becd1820c767/eisvogel.tex
+  [Introduction.md]: ./Introduction.md
