@@ -1,6 +1,6 @@
 # Tutorials
 
-[![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/phyloref/phyx.js/tutorials)
+[![nbviewer](https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/phyloref/phyx.js/tree/master/tutorials/)
 
 
 This directory is intended to store multiple tutorials as executable [Jupyter Notebook]
