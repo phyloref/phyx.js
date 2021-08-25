@@ -161,7 +161,7 @@ function resolvePhyx(filename) {
           error: 'internal_specifiers_missing',
         };
       } else if (externalOTTids.filter(x => x === undefined).length > 0) {
-        debug('Not all internal specifiers could be resolved to OTT Ids, skipping.');
+        debug('Not all external specifiers could be resolved to OTT Ids, skipping.');
         return {
           filename,
           phyloref,
