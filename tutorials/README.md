@@ -6,8 +6,7 @@
 This directory is intended to store multiple tutorials as executable [Jupyter Notebook]
 files using [IJavascript] as a Node.js kernel. A [Makefile] is included that can be used
 to build Markdown and PDF versions of these tutorials, using [Jupyter nbconvert] and
-[pandoc]. The only other dependency is [eisvogel], a LaTeX template used to produce a
-prettier PDF.
+[pandoc]. We use the [eisvogel] LaTeX template as the template for our PDF.
 
 Currently available tutorials:
 - [Introduction.ipynb] - An introduction to phyx.js ([Introduction.md], [Introduction.pdf])
@@ -18,7 +17,7 @@ Currently available tutorials:
   [Makefile]: ./Makefile
   [Jupyter nbconvert]: https://nbconvert.readthedocs.io/
   [pandoc]: https://pandoc.org/
-  [eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template/blob/4909f13d58bb4c66243def1f6e01becd1820c767/eisvogel.tex
+  [eisvogel]: https://github.com/Wandmalfarbe/pandoc-latex-template/
   [Introduction.ipynb]: ./Introduction.ipynb
   [Introduction.md]: ./Introduction.md
   [Introduction.pdf]: ./Introduction.pdf
