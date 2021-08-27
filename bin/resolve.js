@@ -154,28 +154,28 @@ function resolvePhyx(filename) {
       // console.log(externalOTTids);
 
       if (internalOTTids.filter(x => x === undefined).length > 0) {
-        debug('Not all internal specifiers could be resolved to OTT Ids, skipping.');
+        debug('Not all internal specifiers could be resolved to OTT Ids, skipping phyloreference.');
         return {
           filename,
           phyloref,
           error: 'internal_specifiers_missing',
         };
       } else if (externalOTTids.filter(x => x === undefined).length > 0) {
-        debug('Not all internal specifiers could be resolved to OTT Ids, skipping.');
+        debug('Not all external specifiers could be resolved to OTT Ids, skipping phyloreference.');
         return {
           filename,
           phyloref,
           error: 'external_specifiers_missing',
         };
       } else if (internalOTTids.length == 0) {
-        debug('No internal specifiers found, skipping.');
+        debug('No internal specifiers found, skipping phyloreference.');
         return {
           filename,
           phyloref,
           error: 'no_internal_specifiers',
         };
       } else if (internalOTTids.length === 1 && externalOTTids.length === 0) {
-          debug('Cannot resolve phyloreference with a single internal specifier, skipping.');
+          debug('Cannot resolve phyloreference with a single internal specifier, skipping phyloreference.');
           return {
             filename,
             phyloref,
