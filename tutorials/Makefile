@@ -15,8 +15,13 @@ all: $(PDFFILES) $(MDFILES)
 .PHONY: all clean
 clean:
 	rm $(MDFILES) $(PDFFILES)
+	rm -f eisvogel.tex
 
-%.pdf:%.md
+# We download eisvogel.tex from 
+eisvogel.tex:
+	curl https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex -o eisvogel.tex
+
+%.pdf:%.md eisvogel.tex
 	$(PANDOC) $< --output $@ --template eisvogel.tex --listings
 
 %.md:%.ipynb
