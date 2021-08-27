@@ -20,7 +20,7 @@ and [DBI-1458604]. See [Funding] for details.
   [OWL 2 DL]: https://www.w3.org/TR/owl2-overview/
   [Phyloreference Curation Tool]: https://github.com/phyloref/curation-tool
   [Clade Ontology]: https://github.com/phyloref/clade-ontology
-  [tutorial demonstrating the use of phyx.js]: ./tutorials/Introduction.md
+  [tutorial]: ./tutorials/Introduction.md
   [DBI-1458484]: http://www.nsf.gov/awardsearch/showAward?AWD_ID=1458484
   [DBI-1458604]: http://www.nsf.gov/awardsearch/showAward?AWD_ID=1458604
   [Funding]: http://www.phyloref.org/about/#funding
