@@ -447,6 +447,62 @@ alligatoridae_brochu2003copy.phylorefs.forEach((phyloref, index) => {
     
 
 
+## Looking up phyloreferences on the Open Tree of Life
+
+An included script, `resolve.js`, can be used to resolve a phyloreference on the Open Tree of Life. This can be executed from the command line by running:
+
+```bash
+$ npm run resolve test/examples/correct/brochu_2003.json
+```
+
+However, this script can also be invoked from within Node.js.
+
+
+```javascript
+var child_process = require('child_process');
+
+child = child_process.spawnSync('../bin/resolve.js', ['../test/examples/correct/brochu_2003.json'], {
+  encoding: 'utf-8',
+  stdio: 'pipe',
+});
+results = JSON.parse(child.output.join('\n'));
+
+Object.keys(results).forEach(key => {
+    console.log(`- ${key}:`);
+    values = results[key];
+    values.forEach(value => {
+        if('status' in value) {
+            resolved = value['resolved'];
+            console.log(`  - Resolved ${value['cladeType']} phylorefence`);
+            console.log(`    to: ${resolved['@id']} (label: ${resolved['label']})`);
+        } else if ('error' in value) {
+            console.log(`  - Could not resolve: ${value['error']}`);
+        } else {
+            console.log(`  - Unable to interpret: ${JSON.stringify(value, undefined, 2)}`);
+        }
+    })
+});
+```
+
+    - Alligatoridae:
+      - Resolved minimum phylorefence
+        to: https://tree.opentreeoflife.org/opentree/argus/opentree13.4@ott195670 (label: Alligatoridae)
+    - Alligatorinae:
+      - Resolved maximum phylorefence
+        to: https://tree.opentreeoflife.org/opentree/argus/opentree13.4@ott151255 (label: Alligatorinae)
+    - Caimaninae:
+      - Resolved maximum phylorefence
+        to: https://tree.opentreeoflife.org/opentree/argus/opentree13.4@ott195671 (label: Caimaninae)
+    - Crocodyloidea:
+      - Resolved maximum phylorefence
+        to: https://tree.opentreeoflife.org/opentree/argus/opentree13.4@ott335582 (label: Crocodylidae)
+    - Crocodylidae:
+      - Resolved minimum phylorefence
+        to: https://tree.opentreeoflife.org/opentree/argus/opentree13.4@ott1092501 (label: Longirostres)
+    - Diplocynodontinae:
+      - Could not resolve: no_mrca_found:400
+
+
 ## About this notebook
 
 This document was created as a [Jupyter Notebook](https://jupyter.org/), and the source file is available in our GitHub repository. We recommend installing [Jupyterlab via Homebrew on Mac](https://formulae.brew.sh/formula/jupyterlab#default), but [other installation options are available](https://jupyter.org/install). Once Jupyter Notebook is set up, you should be able to open this notebook for editing by running `jupyter notebook Introduction\ to\ phyx.js.ipynb` from the command line.
