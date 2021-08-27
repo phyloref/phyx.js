@@ -9,7 +9,7 @@ entire Phyx file into a [JSON-LD] representation that can be reasoned over with
 an [OWL 2 DL] reasoner. See the [Phyloreference Curation Tool] or the [Clade Ontology]
 for examples of its usage.
 
-A [tutorial demonstrating the use of phyx.js] is available.
+A [tutorial] demonstrating the use of phyx.js is available.
 
 ## Funding
 Funded by the US National Science Foundation through collaborative grants [DBI-1458484]
