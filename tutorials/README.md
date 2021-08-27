@@ -9,7 +9,7 @@ to build Markdown and PDF versions of these tutorials, using [Jupyter nbconvert]
 [pandoc]. The only other dependency is [eisvogel], a LaTeX template used to produce a
 prettier PDF.
 
-Only a single, introductory tutorial is currently present:
+Currently available tutorials:
 - [Introduction.ipynb] - An introduction to phyx.js ([Introduction.md], [Introduction.pdf])
 
 
