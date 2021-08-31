@@ -473,7 +473,7 @@ Object.keys(results).forEach(key => {
     values.forEach(value => {
         if('status' in value) {
             resolved = value['resolved'];
-            console.log(`  - Resolved ${value['cladeType']} phylorefence`);
+            console.log(`  - Resolved ${value['cladeType']} clade-type phylorefence`);
             console.log(`    to: ${resolved['@id']} (label: ${resolved['label']})`);
         } else if ('error' in value) {
             console.log(`  - Could not resolve: ${value['error']}`);
