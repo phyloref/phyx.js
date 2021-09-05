@@ -24,38 +24,41 @@ const JPHYLOREF_URL = `https://repo.maven.apache.org/maven2/org/phyloref/jphylor
 // Where should the JPhyloRef be stored?
 const JPHYLOREF_PATH = path.resolve(__dirname, `jphyloref-${JPHYLOREF_VERSION}.jar`);
 
+// Download JPhyloRef from Maven and save it to JPHYLOREF_PATH.
+// Since Downloader() works asynchronously, we need to wrap it in
+// an async() here to ensure that it finishes the download *before*
+// we start the `describe()` below.
+const downloader = new Downloader({
+  url: JPHYLOREF_URL,
+  directory: path.dirname(JPHYLOREF_PATH),
+  fileName: path.basename(JPHYLOREF_PATH),
+});
+
+before(function (done) {
+  this.timeout(20000);
+  downloader.download()
+    .then(done)
+    .catch(err => done(err));
+});
+
 /**
  * Test whether the expected JSON-LD files pass testing using JPhyloRef.
  */
 
 describe('JPhyloRef', function () {
-  describe('download JPhyloRef', function () {
+  describe('make sure JPhyloRef has been downloaded', function () {
     // TODO: we should eventually use SHA to ensure that we have the expected file.
-    if (
-      fs.existsSync(JPHYLOREF_PATH)
-      && fs.statSync(JPHYLOREF_PATH).size > 0
-    ) {
-      it('has already been downloaded', function () {
-        expect(true);
-      });
-    } else {
-      it('should be downloadable', function () {
-        this.timeout(10000);
-        // Download JPhyloRef from Maven and save it to JPHYLOREF_PATH.
-        return new Downloader({
-          url: JPHYLOREF_URL,
-          directory: path.dirname(JPHYLOREF_PATH),
-          fileName: path.basename(JPHYLOREF_PATH),
-        }).download();
-      });
-    }
+    it('has been downloaded', function () {
+      expect(fs.existsSync(JPHYLOREF_PATH)).to.be.true;
+      expect(fs.statSync(JPHYLOREF_PATH).size).to.be.greaterThan(0);
+    });
   });
 
   describe('test example JSON-LD files using JPhyloRef', function () {
     fs.readdirSync(path.resolve(__dirname, 'examples', 'correct'))
       .filter(filename => filename.endsWith('.nq'))
       .forEach((filename) => {
-        it(`testing ${filename}`, function () {
+        describe(`testing ${filename}`, function () {
           this.timeout(20000);
 
           // Start JPhyloRef to test filename.
@@ -71,24 +74,39 @@ describe('JPhyloRef', function () {
               shell: true,
             }
           );
+
           const matches = /Testing complete:(\d+) successes, (\d+) failures, (\d+) failures marked TODO, (\d+) skipped./.exec(child.stderr);
 
-          expect(matches, `Test result line not found in STDERR <${child.stderr}>`).to.have.lengthOf(5);
+          it('should return the expected result line', () => {
+            expect(matches, `Test result line not found in STDERR <${child.stderr}>`).to.have.lengthOf(5);
+          });
 
-          // const countSuccess = Number(matches[1]);
-          const countFailure = Number(matches[2]);
-          const countTODOs = Number(matches[3]);
-          // const countSkipped = Number(matches[4]);
+          // If this is not true, the previous expect with fail. Unfortunately,
+          // code execution continues even if that one `it()` fails, so we need
+          // to test it here as well.
+          if (matches && matches.length === 5) {
+            const countSuccess = Number(matches[1]);
+            const countFailure = Number(matches[2]);
+            const countTODOs = Number(matches[3]);
+            // const countSkipped = Number(matches[4]);
 
-          // We can't test for one or more successes since some example Phyx file
-          // such as apomorphy-based phyloreferences don't have any successes at all.
-          // expect(countSuccess, 'Expected one or more successes').to.be.greaterThan(0);
-          expect(countFailure, 'Expected zero failures').to.equal(0);
-          expect(countTODOs, 'Expected zero TODOs').to.equal(0);
+            it('should run without any failures or TODOs', () => {
+              expect(countFailure, 'Expected zero failures').to.equal(0);
+              expect(countTODOs, 'Expected zero TODOs').to.equal(0);
+            });
 
-          // An exit code of 0 means success. An exit code of 255 means that while
-          // there were no successes, there were also no failures. Either is acceptable here.
-          expect(child.status).to.be.oneOf([0, 255]);
+            // We can't test for one or more successes since some example Phyx file
+            // such as apomorphy-based phyloreferences don't have any successes at all.
+            // But we'll report both.
+            if (countSuccess === 0 && child.status === 255) {
+              it('No phyloreferences resolved successfully');
+            } else {
+              it('should resolve one or more phyloreferences', () => {
+                expect(countSuccess, 'Expected one or more successes').to.be.greaterThan(0);
+                expect(child.status).to.be.oneOf([0, 255]);
+              });
+            }
+          }
         });
       });
   });
