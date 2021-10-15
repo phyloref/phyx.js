@@ -24,13 +24,13 @@
     "resolve": "bin/resolve.js"
   },
   "scripts": {
-    "lint": "eslint \"src/**/*.js\" \"test/**/*.js\" \"**/*.json\"",
-    "pretest": "npm run lint",
-    "test": "mocha --recursive",
     "docs": "esdoc",
-    "resolve": "node bin/resolve.js",
     "generate-every-topology": "every-topology-testing/generate-topologies.js",
-    "phyx2owl": "node bin/phyx2owl.js"
+    "lint": "eslint \"src/**/*.js\" \"test/**/*.js\" \"**/*.json\"",
+    "phyx2owl": "node bin/phyx2owl.js",
+    "resolve": "node bin/resolve.js",
+    "pretest": "npm run lint",
+    "test": "mocha --recursive"
   },
   "dependencies": {
     "jsonld": "^5.0.0",
