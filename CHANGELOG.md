@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
   - PR #110: Added note that Binder cannot be used.
   - PR #111: Changes link to tutorials to directory.
 - PR #106: Fixed typo in resolve.js.
+- Updated timeout to 60s as 20s was timing out on GitHub Actions.
 - Updated NPM packages and resorted packages in package.json.
 
 ## [1.0.0] - 2021-03-16
