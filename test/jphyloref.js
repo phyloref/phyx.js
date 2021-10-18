@@ -56,7 +56,7 @@ describe('JPhyloRef', function () {
       .filter(filename => filename.endsWith('.nq'))
       .forEach((filename) => {
         it(`testing ${filename}`, function () {
-          this.timeout(20000);
+          this.timeout(60000);
 
           // Start JPhyloRef to test filename.
           const filePath = path.resolve(__dirname, 'examples', 'correct', filename);

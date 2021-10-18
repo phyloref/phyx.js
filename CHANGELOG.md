@@ -5,6 +5,19 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 ## [Unreleased]
 
+## [1.0.1] - 2021-10-15
+- Created a tutorial for using phyx.js, including:
+  - PR #99: Add tutorial.
+  - PR #103: Improve integration of the tutorial.
+  - PR #109: Add resolve.js instructions to Introduction tutorial.
+- Improvements to README files, including:
+  - PR #108: Added links to published JSON-LD contexts and JSON schemas.
+  - PR #110: Added note that Binder cannot be used.
+  - PR #111: Changes link to tutorials to directory.
+- PR #106: Fixed typo in resolve.js.
+- Updated timeout to 60s as 20s was timing out on GitHub Actions.
+- Updated NPM packages and resorted packages in package.json.
+
 ## [1.0.0] - 2021-03-16
 - Many changes across the entire library.
 - Two new scripts: `bin/phyx2owl.js` for converting a Phyx file into OWL/JSON-LD
@@ -40,7 +53,8 @@ release of this package was based on [commit 14d2c3d5d1] in that repository.
 - Replaced references to the [phylotree] library with the [newick-js] library.
 - Made other changes to the initial code as needed to work as an independent NPM package.
 
-  [Unreleased]: https://github.com/phyloref/phyx.js/compare/v0.2.0...master
+  [Unreleased]: https://github.com/phyloref/phyx.js/compare/v1.0.1...master
+  [1.0.1]: https://github.com/phyloref/phyx.js/compare/v1.0.0...v1.0.1
   [1.0.0]: https://github.com/phyloref/phyx.js/compare/v0.2.1...v1.0.0
   [0.2.1]: https://github.com/phyloref/phyx.js/compare/v0.2.0...v0.2.1
   [0.2.0]: https://github.com/phyloref/phyx.js/compare/v0.1.2...v0.2.0
