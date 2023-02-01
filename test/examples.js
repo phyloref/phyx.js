@@ -203,6 +203,27 @@ describe('PhyxWrapper', function () {
           },
         ],
       },
+      {
+        fileName: 'examples/incorrect/unexpected-field-in-contributor.json',
+        expectedErrors: [{
+          dataPath: '.contributors[0]',
+          keyword: 'additionalProperties',
+          message: 'should NOT have additional properties',
+          params: {
+            additionalProperty: 'first_name',
+          },
+          schemaPath: '#/definitions/contributor/additionalProperties',
+        }, {
+          dataPath: '.contributors[0]',
+          keyword: 'additionalProperties',
+          message: 'should NOT have additional properties',
+          params: {
+            additionalProperty: 'last_name',
+          },
+          schemaPath: '#/definitions/contributor/additionalProperties',
+        },
+        ],
+      },
     ];
 
     filesThatShouldFailValidation.forEach((entry) => {
