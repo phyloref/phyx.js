@@ -6,6 +6,9 @@
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#label> "Testudinata" .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingApomorphy> .
+<http://orcid.org/0000-0003-0587-0454> <http://xmlns.com/foaf/0.1/name> "Gaurav Vaidya" .
+_:b0 <http://purl.org/dc/terms/contributor> <http://orcid.org/0000-0003-0587-0454> .
+_:b0 <http://purl.org/dc/terms/contributor> _:b3 .
 _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
 _:b0 <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/phyloref.owl> .
 _:b0 <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/tcan.owl> .
@@ -13,3 +16,4 @@ _:b1 <http://purl.obolibrary.org/obo/IAO_0000115> "A 'complete turtle shell' is 
 _:b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://semanticscience.org/resource/SIO_010056> .
 _:b2 <http://purl.org/dc/terms/bibliographicCitation> "W. G. Joyce et al (2020) Testudinata (#273) in Phylonyms: a companion to the PhyloCode [eds: K. de Queiroz and P. D. Cantino and J. A. Gauthier] CRC Press, Boca Raton, FL  ISBN: 9781138332935 pages: 1045--1048" .
 _:b2 <http://purl.org/dc/terms/title> "Testudinata (#273)" .
+_:b3 <http://xmlns.com/foaf/0.1/name> "Anna Becker" .

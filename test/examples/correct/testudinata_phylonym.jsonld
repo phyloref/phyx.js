@@ -1,5 +1,14 @@
 {
   "@context": "../../../docs/context/development/phyx.json",
+  "contributors": [
+    {
+      "name": "Anna Becker"
+    },
+    {
+      "@id": "http://orcid.org/0000-0003-0587-0454",
+      "name": "Gaurav Vaidya"
+    }
+  ],
   "phylorefs": [
     {
       "label": "Testudinata",

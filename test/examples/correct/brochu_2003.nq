@@ -348,7 +348,9 @@
 <http://example.org/phyx.js/example#phyloref5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/phyx.js/example#phyloref5> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingMaximumClade> .
 <http://example.org/phyx.js/example#phyloref5> <http://www.w3.org/2002/07/owl#equivalentClass> _:b440 .
+<http://orcid.org/0000-0003-0587-0454> <http://xmlns.com/foaf/0.1/name> "Gaurav Vaidya" .
 _:b0 <http://prismstandard.org/namespaces/basic/2.0/doi> "10.5281/zenodo.4562685" .
+_:b0 <http://purl.org/dc/terms/contributor> <http://orcid.org/0000-0003-0587-0454> .
 _:b0 <http://purl.org/dc/terms/source> _:b451 .
 _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
 _:b0 <http://www.w3.org/2002/07/owl#imports> <http://ontology.phyloref.org/2018-12-14/phyloref.owl> .
