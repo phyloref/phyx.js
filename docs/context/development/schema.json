@@ -406,7 +406,11 @@
       "$ref": "#/definitions/citation"
     },
     "contributors": {
-
+      "description": "A list of contributors to this Phyx file.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/contributor"
+      }
     },
     "defaultNomenclaturalCodeIRI": {
       "description": "The default nomenclatural code to be used in this file, for both phylogenies and phyloreferences. This will only be used for nodes and taxon concept specifiers that don’t have a nomenclatural code set.",
