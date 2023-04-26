@@ -18,7 +18,6 @@
   },
   "license": "MIT",
   "author": "Gaurav Vaidya <gaurav@ggvaidya.com>",
-  "type": "module",
   "main": "src/index.js",
   "bin": {
     "phyx2owl": "bin/phyx2owl.js",
