@@ -116,8 +116,8 @@
       "@id": "phyloref:newick_expression",
       "@type": "xsd:string"
     },
-    "curator": {
-      "@id": "opentree:curatorName",
+    "curatorNotes": {
+      "@id": "obo:IAO_0000232",
       "@type": "xsd:string"
     },
     "scientificNameAuthorship": {

@@ -1,5 +1,6 @@
 <http://example.org/phyx.js/example#phylogeny0> <http://ontology.phyloref.org/phyloref.owl#newick_expression> "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;" .
 <http://example.org/phyx.js/example#phylogeny0> <http://purl.obolibrary.org/obo/CDAO_0000148> <http://example.org/phyx.js/example#phylogeny0_node0> .
+<http://example.org/phyx.js/example#phylogeny0> <http://purl.obolibrary.org/obo/IAO_0000232> "The figure differentiates between clade definitions that resolve to nodes and those that resolve to branches; this distinction has been ignored here." .
 <http://example.org/phyx.js/example#phylogeny0> <http://purl.org/dc/terms/source> _:b180 .
 <http://example.org/phyx.js/example#phylogeny0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ontology.phyloref.org/phyloref.owl#ReferencePhylogenyEvidence> .
 <http://example.org/phyx.js/example#phylogeny0> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> _:b0 .
@@ -288,6 +289,7 @@
 <http://example.org/phyx.js/example#phyloref3_component2> <http://www.w3.org/2002/07/owl#equivalentClass> _:b238 .
 <http://example.org/phyx.js/example#phyloref4> <http://purl.obolibrary.org/obo/IAO_0000115> "Crocodylidae (Cuvier 1807). Definition dependent on phylogenetic context.\n\nLast common ancestor of Crocodylus niloticus, Osteolaemus tetraspis, and Tomistoma schlegelii and all of its descendents." .
 <http://example.org/phyx.js/example#phyloref4> <http://purl.obolibrary.org/obo/IAO_0000119> _:b436 .
+<http://example.org/phyx.js/example#phyloref4> <http://purl.obolibrary.org/obo/IAO_0000232> "An alternate definition of this phyloreference in the context of the molecular tree is included with the publication, but not included in this file. This defines Crocodylidae as the last common ancestor of Crocodylus niloticus and Osteolaemus tetraspis and all of its descendents." .
 <http://example.org/phyx.js/example#phyloref4> <http://rs.tdwg.org/dwc/terms/scientificNameAuthorship> _:b437 .
 <http://example.org/phyx.js/example#phyloref4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://example.org/phyx.js/example#phyloref4> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> _:b0 .

@@ -469,6 +469,10 @@
           "additionalNodeProperties": {
             "type": "object",
             "description": "A dictionary mapping node labels to properties that should be added to the node when converting this Phyx file into an OWL ontology."
+          },
+          "curatorNotes": {
+            "type": "string",
+            "description": "Curator notes associated with this phylogeny."
           }
         }
       }
@@ -566,6 +570,10 @@
           "expectedResolution": {
             "type": "object",
             "description": "A dictionary of phylogeny identifiers to objects that record the nodeLabel (the node label on that phylogeny this phylogeny is expected to resolve to) as well as an optional description (describing why that node was chosen)."
+          },
+          "curatorNotes": {
+            "type": "string",
+            "description": "Curator notes associated with this phyloreference."
           }
         }
       }
