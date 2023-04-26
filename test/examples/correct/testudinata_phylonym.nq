@@ -6,6 +6,7 @@
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#label> "Testudinata" .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#Phyloreference> .
 <http://example.org/phyx.js/example#phyloref0> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://ontology.phyloref.org/phyloref.owl#PhyloreferenceUsingApomorphy> .
+<http://orcid.org/0000-0003-0587-0454> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
 <http://orcid.org/0000-0003-0587-0454> <http://xmlns.com/foaf/0.1/name> "Gaurav Vaidya" .
 _:b0 <http://purl.org/dc/terms/contributor> <http://orcid.org/0000-0003-0587-0454> .
 _:b0 <http://purl.org/dc/terms/contributor> _:b3 .
