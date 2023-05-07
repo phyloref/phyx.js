@@ -138,6 +138,11 @@
     "bibliographicCitation": "dct:bibliographicCitation",
     "doi": "http://prismstandard.org/namespaces/basic/2.0/doi",
     "representsTaxonomicUnits": "obo:CDAO_0000187",
-    "apomorphy": "phyloref:apomorphy"
+    "apomorphy": "phyloref:apomorphy",
+    "contributors": {
+      "@id": "http://purl.org/dc/terms/contributor",
+      "@container": "@set"
+    },
+    "name": "http://xmlns.com/foaf/0.1/name"
   }
 }

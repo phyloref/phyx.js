@@ -363,6 +363,29 @@
           "$ref": "#/definitions/taxonomic_unit_by_id"
         }
       ]
+    },
+    "contributor": {
+      "description": "A contributor to a Phyx file.",
+      "additionalProperties": false,
+      "properties": {
+        "@id": {
+          "description": "An identifier for this contributor. ORCIDs are strongly recommended.",
+          "type": "string",
+          "format": "uri",
+          "minLength": 1
+        },
+        "@type": {
+          "description": "A type for this contributor. Should be an RDF class, such as http://xmlns.com/foaf/0.1/Person.",
+          "type": "string",
+          "format": "uri",
+          "minLength": 1
+        },
+        "name": {
+          "description": "The name of this contributor.",
+          "type": "string",
+          "minLength": 1
+        }
+      }
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -387,6 +410,13 @@
     "source": {
       "description": "A citation to this Phyx file.",
       "$ref": "#/definitions/citation"
+    },
+    "contributors": {
+      "description": "A list of contributors to this Phyx file.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/contributor"
+      }
     },
     "defaultNomenclaturalCodeIRI": {
       "description": "The default nomenclatural code to be used in this file, for both phylogenies and phyloreferences. This will only be used for nodes and taxon concept specifiers that don’t have a nomenclatural code set.",
