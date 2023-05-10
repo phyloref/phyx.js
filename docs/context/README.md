@@ -16,11 +16,12 @@ into a new directory. Note that previously published versions should not be
 deleted so that Phyx files that refer to them can continue to be used.
 
 | Version     | Date published      | JSON-LD context          | JSON Schema          |
-| ----------- | ------------------- | ------------------------ | -------------------- |
+|-------------|---------------------|--------------------------|----------------------|
 | development | Not for publication | [JSON-LD context]        | [JSON Schema]        |
 | [v0.1.0]    | February 6, 2019    | [v0.1.0 JSON-LD context] | None                 |
 | [v0.2.0]    | July 22, 2019       | [v0.2.0 JSON-LD context] | None                 |
 | [v1.0.0]    | March 19, 2021      | [v1.0.0 JSON-LD context] | [v1.0.0 JSON Schema] |
+| [v1.1.0]    | May 11, 2023        | [v1.1.0 JSON-LD context] | [v1.1.0 JSON Schema] |
 
   [JSON-LD Context]: ./development/phyx.json
   [JSON Schema]: ./development/schema.json
@@ -33,3 +34,6 @@ deleted so that Phyx files that refer to them can continue to be used.
   [v1.0.0]: https://github.com/phyloref/phyx.js/releases/tag/v1.0.0
   [v1.0.0 JSON-LD context]: ./v1.0.0/phyx.json
   [v1.0.0 JSON Schema]: ./v1.0.0/schema.json
+  [v1.1.0]: https://github.com/phyloref/phyx.js/releases/tag/v1.1.0
+  [v1.1.0 JSON-LD context]: ./v1.1.0/phyx.json
+  [v1.1.0 JSON Schema]: ./v1.1.0/schema.json
