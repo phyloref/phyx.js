@@ -1,7 +1,7 @@
 # phyx.js
 
 [![Build Status](https://github.com/phyloref/phyx.js/workflows/Build%20and%20Test/badge.svg)](https://github.com/phyloref/phyx.js/actions?query=workflow%3A%22Build+and+Test%22)
-[![DOI](https://zenodo.org/badge/166467036.svg)](https://zenodo.org/badge/latestdoi/166467036)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5576556.svg)](https://doi.org/10.5281/zenodo.5576556)
 
 The Phyloreference Exchange (PHYX) format is a JSON representation that can be
 used to store and transfer definitions of [phyloreferences]. This library provides
