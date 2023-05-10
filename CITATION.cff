@@ -14,7 +14,7 @@ date-released: 2021-10-18
 identifiers:
   - type: doi
     value: 10.5281/zenodo.5576556
-    description: The concept DOI for JPhyloRef.
+    description: This DOI will always resolve to the latest version of phyx.js.
   - type: doi
     value: 10.5281/zenodo.5576557
     description: The versioned DOI for version 1.0.1 of phyx.js.
