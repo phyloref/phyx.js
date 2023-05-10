@@ -1,6 +1,7 @@
 # phyx.js
 
 [![Build Status](https://github.com/phyloref/phyx.js/workflows/Build%20and%20Test/badge.svg)](https://github.com/phyloref/phyx.js/actions?query=workflow%3A%22Build+and+Test%22)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5576556.svg)](https://doi.org/10.5281/zenodo.5576556)
 
 The Phyloreference Exchange (PHYX) format is a JSON representation that can be
 used to store and transfer definitions of [phyloreferences]. This library provides
@@ -10,6 +11,13 @@ an [OWL 2 DL] reasoner. See the [Phyloreference Curation Tool] or the [Clade Ont
 for examples of its usage.
 
 [Tutorials demonstrating the use of phyx.js](./tutorials/) are available.
+
+## Citation
+
+phyx.js should be cited by citing our publication documenting the Phyx format and phyx.js.
+
+> Vaidya G, Cellinese N, Lapp H. 2022. A new phylogenetic data standard for computable clade definitions: the
+> Phyloreference Exchange Format (Phyx) PeerJ 10:e12618 [doi:10.7717/peerj.12618](https://doi.org/10.7717/peerj.12618)
 
 ## Funding
 Funded by the US National Science Foundation through collaborative grants [DBI-1458484]
