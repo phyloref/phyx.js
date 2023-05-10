@@ -32,6 +32,7 @@
       "newick": "(Parasuchia,(rauisuchians,Aetosauria,(sphenosuchians,(protosuchians,(mesosuchians,(Hylaeochampsa,Aegyptosuchus,Stomatosuchus,(Allodaposuchus,('Gavialis gangeticus',(('Diplocynodon ratelii',('Alligator mississippiensis','Caiman crocodilus')Alligatoridae)Alligatoroidea,('Tomistoma schlegelii',('Osteolaemus tetraspis','Crocodylus niloticus')Crocodylinae)Crocodylidae)Brevirostres)Crocodylia))Eusuchia)Mesoeucrocodylia)Crocodyliformes)Crocodylomorpha))root;",
       "label": "Fig 1 from Brochu 2003",
       "@id": "http://example.org/phyx.js/example#phylogeny0",
+      "curatorNotes": "The figure differentiates between clade definitions that resolve to nodes and those that resolve to branches; this distinction has been ignored here.",
       "source": {
         "type": "article",
         "title": "Phylogenetic approaches toward crocodylian history",
@@ -2263,6 +2264,7 @@
         "bibliographicCitation": "(Cuvier 1807)"
       },
       "phylorefType": "phyloref:PhyloreferenceUsingMinimumClade",
+      "curatorNotes": "An alternate definition of this phyloreference in the context of the molecular tree is included with the publication, but not included in this file. This defines Crocodylidae as the last common ancestor of Crocodylus niloticus and Osteolaemus tetraspis and all of its descendents.",
       "definition": "Crocodylidae (Cuvier 1807). Definition dependent on phylogenetic context.\n\nLast common ancestor of Crocodylus niloticus, Osteolaemus tetraspis, and Tomistoma schlegelii and all of its descendents.",
       "definitionSource": {
         "type": "article",
