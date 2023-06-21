@@ -25,7 +25,7 @@ class PhylorefWrapper {
   /** Return the internal specifiers of this phyloref (if any). */
   get internalSpecifiers() {
     if (!has(this.phyloref, 'internalSpecifiers')) {
-      this.phyloref.internalSpecifiers = [];
+      return [];
     }
 
     return this.phyloref.internalSpecifiers;
@@ -34,7 +34,7 @@ class PhylorefWrapper {
   /** Return the external specifiers of this phyloref (if any). */
   get externalSpecifiers() {
     if (!has(this.phyloref, 'externalSpecifiers')) {
-      this.phyloref.externalSpecifiers = [];
+      return [];
     }
 
     return this.phyloref.externalSpecifiers;
