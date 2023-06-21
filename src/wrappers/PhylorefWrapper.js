@@ -114,11 +114,15 @@ class PhylorefWrapper {
     // it doesn't remember if the specifier to be deleted is internal
     // or external. We delete the intended specifier from both arrays.
 
-    let index = this.phyloref.internalSpecifiers.indexOf(specifier);
-    if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+    if (has(this.phyloref, 'internalSpecifiers') && this.phyloref.internalSpecifiers.length > 0) {
+      const index = this.phyloref.internalSpecifiers.indexOf(specifier);
+      if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+    }
 
-    index = this.phyloref.externalSpecifiers.indexOf(specifier);
-    if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
+    if (has(this.phyloref, 'externalSpecifiers') && this.phyloref.externalSpecifiers.length > 0) {
+      const index = this.phyloref.externalSpecifiers.indexOf(specifier);
+      if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
+    }
   }
 
   getExpectedNodeLabels(phylogeny) {
