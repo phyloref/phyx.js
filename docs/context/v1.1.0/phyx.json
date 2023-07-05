@@ -10,12 +10,10 @@
     "dct": "http://purl.org/dc/terms/",
     "tc": "http://rs.tdwg.org/ontology/voc/TaxonConcept#",
     "tn": "http://rs.tdwg.org/ontology/voc/TaxonName#",
-    "testcase": "http://vocab.phyloref.org/phyloref/testcase.owl#",
     "pso": "http://purl.org/spar/pso/",
     "tvc": "http://www.essepuntato.it/2012/04/tvc/",
     "timeinterval": "http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#",
     "phyloref": "http://ontology.phyloref.org/phyloref.owl#",
-    "opentree": "http://purl.org/opentree/nexson#",
     "subClasses": {
       "@reverse": "rdfs:subClassOf"
     },
