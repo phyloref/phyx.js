@@ -1,3 +1,11 @@
+# Don't save any JPhyloRef files into GitHub.
+/test/jphyloref-*.jar
+
+# Ignore directories created for testing.
+/complexity
+/every-topology-testing
+/data
+
 # Ignore esdocs documentation.
 /docs/esdocs/
 

@@ -62,15 +62,15 @@ describe('bin/resolve.js', function () {
     ]);
 
     expect(resultObj.Alligatoridae[0].resolved).to.include({
-      '@id': 'https://tree.opentreeoflife.org/opentree/argus/opentree13.4@ott195670',
+      '@id': 'https://tree.opentreeoflife.org/opentree/argus/opentree14.7@ott195670',
       label: 'Alligatoridae',
     });
     expect(resultObj.Alligatorinae[0].resolved).to.include({
-      '@id': 'https://tree.opentreeoflife.org/opentree/argus/opentree13.4@ott151255',
+      '@id': 'https://tree.opentreeoflife.org/opentree/argus/opentree14.7@ott151255',
       label: 'Alligatorinae',
     });
     expect(resultObj.Crocodylidae[0].resolved).to.include({
-      '@id': 'https://tree.opentreeoflife.org/opentree/argus/opentree13.4@ott1092501',
+      '@id': 'https://tree.opentreeoflife.org/opentree/argus/opentree14.7@ott1092501',
       label: 'Longirostres',
     });
     expect(resultObj.Diplocynodontinae[0]).to.include({

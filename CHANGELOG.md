@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 ## [Unreleased]
 
+## [1.1.0] - 2023-05-11
+- PR #129: Added curator notes to phylorefs and phylogenies.
+- PR #128: Added citation to README and a CITATION.CFF file.
+- PR #125: Added curator information as contributors to Phyx file.
+
 ## [1.0.1] - 2021-10-15
 - Created a tutorial for using phyx.js, including:
   - PR #99: Add tutorial.
@@ -53,7 +58,8 @@ release of this package was based on [commit 14d2c3d5d1] in that repository.
 - Replaced references to the [phylotree] library with the [newick-js] library.
 - Made other changes to the initial code as needed to work as an independent NPM package.
 
-  [Unreleased]: https://github.com/phyloref/phyx.js/compare/v1.0.1...master
+  [Unreleased]: https://github.com/phyloref/phyx.js/compare/v1.1.0...master
+  [1.1.0]: https://github.com/phyloref/phyx.js/compare/v1.0.1...v1.1.0
   [1.0.1]: https://github.com/phyloref/phyx.js/compare/v1.0.0...v1.0.1
   [1.0.0]: https://github.com/phyloref/phyx.js/compare/v0.2.1...v1.0.0
   [0.2.1]: https://github.com/phyloref/phyx.js/compare/v0.2.0...v0.2.1
