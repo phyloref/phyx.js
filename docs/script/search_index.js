@@ -1081,13 +1081,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/examples.js.html#lineNumber209",
+    "test-file/test/examples.js.html#lineNumber230",
     "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test incorrect example Phyx files that should fail validation ",
     "test"
   ],
   [
     "",
-    "test-file/test/examples.js.html#lineNumber210",
+    "test-file/test/examples.js.html#lineNumber231",
     "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test incorrect example Phyx files that should fail validation  should not validate against our JSON schema",
     "test"
   ],

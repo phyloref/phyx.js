@@ -32,7 +32,9 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html" data-ice="link">Changelog</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-phyloref-phyx-js-compare-v0-2-0---master--unreleased--a-" data-ice="link">Unreleased</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-phyloref-phyx-js-compare-v1-1-0---master--unreleased--a-" data-ice="link">Unreleased</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-phyloref-phyx-js-compare-v1-0-1---v1-1-0--1-1-0--a----2023-05-11" data-ice="link">1.1.0 - 2023-05-11</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-phyloref-phyx-js-compare-v1-0-0---v1-0-1--1-0-1--a----2021-10-15" data-ice="link">1.0.1 - 2021-10-15</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-phyloref-phyx-js-compare-v0-2-1---v1-0-0--1-0-0--a----2021-03-16" data-ice="link">1.0.0 - 2021-03-16</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-phyloref-phyx-js-compare-v0-2-0---v0-2-1--0-2-1--a----2019-08-15" data-ice="link">0.2.1 - 2019-08-15</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/CHANGELOG.html"><a href="manual/CHANGELOG.html#-a-href--https---github-com-phyloref-phyx-js-compare-v0-1-2---v0-2-0--0-2-0--a----2019-07-18" data-ice="link">0.2.0 - 2019-07-18</a></li>
@@ -49,7 +51,7 @@
 <div data-ice="manual">
     <ul class="manual-toc">
       
-    <li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction.html"><a href="manual/Introduction.html#date--august-24--2021" data-ice="link">date: August 24, 2021</a></li>
+    <li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction.html"><a href="manual/Introduction.html#code-block-font-size---footnotesize" data-ice="link">code-block-font-size: \footnotesize</a></li>
 <li data-ice="manualNav" class="indent-h1" data-link="manual/Introduction.html"><a href="manual/Introduction.html" data-ice="link">Introduction to phyx.js</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction.html"><a href="manual/Introduction.html#starting-with-phyx-files" data-ice="link">Starting with Phyx files</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction.html"><a href="manual/Introduction.html#validating-a-phyx-document-using-json-schema" data-ice="link">Validating a Phyx document using JSON Schema</a></li>
@@ -58,6 +60,7 @@
 <li data-ice="manualNav" class="indent-h3" data-link="manual/Introduction.html"><a href="manual/Introduction.html#accessing-citations" data-ice="link">Accessing citations</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/Introduction.html"><a href="manual/Introduction.html#converting-a-phyx-document-into-owl" data-ice="link">Converting a Phyx document into OWL</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction.html"><a href="manual/Introduction.html#navigating-a-phyx-document-as-a-json-file" data-ice="link">Navigating a Phyx document as a JSON file</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction.html"><a href="manual/Introduction.html#looking-up-phyloreferences-on-the-open-tree-of-life" data-ice="link">Looking up phyloreferences on the Open Tree of Life</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/Introduction.html"><a href="manual/Introduction.html#about-this-notebook" data-ice="link">About this notebook</a></li>
 </ul>
   </div>
@@ -66,8 +69,9 @@
 
 <div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><hr>
 <p>title: Introduction to phyx.js
-author: Gaurav Vaidya</p>
-<h2 id="date--august-24--2021">date: August 24, 2021</h2><h1 id="introduction-to-phyx-js">Introduction to phyx.js</h1><p><em>Written by Gaurav Vaidya. Last updated August 24, 2021</em></p>
+author: Gaurav Vaidya
+date: August 24, 2021</p>
+<h2 id="code-block-font-size---footnotesize">code-block-font-size: \footnotesize</h2><h1 id="introduction-to-phyx-js">Introduction to phyx.js</h1><p><em>Written by Gaurav Vaidya. Last updated August 24, 2021</em></p>
 <p>This tutorial provides an introduction to the phyx.js library, and shows you how it can be used to read a Phyx file, check it for validity, examine <a href="https://www.phyloref.org/">phyloreferences</a>, phylogenies and specifiers, and describe how to convert the file into RDF.</p>
 <h2 id="starting-with-phyx-files">Starting with Phyx files</h2><p>Phyx files are digitized clade definitions in a JSON-LD format. While you can use an editor like <a href="https://github.com/phyloref/klados#readme">Klados</a> to create Phyx files, you can also write one by yourself as a JSON document.</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">var alligatoridae_brochu2003 = {
@@ -444,6 +448,51 @@ alligatoridae_brochu2003copy.phylorefs.forEach((phyloref, index) =&gt; {
 - Phyloref 1. Alligatoridae:
   - Internal specifier: Caiman crocodilus
   - Internal specifier: Alligator mississippiensis</code>
+</code></pre><h2 id="looking-up-phyloreferences-on-the-open-tree-of-life">Looking up phyloreferences on the Open Tree of Life</h2><p>An included script, <code>resolve.js</code>, can be used to resolve a phyloreference on the Open Tree of Life. This can be executed from the command line by running:</p>
+<pre><code class="lang-bash"><code class="source-code prettyprint">$ npm run resolve test/examples/correct/brochu_2003.json</code>
+</code></pre>
+<p>However, this script can also be invoked from within Node.js.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">var child_process = require(&apos;child_process&apos;);
+
+child = child_process.spawnSync(&apos;../bin/resolve.js&apos;, [&apos;../test/examples/correct/brochu_2003.json&apos;], {
+  encoding: &apos;utf-8&apos;,
+  stdio: &apos;pipe&apos;,
+});
+results = JSON.parse(child.output.join(&apos;\n&apos;));
+
+Object.keys(results).forEach(key =&gt; {
+    console.log(`- ${key}:`);
+    values = results[key];
+    values.forEach(value =&gt; {
+        if(&apos;status&apos; in value) {
+            resolved = value[&apos;resolved&apos;];
+            console.log(`  - Resolved ${value[&apos;cladeType&apos;]} clade-type phylorefence`);
+            console.log(`    to: ${resolved[&apos;@id&apos;]} (label: ${resolved[&apos;label&apos;]})`);
+        } else if (&apos;error&apos; in value) {
+            console.log(`  - Could not resolve: ${value[&apos;error&apos;]}`);
+        } else {
+            console.log(`  - Unable to interpret: ${JSON.stringify(value, undefined, 2)}`);
+        }
+    })
+});</code>
+</code></pre>
+<pre><code><code class="source-code prettyprint">- Alligatoridae:
+  - Resolved minimum phylorefence
+    to: https://tree.opentreeoflife.org/opentree/argus/opentree13.4@ott195670 (label: Alligatoridae)
+- Alligatorinae:
+  - Resolved maximum phylorefence
+    to: https://tree.opentreeoflife.org/opentree/argus/opentree13.4@ott151255 (label: Alligatorinae)
+- Caimaninae:
+  - Resolved maximum phylorefence
+    to: https://tree.opentreeoflife.org/opentree/argus/opentree13.4@ott195671 (label: Caimaninae)
+- Crocodyloidea:
+  - Resolved maximum phylorefence
+    to: https://tree.opentreeoflife.org/opentree/argus/opentree13.4@ott335582 (label: Crocodylidae)
+- Crocodylidae:
+  - Resolved minimum phylorefence
+    to: https://tree.opentreeoflife.org/opentree/argus/opentree13.4@ott1092501 (label: Longirostres)
+- Diplocynodontinae:
+  - Could not resolve: no_mrca_found:400</code>
 </code></pre><h2 id="about-this-notebook">About this notebook</h2><p>This document was created as a <a href="https://jupyter.org/">Jupyter Notebook</a>, and the source file is available in our GitHub repository. We recommend installing <a href="https://formulae.brew.sh/formula/jupyterlab#default">Jupyterlab via Homebrew on Mac</a>, but <a href="https://jupyter.org/install">other installation options are available</a>. Once Jupyter Notebook is set up, you should be able to open this notebook for editing by running <code>jupyter notebook Introduction\ to\ phyx.js.ipynb</code> from the command line.</p>
 <p>We use <a href="https://github.com/n-riesco/ijavascript">IJavascript</a> to use Javascript as a kernel in Jupyter Notebook. If you would like to edit this notebook, you will need to <a href="https://github.com/n-riesco/ijavascript#installation">install this</a> as well.</p>
 </div>
