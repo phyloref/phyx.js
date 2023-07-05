@@ -4,6 +4,7 @@
 # Ignore directories created for testing.
 /complexity
 /every-topology-testing
+/data
 
 # Ignore esdocs documentation.
 /docs/esdocs/
