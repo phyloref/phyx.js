@@ -4,7 +4,8 @@ All notable changes to this library will be documented in this file.
 The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
-- PR #127: Upgraded Newick.js to ^1.2.1.
+- PR #127: Upgraded Newick.js to ^1.2.1. This means that we no longer
+  support Node.js v10.x, which end-of-lifed on April 30, 2021.
 
 ## [1.1.0] - 2023-05-11
 - PR #129: Added curator notes to phylorefs and phylogenies.
