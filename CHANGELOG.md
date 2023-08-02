@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 ## [1.1.1] - 2023-08-01
 - PR #133: Add guards to some usages of `phyloref.internalSpecifiers/phyloref.externalSpecifiers`.
-- PR #136: Improved GitHub test action.
+- PR #136: Improved GitHub test action, including changing Node versions.
 - PR #127: Upgraded Newick.js to ^1.2.1. This means that we no longer
   support Node.js v10.x, which end-of-lifed on April 30, 2021.
 
