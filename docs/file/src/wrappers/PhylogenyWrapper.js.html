@@ -50,7 +50,7 @@
 const { has } = require(&apos;lodash&apos;);
 
 /** Used to parse Newick strings. */
-const parseNewick = require(&apos;newick-js&apos;).parse;
+const newickJs = require(&apos;newick-js&apos;);
 
 /** OWL terms to be used here. */
 const owlterms = require(&apos;../utils/owlterms&apos;);
@@ -118,9 +118,9 @@ class PhylogenyWrapper {
       });
     }
 
-    // Finally, try parsing it with parseNewick and see if we get an error.
+    // Finally, try parsing it with newickJs.parse() and see if we get an error.
     try {
-      parseNewick(newickTrimmed);
+      newickJs.parse(newickTrimmed);
     } catch (ex) {
       errors.push({
         title: &apos;Error parsing phylogeny&apos;,
@@ -197,7 +197,7 @@ class PhylogenyWrapper {
     // - &apos;both&apos;: Return node labels on both internal and terminal nodes.
 
     // Parse the phylogeny (will throw an exception if parsing failed).
-    const { graph } = parseNewick(this.phylogeny.newick || &apos;()&apos;);
+    const { graph } = newickJs.parse(this.phylogeny.newick || &apos;()&apos;);
     const [vertices, arcs] = graph;
 
     if (nodeType === &apos;both&apos;) {
@@ -297,7 +297,7 @@ class PhylogenyWrapper {
     // This method provides a similar facility using the newick-js library.
     //
     // Throws an exception if the Newick could not be parsed.
-    const { graph, root, rootWeight } = parseNewick(newick);
+    const { graph, root, rootWeight } = newickJs.parse(newick);
     const [, arcs] = graph;
 
     // Go through the arcs, assigning &apos;children&apos; to the appropriate parent node.
