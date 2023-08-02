@@ -25,6 +25,8 @@ class PhylorefWrapper {
   /** Return the internal specifiers of this phyloref (if any). */
   get internalSpecifiers() {
     if (!has(this.phyloref, 'internalSpecifiers')) {
+      // If there isn't one, create an empty list so that the caller can do
+      // `wrappedPhyloref.internalSpecifiers.push({...})`.
       this.phyloref.internalSpecifiers = [];
     }
 
@@ -34,6 +36,8 @@ class PhylorefWrapper {
   /** Return the external specifiers of this phyloref (if any). */
   get externalSpecifiers() {
     if (!has(this.phyloref, 'externalSpecifiers')) {
+      // If there isn't one, create an empty list so that the caller can do
+      // `wrappedPhyloref.externalSpecifiers.push({...})`.
       this.phyloref.externalSpecifiers = [];
     }
 
@@ -114,11 +118,15 @@ class PhylorefWrapper {
     // it doesn't remember if the specifier to be deleted is internal
     // or external. We delete the intended specifier from both arrays.
 
-    let index = this.phyloref.internalSpecifiers.indexOf(specifier);
-    if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+    if (has(this.phyloref, 'internalSpecifiers') && this.phyloref.internalSpecifiers.length > 0) {
+      const index = this.phyloref.internalSpecifiers.indexOf(specifier);
+      if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+    }
 
-    index = this.phyloref.externalSpecifiers.indexOf(specifier);
-    if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
+    if (has(this.phyloref, 'externalSpecifiers') && this.phyloref.externalSpecifiers.length > 0) {
+      const index = this.phyloref.externalSpecifiers.indexOf(specifier);
+      if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
+    }
   }
 
   getExpectedNodeLabels(phylogeny) {
