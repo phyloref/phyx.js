@@ -4,6 +4,10 @@ All notable changes to this library will be documented in this file.
 The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
+
+## [1.1.1] - 2023-08-01
+- PR #133: Add guards to some usages of `phyloref.internalSpecifiers/phyloref.externalSpecifiers`.
+- PR #136: Improved GitHub test action, including changing Node versions.
 - PR #127: Upgraded Newick.js to ^1.2.1. This means that we no longer
   support Node.js v10.x, which end-of-lifed on April 30, 2021.
 
@@ -60,7 +64,8 @@ release of this package was based on [commit 14d2c3d5d1] in that repository.
 - Replaced references to the [phylotree] library with the [newick-js] library.
 - Made other changes to the initial code as needed to work as an independent NPM package.
 
-  [Unreleased]: https://github.com/phyloref/phyx.js/compare/v1.1.0...master
+  [Unreleased]: https://github.com/phyloref/phyx.js/compare/v1.1.1...master
+  [1.1.1]: https://github.com/phyloref/phyx.js/compare/v1.1.0...v1.1.1
   [1.1.0]: https://github.com/phyloref/phyx.js/compare/v1.0.1...v1.1.0
   [1.0.1]: https://github.com/phyloref/phyx.js/compare/v1.0.0...v1.0.1
   [1.0.0]: https://github.com/phyloref/phyx.js/compare/v0.2.1...v1.0.0
