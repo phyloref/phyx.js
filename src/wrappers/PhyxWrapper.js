@@ -52,6 +52,30 @@ class PhyxWrapper {
   }
 
   /**
+   * Return a provided Phyx document as a normalized JSON document. We ignore most keys -- including
+   * keys we don't know -- but any key that can be wrapped by one of the other Wrappers in this package
+   * will be wrapped and normalized before being returned.
+   *
+   * Normalization is mostly needed for TaxonomicUnitWrappers and its subclasses (TaxonConceptWrapper,
+   * TaxonNameWrapper), since these can be represented in several essentially identical ways. But if we
+   * implement it at every level, we can implement comparison code in Klados easily.
+   *
+   * Two Phyx documents should -- upon being normalized -- be comparable with each other with
+   * lodash.deepEqual().
+   */
+  static normalize(phyxDocument) {
+    const normalizedDocument = cloneDeep(phyxDocument);
+
+    normalizedDocument.phylorefs = (phyxDocument.phylorefs || []).map(PhylorefWrapper.normalize);
+    normalizedDocument.phylogenies = (phyxDocument.phylogenies || []).map(PhylogenyWrapper.normalize);
+    if ('source' in phyxDocument) {
+      normalizedDocument.source = CitationWrapper.normalize(phyxDocument.source);
+    }
+
+    return normalizedDocument;
+  }
+
+  /**
    * Generate an executable ontology from this Phyx document. The document is mostly in JSON-LD
    * already, except for three important things:
    *    1. We have to convert all phylogenies into a series of statements relating to the nodes
