@@ -60,6 +60,25 @@ class TaxonomicUnitWrapper {
   }
 
   /**
+   * Normalize the specified taxonomic unit.
+   * @param tunit A taxonomic unit to be normalized.
+   */
+  static normalize(tunit) {
+    const wrapped = new TaxonomicUnitWrapper(tunit);
+    if (wrapped.taxonConcept) {
+      return TaxonConceptWrapper.normalize(tunit);
+    }
+    if (wrapped.specimen) {
+      return SpecimenWrapper.normalize(tunit);
+    }
+    if (wrapped.externalReferences) {
+      // External references should only have an `@id`.
+      return tunit;
+    }
+    return tunit;
+  }
+
+  /**
    * What type of specifier is this? This is an array that could contain multiple
    * classes, but should contain one of:
    *  - {@link TYPE_TAXON_CONCEPT}

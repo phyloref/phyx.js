@@ -35,6 +35,23 @@ class TaxonConceptWrapper {
   }
 
   /**
+   * Normalize the specified taxon concept.
+   * @param tc A taxon concept to be normalized.
+   */
+  static normalize(tc) {
+    const wrapped = new TaxonConceptWrapper(tc);
+    const normalizedTC = {
+      '@type': TaxonConceptWrapper.TYPE_TAXON_CONCEPT,
+      label: wrapped.label,
+      hasName: TaxonNameWrapper.normalize(wrapped.taxonName),
+      nameString: wrapped.taxonName.nameComplete,
+      accordingTo: wrapped.accordingTo,
+    };
+    if ('@id' in tc) normalizedTC['@id'] = tc['@id'];
+    return normalizedTC;
+  }
+
+  /**
    * Return the taxon name of this taxon concept (if any) as an object.
    */
   get taxonName() {
@@ -89,10 +106,10 @@ class TaxonConceptWrapper {
    */
   get accordingTo() {
     // Do we have any accordingTo information?
-    if (has(this.tunit, 'accordingTo')) return this.type.accordingTo;
+    if (has(this.tunit, 'accordingTo')) return this.tunit.accordingTo;
 
     // Do we have an accordingToString?
-    if (has(this.tunit, 'accordingToString')) return this.type.accordingToString;
+    if (has(this.tunit, 'accordingToString')) return this.tunit.accordingToString;
 
     // If not, we have no accodingTo information!
     return undefined;
@@ -106,10 +123,10 @@ class TaxonConceptWrapper {
    */
   get accordingToString() {
     // Do we have any accordingTo information?
-    if (has(this.tunit, 'accordingTo')) return JSON.stringify(this.type.accordingTo);
+    if (has(this.tunit, 'accordingTo')) return JSON.stringify(this.tunit.accordingTo);
 
     // Do we have an accordingToString?
-    if (has(this.tunit, 'accordingToString')) return this.type.accordingToString;
+    if (has(this.tunit, 'accordingToString')) return this.tunit.accordingToString;
 
     // If not, we have no accodingTo information!
     return undefined;

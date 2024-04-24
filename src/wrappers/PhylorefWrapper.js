@@ -43,7 +43,7 @@ class PhylorefWrapper {
 
     normalizedPhyloref.internalSpecifiers = (phyloref.internalSpecifiers || [])
       .map(TaxonomicUnitWrapper.normalize);
-    normalizedPhyloref.externalSpecifiers = (phyloref.internalSpecifiers || [])
+    normalizedPhyloref.externalSpecifiers = (phyloref.externalSpecifiers || [])
       .map(TaxonomicUnitWrapper.normalize);
 
     return normalizedPhyloref;
