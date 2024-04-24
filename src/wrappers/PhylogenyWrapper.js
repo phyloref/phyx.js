@@ -2,8 +2,9 @@
  * PhylogenyWrapper
  */
 
-const { has,
-  cloneDeep
+const {
+  has,
+  cloneDeep,
 } = require('lodash');
 
 /** Used to parse Newick strings. */

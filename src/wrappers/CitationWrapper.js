@@ -30,7 +30,7 @@ class CitationWrapper {
     });
     return normalizedCitation;
   }
-  
+
   /**
    * Helper method to return a single name for a given agent entry.
    * The algorithm we use is:
