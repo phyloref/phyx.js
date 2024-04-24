@@ -3,7 +3,7 @@
  * Based on BibJSON (http://okfnlabs.org/bibjson/).
  */
 
-const { has, isEmpty, cloneDeep } = require('lodash');
+const { has, isEmpty } = require('lodash');
 
 class CitationWrapper {
   /**
@@ -17,8 +17,8 @@ class CitationWrapper {
    * Return a normalized form of a citation.
    *
    * I'm not really sure how to normalize a citation, but the main thing we can do is delete any key
-   * that is equivalent to ''. We could interconvert between `name` and `firstname/lastname/middlename`,
-   * but that's not really equivalent, is it?
+   * that is equivalent to ''. We could interconvert between `name` and
+   * `firstname/lastname/middlename`, but that's not really equivalent, is it?
    */
   static normalize(citation) {
     const normalizedCitation = {};
@@ -30,8 +30,7 @@ class CitationWrapper {
     });
     return normalizedCitation;
   }
-
-
+  
   /**
    * Helper method to return a single name for a given agent entry.
    * The algorithm we use is:
