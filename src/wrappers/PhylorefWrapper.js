@@ -41,8 +41,10 @@ class PhylorefWrapper {
   static normalize(phyloref) {
     const normalizedPhyloref = cloneDeep(phyloref);
 
-    normalizedPhyloref.internalSpecifiers = (phyloref.internalSpecifiers || []).map(TaxonomicUnitWrapper.normalize);
-    normalizedPhyloref.externalSpecifiers = (phyloref.internalSpecifiers || []).map(TaxonomicUnitWrapper.normalize);
+    normalizedPhyloref.internalSpecifiers = (phyloref.internalSpecifiers || [])
+      .map(TaxonomicUnitWrapper.normalize);
+    normalizedPhyloref.externalSpecifiers = (phyloref.internalSpecifiers || [])
+      .map(TaxonomicUnitWrapper.normalize);
 
     return normalizedPhyloref;
   }
