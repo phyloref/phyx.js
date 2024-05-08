@@ -343,7 +343,7 @@ class PhylorefWrapper {
     // owlterms.UNKNOWN_CODEs, then that is still usable as a default
     // nomenclatural code for this phyloreference.
     const uniqNomenCodesNoUnknowns = this.uniqNomenCodes
-      .filter(code => code !== owlterms.UNKNOWN_CODE);
+      .filter((code) => code !== owlterms.UNKNOWN_CODE);
     if (uniqNomenCodesNoUnknowns.length === 1) return uniqNomenCodesNoUnknowns[0];
 
     return owlterms.UNKNOWN_CODE;
@@ -576,15 +576,15 @@ class PhylorefWrapper {
     // selected internals -- when there are fewer, we'll just end up with the inverses
     // of the previous comparisons, which we'll already have covered.
     if (remainingInternals.length > 1 && selected.length <= remainingInternals.length) {
-      remainingInternals.map(newlySelected => this.createClassExpressionsForInternals(
+      remainingInternals.map((newlySelected) => this.createClassExpressionsForInternals(
         jsonld,
         // The new remaining is the old remaining minus the selected TU.
-        remainingInternals.filter(i => i !== newlySelected),
+        remainingInternals.filter((i) => i !== newlySelected),
         // The new selected is the old selected plus the selected TU.
         selected.concat([newlySelected])
       ))
         .reduce((acc, val) => acc.concat(val), [])
-        .forEach(expr => classExprs.push(expr));
+        .forEach((expr) => classExprs.push(expr));
     }
 
     return classExprs;
@@ -675,7 +675,7 @@ class PhylorefWrapper {
       logicalExpressions = externalSpecifiers.map((selectedExternal) => {
         // Add the internal specifiers.
         const intersectionExprs = internalSpecifiers.map(
-          sp => this.getIncludesRestrictionForTU(sp)
+          (sp) => this.getIncludesRestrictionForTU(sp)
         );
 
         // Add the selected external specifier.
@@ -689,7 +689,7 @@ class PhylorefWrapper {
         });
 
         // Collect all of the externals that are not selected.
-        const remainingExternals = externalSpecifiers.filter(ex => ex !== selectedExternal);
+        const remainingExternals = externalSpecifiers.filter((ex) => ex !== selectedExternal);
 
         // Add the remaining externals, which we assume will resolve outside of
         // this clade.
@@ -718,9 +718,7 @@ class PhylorefWrapper {
 
       // We only have internal specifiers. We therefore need to use the algorithm in
       // this.createClassExpressionsForInternals() to create this expression.
-      logicalExpressions = this.createClassExpressionsForInternals(
-        phylorefAsJSONLD, internalSpecifiers, []
-      );
+      logicalExpressions = this.createClassExpressionsForInternals(phylorefAsJSONLD, internalSpecifiers, []);
     }
 
     // If we have a single logical expression, we set that as an equivalentClass
@@ -758,7 +756,7 @@ class PhylorefWrapper {
       //  2. We need to set each of these component classes to be a subclass of
       //     this phyloreference so that it can include instances from each of the
       //     logical expressions.
-      phylorefAsJSONLD.subClasses = logicalExpressions.map(classExpr => this.createComponentClass(
+      phylorefAsJSONLD.subClasses = logicalExpressions.map((classExpr) => this.createComponentClass(
         phylorefAsJSONLD,
         internalSpecifiers,
         externalSpecifiers,

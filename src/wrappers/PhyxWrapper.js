@@ -45,7 +45,7 @@ class PhyxWrapper {
   get defaultNomenCode() {
     if (has(this.phyx, 'defaultNomenclaturalCodeIRI')) return this.phyx.defaultNomenclaturalCodeIRI;
     const nomenCodes = (this.phyx.phylorefs || [])
-      .map(phyloref => new PhylorefWrapper(phyloref).defaultNomenCode);
+      .map((phyloref) => new PhylorefWrapper(phyloref).defaultNomenCode);
     const uniqNomenCodes = uniq(nomenCodes);
     if (uniqNomenCodes.length === 1) return uniqNomenCodes[0];
     return owlterms.UNKNOWN_CODE;

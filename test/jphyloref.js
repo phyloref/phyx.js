@@ -53,7 +53,7 @@ describe('JPhyloRef', function () {
 
   describe('test example JSON-LD files using JPhyloRef', function () {
     fs.readdirSync(path.resolve(__dirname, 'examples', 'correct'))
-      .filter(filename => filename.endsWith('.nq'))
+      .filter((filename) => filename.endsWith('.nq'))
       .forEach((filename) => {
         it(`testing ${filename}`, function () {
           this.timeout(60000);

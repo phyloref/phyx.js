@@ -38,7 +38,7 @@ describe('PhyxWrapper', function () {
 
   describe('Test all correct example Phyx files', function () {
     const examples = fs.readdirSync(path.resolve(__dirname, './examples/correct'))
-      .filter(filename => filename.endsWith('.json'));
+      .filter((filename) => filename.endsWith('.json'));
 
     examples.forEach((example) => {
       const basename = path.resolve(__dirname, './examples/correct', path.parse(example).name);

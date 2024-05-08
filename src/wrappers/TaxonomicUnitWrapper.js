@@ -122,7 +122,7 @@ class TaxonomicUnitWrapper {
     const externalReferences = this.externalReferences;
     if (externalReferences.length > 0) {
       return externalReferences
-        .map(externalRef => `<${externalRef}>`)
+        .map((externalRef) => `<${externalRef}>`)
         .join(' and ');
     }
 
@@ -180,7 +180,7 @@ class TaxonomicUnitWrapper {
       'urn:',
     ];
 
-    if (URL_URN_PREFIXES.filter(prefix => nodeLabel.startsWith(prefix)).length > 0) {
+    if (URL_URN_PREFIXES.filter((prefix) => nodeLabel.startsWith(prefix)).length > 0) {
       // The node label starts with something that looks like a URL!
       // Treat it as an external reference.
       if (tunit === undefined) tunit = {};

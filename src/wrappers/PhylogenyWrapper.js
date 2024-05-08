@@ -136,8 +136,8 @@ class PhylogenyWrapper {
     const tunits = new Set();
 
     nodeLabels.forEach(
-      nodeLabel => this.getTaxonomicUnitsForNodeLabel(nodeLabel)
-        .forEach(tunit => tunits.add(tunit))
+      (nodeLabel) => this.getTaxonomicUnitsForNodeLabel(nodeLabel)
+        .forEach((tunit) => tunits.add(tunit))
     );
 
     return tunits;
@@ -160,8 +160,8 @@ class PhylogenyWrapper {
       return Array.from(
         new Set(
           Array.from(vertices)
-            .map(vertex => vertex.label)
-            .filter(label => label !== undefined)
+            .map((vertex) => vertex.label)
+            .filter((label) => label !== undefined)
         )
       );
     }
@@ -170,8 +170,8 @@ class PhylogenyWrapper {
       // Return the internal nodes (those with atleast one child).
       return Array.from(new Set(
         Array.from(arcs)
-          .map(arc => arc[0].label) // Retrieve the label of the parent vertex in this arc.
-          .filter(label => label !== undefined)
+          .map((arc) => arc[0].label) // Retrieve the label of the parent vertex in this arc.
+          .filter((label) => label !== undefined)
       ));
     }
 
@@ -188,7 +188,7 @@ class PhylogenyWrapper {
       const allLabels = this.getNodeLabels('both');
       const internalLabels = new Set(this.getNodeLabels('internal'));
 
-      return allLabels.filter(label => !internalLabels.has(label));
+      return allLabels.filter((label) => !internalLabels.has(label));
     }
 
     throw new Error(`Unknown nodeType: '${nodeType}'`);
@@ -241,7 +241,7 @@ class PhylogenyWrapper {
       // Attempt pairwise matches between taxonomic units in the specifier
       // and associated with the node.
       return nodeTUnits.some(
-        tunit => new TaxonomicUnitMatcher(specifier, tunit).matched
+        (tunit) => new TaxonomicUnitMatcher(specifier, tunit).matched
       );
     });
   }
@@ -399,7 +399,7 @@ class PhylogenyWrapper {
     Object.keys(nodeIdsByParentId).forEach((parentId) => {
       // What are the children of this parentId?
       const childrenIDs = Array.from(nodeIdsByParentId[parentId]);
-      const children = childrenIDs.map(childId => nodesById[childId]);
+      const children = childrenIDs.map((childId) => nodesById[childId]);
 
       // Is this the root node?
       if (has(nodesById, parentId)) {
@@ -410,7 +410,7 @@ class PhylogenyWrapper {
       children.forEach((child) => {
         const childToModify = child;
         // Add all other sibling to node.siblings, but don't add this node itself!
-        childToModify.siblings = childrenIDs.filter(childId => childId !== child['@id']);
+        childToModify.siblings = childrenIDs.filter((childId) => childId !== child['@id']);
       });
     });
 

@@ -255,6 +255,7 @@ describe('PhylogenyWrapper', function () {
       expect(jsonld).to.have.property('@id');
       expect(jsonld['@id']).to.equal('#providedId');
     });
+
     it('should generate a new @id on input phylorefs', function () {
       const jsonld = new phyx.PhylogenyWrapper({
         newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
@@ -262,6 +263,7 @@ describe('PhylogenyWrapper', function () {
       expect(jsonld).to.have.property('@id');
       expect(jsonld['@id']).to.equal('#phylogeny0');
     });
+
     it('should generate the phylogeny in JSON-LD as expected', function () {
       const expectedResults = [
         {
