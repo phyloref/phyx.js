@@ -68,53 +68,59 @@ describe('Phyloref and phylogeny normalization', function () {
             expect(samePhylorefs).to.not.be.empty;
           });
 
-          // No two phyloreferences in a normalization file should be deeply identical to each
-          // other, otherwise the test will be pointless.
-          phylorefs.forEach((phyloref1) => {
-            phylorefs.forEach((phyloref2) => {
-              if (phyloref1 === phyloref2) return;
-              expect(removeId(phyloref1))
-                .to
-                .not
-                .deep
-                .equal(removeId(phyloref2),
-                  'No two phyloreferences in a single normalization file should be identical.');
+          it('should not have any duplicate phylorefs (which would be pointless)', function () {
+            // No two phyloreferences in a normalization file should be deeply identical to each
+            // other, otherwise the test will be pointless.
+            phylorefs.forEach((phyloref1) => {
+              phylorefs.forEach((phyloref2) => {
+                if (phyloref1 === phyloref2) return;
+                expect(removeId(phyloref1))
+                  .to
+                  .not
+                  .deep
+                  .equal(removeId(phyloref2),
+                    'No two phyloreferences in a single normalization file should be identical.');
+              });
             });
           });
 
-          // Every pair of `_same` phyloreferences should be different.
-          samePhylorefs.forEach((phyloref1) => {
-            samePhylorefs.forEach((phyloref2) => {
-              if (phyloref1 === phyloref2) return;
-              expect(
-                removeId(phyx.PhylorefWrapper.normalize(phyloref1))
-              )
-                .to
-                .deep
-                .equal(
-                  removeId(phyx.PhylorefWrapper.normalize(phyloref2)),
-                  `Expected phyloref ${phyloref1['@id']} to deeply equal ${phyloref2['@id']} `
-                  + 'after normalization'
-                );
+          it('should have pairs of `_same` phylorefs that are different, but are identical after normalization', function () {
+            // Every pair of `_same` phyloreferences should be different.
+            samePhylorefs.forEach((phyloref1) => {
+              samePhylorefs.forEach((phyloref2) => {
+                if (phyloref1 === phyloref2) return;
+                expect(
+                  removeId(phyx.PhylorefWrapper.normalize(phyloref1))
+                )
+                  .to
+                  .deep
+                  .equal(
+                    removeId(phyx.PhylorefWrapper.normalize(phyloref2)),
+                    `Expected phyloref ${phyloref1['@id']} to deeply equal ${phyloref2['@id']} `
+                    + 'after normalization'
+                  );
+              });
             });
           });
 
-          // Every pair of `_different` phyloreferences should be different from every `_same`
-          // phyloreference, even after normalization.
-          differentPhylorefs.forEach((phyloref1) => {
-            samePhylorefs.forEach((phyloref2) => {
-              if (phyloref1 === phyloref2) return;
-              expect(
-                removeId(phyx.PhylorefWrapper.normalize(phyloref1))
-              )
-                .to
-                .not
-                .deep
-                .equal(
-                  removeId(phyx.PhylorefWrapper.normalize(phyloref2)),
-                  `Expected phyloref ${phyloref1['@id']} to not deeply equal ${phyloref2['@id']} `
-                  + 'after normalization'
-                );
+          it('should have pairs of `_different` phylorefs that are different before and after normalization', function () {
+            // Every pair of `_different` phyloreferences should be different from every `_same`
+            // phyloreference, even after normalization.
+            differentPhylorefs.forEach((phyloref1) => {
+              samePhylorefs.forEach((phyloref2) => {
+                if (phyloref1 === phyloref2) return;
+                expect(
+                  removeId(phyx.PhylorefWrapper.normalize(phyloref1))
+                )
+                  .to
+                  .not
+                  .deep
+                  .equal(
+                    removeId(phyx.PhylorefWrapper.normalize(phyloref2)),
+                    `Expected phyloref ${phyloref1['@id']} to not deeply equal ${phyloref2['@id']} `
+                    + 'after normalization'
+                  );
+              });
             });
           });
         });

@@ -207,6 +207,78 @@
             "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
             "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
             "label": "Alligator mississippiensis",
+            "nameComplete": "Alligator mississippiensis"
+          },
+          "label": "Alligator mississippiensis"
+        }
+      ],
+      "externalSpecifiers": []
+    },
+    {
+      "@id": "#Alligatoridae2_different",
+      "label": "Alligatoridae",
+      "scientificNameAuthorship": {
+        "bibliographicCitation": "(Cuvier 1807)"
+      },
+      "phylorefType": "phyloref:PhyloreferenceUsingMinimumClade",
+      "definition": "Alligatoridae (Cuvier 1807).\n\nLast common ancestor of Alligator mississippiensis and Caiman crocodilus and all of its descendents.",
+      "definitionSource": {
+        "type": "article",
+        "title": "Phylogenetic approaches toward crocodylian history",
+        "authors": [
+          {
+            "name": "Christopher A. Brochu",
+            "alternate": [
+              "Brochu, Christopher A."
+            ],
+            "firstname": "Christopher",
+            "middlename": "A.",
+            "lastname": "Brochu"
+          }
+        ],
+        "year": 2003,
+        "figure": "1",
+        "identifier": [
+          {
+            "type": "doi",
+            "id": "10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "link": [
+          {
+            "url": "https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308"
+          }
+        ],
+        "journal": {
+          "name": "Annual Review of Earth and Planetary Sciences",
+          "volume": "31",
+          "pages": "357--397",
+          "identifier": [
+            {
+              "type": "eISSN",
+              "id": "1545-4495"
+            }
+          ]
+        }
+      },
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "label": "Caiman crocodilus",
+            "nameComplete": "Caiman crocodilus",
+            "genusPart": "Caiman",
+            "specificEpithet": "crocodilus"
+          },
+          "label": "Caiman crocodilus"
+        },
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://rs.tdwg.org/ontology/voc/TaxonName#ICZN",
+            "label": "Alligator mississippiensis",
             "nameComplete": "Alligator mississippiensis",
             "genusPart": "Alligator",
             "specificEpithet": "mississippiensis"
