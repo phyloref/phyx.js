@@ -17,7 +17,7 @@ const expect = chai.expect;
  * Constants
  */
 // The version of JPhyloRef to download.
-const JPHYLOREF_VERSION = '0.4.0';
+const JPHYLOREF_VERSION = '1.1.1';
 
 // The URL from where JPhyloRef should be downloaded.
 const JPHYLOREF_URL = `https://repo.maven.apache.org/maven2/org/phyloref/jphyloref/${JPHYLOREF_VERSION}/jphyloref-${JPHYLOREF_VERSION}.jar`;

@@ -14,6 +14,24 @@ class CitationWrapper {
   }
 
   /**
+   * Return a normalized form of a citation.
+   *
+   * I'm not really sure how to normalize a citation, but the main thing we can do is delete any key
+   * that is equivalent to ''. We could interconvert between `name` and
+   * `firstname/lastname/middlename`, but that's not really equivalent, is it?
+   */
+  static normalize(citation) {
+    const normalizedCitation = {};
+    Object.keys(citation).forEach((key) => {
+      // As long as citation[key] has a reasonable value, we copy it into the normalized citation.
+      if (citation[key]) {
+        normalizedCitation[key] = citation[key];
+      }
+    });
+    return normalizedCitation;
+  }
+
+  /**
    * Helper method to return a single name for a given agent entry.
    * The algorithm we use is:
    *  - `name`, if one is present.

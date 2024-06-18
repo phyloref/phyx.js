@@ -2,7 +2,10 @@
  * PhylogenyWrapper
  */
 
-const { has } = require('lodash');
+const {
+  has,
+  cloneDeep,
+} = require('lodash');
 
 /** Used to parse Newick strings. */
 const newickJs = require('newick-js');
@@ -32,6 +35,22 @@ class PhylogenyWrapper {
     // possible representations of a phylogeny.
     this.phylogeny = phylogeny;
     this.defaultNomenCode = defaultNomenCode;
+  }
+
+  /**
+   * Return a normalized form of the phylogeny.
+   */
+  static normalize(phylogeny) {
+    const normalizedPhylogeny = cloneDeep(phylogeny);
+
+    // We could normalize the Newick string, but that doesn't seem very nice.
+
+    // Normalize the source if there is one.
+    if ('source' in phylogeny) {
+      normalizedPhylogeny.source = CitationWrapper.normalize(phylogeny.source || {});
+    }
+
+    return normalizedPhylogeny;
   }
 
   static getErrorsInNewickString(newick) {

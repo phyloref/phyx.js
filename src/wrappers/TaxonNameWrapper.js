@@ -144,6 +144,25 @@ class TaxonNameWrapper {
   }
 
   /**
+   * Normalize the specified taxon name.
+   * @param txname A taxon name to be normalized.
+   */
+  static normalize(txname) {
+    const wrapped = new TaxonNameWrapper(txname);
+    const normalizedTxname = {
+      '@type': TaxonNameWrapper.TYPE_TAXON_NAME,
+      nomenclaturalCode: wrapped.nomenclaturalCode,
+      label: wrapped.label,
+      nameComplete: wrapped.nameComplete,
+      genusPart: wrapped.genusPart,
+      specificEpithet: wrapped.specificEpithet,
+      infraspecificEpithet: wrapped.infraspecificEpithet,
+    };
+    if ('@id' in txname) normalizedTxname['@id'] = txname['@id'];
+    return normalizedTxname;
+  }
+
+  /**
    * Returns the nomenclatural code of this taxon name.
    */
   get nomenclaturalCode() {
