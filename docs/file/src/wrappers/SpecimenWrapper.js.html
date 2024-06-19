@@ -75,6 +75,25 @@ class SpecimenWrapper {
   }
 
   /**
+   * Normalize the specified specimen.
+   * @param specimen A specimen to be normalized.
+   */
+  static normalize(specimen) {
+    const wrapped = new SpecimenWrapper(specimen);
+    const normalizedSpecimen = {
+      &apos;@type&apos;: SpecimenWrapper.TYPE_SPECIMEN,
+      label: wrapped.label,
+      &apos;dwc:basisOfRecord&apos;: wrapped.basisOfRecord,
+      occurrenceID: wrapped.occurrenceID,
+      catalogNumber: wrapped.catalogNumber,
+      institutionCode: wrapped.institutionCode,
+      collectionCode: wrapped.collectionCode,
+    };
+    if (&apos;@id&apos; in specimen) normalizedSpecimen[&apos;@id&apos;] = specimen[&apos;@id&apos;];
+    return normalizedSpecimen;
+  }
+
+  /**
    * Parse the provided occurrence ID. The two expected formats are:
    *  - &apos;urn:catalog:[institutionCode]:[collectionCode]:[catalogNumber]&apos;
    *      (in which case, we ignore the first two &quot;components&quot; here)

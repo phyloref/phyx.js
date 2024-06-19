@@ -78,6 +78,22 @@ class PhylorefWrapper {
     return this.phyloref.internalSpecifiers;
   }
 
+  /**
+   * Normalize a phyloreference.
+   *
+   * @param phyloref
+   */
+  static normalize(phyloref) {
+    const normalizedPhyloref = cloneDeep(phyloref);
+
+    normalizedPhyloref.internalSpecifiers = (phyloref.internalSpecifiers || [])
+      .map(TaxonomicUnitWrapper.normalize);
+    normalizedPhyloref.externalSpecifiers = (phyloref.externalSpecifiers || [])
+      .map(TaxonomicUnitWrapper.normalize);
+
+    return normalizedPhyloref;
+  }
+
   /** Return the external specifiers of this phyloref (if any). */
   get externalSpecifiers() {
     if (!has(this.phyloref, &apos;externalSpecifiers&apos;)) {

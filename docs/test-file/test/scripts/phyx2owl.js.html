@@ -109,7 +109,7 @@ describe(PHYX2OWL_JS, function () {
   });
   it(&apos;should be able to convert the entire `test/examples/correct` directory&apos;, function () {
     const EXAMPLE_DIR = path.resolve(__dirname, &apos;../examples/correct&apos;);
-    const jsonFilesInExamples = fs.readdirSync(EXAMPLE_DIR, &apos;utf8&apos;)
+    const jsonFilesInExamples = fs.readdirSync(EXAMPLE_DIR, { recursive: true })
       .filter(fileName =&gt; fileName.toLowerCase().endsWith(&apos;.json&apos;));
 
     const result = child.spawnSync(PHYX2OWL_JS, [EXAMPLE_DIR, &apos;--base-iri&apos;, &apos;http://example.org/phyx.js/example#&apos;], {
