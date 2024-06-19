@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 ## [Unreleased]
 
+## [1.2.0] - 2024-06-18
+- PR #138: Added normalization methods so that Phyx objects can be normalized.
+- PR #139: upgraded NPM packages and minor test fixes
+
 ## [1.1.1] - 2023-08-01
 - PR #133: Add guards to some usages of `phyloref.internalSpecifiers/phyloref.externalSpecifiers`.
 - PR #136: Improved GitHub test action, including changing Node versions.
@@ -64,7 +68,8 @@ release of this package was based on [commit 14d2c3d5d1] in that repository.
 - Replaced references to the [phylotree] library with the [newick-js] library.
 - Made other changes to the initial code as needed to work as an independent NPM package.
 
-  [Unreleased]: https://github.com/phyloref/phyx.js/compare/v1.1.1...master
+  [Unreleased]: https://github.com/phyloref/phyx.js/compare/v1.2.0...master
+  [1.2.0]: https://github.com/phyloref/phyx.js/compare/v1.1.1...v1.2.0
   [1.1.1]: https://github.com/phyloref/phyx.js/compare/v1.1.0...v1.1.1
   [1.1.0]: https://github.com/phyloref/phyx.js/compare/v1.0.1...v1.1.0
   [1.0.1]: https://github.com/phyloref/phyx.js/compare/v1.0.0...v1.0.1
