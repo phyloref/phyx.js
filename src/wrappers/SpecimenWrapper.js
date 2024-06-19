@@ -57,12 +57,12 @@ class SpecimenWrapper {
   static fromOccurrenceID(occurrenceID, basisOfRecord = 'PreservedSpecimen') {
     // Copy the occurrence ID so we can truncate it if necessary.
     let occurID = occurrenceID;
-    if (occurID.startsWith('urn:catalog:')) occurID = occurID.substr(12);
+    if (occurID.startsWith('urn:catalog:')) occurID = occurID.substring(12);
 
     // Prepare the specimen.
     const specimen = {
       '@type': SpecimenWrapper.TYPE_SPECIMEN,
-      basisOfRecord: basisOfRecord,
+      basisOfRecord,
       occurrenceID: occurID,
     };
 
