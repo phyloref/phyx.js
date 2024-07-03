@@ -20,6 +20,7 @@ identifiers:
     description: The versioned DOI for version 1.1.1 of phyx.js.
 url: "https://github.com/phyloref/phyx.js"
 repository-code: "https://github.com/phyloref/phyx.js"
+repository-artifact: "https://www.npmjs.com/package/@phyloref/phyx"
 preferred-citation:
   authors:
     - family-names: Vaidya
