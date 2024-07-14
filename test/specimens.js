@@ -24,7 +24,7 @@ describe('SpecimenWrapper', function () {
     it('should be able to extract an occurenceID and catalogNumber from simple specimen IDs', function () {
       const wrapper = new phyx.SpecimenWrapper({
         occurrenceID: 'Wall 2527, Fiji (uc)',
-        'dwc:basisOfRecord': 'PreservedSpecimen',
+        basisOfRecord: 'PreservedSpecimen',
       });
       expect(wrapper.occurrenceID).to.equal('Wall 2527, Fiji (uc)');
       expect(wrapper.catalogNumber).to.equal('Wall 2527, Fiji (uc)');
@@ -33,7 +33,7 @@ describe('SpecimenWrapper', function () {
     it('should extract institutionCode and catalogNumber from a institutionCode:catalogNumber combination', function () {
       const wrapper = new phyx.SpecimenWrapper({
         occurrenceID: 'FMNH:PR 2081',
-        'dwc:basisOfRecord': 'PreservedSpecimen',
+        basisOfRecord: 'PreservedSpecimen',
       });
       expect(wrapper.occurrenceID).to.equal('FMNH:PR 2081');
       expect(wrapper.institutionCode).to.equal('FMNH');
@@ -80,7 +80,7 @@ describe('SpecimenWrapper', function () {
       expect(specimen.institutionCode).to.equal('FMNH');
       expect(specimen.collectionCode).to.equal('PR');
       expect(specimen.catalogNumber).to.equal('2081');
-      expect(specimen['dwc:basisOfRecord']).to.equal('PreservedSpecimen');
+      expect(specimen.basisOfRecord).to.equal('PreservedSpecimen');
     });
   });
 });
