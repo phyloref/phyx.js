@@ -11,9 +11,6 @@ module.exports = {
   // Phyloref properties.
   PHYLOREF_INCLUDES_TU: 'phyloref:includes_TU',
   PHYLOREF_EXCLUDES_TU: 'phyloref:excludes_TU',
-  PHYLOREF_EXCLUDES_LINEAGE_TO: 'phyloref:excludes_lineage_to',
-  TU_HAS_NAME_PROP: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
-  TU_SPECIMEN_PROP: 'dwc:organismID',
 
   // Terms from RDF
   RDF_TYPE: 'rdf:type',
