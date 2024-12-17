@@ -41,6 +41,8 @@
     "yargs": "^15.4.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.17.0",
     "ajv": "^8.17.1",
     "chai": "^5.1.2",
     "esdoc": "^1.1.0",
