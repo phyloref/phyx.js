@@ -159,7 +159,7 @@ class SpecimenWrapper {
    */
   get occurrenceID() {
     // Return the occurrenceID if it exists.
-    if (has(this.specimen, 'occurrenceID') && this.specimen.occurrenceID.trim() !== '') {
+    if (has(this.specimen, 'occurrenceID')) {
       return this.specimen.occurrenceID.trim();
     }
 
