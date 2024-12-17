@@ -37,9 +37,9 @@ const ranaLuteiventris = {
  * The nomenclatural codes are set up in TaxonNameWrapper, so that's where
  * most of the nomenclatural code behavior code exists.
  */
-describe('TaxonNameWrapper', function () {
-  describe('#getNomenclaturalCodes', function () {
-    it('should provide a non-empty list with the expected keys', function () {
+describe('TaxonNameWrapper', function() {
+  describe('#getNomenclaturalCodes', function() {
+    it('should provide a non-empty list with the expected keys', function() {
       const nomenCodes = phyx.TaxonNameWrapper.getNomenclaturalCodes();
 
       expect(nomenCodes)
@@ -52,8 +52,8 @@ describe('TaxonNameWrapper', function () {
     });
   });
 
-  describe('#getNomenCodeDetails', function () {
-    it('should provide details for some built-in codes', function () {
+  describe('#getNomenCodeDetails', function() {
+    it('should provide details for some built-in codes', function() {
       const codesToTest = {
         'Code not known': owlterms.UNKNOWN_CODE,
         ICZN: owlterms.ICZN_CODE,
@@ -72,8 +72,8 @@ describe('TaxonNameWrapper', function () {
     });
   });
 
-  describe('#nomenclaturalCodeDetails', function () {
-    it('should provide nomenclatural code details for an example taxon name', function () {
+  describe('#nomenclaturalCodeDetails', function() {
+    it('should provide nomenclatural code details for an example taxon name', function() {
       const wrapper = new phyx.TaxonNameWrapper(ranaLuteiventris.hasName);
       expect(wrapper.nomenclaturalCode).to.equal(owlterms.UNKNOWN_CODE);
       expect(wrapper.nomenclaturalCodeDetails.shortName).to.equal('Code not known');
@@ -97,15 +97,15 @@ describe('TaxonNameWrapper', function () {
 /*
  * Make sure we can set a default nomenclatural code in TaxonConceptWrapper.
  */
-describe('TaxonConceptWrapper', function () {
-  describe('#nomenCode', function () {
+describe('TaxonConceptWrapper', function() {
+  describe('#nomenCode', function() {
     const wrapper = new phyx.TaxonConceptWrapper(ranaLuteiventris);
 
-    it('should return UNKNOWN_CODE if one is not set', function () {
+    it('should return UNKNOWN_CODE if one is not set', function() {
       expect(wrapper.nomenCode).to.equal(owlterms.UNKNOWN_CODE);
     });
 
-    it('should return the default nomenclatural code if one is provided', function () {
+    it('should return the default nomenclatural code if one is provided', function() {
       const wrapperWithDefault = new phyx.TaxonConceptWrapper(ranaLuteiventris, owlterms.ICZN_CODE);
       expect(wrapperWithDefault.nomenCode).to.equal(owlterms.ICZN_CODE);
       expect(wrapperWithDefault.nomenCodeDetails.shortName).to.equal('ICZN');
@@ -122,8 +122,8 @@ describe('TaxonConceptWrapper', function () {
  *      on all the phylorefs in the file have the same nomenclatural code, then
  *      that code will be used on all the phylogeny nodes.
  */
-describe('PhyxWrapper', function () {
-  it('should use the defaultNomenclaturalCodeIRI for phylogeny nodes', function () {
+describe('PhyxWrapper', function() {
+  it('should use the defaultNomenclaturalCodeIRI for phylogeny nodes', function() {
     // The examples/correct/alligatoridae_default_nomen_code.json file has
     // a `defaultNomenclaturalCodeIRI`.
     const json = JSON.parse(fs.readFileSync(
@@ -193,7 +193,7 @@ describe('PhyxWrapper', function () {
     });
   });
 
-  it('should use the inferred nomenclatural code for phylogeny nodes', function () {
+  it('should use the inferred nomenclatural code for phylogeny nodes', function() {
     // The examples/correct/alligatoridae_inferred_nomen_code.json file does not have
     // a `defaultNomenclaturalCodeIRI`, but the nomenclatural code can be inferred from
     // its specifiers.

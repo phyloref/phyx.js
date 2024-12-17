@@ -88,14 +88,14 @@ class CitationWrapper {
 
     // Add DOIs and URLs.
     additionalInfo += (this.citation.identifier || [])
-      .filter(id => id.type === 'doi')
-      .map(doi => ` doi: ${doi.id}`)
+      .filter((id) => id.type === 'doi')
+      .map((doi) => ` doi: ${doi.id}`)
       .join('');
-    additionalInfo += (this.citation.link || []).map(link => ` URL: ${link.url}`).join('');
+    additionalInfo += (this.citation.link || []).map((link) => ` URL: ${link.url}`).join('');
 
     additionalInfo += (this.citation.identifier || [])
-      .filter(id => id.type === 'isbn')
-      .map(isbn => ` ISBN: ${isbn.id}`)
+      .filter((id) => id.type === 'isbn')
+      .map((isbn) => ` ISBN: ${isbn.id}`)
       .join('');
 
     // A citation for a journal article should be different from others.
@@ -104,8 +104,8 @@ class CitationWrapper {
       const journalIssue = (has(journal, 'number')) ? `(${journal.number})` : '';
       const pages = (has(journal, 'pages')) ? `:${journal.pages}` : '';
       additionalInfo += (journal.identifier || [])
-        .filter(id => id.type === 'issn')
-        .map(issn => `ISSN: ${issn.id} `)
+        .filter((id) => id.type === 'issn')
+        .map((issn) => `ISSN: ${issn.id} `)
         .join('');
       return `${authorsAndTitle} ${journal.name || 'Unknown journal'} ${journal.volume || 'Unknown volume'}${journalIssue}${pages}${additionalInfo}`;
     }

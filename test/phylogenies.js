@@ -21,36 +21,36 @@ const expect = chai.expect;
  *    taxonomic units that match.
  */
 
-describe('PhylogenyWrapper', function () {
-  describe('#constructor', function () {
-    describe('when used to wrap an empty object', function () {
-      it('should return a PhylogenyWrapper object', function () {
+describe('PhylogenyWrapper', function() {
+  describe('#constructor', function() {
+    describe('when used to wrap an empty object', function() {
+      it('should return a PhylogenyWrapper object', function() {
         expect(new phyx.PhylogenyWrapper({}))
           .to.be.an.instanceOf(phyx.PhylogenyWrapper);
       });
     });
   });
 
-  describe('#getErrorsInNewickString', function () {
-    describe('when given a correct Newick string', function () {
+  describe('#getErrorsInNewickString', function() {
+    describe('when given a correct Newick string', function() {
       const correctNewickStrings = [
         '(A:3, B:5, (C:6, N:7));',
       ];
 
-      it('should return an empty list of errors', function () {
+      it('should return an empty list of errors', function() {
         correctNewickStrings.forEach((str) => {
           expect(phyx.PhylogenyWrapper.getErrorsInNewickString(str)).to.be.empty;
         });
       });
     });
 
-    describe('when given an empty Newick string', function () {
+    describe('when given an empty Newick string', function() {
       const emptyNewickStrings = [
         '()',
         '();  ',
       ];
 
-      it('should return a single "No phylogeny entered" error', function () {
+      it('should return a single "No phylogeny entered" error', function() {
         emptyNewickStrings.forEach((newick) => {
           const errors = phyx.PhylogenyWrapper.getErrorsInNewickString(newick);
           expect(errors).to.have.length(1);
@@ -59,7 +59,7 @@ describe('PhylogenyWrapper', function () {
       });
     });
 
-    describe('when given an unbalanced Newick string', function () {
+    describe('when given an unbalanced Newick string', function() {
       const unbalancedNewickString = [
         {
           newick: '(A, B))',
@@ -75,7 +75,7 @@ describe('PhylogenyWrapper', function () {
         },
       ];
 
-      it('should report how many parentheses are missing', function () {
+      it('should report how many parentheses are missing', function() {
         unbalancedNewickString.forEach((entry) => {
           const errors = phyx.PhylogenyWrapper.getErrorsInNewickString(entry.newick);
 
@@ -93,13 +93,13 @@ describe('PhylogenyWrapper', function () {
       });
     });
 
-    describe('when given an incomplete Newick string', function () {
+    describe('when given an incomplete Newick string', function() {
       const incompleteNewickStrings = [
         ';',
         '))(A, (B, ',
       ];
 
-      it('should report an error parsing the phylogeny', function () {
+      it('should report an error parsing the phylogeny', function() {
         incompleteNewickStrings.forEach((newick) => {
           const errors = phyx.PhylogenyWrapper.getErrorsInNewickString(newick);
 
@@ -111,7 +111,7 @@ describe('PhylogenyWrapper', function () {
     });
   });
 
-  describe('#getNodeLabels', function () {
+  describe('#getNodeLabels', function() {
     const tests = [
       {
         // Note that 'newick' is the input for this test.
@@ -127,18 +127,18 @@ describe('PhylogenyWrapper', function () {
     tests.forEach((test) => {
       const wrapper = new phyx.PhylogenyWrapper({ newick: test.newick });
 
-      describe('For a particular Newick phylogeny', function () {
-        it('should return a list of all node labels by default', function () {
+      describe('For a particular Newick phylogeny', function() {
+        it('should return a list of all node labels by default', function() {
           expect(wrapper.getNodeLabels().sort())
             .to.have.members(test.nodeLabels.sort());
         });
 
-        it('should return a list of internal labels when asked for internal labels', function () {
+        it('should return a list of internal labels when asked for internal labels', function() {
           expect(wrapper.getNodeLabels('internal').sort())
             .to.have.members(test.internalNodeLabels.sort());
         });
 
-        it('should return a list of terminal labels when asked for terminal labels', function () {
+        it('should return a list of terminal labels when asked for terminal labels', function() {
           expect(wrapper.getNodeLabels('terminal').sort())
             .to.have.members(test.terminalNodeLabels.sort());
         });
@@ -146,7 +146,7 @@ describe('PhylogenyWrapper', function () {
     });
   });
 
-  describe('given a particular phylogeny with additional node properties', function () {
+  describe('given a particular phylogeny with additional node properties', function() {
     const wrapper = new phyx.PhylogenyWrapper({
       newick: '((MVZ225749, MVZ191016), Rana boylii)',
       additionalNodeProperties: {
@@ -171,8 +171,8 @@ describe('PhylogenyWrapper', function () {
       },
     });
 
-    describe('#getNodeLabels', function () {
-      it('should return the list of node labels from the Newick string', function () {
+    describe('#getNodeLabels', function() {
+      it('should return the list of node labels from the Newick string', function() {
         expect(wrapper.getNodeLabels().sort())
           .to.have.members([
             'MVZ191016',
@@ -182,8 +182,8 @@ describe('PhylogenyWrapper', function () {
       });
     });
 
-    describe('#getTaxonomicUnitsForNodeLabel', function () {
-      it('should return the list of taxonomic units using information from additional node properties', function () {
+    describe('#getTaxonomicUnitsForNodeLabel', function() {
+      it('should return the list of taxonomic units using information from additional node properties', function() {
         expect(wrapper.getTaxonomicUnitsForNodeLabel('MVZ191016')).to.deep.equal([{
           '@type': [
             phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
@@ -214,8 +214,8 @@ describe('PhylogenyWrapper', function () {
       });
     });
 
-    describe('#getNodeLabelsMatchedBySpecifier', function () {
-      it('should match a specifier to MVZ225749 based on occurrence ID', function () {
+    describe('#getNodeLabelsMatchedBySpecifier', function() {
+      it('should match a specifier to MVZ225749 based on occurrence ID', function() {
         const specifier1 = {
           '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
           occurrenceID: 'MVZ:225749',
@@ -224,7 +224,7 @@ describe('PhylogenyWrapper', function () {
           .to.have.members(['MVZ225749']);
       });
 
-      it('should match a specifier to MVZ191016 based on occurrence ID', function () {
+      it('should match a specifier to MVZ191016 based on occurrence ID', function() {
         const specifier2 = {
           '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
           occurrenceID: 'MVZ:191016',
@@ -234,7 +234,7 @@ describe('PhylogenyWrapper', function () {
           .to.have.members(['MVZ191016']);
       });
 
-      it('should match a specifier to node "Rana boylii" based on the parsed scientific name', function () {
+      it('should match a specifier to node "Rana boylii" based on the parsed scientific name', function() {
         const specifier3 = {
           '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
           nameString: 'Rana boylii',
@@ -246,8 +246,8 @@ describe('PhylogenyWrapper', function () {
     });
   });
 
-  describe('#asJSONLD', function () {
-    it('should preserve an existing @id on input phylogenies', function () {
+  describe('#asJSONLD', function() {
+    it('should preserve an existing @id on input phylogenies', function() {
       const jsonld = new phyx.PhylogenyWrapper({
         '@id': '#providedId',
         newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
@@ -255,14 +255,16 @@ describe('PhylogenyWrapper', function () {
       expect(jsonld).to.have.property('@id');
       expect(jsonld['@id']).to.equal('#providedId');
     });
-    it('should generate a new @id on input phylorefs', function () {
+
+    it('should generate a new @id on input phylorefs', function() {
       const jsonld = new phyx.PhylogenyWrapper({
         newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
       }, owlterms.ICZN_CODE).asJSONLD('#phylogeny0');
       expect(jsonld).to.have.property('@id');
       expect(jsonld['@id']).to.equal('#phylogeny0');
     });
-    it('should generate the phylogeny in JSON-LD as expected', function () {
+
+    it('should generate the phylogeny in JSON-LD as expected', function() {
       const expectedResults = [
         {
           newick: '((Homo_sapiens, Panthera_tigris), Mus_musculus)',
@@ -430,7 +432,7 @@ describe('PhylogenyWrapper', function () {
     });
   });
 
-  describe('#getParsedNewickWithIRIs', function () {
+  describe('#getParsedNewickWithIRIs', function() {
     const tests = [
       {
         newick: '(((A, B)C, D)E, F)G',
@@ -465,7 +467,7 @@ describe('PhylogenyWrapper', function () {
     ];
 
     tests.forEach((test) => {
-      it('should be able to parse a provided Newick string as expected', function () {
+      it('should be able to parse a provided Newick string as expected', function() {
         expect(new phyx.PhylogenyWrapper({ newick: test.newick }).getParsedNewickWithIRIs(''))
           .to.deep.equal(test.result);
       });
