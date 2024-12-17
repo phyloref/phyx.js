@@ -76,7 +76,7 @@ class SpecimenWrapper {
       'file://',
       'urn:',
     ];
-    if (URL_URN_PREFIXES.filter(prefix => occurID.toLowerCase().startsWith(prefix)).length > 0) {
+    if (URL_URN_PREFIXES.filter((prefix) => occurID.toLowerCase().startsWith(prefix)).length > 0) {
       return specimen;
     }
 

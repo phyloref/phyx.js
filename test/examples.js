@@ -24,7 +24,7 @@ const REPLACE_EXISTING = false;
  * Test whether conversion of Phyx files to an OWL ontology occurs predictably.
  */
 
-describe('PhyxWrapper', function () {
+describe('PhyxWrapper', function() {
   const ajv = new Ajv({
     allErrors: true, // Display all error messages, not just the first.
   });
@@ -36,9 +36,9 @@ describe('PhyxWrapper', function () {
     )
   );
 
-  describe('Test all correct example Phyx files', function () {
+  describe('Test all correct example Phyx files', function() {
     const examples = fs.readdirSync(path.resolve(__dirname, './examples/correct'))
-      .filter(filename => filename.endsWith('.json'));
+      .filter((filename) => filename.endsWith('.json'));
 
     examples.forEach((example) => {
       const basename = path.resolve(__dirname, './examples/correct', path.parse(example).name);
@@ -50,13 +50,13 @@ describe('PhyxWrapper', function () {
       let jsonld;
       let nq;
 
-      describe(`Test file '${example}'`, function () {
-        it('should be loadable', function () {
+      describe(`Test file '${example}'`, function() {
+        it('should be loadable', function() {
           json = JSON.parse(fs.readFileSync(jsonFilename));
           expect(json).to.be.an('object');
         });
 
-        it('should validate against our JSON schema', function () {
+        it('should validate against our JSON schema', function() {
           const valid = validator(json);
           expect(
             validator.errors,
@@ -78,7 +78,7 @@ describe('PhyxWrapper', function () {
           expect(jsonld).to.be.an('object');
         });
 
-        it('should generate the same OWL ontology as it generated earlier', function () {
+        it('should generate the same OWL ontology as it generated earlier', function() {
           const expectedJSONLD = JSON.parse(fs.readFileSync(jsonldFilename));
           expect(jsonld).to.deep.equal(expectedJSONLD);
         });
@@ -95,7 +95,7 @@ describe('PhyxWrapper', function () {
             });
         });
 
-        it('should generate the same n-quads ontology as it generated earlier', function () {
+        it('should generate the same n-quads ontology as it generated earlier', function() {
           const expectedNQ = fs.readFileSync(nqFilename).toString();
           expect(nq).to.deep.equal(expectedNQ);
         });
@@ -103,7 +103,7 @@ describe('PhyxWrapper', function () {
     });
   });
 
-  describe('Test incorrect example Phyx files that should fail validation', function () {
+  describe('Test incorrect example Phyx files that should fail validation', function() {
     const filesThatShouldFailValidation = [
       {
         fileName: 'examples/incorrect/no-context.json',
@@ -227,8 +227,8 @@ describe('PhyxWrapper', function () {
     ];
 
     filesThatShouldFailValidation.forEach((entry) => {
-      describe(`Example file ${entry.fileName}`, function () {
-        it('should not validate against our JSON schema', function () {
+      describe(`Example file ${entry.fileName}`, function() {
+        it('should not validate against our JSON schema', function() {
           const phyxContent = JSON.parse(
             fs.readFileSync(
               path.resolve(__dirname, entry.fileName)

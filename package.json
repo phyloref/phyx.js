@@ -29,7 +29,6 @@
     "lint": "eslint \"src/**/*.js\" \"test/**/*.js\"",
     "phyx2owl": "node bin/phyx2owl.js",
     "resolve": "node bin/resolve.js",
-    "pretest": "npm run lint",
     "test": "mocha --recursive"
   },
   "dependencies": {

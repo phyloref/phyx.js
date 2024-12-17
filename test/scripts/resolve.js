@@ -17,8 +17,8 @@ const expect = chai.expect;
 
 const RESOLVE_JS = 'bin/resolve.js';
 
-describe('bin/resolve.js', function () {
-  it('should work without any arguments', function () {
+describe('bin/resolve.js', function() {
+  it('should work without any arguments', function() {
     const result = child.spawnSync(RESOLVE_JS, [], {
       encoding: 'utf-8',
       stdio: 'pipe',
@@ -27,7 +27,8 @@ describe('bin/resolve.js', function () {
     expect(result.stdout).to.be.empty;
     expect(result.stderr).to.contain('No input files provided.');
   });
-  it('should support `--help`', function () {
+
+  it('should support `--help`', function() {
     const result = child.spawnSync(RESOLVE_JS, ['--help'], {
       encoding: 'utf-8',
       stdio: 'pipe',
@@ -36,6 +37,7 @@ describe('bin/resolve.js', function () {
     expect(result.stderr).to.be.empty;
     expect(result.stdout).to.contain('resolve.js [files to resolve on the Open Tree of Life]');
   });
+
   it('should provide the expected results on the `brochu_2003.json` example file', function () {
     var resultObj; // eslint-disable-line no-var
 
@@ -48,7 +50,7 @@ describe('bin/resolve.js', function () {
     expect(result.status).to.equal(0);
     expect(result.stderr).to.be.empty;
 
-    expect(function () {
+    expect(() => {
       resultObj = JSON.parse(result.stdout);
     }).to.not.throw(SyntaxError);
 
@@ -77,6 +79,7 @@ describe('bin/resolve.js', function () {
       error: 'no_mrca_found:400',
     });
   });
+
   it('should correctly report errors with certain phyloreferences', function () {
     var resultObj; // eslint-disable-line no-var
 
@@ -89,7 +92,7 @@ describe('bin/resolve.js', function () {
     expect(result.status).to.equal(0);
     expect(result.stderr).to.be.empty;
 
-    expect(function () {
+    expect(() => {
       resultObj = JSON.parse(result.stdout);
     }).to.not.throw(SyntaxError);
 

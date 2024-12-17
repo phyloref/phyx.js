@@ -1,4 +1,3 @@
-
 // Some OWL constants to be used.
 module.exports = {
   // Where is our context file located?

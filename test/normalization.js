@@ -19,20 +19,19 @@ const expect = chai.expect;
  */
 function removeId(phyloref) {
   // Shallow copy the phyloref.
-  const copiedPhyloref = Object.assign({}, phyloref);
+  const copiedPhyloref = { ...phyloref};
   // Delete the '@id'.
   delete copiedPhyloref['@id'];
   return copiedPhyloref;
 }
-
 
 /**
  * Test whether normalization of phyloreferences and phylogenies work as expected.
  * This test does not cover Phyx normalization.
  */
 
-describe('Phyloref and phylogeny normalization', function () {
-  describe('Test all normalization Phyx files', function () {
+describe('Phyloref and phylogeny normalization', () => {
+  describe('Test all normalization Phyx files', () => {
     /*
      * Normalization Phyx files consist of a number of phyloreferences and phylogenies. We can
      * test them by confirming:
@@ -45,30 +44,30 @@ describe('Phyloref and phylogeny normalization', function () {
      */
     const normalizationExamples = fs
       .readdirSync(path.resolve(__dirname, './examples/correct/normalization'))
-      .filter(filename => filename.endsWith('.json'));
+      .filter((filename) => filename.endsWith('.json'));
 
     normalizationExamples.forEach((example) => {
       const basename = path.resolve(__dirname, './examples/correct/normalization', path.parse(example).name);
       const jsonFilename = `${basename}.json`;
 
-      describe(`Normalization test file '${example}'`, function () {
+      describe(`Normalization test file '${example}'`, () => {
         const phyxDoc = JSON.parse(fs.readFileSync(jsonFilename));
         const phylorefs = phyxDoc.phylorefs || [];
-        const samePhylorefs = phylorefs.filter(p => (p['@id'] || '').endsWith('_same'));
-        const differentPhylorefs = phylorefs.filter(p => (p['@id'] || '').endsWith('_different'));
+        const samePhylorefs = phylorefs.filter((p) => (p['@id'] || '').endsWith('_same'));
+        const differentPhylorefs = phylorefs.filter((p) => (p['@id'] || '').endsWith('_different'));
 
         // We don't need phylogeny normalization yet, so there's no point in testing them.
-        describe('Test phylogenies', function () {
+        describe('Test phylogenies', () => {
           it("These tests have not yet been implemented since we don't have an urgent need for them.");
         });
 
         // So we only focus on phyloreference normalization.
-        describe('Test phyloreferences', function () {
-          it('should have multiple same phyloreferences for testing', function () {
+        describe('Test phyloreferences', () => {
+          it('should have multiple same phyloreferences for testing', () => {
             expect(samePhylorefs).to.not.be.empty;
           });
 
-          it('should not have any duplicate phylorefs (which would be pointless)', function () {
+          it('should not have any duplicate phylorefs (which would be pointless)', () => {
             // No two phyloreferences in a normalization file should be deeply identical to each
             // other, otherwise the test will be pointless.
             phylorefs.forEach((phyloref1) => {
@@ -78,13 +77,15 @@ describe('Phyloref and phylogeny normalization', function () {
                   .to
                   .not
                   .deep
-                  .equal(removeId(phyloref2),
-                    'No two phyloreferences in a single normalization file should be identical.');
+                  .equal(
+removeId(phyloref2),
+                    'No two phyloreferences in a single normalization file should be identical.'
+);
               });
             });
           });
 
-          it('should have pairs of `_same` phylorefs that are different, but are identical after normalization', function () {
+          it('should have pairs of `_same` phylorefs that are different, but are identical after normalization', () => {
             // Every pair of `_same` phyloreferences should be different.
             samePhylorefs.forEach((phyloref1) => {
               samePhylorefs.forEach((phyloref2) => {
@@ -103,7 +104,7 @@ describe('Phyloref and phylogeny normalization', function () {
             });
           });
 
-          it('should have pairs of `_different` phylorefs that are different before and after normalization', function () {
+          it('should have pairs of `_different` phylorefs that are different before and after normalization', () => {
             // Every pair of `_different` phyloreferences should be different from every `_same`
             // phyloreference, even after normalization.
             differentPhylorefs.forEach((phyloref1) => {

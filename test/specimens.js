@@ -13,15 +13,16 @@ const expect = chai.expect;
  * However, URNs and HTTP URLs should not be accidentally parsed as Darwin Core triples.
  */
 
-describe('SpecimenWrapper', function () {
-  describe('#constructor', function () {
-    it('should be able to wrap an empty specimen', function () {
+describe('SpecimenWrapper', function() {
+  describe('#constructor', function() {
+    it('should be able to wrap an empty specimen', function() {
       const wrapped = new phyx.SpecimenWrapper({});
 
       expect(wrapped).to.be.an.instanceOf(phyx.SpecimenWrapper);
       expect(wrapped.occurrenceID).to.be.undefined;
     });
-    it('should be able to extract an occurenceID and catalogNumber from simple specimen IDs', function () {
+
+    it('should be able to extract an occurenceID and catalogNumber from simple specimen IDs', function() {
       const wrapper = new phyx.SpecimenWrapper({
         occurrenceID: 'Wall 2527, Fiji (uc)',
         'dwc:basisOfRecord': 'PreservedSpecimen',
@@ -30,7 +31,8 @@ describe('SpecimenWrapper', function () {
       expect(wrapper.catalogNumber).to.equal('Wall 2527, Fiji (uc)');
       expect(wrapper.basisOfRecord).to.equal('PreservedSpecimen');
     });
-    it('should extract institutionCode and catalogNumber from a institutionCode:catalogNumber combination', function () {
+
+    it('should extract institutionCode and catalogNumber from a institutionCode:catalogNumber combination', function() {
       const wrapper = new phyx.SpecimenWrapper({
         occurrenceID: 'FMNH:PR 2081',
         'dwc:basisOfRecord': 'PreservedSpecimen',
@@ -40,7 +42,8 @@ describe('SpecimenWrapper', function () {
       expect(wrapper.catalogNumber).to.equal('PR 2081');
       expect(wrapper.basisOfRecord).to.equal('PreservedSpecimen');
     });
-    it('should extract occurenceID, institutionCode and catalogNumber from Darwin Core triples', function () {
+
+    it('should extract occurenceID, institutionCode and catalogNumber from Darwin Core triples', function() {
       const wrapper = new phyx.SpecimenWrapper({
         occurrenceID: 'FMNH:PR:2081',
       });
@@ -50,13 +53,15 @@ describe('SpecimenWrapper', function () {
       expect(wrapper.catalogNumber).to.equal('2081');
       expect(wrapper.basisOfRecord).to.be.undefined;
     });
-    it('should be able to extract the same occurrenceID from different representations', function () {
+
+    it('should be able to extract the same occurrenceID from different representations', function() {
       expect(new phyx.SpecimenWrapper({ occurrenceID: 'urn:catalog:::MVZ225749' }).occurrenceID)
         .to.equal('urn:catalog:::MVZ225749');
       expect(new phyx.SpecimenWrapper({ catalogNumber: 'MVZ225749' }).occurrenceID)
         .to.equal('urn:catalog:::MVZ225749');
     });
-    it('should not attempt to split a URN into occurenceID, institutionCode and catalogNumber', function () {
+
+    it('should not attempt to split a URN into occurenceID, institutionCode and catalogNumber', function() {
       const wrapper = new phyx.SpecimenWrapper({
         occurrenceID: 'urn:lsid:biocol.org:col:34777',
       });
@@ -65,7 +70,8 @@ describe('SpecimenWrapper', function () {
       expect(wrapper.collectionCode).to.be.undefined;
       expect(wrapper.catalogNumber).to.be.undefined;
     });
-    it('should not attempt to split a URL into occurenceID, institutionCode and catalogNumber', function () {
+
+    it('should not attempt to split a URL into occurenceID, institutionCode and catalogNumber', function() {
       const wrapper = new phyx.SpecimenWrapper({
         occurrenceID: 'http://arctos.database.museum/guid/MVZ:Herp:148929?seid=886464',
       });
@@ -74,7 +80,8 @@ describe('SpecimenWrapper', function () {
       expect(wrapper.collectionCode).to.be.undefined;
       expect(wrapper.catalogNumber).to.be.undefined;
     });
-    it('should be able to create a specimen JSON record from an occurrence ID', function () {
+
+    it('should be able to create a specimen JSON record from an occurrence ID', function() {
       const specimen = phyx.SpecimenWrapper.fromOccurrenceID('FMNH:PR:2081');
       expect(specimen.occurrenceID).to.equal('FMNH:PR:2081');
       expect(specimen.institutionCode).to.equal('FMNH');

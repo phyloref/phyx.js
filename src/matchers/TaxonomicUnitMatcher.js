@@ -87,7 +87,7 @@ class TaxonomicUnitMatcher {
     const externalRefs2 = wrappedTUnit2.externalReferences;
 
     return externalRefs1.some(
-      extref1 => externalRefs2.some(
+      (extref1) => externalRefs2.some(
         (extref2) => {
           if (
             extref1

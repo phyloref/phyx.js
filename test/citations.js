@@ -13,7 +13,7 @@ const expect = chai.expect;
  * Citation tests check to see if the CitationWrapper works correctly.
  */
 
-describe('CitationWrapper', function () {
+describe('CitationWrapper', function() {
   // Some citations to use in testing.
   const citations = [{
     bibliographicCitation: 'Christopher A. Brochu (2003) Phylogenetic approaches toward crocodylian history Annual Review of Earth and Planetary Sciences 31:357--397  fig 1 doi: 10.1146/annurev.earth.31.100901.141308 URL: https://www.annualreviews.org/doi/10.1146/annurev.earth.31.100901.141308',
@@ -54,21 +54,21 @@ describe('CitationWrapper', function () {
     },
   }];
 
-  describe('given an empty citation', function () {
+  describe('given an empty citation', function() {
     const wrapper = new phyx.CitationWrapper({});
 
-    describe('#constructor', function () {
-      it('should return a CitationWrapper', function () {
+    describe('#constructor', function() {
+      it('should return a CitationWrapper', function() {
         expect(wrapper).to.be.an.instanceOf(phyx.CitationWrapper);
       });
     });
 
-    describe('#toString', function () {
-      it('should return undefined', function () {
+    describe('#toString', function() {
+      it('should return undefined', function() {
         expect(wrapper.toString()).to.be.undefined;
       });
 
-      it('should be settable by changing the title', function () {
+      it('should be settable by changing the title', function() {
         wrapper.citation.title = 'Title';
         expect(wrapper.toString()).equals('Anonymous (n.d.) Title');
       });
@@ -76,17 +76,17 @@ describe('CitationWrapper', function () {
   });
 
   citations.forEach((test, index) => {
-    describe(`for test citation #${index + 1}`, function () {
+    describe(`for test citation #${index + 1}`, function() {
       const wrapper = new phyx.CitationWrapper(test.citation);
 
-      describe('#constructor', function () {
-        it('should return a CitationWrapper', function () {
+      describe('#constructor', function() {
+        it('should return a CitationWrapper', function() {
           expect(wrapper).to.be.an.instanceOf(phyx.CitationWrapper);
         });
       });
 
-      describe('#toString', function () {
-        it('should return the expected string', function () {
+      describe('#toString', function() {
+        it('should return the expected string', function() {
           expect(wrapper.toString()).to.equal(test.bibliographicCitation);
         });
       });

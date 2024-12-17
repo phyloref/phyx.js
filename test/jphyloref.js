@@ -28,14 +28,14 @@ const JPHYLOREF_PATH = path.resolve(__dirname, `jphyloref-${JPHYLOREF_VERSION}.j
  * Test whether the expected JSON-LD files pass testing using JPhyloRef.
  */
 
-describe('JPhyloRef', function () {
-  describe('download JPhyloRef', function () {
+describe('JPhyloRef', function() {
+  describe('download JPhyloRef', function() {
     // TODO: we should eventually use SHA to ensure that we have the expected file.
     if (
       fs.existsSync(JPHYLOREF_PATH)
       && fs.statSync(JPHYLOREF_PATH).size > 0
     ) {
-      it('has already been downloaded', function () {
+      it('has already been downloaded', function() {
         expect(true);
       });
     } else {
@@ -51,9 +51,9 @@ describe('JPhyloRef', function () {
     }
   });
 
-  describe('test example JSON-LD files using JPhyloRef', function () {
+  describe('test example JSON-LD files using JPhyloRef', function() {
     fs.readdirSync(path.resolve(__dirname, 'examples', 'correct'))
-      .filter(filename => filename.endsWith('.nq'))
+      .filter((filename) => filename.endsWith('.nq'))
       .forEach((filename) => {
         it(`testing ${filename}`, function () {
           this.timeout(60000);

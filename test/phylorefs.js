@@ -23,7 +23,7 @@ const expect = chai.expect;
  *    full history of its status changes.
  */
 
-describe('PhylorefWrapper', function () {
+describe('PhylorefWrapper', function() {
   // Some specifiers to use in testing.
   const specifier1 = {
     '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
@@ -50,83 +50,83 @@ describe('PhylorefWrapper', function () {
     },
   };
 
-  describe('given an empty phyloreference', function () {
+  describe('given an empty phyloreference', function() {
     const wrapper = new phyx.PhylorefWrapper({});
 
-    describe('#constructor', function () {
-      it('should return a PhylorefWrapper', function () {
+    describe('#constructor', function() {
+      it('should return a PhylorefWrapper', function() {
         expect(wrapper).to.be.an.instanceOf(phyx.PhylorefWrapper);
       });
     });
 
-    describe('#label', function () {
-      it('should return undefined', function () {
+    describe('#label', function() {
+      it('should return undefined', function() {
         expect(wrapper.label).to.be.undefined;
       });
 
-      it('should be settable by assigning to .label', function () {
+      it('should be settable by assigning to .label', function() {
         wrapper.label = 'phyloref1';
         expect(wrapper.label).equals('phyloref1');
       });
     });
 
-    describe('#specifiers', function () {
-      it('should initially return an empty list', function () {
+    describe('#specifiers', function() {
+      it('should initially return an empty list', function() {
         expect(wrapper.specifiers).to.be.empty;
       });
 
-      it('should initially return a nomenclatural code of unknown', function () {
+      it('should initially return a nomenclatural code of unknown', function() {
         expect(wrapper.defaultNomenCode).to.equal(owlterms.UNKNOWN_CODE);
       });
 
-      describe('when a new external specifier is added using .externalSpecifiers', function () {
-        it('should return a list with the new specifier', function () {
+      describe('when a new external specifier is added using .externalSpecifiers', function() {
+        it('should return a list with the new specifier', function() {
           wrapper.externalSpecifiers.push(specifier3);
           expect(wrapper.specifiers).to.deep.equal([specifier3]);
         });
 
-        it('should return a nomenclatural code of ICZN', function () {
+        it('should return a nomenclatural code of ICZN', function() {
           expect(wrapper.defaultNomenCode).to.equal(owlterms.ICZN_CODE);
         });
       });
 
-      describe('when a new external specifier is added using .externalSpecifiers', function () {
-        it('should return a list with the new specifier', function () {
+      describe('when a new external specifier is added using .externalSpecifiers', function() {
+        it('should return a list with the new specifier', function() {
           wrapper.externalSpecifiers.push(specifier2);
           expect(wrapper.specifiers).to.deep.equal([specifier3, specifier2]);
         });
 
-        it('should return two nomenclatural codes, one for each specifier', function () {
+        it('should return two nomenclatural codes, one for each specifier', function() {
           expect(wrapper.uniqNomenCodes).to.have.lengthOf(2);
           expect(wrapper.uniqNomenCodes).to.include(owlterms.ICZN_CODE);
           expect(wrapper.uniqNomenCodes).to.include(owlterms.UNKNOWN_CODE);
         });
 
-        it('should still return a nomenclatural code of ICZN', function () {
+        it('should still return a nomenclatural code of ICZN', function() {
           expect(wrapper.defaultNomenCode).to.equal(owlterms.ICZN_CODE);
         });
       });
 
-      describe('when a new internal specifier is added using .internalSpecifiers', function () {
-        it('should return a list with the new specifier', function () {
+      describe('when a new internal specifier is added using .internalSpecifiers', function() {
+        it('should return a list with the new specifier', function() {
           wrapper.internalSpecifiers.push(specifier4);
           expect(wrapper.specifiers).to.deep.equal([specifier4, specifier3, specifier2]);
         });
 
-        it('should return three nomenclatural codes, one for each specifier', function () {
+        it('should return three nomenclatural codes, one for each specifier', function() {
           expect(wrapper.uniqNomenCodes).to.have.lengthOf(3);
           expect(wrapper.uniqNomenCodes).to.include(owlterms.ICZN_CODE);
           expect(wrapper.uniqNomenCodes).to.include(owlterms.UNKNOWN_CODE);
           expect(wrapper.uniqNomenCodes).to.include(owlterms.ICN_CODE);
         });
 
-        it('should change to a default nomenclatural code of owlterms.UNKNOWN_CODE', function () {
+        it('should change to a default nomenclatural code of owlterms.UNKNOWN_CODE', function() {
           expect(wrapper.defaultNomenCode).to.equal(owlterms.UNKNOWN_CODE);
         });
       });
 
-      describe('when specifiers are deleted using .deleteSpecifier', function () {
-        it('should return the updated list', function () {
+      describe('when specifiers are deleted using .deleteSpecifier', function() {
+        it('should return the updated list', function() {
           // Delete an external specifier.
           wrapper.deleteSpecifier(specifier2);
           // Delete an internal specifier.
@@ -137,38 +137,38 @@ describe('PhylorefWrapper', function () {
         });
       });
 
-      describe('when a specifier is added using .externalSpecifiers', function () {
-        it('should return the updated list', function () {
+      describe('when a specifier is added using .externalSpecifiers', function() {
+        it('should return the updated list', function() {
           wrapper.externalSpecifiers.push(specifier1);
           expect(wrapper.specifiers).to.deep.equal([specifier3, specifier1]);
         });
       });
 
-      describe('when a specifier is changed to an internal specifier using .setSpecifierType', function () {
-        it('should remain in the list of specifiers', function () {
+      describe('when a specifier is changed to an internal specifier using .setSpecifierType', function() {
+        it('should remain in the list of specifiers', function() {
           wrapper.setSpecifierType(specifier1, 'Internal');
           expect(wrapper.specifiers).to.deep.equal([specifier1, specifier3]);
         });
       });
 
-      describe('when a specifier is added using .internalSpecifiers', function () {
-        it('should be included in the list of all specifiers', function () {
+      describe('when a specifier is added using .internalSpecifiers', function() {
+        it('should be included in the list of all specifiers', function() {
           wrapper.internalSpecifiers.push(specifier2);
           expect(wrapper.specifiers).to.deep.equal([specifier1, specifier2, specifier3]);
         });
       });
     });
 
-    describe('#getSpecifierType', function () {
-      it('should return the correct specifier type for each specifier', function () {
+    describe('#getSpecifierType', function() {
+      it('should return the correct specifier type for each specifier', function() {
         expect(wrapper.getSpecifierType(specifier1)).to.equal('Internal');
         expect(wrapper.getSpecifierType(specifier2)).to.equal('Internal');
         expect(wrapper.getSpecifierType(specifier3)).to.equal('External');
       });
     });
 
-    describe('#getSpecifierLabel as TaxonomicUnitWrapper', function () {
-      it('should return the correct label for each specifier', function () {
+    describe('#getSpecifierLabel as TaxonomicUnitWrapper', function() {
+      it('should return the correct label for each specifier', function() {
         expect((new phyx.TaxonomicUnitWrapper(specifier1)).label).to.equal('Specimen MVZ:225749');
         expect((new phyx.TaxonomicUnitWrapper(specifier2)).label).to.equal('Specimen MVZ:191016');
         expect((new phyx.TaxonomicUnitWrapper(specifier3)).label).to.equal('Rana boylii');
@@ -176,7 +176,7 @@ describe('PhylorefWrapper', function () {
     });
   });
 
-  describe('given a particular phylogeny', function () {
+  describe('given a particular phylogeny', function() {
     // Some phylogenies to use in testing.
     const phylogeny1 = {
       newick: '((MVZ225749, MVZ191016)Test, "Rana boylii")',
@@ -187,8 +187,8 @@ describe('PhylorefWrapper', function () {
       },
     };
 
-    describe('#getExpectedNodeLabels', function () {
-      it('should be able to determine expected node labels for a phylogeny', function () {
+    describe('#getExpectedNodeLabels', function() {
+      it('should be able to determine expected node labels for a phylogeny', function() {
         const phyloref1 = new phyx.PhylorefWrapper({
           label: 'phyloref1',
           internalSpecifiers: [specifier1, specifier2],
@@ -201,19 +201,19 @@ describe('PhylorefWrapper', function () {
     });
   });
 
-  describe('given an empty phyloreference', function () {
+  describe('given an empty phyloreference', function() {
     const wrapper = new phyx.PhylorefWrapper({});
 
-    describe('#getCurrentStatus', function () {
-      it('should return "pso:draft" as the default initial status', function () {
+    describe('#getCurrentStatus', function() {
+      it('should return "pso:draft" as the default initial status', function() {
         // Initially, an empty phyloref should report a status of 'pso:draft'.
         expect(wrapper.getCurrentStatus().statusCURIE).to.equal('pso:draft');
       });
     });
 
-    describe('#setStatus', function () {
-      it('should throw an error if given a mistyped status', function () {
-        expect(function () { wrapper.setStatus('pso:retracted-from_publication'); })
+    describe('#setStatus', function() {
+      it('should throw an error if given a mistyped status', function() {
+        expect(() => { wrapper.setStatus('pso:retracted-from_publication'); })
           .to.throw(
             TypeError,
             'setStatus() called with invalid status CURIE \'pso:retracted-from_publication\'',
@@ -222,13 +222,13 @@ describe('PhylorefWrapper', function () {
       });
     });
 
-    describe('#getStatusChanges', function () {
-      it('should return the empty list', function () {
+    describe('#getStatusChanges', function() {
+      it('should return the empty list', function() {
         expect(wrapper.getStatusChanges()).to.be.empty;
       });
 
-      describe('when modified by using .setStatus', function () {
-        it('should return the updated list', function () {
+      describe('when modified by using .setStatus', function() {
+        it('should return the updated list', function() {
           wrapper.setStatus('pso:final-draft');
           wrapper.setStatus('pso:under-review');
           wrapper.setStatus('pso:submitted');
@@ -248,8 +248,8 @@ describe('PhylorefWrapper', function () {
     });
   });
 
-  describe('#asJSONLD', function () {
-    it('should preserve an existing @id on input phylorefs', function () {
+  describe('#asJSONLD', function() {
+    it('should preserve an existing @id on input phylorefs', function() {
       const jsonld = new phyx.PhylorefWrapper({
         '@id': '#providedId',
         internalSpecifiers: [specifier1],
@@ -258,7 +258,8 @@ describe('PhylorefWrapper', function () {
       expect(jsonld).to.have.property('@id');
       expect(jsonld['@id']).to.equal('#providedId');
     });
-    it('should generate a new @id on input phylorefs', function () {
+
+    it('should generate a new @id on input phylorefs', function() {
       const jsonld = new phyx.PhylorefWrapper({
         internalSpecifiers: [specifier1],
         externalSpecifiers: [specifier2],
@@ -266,7 +267,8 @@ describe('PhylorefWrapper', function () {
       expect(jsonld).to.have.property('@id');
       expect(jsonld['@id']).to.equal('#phyloref0');
     });
-    it('should generate the expected equivClass expression for 1 int, 1 ext phyloref', function () {
+
+    it('should generate the expected equivClass expression for 1 int, 1 ext phyloref', function() {
       const jsonld = new phyx.PhylorefWrapper({
         internalSpecifiers: [specifier1],
         externalSpecifiers: [specifier2],
@@ -297,7 +299,7 @@ describe('PhylorefWrapper', function () {
       });
     });
 
-    it('should generate the expected equivClass expression for 2 int phyloref', function () {
+    it('should generate the expected equivClass expression for 2 int phyloref', function() {
       const jsonld = new phyx.PhylorefWrapper({
         internalSpecifiers: [specifier2, specifier3],
       }).asJSONLD('#');

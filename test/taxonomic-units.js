@@ -17,9 +17,9 @@ const expect = chai.expect;
  *    whether and for what reason the two can be matched.
  */
 
-describe('TaxonomicUnitWrapper', function () {
-  describe('#constructor given no arguments', function () {
-    it('should create an empty TaxonomicUnitWrapper without a defined label', function () {
+describe('TaxonomicUnitWrapper', function() {
+  describe('#constructor given no arguments', function() {
+    it('should create an empty TaxonomicUnitWrapper without a defined label', function() {
       // Empty TU without @type.
       let wrapper = new phyx.TaxonomicUnitWrapper({});
       expect(wrapper).to.be.instanceOf(phyx.TaxonomicUnitWrapper);
@@ -48,8 +48,9 @@ describe('TaxonomicUnitWrapper', function () {
       expect(wrapper.label).to.be.undefined;
     });
   });
-  describe('#label given a taxonomic unit', function () {
-    it('should return a wrapped scientific name', function () {
+
+  describe('#label given a taxonomic unit', function() {
+    it('should return a wrapped scientific name', function() {
       const wrapper = new phyx.TaxonomicUnitWrapper({
         '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
         hasName: {
@@ -59,14 +60,16 @@ describe('TaxonomicUnitWrapper', function () {
       });
       expect(wrapper.label).to.equal('Ornithorhynchus anatinus (Shaw, 1799)');
     });
-    it('should return a wrapped specimen identifier preceded by "Specimen"', function () {
+
+    it('should return a wrapped specimen identifier preceded by "Specimen"', function() {
       const wrapper = new phyx.TaxonomicUnitWrapper({
         '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
         occurrenceID: 'MVZ 225749',
       });
       expect(wrapper.label).to.equal('Specimen MVZ 225749');
     });
-    it('should return specimens with an occurrenceID as well as a taxon concept', function () {
+
+    it('should return specimens with an occurrenceID as well as a taxon concept', function() {
       const wrapper = new phyx.TaxonomicUnitWrapper({
         '@type': [
           phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
@@ -76,7 +79,8 @@ describe('TaxonomicUnitWrapper', function () {
       });
       expect(wrapper.label).to.equal('Specimen MVZ 225749 identified as Rana luteiventris');
     });
-    it('should ignore occurrence ID if typed as a taxon concept', function () {
+
+    it('should ignore occurrence ID if typed as a taxon concept', function() {
       const wrapper = new phyx.TaxonomicUnitWrapper({
         '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
         nameString: 'Rana luteiventris',
@@ -84,7 +88,8 @@ describe('TaxonomicUnitWrapper', function () {
       });
       expect(wrapper.label).to.equal('Rana luteiventris');
     });
-    it('should return a wrapped external reference by surrounding it with "<>"', function () {
+
+    it('should return a wrapped external reference by surrounding it with "<>"', function() {
       const wrapper = new phyx.TaxonomicUnitWrapper({
         '@id': [
           'http://arctos.database.museum/guid/MVZ:Herp:225749',
@@ -92,7 +97,8 @@ describe('TaxonomicUnitWrapper', function () {
       });
       expect(wrapper.label).to.equal('<http://arctos.database.museum/guid/MVZ:Herp:225749>');
     });
-    it('should provide both taxon name and occurrence ID in label, but ignore external reference', function () {
+
+    it('should provide both taxon name and occurrence ID in label, but ignore external reference', function() {
       const wrapper = new phyx.TaxonomicUnitWrapper({
         '@id': [
           'http://arctos.database.museum/guid/MVZ:Herp:225749',
@@ -104,15 +110,17 @@ describe('TaxonomicUnitWrapper', function () {
       expect(wrapper.label).to.equal('Specimen MVZ 225749 identified as Rana luteiventris');
     });
   });
-  describe('#fromLabel', function () {
-    it('should return empty lists when inputs are empty or undefined', function () {
+
+  describe('#fromLabel', function() {
+    it('should return empty lists when inputs are empty or undefined', function() {
       expect(phyx.TaxonomicUnitWrapper.fromLabel()).to.be.undefined;
       expect(phyx.TaxonomicUnitWrapper.fromLabel(undefined)).to.be.undefined;
       expect(phyx.TaxonomicUnitWrapper.fromLabel(null)).to.be.undefined;
       expect(phyx.TaxonomicUnitWrapper.fromLabel('')).to.be.undefined;
       expect(phyx.TaxonomicUnitWrapper.fromLabel('    ')).to.be.undefined;
     });
-    it('when given a scientific name, it should return a list of a single TU wrapping a scientific name', function () {
+
+    it('when given a scientific name, it should return a list of a single TU wrapping a scientific name', function() {
       expect(phyx.TaxonomicUnitWrapper.fromLabel('Rana luteiventris MVZ225749'))
         .to.be.deep.equal({
           '@type': 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
@@ -126,7 +134,8 @@ describe('TaxonomicUnitWrapper', function () {
           },
         });
     });
-    it('when given a scientific name separated with underscores, it should return a list of a single TU wrapping the scientific name', function () {
+
+    it('when given a scientific name separated with underscores, it should return a list of a single TU wrapping the scientific name', function() {
       expect(phyx.TaxonomicUnitWrapper.fromLabel('Rana_luteiventris_MVZ_225749'))
         .to.be.deep.equal({
           '@type': 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
@@ -141,8 +150,9 @@ describe('TaxonomicUnitWrapper', function () {
         });
     });
   });
-  describe('#asOWLEquivClass', function () {
-    it('when given a taxon concept, only the complete name should be present in the equivClass', function () {
+
+  describe('#asOWLEquivClass', function() {
+    it('when given a taxon concept, only the complete name should be present in the equivClass', function() {
       const wrapper = new phyx.TaxonomicUnitWrapper({
         '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
         nameString: 'Rana luteiventris Thompson, 1913',
@@ -157,7 +167,8 @@ describe('TaxonomicUnitWrapper', function () {
         },
       });
     });
-    it('when given a specimen, only the occurrence ID should be present in the equivClass', function () {
+
+    it('when given a specimen, only the occurrence ID should be present in the equivClass', function() {
       const wrapper = new phyx.TaxonomicUnitWrapper({
         '@type': phyx.TaxonomicUnitWrapper.TYPE_SPECIMEN,
         nameString: 'Rana luteiventris',
@@ -172,7 +183,7 @@ describe('TaxonomicUnitWrapper', function () {
   });
 });
 
-describe('TaxonomicUnitMatcher', function () {
+describe('TaxonomicUnitMatcher', function() {
   // To test matching, let's set up some taxonomic units.
   // Note that:
   //  tunit1 and tunit2 should match by scientific name.
@@ -200,41 +211,44 @@ describe('TaxonomicUnitMatcher', function () {
     '@id': 'http://arctos.database.museum/guid/MVZ:Herp:225749',
   };
 
-  describe('#matchByNameComplete', function () {
-    it('should be able to match tunit1 and tunit2 by complete name', function () {
+  describe('#matchByNameComplete', function() {
+    it('should be able to match tunit1 and tunit2 by complete name', function() {
       expect(new phyx.TaxonomicUnitMatcher(tunit1, tunit2).matchByExternalReferences()).to.be.false;
       expect(new phyx.TaxonomicUnitMatcher(tunit1, tunit2).matchByOccurrenceID()).to.be.false;
       expect(new phyx.TaxonomicUnitMatcher(tunit1, tunit2).matchByNameComplete()).to.be.true;
     });
   });
-  describe('#matchByExternalReferences', function () {
-    it('should be able to match tunit3 and tunit4 by external references', function () {
+
+  describe('#matchByExternalReferences', function() {
+    it('should be able to match tunit3 and tunit4 by external references', function() {
       expect(new phyx.TaxonomicUnitMatcher(tunit3, tunit4).matchByExternalReferences()).to.be.true;
       expect(new phyx.TaxonomicUnitMatcher(tunit3, tunit4).matchByOccurrenceID()).to.be.false;
       expect(new phyx.TaxonomicUnitMatcher(tunit3, tunit4).matchByNameComplete()).to.be.false;
     });
   });
-  describe('#matchByOccurrenceID', function () {
-    it('should be able to match tunit2 and tunit3 by specimen identifiers', function () {
+
+  describe('#matchByOccurrenceID', function() {
+    it('should be able to match tunit2 and tunit3 by specimen identifiers', function() {
       expect(new phyx.TaxonomicUnitMatcher(tunit2, tunit3).matchByExternalReferences()).to.be.false;
       expect(new phyx.TaxonomicUnitMatcher(tunit2, tunit3).matchByOccurrenceID()).to.be.true;
       expect(new phyx.TaxonomicUnitMatcher(tunit2, tunit3).matchByNameComplete()).to.be.false;
     });
   });
-  describe('#matched and #matchReason', function () {
-    it('should match tunit1 and tunit2 on the basis of identical complete names', function () {
+
+  describe('#matched and #matchReason', function() {
+    it('should match tunit1 and tunit2 on the basis of identical complete names', function() {
       const matcher = new phyx.TaxonomicUnitMatcher(tunit1, tunit2);
       expect(matcher.matched).to.be.true;
       expect(matcher.matchReason).to.include('share the same complete name');
     });
 
-    it('should match tunit3 and tunit4 by identical external reference', function () {
+    it('should match tunit3 and tunit4 by identical external reference', function() {
       const matcher = new phyx.TaxonomicUnitMatcher(tunit3, tunit4);
       expect(matcher.matched).to.be.true;
       expect(matcher.matchReason).to.include('External reference');
     });
 
-    it('should match tunit2 and tunit3 by identical specimen identifier', function () {
+    it('should match tunit2 and tunit3 by identical specimen identifier', function() {
       const matcher = new phyx.TaxonomicUnitMatcher(tunit2, tunit3);
       expect(matcher.matched).to.be.true;
       expect(matcher.matchReason).to.include('Specimen identifier');
