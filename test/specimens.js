@@ -21,6 +21,12 @@ describe('SpecimenWrapper', function () {
       expect(wrapped).to.be.an.instanceOf(phyx.SpecimenWrapper);
       expect(wrapped.occurrenceID).to.be.undefined;
     });
+    it('should be able to wrap a specimen with an empty occurenceID', function () {
+      const wrapped = new phyx.SpecimenWrapper(phyx.SpecimenWrapper.fromOccurrenceID(''));
+
+      expect(wrapped).to.be.an.instanceOf(phyx.SpecimenWrapper);
+      expect(wrapped.occurrenceID).to.equal('');
+    });
     it('should be able to extract an occurenceID and catalogNumber from simple specimen IDs', function () {
       const wrapper = new phyx.SpecimenWrapper({
         occurrenceID: 'Wall 2527, Fiji (uc)',
