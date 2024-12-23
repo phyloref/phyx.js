@@ -1,6 +1,6 @@
 {
   "name": "@phyloref/phyx",
-  "version": "1.2.0-alpha2",
+  "version": "1.2.0-alpha3",
   "description": "Classes and methods that help read and manipulate components of Phyloreference Exchange (PHYX) format files",
   "keywords": [
     "phylogenetics",
