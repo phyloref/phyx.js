@@ -10,8 +10,8 @@ const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
  *
  * - TaxonomicUnitWrapper.TYPE_SPECIMEN: A specimen.
  *    - Based on http://rs.tdwg.org/dwc/terms/Occurrence
- *    - Should have a dwc:occurrenceID with the occurrence identifier.
- *    - Should have a dwc:basisOfRecord to indicate what sort of occurrence this is.
+ *    - Should have a occurrenceID with the occurrence identifier.
+ *    - Should have a basisOfRecord to indicate what sort of occurrence this is.
  *
  * Since TaxonNameWrapper follows the TDWG ontology, we'd love to do the same for
  * SpecimenWrapper, but unfortunately the TaxonOccurrence ontology has been deprecated
@@ -38,7 +38,7 @@ class SpecimenWrapper {
     const normalizedSpecimen = {
       '@type': SpecimenWrapper.TYPE_SPECIMEN,
       label: wrapped.label,
-      'dwc:basisOfRecord': wrapped.basisOfRecord,
+      basisOfRecord: wrapped.basisOfRecord,
       occurrenceID: wrapped.occurrenceID,
       catalogNumber: wrapped.catalogNumber,
       institutionCode: wrapped.institutionCode,
@@ -57,12 +57,12 @@ class SpecimenWrapper {
   static fromOccurrenceID(occurrenceID, basisOfRecord = 'PreservedSpecimen') {
     // Copy the occurrence ID so we can truncate it if necessary.
     let occurID = occurrenceID;
-    if (occurID.startsWith('urn:catalog:')) occurID = occurID.substr(12);
+    if (occurID.startsWith('urn:catalog:')) occurID = occurID.substring(12);
 
     // Prepare the specimen.
     const specimen = {
       '@type': SpecimenWrapper.TYPE_SPECIMEN,
-      'dwc:basisOfRecord': basisOfRecord,
+      basisOfRecord,
       occurrenceID: occurID,
     };
 
@@ -185,7 +185,7 @@ class SpecimenWrapper {
    * Return the basis of record, if one is present.
    */
   get basisOfRecord() {
-    if (has(this.specimen, 'dwc:basisOfRecord')) return this.specimen['dwc:basisOfRecord'];
+    if (has(this.specimen, 'basisOfRecord')) return this.specimen.basisOfRecord;
     return undefined;
   }
 
@@ -194,7 +194,7 @@ class SpecimenWrapper {
    * recommended values.
    */
   set basisOfRecord(bor) {
-    this.specimen['dwc:basisOfRecord'] = bor;
+    this.specimen.basisOfRecord = bor;
   }
 
   /** Return this specimen as a taxon concept if it contains taxon name information. */
