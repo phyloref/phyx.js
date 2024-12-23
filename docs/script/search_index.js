@@ -691,20 +691,26 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber77",
+    "test-file/test/specimens.js.html#lineNumber83",
     "SpecimenWrapper #constructor should be able to create a specimen JSON record from an occurrence ID",
     "test"
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber24",
+    "test-file/test/specimens.js.html#lineNumber30",
     "SpecimenWrapper #constructor should be able to extract an occurenceID and catalogNumber from simple specimen IDs",
     "test"
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber53",
+    "test-file/test/specimens.js.html#lineNumber59",
     "SpecimenWrapper #constructor should be able to extract the same occurrenceID from different representations",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/specimens.js.html#lineNumber24",
+    "SpecimenWrapper #constructor should be able to wrap a specimen with an empty occurenceID",
     "test"
   ],
   [
@@ -715,25 +721,25 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber33",
+    "test-file/test/specimens.js.html#lineNumber39",
     "SpecimenWrapper #constructor should extract institutionCode and catalogNumber from a institutionCode:catalogNumber combination",
     "test"
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber43",
+    "test-file/test/specimens.js.html#lineNumber49",
     "SpecimenWrapper #constructor should extract occurenceID, institutionCode and catalogNumber from Darwin Core triples",
     "test"
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber68",
+    "test-file/test/specimens.js.html#lineNumber74",
     "SpecimenWrapper #constructor should not attempt to split a URL into occurenceID, institutionCode and catalogNumber",
     "test"
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber59",
+    "test-file/test/specimens.js.html#lineNumber65",
     "SpecimenWrapper #constructor should not attempt to split a URN into occurenceID, institutionCode and catalogNumber",
     "test"
   ],
