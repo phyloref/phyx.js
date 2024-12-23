@@ -66,10 +66,16 @@ describe(&apos;SpecimenWrapper&apos;, function () {
       expect(wrapped).to.be.an.instanceOf(phyx.SpecimenWrapper);
       expect(wrapped.occurrenceID).to.be.undefined;
     });
+    it(&apos;should be able to wrap a specimen with an empty occurenceID&apos;, function () {
+      const wrapped = new phyx.SpecimenWrapper(phyx.SpecimenWrapper.fromOccurrenceID(&apos;&apos;));
+
+      expect(wrapped).to.be.an.instanceOf(phyx.SpecimenWrapper);
+      expect(wrapped.occurrenceID).to.equal(&apos;&apos;);
+    });
     it(&apos;should be able to extract an occurenceID and catalogNumber from simple specimen IDs&apos;, function () {
       const wrapper = new phyx.SpecimenWrapper({
         occurrenceID: &apos;Wall 2527, Fiji (uc)&apos;,
-        &apos;dwc:basisOfRecord&apos;: &apos;PreservedSpecimen&apos;,
+        basisOfRecord: &apos;PreservedSpecimen&apos;,
       });
       expect(wrapper.occurrenceID).to.equal(&apos;Wall 2527, Fiji (uc)&apos;);
       expect(wrapper.catalogNumber).to.equal(&apos;Wall 2527, Fiji (uc)&apos;);
@@ -78,7 +84,7 @@ describe(&apos;SpecimenWrapper&apos;, function () {
     it(&apos;should extract institutionCode and catalogNumber from a institutionCode:catalogNumber combination&apos;, function () {
       const wrapper = new phyx.SpecimenWrapper({
         occurrenceID: &apos;FMNH:PR 2081&apos;,
-        &apos;dwc:basisOfRecord&apos;: &apos;PreservedSpecimen&apos;,
+        basisOfRecord: &apos;PreservedSpecimen&apos;,
       });
       expect(wrapper.occurrenceID).to.equal(&apos;FMNH:PR 2081&apos;);
       expect(wrapper.institutionCode).to.equal(&apos;FMNH&apos;);
@@ -125,7 +131,7 @@ describe(&apos;SpecimenWrapper&apos;, function () {
       expect(specimen.institutionCode).to.equal(&apos;FMNH&apos;);
       expect(specimen.collectionCode).to.equal(&apos;PR&apos;);
       expect(specimen.catalogNumber).to.equal(&apos;2081&apos;);
-      expect(specimen[&apos;dwc:basisOfRecord&apos;]).to.equal(&apos;PreservedSpecimen&apos;);
+      expect(specimen.basisOfRecord).to.equal(&apos;PreservedSpecimen&apos;);
     });
   });
 });

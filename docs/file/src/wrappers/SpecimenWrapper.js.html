@@ -55,8 +55,8 @@ const { PhyxCacheManager } = require(&apos;../utils/PhyxCacheManager&apos;);
  *
  * - TaxonomicUnitWrapper.TYPE_SPECIMEN: A specimen.
  *    - Based on http://rs.tdwg.org/dwc/terms/Occurrence
- *    - Should have a dwc:occurrenceID with the occurrence identifier.
- *    - Should have a dwc:basisOfRecord to indicate what sort of occurrence this is.
+ *    - Should have a occurrenceID with the occurrence identifier.
+ *    - Should have a basisOfRecord to indicate what sort of occurrence this is.
  *
  * Since TaxonNameWrapper follows the TDWG ontology, we&apos;d love to do the same for
  * SpecimenWrapper, but unfortunately the TaxonOccurrence ontology has been deprecated
@@ -75,6 +75,25 @@ class SpecimenWrapper {
   }
 
   /**
+   * Normalize the specified specimen.
+   * @param specimen A specimen to be normalized.
+   */
+  static normalize(specimen) {
+    const wrapped = new SpecimenWrapper(specimen);
+    const normalizedSpecimen = {
+      &apos;@type&apos;: SpecimenWrapper.TYPE_SPECIMEN,
+      label: wrapped.label,
+      basisOfRecord: wrapped.basisOfRecord,
+      occurrenceID: wrapped.occurrenceID,
+      catalogNumber: wrapped.catalogNumber,
+      institutionCode: wrapped.institutionCode,
+      collectionCode: wrapped.collectionCode,
+    };
+    if (&apos;@id&apos; in specimen) normalizedSpecimen[&apos;@id&apos;] = specimen[&apos;@id&apos;];
+    return normalizedSpecimen;
+  }
+
+  /**
    * Parse the provided occurrence ID. The two expected formats are:
    *  - &apos;urn:catalog:[institutionCode]:[collectionCode]:[catalogNumber]&apos;
    *      (in which case, we ignore the first two &quot;components&quot; here)
@@ -83,12 +102,12 @@ class SpecimenWrapper {
   static fromOccurrenceID(occurrenceID, basisOfRecord = &apos;PreservedSpecimen&apos;) {
     // Copy the occurrence ID so we can truncate it if necessary.
     let occurID = occurrenceID;
-    if (occurID.startsWith(&apos;urn:catalog:&apos;)) occurID = occurID.substr(12);
+    if (occurID.startsWith(&apos;urn:catalog:&apos;)) occurID = occurID.substring(12);
 
     // Prepare the specimen.
     const specimen = {
       &apos;@type&apos;: SpecimenWrapper.TYPE_SPECIMEN,
-      &apos;dwc:basisOfRecord&apos;: basisOfRecord,
+      basisOfRecord,
       occurrenceID: occurID,
     };
 
@@ -185,7 +204,7 @@ class SpecimenWrapper {
    */
   get occurrenceID() {
     // Return the occurrenceID if it exists.
-    if (has(this.specimen, &apos;occurrenceID&apos;) &amp;&amp; this.specimen.occurrenceID.trim() !== &apos;&apos;) {
+    if (has(this.specimen, &apos;occurrenceID&apos;)) {
       return this.specimen.occurrenceID.trim();
     }
 
@@ -211,7 +230,7 @@ class SpecimenWrapper {
    * Return the basis of record, if one is present.
    */
   get basisOfRecord() {
-    if (has(this.specimen, &apos;dwc:basisOfRecord&apos;)) return this.specimen[&apos;dwc:basisOfRecord&apos;];
+    if (has(this.specimen, &apos;basisOfRecord&apos;)) return this.specimen.basisOfRecord;
     return undefined;
   }
 
@@ -220,7 +239,7 @@ class SpecimenWrapper {
    * recommended values.
    */
   set basisOfRecord(bor) {
-    this.specimen[&apos;dwc:basisOfRecord&apos;] = bor;
+    this.specimen.basisOfRecord = bor;
   }
 
   /** Return this specimen as a taxon concept if it contains taxon name information. */

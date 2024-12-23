@@ -1,7 +1,7 @@
 {
-  "coverage": "52.63%",
-  "expectCount": 171,
-  "actualCount": 90,
+  "coverage": "54.74%",
+  "expectCount": 179,
+  "actualCount": 98,
   "files": {
     "src/matchers/TaxonomicUnitMatcher.js": {
       "expectCount": 14,
@@ -17,8 +17,8 @@
       ]
     },
     "src/wrappers/CitationWrapper.js": {
-      "expectCount": 6,
-      "actualCount": 3,
+      "expectCount": 7,
+      "actualCount": 4,
       "undocumentLines": [
         7,
         9,
@@ -26,31 +26,31 @@
       ]
     },
     "src/wrappers/PhylogenyWrapper.js": {
-      "expectCount": 18,
-      "actualCount": 1,
+      "expectCount": 19,
+      "actualCount": 2,
       "undocumentLines": [
         6,
-        15,
-        17,
-        19,
-        21,
-        27,
-        37,
-        38,
+        18,
+        20,
+        22,
+        24,
+        30,
+        40,
         41,
-        93,
-        127,
-        150,
-        236,
-        253,
-        284,
-        308,
-        424
+        60,
+        112,
+        146,
+        169,
+        255,
+        272,
+        303,
+        327,
+        443
       ]
     },
     "src/wrappers/PhylorefWrapper.js": {
-      "expectCount": 31,
-      "actualCount": 8,
+      "expectCount": 32,
+      "actualCount": 9,
       "undocumentLines": [
         4,
         8,
@@ -60,26 +60,26 @@
         24,
         26,
         27,
-        52,
-        61,
-        81,
-        90,
-        121,
+        68,
+        77,
+        97,
+        106,
         137,
-        177,
-        189,
-        232,
-        266,
-        430,
-        456,
-        512,
-        607,
-        653
+        153,
+        193,
+        205,
+        248,
+        282,
+        446,
+        472,
+        528,
+        623,
+        669
       ]
     },
     "src/wrappers/PhyxWrapper.js": {
-      "expectCount": 11,
-      "actualCount": 4,
+      "expectCount": 12,
+      "actualCount": 5,
       "undocumentLines": [
         6,
         14,
@@ -91,8 +91,8 @@
       ]
     },
     "src/wrappers/SpecimenWrapper.js": {
-      "expectCount": 17,
-      "actualCount": 13,
+      "expectCount": 18,
+      "actualCount": 14,
       "undocumentLines": [
         2,
         4,
@@ -101,8 +101,8 @@
       ]
     },
     "src/wrappers/TaxonConceptWrapper.js": {
-      "expectCount": 17,
-      "actualCount": 13,
+      "expectCount": 18,
+      "actualCount": 14,
       "undocumentLines": [
         3,
         10,
@@ -111,8 +111,8 @@
       ]
     },
     "src/wrappers/TaxonNameWrapper.js": {
-      "expectCount": 38,
-      "actualCount": 28,
+      "expectCount": 39,
+      "actualCount": 29,
       "undocumentLines": [
         3,
         10,
@@ -123,12 +123,12 @@
         70,
         72,
         74,
-        270
+        289
       ]
     },
     "src/wrappers/TaxonomicUnitWrapper.js": {
-      "expectCount": 19,
-      "actualCount": 13,
+      "expectCount": 20,
+      "actualCount": 14,
       "undocumentLines": [
         3,
         15,
