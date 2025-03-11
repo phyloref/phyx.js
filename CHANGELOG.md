@@ -5,9 +5,12 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 ## [Unreleased]
 
-## [1.2.0] - 2024-06-18
+## [1.2.0] - 2025-03-10
 - PR #138: Added normalization methods so that Phyx objects can be normalized.
 - PR #139: upgraded NPM packages and minor test fixes
+- PR #143: Replaced dwc:basisOfRecord to basisOfRecord
+- PR #144: Add links to our npmjs URL
+- PR #148: Correct empty occurenceID so that it is blank, not `urn:catalog:::`
 
 ## [1.1.1] - 2023-08-01
 - PR #133: Add guards to some usages of `phyloref.internalSpecifiers/phyloref.externalSpecifiers`.
