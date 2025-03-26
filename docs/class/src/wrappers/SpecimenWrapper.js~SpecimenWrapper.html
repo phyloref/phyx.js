@@ -75,8 +75,8 @@ with a &apos;@type&apos; of SpecimenWrapper.TYPE_SPECIMEN (which is currently
 <ul>
 <li>TaxonomicUnitWrapper.TYPE_SPECIMEN: A specimen.<ul>
 <li>Based on <a href="http://rs.tdwg.org/dwc/terms/Occurrence">http://rs.tdwg.org/dwc/terms/Occurrence</a></li>
-<li>Should have a dwc:occurrenceID with the occurrence identifier.</li>
-<li>Should have a dwc:basisOfRecord to indicate what sort of occurrence this is.</li>
+<li>Should have a occurrenceID with the occurrence identifier.</li>
+<li>Should have a basisOfRecord to indicate what sort of occurrence this is.</li>
 </ul>
 </li>
 </ul>
@@ -157,6 +157,35 @@ representation based on dwc:Occurrence.</p>
         
         
         <div data-ice="description"><p>Parse the provided occurrence ID.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html#static-method-normalize">normalize</a></span></span><span class="code" data-ice="signature">(specimen: <span>*</span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Normalize the specified specimen.</p>
 </div>
       </div>
     </td>
@@ -565,7 +594,7 @@ representation based on dwc:Occurrence.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber41">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber60">source</a></span></span>
     </span>
   </h3>
 
@@ -602,6 +631,79 @@ representation based on dwc:Occurrence.</p>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: PreservedSpecimen</li></ul></td>
       <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-method-normalize">
+    <span class="access" data-ice="access">public</span>
+    <span data-ice="static">static</span>
+    
+    
+    
+    
+    <span class="code" data-ice="name">normalize</span><span class="code" data-ice="signature">(specimen: <span>*</span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber39">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Normalize the specified specimen.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">specimen</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>A specimen to be normalized.</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -699,7 +801,7 @@ representation based on dwc:Occurrence.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber207">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber226">source</a></span></span>
     </span>
   </h3>
 
@@ -743,7 +845,7 @@ representation based on dwc:Occurrence.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber171">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber190">source</a></span></span>
     </span>
   </h3>
 
@@ -787,7 +889,7 @@ representation based on dwc:Occurrence.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber180">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber199">source</a></span></span>
     </span>
   </h3>
 
@@ -832,7 +934,7 @@ recommended values.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber93">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber112">source</a></span></span>
     </span>
   </h3>
 
@@ -876,7 +978,7 @@ recommended values.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber125">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber144">source</a></span></span>
     </span>
   </h3>
 
@@ -920,7 +1022,7 @@ recommended values.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber109">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber128">source</a></span></span>
     </span>
   </h3>
 
@@ -964,7 +1066,7 @@ recommended values.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber192">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber211">source</a></span></span>
     </span>
   </h3>
 
@@ -1008,7 +1110,7 @@ recommended values.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber144">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber163">source</a></span></span>
     </span>
   </h3>
 
@@ -1098,7 +1200,7 @@ attempt to construct one in the form:
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber185">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/wrappers/SpecimenWrapper.js.html#lineNumber204">source</a></span></span>
     </span>
   </h3>
 

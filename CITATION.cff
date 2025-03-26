@@ -21,14 +21,14 @@ identifiers:
       This DOI will always resolve to the latest version of
       phyx.js.
   - type: doi
-    value: 10.5281/zenodo.8251445
-    description: The versioned DOI for version 1.1.1 of phyx.js.
+    value: 10.5281/zenodo.15086850
+    description: The versioned DOI for version 1.2.0 of phyx.js.
 repository-code: 'https://github.com/phyloref/phyx.js'
 url: 'https://github.com/phyloref/phyx.js'
 repository-artifact: 'https://www.npmjs.com/package/@phyloref/phyx'
 license: MIT
-version: v1.1.1
-date-released: '2023-08-16'
+version: v1.2.0
+date-released: '2025-03-26'
 preferred-citation:
   authors:
     - family-names: Vaidya

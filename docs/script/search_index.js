@@ -547,25 +547,25 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/phylorefs.js.html#lineNumber82",
-    "PhylorefWrapper given an empty phyloreference #specifiers when a new external specifier is added using .externalSpecifiers",
-    "test"
-  ],
-  [
-    "",
     "test-file/test/phylorefs.js.html#lineNumber93",
     "PhylorefWrapper given an empty phyloreference #specifiers when a new external specifier is added using .externalSpecifiers",
     "test"
   ],
   [
     "",
-    "test-file/test/phylorefs.js.html#lineNumber83",
-    "PhylorefWrapper given an empty phyloreference #specifiers when a new external specifier is added using .externalSpecifiers should return a list with the new specifier",
+    "test-file/test/phylorefs.js.html#lineNumber82",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a new external specifier is added using .externalSpecifiers",
     "test"
   ],
   [
     "",
     "test-file/test/phylorefs.js.html#lineNumber94",
+    "PhylorefWrapper given an empty phyloreference #specifiers when a new external specifier is added using .externalSpecifiers should return a list with the new specifier",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/phylorefs.js.html#lineNumber83",
     "PhylorefWrapper given an empty phyloreference #specifiers when a new external specifier is added using .externalSpecifiers should return a list with the new specifier",
     "test"
   ],
@@ -691,20 +691,26 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber77",
+    "test-file/test/specimens.js.html#lineNumber83",
     "SpecimenWrapper #constructor should be able to create a specimen JSON record from an occurrence ID",
     "test"
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber24",
+    "test-file/test/specimens.js.html#lineNumber30",
     "SpecimenWrapper #constructor should be able to extract an occurenceID and catalogNumber from simple specimen IDs",
     "test"
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber53",
+    "test-file/test/specimens.js.html#lineNumber59",
     "SpecimenWrapper #constructor should be able to extract the same occurrenceID from different representations",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/specimens.js.html#lineNumber24",
+    "SpecimenWrapper #constructor should be able to wrap a specimen with an empty occurenceID",
     "test"
   ],
   [
@@ -715,25 +721,25 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber33",
+    "test-file/test/specimens.js.html#lineNumber39",
     "SpecimenWrapper #constructor should extract institutionCode and catalogNumber from a institutionCode:catalogNumber combination",
     "test"
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber43",
+    "test-file/test/specimens.js.html#lineNumber49",
     "SpecimenWrapper #constructor should extract occurenceID, institutionCode and catalogNumber from Darwin Core triples",
     "test"
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber68",
+    "test-file/test/specimens.js.html#lineNumber74",
     "SpecimenWrapper #constructor should not attempt to split a URL into occurenceID, institutionCode and catalogNumber",
     "test"
   ],
   [
     "",
-    "test-file/test/specimens.js.html#lineNumber59",
+    "test-file/test/specimens.js.html#lineNumber65",
     "SpecimenWrapper #constructor should not attempt to split a URN into occurenceID, institutionCode and catalogNumber",
     "test"
   ],
@@ -1089,6 +1095,66 @@ window.esdocSearchIndex = [
     "",
     "test-file/test/examples.js.html#lineNumber231",
     "Test whether conversion of Phyx files to an OWL ontology occurs predictably. Test incorrect example Phyx files that should fail validation  should not validate against our JSON schema",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/normalization.js.html#lineNumber34",
+    "Test whether normalization of phyloreferences and phylogenies work as expected.\nThis test does not cover Phyx normalization.",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/normalization.js.html#lineNumber35",
+    "Test whether normalization of phyloreferences and phylogenies work as expected.\nThis test does not cover Phyx normalization. Test all normalization Phyx files",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/normalization.js.html#lineNumber54",
+    "Test whether normalization of phyloreferences and phylogenies work as expected.\nThis test does not cover Phyx normalization. Test all normalization Phyx files ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/normalization.js.html#lineNumber61",
+    "Test whether normalization of phyloreferences and phylogenies work as expected.\nThis test does not cover Phyx normalization. Test all normalization Phyx files  Test phylogenies",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/normalization.js.html#lineNumber62",
+    "Test whether normalization of phyloreferences and phylogenies work as expected.\nThis test does not cover Phyx normalization. Test all normalization Phyx files  Test phylogenies These tests have not yet been implemented since we don't have an urgent need for them.",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/normalization.js.html#lineNumber66",
+    "Test whether normalization of phyloreferences and phylogenies work as expected.\nThis test does not cover Phyx normalization. Test all normalization Phyx files  Test phyloreferences",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/normalization.js.html#lineNumber67",
+    "Test whether normalization of phyloreferences and phylogenies work as expected.\nThis test does not cover Phyx normalization. Test all normalization Phyx files  Test phyloreferences should have multiple same phyloreferences for testing",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/normalization.js.html#lineNumber106",
+    "Test whether normalization of phyloreferences and phylogenies work as expected.\nThis test does not cover Phyx normalization. Test all normalization Phyx files  Test phyloreferences should have pairs of `_different` phylorefs that are different before and after normalization",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/normalization.js.html#lineNumber87",
+    "Test whether normalization of phyloreferences and phylogenies work as expected.\nThis test does not cover Phyx normalization. Test all normalization Phyx files  Test phyloreferences should have pairs of `_same` phylorefs that are different, but are identical after normalization",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/normalization.js.html#lineNumber71",
+    "Test whether normalization of phyloreferences and phylogenies work as expected.\nThis test does not cover Phyx normalization. Test all normalization Phyx files  Test phyloreferences should not have any duplicate phylorefs (which would be pointless)",
     "test"
   ],
   [
@@ -1536,6 +1602,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/wrappers/citationwrapper.js~citationwrapper.normalize",
+    "class/src/wrappers/CitationWrapper.js~CitationWrapper.html#static-method-normalize",
+    "src/wrappers/CitationWrapper.js~CitationWrapper.normalize",
+    "method"
+  ],
+  [
     "src/wrappers/phylogenywrapper.js",
     "file/src/wrappers/PhylogenyWrapper.js.html",
     "src/wrappers/PhylogenyWrapper.js",
@@ -1611,6 +1683,12 @@ window.esdocSearchIndex = [
     "src/wrappers/phylogenywrapper.js~phylogenywrapper.getparsednewick",
     "class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html#static-method-getParsedNewick",
     "src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.getParsedNewick",
+    "method"
+  ],
+  [
+    "src/wrappers/phylogenywrapper.js~phylogenywrapper.normalize",
+    "class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html#static-method-normalize",
+    "src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.normalize",
     "method"
   ],
   [
@@ -1776,6 +1854,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/wrappers/phylorefwrapper.js~phylorefwrapper.normalize",
+    "class/src/wrappers/PhylorefWrapper.js~PhylorefWrapper.html#static-method-normalize",
+    "src/wrappers/PhylorefWrapper.js~PhylorefWrapper.normalize",
+    "method"
+  ],
+  [
     "src/wrappers/phyxwrapper.js",
     "file/src/wrappers/PhyxWrapper.js.html",
     "src/wrappers/PhyxWrapper.js",
@@ -1815,6 +1899,12 @@ window.esdocSearchIndex = [
     "src/wrappers/phyxwrapper.js~phyxwrapper#tordf",
     "class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html#instance-method-toRDF",
     "src/wrappers/PhyxWrapper.js~PhyxWrapper#toRDF",
+    "method"
+  ],
+  [
+    "src/wrappers/phyxwrapper.js~phyxwrapper.normalize",
+    "class/src/wrappers/PhyxWrapper.js~PhyxWrapper.html#static-method-normalize",
+    "src/wrappers/PhyxWrapper.js~PhyxWrapper.normalize",
     "method"
   ],
   [
@@ -1902,6 +1992,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/wrappers/specimenwrapper.js~specimenwrapper.normalize",
+    "class/src/wrappers/SpecimenWrapper.js~SpecimenWrapper.html#static-method-normalize",
+    "src/wrappers/SpecimenWrapper.js~SpecimenWrapper.normalize",
+    "method"
+  ],
+  [
     "src/wrappers/taxonconceptwrapper.js",
     "file/src/wrappers/TaxonConceptWrapper.js.html",
     "src/wrappers/TaxonConceptWrapper.js",
@@ -1983,6 +2079,12 @@ window.esdocSearchIndex = [
     "src/wrappers/taxonconceptwrapper.js~taxonconceptwrapper.fromlabel",
     "class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html#static-method-fromLabel",
     "src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.fromLabel",
+    "method"
+  ],
+  [
+    "src/wrappers/taxonconceptwrapper.js~taxonconceptwrapper.normalize",
+    "class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html#static-method-normalize",
+    "src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.normalize",
     "method"
   ],
   [
@@ -2208,6 +2310,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/wrappers/taxonnamewrapper.js~taxonnamewrapper.normalize",
+    "class/src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.html#static-method-normalize",
+    "src/wrappers/TaxonNameWrapper.js~TaxonNameWrapper.normalize",
+    "method"
+  ],
+  [
     "src/wrappers/taxonomicunitwrapper.js",
     "file/src/wrappers/TaxonomicUnitWrapper.js.html",
     "src/wrappers/TaxonomicUnitWrapper.js",
@@ -2298,6 +2406,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/wrappers/taxonomicunitwrapper.js~taxonomicunitwrapper.normalize",
+    "class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html#static-method-normalize",
+    "src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.normalize",
+    "method"
+  ],
+  [
     "test/citations.js",
     "test-file/test/citations.js.html",
     "test/citations.js",
@@ -2319,6 +2433,12 @@ window.esdocSearchIndex = [
     "test/nomenclatural-codes.js",
     "test-file/test/nomenclatural-codes.js.html",
     "test/nomenclatural-codes.js",
+    "testFile"
+  ],
+  [
+    "test/normalization.js",
+    "test-file/test/normalization.js.html",
+    "test/normalization.js",
     "testFile"
   ],
   [
