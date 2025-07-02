@@ -303,7 +303,7 @@ class PhyxWrapper {
       ));
     }
 
-    return JSONLD.toRDF(owlJSONLD, { format: 'application/n-quads' });
+    return JSONLD.toRDF(owlJSONLD, { format: 'application/n-quads', base: '_', produceGeneralizedRdf: true });
   }
 }
 

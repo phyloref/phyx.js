@@ -1,5 +1,5 @@
 {
-  "@context": "../../../docs/context/development/phyx.json",
+  "@context": "../../../../docs/context/development/phyx.json",
   "doi": "10.5281/zenodo.4562685",
   "contributors": [
     {

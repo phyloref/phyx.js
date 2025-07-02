@@ -33,7 +33,7 @@
     "test": "mocha --recursive"
   },
   "dependencies": {
-    "jsonld": "^5.0.0",
+    "jsonld": "^8.3.3",
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
     "newick-js": "^1.2.1",
