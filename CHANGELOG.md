@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 ## [Unreleased]
 
+## [1.2.1] - 2025-07-28
+- PR #152: Upraded packages using `npm upgrade`.
+
 ## [1.2.0] - 2025-03-10
 - PR #138: Added normalization methods so that Phyx objects can be normalized.
 - PR #139: upgraded NPM packages and minor test fixes
@@ -72,6 +75,7 @@ release of this package was based on [commit 14d2c3d5d1] in that repository.
 - Made other changes to the initial code as needed to work as an independent NPM package.
 
   [Unreleased]: https://github.com/phyloref/phyx.js/compare/v1.2.0...master
+  [1.2.1]: https://github.com/phyloref/phyx.js/compare/v1.2.0...v1.2.1
   [1.2.0]: https://github.com/phyloref/phyx.js/compare/v1.1.1...v1.2.0
   [1.1.1]: https://github.com/phyloref/phyx.js/compare/v1.1.0...v1.1.1
   [1.1.0]: https://github.com/phyloref/phyx.js/compare/v1.0.1...v1.1.0
