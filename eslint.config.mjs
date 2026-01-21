@@ -15,7 +15,7 @@ const compat = new FlatCompat({
 });
 
 export default defineConfig([globalIgnores(["**/package-lock.json"]), {
-    extends: compat.extends("airbnb-base", "plugin:mocha/recommended"),
+    extends: compat.extends("plugin:mocha/recommended"),
 
     plugins: {
         mocha,
