@@ -24,7 +24,8 @@
   },
   "javascript": {
     "formatter": {
-      "quoteStyle": "single"
+      "quoteStyle": "single",
+      "arrowParentheses": "asNeeded"
     }
   },
   "assist": {
@@ -34,5 +35,24 @@
         "organizeImports": "on"
       }
     }
-  }
+  },
+
+  "overrides": [
+    {
+      "includes": ["test/**/*.js"],
+      "javascript": {
+        "formatter": {
+          "enabled": false
+        }
+      },
+      "linter": {
+        "enabled": false,
+        "rules": {
+          "complexity": {
+            "useArrowFunction": "off"
+          }
+        }
+      }
+    }
+  ]
 }
