@@ -24,7 +24,7 @@ export default defineConfig([globalIgnores(["**/package-lock.json"]), {
 
     languageOptions: {
         globals: {},
-        ecmaVersion: 6,
+        ecmaVersion: "latest",
         sourceType: "module",
 
         parserOptions: {
