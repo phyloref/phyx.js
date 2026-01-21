@@ -76,7 +76,11 @@ class SpecimenWrapper {
       'file://',
       'urn:',
     ];
-    if (URL_URN_PREFIXES.filter(prefix => occurID.toLowerCase().startsWith(prefix)).length > 0) {
+    if (
+      URL_URN_PREFIXES.filter(prefix =>
+        occurID.toLowerCase().startsWith(prefix),
+      ).length > 0
+    ) {
       return specimen;
     }
 
@@ -95,11 +99,16 @@ class SpecimenWrapper {
       [specimen.institutionCode, specimen.catalogNumber] = comps;
     } else if (comps.length >= 3) {
       let catalogNumValues = []; // Store all split catalog number values.
-      [specimen.institutionCode, specimen.collectionCode, ...catalogNumValues] = comps;
+      [specimen.institutionCode, specimen.collectionCode, ...catalogNumValues] =
+        comps;
       specimen.catalogNumber = catalogNumValues.join(':');
     }
 
-    PhyxCacheManager.put('SpecimenWrapper.occurrenceIDCache', occurID, specimen);
+    PhyxCacheManager.put(
+      'SpecimenWrapper.occurrenceIDCache',
+      occurID,
+      specimen,
+    );
     return specimen;
   }
 
@@ -113,7 +122,9 @@ class SpecimenWrapper {
     // Otherwise, try to parse the occurrenceID and see if we can extract a
     // catalogNumber from there.
     if (has(this.specimen, 'occurrenceID')) {
-      const specimen = SpecimenWrapper.fromOccurrenceID(this.specimen.occurrenceID);
+      const specimen = SpecimenWrapper.fromOccurrenceID(
+        this.specimen.occurrenceID,
+      );
       if (has(specimen, 'catalogNumber')) return specimen.catalogNumber;
     }
     return undefined;
@@ -124,12 +135,15 @@ class SpecimenWrapper {
    */
   get institutionCode() {
     // Get the institution code from the specimen object if present.
-    if (has(this.specimen, 'institutionCode')) return this.specimen.institutionCode;
+    if (has(this.specimen, 'institutionCode'))
+      return this.specimen.institutionCode;
 
     // Otherwise, try to parse the occurrenceID and see if we can extract an
     // occurrenceID from there.
     if (has(this.specimen, 'occurrenceID')) {
-      const specimen = SpecimenWrapper.fromOccurrenceID(this.specimen.occurrenceID);
+      const specimen = SpecimenWrapper.fromOccurrenceID(
+        this.specimen.occurrenceID,
+      );
       if (has(specimen, 'institutionCode')) return specimen.institutionCode;
     }
     return undefined;
@@ -140,12 +154,15 @@ class SpecimenWrapper {
    */
   get collectionCode() {
     // Get the collection code from the specimen object if present.
-    if (has(this.specimen, 'collectionCode')) return this.specimen.collectionCode;
+    if (has(this.specimen, 'collectionCode'))
+      return this.specimen.collectionCode;
 
     // Otherwise, try to parse the occurrenceID and see if we can extract an
     // occurrenceID from there.
     if (has(this.specimen, 'occurrenceID')) {
-      const specimen = SpecimenWrapper.fromOccurrenceID(this.specimen.occurrenceID);
+      const specimen = SpecimenWrapper.fromOccurrenceID(
+        this.specimen.occurrenceID,
+      );
       if (has(specimen, 'collectionCode')) return specimen.collectionCode;
     }
     return undefined;

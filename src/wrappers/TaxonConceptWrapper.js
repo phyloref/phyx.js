@@ -59,7 +59,11 @@ class TaxonConceptWrapper {
     if (has(this.tunit, 'hasName')) return this.tunit.hasName;
 
     // Do we have a nameString with a taxon name as string?
-    if (has(this.tunit, 'nameString')) return TaxonNameWrapper.fromVerbatimName(this.tunit.nameString, this.defaultNomenCode);
+    if (has(this.tunit, 'nameString'))
+      return TaxonNameWrapper.fromVerbatimName(
+        this.tunit.nameString,
+        this.defaultNomenCode,
+      );
 
     // If not, we have no name!
     return undefined;
@@ -71,10 +75,16 @@ class TaxonConceptWrapper {
    */
   get nameComplete() {
     // Do we have any names as taxon name objects?
-    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName, this.defaultNomenCode).nameComplete;
+    if (has(this.tunit, 'hasName'))
+      return new TaxonNameWrapper(this.tunit.hasName, this.defaultNomenCode)
+        .nameComplete;
 
     // Do we have a nameString with a taxon name as string?
-    if (has(this.tunit, 'nameString')) return TaxonNameWrapper.fromVerbatimName(this.tunit.nameString, this.defaultNomenCode).nameComplete;
+    if (has(this.tunit, 'nameString'))
+      return TaxonNameWrapper.fromVerbatimName(
+        this.tunit.nameString,
+        this.defaultNomenCode,
+      ).nameComplete;
 
     // If not, we have no name!
     return undefined;
@@ -84,7 +94,9 @@ class TaxonConceptWrapper {
    * Return the nomenclatural code of this taxon concept as a string.
    */
   get nomenCode() {
-    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName, this.defaultNomenCode).nomenclaturalCode;
+    if (has(this.tunit, 'hasName'))
+      return new TaxonNameWrapper(this.tunit.hasName, this.defaultNomenCode)
+        .nomenclaturalCode;
 
     return owlterms.UNKNOWN_CODE;
   }
@@ -93,7 +105,9 @@ class TaxonConceptWrapper {
    * Return the nomenclatural code of this taxon concept as an object.
    */
   get nomenCodeDetails() {
-    if (has(this.tunit, 'hasName')) return new TaxonNameWrapper(this.tunit.hasName, this.defaultNomenCode).nomenclaturalCodeDetails;
+    if (has(this.tunit, 'hasName'))
+      return new TaxonNameWrapper(this.tunit.hasName, this.defaultNomenCode)
+        .nomenclaturalCodeDetails;
 
     return TaxonNameWrapper.getNomenCodeDetails(owlterms.UNKNOWN_CODE);
   }
@@ -109,7 +123,8 @@ class TaxonConceptWrapper {
     if (has(this.tunit, 'accordingTo')) return this.tunit.accordingTo;
 
     // Do we have an accordingToString?
-    if (has(this.tunit, 'accordingToString')) return this.tunit.accordingToString;
+    if (has(this.tunit, 'accordingToString'))
+      return this.tunit.accordingToString;
 
     // If not, we have no accodingTo information!
     return undefined;
@@ -123,10 +138,12 @@ class TaxonConceptWrapper {
    */
   get accordingToString() {
     // Do we have any accordingTo information?
-    if (has(this.tunit, 'accordingTo')) return JSON.stringify(this.tunit.accordingTo);
+    if (has(this.tunit, 'accordingTo'))
+      return JSON.stringify(this.tunit.accordingTo);
 
     // Do we have an accordingToString?
-    if (has(this.tunit, 'accordingToString')) return this.tunit.accordingToString;
+    if (has(this.tunit, 'accordingToString'))
+      return this.tunit.accordingToString;
 
     // If not, we have no accodingTo information!
     return undefined;
@@ -159,7 +176,12 @@ class TaxonConceptWrapper {
    * @return A taxonomic unit that corresponds to this taxon concept.
    */
   static fromLabel(nodeLabel, nomenCode = owlterms.UNKNOWN_CODE) {
-    if (nodeLabel === undefined || nodeLabel === null || nodeLabel.trim() === '') return undefined;
+    if (
+      nodeLabel === undefined ||
+      nodeLabel === null ||
+      nodeLabel.trim() === ''
+    )
+      return undefined;
 
     // Check if this label can be divided into a name and a sensu/sec component.
     const match = /^\s*(.*)\s+(?:sec|sensu)\.?\s+(.*)\s*$/.exec(nodeLabel);
@@ -201,7 +223,10 @@ class TaxonConceptWrapper {
     return {
       '@type': 'owl:Restriction',
       onProperty: owlterms.TDWG_VOC_HAS_NAME,
-      someValuesFrom: new TaxonNameWrapper(this.taxonName, this.defaultNomenCode).asOWLEquivClass,
+      someValuesFrom: new TaxonNameWrapper(
+        this.taxonName,
+        this.defaultNomenCode,
+      ).asOWLEquivClass,
     };
   }
 }

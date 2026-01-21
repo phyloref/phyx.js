@@ -22,7 +22,7 @@ class CitationWrapper {
    */
   static normalize(citation) {
     const normalizedCitation = {};
-    Object.keys(citation).forEach((key) => {
+    Object.keys(citation).forEach(key => {
       // As long as citation[key] has a reasonable value, we copy it into the normalized citation.
       if (citation[key]) {
         normalizedCitation[key] = citation[key];
@@ -57,25 +57,35 @@ class CitationWrapper {
     if (!this.citation || isEmpty(this.citation)) return undefined;
 
     // If we already have a bibliographic citation, we can just return that.
-    if (has(this.citation, 'bibliographicCitation')) return this.citation.bibliographicCitation;
+    if (has(this.citation, 'bibliographicCitation'))
+      return this.citation.bibliographicCitation;
 
-    let authors = (this.citation.authors || []).map(CitationWrapper.getAgentName);
+    let authors = (this.citation.authors || []).map(
+      CitationWrapper.getAgentName,
+    );
     if (authors.length === 0) authors = ['Anonymous'];
     if (authors.length > 2) authors = [`${authors[0]} et al`];
 
     // The title is based on citation.title, but may include citation.section as well.
     let title = this.citation.title || 'Untitled';
-    if (has(this.citation, 'booktitle')) title = `${title} in ${this.citation.booktitle || 'Untitled book'}`;
+    if (has(this.citation, 'booktitle'))
+      title = `${title} in ${this.citation.booktitle || 'Untitled book'}`;
     let authorsAndTitle = `${authors.join(' and ')} (${this.citation.year || 'n.d.'}) ${title}`;
 
     const editorLists = [];
-    const editors = (this.citation.editors || []).map(CitationWrapper.getAgentName);
+    const editors = (this.citation.editors || []).map(
+      CitationWrapper.getAgentName,
+    );
     if (editors.length > 0) editorLists.push(`eds: ${editors.join(' and ')}`);
 
-    const seriesEditors = (this.citation.series_editors || []).map(CitationWrapper.getAgentName);
-    if (seriesEditors.length > 0) editorLists.push(`series eds: ${seriesEditors.join(' and ')}`);
+    const seriesEditors = (this.citation.series_editors || []).map(
+      CitationWrapper.getAgentName,
+    );
+    if (seriesEditors.length > 0)
+      editorLists.push(`series eds: ${seriesEditors.join(' and ')}`);
 
-    if (editorLists.length > 0) authorsAndTitle += ` [${editorLists.join(', ')}]`;
+    if (editorLists.length > 0)
+      authorsAndTitle += ` [${editorLists.join(', ')}]`;
 
     if (has(this.citation, 'section_title')) {
       authorsAndTitle += ` (section: ${this.citation.section_title})`;
@@ -84,14 +94,17 @@ class CitationWrapper {
     // Additional info stores details that should be at the end of the figure number,
     // DOIs, URLs, ISBNs and so on.
     let additionalInfo = ' ';
-    if (has(this.citation, 'figure')) additionalInfo += ` fig ${this.citation.figure}`;
+    if (has(this.citation, 'figure'))
+      additionalInfo += ` fig ${this.citation.figure}`;
 
     // Add DOIs and URLs.
     additionalInfo += (this.citation.identifier || [])
       .filter(id => id.type === 'doi')
       .map(doi => ` doi: ${doi.id}`)
       .join('');
-    additionalInfo += (this.citation.link || []).map(link => ` URL: ${link.url}`).join('');
+    additionalInfo += (this.citation.link || [])
+      .map(link => ` URL: ${link.url}`)
+      .join('');
 
     additionalInfo += (this.citation.identifier || [])
       .filter(id => id.type === 'isbn')
@@ -101,8 +114,8 @@ class CitationWrapper {
     // A citation for a journal article should be different from others.
     if (has(this.citation, 'journal') && this.citation.type === 'article') {
       const journal = this.citation.journal;
-      const journalIssue = (has(journal, 'number')) ? `(${journal.number})` : '';
-      const pages = (has(journal, 'pages')) ? `:${journal.pages}` : '';
+      const journalIssue = has(journal, 'number') ? `(${journal.number})` : '';
+      const pages = has(journal, 'pages') ? `:${journal.pages}` : '';
       additionalInfo += (journal.identifier || [])
         .filter(id => id.type === 'issn')
         .map(issn => `ISSN: ${issn.id} `)
@@ -111,7 +124,8 @@ class CitationWrapper {
     }
 
     // If we are here, this must be a book or a book_section.
-    if (has(this.citation, 'pages')) additionalInfo += ` pages: ${this.citation.pages}`;
+    if (has(this.citation, 'pages'))
+      additionalInfo += ` pages: ${this.citation.pages}`;
 
     if (has(this.citation, 'publisher') && has(this.citation, 'city')) {
       return `${authorsAndTitle} ${this.citation.publisher}, ${this.citation.city}${additionalInfo}`;
