@@ -26,7 +26,7 @@
   "scripts": {
     "docs": "esdoc",
     "generate-every-topology": "every-topology-testing/generate-topologies.js",
-    "lint": "eslint \"src/**/*.js\" \"test/**/*.js\" \"**/*.json\"",
+    "lint": "biome check",
     "phyx2owl": "node bin/phyx2owl.js",
     "resolve": "node bin/resolve.js",
     "pretest": "npm run lint",
@@ -41,6 +41,7 @@
     "yargs": "^15.4.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.3.11",
     "@shinnn/eslint-config": "^7.0.0",
     "ajv": "^6.12.2",
     "chai": "^4.2.0",
