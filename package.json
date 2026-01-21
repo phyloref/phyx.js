@@ -26,7 +26,7 @@
   "scripts": {
     "docs": "esdoc",
     "generate-every-topology": "every-topology-testing/generate-topologies.js",
-    "lint": "eslint \"src/**/*.js\" \"test/**/*.js\" \"**/*.json\"",
+    "lint": "eslint",
     "phyx2owl": "node bin/phyx2owl.js",
     "resolve": "node bin/resolve.js",
     "pretest": "npm run lint",
@@ -41,18 +41,17 @@
     "yargs": "^15.4.1"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.2",
+    "@eslint/json": "^0.14.0",
+    "@eslint/markdown": "^7.5.1",
     "@shinnn/eslint-config": "^7.0.0",
     "ajv": "^6.12.2",
     "chai": "^4.2.0",
     "esdoc": "^1.1.0",
     "esdoc-node": "^1.0.5",
     "esdoc-standard-plugin": "^1.0.0",
-    "eslint": "^5.16.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-json-format": "^2.0.1",
-    "eslint-plugin-mocha": "^5.3.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-mocha": "^11.2.0",
     "mocha": "^5.2.0",
     "nodejs-file-downloader": "^4.1.1",
     "yargs": "^15.3.1"

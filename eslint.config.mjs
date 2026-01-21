@@ -1,6 +1,7 @@
 import { defineConfig, globalIgnores } from "eslint/config";
+import json from "@eslint/json";
+import markdown from "@eslint/markdown";
 import mocha from "eslint-plugin-mocha";
-import jsonFormat from "eslint-plugin-json-format";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
@@ -14,12 +15,12 @@ const compat = new FlatCompat({
     allConfig: js.configs.all
 });
 
-export default defineConfig([globalIgnores(["**/package-lock.json"]), {
-    extends: compat.extends("plugin:mocha/recommended"),
-
+export default defineConfig([
+    globalIgnores(["package-lock.json", "docs/"]
+), {
     plugins: {
         mocha,
-        "json-format": jsonFormat,
+        json,
     },
 
     languageOptions: {
@@ -43,4 +44,19 @@ export default defineConfig([globalIgnores(["**/package-lock.json"]), {
             functions: "ignore",
         }],
     },
+}, {
+    files: ["**/*.json"],
+    language: "json/json",
+    rules: {
+        "json/no-duplicate-keys": "error",
+    }
+}, {
+   files: ["**/*.md"],
+   plugins: {
+       markdown
+   },
+   language: "markdown/commonmark",
+   rules: {
+       "markdown/no-html": "error"
+   }
 }]);
