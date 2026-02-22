@@ -3,8 +3,8 @@
 
 name: Build and Test
 
-# Execute on every push, pull request and if activated manually.
-on: [push, pull_request, workflow_dispatch]
+# Execute on every pull request and if activated manually.
+on: [pull_request, workflow_dispatch]
 
 # The caching settings were based on https://docs.github.com/en/actions/guides/caching-dependencies-to-speed-up-workflows#example-using-the-cache-action
 jobs:
