@@ -29,7 +29,7 @@
     "lint": "biome check",
     "phyx2owl": "node bin/phyx2owl.js",
     "resolve": "node bin/resolve.js",
-    "pretest": "npm run lint",
+    "posttest": "npm run lint",
     "test": "mocha --recursive"
   },
   "dependencies": {
