@@ -137,11 +137,12 @@ function resolvePhyx(filename) {
               /\s+\(originally \w+\)/g,
               '',
             );
-            const { statusCode, body } = retus(
+            const { _, body } = retus(
               'https://api.opentreeoflife.org/v3/tnrs/match_names',
               {
                 method: 'post',
                 json: { names: [nameToUse] },
+                throwHttpErrors: true,
               },
             );
 
