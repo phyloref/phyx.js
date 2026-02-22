@@ -63,6 +63,9 @@ describe(PHYX2OWL_JS, function () {
     expect(nqGenerated).to.equal(nqExpected);
   });
   it('should be able to convert the entire `test/examples/correct` directory', function () {
+    // This might take slightly longer than other tests.
+    this.timeout(5000);
+
     const EXAMPLE_DIR = path.resolve(__dirname, '../examples/correct');
     const jsonFilesInExamples = fs.readdirSync(EXAMPLE_DIR, { recursive: true })
       .filter(fileName => fileName.toLowerCase().endsWith('.json'));
