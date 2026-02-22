@@ -681,7 +681,9 @@ class PhylorefWrapper {
           ),
         )
         .reduce((acc, val) => acc.concat(val), [])
-        .forEach(expr => classExprs.push(expr));
+        .forEach(expr => {
+          classExprs.push(expr);
+        });
     }
 
     return classExprs;

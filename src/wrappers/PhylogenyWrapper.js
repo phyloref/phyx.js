@@ -154,11 +154,11 @@ class PhylogenyWrapper {
     const nodeLabels = this.getNodeLabels(nodeType);
     const tunits = new Set();
 
-    nodeLabels.forEach(nodeLabel =>
-      this.getTaxonomicUnitsForNodeLabel(nodeLabel).forEach(tunit =>
-        tunits.add(tunit),
-      ),
-    );
+    nodeLabels.forEach(nodeLabel => {
+      this.getTaxonomicUnitsForNodeLabel(nodeLabel).forEach(tunit => {
+        tunits.add(tunit);
+      });
+    });
 
     return tunits;
   }
