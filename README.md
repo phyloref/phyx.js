@@ -35,7 +35,7 @@ and [DBI-1458604]. See [Funding] for details.
   [phyloreferences]: http://phyloref.org
   [JSON-LD]: https://en.wikipedia.org/wiki/JSON-LD
   [OWL 2 DL]: https://www.w3.org/TR/owl2-overview/
-  [Klados]: https://github.com/phyloref/klados
+  [Klados]: https://phyloref.github.io/klados/
   [Clade Ontology]: https://github.com/phyloref/clade-ontology
   [DBI-1458484]: http://www.nsf.gov/awardsearch/showAward?AWD_ID=1458484
   [DBI-1458604]: http://www.nsf.gov/awardsearch/showAward?AWD_ID=1458604
