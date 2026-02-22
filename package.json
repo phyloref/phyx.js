@@ -34,22 +34,22 @@
   },
   "dependencies": {
     "jsonld": "^9.0.0",
-    "lodash": "^4.17.20",
-    "moment": "^2.27.0",
+    "lodash": "^4.17.23",
+    "moment": "^2.30.1",
     "newick-js": "^1.2.1",
-    "retus": "^1.1.1",
+    "retus": "^1.1.2",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.4",
-    "ajv": "^6.12.2",
-    "chai": "^4.2.0",
+    "ajv": "^8.18.0",
+    "chai": "^6.2.2",
     "esdoc": "^1.1.0",
     "esdoc-node": "^1.0.5",
     "esdoc-standard-plugin": "^1.0.0",
-    "mocha": "^5.2.0",
-    "nodejs-file-downloader": "^4.1.1",
-    "yargs": "^15.3.1"
+    "mocha": "^11.7.5",
+    "nodejs-file-downloader": "^4.13.0",
+    "yargs": "^18.0.0"
   },
   "esdoc": {
     "source": "./src",
