@@ -1,6 +1,6 @@
 # phyx.js
 
-[![Build Status](https://github.com/phyloref/phyx.js/workflows/Build%20and%20Test/badge.svg)](https://github.com/phyloref/phyx.js/actions?query=workflow%3A%22Build+and+Test%22)
+[![Build Status](https://github.com/phyloref/phyx.js/workflows/Build%20and%20Test/badge.svg?branch=master)](https://github.com/phyloref/phyx.js/actions?query=workflow%3A%22Build+and+Test%22)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5576556.svg)](https://doi.org/10.5281/zenodo.5576556)
 [![NPM Version](https://img.shields.io/npm/v/@phyloref/phyx)](https://www.npmjs.com/package/@phyloref/phyx)
 
