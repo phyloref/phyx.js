@@ -2,10 +2,7 @@
  * PhylogenyWrapper
  */
 
-const {
-  has,
-  cloneDeep,
-} = require('lodash');
+const { has, cloneDeep } = require('lodash');
 
 /** Used to parse Newick strings. */
 const newickJs = require('newick-js');
@@ -47,7 +44,9 @@ class PhylogenyWrapper {
 
     // Normalize the source if there is one.
     if ('source' in phylogeny) {
-      normalizedPhylogeny.source = CitationWrapper.normalize(phylogeny.source || {});
+      normalizedPhylogeny.source = CitationWrapper.normalize(
+        phylogeny.source || {},
+      );
     }
 
     return normalizedPhylogeny;
@@ -67,12 +66,18 @@ class PhylogenyWrapper {
     const errors = [];
 
     // Look for an empty Newick string.
-    if (newickTrimmed === '' || newickTrimmed === '()' || newickTrimmed === '();') {
+    if (
+      newickTrimmed === '' ||
+      newickTrimmed === '()' ||
+      newickTrimmed === '();'
+    ) {
       // None of the later errors are relevant here, so bail out now.
-      return [{
-        title: 'No phylogeny entered',
-        message: 'Click on "Edit as Newick" to enter a phylogeny below.',
-      }];
+      return [
+        {
+          title: 'No phylogeny entered',
+          message: 'Click on "Edit as Newick" to enter a phylogeny below.',
+        },
+      ];
     }
 
     // Look for an unbalanced Newick string.
@@ -85,10 +90,10 @@ class PhylogenyWrapper {
     if (parenLevels !== 0) {
       errors.push({
         title: 'Unbalanced parentheses in Newick string',
-        message: (parenLevels > 0
-          ? `You have ${parenLevels} too many open parentheses`
-          : `You have ${-parenLevels} too few open parentheses`
-        ),
+        message:
+          parenLevels > 0
+            ? `You have ${parenLevels} too many open parentheses`
+            : `You have ${-parenLevels} too few open parentheses`,
       });
     }
 
@@ -126,13 +131,8 @@ class PhylogenyWrapper {
 
     // Recurse through all children of this node.
     if (has(node, 'children')) {
-      node.children.forEach((child) => {
-        nextID = PhylogenyWrapper.recurseNodes(
-          child,
-          func,
-          nextID,
-          nodeCount
-        );
+      node.children.forEach(child => {
+        nextID = PhylogenyWrapper.recurseNodes(child, func, nextID, nodeCount);
       });
     }
 
@@ -154,10 +154,11 @@ class PhylogenyWrapper {
     const nodeLabels = this.getNodeLabels(nodeType);
     const tunits = new Set();
 
-    nodeLabels.forEach(
-      nodeLabel => this.getTaxonomicUnitsForNodeLabel(nodeLabel)
-        .forEach(tunit => tunits.add(tunit))
-    );
+    nodeLabels.forEach(nodeLabel => {
+      this.getTaxonomicUnitsForNodeLabel(nodeLabel).forEach(tunit => {
+        tunits.add(tunit);
+      });
+    });
 
     return tunits;
   }
@@ -180,18 +181,20 @@ class PhylogenyWrapper {
         new Set(
           Array.from(vertices)
             .map(vertex => vertex.label)
-            .filter(label => label !== undefined)
-        )
+            .filter(label => label !== undefined),
+        ),
       );
     }
 
     if (nodeType === 'internal') {
       // Return the internal nodes (those with atleast one child).
-      return Array.from(new Set(
-        Array.from(arcs)
-          .map(arc => arc[0].label) // Retrieve the label of the parent vertex in this arc.
-          .filter(label => label !== undefined)
-      ));
+      return Array.from(
+        new Set(
+          Array.from(arcs)
+            .map(arc => arc[0].label) // Retrieve the label of the parent vertex in this arc.
+            .filter(label => label !== undefined),
+        ),
+      );
     }
 
     if (nodeType === 'terminal') {
@@ -225,10 +228,11 @@ class PhylogenyWrapper {
     // Look up additional node properties.
     let additionalNodeProperties = {};
     if (
-      has(this.phylogeny, 'additionalNodeProperties')
-      && has(this.phylogeny.additionalNodeProperties, nodeLabel)
+      has(this.phylogeny, 'additionalNodeProperties') &&
+      has(this.phylogeny.additionalNodeProperties, nodeLabel)
     ) {
-      additionalNodeProperties = this.phylogeny.additionalNodeProperties[nodeLabel];
+      additionalNodeProperties =
+        this.phylogeny.additionalNodeProperties[nodeLabel];
     }
 
     // If there are explicit taxonomic units in the
@@ -243,7 +247,10 @@ class PhylogenyWrapper {
     //
     // Note that old-style taxonomic units were lists while new-style taxonomic
     // units are single objects. So we turn it into a single entry list here.
-    const tunit = TaxonomicUnitWrapper.fromLabel(nodeLabel.trim(), this.defaultNomenCode);
+    const tunit = TaxonomicUnitWrapper.fromLabel(
+      nodeLabel.trim(),
+      this.defaultNomenCode,
+    );
     if (tunit) return [tunit];
     return []; // No TUnit? Return the empty list.
   }
@@ -252,7 +259,7 @@ class PhylogenyWrapper {
     // Return a list of node labels matched by a given specifier on
     // a given phylogeny.
 
-    return this.getNodeLabels().filter((nodeLabel) => {
+    return this.getNodeLabels().filter(nodeLabel => {
       // Find all the taxonomic units associated with the specifier and
       // with the node.
       const nodeTUnits = this.getTaxonomicUnitsForNodeLabel(nodeLabel);
@@ -260,7 +267,7 @@ class PhylogenyWrapper {
       // Attempt pairwise matches between taxonomic units in the specifier
       // and associated with the node.
       return nodeTUnits.some(
-        tunit => new TaxonomicUnitMatcher(specifier, tunit).matched
+        tunit => new TaxonomicUnitMatcher(specifier, tunit).matched,
       );
     });
   }
@@ -275,7 +282,7 @@ class PhylogenyWrapper {
     const [, arcs] = graph;
 
     // Go through the arcs, assigning 'children' to the appropriate parent node.
-    arcs.forEach((arc) => {
+    arcs.forEach(arc => {
       const [parent, child, weight] = arc;
 
       // Add child to parent.children.
@@ -283,20 +290,29 @@ class PhylogenyWrapper {
       parent.children.push(child);
 
       // Phylotree.js uses 'name' instead of 'label'.
-      if (has(parent, 'label')) { parent.name = parent.label; }
-      if (has(child, 'label')) { child.name = child.label; }
+      if (has(parent, 'label')) {
+        parent.name = parent.label;
+      }
+      if (has(child, 'label')) {
+        child.name = child.label;
+      }
 
       // Phylotree.js uses 'attribute' to store weights, so we'll store it there as well.
-      if (!has(child, 'attribute') && !Number.isNaN(weight)) child.attribute = weight;
+      if (!has(child, 'attribute') && !Number.isNaN(weight))
+        child.attribute = weight;
     });
 
     // Set root 'attribute' to root weight.
-    if (!has(root, 'attribute') && !Number.isNaN(rootWeight)) root.attribute = rootWeight;
+    if (!has(root, 'attribute') && !Number.isNaN(rootWeight))
+      root.attribute = rootWeight;
 
     return { json: root };
   }
 
-  getParsedNewickWithIRIs(baseIRI, newickParser = PhylogenyWrapper.getParsedNewick) {
+  getParsedNewickWithIRIs(
+    baseIRI,
+    newickParser = PhylogenyWrapper.getParsedNewick,
+  ) {
     // Return the parsed Newick string, but with EVERY node given an IRI.
     // - baseIRI: The base IRI to use for node elements (e.g. ':phylogeny1').
     //   Node IDs are generated by concatenating `_node${number}` to the end of
@@ -344,78 +360,85 @@ class PhylogenyWrapper {
 
     const parsed = this.getParsedNewickWithIRIs(baseIRI, newickParser);
     if (has(parsed, 'json')) {
-      PhylogenyWrapper.recurseNodes(parsed.json, (node, nodeCount, parentCount) => {
-        // Start with the additional node properties.
-        const nodeAsJSONLD = {};
+      PhylogenyWrapper.recurseNodes(
+        parsed.json,
+        (node, _nodeCount, parentCount) => {
+          // Start with the additional node properties.
+          const nodeAsJSONLD = {};
 
-        // Set @id and @type. '@id' should already be set by getParsedNewickWithIRIs()!
-        const nodeIRI = node['@id'];
-        nodeAsJSONLD['@id'] = nodeIRI;
+          // Set @id and @type. '@id' should already be set by getParsedNewickWithIRIs()!
+          const nodeIRI = node['@id'];
+          nodeAsJSONLD['@id'] = nodeIRI;
 
-        // Since we may need to add multiple classes into the rdf:type, we need
-        // to make @type an array. However, the JSON-LD library we use in JPhyloRef
-        // can't support @type being an array (despite that being in the standard,
-        // see https://w3c.github.io/json-ld-syntax/#example-14-specifying-multiple-types-for-a-node),
-        // so we fall back to using rdf:type instead.
-        nodeAsJSONLD[owlterms.RDF_TYPE] = [{ '@id': owlterms.CDAO_NODE }];
+          // Since we may need to add multiple classes into the rdf:type, we need
+          // to make @type an array. However, the JSON-LD library we use in JPhyloRef
+          // can't support @type being an array (despite that being in the standard,
+          // see https://w3c.github.io/json-ld-syntax/#example-14-specifying-multiple-types-for-a-node),
+          // so we fall back to using rdf:type instead.
+          nodeAsJSONLD[owlterms.RDF_TYPE] = [{ '@id': owlterms.CDAO_NODE }];
 
-        // Add labels, additional node properties and taxonomic units.
-        if (has(node, 'name') && node.name !== '') {
-          // Add node label.
-          nodeAsJSONLD.labels = [node.name];
+          // Add labels, additional node properties and taxonomic units.
+          if (has(node, 'name') && node.name !== '') {
+            // Add node label.
+            nodeAsJSONLD.labels = [node.name];
 
-          // Add additional node properties, if any.
-          if (additionalNodeProperties && has(additionalNodeProperties, node.name)) {
-            Object.keys(additionalNodeProperties[node.name]).forEach((key) => {
-              nodeAsJSONLD[key] = additionalNodeProperties[node.name][key];
-            });
-          }
+            // Add additional node properties, if any.
+            if (
+              additionalNodeProperties &&
+              has(additionalNodeProperties, node.name)
+            ) {
+              Object.keys(additionalNodeProperties[node.name]).forEach(key => {
+                nodeAsJSONLD[key] = additionalNodeProperties[node.name][key];
+              });
+            }
 
-          // Add taxonomic units into the metadata.
-          nodeAsJSONLD.representsTaxonomicUnits = this.getTaxonomicUnitsForNodeLabel(node.name);
+            // Add taxonomic units into the metadata.
+            nodeAsJSONLD.representsTaxonomicUnits =
+              this.getTaxonomicUnitsForNodeLabel(node.name);
 
-          // Add it into the @type so we can reason over it.
-          nodeAsJSONLD.representsTaxonomicUnits.forEach((tu) => {
-            const wrappedTUnit = new TaxonomicUnitWrapper(tu);
+            // Add it into the @type so we can reason over it.
+            nodeAsJSONLD.representsTaxonomicUnits.forEach(tu => {
+              const wrappedTUnit = new TaxonomicUnitWrapper(tu);
 
-            if (wrappedTUnit) {
-              const equivClass = wrappedTUnit.asOWLEquivClass;
-              if (equivClass) {
-                nodeAsJSONLD[owlterms.RDF_TYPE].push(
-                  {
+              if (wrappedTUnit) {
+                const equivClass = wrappedTUnit.asOWLEquivClass;
+                if (equivClass) {
+                  nodeAsJSONLD[owlterms.RDF_TYPE].push({
                     '@type': 'owl:Restriction',
                     onProperty: owlterms.CDAO_REPRESENTS_TU,
                     someValuesFrom: equivClass,
-                  }
-                );
+                  });
+                }
               }
-            }
-          });
-        }
-
-        // Add references to parents and siblings.
-        if (parentCount !== undefined) {
-          const parentIRI = `${baseIRI}_node${parentCount}`;
-          nodeAsJSONLD.parent = parentIRI;
-
-          // Update list of nodes by parent IDs.
-          if (!has(nodeIdsByParentId, parentIRI)) {
-            nodeIdsByParentId[parentIRI] = new Set();
+            });
           }
-          nodeIdsByParentId[parentIRI].add(nodeIRI);
-        }
 
-        // Add nodeAsJSONLD to list
-        if (has(nodesById, nodeIRI)) {
-          throw new Error(`Error in programming: duplicate node IRI generated (${nodeIRI})`);
-        }
-        nodesById[nodeIRI] = nodeAsJSONLD;
-        nodes.push(nodeAsJSONLD);
-      });
+          // Add references to parents and siblings.
+          if (parentCount !== undefined) {
+            const parentIRI = `${baseIRI}_node${parentCount}`;
+            nodeAsJSONLD.parent = parentIRI;
+
+            // Update list of nodes by parent IDs.
+            if (!has(nodeIdsByParentId, parentIRI)) {
+              nodeIdsByParentId[parentIRI] = new Set();
+            }
+            nodeIdsByParentId[parentIRI].add(nodeIRI);
+          }
+
+          // Add nodeAsJSONLD to list
+          if (has(nodesById, nodeIRI)) {
+            throw new Error(
+              `Error in programming: duplicate node IRI generated (${nodeIRI})`,
+            );
+          }
+          nodesById[nodeIRI] = nodeAsJSONLD;
+          nodes.push(nodeAsJSONLD);
+        },
+      );
     }
 
     // Go through nodes again and set children and sibling relationships.
-    Object.keys(nodeIdsByParentId).forEach((parentId) => {
+    Object.keys(nodeIdsByParentId).forEach(parentId => {
       // What are the children of this parentId?
       const childrenIDs = Array.from(nodeIdsByParentId[parentId]);
       const children = childrenIDs.map(childId => nodesById[childId]);
@@ -426,10 +449,12 @@ class PhylogenyWrapper {
         parent.children = childrenIDs;
       }
 
-      children.forEach((child) => {
+      children.forEach(child => {
         const childToModify = child;
         // Add all other sibling to node.siblings, but don't add this node itself!
-        childToModify.siblings = childrenIDs.filter(childId => childId !== child['@id']);
+        childToModify.siblings = childrenIDs.filter(
+          childId => childId !== child['@id'],
+        );
       });
     });
 
@@ -453,7 +478,10 @@ class PhylogenyWrapper {
     phylogenyAsJSONLD['@type'] = 'phyloref:ReferencePhylogenyEvidence';
 
     // Translate nodes into JSON-LD objects.
-    phylogenyAsJSONLD.nodes = this.getNodesAsJSONLD(phylogenyAsJSONLD['@id'], newickParser);
+    phylogenyAsJSONLD.nodes = this.getNodesAsJSONLD(
+      phylogenyAsJSONLD['@id'],
+      newickParser,
+    );
     if (phylogenyAsJSONLD.nodes.length > 0) {
       // We don't have a better way to identify the root node, so we just
       // default to the first one.

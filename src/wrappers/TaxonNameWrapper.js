@@ -41,7 +41,8 @@ class TaxonNameWrapper {
    * a taxon name.
    */
   constructor(txname, defaultNomenCode = owlterms.UNKNOWN_CODE) {
-    if (txname === undefined) throw new Error('TaxonNameWrapper tried to wrap undefined');
+    if (txname === undefined)
+      throw new Error('TaxonNameWrapper tried to wrap undefined');
     this.txname = txname;
     this.defaultNomenCode = defaultNomenCode;
   }
@@ -61,15 +62,25 @@ class TaxonNameWrapper {
   }
 
   /* Directly access IRIs for nomenclatural codes. */
-  static get ICZN_CODE() { return owlterms.ICZN_CODE; }
+  static get ICZN_CODE() {
+    return owlterms.ICZN_CODE;
+  }
 
-  static get ICN_CODE() { return owlterms.ICN_CODE; }
+  static get ICN_CODE() {
+    return owlterms.ICN_CODE;
+  }
 
-  static get ICNP_CODE() { return owlterms.ICNP_CODE; }
+  static get ICNP_CODE() {
+    return owlterms.ICNP_CODE;
+  }
 
-  static get ICTV_CODE() { return owlterms.ICTV_CODE; }
+  static get ICTV_CODE() {
+    return owlterms.ICTV_CODE;
+  }
 
-  static get ICNCP_CODE() { return owlterms.ICNCP_CODE; }
+  static get ICNCP_CODE() {
+    return owlterms.ICNCP_CODE;
+  }
 
   /**
    * Return a list of all supported nomenclatural code. Each entry will have
@@ -101,7 +112,8 @@ class TaxonNameWrapper {
         iri: owlterms.ICN_CODE,
         shortName: 'ICN',
         label: 'Algae, fungi and plants (ICN, previously ICBN)',
-        title: 'International Code of Nomenclature for algae, fungi, and plants',
+        title:
+          'International Code of Nomenclature for algae, fungi, and plants',
       },
       {
         iri: owlterms.ICNP_CODE,
@@ -137,8 +149,9 @@ class TaxonNameWrapper {
     }
 
     // Look for the entry with the same IRI as the provided IRI.
-    const matchingCode = codes
-      .find(code => (code.iri || '').toLowerCase() === nomenCode.toLowerCase());
+    const matchingCode = codes.find(
+      code => (code.iri || '').toLowerCase() === nomenCode.toLowerCase(),
+    );
     if (matchingCode) return matchingCode;
     return undefined;
   }
@@ -192,15 +205,25 @@ class TaxonNameWrapper {
    */
   static fromVerbatimName(verbatimName, nomenCode = owlterms.UNKNOWN_CODE) {
     // Have we already parsed this verbatim name?
-    if (PhyxCacheManager.has(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName)) {
-      return PhyxCacheManager.get(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName);
+    if (
+      PhyxCacheManager.has(
+        `TaxonNameWrapper.taxonNameCache.${nomenCode}`,
+        verbatimName,
+      )
+    ) {
+      return PhyxCacheManager.get(
+        `TaxonNameWrapper.taxonNameCache.${nomenCode}`,
+        verbatimName,
+      );
     }
 
     // Use a regular expression to parse the verbatimName.
 
     // Attempt 1. Look for a trinomial name.
     let txname;
-    let results = /^([A-Z][a-z]+)[ _]([a-z-]+\.?)(?:\b|_)\s*([a-z-]+)\b/.exec(verbatimName);
+    let results = /^([A-Z][a-z]+)[ _]([a-z-]+\.?)(?:\b|_)\s*([a-z-]+)\b/.exec(
+      verbatimName,
+    );
 
     if (results) {
       txname = {
@@ -249,7 +272,11 @@ class TaxonNameWrapper {
 
     // Store in the cache.
     if (txname !== undefined) {
-      PhyxCacheManager.put(`TaxonNameWrapper.taxonNameCache.${nomenCode}`, verbatimName, txname);
+      PhyxCacheManager.put(
+        `TaxonNameWrapper.taxonNameCache.${nomenCode}`,
+        verbatimName,
+        txname,
+      );
     }
 
     return txname;
@@ -285,17 +312,22 @@ class TaxonNameWrapper {
    * without authority information).
    */
   get nameComplete() {
-    return this.txname.nameComplete
-      || this.trinomialName
-      || this.binomialName
-      || this.uninomialName;
+    return (
+      this.txname.nameComplete ||
+      this.trinomialName ||
+      this.binomialName ||
+      this.uninomialName
+    );
   }
 
   /**
    * Set the complete name. To do this, we re-parse the provided name.
    */
   set nameComplete(name) {
-    this.txname = TaxonNameWrapper.fromVerbatimName(name, this.nomenclaturalCode);
+    this.txname = TaxonNameWrapper.fromVerbatimName(
+      name,
+      this.nomenclaturalCode,
+    );
   }
 
   /** Return the uninomial name if there is one. */
@@ -307,7 +339,7 @@ class TaxonNameWrapper {
     if (this.txname.nameComplete) {
       const txname = TaxonNameWrapper.fromVerbatimName(
         this.txname.nameComplete,
-        this.nomenclaturalCode
+        this.nomenclaturalCode,
       );
       if (has(txname, 'uninomial')) return txname.uninomial;
     }
@@ -325,7 +357,8 @@ class TaxonNameWrapper {
   get binomialName() {
     // Get the binomial name. Constructed from the genus and specific epithet
     // if available.
-    if (this.genusPart === undefined || this.specificEpithet === undefined) return undefined;
+    if (this.genusPart === undefined || this.specificEpithet === undefined)
+      return undefined;
     return `${this.genusPart} ${this.specificEpithet}`;
   }
 
@@ -338,10 +371,11 @@ class TaxonNameWrapper {
   /** Return the trinomial name if available. */
   get trinomialName() {
     if (
-      this.infraspecificEpithet === undefined
-      || this.specificEpithet === undefined
-      || this.genusPart === undefined
-    ) return undefined;
+      this.infraspecificEpithet === undefined ||
+      this.specificEpithet === undefined ||
+      this.genusPart === undefined
+    )
+      return undefined;
     return `${this.genusPart} ${this.specificEpithet} ${this.infraspecificEpithet}`;
   }
 
@@ -361,7 +395,7 @@ class TaxonNameWrapper {
     if (this.txname.nameComplete) {
       const txname = TaxonNameWrapper.fromVerbatimName(
         this.txname.nameComplete,
-        this.nomenclaturalCode
+        this.nomenclaturalCode,
       );
       if (has(txname, 'genusPart')) return txname.genusPart;
     }
@@ -391,7 +425,7 @@ class TaxonNameWrapper {
     if (this.nameComplete) {
       const txname = TaxonNameWrapper.fromVerbatimName(
         this.nameComplete,
-        this.nomenclaturalCode
+        this.nomenclaturalCode,
       );
       if (has(txname, 'specificEpithet')) return txname.specificEpithet;
     }
@@ -414,16 +448,18 @@ class TaxonNameWrapper {
   /** Return the infraspecific epithet of this scientific name if available. */
   get infraspecificEpithet() {
     // Try to read the specific epithet if available.
-    if (has(this.txname, 'infraspecificEpithet')) return this.txname.infraspecificEpithet;
+    if (has(this.txname, 'infraspecificEpithet'))
+      return this.txname.infraspecificEpithet;
 
     // If there is no specific epithet but there is a scientificName, try to
     // extract a specific epithet from it.
     if (this.txname.nameComplete) {
       const txname = TaxonNameWrapper.fromVerbatimName(
         this.nameComplete,
-        this.nomenclaturalCode
+        this.nomenclaturalCode,
       );
-      if (has(txname, 'infraspecificEpithet')) return txname.infraspecificEpithet;
+      if (has(txname, 'infraspecificEpithet'))
+        return txname.infraspecificEpithet;
     }
 
     return undefined;
@@ -478,17 +514,20 @@ class TaxonNameWrapper {
     // expression as well.
     return {
       '@type': 'owl:Class',
-      intersectionOf: [{
-        '@type': 'owl:Restriction',
-        onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
-        hasValue: this.nameComplete,
-      }, {
-        '@type': 'owl:Restriction',
-        onProperty: owlterms.NOMENCLATURAL_CODE,
-        hasValue: {
-          '@id': this.nomenclaturalCode,
+      intersectionOf: [
+        {
+          '@type': 'owl:Restriction',
+          onProperty: owlterms.TDWG_VOC_NAME_COMPLETE,
+          hasValue: this.nameComplete,
         },
-      }],
+        {
+          '@type': 'owl:Restriction',
+          onProperty: owlterms.NOMENCLATURAL_CODE,
+          hasValue: {
+            '@id': this.nomenclaturalCode,
+          },
+        },
+      ],
     };
   }
 }

@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 /** Helper methods from lodash. */
 const { has, cloneDeep, uniq } = require('lodash');
@@ -43,9 +43,11 @@ class PhyxWrapper {
   //     the phylorefs are missing a nomenclatural code or include a specifier,
   //     we default to owlterms.UNKNOWN_CODE.
   get defaultNomenCode() {
-    if (has(this.phyx, 'defaultNomenclaturalCodeIRI')) return this.phyx.defaultNomenclaturalCodeIRI;
-    const nomenCodes = (this.phyx.phylorefs || [])
-      .map(phyloref => new PhylorefWrapper(phyloref).defaultNomenCode);
+    if (has(this.phyx, 'defaultNomenclaturalCodeIRI'))
+      return this.phyx.defaultNomenclaturalCodeIRI;
+    const nomenCodes = (this.phyx.phylorefs || []).map(
+      phyloref => new PhylorefWrapper(phyloref).defaultNomenCode,
+    );
     const uniqNomenCodes = uniq(nomenCodes);
     if (uniqNomenCodes.length === 1) return uniqNomenCodes[0];
     return owlterms.UNKNOWN_CODE;
@@ -67,11 +69,16 @@ class PhyxWrapper {
   static normalize(phyxDocument) {
     const normalizedDocument = cloneDeep(phyxDocument);
 
-    normalizedDocument.phylorefs = (phyxDocument.phylorefs || []).map(PhylorefWrapper.normalize);
-    normalizedDocument.phylogenies = (phyxDocument.phylogenies || [])
-      .map(PhylogenyWrapper.normalize);
+    normalizedDocument.phylorefs = (phyxDocument.phylorefs || []).map(
+      PhylorefWrapper.normalize,
+    );
+    normalizedDocument.phylogenies = (phyxDocument.phylogenies || []).map(
+      PhylogenyWrapper.normalize,
+    );
     if ('source' in phyxDocument) {
-      normalizedDocument.source = CitationWrapper.normalize(phyxDocument.source);
+      normalizedDocument.source = CitationWrapper.normalize(
+        phyxDocument.source,
+      );
     }
 
     return normalizedDocument;
@@ -109,13 +116,15 @@ class PhyxWrapper {
 
     // Given a relative ID (e.g. '#phylo1') make it absolute (`${baseIRI}phylo1`).
     function makeIDAbsolute(phylogenyId) {
-      if (baseIRI && phylogenyId.startsWith('#')) return `${baseIRI}${phylogenyId.substring(1)}`; // Remove the initial '#'.
+      if (baseIRI && phylogenyId.startsWith('#'))
+        return `${baseIRI}${phylogenyId.substring(1)}`; // Remove the initial '#'.
       return phylogenyId;
     }
 
     // Given an absolute ID (`${baseIRI}phylo1`) make it relative (e.g. '#phylo1').
     function makeIDRelative(phylogenyId) {
-      if (phylogenyId.startsWith(baseIRI)) return `#${phylogenyId.substring(baseIRI.length)}`;
+      if (phylogenyId.startsWith(baseIRI))
+        return `#${phylogenyId.substring(baseIRI.length)}`;
       return phylogenyId;
     }
 
@@ -125,7 +134,7 @@ class PhyxWrapper {
       // to the relative IRI to make it absolute. This seems to avoid problems
       // with some JSON-LD parsers.
       if (baseIRI) {
-        jsonld.phylorefs = jsonld.phylorefs.map((phyloref) => {
+        jsonld.phylorefs = jsonld.phylorefs.map(phyloref => {
           if ((phyloref['@id'] || '').startsWith('#')) {
             const modifiedPhyloref = cloneDeep(phyloref);
             modifiedPhyloref['@id'] = makeIDAbsolute(phyloref['@id']);
@@ -136,9 +145,10 @@ class PhyxWrapper {
       }
 
       // Convert phyloreferences into an OWL class restriction
-      jsonld.phylorefs = jsonld.phylorefs.map(
-        (phyloref, countPhyloref) => new PhylorefWrapper(phyloref, this.defaultNomenCode)
-          .asJSONLD(getBaseIRIForPhyloref(countPhyloref))
+      jsonld.phylorefs = jsonld.phylorefs.map((phyloref, countPhyloref) =>
+        new PhylorefWrapper(phyloref, this.defaultNomenCode).asJSONLD(
+          getBaseIRIForPhyloref(countPhyloref),
+        ),
       );
     }
 
@@ -148,7 +158,7 @@ class PhyxWrapper {
       // to the relative IRI to make it absolute. This seems to avoid problems
       // with some JSON-LD parsers.
       if (baseIRI) {
-        jsonld.phylogenies = jsonld.phylogenies.map((phylogeny) => {
+        jsonld.phylogenies = jsonld.phylogenies.map(phylogeny => {
           if ((phylogeny['@id'] || '').startsWith('#')) {
             const modifiedPhylogeny = cloneDeep(phylogeny);
             modifiedPhylogeny['@id'] = makeIDAbsolute(phylogeny['@id']);
@@ -159,19 +169,21 @@ class PhyxWrapper {
       }
 
       // Add descriptions for individual nodes in each phylogeny.
-      jsonld.phylogenies = jsonld.phylogenies.map(
-        (phylogeny, countPhylogeny) => new PhylogenyWrapper(phylogeny, this.defaultNomenCode)
-          .asJSONLD(getBaseIRIForPhylogeny(countPhylogeny), this.newickParser)
+      jsonld.phylogenies = jsonld.phylogenies.map((phylogeny, countPhylogeny) =>
+        new PhylogenyWrapper(phylogeny, this.defaultNomenCode).asJSONLD(
+          getBaseIRIForPhylogeny(countPhylogeny),
+          this.newickParser,
+        ),
       );
 
       // Go through all the nodes and add information on expected resolution.
-      jsonld.phylogenies.forEach((phylogeny) => {
+      jsonld.phylogenies.forEach(phylogeny => {
         const phylogenyId = phylogeny['@id'];
-        (phylogeny.nodes || []).forEach((node) => {
+        (phylogeny.nodes || []).forEach(node => {
           // We can't set expected resolution information on unlabeled nodes.
           if (!node.labels) return;
 
-          jsonld.phylorefs.forEach((phyloref) => {
+          jsonld.phylorefs.forEach(phyloref => {
             const phylorefId = phyloref['@id'];
 
             // There are two ways in which we determine that a phyloreference
@@ -188,14 +200,11 @@ class PhyxWrapper {
             // + `'${phylogenyId}' (${makeIDRelative(phylogenyId)}).`);
 
             if (
-              has(phyloref, 'expectedResolution')
-              && (
-                // The user might have used the absolute phylogeny ID here.
-                has(phyloref.expectedResolution, phylogenyId)
-
+              has(phyloref, 'expectedResolution') &&
+              // The user might have used the absolute phylogeny ID here.
+              (has(phyloref.expectedResolution, phylogenyId) ||
                 // Or they might have used a relative phylogeny ID.
-                || has(phyloref.expectedResolution, makeIDRelative(phylogenyId))
-              )
+                has(phyloref.expectedResolution, makeIDRelative(phylogenyId)))
             ) {
               // Expected resolution information set! The node label mentioned in that
               // information must be identical to one of the labels of this phylogeny node.
@@ -203,7 +212,8 @@ class PhyxWrapper {
               // Figure out which phylogenyId was matched here.
               const nodeLabel = has(phyloref.expectedResolution, phylogenyId)
                 ? phyloref.expectedResolution[phylogenyId].nodeLabel
-                : phyloref.expectedResolution[makeIDRelative(phylogenyId)].nodeLabel;
+                : phyloref.expectedResolution[makeIDRelative(phylogenyId)]
+                    .nodeLabel;
 
               if (nodeLabel && (node.labels || []).includes(nodeLabel)) {
                 flagNodeExpectsPhyloref = true;
@@ -253,7 +263,9 @@ class PhyxWrapper {
 
     // If there is a top-level source, generate a bibliographicCitation for it.
     if (has(jsonld, 'source')) {
-      jsonld.source.bibliographicCitation = new CitationWrapper(jsonld.source).toString();
+      jsonld.source.bibliographicCitation = new CitationWrapper(
+        jsonld.source,
+      ).toString();
     }
 
     // Set up the top-level object '@type'. If one is present, we add our terms to that.
@@ -263,9 +275,14 @@ class PhyxWrapper {
 
     // Set up the ontology imports. If one is present, we add our imports to that.
     if (!has(jsonld, 'owl:imports')) jsonld['owl:imports'] = [];
-    if (!Array.isArray(jsonld['owl:imports'])) jsonld['owl:imports'] = [jsonld['owl:imports']];
-    jsonld['owl:imports'].push('http://ontology.phyloref.org/2018-12-14/phyloref.owl');
-    jsonld['owl:imports'].push('http://ontology.phyloref.org/2018-12-14/tcan.owl');
+    if (!Array.isArray(jsonld['owl:imports']))
+      jsonld['owl:imports'] = [jsonld['owl:imports']];
+    jsonld['owl:imports'].push(
+      'http://ontology.phyloref.org/2018-12-14/phyloref.owl',
+    );
+    jsonld['owl:imports'].push(
+      'http://ontology.phyloref.org/2018-12-14/tcan.owl',
+    );
 
     // If the '@context' is missing, add it here.
     if (!has(jsonld, '@context')) {
@@ -297,10 +314,14 @@ class PhyxWrapper {
     // For the purposes of testing, we are sometimes given a relative path to `@context`,
     // but the JSONLD package does not support this. Instead, we'll import the contents
     // of the relative path on the fly.
-    if (filePath && has(owlJSONLD, '@context') && owlJSONLD['@context'].startsWith('.')) {
-      owlJSONLD['@context'] = JSON.parse(fs.readFileSync(
-        path.resolve(filePath, owlJSONLD['@context'])
-      ));
+    if (
+      filePath &&
+      has(owlJSONLD, '@context') &&
+      owlJSONLD['@context'].startsWith('.')
+    ) {
+      owlJSONLD['@context'] = JSON.parse(
+        fs.readFileSync(path.resolve(filePath, owlJSONLD['@context'])),
+      );
     }
 
     return JSONLD.toRDF(owlJSONLD, { format: 'application/n-quads' });

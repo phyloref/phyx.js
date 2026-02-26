@@ -1,4 +1,3 @@
-
 // Some OWL constants to be used.
 module.exports = {
   // Where is our context file located?
@@ -28,16 +27,19 @@ module.exports = {
   // Terms from the TaxonName ontology
   // (https://github.com/tdwg/ontology/blob/master/ontology/voc/TaxonName.rdf).
   TDWG_VOC_TAXON_NAME: 'http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName',
-  TDWG_VOC_TAXON_CONCEPT: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
+  TDWG_VOC_TAXON_CONCEPT:
+    'http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept',
   TDWG_VOC_HAS_NAME: 'http://rs.tdwg.org/ontology/voc/TaxonConcept#hasName',
-  TDWG_VOC_NAME_COMPLETE: 'http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete',
+  TDWG_VOC_NAME_COMPLETE:
+    'http://rs.tdwg.org/ontology/voc/TaxonName#nameComplete',
 
   // Terms from Darwin Core.
   DWC_OCCURRENCE: 'http://rs.tdwg.org/dwc/terms/Occurrence',
   DWC_OCCURRENCE_ID: 'http://rs.tdwg.org/dwc/terms/occurrenceID',
 
   // Nomenclatural codes from Nomen.
-  NOMENCLATURAL_CODE: 'http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode',
+  NOMENCLATURAL_CODE:
+    'http://rs.tdwg.org/ontology/voc/TaxonName#nomenclaturalCode',
   UNKNOWN_CODE: undefined,
   ICZN_CODE: 'http://rs.tdwg.org/ontology/voc/TaxonName#ICZN',
   ICN_CODE: 'http://rs.tdwg.org/ontology/voc/TaxonName#ICBN',

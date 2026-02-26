@@ -22,8 +22,7 @@ class CacheManager {
 
   /** Return true if we have a value for this particular cache key. */
   has(cacheName, cacheKey) {
-    return has(this.caches, cacheName)
-      && has(this.caches[cacheName], cacheKey);
+    return has(this.caches, cacheName) && has(this.caches[cacheName], cacheKey);
   }
 
   /** Look up the value of a key in a particular cache. */
@@ -36,7 +35,8 @@ class CacheManager {
   /** Set the value of a key in a particular cache. */
   put(cacheName, cacheKey, value) {
     if (!has(this.caches, cacheName)) this.caches[cacheName] = {};
-    if (!has(this.caches[cacheName], cacheKey)) this.caches[cacheName][cacheKey] = {};
+    if (!has(this.caches[cacheName], cacheKey))
+      this.caches[cacheName][cacheKey] = {};
     this.caches[cacheName][cacheKey] = value;
   }
 }

@@ -41,10 +41,12 @@ class PhylorefWrapper {
   static normalize(phyloref) {
     const normalizedPhyloref = cloneDeep(phyloref);
 
-    normalizedPhyloref.internalSpecifiers = (phyloref.internalSpecifiers || [])
-      .map(TaxonomicUnitWrapper.normalize);
-    normalizedPhyloref.externalSpecifiers = (phyloref.externalSpecifiers || [])
-      .map(TaxonomicUnitWrapper.normalize);
+    normalizedPhyloref.internalSpecifiers = (
+      phyloref.internalSpecifiers || []
+    ).map(TaxonomicUnitWrapper.normalize);
+    normalizedPhyloref.externalSpecifiers = (
+      phyloref.externalSpecifiers || []
+    ).map(TaxonomicUnitWrapper.normalize);
 
     return normalizedPhyloref;
   }
@@ -63,7 +65,8 @@ class PhylorefWrapper {
   get label() {
     // Return a label for this phyloreference.
     if (has(this.phyloref, 'label')) return this.phyloref.label;
-    if (has(this.phyloref, 'labels') && this.phyloref.labels.length > 0) return this.phyloref.labels[0];
+    if (has(this.phyloref, 'labels') && this.phyloref.labels.length > 0)
+      return this.phyloref.labels[0];
     if (has(this.phyloref, 'title')) return this.phyloref.title;
 
     return undefined;
@@ -134,12 +137,18 @@ class PhylorefWrapper {
     // it doesn't remember if the specifier to be deleted is internal
     // or external. We delete the intended specifier from both arrays.
 
-    if (has(this.phyloref, 'internalSpecifiers') && this.phyloref.internalSpecifiers.length > 0) {
+    if (
+      has(this.phyloref, 'internalSpecifiers') &&
+      this.phyloref.internalSpecifiers.length > 0
+    ) {
       const index = this.phyloref.internalSpecifiers.indexOf(specifier);
       if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
     }
 
-    if (has(this.phyloref, 'externalSpecifiers') && this.phyloref.externalSpecifiers.length > 0) {
+    if (
+      has(this.phyloref, 'externalSpecifiers') &&
+      this.phyloref.externalSpecifiers.length > 0
+    ) {
       const index = this.phyloref.externalSpecifiers.indexOf(specifier);
       if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
     }
@@ -156,30 +165,32 @@ class PhylorefWrapper {
     const phylorefLabel = this.label;
     const nodeLabels = new Set();
 
-    new PhylogenyWrapper(
-      phylogeny,
-      this.defaultNomenCode
-    ).getNodeLabels().forEach((nodeLabel) => {
-      // Is this node label identical to the phyloreference name?
-      if (nodeLabel === phylorefLabel) {
-        nodeLabels.add(nodeLabel);
-      } else if (
-        has(phylogeny, 'additionalNodeProperties')
-        && has(phylogeny.additionalNodeProperties, nodeLabel)
-        && has(phylogeny.additionalNodeProperties[nodeLabel], 'expectedPhyloreferenceNamed')
-      ) {
-        // Does this node label have an expectedPhyloreferenceNamed that
-        // includes this phyloreference name?
-
-        const expectedPhylorefs = phylogeny
-          .additionalNodeProperties[nodeLabel]
-          .expectedPhyloreferenceNamed;
-
-        if (expectedPhylorefs.includes(phylorefLabel)) {
+    new PhylogenyWrapper(phylogeny, this.defaultNomenCode)
+      .getNodeLabels()
+      .forEach(nodeLabel => {
+        // Is this node label identical to the phyloreference name?
+        if (nodeLabel === phylorefLabel) {
           nodeLabels.add(nodeLabel);
+        } else if (
+          has(phylogeny, 'additionalNodeProperties') &&
+          has(phylogeny.additionalNodeProperties, nodeLabel) &&
+          has(
+            phylogeny.additionalNodeProperties[nodeLabel],
+            'expectedPhyloreferenceNamed',
+          )
+        ) {
+          // Does this node label have an expectedPhyloreferenceNamed that
+          // includes this phyloreference name?
+
+          const expectedPhylorefs =
+            phylogeny.additionalNodeProperties[nodeLabel]
+              .expectedPhyloreferenceNamed;
+
+          if (expectedPhylorefs.includes(phylorefLabel)) {
+            nodeLabels.add(nodeLabel);
+          }
         }
-      }
-    });
+      });
 
     // Return node labels sorted alphabetically.
     return Array.from(nodeLabels).sort();
@@ -205,13 +216,16 @@ class PhylorefWrapper {
     //  - intervalEnd: the end of the interval
 
     if (
-      has(this.phyloref, 'pso:holdsStatusInTime')
-      && Array.isArray(this.phyloref['pso:holdsStatusInTime'])
-      && this.phyloref['pso:holdsStatusInTime'].length > 0
+      has(this.phyloref, 'pso:holdsStatusInTime') &&
+      Array.isArray(this.phyloref['pso:holdsStatusInTime']) &&
+      this.phyloref['pso:holdsStatusInTime'].length > 0
     ) {
       // If we have any pso:holdsStatusInTime entries, pick the first one and
       // extract the CURIE and time interval information from it.
-      const lastStatusInTime = this.phyloref['pso:holdsStatusInTime'][this.phyloref['pso:holdsStatusInTime'].length - 1];
+      const lastStatusInTime =
+        this.phyloref['pso:holdsStatusInTime'][
+          this.phyloref['pso:holdsStatusInTime'].length - 1
+        ];
       const statusCURIE = lastStatusInTime['pso:withStatus']['@id'];
 
       // Look for time interval information
@@ -220,14 +234,17 @@ class PhylorefWrapper {
 
       if (has(lastStatusInTime, 'tvc:atTime')) {
         const atTime = lastStatusInTime['tvc:atTime'];
-        if (has(atTime, 'timeinterval:hasIntervalStartDate')) intervalStart = atTime['timeinterval:hasIntervalStartDate'];
-        if (has(atTime, 'timeinterval:hasIntervalEndDate')) intervalEnd = atTime['timeinterval:hasIntervalEndDate'];
+        if (has(atTime, 'timeinterval:hasIntervalStartDate'))
+          intervalStart = atTime['timeinterval:hasIntervalStartDate'];
+        if (has(atTime, 'timeinterval:hasIntervalEndDate'))
+          intervalEnd = atTime['timeinterval:hasIntervalEndDate'];
       }
 
       // Return result object
       return {
         statusCURIE,
-        statusInEnglish: PhylorefWrapper.getStatusCURIEsInEnglish()[statusCURIE],
+        statusInEnglish:
+          PhylorefWrapper.getStatusCURIEsInEnglish()[statusCURIE],
         intervalStart,
         intervalEnd,
       };
@@ -243,13 +260,14 @@ class PhylorefWrapper {
   getStatusChanges() {
     // Return a list of status changes for a particular phyloreference
     if (has(this.phyloref, 'pso:holdsStatusInTime')) {
-      return this.phyloref['pso:holdsStatusInTime'].map((entry) => {
+      return this.phyloref['pso:holdsStatusInTime'].map(entry => {
         const result = {};
 
         // Create a statusCURIE convenience field.
         if (has(entry, 'pso:withStatus')) {
           result.statusCURIE = entry['pso:withStatus']['@id'];
-          result.statusInEnglish = PhylorefWrapper.getStatusCURIEsInEnglish()[result.statusCURIE];
+          result.statusInEnglish =
+            PhylorefWrapper.getStatusCURIEsInEnglish()[result.statusCURIE];
         }
 
         // Create intervalStart/intervalEnd convenient fields
@@ -257,12 +275,16 @@ class PhylorefWrapper {
           const atTime = entry['tvc:atTime'];
           if (has(atTime, 'timeinterval:hasIntervalStartDate')) {
             result.intervalStart = atTime['timeinterval:hasIntervalStartDate'];
-            result.intervalStartAsCalendar = moment(result.intervalStart).calendar();
+            result.intervalStartAsCalendar = moment(
+              result.intervalStart,
+            ).calendar();
           }
 
           if (has(atTime, 'timeinterval:hasIntervalEndDate')) {
             result.intervalEnd = atTime['timeinterval:hasIntervalEndDate'];
-            result.intervalEndAsCalendar = moment(result.intervalEnd).calendar();
+            result.intervalEndAsCalendar = moment(
+              result.intervalEnd,
+            ).calendar();
           }
         }
 
@@ -279,7 +301,9 @@ class PhylorefWrapper {
     //
     // Check whether we have a valid status CURIE.
     if (!has(PhylorefWrapper.getStatusCURIEsInEnglish(), status)) {
-      throw new TypeError(`setStatus() called with invalid status CURIE '${status}'`);
+      throw new TypeError(
+        `setStatus() called with invalid status CURIE '${status}'`,
+      );
     }
 
     // See if we can end the previous interval.
@@ -292,19 +316,25 @@ class PhylorefWrapper {
 
     // Check to see if there's a previous time interval we should end.
     if (
-      Array.isArray(this.phyloref['pso:holdsStatusInTime'])
-      && this.phyloref['pso:holdsStatusInTime'].length > 0
+      Array.isArray(this.phyloref['pso:holdsStatusInTime']) &&
+      this.phyloref['pso:holdsStatusInTime'].length > 0
     ) {
-      const lastStatusInTime = this.phyloref['pso:holdsStatusInTime'][this.phyloref['pso:holdsStatusInTime'].length - 1];
+      const lastStatusInTime =
+        this.phyloref['pso:holdsStatusInTime'][
+          this.phyloref['pso:holdsStatusInTime'].length - 1
+        ];
 
       // if (!has(lastStatusInTime, 'tvc:atTime'))
       //  Vue.set(lastStatusInTime, 'tvc:atTime', {});
       if (!has(lastStatusInTime, 'tvc:atTime')) {
         lastStatusInTime['tvc:atTime'] = {};
       }
-      if (!has(lastStatusInTime['tvc:atTime'], 'timeinterval:hasIntervalEndDate')) {
+      if (
+        !has(lastStatusInTime['tvc:atTime'], 'timeinterval:hasIntervalEndDate')
+      ) {
         // If the last time entry doesn't already have an interval end date, set it to now.
-        lastStatusInTime['tvc:atTime']['timeinterval:hasIntervalEndDate'] = currentTime;
+        lastStatusInTime['tvc:atTime']['timeinterval:hasIntervalEndDate'] =
+          currentTime;
       }
     }
 
@@ -326,21 +356,23 @@ class PhylorefWrapper {
    * list as owlterms.UNKNOWN_CODE.
    */
   get uniqNomenCodes() {
-    return uniq(this.specifiers.map((specifier) => {
-      const taxonConcept = new TaxonomicUnitWrapper(
-        specifier,
-        this.phyxDefaultNomenCode
-      ).taxonConcept;
-      if (!taxonConcept) return owlterms.UNKNOWN_CODE;
+    return uniq(
+      this.specifiers.map(specifier => {
+        const taxonConcept = new TaxonomicUnitWrapper(
+          specifier,
+          this.phyxDefaultNomenCode,
+        ).taxonConcept;
+        if (!taxonConcept) return owlterms.UNKNOWN_CODE;
 
-      const nomenCode = new TaxonConceptWrapper(
-        taxonConcept,
-        this.phyxDefaultNomenCode
-      ).nomenCode;
-      if (!nomenCode) return owlterms.UNKNOWN_CODE;
+        const nomenCode = new TaxonConceptWrapper(
+          taxonConcept,
+          this.phyxDefaultNomenCode,
+        ).nomenCode;
+        if (!nomenCode) return owlterms.UNKNOWN_CODE;
 
-      return nomenCode;
-    }));
+        return nomenCode;
+      }),
+    );
   }
 
   /**
@@ -358,9 +390,11 @@ class PhylorefWrapper {
     // If we have a single nomenclatural code *apart* from all the
     // owlterms.UNKNOWN_CODEs, then that is still usable as a default
     // nomenclatural code for this phyloreference.
-    const uniqNomenCodesNoUnknowns = this.uniqNomenCodes
-      .filter(code => code !== owlterms.UNKNOWN_CODE);
-    if (uniqNomenCodesNoUnknowns.length === 1) return uniqNomenCodesNoUnknowns[0];
+    const uniqNomenCodesNoUnknowns = this.uniqNomenCodes.filter(
+      code => code !== owlterms.UNKNOWN_CODE,
+    );
+    if (uniqNomenCodesNoUnknowns.length === 1)
+      return uniqNomenCodesNoUnknowns[0];
 
     return owlterms.UNKNOWN_CODE;
   }
@@ -388,10 +422,16 @@ class PhylorefWrapper {
     externalSpecifiers,
     equivClass,
     reusePrevious = true,
-    parentClass = undefined
+    parentClass = undefined,
   ) {
-    if (internalSpecifiers.length === 0) throw new Error('Cannot create component class without any internal specifiers');
-    if (internalSpecifiers.length === 1 && externalSpecifiers.length === 0) throw new Error('Cannot create component class with a single internal specifiers and no external specifiers');
+    if (internalSpecifiers.length === 0)
+      throw new Error(
+        'Cannot create component class without any internal specifiers',
+      );
+    if (internalSpecifiers.length === 1 && externalSpecifiers.length === 0)
+      throw new Error(
+        'Cannot create component class with a single internal specifiers and no external specifiers',
+      );
 
     /* Generate a label that represents this component class. */
 
@@ -401,11 +441,16 @@ class PhylorefWrapper {
     // name for a specifier.
     const outerThis = this;
     function generateSpecifierName(specifier) {
-      const wrapped = new TaxonomicUnitWrapper(specifier, outerThis.defaultNomenCode);
+      const wrapped = new TaxonomicUnitWrapper(
+        specifier,
+        outerThis.defaultNomenCode,
+      );
       if (!wrapped) return '(error)';
       if (wrapped.taxonConcept) {
-        const nomenCodeDetails = new TaxonConceptWrapper(wrapped.taxonConcept).nomenCodeDetails;
-        if (nomenCodeDetails) return `${wrapped.label} (${nomenCodeDetails.shortName})`;
+        const nomenCodeDetails = new TaxonConceptWrapper(wrapped.taxonConcept)
+          .nomenCodeDetails;
+        if (nomenCodeDetails)
+          return `${wrapped.label} (${nomenCodeDetails.shortName})`;
       }
       return wrapped.label;
     }
@@ -432,22 +477,30 @@ class PhylorefWrapper {
 
     // TODO We need to replace this with an actual object-based comparison,
     // rather than trusting the labels to tell us everything.
-    if (reusePrevious && has(this.componentClassesByLabel, componentClassLabel)) {
+    if (
+      reusePrevious &&
+      has(this.componentClassesByLabel, componentClassLabel)
+    ) {
       // If we see the same label again, return the previously defined component class.
-      return { '@id': this.componentClassesByLabel[componentClassLabel]['@id'] };
+      return {
+        '@id': this.componentClassesByLabel[componentClassLabel]['@id'],
+      };
     }
 
     // Create a new component class for this set of internal and external specifiers.
     this.componentClassCount += 1;
     const componentClass = {};
-    componentClass['@id'] = `${jsonld['@id']}_component${this.componentClassCount}`;
+    componentClass['@id'] =
+      `${jsonld['@id']}_component${this.componentClassCount}`;
     // process.stderr.write(`Creating new componentClass with id: ${componentClass['@id']}`);
 
     componentClass['@type'] = 'owl:Class';
     componentClass.label = componentClassLabel;
     componentClass.equivalentClass = equivClass;
-    if (externalSpecifiers.length > 0) componentClass.subClassOf = ['phyloref:PhyloreferenceUsingMaximumClade'];
-    else componentClass.subClassOf = ['phyloref:PhyloreferenceUsingMinimumClade'];
+    if (externalSpecifiers.length > 0)
+      componentClass.subClassOf = ['phyloref:PhyloreferenceUsingMaximumClade'];
+    else
+      componentClass.subClassOf = ['phyloref:PhyloreferenceUsingMinimumClade'];
 
     if (parentClass) {
       componentClass.subClassOf.push({
@@ -468,7 +521,8 @@ class PhylorefWrapper {
     return {
       '@type': 'owl:Restriction',
       onProperty: 'phyloref:includes_TU',
-      someValuesFrom: new TaxonomicUnitWrapper(tu, this.defaultNomenCode).asOWLEquivClass,
+      someValuesFrom: new TaxonomicUnitWrapper(tu, this.defaultNomenCode)
+        .asOWLEquivClass,
     };
   }
 
@@ -486,7 +540,8 @@ class PhylorefWrapper {
           {
             '@type': 'owl:Restriction',
             onProperty: 'phyloref:excludes_TU',
-            someValuesFrom: new TaxonomicUnitWrapper(tu1, this.defaultNomenCode).asOWLEquivClass,
+            someValuesFrom: new TaxonomicUnitWrapper(tu1, this.defaultNomenCode)
+              .asOWLEquivClass,
           },
           this.getIncludesRestrictionForTU(tu2),
         ],
@@ -529,12 +584,20 @@ class PhylorefWrapper {
     if (selected.length === 0) {
       if (remainingInternals.length === 2) {
         return [
-          this.getMRCARestrictionOfTwoTUs(remainingInternals[0], remainingInternals[1]),
+          this.getMRCARestrictionOfTwoTUs(
+            remainingInternals[0],
+            remainingInternals[1],
+          ),
         ];
-      } if (remainingInternals.length === 1) {
-        throw new Error('Cannot determine class expression for a single specifier');
+      }
+      if (remainingInternals.length === 1) {
+        throw new Error(
+          'Cannot determine class expression for a single specifier',
+        );
       } else if (remainingInternals.length === 0) {
-        throw new Error('Cannot determine class expression for zero specifiers');
+        throw new Error(
+          'Cannot determine class expression for zero specifiers',
+        );
       }
     }
 
@@ -543,18 +606,24 @@ class PhylorefWrapper {
     if (selected.length > 0) {
       let remainingInternalsExpr = [];
       if (remainingInternals.length === 1) {
-        remainingInternalsExpr = this.getIncludesRestrictionForTU(remainingInternals[0]);
+        remainingInternalsExpr = this.getIncludesRestrictionForTU(
+          remainingInternals[0],
+        );
       } else if (remainingInternals.length === 2) {
         remainingInternalsExpr = this.getMRCARestrictionOfTwoTUs(
           remainingInternals[0],
-          remainingInternals[1]
+          remainingInternals[1],
         );
       } else {
         remainingInternalsExpr = this.createComponentClass(
           jsonld,
           remainingInternals,
           [],
-          this.createClassExpressionsForInternals(jsonld, remainingInternals, [])
+          this.createClassExpressionsForInternals(
+            jsonld,
+            remainingInternals,
+            [],
+          ),
         );
       }
 
@@ -562,13 +631,16 @@ class PhylorefWrapper {
       if (selected.length === 1) {
         selectedExpr = this.getIncludesRestrictionForTU(selected[0]);
       } else if (selected.length === 2) {
-        selectedExpr = this.getMRCARestrictionOfTwoTUs(selected[0], selected[1]);
+        selectedExpr = this.getMRCARestrictionOfTwoTUs(
+          selected[0],
+          selected[1],
+        );
       } else {
         selectedExpr = this.createComponentClass(
           jsonld,
           selected,
           [],
-          this.createClassExpressionsForInternals(jsonld, selected, [])
+          this.createClassExpressionsForInternals(jsonld, selected, []),
         );
       }
 
@@ -577,11 +649,14 @@ class PhylorefWrapper {
         onProperty: 'obo:CDAO_0000149', // cdao:has_Child
         someValuesFrom: {
           '@type': 'owl:Class',
-          intersectionOf: [{
-            '@type': 'owl:Restriction',
-            onProperty: 'phyloref:excludes_lineage_to',
-            someValuesFrom: remainingInternalsExpr,
-          }, selectedExpr],
+          intersectionOf: [
+            {
+              '@type': 'owl:Restriction',
+              onProperty: 'phyloref:excludes_lineage_to',
+              someValuesFrom: remainingInternalsExpr,
+            },
+            selectedExpr,
+          ],
         },
       });
     }
@@ -591,16 +666,24 @@ class PhylorefWrapper {
     // Note that we only process cases where there are more remainingInternals than
     // selected internals -- when there are fewer, we'll just end up with the inverses
     // of the previous comparisons, which we'll already have covered.
-    if (remainingInternals.length > 1 && selected.length <= remainingInternals.length) {
-      remainingInternals.map(newlySelected => this.createClassExpressionsForInternals(
-        jsonld,
-        // The new remaining is the old remaining minus the selected TU.
-        remainingInternals.filter(i => i !== newlySelected),
-        // The new selected is the old selected plus the selected TU.
-        selected.concat([newlySelected])
-      ))
+    if (
+      remainingInternals.length > 1 &&
+      selected.length <= remainingInternals.length
+    ) {
+      remainingInternals
+        .map(newlySelected =>
+          this.createClassExpressionsForInternals(
+            jsonld,
+            // The new remaining is the old remaining minus the selected TU.
+            remainingInternals.filter(i => i !== newlySelected),
+            // The new selected is the old selected plus the selected TU.
+            selected.concat([newlySelected]),
+          ),
+        )
         .reduce((acc, val) => acc.concat(val), [])
-        .forEach(expr => classExprs.push(expr));
+        .forEach(expr => {
+          classExprs.push(expr);
+        });
     }
 
     return classExprs;
@@ -629,7 +712,9 @@ class PhylorefWrapper {
     if (has(phylorefAsJSONLD, 'definitionSource')) {
       const definitionSource = phylorefAsJSONLD.definitionSource;
       if (!has(definitionSource, 'bibliographicCitation')) {
-        definitionSource.bibliographicCitation = new CitationWrapper(definitionSource).toString();
+        definitionSource.bibliographicCitation = new CitationWrapper(
+          definitionSource,
+        ).toString();
       }
     }
 
@@ -641,8 +726,9 @@ class PhylorefWrapper {
     // logical expression that describes the apomorphy.
     const phylorefType = phylorefAsJSONLD.phylorefType;
     if (
-      (phylorefType && phylorefType === 'phyloref:PhyloreferenceUsingApomorphy')
-      || (has(phylorefAsJSONLD, 'apomorphy'))
+      (phylorefType &&
+        phylorefType === 'phyloref:PhyloreferenceUsingApomorphy') ||
+      has(phylorefAsJSONLD, 'apomorphy')
     ) {
       // This is an apomorphy-based definition!
       phylorefAsJSONLD.subClassOf = [
@@ -672,7 +758,8 @@ class PhylorefWrapper {
     if (internalSpecifiers.length === 0) {
       // We can't handle phyloreferences without at least one internal specifier.
       calculatedPhylorefType = 'phyloref:MalformedPhyloreference';
-      phylorefAsJSONLD.malformedPhyloreference = 'No internal specifiers provided';
+      phylorefAsJSONLD.malformedPhyloreference =
+        'No internal specifiers provided';
     } else if (externalSpecifiers.length > 0) {
       calculatedPhylorefType = 'phyloref:PhyloreferenceUsingMaximumClade';
 
@@ -688,10 +775,10 @@ class PhylorefWrapper {
       // be the one that will be used, we need to generate logical expressions
       // for every possibility.
 
-      logicalExpressions = externalSpecifiers.map((selectedExternal) => {
+      logicalExpressions = externalSpecifiers.map(selectedExternal => {
         // Add the internal specifiers.
-        const intersectionExprs = internalSpecifiers.map(
-          sp => this.getIncludesRestrictionForTU(sp)
+        const intersectionExprs = internalSpecifiers.map(sp =>
+          this.getIncludesRestrictionForTU(sp),
         );
 
         // Add the selected external specifier.
@@ -700,16 +787,18 @@ class PhylorefWrapper {
           onProperty: 'phyloref:excludes_TU',
           someValuesFrom: new TaxonomicUnitWrapper(
             selectedExternal,
-            this.defaultNomenCode
+            this.defaultNomenCode,
           ).asOWLEquivClass,
         });
 
         // Collect all of the externals that are not selected.
-        const remainingExternals = externalSpecifiers.filter(ex => ex !== selectedExternal);
+        const remainingExternals = externalSpecifiers.filter(
+          ex => ex !== selectedExternal,
+        );
 
         // Add the remaining externals, which we assume will resolve outside of
         // this clade.
-        remainingExternals.forEach((externalTU) => {
+        remainingExternals.forEach(externalTU => {
           intersectionExprs.push({
             '@type': 'owl:Restriction',
             onProperty: 'obo:CDAO_0000144', // has_Ancestor
@@ -718,7 +807,7 @@ class PhylorefWrapper {
               onProperty: 'phyloref:excludes_TU',
               someValuesFrom: new TaxonomicUnitWrapper(
                 externalTU,
-                this.defaultNomenCode
+                this.defaultNomenCode,
               ).asOWLEquivClass,
             },
           });
@@ -735,7 +824,9 @@ class PhylorefWrapper {
       // We only have internal specifiers. We therefore need to use the algorithm in
       // this.createClassExpressionsForInternals() to create this expression.
       logicalExpressions = this.createClassExpressionsForInternals(
-        phylorefAsJSONLD, internalSpecifiers, []
+        phylorefAsJSONLD,
+        internalSpecifiers,
+        [],
       );
     }
 
@@ -748,8 +839,8 @@ class PhylorefWrapper {
       // could be generated. Otherwise, throw an error.
       if (!has(phylorefAsJSONLD, 'malformedPhyloreference')) {
         throw new Error(
-          `Phyloref ${this.label} was generated by Phyx.js with neither logical expressions nor an explanation for the lack of logical expressions. `
-          + 'This indicates an error in the Phyx.js library. Please report this bug at https://github.com/phyloref/phyx.js/issues.'
+          `Phyloref ${this.label} was generated by Phyx.js with neither logical expressions nor an explanation for the lack of logical expressions. ` +
+            'This indicates an error in the Phyx.js library. Please report this bug at https://github.com/phyloref/phyx.js/issues.',
         );
       }
     } else if (logicalExpressions.length === 1) {
@@ -774,16 +865,18 @@ class PhylorefWrapper {
       //  2. We need to set each of these component classes to be a subclass of
       //     this phyloreference so that it can include instances from each of the
       //     logical expressions.
-      phylorefAsJSONLD.subClasses = logicalExpressions.map(classExpr => this.createComponentClass(
-        phylorefAsJSONLD,
-        internalSpecifiers,
-        externalSpecifiers,
-        classExpr,
-        // False in order to turn off caching by internal and external specifiers.
-        false,
-        // Make the new component class a subclass of this phyloreference.
-        phylorefAsJSONLD
-      ));
+      phylorefAsJSONLD.subClasses = logicalExpressions.map(classExpr =>
+        this.createComponentClass(
+          phylorefAsJSONLD,
+          internalSpecifiers,
+          externalSpecifiers,
+          classExpr,
+          // False in order to turn off caching by internal and external specifiers.
+          false,
+          // Make the new component class a subclass of this phyloreference.
+          phylorefAsJSONLD,
+        ),
+      );
     }
 
     // Every phyloreference is a subclass of phyloref:Phyloreference.
@@ -795,9 +888,12 @@ class PhylorefWrapper {
 
     // If the this Phyloref has a phylorefType that differs from the calculated
     // phyloref type, throw an error.
-    if (has(phylorefAsJSONLD, 'phylorefType') && phylorefAsJSONLD.phylorefType !== calculatedPhylorefType) {
+    if (
+      has(phylorefAsJSONLD, 'phylorefType') &&
+      phylorefAsJSONLD.phylorefType !== calculatedPhylorefType
+    ) {
       throw new Error(
-        `Phyloref ${this.label} has phylorefType set to '${phylorefAsJSONLD.phylorefType}', but it appears to be a '${calculatedPhylorefType}'.`
+        `Phyloref ${this.label} has phylorefType set to '${phylorefAsJSONLD.phylorefType}', but it appears to be a '${calculatedPhylorefType}'.`,
       );
     }
     phylorefAsJSONLD.subClassOf.push(calculatedPhylorefType);

@@ -1,10 +1,5 @@
 /** Utility functions. */
-const {
-  has,
-  isArray,
-  cloneDeep,
-  assign,
-} = require('lodash');
+const { has, isArray, cloneDeep, assign } = require('lodash');
 
 /** List of OWL/RDF terms we use. */
 const owlterms = require('../utils/owlterms');
@@ -94,7 +89,8 @@ class TaxonomicUnitWrapper {
    * Return this taxonomic unit if it is a taxon concept.
    */
   get taxonConcept() {
-    if (this.types.includes(TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT)) return this.tunit;
+    if (this.types.includes(TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT))
+      return this.tunit;
     return undefined;
   }
 
@@ -103,7 +99,8 @@ class TaxonomicUnitWrapper {
    */
   get specimen() {
     // Only specimens have scientific names.
-    if (this.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN)) return this.tunit;
+    if (this.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN))
+      return this.tunit;
 
     return undefined;
   }
@@ -156,12 +153,25 @@ class TaxonomicUnitWrapper {
    * @return A taxonomic unit that this label could be parsed as.
    */
   static fromLabel(nodeLabel, nomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
-    if (nodeLabel === undefined || nodeLabel === null || nodeLabel.trim() === '') return undefined;
+    if (
+      nodeLabel === undefined ||
+      nodeLabel === null ||
+      nodeLabel.trim() === ''
+    )
+      return undefined;
 
     // Rather than figuring out with this label, check to see if we've parsed
     // this before.
-    if (PhyxCacheManager.has(`TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache.${nomenCode}`, nodeLabel)) {
-      return PhyxCacheManager.get(`TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache.${nomenCode}`, nodeLabel);
+    if (
+      PhyxCacheManager.has(
+        `TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache.${nomenCode}`,
+        nodeLabel,
+      )
+    ) {
+      return PhyxCacheManager.get(
+        `TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache.${nomenCode}`,
+        nodeLabel,
+      );
     }
 
     // Look for taxon concept.
@@ -199,7 +209,9 @@ class TaxonomicUnitWrapper {
       'urn:',
     ];
 
-    if (URL_URN_PREFIXES.filter(prefix => nodeLabel.startsWith(prefix)).length > 0) {
+    if (
+      URL_URN_PREFIXES.filter(prefix => nodeLabel.startsWith(prefix)).length > 0
+    ) {
       // The node label starts with something that looks like a URL!
       // Treat it as an external reference.
       if (tunit === undefined) tunit = {};
@@ -212,7 +224,11 @@ class TaxonomicUnitWrapper {
     }
 
     // Record in the cache
-    PhyxCacheManager.put(`TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache.${nomenCode}`, nodeLabel, tunit);
+    PhyxCacheManager.put(
+      `TaxonomicUnitWrapper.taxonomicUnitsFromNodeLabelCache.${nomenCode}`,
+      nodeLabel,
+      tunit,
+    );
 
     return tunit;
   }
@@ -232,7 +248,8 @@ class TaxonomicUnitWrapper {
 
     // Add CDAO_TU as a type to the existing types.
     if (has(this.tunit, '@type')) {
-      if (isArray(this.tunit['@type'])) this.tunit['@type'].push(owlterms.CDAO_TU);
+      if (isArray(this.tunit['@type']))
+        this.tunit['@type'].push(owlterms.CDAO_TU);
     }
 
     const equivClass = this.asOWLEquivClass;
@@ -248,7 +265,8 @@ class TaxonomicUnitWrapper {
    */
   get asOWLEquivClass() {
     if (this.types.includes(TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT)) {
-      return new TaxonConceptWrapper(this.tunit, this.defaultNomenCode).asOWLEquivClass;
+      return new TaxonConceptWrapper(this.tunit, this.defaultNomenCode)
+        .asOWLEquivClass;
     }
 
     if (this.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN)) {

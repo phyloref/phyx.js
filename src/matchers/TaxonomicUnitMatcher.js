@@ -48,9 +48,9 @@ class TaxonomicUnitMatcher {
   /** Try to match the two taxonomic units using a number of matching methods. */
   match() {
     if (
-      this.matchByNameComplete()
-      || this.matchByExternalReferences()
-      || this.matchByOccurrenceID()
+      this.matchByNameComplete() ||
+      this.matchByExternalReferences() ||
+      this.matchByOccurrenceID()
     ) {
       this.matched = true;
     } else {
@@ -68,8 +68,9 @@ class TaxonomicUnitMatcher {
     const wrappedTName2 = new TaxonConceptWrapper(this.tunit2);
 
     if (
-      wrappedTName1.nameComplete && wrappedTName2.nameComplete
-      && wrappedTName1.nameComplete === wrappedTName2.nameComplete
+      wrappedTName1.nameComplete &&
+      wrappedTName2.nameComplete &&
+      wrappedTName1.nameComplete === wrappedTName2.nameComplete
     ) {
       this.matchReason = `Taxon name '${wrappedTName1.label}' and taxon name '${wrappedTName2.label}' share the same complete name`;
       return true;
@@ -86,21 +87,19 @@ class TaxonomicUnitMatcher {
     const externalRefs1 = wrappedTUnit1.externalReferences;
     const externalRefs2 = wrappedTUnit2.externalReferences;
 
-    return externalRefs1.some(
-      extref1 => externalRefs2.some(
-        (extref2) => {
-          if (
-            extref1
-            && extref2
-            && (extref1.toLowerCase() === extref2.toLowerCase())
-          ) {
-            this.matchReason = `External reference '${extref1}' is shared by taxonomic unit ${this.tunit1} and ${this.tunit2}`;
-            return true;
-          }
-
-          return false;
+    return externalRefs1.some(extref1 =>
+      externalRefs2.some(extref2 => {
+        if (
+          extref1 &&
+          extref2 &&
+          extref1.toLowerCase() === extref2.toLowerCase()
+        ) {
+          this.matchReason = `External reference '${extref1}' is shared by taxonomic unit ${this.tunit1} and ${this.tunit2}`;
+          return true;
         }
-      )
+
+        return false;
+      }),
     );
   }
 
@@ -110,16 +109,19 @@ class TaxonomicUnitMatcher {
     const wrappedTUnit1 = new TaxonomicUnitWrapper(this.tunit1);
     const wrappedTUnit2 = new TaxonomicUnitWrapper(this.tunit2);
 
-    if (!wrappedTUnit1.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN)) return false;
-    if (!wrappedTUnit2.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN)) return false;
+    if (!wrappedTUnit1.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN))
+      return false;
+    if (!wrappedTUnit2.types.includes(TaxonomicUnitWrapper.TYPE_SPECIMEN))
+      return false;
 
     // Occurrence IDs from both taxonomic units.
     const wrappedSpecimen1 = new SpecimenWrapper(this.tunit1);
     const wrappedSpecimen2 = new SpecimenWrapper(this.tunit2);
 
     if (
-      wrappedSpecimen1.occurrenceID && wrappedSpecimen2.occurrenceID
-      && wrappedSpecimen1.occurrenceID === wrappedSpecimen2.occurrenceID
+      wrappedSpecimen1.occurrenceID &&
+      wrappedSpecimen2.occurrenceID &&
+      wrappedSpecimen1.occurrenceID === wrappedSpecimen2.occurrenceID
     ) {
       this.matchReason = `Specimen identifier '${wrappedSpecimen1.occurrenceID}' is shared by taxonomic units`;
 
