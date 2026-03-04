@@ -1,26 +1,27 @@
 #!/usr/bin/env node
 
-const fs = require('node:fs');
-const path = require('node:path');
-
-const retus = require('retus');
-const lodash = require('lodash');
-
-const phyx = require('..');
+import fs from 'node:fs';
+import path from 'node:path';
+import retus from 'retus';
+import lodash from 'lodash';
+import phyx from '../src/index.js';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
 /*
  * An application for resolving input Phyx files on the Open Tree of Life.
  */
 
 // Read command line arguments.
-const argv = require('yargs')
+const argv = yargs(hideBin(process.argv))
   .usage('$0 [files to resolve on the Open Tree of Life]')
   .describe('write-table', 'A file to which to write a table of results')
   .describe('verbose', 'Display debugging information')
   .boolean('verbose')
   .help()
   .alias('h', 'help')
-  .showHelpOnFail(true).argv;
+  .showHelpOnFail(true)
+  .parse();
 
 const filenames = argv._;
 if (filenames.length === 0) {

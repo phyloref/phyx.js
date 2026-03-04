@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 
-const fs = require('node:fs');
-const path = require('node:path');
-const phyx = require('..');
+import fs from 'node:fs';
+import path from 'node:path';
+import phyx from '../src/index.js';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
 /*
  * An application for converting input Phyx files to OWL ontologies in N-Quads.
  */
 
 // Read command line arguments.
-const argv = require('yargs')
+const argv = yargs(hideBin(process.argv))
   .usage('$0 [files or directories to convert into OWL ontologies]')
   .describe(
     'max-internal-specifiers',
@@ -23,7 +25,8 @@ const argv = require('yargs')
   .default('max-external-specifiers', 8)
   .describe('base-iri', 'The base IRI to use for the input files')
   .help()
-  .alias('h', 'help').argv;
+  .alias('h', 'help')
+  .parse();
 
 /*
  * Get a list of all files in a directory. We will recurse into directories and choose

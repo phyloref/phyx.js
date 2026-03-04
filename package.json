@@ -20,15 +20,15 @@
   "author": "Gaurav Vaidya <gaurav@ggvaidya.com>",
   "main": "src/index.js",
   "bin": {
-    "phyx2owl": "bin/phyx2owl.js",
-    "resolve": "bin/resolve.js"
+    "phyx2owl": "bin/phyx2owl.mjs",
+    "resolve": "bin/resolve.mjs"
   },
   "scripts": {
     "docs": "esdoc",
     "generate-every-topology": "every-topology-testing/generate-topologies.js",
     "lint": "biome check",
-    "phyx2owl": "node bin/phyx2owl.js",
-    "resolve": "node bin/resolve.js",
+    "phyx2owl": "node bin/phyx2owl.mjs",
+    "resolve": "node bin/resolve.mjs",
     "posttest": "npm run lint",
     "test": "mocha --recursive"
   },
