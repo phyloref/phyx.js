@@ -7,6 +7,7 @@ const path = require('path');
 
 const chai = require('chai');
 const Ajv = require('ajv');
+const addFormats = require('ajv-formats');
 
 const phyx = require('../src');
 
@@ -28,6 +29,7 @@ describe('PhyxWrapper', function () {
   const ajv = new Ajv({
     allErrors: true, // Display all error messages, not just the first.
   });
+  addFormats(ajv);
   const validator = ajv.compile(
     JSON.parse(
       fs.readFileSync(
