@@ -104,7 +104,7 @@ function convertFileToOWL(filename, argOutputFilename = '') {
 
     // Remove any phylorefs that have too many specifiers.
     const phylorefCount = (phyxContent.phylorefs || []).length;
-    filteredPhylorefs = (phyxContent.phylorefs || []).filter(phyloref => {
+    const filteredPhylorefs = (phyxContent.phylorefs || []).filter(phyloref => {
       const wrappedPhyloref = new phyx.PhylorefWrapper(phyloref);
       const internalSpecifiersCount = wrappedPhyloref.internalSpecifiers.length;
       const externalSpecifiersCount = wrappedPhyloref.externalSpecifiers.length;
