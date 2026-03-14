@@ -19,7 +19,7 @@ const RESOLVE_JS = 'bin/resolve.mjs';
 
 describe('bin/resolve.mjs', function () {
   it('should work without any arguments', function () {
-    const result = child.spawnSync('node', [RESOLVE_JS], {
+    const result = child.spawnSync(process.execPath, [RESOLVE_JS], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
@@ -28,7 +28,7 @@ describe('bin/resolve.mjs', function () {
     expect(result.stderr).to.contain('No input files provided.');
   });
   it('should support `--help`', function () {
-    const result = child.spawnSync('node', [RESOLVE_JS, '--help'], {
+    const result = child.spawnSync(process.execPath, [RESOLVE_JS, '--help'], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
@@ -41,7 +41,7 @@ describe('bin/resolve.mjs', function () {
 
     this.timeout(20000); // Take up to 20 seconds to run this.
 
-    const result = child.spawnSync('node', [RESOLVE_JS, path.resolve(__dirname, '../examples/correct/brochu_2003.json')], {
+    const result = child.spawnSync(process.execPath, [RESOLVE_JS, path.resolve(__dirname, '../examples/correct/brochu_2003.json')], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
@@ -82,7 +82,7 @@ describe('bin/resolve.mjs', function () {
 
     this.timeout(20000); // Take up to 20 seconds to run this.
 
-    const result = child.spawnSync('node', [RESOLVE_JS, path.resolve(__dirname, '../examples/incorrect/otl-resolution-errors.json')], {
+    const result = child.spawnSync(process.execPath, [RESOLVE_JS, path.resolve(__dirname, '../examples/incorrect/otl-resolution-errors.json')], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
