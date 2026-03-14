@@ -15,11 +15,11 @@ const expect = chai.expect;
  * the Open Tree of Life.
  */
 
-const RESOLVE_JS = 'bin/resolve.js';
+const RESOLVE_JS = 'bin/resolve.mjs';
 
-describe('bin/resolve.js', function () {
+describe('bin/resolve.mjs', function () {
   it('should work without any arguments', function () {
-    const result = child.spawnSync(RESOLVE_JS, [], {
+    const result = child.spawnSync(process.execPath, [RESOLVE_JS], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
@@ -28,20 +28,20 @@ describe('bin/resolve.js', function () {
     expect(result.stderr).to.contain('No input files provided.');
   });
   it('should support `--help`', function () {
-    const result = child.spawnSync(RESOLVE_JS, ['--help'], {
+    const result = child.spawnSync(process.execPath, [RESOLVE_JS, '--help'], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
     expect(result.status).to.equal(0);
     expect(result.stderr).to.be.empty;
-    expect(result.stdout).to.contain('resolve.js [files to resolve on the Open Tree of Life]');
+    expect(result.stdout).to.contain('resolve.mjs [files to resolve on the Open Tree of Life]');
   });
   it('should provide the expected results on the `brochu_2003.json` example file', function () {
     var resultObj; // eslint-disable-line no-var
 
     this.timeout(20000); // Take up to 20 seconds to run this.
 
-    const result = child.spawnSync(RESOLVE_JS, [path.resolve(__dirname, '../examples/correct/brochu_2003.json')], {
+    const result = child.spawnSync(process.execPath, [RESOLVE_JS, path.resolve(__dirname, '../examples/correct/brochu_2003.json')], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
@@ -82,7 +82,7 @@ describe('bin/resolve.js', function () {
 
     this.timeout(20000); // Take up to 20 seconds to run this.
 
-    const result = child.spawnSync(RESOLVE_JS, [path.resolve(__dirname, '../examples/incorrect/otl-resolution-errors.json')], {
+    const result = child.spawnSync(process.execPath, [RESOLVE_JS, path.resolve(__dirname, '../examples/incorrect/otl-resolution-errors.json')], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });

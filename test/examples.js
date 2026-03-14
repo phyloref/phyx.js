@@ -7,6 +7,7 @@ const path = require('path');
 
 const chai = require('chai');
 const Ajv = require('ajv');
+const addFormats = require('ajv-formats');
 
 const phyx = require('../src');
 
@@ -28,6 +29,7 @@ describe('PhyxWrapper', function () {
   const ajv = new Ajv({
     allErrors: true, // Display all error messages, not just the first.
   });
+  addFormats(ajv);
   const validator = ajv.compile(
     JSON.parse(
       fs.readFileSync(
@@ -108,9 +110,9 @@ describe('PhyxWrapper', function () {
       {
         fileName: 'examples/incorrect/no-context.json',
         expectedErrors: [{
-          dataPath: '',
+          instancePath: '',
           keyword: 'required',
-          message: "should have required property '@context'",
+          message: "must have required property '@context'",
           params: {
             missingProperty: '@context',
           },
@@ -121,27 +123,27 @@ describe('PhyxWrapper', function () {
         fileName: 'examples/incorrect/invalid-specifier.json',
         expectedErrors: [
           {
-            dataPath: '.phylorefs[0].internalSpecifiers',
+            instancePath: '/phylorefs/0/internalSpecifiers',
             keyword: 'minItems',
-            message: 'should NOT have fewer than 1 items',
+            message: 'must NOT have fewer than 1 items',
             params: {
               limit: 1,
             },
             schemaPath: '#/properties/phylorefs/items/properties/internalSpecifiers/minItems',
           },
           {
-            dataPath: '.phylorefs[0].externalSpecifiers[0].hasName',
+            instancePath: '/phylorefs/0/externalSpecifiers/0/hasName',
             keyword: 'required',
-            message: "should have required property 'nameComplete'",
+            message: "must have required property 'nameComplete'",
             params: {
               missingProperty: 'nameComplete',
             },
             schemaPath: '#/required',
           },
           {
-            dataPath: ".phylorefs[0].externalSpecifiers[0]['@type']",
+            instancePath: "/phylorefs/0/externalSpecifiers/0/@type",
             keyword: 'enum',
-            message: 'should be equal to one of the allowed values',
+            message: 'must be equal to one of the allowed values',
             params: {
               allowedValues: [
                 'http://rs.tdwg.org/dwc/terms/Occurrence',
@@ -150,54 +152,54 @@ describe('PhyxWrapper', function () {
             schemaPath: '#/properties/%40type/enum',
           },
           {
-            dataPath: '.phylorefs[0].externalSpecifiers[0].hasName',
+            instancePath: '/phylorefs/0/externalSpecifiers/0/hasName',
             keyword: 'required',
-            message: "should have required property 'nameComplete'",
+            message: "must have required property 'nameComplete'",
             params: {
               missingProperty: 'nameComplete',
             },
             schemaPath: '#/required',
           },
           {
-            dataPath: '.phylorefs[0].externalSpecifiers[0]',
-            keyword: 'additionalProperties',
-            message: 'should NOT have additional properties',
-            params: {
-              additionalProperty: '@type',
-            },
-            schemaPath: '#/definitions/taxonomic_unit_by_id/additionalProperties',
-          },
-          {
-            dataPath: '.phylorefs[0].externalSpecifiers[0]',
-            keyword: 'additionalProperties',
-            message: 'should NOT have additional properties',
-            params: {
-              additionalProperty: 'hasName',
-            },
-            schemaPath: '#/definitions/taxonomic_unit_by_id/additionalProperties',
-          },
-          {
-            dataPath: '.phylorefs[0].externalSpecifiers[0]',
-            keyword: 'additionalProperties',
-            message: 'should NOT have additional properties',
-            params: {
-              additionalProperty: 'label',
-            },
-            schemaPath: '#/definitions/taxonomic_unit_by_id/additionalProperties',
-          },
-          {
-            dataPath: '.phylorefs[0].externalSpecifiers[0]',
+            instancePath: '/phylorefs/0/externalSpecifiers/0',
             keyword: 'required',
-            message: "should have required property '@id'",
+            message: "must have required property '@id'",
             params: {
               missingProperty: '@id',
             },
             schemaPath: '#/definitions/taxonomic_unit_by_id/required',
           },
           {
-            dataPath: '.phylorefs[0].externalSpecifiers[0]',
+            instancePath: '/phylorefs/0/externalSpecifiers/0',
+            keyword: 'additionalProperties',
+            message: 'must NOT have additional properties',
+            params: {
+              additionalProperty: '@type',
+            },
+            schemaPath: '#/definitions/taxonomic_unit_by_id/additionalProperties',
+          },
+          {
+            instancePath: '/phylorefs/0/externalSpecifiers/0',
+            keyword: 'additionalProperties',
+            message: 'must NOT have additional properties',
+            params: {
+              additionalProperty: 'hasName',
+            },
+            schemaPath: '#/definitions/taxonomic_unit_by_id/additionalProperties',
+          },
+          {
+            instancePath: '/phylorefs/0/externalSpecifiers/0',
+            keyword: 'additionalProperties',
+            message: 'must NOT have additional properties',
+            params: {
+              additionalProperty: 'label',
+            },
+            schemaPath: '#/definitions/taxonomic_unit_by_id/additionalProperties',
+          },
+          {
+            instancePath: '/phylorefs/0/externalSpecifiers/0',
             keyword: 'anyOf',
-            message: 'should match some schema in anyOf',
+            message: 'must match a schema in anyOf',
             params: {},
             schemaPath: '#/anyOf',
           },
@@ -206,17 +208,17 @@ describe('PhyxWrapper', function () {
       {
         fileName: 'examples/incorrect/unexpected-field-in-contributor.json',
         expectedErrors: [{
-          dataPath: '.contributors[0]',
+          instancePath: '/contributors/0',
           keyword: 'additionalProperties',
-          message: 'should NOT have additional properties',
+          message: 'must NOT have additional properties',
           params: {
             additionalProperty: 'first_name',
           },
           schemaPath: '#/definitions/contributor/additionalProperties',
         }, {
-          dataPath: '.contributors[0]',
+          instancePath: '/contributors/0',
           keyword: 'additionalProperties',
-          message: 'should NOT have additional properties',
+          message: 'must NOT have additional properties',
           params: {
             additionalProperty: 'last_name',
           },

@@ -14,11 +14,11 @@ const expect = chai.expect;
  * Test whether we can convert Phyx files to OWL in JSON-LD using phyx2owl.js.
  */
 
-const PHYX2OWL_JS = 'bin/phyx2owl.js';
+const PHYX2OWL_JS = 'bin/phyx2owl.mjs';
 
 describe(PHYX2OWL_JS, function () {
   it('should work without any arguments', function () {
-    const result = child.spawnSync(PHYX2OWL_JS, [], {
+    const result = child.spawnSync(process.execPath, [PHYX2OWL_JS], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
@@ -27,13 +27,13 @@ describe(PHYX2OWL_JS, function () {
     expect(result.stderr).to.contain('No input files provided.');
   });
   it('should support `--help`', function () {
-    const result = child.spawnSync(PHYX2OWL_JS, ['--help'], {
+    const result = child.spawnSync(process.execPath, [PHYX2OWL_JS, '--help'], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
     expect(result.status).to.equal(0);
     expect(result.stderr).to.be.empty;
-    expect(result.stdout).to.contain('phyx2owl.js [files or directories to convert into OWL ontologies]');
+    expect(result.stdout).to.contain('phyx2owl.mjs [files or directories to convert into OWL ontologies]');
   });
   it('should be able to convert `brochu_2003.json`', function () {
     const PHYX_FILE = path.resolve(__dirname, '../examples/correct/brochu_2003.json');
@@ -47,7 +47,7 @@ describe(PHYX2OWL_JS, function () {
     // Convert brochu_2003.json to brochu_2003.owl.
     // Because of the way in which we test brochu_2003.owl in test/examples.js,
     // we need to set a base IRI as well.
-    const result = child.spawnSync(PHYX2OWL_JS, [PHYX_FILE, '--base-iri', 'http://example.org/phyx.js/example#'], {
+    const result = child.spawnSync(process.execPath, [PHYX2OWL_JS, PHYX_FILE, '--base-iri', 'http://example.org/phyx.js/example#'], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
@@ -70,7 +70,7 @@ describe(PHYX2OWL_JS, function () {
     const jsonFilesInExamples = fs.readdirSync(EXAMPLE_DIR, { recursive: true })
       .filter(fileName => fileName.toLowerCase().endsWith('.json'));
 
-    const result = child.spawnSync(PHYX2OWL_JS, [EXAMPLE_DIR, '--base-iri', 'http://example.org/phyx.js/example#'], {
+    const result = child.spawnSync(process.execPath, [PHYX2OWL_JS, EXAMPLE_DIR, '--base-iri', 'http://example.org/phyx.js/example#'], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
@@ -103,7 +103,7 @@ describe(PHYX2OWL_JS, function () {
   // test this, but that seems unnecessary. So we won't test this functionality
   // for now, but will add a test if we find a replicable bug in the future.
   it('should give an error if no JSON files could be found', function () {
-    const result = child.spawnSync(PHYX2OWL_JS, [__dirname], {
+    const result = child.spawnSync(process.execPath, [PHYX2OWL_JS, __dirname], {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
