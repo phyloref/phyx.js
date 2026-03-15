@@ -1,6 +1,17 @@
 {
   "source": {
-    "include": ["./src"],
+    "include": [
+      "./src/wrappers/PhyxWrapper.js",
+      "./src/wrappers/PhylorefWrapper.js",
+      "./src/wrappers/PhylogenyWrapper.js",
+      "./src/wrappers/TaxonomicUnitWrapper.js",
+      "./src/matchers/TaxonomicUnitMatcher.js",
+      "./src/wrappers/TaxonConceptWrapper.js",
+      "./src/wrappers/TaxonNameWrapper.js",
+      "./src/wrappers/SpecimenWrapper.js",
+      "./src/wrappers/CitationWrapper.js",
+      "./src/utils/PhyxCacheManager.js"
+    ],
     "includePattern": ".+\\.js$",
     "excludePattern": "(node_modules|docs)"
   },
@@ -8,18 +19,13 @@
     "destination": "./docs",
     "recurse": true,
     "readme": "./README.md",
-    "template": "./node_modules/docdash",
-    "tutorials": "./tutorials"
-  },
-  "plugins": ["plugins/markdown"],
-  "templates": {
-    "docdash": {
-      "static": true,
-      "sort": true,
+    "template": "./node_modules/clean-jsdoc-theme",
+    "tutorials": "./tutorials",
+    "theme_opts": {
       "title": "phyx.js API",
+      "default_theme": "light",
       "search": true,
-      "collapse": false,
-      "sectionOrder": [
+      "sections": [
         "Tutorials",
         "Classes",
         "Modules",
@@ -27,8 +33,32 @@
         "Events",
         "Namespaces",
         "Mixins",
-        "Interfaces"
-      ]
+        "Interfaces",
+        "Global"
+      ],
+      "menu": [
+        {
+          "title": "GitHub",
+          "link": "https://github.com/phyloref/phyx.js",
+          "target": "_blank"
+        },
+        {
+          "title": "npm",
+          "link": "https://www.npmjs.com/package/@phyloref/phyx",
+          "target": "_blank"
+        }
+      ],
+      "footer": "phyx.js — Phyloreference Exchange format library"
+    }
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "includeDate": false,
+      "useLongnameInNav": false,
+      "sort": false
     }
   }
 }

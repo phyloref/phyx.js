@@ -47,7 +47,7 @@
     "ajv": "^8.18.0",
     "ajv-formats": "^3.0.1",
     "chai": "^6.2.2",
-    "docdash": "^2.0.2",
+    "clean-jsdoc-theme": "^4.3.0",
     "jsdoc": "^4.0.5",
     "mocha": "^11.7.5",
     "nodejs-file-downloader": "^4.13.0"
