@@ -8,7 +8,7 @@
     "phylogenetic definitions",
     "clade definitions"
   ],
-  "homepage": "https://github.com/phyloref/phyx.js#readme",
+  "homepage": "https://phyloref.github.io/phyx.js/",
   "bugs": {
     "url": "https://github.com/phyloref/phyx.js/issues"
   },
@@ -24,7 +24,9 @@
     "resolve": "bin/resolve.mjs"
   },
   "scripts": {
-    "docs": "esdoc",
+    "predocs": "cp CHANGELOG.md tutorials/CHANGELOG.md",
+    "docs": "jsdoc --configure jsdoc.json",
+    "postdocs": "rm -f tutorials/CHANGELOG.md && cp -r context docs/context",
     "generate-every-topology": "every-topology-testing/generate-topologies.js",
     "lint": "biome check",
     "phyx2owl": "node bin/phyx2owl.mjs",
@@ -45,36 +47,9 @@
     "ajv": "^8.18.0",
     "ajv-formats": "^3.0.1",
     "chai": "^6.2.2",
-    "esdoc": "^1.1.0",
-    "esdoc-node": "^1.0.5",
-    "esdoc-standard-plugin": "^1.0.0",
+    "docdash": "^2.0.2",
+    "jsdoc": "^4.0.5",
     "mocha": "^11.7.5",
     "nodejs-file-downloader": "^4.13.0"
-  },
-  "esdoc": {
-    "source": "./src",
-    "destination": "./docs",
-    "plugins": [
-      {
-        "name": "esdoc-standard-plugin",
-        "option": {
-          "manual": {
-            "files": [
-              "./CHANGELOG.md",
-              "./tutorials/Introduction.md"
-            ]
-          },
-          "test": {
-            "source": "./test/",
-            "includes": [
-              "\\.js$"
-            ]
-          }
-        }
-      },
-      {
-        "name": "esdoc-node"
-      }
-    ]
   }
 }

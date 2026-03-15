@@ -9,8 +9,8 @@
 /every-topology-testing
 /data
 
-# Ignore esdocs documentation.
-/docs/esdocs/
+# Ignore temporary CHANGELOG copy created by predocs script.
+tutorials/CHANGELOG.md
 
 # Logs
 logs

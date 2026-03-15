@@ -9,7 +9,7 @@ are intended to ensure that errors are reported correctly by the Phyx.js library
 and can be detected by the JSON Schema.
 
 For the purposes of testing, all of these Phyx files use the development version of
-the Phyx Context file (located at `/docs/context/development`). This allows the
+the Phyx Context file (located at `/context/development`). This allows the
 Phyx Context file to be developed side-by-side with the example files, and -- through
 continuous integration testing -- to ensure that the example files always work with
 the development version of the Context file. If sharing these example files outside

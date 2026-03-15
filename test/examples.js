@@ -33,7 +33,7 @@ describe('PhyxWrapper', function () {
   const validator = ajv.compile(
     JSON.parse(
       fs.readFileSync(
-        path.resolve(__dirname, '../docs/context/development/schema.json')
+        path.resolve(__dirname, '../context/development/schema.json')
       )
     )
   );

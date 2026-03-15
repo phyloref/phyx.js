@@ -1,0 +1,34 @@
+{
+  "source": {
+    "include": ["./src"],
+    "includePattern": ".+\\.js$",
+    "excludePattern": "(node_modules|docs)"
+  },
+  "opts": {
+    "destination": "./docs",
+    "recurse": true,
+    "readme": "./README.md",
+    "template": "./node_modules/docdash",
+    "tutorials": "./tutorials"
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "docdash": {
+      "static": true,
+      "sort": true,
+      "title": "phyx.js API",
+      "search": true,
+      "collapse": false,
+      "sectionOrder": [
+        "Tutorials",
+        "Classes",
+        "Modules",
+        "Externals",
+        "Events",
+        "Namespaces",
+        "Mixins",
+        "Interfaces"
+      ]
+    }
+  }
+}

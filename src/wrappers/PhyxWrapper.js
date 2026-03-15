@@ -21,8 +21,7 @@ class PhyxWrapper {
   /**
    * Wraps an entire PHYX document.
    * @param {Object} phyx - The Phyx structure to wrap.
-   * @param {function(newick: string): {name: string, children: Object[]}}
-   *    [newickParser=PhylogenyWrapper.getParsedNewick] - A method
+   * @param {Function} [newickParser=PhylogenyWrapper.getParsedNewick] - A method
    *    that accepts a Newick string and returns a list of nodes. Each node should have a
    *    'children' key with its children and optionally a 'name' key with its label. This
    *    code previously depended on phylotree.js, whose newick_parser() function works exactly
@@ -305,7 +304,7 @@ class PhyxWrapper {
    *    prepending them with the baseIRI.
    * @param {string} [filePath=undefined] - The path of the Phyx file being converted.
    *    Used only if the `@context` of the file is a relative path.
-   * @return {Promise[string]} A Promise to return this Phyx document as a string that can
+   * @return {Promise.<string>} A Promise to return this Phyx document as a string that can
    *    be written to an N-Quads file.
    */
   toRDF(baseIRI = '', filePath = undefined) {

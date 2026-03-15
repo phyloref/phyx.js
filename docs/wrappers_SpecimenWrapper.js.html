@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>wrappers/SpecimenWrapper.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CacheManager.html">CacheManager</a><ul class='methods'><li data-type='method'><a href="CacheManager.html#clear">clear</a></li><li data-type='method'><a href="CacheManager.html#get">get</a></li><li data-type='method'><a href="CacheManager.html#has">has</a></li><li data-type='method'><a href="CacheManager.html#put">put</a></li></ul></li><li><a href="CitationWrapper.html">CitationWrapper</a><ul class='methods'><li data-type='method'><a href="CitationWrapper.html#toString">toString</a></li><li data-type='method'><a href="CitationWrapper.html#.getAgentName">getAgentName</a></li><li data-type='method'><a href="CitationWrapper.html#.normalize">normalize</a></li></ul></li><li><a href="PhylorefWrapper.html">PhylorefWrapper</a><ul class='methods'><li data-type='method'><a href="PhylorefWrapper.html#createComponentClass">createComponentClass</a></li><li data-type='method'><a href="PhylorefWrapper.html#getMRCARestrictionOfTwoTUs">getMRCARestrictionOfTwoTUs</a></li><li data-type='method'><a href="PhylorefWrapper.html#.normalize">normalize</a></li></ul></li><li><a href="PhyxWrapper.html">PhyxWrapper</a><ul class='methods'><li data-type='method'><a href="PhyxWrapper.html#asJSONLD">asJSONLD</a></li><li data-type='method'><a href="PhyxWrapper.html#toRDF">toRDF</a></li><li data-type='method'><a href="PhyxWrapper.html#.normalize">normalize</a></li></ul></li><li><a href="SpecimenWrapper.html">SpecimenWrapper</a><ul class='methods'><li data-type='method'><a href="SpecimenWrapper.html#.fromOccurrenceID">fromOccurrenceID</a></li><li data-type='method'><a href="SpecimenWrapper.html#.normalize">normalize</a></li></ul></li><li><a href="TaxonConceptWrapper.html">TaxonConceptWrapper</a><ul class='methods'><li data-type='method'><a href="TaxonConceptWrapper.html#.fromLabel">fromLabel</a></li><li data-type='method'><a href="TaxonConceptWrapper.html#.normalize">normalize</a></li><li data-type='method'><a href="TaxonConceptWrapper.html#.wrapTaxonName">wrapTaxonName</a></li></ul></li><li><a href="TaxonNameWrapper.html">TaxonNameWrapper</a><ul class='methods'><li data-type='method'><a href="TaxonNameWrapper.html#.fromVerbatimName">fromVerbatimName</a></li><li data-type='method'><a href="TaxonNameWrapper.html#.getNomenCodeDetails">getNomenCodeDetails</a></li><li data-type='method'><a href="TaxonNameWrapper.html#.getNomenclaturalCodes">getNomenclaturalCodes</a></li><li data-type='method'><a href="TaxonNameWrapper.html#.normalize">normalize</a></li></ul></li><li><a href="TaxonomicUnitMatcher.html">TaxonomicUnitMatcher</a><ul class='methods'><li data-type='method'><a href="TaxonomicUnitMatcher.html#asJSONLD">asJSONLD</a></li><li data-type='method'><a href="TaxonomicUnitMatcher.html#match">match</a></li><li data-type='method'><a href="TaxonomicUnitMatcher.html#matchByExternalReferences">matchByExternalReferences</a></li><li data-type='method'><a href="TaxonomicUnitMatcher.html#matchByNameComplete">matchByNameComplete</a></li><li data-type='method'><a href="TaxonomicUnitMatcher.html#matchByOccurrenceID">matchByOccurrenceID</a></li></ul></li><li><a href="TaxonomicUnitWrapper.html">TaxonomicUnitWrapper</a><ul class='methods'><li data-type='method'><a href="TaxonomicUnitWrapper.html#.fromLabel">fromLabel</a></li><li data-type='method'><a href="TaxonomicUnitWrapper.html#.normalize">normalize</a></li></ul></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-CHANGELOG.html">Changelog</a></li><li><a href="tutorial-Introduction.html">Introduction to phyx.js</a></li><li><a href="tutorial-README.html">README</a></li></ul><h3>Global</h3><ul><li><a href="global.html#JSONLD">JSONLD</a></li><li><a href="global.html#moment">moment</a></li><li><a href="global.html#newickJs">newickJs</a></li><li><a href="global.html#owlterms">owlterms</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">wrappers/SpecimenWrapper.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const { has } = require('lodash');
+const { TaxonConceptWrapper } = require('./TaxonConceptWrapper');
+const owlterms = require('../utils/owlterms');
+const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
+
+/**
+ * The SpecimenWrapper wraps specimen taxonomic units. These can be identified
+ * with a '@type' of SpecimenWrapper.TYPE_SPECIMEN (which is currently
+ * https://dwc.tdwg.org/terms/#occurrence).
+ *
+ * - TaxonomicUnitWrapper.TYPE_SPECIMEN: A specimen.
+ *    - Based on http://rs.tdwg.org/dwc/terms/Occurrence
+ *    - Should have a occurrenceID with the occurrence identifier.
+ *    - Should have a basisOfRecord to indicate what sort of occurrence this is.
+ *
+ * Since TaxonNameWrapper follows the TDWG ontology, we'd love to do the same for
+ * SpecimenWrapper, but unfortunately the TaxonOccurrence ontology has been deprecated
+ * (see https://github.com/tdwg/ontology). Therefore, it instead improvises a
+ * representation based on dwc:Occurrence.
+ */
+class SpecimenWrapper {
+  /** The '@type' of specimens in JSON-LD document. */
+  static get TYPE_SPECIMEN() {
+    return owlterms.DWC_OCCURRENCE;
+  }
+
+  /** Construct a wrapper around a specimen. */
+  constructor(specimen) {
+    this.specimen = specimen;
+  }
+
+  /**
+   * Normalize the specified specimen.
+   * @param specimen A specimen to be normalized.
+   */
+  static normalize(specimen) {
+    const wrapped = new SpecimenWrapper(specimen);
+    const normalizedSpecimen = {
+      '@type': SpecimenWrapper.TYPE_SPECIMEN,
+      label: wrapped.label,
+      basisOfRecord: wrapped.basisOfRecord,
+      occurrenceID: wrapped.occurrenceID,
+      catalogNumber: wrapped.catalogNumber,
+      institutionCode: wrapped.institutionCode,
+      collectionCode: wrapped.collectionCode,
+    };
+    if ('@id' in specimen) normalizedSpecimen['@id'] = specimen['@id'];
+    return normalizedSpecimen;
+  }
+
+  /**
+   * Parse the provided occurrence ID. The two expected formats are:
+   *  - 'urn:catalog:[institutionCode]:[collectionCode]:[catalogNumber]'
+   *      (in which case, we ignore the first two "components" here)
+   *  - '[institutionCode]:[collectionCode]:[catalogNumber]'
+   */
+  static fromOccurrenceID(occurrenceID, basisOfRecord = 'PreservedSpecimen') {
+    // Copy the occurrence ID so we can truncate it if necessary.
+    let occurID = occurrenceID;
+    if (occurID.startsWith('urn:catalog:')) occurID = occurID.substring(12);
+
+    // Prepare the specimen.
+    const specimen = {
+      '@type': SpecimenWrapper.TYPE_SPECIMEN,
+      basisOfRecord,
+      occurrenceID: occurID,
+    };
+
+    // Look for certain prefixes that suggest that we've been passed a URN or
+    // URL instead. If so, don't do any further processing!
+    const URL_URN_PREFIXES = [
+      'http://',
+      'https://',
+      'ftp://',
+      'sftp://',
+      'file://',
+      'urn:',
+    ];
+    if (
+      URL_URN_PREFIXES.filter(prefix =>
+        occurID.toLowerCase().startsWith(prefix),
+      ).length > 0
+    ) {
+      return specimen;
+    }
+
+    // Parsing an occurrence ID takes some time, so we should memoize it.
+    if (PhyxCacheManager.has('SpecimenWrapper.occurrenceIDCache', occurID)) {
+      return PhyxCacheManager.get('SpecimenWrapper.occurrenceIDCache', occurID);
+    }
+
+    // Split the occurrence ID into components, and store them in the appropriate fields.
+    const comps = occurID.split(/:/);
+    if (comps.length === 1) {
+      // specimen.institutionCode = undefined;
+      // specimen.collectionCode = undefined;
+      [specimen.catalogNumber] = comps;
+    } else if (comps.length === 2) {
+      [specimen.institutionCode, specimen.catalogNumber] = comps;
+    } else if (comps.length >= 3) {
+      let catalogNumValues = []; // Store all split catalog number values.
+      [specimen.institutionCode, specimen.collectionCode, ...catalogNumValues] =
+        comps;
+      specimen.catalogNumber = catalogNumValues.join(':');
+    }
+
+    PhyxCacheManager.put(
+      'SpecimenWrapper.occurrenceIDCache',
+      occurID,
+      specimen,
+    );
+    return specimen;
+  }
+
+  /**
+   * Get the catalogNumber if present.
+   */
+  get catalogNumber() {
+    // Get the catalog number from the specimen object if present.
+    if (has(this.specimen, 'catalogNumber')) return this.specimen.catalogNumber;
+
+    // Otherwise, try to parse the occurrenceID and see if we can extract a
+    // catalogNumber from there.
+    if (has(this.specimen, 'occurrenceID')) {
+      const specimen = SpecimenWrapper.fromOccurrenceID(
+        this.specimen.occurrenceID,
+      );
+      if (has(specimen, 'catalogNumber')) return specimen.catalogNumber;
+    }
+    return undefined;
+  }
+
+  /**
+   * Get the institutionCode if present.
+   */
+  get institutionCode() {
+    // Get the institution code from the specimen object if present.
+    if (has(this.specimen, 'institutionCode'))
+      return this.specimen.institutionCode;
+
+    // Otherwise, try to parse the occurrenceID and see if we can extract an
+    // occurrenceID from there.
+    if (has(this.specimen, 'occurrenceID')) {
+      const specimen = SpecimenWrapper.fromOccurrenceID(
+        this.specimen.occurrenceID,
+      );
+      if (has(specimen, 'institutionCode')) return specimen.institutionCode;
+    }
+    return undefined;
+  }
+
+  /**
+   * Get the collectionCode if present.
+   */
+  get collectionCode() {
+    // Get the collection code from the specimen object if present.
+    if (has(this.specimen, 'collectionCode'))
+      return this.specimen.collectionCode;
+
+    // Otherwise, try to parse the occurrenceID and see if we can extract an
+    // occurrenceID from there.
+    if (has(this.specimen, 'occurrenceID')) {
+      const specimen = SpecimenWrapper.fromOccurrenceID(
+        this.specimen.occurrenceID,
+      );
+      if (has(specimen, 'collectionCode')) return specimen.collectionCode;
+    }
+    return undefined;
+  }
+
+  /**
+   * Return the occurrence ID of this specimen, if we have one. Otherwise, we
+   * attempt to construct one in the form:
+   *  "urn:catalog:" + institutionCode (if present) + ':' +
+   *  collectionCode (if present) + ':' + catalogNumber (if present)
+   */
+  get occurrenceID() {
+    // Return the occurrenceID if it exists.
+    if (has(this.specimen, 'occurrenceID')) {
+      return this.specimen.occurrenceID.trim();
+    }
+
+    // Otherwise, we could try to construct the occurrenceID from its components.
+    if (has(this.specimen, 'catalogNumber')) {
+      if (has(this.specimen, 'institutionCode')) {
+        if (has(this.specimen, 'collectionCode')) {
+          return `urn:catalog:${this.specimen.institutionCode.trim()}:${this.specimen.collectionCode.trim()}:${this.specimen.catalogNumber.trim()}`;
+        }
+        return `urn:catalog:${this.specimen.institutionCode.trim()}::${this.specimen.catalogNumber.trim()}`;
+      }
+      if (has(this.specimen, 'collectionCode')) {
+        return `urn:catalog::${this.specimen.collectionCode.trim()}:${this.specimen.catalogNumber.trim()}`;
+      }
+      return `urn:catalog:::${this.specimen.catalogNumber.trim()}`;
+    }
+
+    // None of our specimen identifier schemes worked.
+    return undefined;
+  }
+
+  /**
+   * Return the basis of record, if one is present.
+   */
+  get basisOfRecord() {
+    if (has(this.specimen, 'basisOfRecord')) return this.specimen.basisOfRecord;
+    return undefined;
+  }
+
+  /**
+   * Set the basis of record. See http://rs.tdwg.org/dwc/terms/basisOfRecord for
+   * recommended values.
+   */
+  set basisOfRecord(bor) {
+    this.specimen.basisOfRecord = bor;
+  }
+
+  /** Return this specimen as a taxon concept if it contains taxon name information. */
+  get taxonConcept() {
+    if (has(this.specimen, 'hasName')) return this.specimen;
+    if (has(this.specimen, 'nameString')) return this.specimen;
+    return undefined;
+  }
+
+  /** Return a label for this specimen. */
+  get label() {
+    // We can't return anything without an occurrenceID.
+    if (!this.occurrenceID) return undefined;
+
+    // Note that specimens may be identified to a taxon concept. If so, we should
+    // include that information in the label.
+    if (this.taxonConcept) {
+      return `Specimen ${this.occurrenceID} identified as ${new TaxonConceptWrapper(this.taxonConcept).label}`;
+    }
+
+    // Return a label for this specimen.
+    return `Specimen ${this.occurrenceID}`;
+  }
+
+  /** Return this specimen as an equivalentClass expression. */
+  get asOWLEquivClass() {
+    // We can't do anything without an occurrence ID!
+    if (!this.occurrenceID) return undefined;
+
+    // TODO: Should we also match by this.taxonConcept is one is available?
+    // Technically no, but it might be useful. Hmm.
+
+    // Return as an OWL restriction.
+    return {
+      '@type': 'owl:Restriction',
+      onProperty: owlterms.DWC_OCCURRENCE_ID,
+      hasValue: this.occurrenceID,
+    };
+  }
+}
+
+module.exports = {
+  SpecimenWrapper,
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Sat Mar 14 2026 20:23:01 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
