@@ -23,7 +23,7 @@
     "tutorials": "./tutorials",
     "theme_opts": {
       "title": "phyx.js API",
-      "default_theme": "light",
+      "default_theme": "dark",
       "search": true,
       "sections": [
         "Tutorials",
