@@ -11,19 +11,16 @@
       "./src/wrappers/SpecimenWrapper.js",
       "./src/wrappers/CitationWrapper.js",
       "./src/utils/PhyxCacheManager.js"
-    ],
-    "includePattern": ".+\\.js$",
-    "excludePattern": "(node_modules|docs)"
+    ]
   },
   "opts": {
     "destination": "./docs",
-    "recurse": true,
     "readme": "./README.md",
     "template": "./node_modules/clean-jsdoc-theme",
     "tutorials": "./tutorials",
     "theme_opts": {
-      "title": "phyx.js API",
-      "default_theme": "dark",
+      "title": "@phyloref/phyx.js JavaScript library",
+      "default_theme": "fallback-dark",
       "search": true,
       "sections": [
         "Tutorials",
@@ -52,13 +49,7 @@
     }
   },
   "plugins": ["plugins/markdown"],
-  "templates": {
-    "cleverLinks": false,
-    "monospaceLinks": false,
-    "default": {
-      "includeDate": false,
-      "useLongnameInNav": false,
-      "sort": false
-    }
+  "markdown": {
+    "idInHeadings": true
   }
 }
