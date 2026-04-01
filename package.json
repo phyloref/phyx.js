@@ -24,7 +24,7 @@
     "resolve": "bin/resolve.mjs"
   },
   "scripts": {
-    "predocs": "cp CHANGELOG.md tutorials/CHANGELOG.md",
+    "predocs": "cp CHANGELOG.md tutorials/CHANGELOG.md && rm -rf docs",
     "docs": "jsdoc --configure jsdoc.json",
     "postdocs": "rm -f tutorials/CHANGELOG.md && cp -r context docs/context",
     "generate-every-topology": "every-topology-testing/generate-topologies.js",
