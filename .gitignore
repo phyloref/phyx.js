@@ -1,6 +1,9 @@
 # Don't include Claude config.
 .claude
 
+# Don't include generated documentation files.
+/docs
+
 # Don't save any JPhyloRef files into GitHub.
 /test/jphyloref-*.jar
 
