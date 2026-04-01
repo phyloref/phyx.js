@@ -55,7 +55,7 @@ All classes are exported from `src/index.js`. Each wraps a corresponding JSON ob
 
 ```
 PHYX JSON file
-  └─▶ PhyxWrapper.asJSONLD() / asNQuads() / normalize()
+  └─▶ PhyxWrapper.asJSONLD() / toRDF() / PhyxWrapper.normalize(phyxDocument)
         ├─▶ PhylorefWrapper  (per phyloreference)
         │     └─▶ TaxonomicUnitWrapper → TaxonConceptWrapper | SpecimenWrapper
         └─▶ PhylogenyWrapper (per phylogeny)
