@@ -9,9 +9,9 @@ Create a branch named `release-phyx.js-vX.Y.Z` and open a PR against `master`.
 In the PR:
 
 1. **Update `CHANGELOG.md`** — move items from `[Unreleased]` into a new `[X.Y.Z] - YYYY-MM-DD` section.
-2. **Bump the version in `package.json`** to `X.Y.Z`.
+2. **Bump the version in `package.json`** to the final release version `X.Y.Z` (not an alpha) before merging.
 3. **Regenerate documentation** — run `npm run docs` and commit the updated `docs/` tree.
-4. Set the version in `package.json` to the final version (not an alpha) before merging.
+
 
 Get the PR reviewed and approved, then merge it.
 
