@@ -1,17 +1,19 @@
-# Release Process for phyx.js
+# Releasing phyx.js
+
+Steps to release a new version of phyx.js (e.g. `vX.Y.Z`).
 
 ## 1. Prepare a release PR
 
 Create a branch named `release-phyx.js-vX.Y.Z` and open a PR against `master`.
 
-In the PR, make the following changes:
+In the PR:
 
-- **`CHANGELOG.md`** — move all items from `[Unreleased]` into a new versioned section `[X.Y.Z] - YYYY-MM-DD`.
-- **`package.json`** — update `"version"` to `"X.Y.Z"`.
+1. **Update `CHANGELOG.md`** — move items from `[Unreleased]` into a new `[X.Y.Z] - YYYY-MM-DD` section.
+2. **Bump the version in `package.json`** to `X.Y.Z`.
+3. **Regenerate documentation** — run `npm run docs` and commit the updated `docs/` tree.
+4. Set the version in `package.json` to the final version (not an alpha) before merging.
 
-Run `npm run lint && npm test` to confirm everything passes, then merge the PR.
-
-> Do **not** commit generated `docs/` files. The GitHub Actions workflow (`.github/workflows/docs.yml`) builds and publishes them to `gh-pages` automatically when the release is published in step 4.
+Get the PR reviewed and approved, then merge it.
 
 ## 2. Publish to npm
 
@@ -19,46 +21,30 @@ Run `npm run lint && npm test` to confirm everything passes, then merge the PR.
 npm publish --access public
 ```
 
-Verify the release appeared at https://www.npmjs.com/package/@phyloref/phyx.
+Verify the new version appears at https://www.npmjs.com/package/@phyloref/phyx.
 
-## 3. Create and push the git tag
+## 3. Tag and release on GitHub
 
 ```bash
 git tag vX.Y.Z
 git push origin vX.Y.Z
 ```
 
-## 4. Publish a GitHub release
-
-```bash
-gh release create vX.Y.Z --title "vX.Y.Z" --notes "See CHANGELOG.md for details."
-```
-
-Or do it via the GitHub UI: Releases → Draft a new release → choose the tag → publish.
+Then create a GitHub release for the tag (via the GitHub UI or `gh release create vX.Y.Z`).
 
 Publishing the release triggers the `docs.yml` workflow, which regenerates and deploys docs to GitHub Pages.
 
-## 5. Update CITATION.cff
+## 4. Confirm the Zenodo deposit
 
-Zenodo automatically archives the release and mints a new versioned DOI. Wait for the Zenodo webhook to fire (usually a few minutes after the GitHub release is published), then find the new DOI at https://zenodo.org/doi/10.5281/zenodo.5576556 (the concept DOI always resolves to the latest version).
+The GitHub release triggers an automatic Zenodo deposit. Check that a new versioned DOI has been minted at https://zenodo.org (search for "phyx.js").
 
-Update `CITATION.cff`:
+## 5. Update `CITATION.cff`
 
-```yaml
-identifiers:
-  - type: doi
-    value: 10.5281/zenodo.5576556       # concept DOI — leave unchanged
-    description: >-
-      This DOI will always resolve to the latest version of phyx.js.
-  - type: doi
-    value: 10.5281/zenodo.XXXXXXX       # ← replace with new versioned DOI
-    description: The versioned DOI for version X.Y.Z of phyx.js.
-version: vX.Y.Z
-date-released: 'YYYY-MM-DD'
-```
+Once the Zenodo DOI is available, update `CITATION.cff`:
 
-Commit directly to `master`:
+- `version`: `vX.Y.Z`
+- `date-released`: the release date (YYYY-MM-DD)
+- The versioned DOI identifier (`identifiers[1].value`): the new Zenodo DOI
+- Leave the concept DOI (`10.5281/zenodo.5576556`) unchanged — it always resolves to the latest version.
 
-```bash
-git commit -m "Updated CITATION.cff with the latest version, release date and DOI."
-```
+Commit and push this change directly to `master` (or as a follow-up PR).
