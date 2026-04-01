@@ -43,7 +43,7 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.4",
+    "@biomejs/biome": "2.4.10",
     "ajv": "^8.18.0",
     "ajv-formats": "^3.0.1",
     "chai": "^6.2.2",
