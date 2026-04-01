@@ -28,7 +28,7 @@ npm run docs
 ### Core concepts
 
 - **Phyloreferences**: Clade definitions specifying which organisms belong to a clade, using internal/external specifiers
-- **Specifiers**: Organisms used to define a clade (internal = inside clade, external = outside)
+- **Specifiers**: Taxonomic units (taxa or specimens) or apomorphies used to define a clade (internal = inside clade, external = outside)
 - **Taxonomic Units**: Represent organisms, either as taxon concepts or specimens
 - **Phylogenies**: Newick-format trees providing resolution context for phyloreferences
 
