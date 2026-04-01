@@ -38,7 +38,7 @@ All classes are exported from `src/index.js`. Each wraps a corresponding JSON ob
 
 | Wrapper | Purpose |
 |---|---|
-| `PhyxWrapper` | Top-level PHYX document; converts to JSON-LD, N-Quads, or normalized form |
+| `PhyxWrapper` | Top-level Phyx document; converts to JSON-LD, N-Quads, or normalized form |
 | `PhylorefWrapper` | Individual phyloreference; manages specifiers, status, OWL restrictions |
 | `PhylogenyWrapper` | Phylogeny tree; parses Newick strings, extracts taxonomic units from node labels |
 | `TaxonomicUnitWrapper` | Base for specimens and taxon concepts; extracts units from arbitrary strings |
