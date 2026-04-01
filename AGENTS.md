@@ -42,7 +42,7 @@ All classes are exported from `src/index.js`. Each wraps a corresponding JSON ob
 | `PhylorefWrapper` | Individual phyloreference; manages specifiers, status, OWL restrictions |
 | `PhylogenyWrapper` | Phylogeny tree; parses Newick strings, extracts taxonomic units from node labels |
 | `TaxonomicUnitWrapper` | Base for specimens and taxon concepts; extracts units from arbitrary strings |
-| `TaxonConceptWrapper` | Taxon concept with nomenclatural code and name components |
+| `TaxonConceptWrapper` | Taxon concept with nomenclatural code, taxonomic name and name components, and an optional citation |
 | `TaxonNameWrapper` | Parses scientific names (uninomial/binomial/trinomial) by nomenclatural code |
 | `SpecimenWrapper` | Specimen with occurrenceID, collection, and catalog number |
 | `CitationWrapper` | Bibliographic citation with authors and publication details |
