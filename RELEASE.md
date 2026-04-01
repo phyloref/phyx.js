@@ -45,4 +45,6 @@ Once the Zenodo DOI is available, update `CITATION.cff`:
 - The versioned DOI identifier (`identifiers[1].value`): the new Zenodo DOI
 - Leave the concept DOI (`10.5281/zenodo.5576556`) unchanged — it always resolves to the latest version.
 
-Commit and push this change directly to `master` (or as a follow-up PR).
+## 6. Merge PR
+
+Once all of the above steps have been successfully carried, merge the release PR.
