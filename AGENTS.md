@@ -46,7 +46,7 @@ All classes are exported from `src/index.js`. Each wraps a corresponding JSON ob
 | `TaxonNameWrapper` | Parses scientific names (uninomial/binomial/trinomial) by nomenclatural code |
 | `SpecimenWrapper` | Specimen with occurrenceID, collection, and catalog number |
 | `CitationWrapper` | Bibliographic citation with authors and publication details |
-| `TaxonomicUnitMatcher` | (`src/matchers/`) Matches taxonomic units across documents |
+| `TaxonomicUnitMatcher` | (`src/matchers/`) Provides an algorithm for matching two taxonomic units. |
 | `PhyxCacheManager` | (`src/utils/`) Caches computed values across the library |
 
 **Key utility:** `src/utils/owlterms.js` — canonical IRIs for OWL/RDF/CDAO/TDWG ontology terms used throughout.
