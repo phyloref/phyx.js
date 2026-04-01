@@ -13,7 +13,7 @@ In the PR:
 3. **Regenerate documentation** — run `npm run docs` and commit the updated `docs/` tree.
 
 
-Get the PR reviewed and approved, then merge it.
+Get the PR reviewed and approved, but do NOT merge it until after successfully publishing it to NPM.
 
 ## 2. Publish to npm
 
