@@ -47,4 +47,4 @@ Once the Zenodo DOI is available, update `CITATION.cff`:
 
 ## 6. Merge PR
 
-Once all of the above steps have been successfully carried, merge the release PR.
+Once all of the above steps have been successfully carried out, merge the release PR.
