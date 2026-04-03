@@ -1,6 +1,9 @@
 # Don't include Claude config.
 .claude
 
+# Don't include generated documentation files.
+/docs
+
 # Don't save any JPhyloRef files into GitHub.
 /test/jphyloref-*.jar
 
@@ -9,8 +12,8 @@
 /every-topology-testing
 /data
 
-# Ignore esdocs documentation.
-/docs/esdocs/
+# Ignore temporary CHANGELOG copy created by predocs script.
+tutorials/CHANGELOG.md
 
 # Logs
 logs

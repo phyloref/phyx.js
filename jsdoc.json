@@ -1,0 +1,55 @@
+{
+  "source": {
+    "include": [
+      "./src/wrappers/PhyxWrapper.js",
+      "./src/wrappers/PhylorefWrapper.js",
+      "./src/wrappers/PhylogenyWrapper.js",
+      "./src/wrappers/TaxonomicUnitWrapper.js",
+      "./src/matchers/TaxonomicUnitMatcher.js",
+      "./src/wrappers/TaxonConceptWrapper.js",
+      "./src/wrappers/TaxonNameWrapper.js",
+      "./src/wrappers/SpecimenWrapper.js",
+      "./src/wrappers/CitationWrapper.js",
+      "./src/utils/PhyxCacheManager.js"
+    ]
+  },
+  "opts": {
+    "destination": "./docs",
+    "readme": "./README.md",
+    "template": "./node_modules/clean-jsdoc-theme",
+    "tutorials": "./tutorials",
+    "theme_opts": {
+      "title": "@phyloref/phyx.js JavaScript library",
+      "default_theme": "fallback-dark",
+      "search": true,
+      "sections": [
+        "Tutorials",
+        "Classes",
+        "Modules",
+        "Externals",
+        "Events",
+        "Namespaces",
+        "Mixins",
+        "Interfaces",
+        "Global"
+      ],
+      "menu": [
+        {
+          "title": "GitHub",
+          "link": "https://github.com/phyloref/phyx.js",
+          "target": "_blank"
+        },
+        {
+          "title": "npm",
+          "link": "https://www.npmjs.com/package/@phyloref/phyx",
+          "target": "_blank"
+        }
+      ],
+      "footer": "phyx.js — Phyloreference Exchange format library"
+    }
+  },
+  "plugins": ["plugins/markdown"],
+  "markdown": {
+    "idInHeadings": true
+  }
+}

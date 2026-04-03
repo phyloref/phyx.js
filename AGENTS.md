@@ -76,5 +76,17 @@ PHYX JSON file
 ### Tooling
 
 - **Linter/formatter**: [Biomejs](https://biomejs.dev/) (`biome.json`) — enforces single quotes and other style rules on `**/*.js`, `**/*.json`, and `**/*.md` (excluding `docs/`), with overrides that disable formatting/linting for test files
-- **Docs**: ESDoc, outputs to `docs/`
 - **CI**: GitHub Actions, Node 22/24/25, runs `npm test` (includes lint)
+
+## Docs
+
+Generated with JSDoc 4 + clean-jsdoc-theme:
+
+```bash
+npm run docs   # predocs + jsdoc + postdocs (copies context/ into docs/)
+touch docs/.nojekyll  # required for GitHub Pages
+```
+
+Config: `jsdoc.json`. Theme options live under `opts.theme_opts` (not `templates`).
+
+**Do not commit generated `docs/` files** (HTML, CSS, JS, fonts, etc.) to the branch. The GitHub Actions workflow publishes them to `gh-pages` automatically. Only `docs/.nojekyll` should be committed if it doesn't already exist.

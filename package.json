@@ -24,7 +24,9 @@
     "resolve": "bin/resolve.mjs"
   },
   "scripts": {
-    "docs": "esdoc",
+    "predocs": "cp CHANGELOG.md tutorials/CHANGELOG.md && rm -rf docs",
+    "docs": "jsdoc --configure jsdoc.json",
+    "postdocs": "rm -f tutorials/CHANGELOG.md && cp -r context docs/context && touch docs/.nojekyll",
     "generate-every-topology": "every-topology-testing/generate-topologies.js",
     "lint": "biome check",
     "phyx2owl": "node bin/phyx2owl.mjs",
@@ -41,40 +43,13 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.4",
+    "@biomejs/biome": "2.4.10",
     "ajv": "^8.18.0",
     "ajv-formats": "^3.0.1",
     "chai": "^6.2.2",
-    "esdoc": "^1.1.0",
-    "esdoc-node": "^1.0.5",
-    "esdoc-standard-plugin": "^1.0.0",
+    "clean-jsdoc-theme": "^4.3.0",
+    "jsdoc": "^4.0.5",
     "mocha": "^11.7.5",
     "nodejs-file-downloader": "^4.13.0"
-  },
-  "esdoc": {
-    "source": "./src",
-    "destination": "./docs",
-    "plugins": [
-      {
-        "name": "esdoc-standard-plugin",
-        "option": {
-          "manual": {
-            "files": [
-              "./CHANGELOG.md",
-              "./tutorials/Introduction.md"
-            ]
-          },
-          "test": {
-            "source": "./test/",
-            "includes": [
-              "\\.js$"
-            ]
-          }
-        }
-      },
-      {
-        "name": "esdoc-node"
-      }
-    ]
   }
 }

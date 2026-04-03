@@ -97,7 +97,7 @@ var ajv = new Ajv({
 
 // We use the JSON Schema included with this repository, but you can download the
 // Phyx JSON Schema from https://www.phyloref.org/phyx.js/context/v1.0.0/schema.json
-var validator = ajv.compile(JSON.parse(fs.readFileSync('../docs/context/v1.0.0/schema.json')));
+var validator = ajv.compile(JSON.parse(fs.readFileSync('../context/v1.0.0/schema.json')));
 
 // Attempt to validate the Brochu 2003 example file.
 var result = validator(alligatoridae_brochu2003);

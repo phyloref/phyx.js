@@ -32,6 +32,8 @@ git push origin vX.Y.Z
 
 Then create a GitHub release for the tag (via the GitHub UI or `gh release create vX.Y.Z`).
 
+Publishing the release triggers the `docs.yml` workflow, which regenerates and deploys docs to GitHub Pages.
+
 ## 4. Confirm the Zenodo deposit
 
 The GitHub release triggers an automatic Zenodo deposit. Check that a new versioned DOI has been minted at https://zenodo.org (search for "phyx.js").
