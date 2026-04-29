@@ -10,8 +10,8 @@ In the PR:
 
 1. **Update `CHANGELOG.md`** — move items from `[Unreleased]` into a new `[X.Y.Z] - YYYY-MM-DD` section.
 2. **Bump the version in `package.json`** to the final release version `X.Y.Z` (not an alpha) before merging.
-3. **Update the PHYX_CONTEXT_JSON in `src/utils/owlterms.js`** to the latest version of the context. If the
-   context has not changed in this release, there is no need to update it.
+3. **Update the PHYX_CONTEXT_JSON in `src/utils/owlterms.js`** if a new version of the context has been
+   produced in this release.
 4. **Regenerate documentation** — run `npm run docs` and commit the updated `docs/` tree.
 
 
