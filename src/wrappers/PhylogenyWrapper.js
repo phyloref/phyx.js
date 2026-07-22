@@ -15,6 +15,7 @@ const { CitationWrapper } = require('./CitationWrapper');
  * and other information. Remember that a Phylogeny also has the
  * additionalNodeProperties object which provides additional properties for
  * nodes.
+ * @category Wrappers order=3
  */
 class PhylogenyWrapper {
   constructor(phylogeny, defaultNomenCode = owlterms.UNKNOWN_CODE) {

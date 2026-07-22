@@ -11,6 +11,7 @@ const { CitationWrapper } = require('./CitationWrapper');
 /**
  * Wraps a phyloreference in a Phyx model, with multiple specifiers and statuses. Includes code for generating the
  * components of a phyloreference expression in OWL.
+ * @category Wrappers order=2
  */
 
 class PhylorefWrapper {

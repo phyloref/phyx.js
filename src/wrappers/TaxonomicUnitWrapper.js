@@ -33,6 +33,7 @@ const { TaxonConceptWrapper } = require('./TaxonConceptWrapper');
  *
  * Taxonomic units may be specified with only an '@id' or a set of '@id's, which
  * indicate external references.
+ * @category Wrappers order=4
  */
 
 class TaxonomicUnitWrapper {

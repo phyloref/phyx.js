@@ -24,7 +24,7 @@
     "resolve": "bin/resolve.mjs"
   },
   "scripts": {
-    "predocs": "node tutorials/build.mjs && rm -rf docs",
+    "predocs": "node tutorials/build.mjs",
     "docs": "jsdoc --configure jsdoc.json",
     "postdocs": "cp -r context docs/context && touch docs/.nojekyll",
     "generate-every-topology": "every-topology-testing/generate-topologies.js",

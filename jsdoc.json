@@ -24,7 +24,7 @@
     "siteUrl": "https://www.phyloref.org/phyx.js",
     "basePath": "/phyx.js",
     "strict": true,
-    "sectionOrder": ["Tutorials", "Classes", "Global"],
+    "sectionOrder": ["Tutorials", "Wrappers", "Matchers", "Utilities", "About"],
     "menu": [
       {
         "title": "GitHub",
@@ -35,7 +35,10 @@
         "link": "https://www.npmjs.com/package/@phyloref/phyx"
       }
     ],
-    "footer": "phyx.js — Phyloreference Exchange format library"
+    "footer": "phyx.js — Phyloreference Exchange (Phyx) format library"
+  },
+  "tags": {
+    "allowUnknownTags": true
   },
   "plugins": ["plugins/markdown"],
   "markdown": {
