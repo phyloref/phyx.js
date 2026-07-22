@@ -5,6 +5,19 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-07-22
+- PR #171: Updated `PHYX_CONTEXT_JSON` to point at the Phyx JSON-LD context v1.1.0.
+- PR #167: Added `AGENTS.md` and `RELEASE.md` documenting the repository layout and release process.
+- PR #165: Updated the homepage link to phyx.js's generated documentation.
+- PR #161: Upgraded all packages. This required converting `bin/phyx2owl.js` and `bin/resolve.js`
+  to ESM (as `bin/phyx2owl.mjs` and `bin/resolve.mjs`) for yargs v18 compatibility, and adding
+  `ajv-formats` for Ajv v8 compatibility. The `phyx2owl` and `resolve` command names are unchanged.
+- PR #160: Upgraded jsonld to v9.
+- PR #158: Updated the link and text for the curation tool.
+- PR #156: Replaced ESLint with [Biome] as the linter and formatter.
+- PR #155: Upgraded packages and updated the tested Node.js versions to 22.x, 24.x and 25.x.
+- PR #168, #169: Upgraded lodash to 4.18.1 and follow-redirects to 1.16.0.
+
 ## [1.2.1] - 2025-07-28
 - PR #152: Upraded packages using `npm upgrade`.
 
@@ -74,7 +87,8 @@ release of this package was based on [commit 14d2c3d5d1] in that repository.
 - Replaced references to the [phylotree] library with the [newick-js] library.
 - Made other changes to the initial code as needed to work as an independent NPM package.
 
-  [Unreleased]: https://github.com/phyloref/phyx.js/compare/v1.2.0...master
+  [Unreleased]: https://github.com/phyloref/phyx.js/compare/v1.3.0...master
+  [1.3.0]: https://github.com/phyloref/phyx.js/compare/v1.2.1...v1.3.0
   [1.2.1]: https://github.com/phyloref/phyx.js/compare/v1.2.0...v1.2.1
   [1.2.0]: https://github.com/phyloref/phyx.js/compare/v1.1.1...v1.2.0
   [1.1.1]: https://github.com/phyloref/phyx.js/compare/v1.1.0...v1.1.1
@@ -86,6 +100,7 @@ release of this package was based on [commit 14d2c3d5d1] in that repository.
   [0.1.2]: https://github.com/phyloref/phyx.js/compare/v0.1.1...v0.1.2
   [0.1.1]: https://github.com/phyloref/phyx.js/compare/v0.1.0...v0.1.1
   [0.1.0]: https://github.com/phyloref/phyx.js/releases/tag/v0.1.0
+  [Biome]: https://biomejs.dev/
   [Keep a Changelog]: https://keepachangelog.com/en/1.0.0/
   [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
   [Phyloreference Curation Tool]: http://github.com/phyloref/curation-tool
