@@ -13,9 +13,12 @@ const { PhylorefWrapper } = require('./PhylorefWrapper');
 const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 const { CitationWrapper } = require('./CitationWrapper');
 
+// The other wrappers are left to sort alphabetically in the sidebar, but this
+// one is ordered first: wrapping a whole document is the best entry point for
+// understanding the library.
 /**
  * The PhyxWrapper wraps an entire Phyx document.
- * @category Wrappers
+ * @category Wrappers order=1
  */
 
 class PhyxWrapper {
