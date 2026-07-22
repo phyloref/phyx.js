@@ -135,6 +135,12 @@ Source files keep their own level-one heading — the theme renders a heading fo
 
 Most of these are silent — the build still succeeds, the page just comes out wrong:
 
+- **jsdoc exits 0 when it finds no input.** If `source` matches nothing it prints "There are no
+  input files to process" and stops — without emptying `site/`, so a stale build sits there looking
+  like a fresh one. `source.include` names a directory, which needs `opts.recurse`; drop that and
+  the whole site quietly stops being rebuilt. The CI step checks a page exists, not just that the
+  command succeeded. **Delete `site/` before checking a docs change**, or you may be reading the
+  previous build.
 - **Categories sort alphabetically; don't add to the one exception.** `@category Wrappers` needs
   no ordering of its own. `PhyxWrapper` carries `order=1` deliberately, because wrapping a whole
   document is where someone new to the library should start, and that should stay the only one:
