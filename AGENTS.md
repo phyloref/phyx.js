@@ -72,6 +72,25 @@ PHYX JSON file
 - Test files in `test/` mirror source modules (`phylorefs.js`, `phylogenies.js`, etc.)
 - `test/examples/correct/` contains fixture PHYX files with expected outputs used by `test/examples.js`
 - `test/jphyloref.js` requires the JPhyloRef JAR; may be skipped if Java is unavailable
+- Some tests need network access. `test/examples/incorrect/otl-resolution-errors.json` and
+  `test/examples/correct/normalization/brochu_2003_normalization.json` use a remote `@context`
+  URL rather than a relative path, so anything converting them fetches it.
+- **`bin/phyx2owl.mjs` "should be able to convert the entire `test/examples/correct` directory"
+  currently fails on Node 26** — `jsonld`'s remote-context loader errors inside undici with
+  `UND_ERR_INVALID_ARG`, even though `fetch()` retrieves the same URL fine. CI runs Node 22, 24
+  and 25 and is green, so this is a local-only failure. Don't chase it, and don't count it as a
+  regression.
+
+### Working in this repository
+
+- **Check a failing test against an unmodified checkout before assuming you caused it.**
+  `git stash -u`, re-run, `git stash pop`. See the known failure above.
+- **Don't `git add -A`.** `.DS_Store` and `.idea/` are untracked and not ignored, and generated
+  directories are only ignored on some branches — all three have been swept into a commit this
+  way. Stage explicit paths.
+- **Run `npm ci` after switching branches** if their dependency sets differ; a stale
+  `node_modules` shows up as confusing lint and build failures rather than as an obvious
+  version mismatch.
 
 ### Tooling
 
