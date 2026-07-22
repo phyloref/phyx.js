@@ -9,8 +9,8 @@ const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 const { CitationWrapper } = require('./CitationWrapper');
 
 /**
- * PhylorefWrapper
- *
+ * Wraps a phyloreference in a Phyx model, with multiple specifiers and statuses. Includes code for generating the
+ * components of a phyloreference expression in OWL.
  */
 
 class PhylorefWrapper {
