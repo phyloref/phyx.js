@@ -3,26 +3,26 @@
  */
 
 import { expect } from 'chai';
-import { stripLeadingTitle } from '../tutorials/build.mjs';
+import { stripFrontmatter } from '../tutorials/build.mjs';
 
 /*
- * clean-jsdoc-theme renders its own heading from the tutorial title, so
- * stripLeadingTitle() removes the heading (and pandoc frontmatter) that the
- * source file carries for the benefit of GitHub and PDF readers.
+ * Our tutorial sources carry pandoc frontmatter for the PDF build, which would
+ * be rendered as text on the website. The heading below it is left alone --
+ * the theme doesn't render one for tutorial or prose pages.
  */
-describe('stripLeadingTitle', function () {
-  it('should remove pandoc frontmatter followed by a level-one heading', function () {
-    expect(stripLeadingTitle('---\ntitle: Something\nauthor: Someone\n---\n# Something\n\nBody.\n'))
-      .to.equal('\nBody.\n');
+describe('stripFrontmatter', function () {
+  it('should remove pandoc frontmatter but keep the heading below it', function () {
+    expect(stripFrontmatter('---\ntitle: Something\nauthor: Someone\n---\n# Something\n\nBody.\n'))
+      .to.equal('# Something\n\nBody.\n');
   });
 
-  it('should remove a level-one heading with no frontmatter', function () {
-    expect(stripLeadingTitle('# Changelog\nAll notable changes.\n'))
-      .to.equal('All notable changes.\n');
+  it('should leave a document without frontmatter alone', function () {
+    const markdown = '# Changelog\n\nAll notable changes.\n';
+    expect(stripFrontmatter(markdown)).to.equal(markdown);
   });
 
-  it('should leave documents without a leading heading alone', function () {
-    const markdown = 'Body text.\n\n## A subheading\n\n# Not leading.\n';
-    expect(stripLeadingTitle(markdown)).to.equal(markdown);
+  it('should not mistake a horizontal rule further down for frontmatter', function () {
+    const markdown = '# Title\n\n---\n\nBody.\n';
+    expect(stripFrontmatter(markdown)).to.equal(markdown);
   });
 });

@@ -33,13 +33,13 @@ const TUTORIALS = [
 const DOCS = [{ name: 'changelog', title: 'Changelog', source: 'CHANGELOG.md' }];
 
 /**
- * Remove a leading YAML frontmatter block and a leading level-one heading, both
- * of which would be displayed on top of the title the theme already renders.
+ * Remove a leading YAML frontmatter block, which is pandoc metadata for the PDF
+ * build and would otherwise be rendered as text. The page's own level-one
+ * heading stays: the theme renders a heading of its own for API pages, but
+ * tutorial and prose pages take theirs from the Markdown.
  */
-export function stripLeadingTitle(markdown) {
-  return markdown
-    .replace(/^---\r?\n[\s\S]*?\r?\n---[ \t]*\r?\n/, '')
-    .replace(/^\s*#[^#\n]*\r?\n/, '');
+export function stripFrontmatter(markdown) {
+  return markdown.replace(/^---\r?\n[\s\S]*?\r?\n---[ \t]*\r?\n/, '');
 }
 
 /** Read a source file, failing loudly rather than dropping a page silently. */
@@ -49,7 +49,7 @@ function readSource(source) {
     console.error(`Missing source: ${source}`);
     process.exit(1);
   }
-  return stripLeadingTitle(fs.readFileSync(sourcePath, 'utf8'));
+  return stripFrontmatter(fs.readFileSync(sourcePath, 'utf8'));
 }
 
 function build() {
