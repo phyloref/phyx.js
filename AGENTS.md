@@ -125,6 +125,9 @@ Source files keep their own level-one heading — the theme renders a heading fo
 
 Most of these are silent — the build still succeeds, the page just comes out wrong:
 
+- **Don't hand-order categories.** `@category Wrappers` sorts alphabetically on its own; an
+  `order=N` suffix overrides that, but then every new class needs a number and a forgotten one
+  lands wherever the tool decides.
 - **A class without `@category` disappears from the sidebar.** `sectionOrder` lists our categories (Wrappers, Matchers, Utilities) instead of `Classes`, so an uncategorised class is published but unreachable from the navigation. `strict` does not catch this.
 - **A class's doc comment must sit immediately above the class**, below the imports. A file-header comment above the imports is close enough for jsdoc to give the class a page but not to treat the comment as the class's own, so tags on it (like `@category`) never reach the class. Both `CitationWrapper` and `PhylogenyWrapper` were broken this way.
 - **Don't put `/** */` on a top-level `require`.** jsdoc attaches a doc comment to the next code construct, so it documents the import as a global. Use `//` for notes about imports.

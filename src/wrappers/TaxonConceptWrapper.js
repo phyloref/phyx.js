@@ -20,7 +20,7 @@ const { TaxonNameWrapper } = require('./TaxonNameWrapper');
  *      (i.e. as a nominal taxon concept, as in https://github.com/darwin-sw/dsw/wiki/ClassTaxon).
  *    - MAY have nameString and accordingToString properties. We will fall back
  *      to these properties if hasName or accordingTo are missing.
- * @category Wrappers order=5
+ * @category Wrappers
  */
 
 class TaxonConceptWrapper {

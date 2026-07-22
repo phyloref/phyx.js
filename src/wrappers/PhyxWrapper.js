@@ -15,7 +15,7 @@ const { CitationWrapper } = require('./CitationWrapper');
 
 /**
  * The PhyxWrapper wraps an entire Phyx document.
- * @category Wrappers order=1
+ * @category Wrappers
  */
 
 class PhyxWrapper {

@@ -34,7 +34,7 @@ const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
  * Note that the TaxonName ontology recommends dc:title instead of rdfs:label;
  * however, I like the idea of using dc:title for documents and rdfs:label for
  * vocabulary terms, so I'm okay with using rdfs:label for the verbatim name.
- * @category Wrappers order=6
+ * @category Wrappers
  */
 class TaxonNameWrapper {
   /**

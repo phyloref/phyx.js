@@ -11,7 +11,7 @@ const { SpecimenWrapper } = require('../wrappers/SpecimenWrapper');
  * In Model 2.0, we start by using direct matching in OWL, so this should no longer
  * be needed. However, I'll leave this around to provide matching in the
  * Curation Tool UI and in case it's needed again later.
- * @category Matchers order=1
+ * @category Matchers
  */
 class TaxonomicUnitMatcher {
   /**
