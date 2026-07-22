@@ -19,7 +19,7 @@
     "template": "./node_modules/clean-jsdoc-theme",
     "tutorials": "./tutorials/build",
     "theme_opts": {
-      "title": "@phyloref/phyx.js JavaScript library",
+      "title": "@phyloref/phyx.js",
       "default_theme": "fallback-dark",
       "search": true,
       "sections": [
