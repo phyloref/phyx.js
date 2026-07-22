@@ -16,37 +16,23 @@
   "opts": {
     "destination": "./docs",
     "readme": "./README.md",
-    "template": "./node_modules/clean-jsdoc-theme",
+    "template": "./node_modules/clean-jsdoc-theme/dist",
     "tutorials": "./tutorials/build",
-    "theme_opts": {
-      "title": "@phyloref/phyx.js",
-      "default_theme": "fallback-dark",
-      "search": true,
-      "sections": [
-        "Tutorials",
-        "Classes",
-        "Modules",
-        "Externals",
-        "Events",
-        "Namespaces",
-        "Mixins",
-        "Interfaces",
-        "Global"
-      ],
-      "menu": [
-        {
-          "title": "GitHub",
-          "link": "https://github.com/phyloref/phyx.js",
-          "target": "_blank"
-        },
-        {
-          "title": "npm",
-          "link": "https://www.npmjs.com/package/@phyloref/phyx",
-          "target": "_blank"
-        }
-      ],
-      "footer": "phyx.js — Phyloreference Exchange format library"
-    }
+    "siteName": "@phyloref/phyx.js",
+    "siteUrl": "https://www.phyloref.org/phyx.js",
+    "basePath": "/phyx.js",
+    "sectionOrder": ["Tutorials", "Classes", "Global"],
+    "menu": [
+      {
+        "title": "GitHub",
+        "link": "https://github.com/phyloref/phyx.js"
+      },
+      {
+        "title": "npm",
+        "link": "https://www.npmjs.com/package/@phyloref/phyx"
+      }
+    ],
+    "footer": "phyx.js — Phyloreference Exchange format library"
   },
   "plugins": ["plugins/markdown"],
   "markdown": {
