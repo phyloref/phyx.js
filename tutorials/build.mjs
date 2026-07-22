@@ -18,12 +18,19 @@ import { fileURLToPath } from 'node:url';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const buildDir = path.join(repoRoot, 'tutorials', 'build');
+const tutorialsDir = path.join(buildDir, 'tutorials');
+const docsDir = path.join(buildDir, 'docs');
 
 /** The tutorials to publish, in the order they should appear in the sidebar. */
 const TUTORIALS = [
   { name: 'Introduction', title: 'Introduction to phyx.js', source: 'tutorials/Introduction.md' },
-  { name: 'CHANGELOG', title: 'Changelog', source: 'CHANGELOG.md' },
 ];
+
+/**
+ * Prose pages that aren't tutorials. These go into the theme's docs directory
+ * so they get their own sidebar section instead of sitting under Tutorials.
+ */
+const DOCS = [{ name: 'changelog', title: 'Changelog', source: 'CHANGELOG.md' }];
 
 /**
  * Remove a leading YAML frontmatter block and a leading level-one heading, both
@@ -35,26 +42,38 @@ export function stripLeadingTitle(markdown) {
     .replace(/^\s*#[^#\n]*\r?\n/, '');
 }
 
+/** Read a source file, failing loudly rather than dropping a page silently. */
+function readSource(source) {
+  const sourcePath = path.join(repoRoot, source);
+  if (!fs.existsSync(sourcePath)) {
+    console.error(`Missing source: ${source}`);
+    process.exit(1);
+  }
+  return stripLeadingTitle(fs.readFileSync(sourcePath, 'utf8'));
+}
+
 function build() {
   fs.rmSync(buildDir, { recursive: true, force: true });
-  fs.mkdirSync(buildDir, { recursive: true });
+  fs.mkdirSync(tutorialsDir, { recursive: true });
+  fs.mkdirSync(docsDir, { recursive: true });
 
   const config = {};
   for (const { name, title, source } of TUTORIALS) {
-    const sourcePath = path.join(repoRoot, source);
-    if (!fs.existsSync(sourcePath)) {
-      console.error(`Missing tutorial source: ${source}`);
-      process.exit(1);
-    }
-
-    fs.writeFileSync(
-      path.join(buildDir, `${name}.md`),
-      stripLeadingTitle(fs.readFileSync(sourcePath, 'utf8')),
-    );
+    fs.writeFileSync(path.join(tutorialsDir, `${name}.md`), readSource(source));
     config[name] = { title };
   }
+  fs.writeFileSync(
+    path.join(tutorialsDir, 'tutorials.json'),
+    `${JSON.stringify(config, null, 2)}\n`,
+  );
 
-  fs.writeFileSync(path.join(buildDir, 'tutorials.json'), `${JSON.stringify(config, null, 2)}\n`);
+  // The theme takes each doc page's title from its frontmatter.
+  for (const { name, title, source } of DOCS) {
+    fs.writeFileSync(
+      path.join(docsDir, `${name}.md`),
+      `---\ntitle: ${title}\n---\n\n${readSource(source)}`,
+    );
+  }
 }
 
 // Only build when run as a script, so tests can import stripLeadingTitle().
