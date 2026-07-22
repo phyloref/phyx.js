@@ -1,6 +1,10 @@
 # Don't include Claude config.
 .claude
 
+# Editor and operating system files.
+.idea/
+.DS_Store
+
 # The generated documentation site. Note that this is NOT docs/: that name is
 # free for hand-written documentation, and the build empties its destination.
 /site

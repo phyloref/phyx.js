@@ -85,9 +85,9 @@ PHYX JSON file
 
 - **Check a failing test against an unmodified checkout before assuming you caused it.**
   `git stash -u`, re-run, `git stash pop`. See the known failure above.
-- **Don't `git add -A`.** `.DS_Store` and `.idea/` are untracked and not ignored, and generated
-  directories are only ignored on some branches — all three have been swept into a commit this
-  way. Stage explicit paths.
+- **Don't `git add -A`.** A generated directory ignored on one branch may not be ignored on
+  another — `tutorials/build/`, `site/` and the editor files now in `.gitignore` have all been
+  swept into a commit this way. Stage explicit paths.
 - **Run `npm ci` after switching branches** if their dependency sets differ; a stale
   `node_modules` shows up as confusing lint and build failures rather than as an obvious
   version mismatch.
