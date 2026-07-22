@@ -80,13 +80,38 @@ PHYX JSON file
 
 ## Docs
 
-Generated with JSDoc 4 + clean-jsdoc-theme:
+Generated with JSDoc 4 + [clean-jsdoc-theme] v5, and published to <https://www.phyloref.org/phyx.js/>.
 
 ```bash
-npm run docs   # predocs + jsdoc + postdocs (copies context/ into docs/)
-touch docs/.nojekyll  # required for GitHub Pages
+npm run docs   # predocs + jsdoc + postdocs
 ```
 
-Config: `jsdoc.json`. Theme options live under `opts.theme_opts` (not `templates`).
+The three steps are:
 
-**Do not commit generated `docs/` files** (HTML, CSS, JS, fonts, etc.) to the branch. The GitHub Actions workflow publishes them to `gh-pages` automatically. Only `docs/.nojekyll` should be committed if it doesn't already exist.
+1. `predocs` runs `tutorials/build.mjs`, which stages the Markdown pages we publish into `tutorials/build/` (gitignored). `tutorials/build/tutorials/` holds tutorials and feeds `opts.tutorials`; `tutorials/build/docs/` holds prose pages such as the changelog and feeds `opts.docs`, which gives them their own sidebar section.
+2. `jsdoc --configure jsdoc.json` builds the site into `docs/`, emptying it first.
+3. `postdocs` copies `context/` into `docs/context/` — the published JSON-LD contexts and JSON Schemas are served from the documentation site — and creates `docs/.nojekyll`, without which GitHub Pages would ignore the theme's `_assets/` and `_islands/` directories.
+
+**Never commit generated `docs/` files.** `docs/` is gitignored and `.github/workflows/docs.yml` publishes it to the `gh-pages` branch when a release is published.
+
+### Adding a page
+
+Add an entry to `TUTORIALS` (a tutorial) or `DOCS` (any other prose page) in `tutorials/build.mjs`, giving its name, title and source path. The build fails if a listed source file is missing, so a renamed file can't silently drop a page.
+
+Source files keep their own level-one heading — the theme renders a heading for API pages but not for tutorials or prose pages, which take theirs from the Markdown. Only the pandoc frontmatter is stripped, since it exists for the PDF build.
+
+`tutorials/Introduction.md` is generated from `Introduction.ipynb` by `tutorials/Makefile`. **Edit the notebook, not the Markdown**, or the change will be overwritten.
+
+### Gotchas
+
+Most of these are silent — the build still succeeds, the page just comes out wrong:
+
+- **A class without `@category` disappears from the sidebar.** `sectionOrder` lists our categories (Wrappers, Matchers, Utilities) instead of `Classes`, so an uncategorised class is published but unreachable from the navigation. `strict` does not catch this.
+- **A class's doc comment must sit immediately above the class**, below the imports. A file-header comment above the imports is close enough for jsdoc to give the class a page but not to treat the comment as the class's own, so tags on it (like `@category`) never reach the class. Both `CitationWrapper` and `PhylogenyWrapper` were broken this way.
+- **Don't put `/** */` on a top-level `require`.** jsdoc attaches a doc comment to the next code construct, so it documents the import as a global. Use `//` for notes about imports.
+- **Document the getter, `@ignore` the setter.** jsdoc has no notion of accessor pairs, so documenting both publishes the property twice with duplicate HTML ids.
+- **`opts.basePath` must match the sub-path the site is deployed under** (`/phyx.js`). Pages are served from clean URLs and links are root-relative, so a wrong `basePath` 404s every link and asset.
+- **`plugins/markdown` is required** — jsdoc uses it to render Markdown in doc comments before the theme sees them, and the theme refuses to build without it.
+- **Theme options live directly under `opts`**, not `opts.theme_opts` as in theme v4. `opts.strict` is on, so an unrecognized option fails the build instead of being ignored.
+
+  [clean-jsdoc-theme]: https://github.com/ankitskvmdam/clean-jsdoc-theme
