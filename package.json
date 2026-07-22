@@ -26,7 +26,7 @@
   "scripts": {
     "predocs": "node tutorials/build.mjs",
     "docs": "jsdoc --configure jsdoc.json",
-    "postdocs": "cp -r context docs/context && touch docs/.nojekyll",
+    "postdocs": "cp -r context site/context && touch site/.nojekyll",
     "generate-every-topology": "every-topology-testing/generate-topologies.js",
     "lint": "biome check",
     "phyx2owl": "node bin/phyx2owl.mjs",

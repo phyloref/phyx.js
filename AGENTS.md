@@ -75,7 +75,7 @@ PHYX JSON file
 
 ### Tooling
 
-- **Linter/formatter**: [Biomejs](https://biomejs.dev/) (`biome.json`) — enforces single quotes and other style rules on `**/*.js`, `**/*.json`, and `**/*.md` (excluding `docs/`), with overrides that disable formatting/linting for test files
+- **Linter/formatter**: [Biomejs](https://biomejs.dev/) (`biome.json`) — enforces single quotes and other style rules on `**/*.js`, `**/*.json`, and `**/*.md` (excluding `site/`), with overrides that disable formatting/linting for test files
 - **CI**: GitHub Actions, Node 22/24/25, runs `npm test` (includes lint)
 
 ## Docs
@@ -89,10 +89,10 @@ npm run docs   # predocs + jsdoc + postdocs
 The three steps are:
 
 1. `predocs` runs `tutorials/build.mjs`, which stages the Markdown pages we publish into `tutorials/build/` (gitignored). `tutorials/build/tutorials/` holds tutorials and feeds `opts.tutorials`; `tutorials/build/docs/` holds prose pages such as the changelog and feeds `opts.docs`, which gives them their own sidebar section.
-2. `jsdoc --configure jsdoc.json` builds the site into `docs/`, emptying it first.
-3. `postdocs` copies `context/` into `docs/context/` — the published JSON-LD contexts and JSON Schemas are served from the documentation site — and creates `docs/.nojekyll`, without which GitHub Pages would ignore the theme's `_assets/` and `_islands/` directories.
+2. `jsdoc --configure jsdoc.json` builds the site into `site/`, emptying it first.
+3. `postdocs` copies `context/` into `site/context/` — the published JSON-LD contexts and JSON Schemas are served from the documentation site — and creates `site/.nojekyll`, without which GitHub Pages would ignore the theme's `_assets/` and `_islands/` directories.
 
-**Never commit generated `docs/` files.** `docs/` is gitignored and `.github/workflows/docs.yml` publishes it to the `gh-pages` branch when a release is published.
+**Never commit the generated site.** `site/` is gitignored and `.github/workflows/docs.yml` publishes it to the `gh-pages` branch when a release is published.
 
 ### Adding a page
 
@@ -112,6 +112,7 @@ Most of these are silent — the build still succeeds, the page just comes out w
 - **Document the getter, `@ignore` the setter.** jsdoc has no notion of accessor pairs, so documenting both publishes the property twice with duplicate HTML ids.
 - **`opts.basePath` must match the sub-path the site is deployed under** (`/phyx.js`). Pages are served from clean URLs and links are root-relative, so a wrong `basePath` 404s every link and asset.
 - **`plugins/markdown` is required** — jsdoc uses it to render Markdown in doc comments before the theme sees them, and the theme refuses to build without it.
+- **The build empties its destination, so never put source files in `site/`.** Anything already there is deleted at the start of every build. The output directory is deliberately *not* called `docs/`: clean-jsdoc-theme's own documentation uses `"docs": "./docs"` as the example path for hand-written prose pages, so pointing `opts.docs` at a directory called `docs/` the conventional way would have silently deleted those files on the next build.
 - **Theme options live directly under `opts`**, not `opts.theme_opts` as in theme v4. `opts.strict` is on, so an unrecognized option fails the build instead of being ignored.
 
   [clean-jsdoc-theme]: https://github.com/ankitskvmdam/clean-jsdoc-theme
