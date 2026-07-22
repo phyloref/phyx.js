@@ -4,10 +4,10 @@
 
 const { has, cloneDeep } = require('lodash');
 
-/** Used to parse Newick strings. */
+// Used to parse Newick strings.
 const newickJs = require('newick-js');
 
-/** OWL terms to be used here. */
+// OWL terms to be used here.
 const owlterms = require('../utils/owlterms');
 
 const { TaxonomicUnitWrapper } = require('./TaxonomicUnitWrapper');

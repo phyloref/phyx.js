@@ -1,7 +1,7 @@
 /** Utility functions. */
 const { has, cloneDeep, isArray } = require('lodash');
 
-/** OWL/RDF terms. */
+// OWL/RDF terms.
 const owlterms = require('../utils/owlterms');
 
 /** We need the cache manager to memoize parsing scientific names. */

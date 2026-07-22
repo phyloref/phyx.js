@@ -1,7 +1,7 @@
 /** Utility functions. */
 const { has } = require('lodash');
 
-/** List of OWL/RDF terms we use. */
+// List of OWL/RDF terms we use.
 const owlterms = require('../utils/owlterms');
 
 /** For parsing scientific names. */

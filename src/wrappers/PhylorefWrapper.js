@@ -1,4 +1,4 @@
-/** Used to parse timestamps for phyloref statuses. */
+// Used to parse timestamps for phyloref statuses.
 const moment = require('moment');
 const { has, cloneDeep, uniq } = require('lodash');
 

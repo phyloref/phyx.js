@@ -4,7 +4,7 @@ const path = require('node:path');
 /** Helper methods from lodash. */
 const { has, cloneDeep, uniq } = require('lodash');
 
-/** For NQuads export. */
+// For NQuads export.
 const JSONLD = require('jsonld');
 
 const owlterms = require('../utils/owlterms');
