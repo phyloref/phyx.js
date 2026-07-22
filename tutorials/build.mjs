@@ -30,7 +30,16 @@ const TUTORIALS = [
  * Prose pages that aren't tutorials. These go into the theme's docs directory
  * so they get their own sidebar section instead of sitting under Tutorials.
  */
-const DOCS = [{ name: 'changelog', title: 'Changelog', source: 'CHANGELOG.md' }];
+const DOCS = [
+  { name: 'changelog', title: 'Changelog', source: 'CHANGELOG.md' },
+  // Published at /context/, alongside the context files themselves, which
+  // postdocs copies in beside this page. Its relative links resolve to them.
+  {
+    name: 'context',
+    title: 'JSON-LD Context and JSON Schema for Phyx',
+    source: 'context/README.md',
+  },
+];
 
 /**
  * Remove a leading YAML frontmatter block, which is pandoc metadata for the PDF

@@ -111,6 +111,11 @@ The three steps are:
 2. `jsdoc --configure jsdoc.json` builds the site into `site/`, emptying it first.
 3. `postdocs` copies `context/` into `site/context/` — the published JSON-LD contexts and JSON Schemas are served from the documentation site — and creates `site/.nojekyll`, without which GitHub Pages would ignore the theme's `_assets/` and `_islands/` directories.
 
+`context/README.md` is published at `/context/` as a prose page, so that URL keeps working: it
+used to be served by `jekyll-readme-index`, which GitHub Pages enables by default, but `.nojekyll`
+turns Jekyll off entirely. `postdocs` copies the context files in beside it, and the README's
+relative links resolve to them.
+
 **Never commit the generated site.** `site/` is gitignored and `.github/workflows/docs.yml` publishes it to the `gh-pages` branch when a release is published.
 
 ### Adding a page
