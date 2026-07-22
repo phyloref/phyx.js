@@ -1,17 +1,7 @@
 {
   "source": {
-    "include": [
-      "./src/wrappers/PhyxWrapper.js",
-      "./src/wrappers/PhylorefWrapper.js",
-      "./src/wrappers/PhylogenyWrapper.js",
-      "./src/wrappers/TaxonomicUnitWrapper.js",
-      "./src/matchers/TaxonomicUnitMatcher.js",
-      "./src/wrappers/TaxonConceptWrapper.js",
-      "./src/wrappers/TaxonNameWrapper.js",
-      "./src/wrappers/SpecimenWrapper.js",
-      "./src/wrappers/CitationWrapper.js",
-      "./src/utils/PhyxCacheManager.js"
-    ]
+    "include": ["./src"],
+    "exclude": ["./src/index.js", "./src/utils/owlterms.js"]
   },
   "opts": {
     "destination": "./site",
@@ -38,7 +28,7 @@
     "footer": "phyx.js — Phyloreference Exchange (Phyx) format library"
   },
   "tags": {
-    "allowUnknownTags": true
+    "allowUnknownTags": ["category"]
   },
   "plugins": ["plugins/markdown"],
   "markdown": {

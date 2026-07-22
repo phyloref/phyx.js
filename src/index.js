@@ -1,4 +1,4 @@
-/**
+/*
  * PHYX Library
  * Copyright (c) The Phyloreferencing Project, 2018-19
  *
@@ -20,34 +20,34 @@
  * can be complex and slow if necessary.
  */
 
-/** The Phyx Cache Manager -- used to manage caches across this library. */
+// The Phyx Cache Manager -- used to manage caches across this library.
 const { PhyxCacheManager } = require('./utils/PhyxCacheManager');
 
-/** A TaxonConceptWrapper for wrapping taxonomic concepts. */
+// A TaxonConceptWrapper for wrapping taxonomic concepts.
 const { TaxonConceptWrapper } = require('./wrappers/TaxonConceptWrapper');
 
-/** A TaxonNameWrapper for wrapping taxonomic names. */
+// A TaxonNameWrapper for wrapping taxonomic names.
 const { TaxonNameWrapper } = require('./wrappers/TaxonNameWrapper');
 
-/** A SpecimenWrapper for wrapping specimens. */
+// A SpecimenWrapper for wrapping specimens.
 const { SpecimenWrapper } = require('./wrappers/SpecimenWrapper');
 
-/** A TaxonomicUnitWrapper for wrapping taxonomic units. */
+// A TaxonomicUnitWrapper for wrapping taxonomic units.
 const { TaxonomicUnitWrapper } = require('./wrappers/TaxonomicUnitWrapper');
 
-/** A TaxonomicUnitMatcher for matching taxonomic units. */
+// A TaxonomicUnitMatcher for matching taxonomic units.
 const { TaxonomicUnitMatcher } = require('./matchers/TaxonomicUnitMatcher');
 
-/** A PhylogenyWrapper for wrapping phylogenies. */
+// A PhylogenyWrapper for wrapping phylogenies.
 const { PhylogenyWrapper } = require('./wrappers/PhylogenyWrapper');
 
-/** A PhylorefWrapper for wrapping phyloreferences. */
+// A PhylorefWrapper for wrapping phyloreferences.
 const { PhylorefWrapper } = require('./wrappers/PhylorefWrapper');
 
-/** A PhyxWrapper for wrapping an entire Phyx document. */
+// A PhyxWrapper for wrapping an entire Phyx document.
 const { PhyxWrapper } = require('./wrappers/PhyxWrapper');
 
-/** A CitationWrapper for wrapping a citation. */
+// A CitationWrapper for wrapping a citation.
 const { CitationWrapper } = require('./wrappers/CitationWrapper');
 
 /* Exports */
