@@ -10,7 +10,7 @@ In the PR:
 
 1. **Update `CHANGELOG.md`** — move items from `[Unreleased]` into a new `[X.Y.Z] - YYYY-MM-DD` section.
 2. **Bump the version in `package.json`** to the final release version `X.Y.Z` (not an alpha) before merging.
-3. **Regenerate documentation** — run `npm run docs` and commit the updated `docs/` tree.
+3. **Check that the documentation still builds** — run `npm run docs`. Do not commit `docs/`: it is generated output.
 
 
 Get the PR reviewed and approved, but do NOT merge it until after successfully publishing it to NPM.
