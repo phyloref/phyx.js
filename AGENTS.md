@@ -76,5 +76,5 @@ PHYX JSON file
 ### Tooling
 
 - **Linter/formatter**: [Biomejs](https://biomejs.dev/) (`biome.json`) — enforces single quotes and other style rules on `**/*.js`, `**/*.json`, and `**/*.md` (excluding `docs/`), with overrides that disable formatting/linting for test files
-- **Docs**: ESDoc, outputs to `docs/`
+- **Docs**: ESDoc, outputs to `docs/`, which is generated and never committed
 - **CI**: GitHub Actions, Node 22/24/25, runs `npm test` (includes lint)
