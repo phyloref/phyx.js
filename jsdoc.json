@@ -23,6 +23,7 @@
     "siteName": "@phyloref/phyx.js",
     "siteUrl": "https://www.phyloref.org/phyx.js",
     "basePath": "/phyx.js",
+    "strict": true,
     "sectionOrder": ["Tutorials", "Classes", "Global"],
     "menu": [
       {
