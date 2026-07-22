@@ -9,9 +9,10 @@ Create a branch named `release-phyx.js-vX.Y.Z` and open a PR against `master`.
 In the PR:
 
 1. **Update `CHANGELOG.md`** — move items from `[Unreleased]` into a new `[X.Y.Z] - YYYY-MM-DD` section.
-2. **Bump the version in `package.json`** to `X.Y.Z`.
-3. **Check that the documentation still builds** — run `npm run docs`. Do not commit `site/`: it is generated output, and publishing the release triggers the workflow that regenerates and deploys it (see step 3 below).
-4. Set the version in `package.json` to the final version (not an alpha) before merging.
+2. **Bump the version in `package.json`** to the final release version `X.Y.Z` (not an alpha) before merging.
+3. **Update the PHYX_CONTEXT_JSON in `src/utils/owlterms.js`** if a new version of the context has been
+   produced in this release.
+4. **Check that the documentation still builds** — run `npm run docs`. Do not commit `site/`: it is generated output, and publishing the release triggers the workflow that regenerates and deploys it (see step 3 below).
 
 Get the PR reviewed and approved, then merge it.
 
