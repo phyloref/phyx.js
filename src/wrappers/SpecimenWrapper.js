@@ -199,7 +199,8 @@ class SpecimenWrapper {
   }
 
   /**
-   * Return the basis of record, if one is present.
+   * Return the basis of record, if one is present. See
+   * http://rs.tdwg.org/dwc/terms/basisOfRecord for recommended values.
    */
   get basisOfRecord() {
     if (has(this.specimen, 'basisOfRecord')) return this.specimen.basisOfRecord;
@@ -209,6 +210,7 @@ class SpecimenWrapper {
   /**
    * Set the basis of record. See http://rs.tdwg.org/dwc/terms/basisOfRecord for
    * recommended values.
+   * @ignore
    */
   set basisOfRecord(bor) {
     this.specimen.basisOfRecord = bor;
