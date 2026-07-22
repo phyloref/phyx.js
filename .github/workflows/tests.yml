@@ -31,3 +31,9 @@ jobs:
 
     - name: Test with NPM
       run: npm test
+
+    # `opts.strict` in jsdoc.json turns a bad option into a build failure, and
+    # tutorials/build.mjs exits non-zero if a page's source has gone missing.
+    # Without this, the release workflow is the first thing to find out.
+    - name: Check that the documentation builds
+      run: npm run docs
