@@ -17,7 +17,7 @@
     "destination": "./docs",
     "readme": "./README.md",
     "template": "./node_modules/clean-jsdoc-theme",
-    "tutorials": "./tutorials",
+    "tutorials": "./tutorials/build",
     "theme_opts": {
       "title": "@phyloref/phyx.js JavaScript library",
       "default_theme": "fallback-dark",

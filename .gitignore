@@ -12,8 +12,8 @@
 /every-topology-testing
 /data
 
-# Ignore temporary CHANGELOG copy created by predocs script.
-tutorials/CHANGELOG.md
+# Ignore the tutorials staged for jsdoc by tutorials/build.mjs.
+tutorials/build/
 
 # Logs
 logs

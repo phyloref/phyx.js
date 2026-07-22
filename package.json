@@ -24,9 +24,9 @@
     "resolve": "bin/resolve.mjs"
   },
   "scripts": {
-    "predocs": "cp CHANGELOG.md tutorials/CHANGELOG.md && rm -rf docs",
+    "predocs": "node tutorials/build.mjs && rm -rf docs",
     "docs": "jsdoc --configure jsdoc.json",
-    "postdocs": "rm -f tutorials/CHANGELOG.md && cp -r context docs/context && touch docs/.nojekyll",
+    "postdocs": "cp -r context docs/context && touch docs/.nojekyll",
     "generate-every-topology": "every-topology-testing/generate-topologies.js",
     "lint": "biome check",
     "phyx2owl": "node bin/phyx2owl.mjs",
