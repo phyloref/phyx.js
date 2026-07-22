@@ -4,7 +4,7 @@ All notable changes to this library will be documented in this file.
 The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
-- PR #179: Stopped committing the generated `docs/` tree. The JSON-LD contexts and JSON Schemas moved from `docs/context/` to `context/` at the repository root, changing their path within the published NPM package; they continue to be served from <https://www.phyloref.org/phyx.js/context/>.
+- PR #179: Stopped committing generated documentation. The JSON-LD contexts and JSON Schemas moved from `docs/context/` to `context/` at the repository root, changing their path within the published NPM package; they continue to be served from <https://www.phyloref.org/phyx.js/context/>.
 
 ## [1.2.1] - 2025-07-28
 - PR #152: Upraded packages using `npm upgrade`.
