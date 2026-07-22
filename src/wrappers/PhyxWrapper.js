@@ -25,7 +25,7 @@ class PhyxWrapper {
   /**
    * Wraps an entire PHYX document.
    * @param {Object} phyx - The Phyx structure to wrap.
-   * @param {Function} [newickParser=PhylogenyWrapper.getParsedNewick] - A method
+   * @param {function(string): Object} [newickParser=PhylogenyWrapper.getParsedNewick] - A method
    *    that accepts a Newick string and returns a list of nodes. Each node should have a
    *    'children' key with its children and optionally a 'name' key with its label. This
    *    code previously depended on phylotree.js, whose newick_parser() function works exactly

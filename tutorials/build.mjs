@@ -85,7 +85,7 @@ function build() {
   }
 }
 
-// Only build when run as a script, so tests can import stripLeadingTitle().
+// Only build when run as a script, so tests can import stripFrontmatter().
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   build();
 }

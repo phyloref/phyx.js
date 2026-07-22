@@ -116,7 +116,12 @@ used to be served by `jekyll-readme-index`, which GitHub Pages enables by defaul
 turns Jekyll off entirely. `postdocs` copies the context files in beside it, and the README's
 relative links resolve to them.
 
-**Never commit the generated site.** `site/` is gitignored and `.github/workflows/docs.yml` publishes it to the `gh-pages` branch when a release is published.
+**Never commit the generated site.** `site/` is gitignored and `.github/workflows/docs.yml` publishes it to the `gh-pages` branch when a release is published, or on demand via `workflow_dispatch`.
+
+GitHub Pages serves that `gh-pages` branch from its root, under `/phyx.js`. That is what makes
+`postdocs` enough to keep <https://www.phyloref.org/phyx.js/context/v1.1.0/phyx.json> resolving —
+the IRI `src/utils/owlterms.js` hardcodes, and the one every published Phyx file dereferences. Any
+change to `basePath`, to `publish_dir`, or to the Pages source has to preserve that URL exactly.
 
 ### Adding a page
 
@@ -130,9 +135,11 @@ Source files keep their own level-one heading — the theme renders a heading fo
 
 Most of these are silent — the build still succeeds, the page just comes out wrong:
 
-- **Don't hand-order categories.** `@category Wrappers` sorts alphabetically on its own; an
-  `order=N` suffix overrides that, but then every new class needs a number and a forgotten one
-  lands wherever the tool decides.
+- **Categories sort alphabetically; don't add to the one exception.** `@category Wrappers` needs
+  no ordering of its own. `PhyxWrapper` carries `order=1` deliberately, because wrapping a whole
+  document is where someone new to the library should start, and that should stay the only one:
+  once a second class has a number, every new class needs one, and a forgotten one lands wherever
+  the tool decides.
 - **A class without `@category` disappears from the sidebar.** `sectionOrder` lists our categories (Wrappers, Matchers, Utilities) instead of `Classes`, so an uncategorised class is published but unreachable from the navigation. `strict` does not catch this.
 - **A class's doc comment must sit immediately above the class**, below the imports. A file-header comment above the imports is close enough for jsdoc to give the class a page but not to treat the comment as the class's own, so tags on it (like `@category`) never reach the class. Both `CitationWrapper` and `PhylogenyWrapper` were broken this way.
 - **Don't put `/** */` on a top-level `require`.** jsdoc attaches a doc comment to the next code construct, so it documents the import as a global. Use `//` for notes about imports.
