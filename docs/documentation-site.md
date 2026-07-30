@@ -27,8 +27,16 @@ links resolve to them.
 ## Publishing
 
 **Never commit the generated site.** `site/` is gitignored and `.github/workflows/docs.yml`
-publishes it when a release is published, or on demand via `workflow_dispatch`. Note that merging
-to `master` publishes nothing — **the site only refreshes on a release or a manual run.**
+publishes it when a release is published, or on demand:
+
+```bash
+gh workflow run docs.yml
+```
+
+Note that merging to `master` publishes nothing — **the site only refreshes on a release or a
+manual run.** The manual run has to be on `master`: the `github-pages` environment has a
+deployment branch policy naming only that branch, so dispatching the workflow on a topic branch is
+rejected in seconds, before it even checks out. Test docs changes with `npm run docs` locally.
 
 The repository's Pages source is **GitHub Actions**, not a branch, so the site is whatever
 `actions/deploy-pages` last uploaded. Two consequences worth remembering:
