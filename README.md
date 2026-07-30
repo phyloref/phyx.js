@@ -19,7 +19,7 @@ You can install [phyx.js using npm](https://www.npmjs.com/package/@phyloref/phyx
 $ npm install @phyloref/phyx
 ```
 
-[Tutorials demonstrating the use of phyx.js](./tutorials/) are available.
+[Tutorials demonstrating the use of phyx.js](https://www.phyloref.org/phyx.js/tutorials/introduction/) are available.
 
 ## Citation
 

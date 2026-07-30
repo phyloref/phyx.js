@@ -1,10 +1,10 @@
+const { has, isEmpty } = require('lodash');
+
 /**
  * The CitationWrapper wraps a single citation in the Phyx document.
  * Based on BibJSON (http://okfnlabs.org/bibjson/).
+ * @category Wrappers
  */
-
-const { has, isEmpty } = require('lodash');
-
 class CitationWrapper {
   /**
    * Construct a CitationWrapper.

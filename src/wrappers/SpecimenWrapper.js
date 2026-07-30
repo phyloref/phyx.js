@@ -17,6 +17,7 @@ const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
  * SpecimenWrapper, but unfortunately the TaxonOccurrence ontology has been deprecated
  * (see https://github.com/tdwg/ontology). Therefore, it instead improvises a
  * representation based on dwc:Occurrence.
+ * @category Wrappers
  */
 class SpecimenWrapper {
   /** The '@type' of specimens in JSON-LD document. */
@@ -199,7 +200,8 @@ class SpecimenWrapper {
   }
 
   /**
-   * Return the basis of record, if one is present.
+   * Return the basis of record, if one is present. See
+   * http://rs.tdwg.org/dwc/terms/basisOfRecord for recommended values.
    */
   get basisOfRecord() {
     if (has(this.specimen, 'basisOfRecord')) return this.specimen.basisOfRecord;
@@ -209,6 +211,7 @@ class SpecimenWrapper {
   /**
    * Set the basis of record. See http://rs.tdwg.org/dwc/terms/basisOfRecord for
    * recommended values.
+   * @ignore
    */
   set basisOfRecord(bor) {
     this.specimen.basisOfRecord = bor;

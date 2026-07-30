@@ -1,6 +1,14 @@
 # Don't include Claude config.
 .claude
 
+# Editor and operating system files.
+.idea/
+.DS_Store
+
+# The generated documentation site. Note that this is NOT docs/: that name is
+# free for hand-written documentation, and the build empties its destination.
+/site
+
 # Don't save any JPhyloRef files into GitHub.
 /test/jphyloref-*.jar
 
@@ -9,8 +17,8 @@
 /every-topology-testing
 /data
 
-# Don't include generated documentation files.
-/docs
+# Ignore the tutorials staged for jsdoc by tutorials/build.mjs.
+tutorials/build/
 
 # Logs
 logs

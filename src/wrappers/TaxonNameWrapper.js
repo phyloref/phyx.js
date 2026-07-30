@@ -1,7 +1,7 @@
 /** Utility functions. */
 const { has, cloneDeep, isArray } = require('lodash');
 
-/** OWL/RDF terms. */
+// OWL/RDF terms.
 const owlterms = require('../utils/owlterms');
 
 /** We need the cache manager to memoize parsing scientific names. */
@@ -34,6 +34,7 @@ const { PhyxCacheManager } = require('../utils/PhyxCacheManager');
  * Note that the TaxonName ontology recommends dc:title instead of rdfs:label;
  * however, I like the idea of using dc:title for documents and rdfs:label for
  * vocabulary terms, so I'm okay with using rdfs:label for the verbatim name.
+ * @category Wrappers
  */
 class TaxonNameWrapper {
   /**
@@ -195,6 +196,7 @@ class TaxonNameWrapper {
 
   /**
    * Set the nomenclatural code of this taxon name.
+   * @ignore
    */
   set nomenclaturalCode(nomenCode) {
     this.txname.nomenclaturalCode = nomenCode;
@@ -291,6 +293,7 @@ class TaxonNameWrapper {
 
   /**
    * Set the label of this scientific name.
+   * @ignore
    */
   set label(lab) {
     this.txname.label = lab;
@@ -307,9 +310,9 @@ class TaxonNameWrapper {
     return this.txname.label;
   }
 
-  /*
+  /**
    * Return the complete name (i.e. the uninomial, binomial or trinomial name
-   * without authority information).
+   * without authority information). Setting this re-parses the provided name.
    */
   get nameComplete() {
     return (
@@ -322,6 +325,7 @@ class TaxonNameWrapper {
 
   /**
    * Set the complete name. To do this, we re-parse the provided name.
+   * @ignore
    */
   set nameComplete(name) {
     this.txname = TaxonNameWrapper.fromVerbatimName(
@@ -347,7 +351,10 @@ class TaxonNameWrapper {
     return undefined;
   }
 
-  /** Set the uninomial name. */
+  /**
+   * Set the uninomial name.
+   * @ignore
+   */
   set uninomial(uninom) {
     this.txname.uninomial = uninom;
     this.txname.nameComplete = uninom;
@@ -362,7 +369,10 @@ class TaxonNameWrapper {
     return `${this.genusPart} ${this.specificEpithet}`;
   }
 
-  /** Set the binomial name. */
+  /**
+   * Set the binomial name.
+   * @ignore
+   */
   set binomialName(binom) {
     this.txname.uninomial = undefined;
     this.txname.nameComplete = binom;
@@ -379,7 +389,10 @@ class TaxonNameWrapper {
     return `${this.genusPart} ${this.specificEpithet} ${this.infraspecificEpithet}`;
   }
 
-  /** Set the trinomial name. */
+  /**
+   * Set the trinomial name.
+   * @ignore
+   */
   set trinomialName(trinom) {
     this.txname.uninomial = undefined;
     this.txname.nameComplete = trinom;
@@ -403,7 +416,10 @@ class TaxonNameWrapper {
     return undefined;
   }
 
-  /** Set the genus part of this name. */
+  /**
+   * Set the genus part of this name.
+   * @ignore
+   */
   set genusPart(genus) {
     this.txname.genusPart = genus;
     if (this.specificEpithet) {
@@ -433,7 +449,10 @@ class TaxonNameWrapper {
     return undefined;
   }
 
-  /** Set the specificEpithet part of this name. */
+  /**
+   * Set the specificEpithet part of this name.
+   * @ignore
+   */
   set specificEpithet(epithet) {
     this.txname.specificEpithet = epithet;
     if (this.genusPart) {
@@ -465,7 +484,10 @@ class TaxonNameWrapper {
     return undefined;
   }
 
-  /** Set the infraspecificEpithet part of this name. */
+  /**
+   * Set the infraspecificEpithet part of this name.
+   * @ignore
+   */
   set infraspecificEpithet(epithet) {
     this.txname.infraspecificEpithet = epithet;
     if (this.genusPart) {

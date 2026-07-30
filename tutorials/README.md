@@ -11,10 +11,17 @@ to build Markdown and PDF versions of these tutorials, using [Jupyter nbconvert]
 While these Jupyter Notebooks can be viewed in [Jupyter nbviewer], note that they cannot
 be opened with [Binder], since they use an unsupported IJavascript kernel (see [related issue]).
 
+These notebooks are also published on the [phyx.js documentation site]. `tutorials/build.mjs`
+stages them for that build; see [Building the documentation site] for how that works and what to
+watch out for. Note that the Markdown files here are generated from the notebooks, so edit the
+notebook rather than the Markdown.
+
 Currently available tutorials:
 - [Introduction.ipynb] - An introduction to phyx.js ([Introduction.md], [Introduction.pdf], [Introduction in nbviewer])
 
 
+  [phyx.js documentation site]: https://www.phyloref.org/phyx.js/
+  [Building the documentation site]: ../docs/documentation-site.md
   [Jupyter Notebook]: https://jupyter.org/
   [IJavascript]: https://github.com/n-riesco/ijavascript
   [Makefile]: ./Makefile

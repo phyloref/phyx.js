@@ -72,9 +72,37 @@ PHYX JSON file
 - Test files in `test/` mirror source modules (`phylorefs.js`, `phylogenies.js`, etc.)
 - `test/examples/correct/` contains fixture PHYX files with expected outputs used by `test/examples.js`
 - `test/jphyloref.js` requires the JPhyloRef JAR; may be skipped if Java is unavailable
+- Some tests need network access. `test/examples/incorrect/otl-resolution-errors.json` and
+  `test/examples/correct/normalization/brochu_2003_normalization.json` use a remote `@context`
+  URL rather than a relative path, so anything converting them fetches it.
+- **One `bin/phyx2owl.mjs` test fails on Node 26**, from a bundled-undici conflict in `jsonld`. CI
+  runs Node 22, 24 and 25 and is green. Don't chase it or count it as a regression — see
+  [issue #180](https://github.com/phyloref/phyx.js/issues/180).
+
+### Working in this repository
+
+- **Check a failing test against an unmodified checkout before assuming you caused it.**
+  `git stash -u`, re-run, `git stash pop`. See the known failure above.
+- **Don't `git add -A`.** A generated directory ignored on one branch may not be ignored on
+  another — `tutorials/build/`, `site/` and the editor files now in `.gitignore` have all been
+  swept into a commit this way. Stage explicit paths.
+- **Run `npm ci` after switching branches** if their dependency sets differ; a stale
+  `node_modules` shows up as confusing lint and build failures rather than as an obvious
+  version mismatch.
 
 ### Tooling
 
-- **Linter/formatter**: [Biomejs](https://biomejs.dev/) (`biome.json`) — enforces single quotes and other style rules on `**/*.js`, `**/*.json`, and `**/*.md` (excluding `docs/`), with overrides that disable formatting/linting for test files
-- **Docs**: ESDoc, outputs to `docs/`, which is generated and never committed
+- **Linter/formatter**: [Biomejs](https://biomejs.dev/) (`biome.json`) — enforces single quotes and other style rules, with overrides that disable formatting/linting for test files. `includes` also lists `**/*.md`, but Biome doesn't process Markdown yet and reports it as ignored, so prose is unchecked.
 - **CI**: GitHub Actions, Node 22/24/25, runs `npm test` (includes lint)
+
+## Docs
+
+Generated with JSDoc 4 and clean-jsdoc-theme v5 into `site/`, and published to
+<https://www.phyloref.org/phyx.js/> from the `gh-pages` branch. `npm run docs` builds it.
+
+**Never commit `site/`** — it is generated output, and the build empties it.
+
+Read [docs/documentation-site.md](docs/documentation-site.md) before changing anything about the
+docs build: how the three build steps fit together, how to add a page, what has to stay true for
+the published context IRIs to keep resolving, and the ways a page can come out wrong while the
+build still reports success.

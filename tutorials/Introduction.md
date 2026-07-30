@@ -129,11 +129,11 @@ console.log('Errors:', validator.errors);
 
 ## Examining phyloreferences, taxonomic units and taxon concepts
 
-The phyx.js library was built in order to simplify the process of working with individual components of Phyx documents, and to facilitate the conversion of a Phyx document into OWL. The library consists of a series of [wrappers](https://www.phyloref.org/phyx.js/identifiers.html#wrappers), each of which wraps part of the document. For example, we can wrap every specifier that is a [taxonomic unit](http://purl.obolibrary.org/obo/CDAO_0000138) using the [TaxonomicUnitWrapper](https://www.phyloref.org/phyx.js/class/src/wrappers/TaxonomicUnitWrapper.js~TaxonomicUnitWrapper.html).
+The phyx.js library was built in order to simplify the process of working with individual components of Phyx documents, and to facilitate the conversion of a Phyx document into OWL. The library consists of a series of [wrappers](https://www.phyloref.org/phyx.js/), each of which wraps part of the document. For example, we can wrap every specifier that is a [taxonomic unit](http://purl.obolibrary.org/obo/CDAO_0000138) using the [TaxonomicUnitWrapper](https://www.phyloref.org/phyx.js/taxonomicunitwrapper).
 
 This provides a number of convenience methods: for example, `.internalSpecifiers` and `.externalSpecifiers` will always return lists, whether or not these are defined in the underlying phyloreference (if undefined, the methods return empty lists). There is also a `.specifiers` method that lists both internal and external specifiers.
 
-Furthermore, taxonomic units that are taxon concepts can be wrapped by a [TaxonConceptWrapper](https://www.phyloref.org/phyx.js/class/src/wrappers/TaxonConceptWrapper.js~TaxonConceptWrapper.html), which have methods for accessing the "complete name" (i.e. the monomial, binomial or trinomial name) and the nomenclatural code.
+Furthermore, taxonomic units that are taxon concepts can be wrapped by a [TaxonConceptWrapper](https://www.phyloref.org/phyx.js/taxonconceptwrapper), which have methods for accessing the "complete name" (i.e. the monomial, binomial or trinomial name) and the nomenclatural code.
 
 
 ```javascript
@@ -181,7 +181,7 @@ alligatoridae_brochu2003.phylorefs.forEach(phyloref => {
 
 ### Examining phylogenies
 
-Phylogenies are stored in JSON files as Newick strings, but the [PhylogenyWrapper](https://www.phyloref.org/phyx.js/class/src/wrappers/PhylogenyWrapper.js~PhylogenyWrapper.html) can be used to look at internal and terminal node labels and to translate the Newick string into a JSON structure for use by downstream programs.
+Phylogenies are stored in JSON files as Newick strings, but the [PhylogenyWrapper](https://www.phyloref.org/phyx.js/phylogenywrapper) can be used to look at internal and terminal node labels and to translate the Newick string into a JSON structure for use by downstream programs.
 
 
 ```javascript
@@ -353,7 +353,7 @@ console.log();
 
 ### Accessing citations
 
-Another example of a wrapper that can be used for wrapping a part of a Phyx file is the [CitationWrapper](https://www.phyloref.org/phyx.js/class/src/wrappers/CitationWrapper.js~CitationWrapper.html). This can be used to wrap citations anywhere in the Phyx file to provide a full bibliographic citation for the citation.
+Another example of a wrapper that can be used for wrapping a part of a Phyx file is the [CitationWrapper](https://www.phyloref.org/phyx.js/citationwrapper). This can be used to wrap citations anywhere in the Phyx file to provide a full bibliographic citation for the citation.
 
 
 ```javascript

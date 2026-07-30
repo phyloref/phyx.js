@@ -4,7 +4,7 @@ const path = require('node:path');
 /** Helper methods from lodash. */
 const { has, cloneDeep, uniq } = require('lodash');
 
-/** For NQuads export. */
+// For NQuads export.
 const JSONLD = require('jsonld');
 
 const owlterms = require('../utils/owlterms');
@@ -13,16 +13,19 @@ const { PhylorefWrapper } = require('./PhylorefWrapper');
 const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 const { CitationWrapper } = require('./CitationWrapper');
 
+// The other wrappers are left to sort alphabetically in the sidebar, but this
+// one is ordered first: wrapping a whole document is the best entry point for
+// understanding the library.
 /**
  * The PhyxWrapper wraps an entire Phyx document.
+ * @category Wrappers order=1
  */
 
 class PhyxWrapper {
   /**
    * Wraps an entire PHYX document.
    * @param {Object} phyx - The Phyx structure to wrap.
-   * @param {function(newick: string): {name: string, children: Object[]}}
-   *    [newickParser=PhylogenyWrapper.getParsedNewick] - A method
+   * @param {function(string): Object} [newickParser=PhylogenyWrapper.getParsedNewick] - A method
    *    that accepts a Newick string and returns a list of nodes. Each node should have a
    *    'children' key with its children and optionally a 'name' key with its label. This
    *    code previously depended on phylotree.js, whose newick_parser() function works exactly
@@ -305,7 +308,7 @@ class PhyxWrapper {
    *    prepending them with the baseIRI.
    * @param {string} [filePath=undefined] - The path of the Phyx file being converted.
    *    Used only if the `@context` of the file is a relative path.
-   * @return {Promise[string]} A Promise to return this Phyx document as a string that can
+   * @return {Promise.<string>} A Promise to return this Phyx document as a string that can
    *    be written to an N-Quads file.
    */
   toRDF(baseIRI = '', filePath = undefined) {

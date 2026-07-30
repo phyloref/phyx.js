@@ -1,4 +1,4 @@
-/** Used to parse timestamps for phyloref statuses. */
+// Used to parse timestamps for phyloref statuses.
 const moment = require('moment');
 const { has, cloneDeep, uniq } = require('lodash');
 
@@ -9,8 +9,9 @@ const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 const { CitationWrapper } = require('./CitationWrapper');
 
 /**
- * PhylorefWrapper
- *
+ * Wraps a phyloreference in a Phyx model, with multiple specifiers and statuses. Includes code for generating the
+ * components of a phyloreference expression in OWL.
+ * @category Wrappers
  */
 
 class PhylorefWrapper {
@@ -22,7 +23,11 @@ class PhylorefWrapper {
     this.phyxDefaultNomenCode = phyxDefaultNomenCode;
   }
 
-  /** Return the internal specifiers of this phyloref (if any). */
+  /**
+   * Return the internal specifiers of this phyloref. If the phyloref doesn't have
+   * any, an empty list is stored on it and returned, so that callers can add
+   * specifiers by pushing onto it.
+   */
   get internalSpecifiers() {
     if (!has(this.phyloref, 'internalSpecifiers')) {
       // If there isn't one, create an empty list so that the caller can do
@@ -51,7 +56,11 @@ class PhylorefWrapper {
     return normalizedPhyloref;
   }
 
-  /** Return the external specifiers of this phyloref (if any). */
+  /**
+   * Return the external specifiers of this phyloref. If the phyloref doesn't have
+   * any, an empty list is stored on it and returned, so that callers can add
+   * specifiers by pushing onto it.
+   */
   get externalSpecifiers() {
     if (!has(this.phyloref, 'externalSpecifiers')) {
       // If there isn't one, create an empty list so that the caller can do
@@ -62,8 +71,12 @@ class PhylorefWrapper {
     return this.phyloref.externalSpecifiers;
   }
 
+  /**
+   * Return a label for this phyloreference: its `label` if it has one, failing
+   * that the first of its `labels`, failing that its `title`. Setting this
+   * always writes to `label`.
+   */
   get label() {
-    // Return a label for this phyloreference.
     if (has(this.phyloref, 'label')) return this.phyloref.label;
     if (has(this.phyloref, 'labels') && this.phyloref.labels.length > 0)
       return this.phyloref.labels[0];
@@ -72,8 +85,11 @@ class PhylorefWrapper {
     return undefined;
   }
 
+  /**
+   * Set a label for this phyloreference.
+   * @ignore
+   */
   set label(newLabel) {
-    // Set a label for this phyloreference.
     if (has(this.phyloref, 'label')) {
       this.phyloref.label = newLabel;
     } else {

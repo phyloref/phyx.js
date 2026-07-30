@@ -1,7 +1,7 @@
 /** Utility functions. */
 const { has } = require('lodash');
 
-/** List of OWL/RDF terms we use. */
+// List of OWL/RDF terms we use.
 const owlterms = require('../utils/owlterms');
 
 /** For parsing scientific names. */
@@ -20,6 +20,7 @@ const { TaxonNameWrapper } = require('./TaxonNameWrapper');
  *      (i.e. as a nominal taxon concept, as in https://github.com/darwin-sw/dsw/wiki/ClassTaxon).
  *    - MAY have nameString and accordingToString properties. We will fall back
  *      to these properties if hasName or accordingTo are missing.
+ * @category Wrappers
  */
 
 class TaxonConceptWrapper {

@@ -12,10 +12,9 @@ In the PR:
 2. **Bump the version in `package.json`** to the final release version `X.Y.Z` (not an alpha) before merging.
 3. **Update the PHYX_CONTEXT_JSON in `src/utils/owlterms.js`** if a new version of the context has been
    produced in this release.
-4. **Check that the documentation still builds** — run `npm run docs`. Do not commit `docs/`: it is generated output.
+4. **Check that the documentation still builds** — run `npm run docs`. Do not commit `site/`: it is generated output, and publishing the release triggers the workflow that regenerates and deploys it (see step 3 below).
 
-
-Get the PR reviewed and approved, but do NOT merge it until after successfully publishing it to NPM.
+Get the PR reviewed and approved, then merge it.
 
 ## 2. Publish to npm
 
@@ -34,6 +33,8 @@ git push origin vX.Y.Z
 
 Then create a GitHub release for the tag (via the GitHub UI or `gh release create vX.Y.Z`).
 
+Publishing the release triggers the `docs.yml` workflow, which regenerates and deploys docs to GitHub Pages.
+
 ## 4. Confirm the Zenodo deposit
 
 The GitHub release triggers an automatic Zenodo deposit. Check that a new versioned DOI has been minted at https://zenodo.org (search for "phyx.js").
@@ -47,6 +48,4 @@ Once the Zenodo DOI is available, update `CITATION.cff`:
 - The versioned DOI identifier (`identifiers[1].value`): the new Zenodo DOI
 - Leave the concept DOI (`10.5281/zenodo.5576556`) unchanged — it always resolves to the latest version.
 
-## 6. Merge PR
-
-Once all of the above steps have been successfully carried out, merge the release PR.
+Commit and push this change directly to `master` (or as a follow-up PR).

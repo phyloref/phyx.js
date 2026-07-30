@@ -1,25 +1,23 @@
-/**
- * PhylogenyWrapper
- */
-
 const { has, cloneDeep } = require('lodash');
 
-/** Used to parse Newick strings. */
+// Used to parse Newick strings.
 const newickJs = require('newick-js');
 
-/** OWL terms to be used here. */
+// OWL terms to be used here.
 const owlterms = require('../utils/owlterms');
 
 const { TaxonomicUnitWrapper } = require('./TaxonomicUnitWrapper');
 const { TaxonomicUnitMatcher } = require('../matchers/TaxonomicUnitMatcher');
 const { CitationWrapper } = require('./CitationWrapper');
 
+/**
+ * Wraps a Phylogeny in a PHYX file and provides access to node, node labels
+ * and other information. Remember that a Phylogeny also has the
+ * additionalNodeProperties object which provides additional properties for
+ * nodes.
+ * @category Wrappers
+ */
 class PhylogenyWrapper {
-  // Wraps a Phylogeny in a PHYX file and provides access to node, node labels
-  // and other information. Remember that a Phylogeny also has the
-  // additionalNodeProperties object which provides additional properties for
-  // nodes.
-
   constructor(phylogeny, defaultNomenCode = owlterms.UNKNOWN_CODE) {
     // Construct a phylogeny based on a Phylogeny object in a PHYX phylogeny.
     // Note that this version ONLY uses the `newick` property to determine the

@@ -1,7 +1,7 @@
 /** Utility functions. */
 const { has, isArray, cloneDeep, assign } = require('lodash');
 
-/** List of OWL/RDF terms we use. */
+// List of OWL/RDF terms we use.
 const owlterms = require('../utils/owlterms');
 
 /** We store the taxonomic units we extract from phylogeny labels in the Phyx Cache Manager. */
@@ -33,6 +33,7 @@ const { TaxonConceptWrapper } = require('./TaxonConceptWrapper');
  *
  * Taxonomic units may be specified with only an '@id' or a set of '@id's, which
  * indicate external references.
+ * @category Wrappers
  */
 
 class TaxonomicUnitWrapper {
