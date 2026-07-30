@@ -5,12 +5,25 @@ on:
     types: [published]
   workflow_dispatch:
 
+# Pages is configured with "GitHub Actions" as its source, so the site is served from the
+# artifact this workflow uploads. Pushing to a `gh-pages` branch would deploy nothing.
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a release finish deploying before a manual run starts, rather than cancelling it.
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   publish-docs:
     runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repository
@@ -29,12 +42,18 @@ jobs:
       - name: Generate documentation
         run: npm run docs
 
-      # Pinned to a commit rather than a tag: this step holds `contents: write`,
-      # and a tag can be moved to point at anything.
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@1ef5a1b1df4c63fe21a2242edbee6cac921ece01 # v4.1.0
+      # jsdoc exits 0 when it finds no input files, leaving no site behind at all.
+      - name: Check the site was generated
+        run: test -s site/index.html && test -s site/context/v1.1.0/phyx.json
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          publish_branch: gh-pages
-          force_orphan: true
+          path: ./site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
