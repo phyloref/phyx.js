@@ -1,5 +1,5 @@
 {
-  "@context": "../../../docs/context/development/phyx.json",
+  "@context": "../../../context/development/phyx.json",
   "phylogenies": [
     {
       "newick": "((((Aa_a, Bb_b)Expected, Cc_c), (Dd_d, (Ee_e, Ff_f, (Gg_g, Hh_h)))), Ii_i)",

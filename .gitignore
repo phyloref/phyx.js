@@ -9,8 +9,8 @@
 /every-topology-testing
 /data
 
-# Ignore esdocs documentation.
-/docs/esdocs/
+# Don't include generated documentation files.
+/docs
 
 # Logs
 logs
