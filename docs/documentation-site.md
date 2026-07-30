@@ -27,13 +27,24 @@ links resolve to them.
 ## Publishing
 
 **Never commit the generated site.** `site/` is gitignored and `.github/workflows/docs.yml`
-publishes it to the `gh-pages` branch when a release is published, or on demand via
-`workflow_dispatch`.
+publishes it when a release is published, or on demand via `workflow_dispatch`. Note that merging
+to `master` publishes nothing — **the site only refreshes on a release or a manual run.**
 
-GitHub Pages serves that `gh-pages` branch from its root, under `/phyx.js`. That is what makes
+The repository's Pages source is **GitHub Actions**, not a branch, so the site is whatever
+`actions/deploy-pages` last uploaded. Two consequences worth remembering:
+
+- Pushing to a `gh-pages` branch deploys nothing. The branch still exists, left over from the
+  esdoc era, and is not served.
+- GitHub's own `pages-build-deployment` runs are not this workflow. Under a branch source it
+  Jekyll-builds the configured folder and reports success even when the result has no
+  `index.html` — which is exactly how the site 404'd after the esdoc output was removed from
+  `docs/`.
+
+Pages serves the uploaded artifact at the repository sub-path, `/phyx.js`. That is what makes
 `postdocs` enough to keep <https://www.phyloref.org/phyx.js/context/v1.1.0/phyx.json> resolving —
 the IRI `src/utils/owlterms.js` hardcodes, and the one every published Phyx file dereferences. Any
-change to `basePath`, to `publish_dir`, or to the Pages source has to preserve that URL exactly.
+change to `basePath`, to the uploaded `path`, or to the Pages source has to preserve that URL
+exactly. The workflow checks `site/index.html` and that context file exist before it deploys.
 
 ## Adding a page
 
