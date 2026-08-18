@@ -74,9 +74,13 @@ describe(PHYX2OWL_JS, function () {
       encoding: 'utf-8',
       stdio: 'pipe',
     });
-    expect(result.status).to.equal(0);
-    expect(result.stdout).to.match(/\d+ files converted successfully./);
-    expect(result.stderr).to.be.empty;
+    // Report stderr on failure: phyx2owl.mjs writes the reason a file could not be
+    // converted there, and a bare `expected 1 to equal +0` says nothing about which
+    // file failed or why.
+    const failureDetail = `phyx2owl.mjs exited ${result.status}.\n--- stdout ---\n${result.stdout}\n--- stderr ---\n${result.stderr}`;
+    expect(result.stderr, failureDetail).to.be.empty;
+    expect(result.status, failureDetail).to.equal(0);
+    expect(result.stdout, failureDetail).to.match(/\d+ files converted successfully./);
 
     const regexMatch = result.stdout.match(/(\d+) files converted successfully./);
     const fileCount = Number(regexMatch[1]);
