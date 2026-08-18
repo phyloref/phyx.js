@@ -51,6 +51,16 @@ checks out. **Both of these policies have to exist**:
 They live in repository settings, not in this repo, so they survive no review and no test. Check
 them with `gh api repos/phyloref/phyx.js/environments/github-pages/deployment-branch-policies`.
 
+To publish from a branch other than `master` — to repair the live site from a PR, say — add a
+temporary branch rule for it, dispatch with `gh workflow run docs.yml --ref <branch>`, then delete
+the rule. That is how the site was restored while the fix was still under review.
+
+**The test suite depends on this site being up.** `test/examples/correct/normalization/brochu_2003_normalization.json`
+and `test/examples/incorrect/otl-resolution-errors.json` reference their `@context` by its
+published URL rather than a relative path, so a broken deploy fails `npm test` on every Node
+version. Publishing is not only a docs concern, and CI cannot catch a regression here before the
+deploy has actually run.
+
 The repository's Pages source is **GitHub Actions**, not a branch, so the site is whatever
 `actions/deploy-pages` last uploaded. Two consequences worth remembering:
 
