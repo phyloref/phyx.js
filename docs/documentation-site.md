@@ -14,26 +14,86 @@ npm run docs   # predocs + jsdoc + postdocs
    `tutorials/build/` (gitignored). `tutorials/build/tutorials/` holds tutorials and feeds
    `opts.tutorials`; `tutorials/build/docs/` holds prose pages such as the changelog and feeds
    `opts.docs`, which gives them their own sidebar section.
-2. `jsdoc --configure jsdoc.json` builds the site into `site/`, emptying it first.
+2. `jsdoc --configure jsdoc.config.js` builds the site into `site/`, emptying it first. The
+   config is a CommonJS module rather than JSON so it can read `version` out of `package.json`
+   and put it in the footer — see the note on versioning under [Publishing](#publishing).
 3. `postdocs` copies `context/` into `site/context/` — the published JSON-LD contexts and JSON
-   Schemas are served from the documentation site — and creates `site/.nojekyll`, without which
-   GitHub Pages would ignore the theme's `_assets/` and `_islands/` directories.
+   Schemas are served from the documentation site — and creates `site/.nojekyll`.
 
-`context/README.md` is published at `/context/` as a prose page, so that URL keeps working: it used
-to be served by `jekyll-readme-index`, which GitHub Pages enables by default, but `.nojekyll` turns
-Jekyll off entirely. `postdocs` copies the context files in beside it, and the README's relative
-links resolve to them.
+Nothing Jekyll-related runs under the Actions Pages source (see [Publishing](#publishing)), so
+`.nojekyll` is inert today. It stays because under a branch source Jekyll would ignore the theme's
+`_assets/` and `_islands/` directories.
+
+`context/README.md` is published at `/context/` as a prose page, so that URL keeps working: under
+the old branch source it was served by `jekyll-readme-index`, which GitHub Pages enabled by
+default. `postdocs` copies the context files in beside it, and the README's relative links resolve
+to them.
 
 ## Publishing
 
 **Never commit the generated site.** `site/` is gitignored and `.github/workflows/docs.yml`
-publishes it to the `gh-pages` branch when a release is published, or on demand via
-`workflow_dispatch`.
+publishes it when a release is published, or on demand:
 
-GitHub Pages serves that `gh-pages` branch from its root, under `/phyx.js`. That is what makes
+```bash
+gh workflow run docs.yml
+```
+
+Note that merging to `master` publishes nothing — **the site only refreshes on a release or a
+manual run.** Test docs changes with `npm run docs` locally.
+
+That is deliberate, and it is why every page's footer carries the version: the site documents a
+released version, not the tip of `master`, so it has to say which one. The footer is built from
+`package.json`'s `version` at build time, so it describes the tree the build ran on — accurate for
+a release run, which checks out the tag, and equally accurate (if less useful) for a manual run
+from `master`, which will read as the version last bumped. If the site is ever switched to publish
+on every push to `master`, this footer becomes misleading and needs to grow a "development build"
+marker.
+
+Both paths run through the `github-pages` environment, whose deployment branch policies decide
+which refs may deploy. A run whose ref matches none of them is rejected in seconds, before it even
+checks out. **Both of these policies have to exist**:
+
+- `master` (branch) — for `workflow_dispatch`, which is why a manual run has to be on `master` and
+  dispatching from a topic branch fails immediately.
+- `v*` (tag) — for `release: published`, where `github.ref` is `refs/tags/vX.Y.Z` and no branch
+  policy can ever match. Without it the release path is silently dead.
+
+They live in repository settings, not in this repo, so they survive no review and no test. Check
+them with `gh api repos/phyloref/phyx.js/environments/github-pages/deployment-branch-policies`.
+
+To publish from a branch other than `master` — to repair the live site from a PR, say — add a
+temporary branch rule for it, dispatch with `gh workflow run docs.yml --ref <branch>`, then delete
+the rule. That is how the site was restored while the fix was still under review.
+
+**The test suite depends on this site being up.** `test/examples/correct/normalization/brochu_2003_normalization.json`
+and `test/examples/incorrect/otl-resolution-errors.json` reference their `@context` by its
+published URL rather than a relative path, so a broken deploy fails `npm test` on every Node
+version. Publishing is not only a docs concern, and CI cannot catch a regression here before the
+deploy has actually run.
+
+The repository's Pages source is **GitHub Actions**, not a branch, so the site is whatever
+`actions/deploy-pages` last uploaded. Two consequences worth remembering:
+
+- Pushing to a `gh-pages` branch deploys nothing, and the branch itself — left over from the
+  esdoc era — has been deleted.
+- GitHub's own `pages-build-deployment` runs are not this workflow. Under a branch source it
+  Jekyll-builds the configured folder and reports success even when the result has no
+  `index.html` — which is exactly how the site 404'd after the esdoc output was removed from
+  `docs/`.
+- The Pages settings still record `source: {branch: master, path: /docs}` from the esdoc era, and
+  there is no way to clear it: the API has no "no source" value, and the field is simply ignored
+  while `build_type` is `workflow`. It is a loaded gun rather than a live problem — switching the
+  source back to a branch would resume Jekyll-building `master:/docs`, which holds prose files and
+  no `index.html`, and would 404 exactly as before. Don't switch the source without changing that
+  path too.
+
+Pages serves the uploaded artifact at the repository sub-path, `/phyx.js`. That is what makes
 `postdocs` enough to keep <https://www.phyloref.org/phyx.js/context/v1.1.0/phyx.json> resolving —
 the IRI `src/utils/owlterms.js` hardcodes, and the one every published Phyx file dereferences. Any
-change to `basePath`, to `publish_dir`, or to the Pages source has to preserve that URL exactly.
+change to `basePath`, to the uploaded `path`, or to the Pages source has to preserve that URL
+exactly. The workflow checks `site/index.html` and that context file exist before it deploys,
+deriving the context path from `PHYX_CONTEXT_JSON` so that bumping the constant moves the check
+with it.
 
 ## Adding a page
 

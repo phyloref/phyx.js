@@ -75,9 +75,15 @@ PHYX JSON file
 - Some tests need network access. `test/examples/incorrect/otl-resolution-errors.json` and
   `test/examples/correct/normalization/brochu_2003_normalization.json` use a remote `@context`
   URL rather than a relative path, so anything converting them fetches it.
+- **That remote `@context` is our own published docs site**, so the test suite depends on the
+  docs deploy: while <https://www.phyloref.org/phyx.js/> was 404ing, `npm test` failed on every
+  Node version. If that test fails, `curl` the URL in the error before looking anywhere else —
+  see [docs/documentation-site.md](docs/documentation-site.md#publishing).
 - **One `bin/phyx2owl.mjs` test fails on Node 26**, from a bundled-undici conflict in `jsonld`. CI
   runs Node 22, 24 and 25 and is green. Don't chase it or count it as a regression — see
-  [issue #180](https://github.com/phyloref/phyx.js/issues/180).
+  [issue #180](https://github.com/phyloref/phyx.js/issues/180). It breaks *every* `fetch` with
+  `invalid onError method`, so it surfaces as a failure to resolve the remote `@context` and looks
+  exactly like the site being down. The `curl` above is what tells the two apart.
 
 ### Working in this repository
 
@@ -98,7 +104,9 @@ PHYX JSON file
 ## Docs
 
 Generated with JSDoc 4 and clean-jsdoc-theme v5 into `site/`, and published to
-<https://www.phyloref.org/phyx.js/> from the `gh-pages` branch. `npm run docs` builds it.
+<https://www.phyloref.org/phyx.js/> by `.github/workflows/docs.yml`, which uploads `site/` as the
+Pages artifact. `npm run docs` builds it. The Pages source is GitHub Actions, not a branch —
+pushing to `gh-pages` deploys nothing, and that branch has been deleted.
 
 **Never commit `site/`** — it is generated output, and the build empties it.
 
