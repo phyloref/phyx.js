@@ -100,6 +100,36 @@ describe(PHYX2OWL_JS, function () {
         expect(nqGenerated).to.equal(nqExpected);
       });
   });
+  it('should report a file that fails to convert as a failure, not a success', function () {
+    // This file's `@context` points at a closed port, so resolving it rejects
+    // asynchronously. Before phyx2owl.mjs awaited toRDF(), that rejection arrived only
+    // after the file had already been reported as converted, so the script printed
+    // `Converted ...` and `1 files converted successfully.` and *then* died of an
+    // unhandled rejection -- reporting a conversion that never happened.
+    const PHYX_FILE = path.resolve(__dirname, '../examples/incorrect/unreachable-context.json');
+    const OWL_FILE = path.resolve(__dirname, '../examples/incorrect/unreachable-context.owl');
+
+    if (fs.existsSync(OWL_FILE)) fs.unlinkSync(OWL_FILE);
+
+    const result = child.spawnSync(process.execPath, [PHYX2OWL_JS, PHYX_FILE], {
+      encoding: 'utf-8',
+      stdio: 'pipe',
+    });
+
+    const detail = `--- stdout ---\n${result.stdout}\n--- stderr ---\n${result.stderr}`;
+
+    // The file must not be counted or announced as converted.
+    expect(result.stdout, detail).to.not.contain('Converted ');
+    expect(result.stdout, detail).to.contain('0 files converted successfully, 1 files failed.');
+
+    // The error must name the file that could not be converted.
+    expect(result.stderr, detail).to.contain('Could not convert');
+    expect(result.stderr, detail).to.contain(PHYX_FILE);
+
+    // A failed conversion is an error for the shell, and leaves no output file behind.
+    expect(result.status, detail).to.equal(1);
+    expect(fs.existsSync(OWL_FILE), `File ${OWL_FILE} should not have been generated.`).to.be.false;
+  });
   // This is where we should test the recursive directory functionality. However,
   // doing that would require using `test/examples` (which isn't recursive),
   // using `test/` or the root project directory (potentially messing with other
