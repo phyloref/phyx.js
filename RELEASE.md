@@ -34,6 +34,9 @@ git push origin vX.Y.Z
 Then create a GitHub release for the tag (via the GitHub UI or `gh release create vX.Y.Z`).
 
 Publishing the release triggers the `docs.yml` workflow, which regenerates and deploys docs to GitHub Pages.
+That deploy only works while the `github-pages` environment has a `v*` tag deployment policy — the release
+run's ref is the tag, so a branch-only policy rejects it before checkout. See
+[docs/documentation-site.md](docs/documentation-site.md#publishing) if the docs don't refresh.
 
 ## 4. Confirm the Zenodo deposit
 

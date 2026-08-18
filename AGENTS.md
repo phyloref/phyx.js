@@ -98,7 +98,9 @@ PHYX JSON file
 ## Docs
 
 Generated with JSDoc 4 and clean-jsdoc-theme v5 into `site/`, and published to
-<https://www.phyloref.org/phyx.js/> from the `gh-pages` branch. `npm run docs` builds it.
+<https://www.phyloref.org/phyx.js/> by `.github/workflows/docs.yml`, which uploads `site/` as the
+Pages artifact. `npm run docs` builds it. The Pages source is GitHub Actions, not a branch —
+pushing to `gh-pages` deploys nothing, and that branch has been deleted.
 
 **Never commit `site/`** — it is generated output, and the build empties it.
 
