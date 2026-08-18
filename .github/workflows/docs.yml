@@ -42,9 +42,13 @@ jobs:
       - name: Generate documentation
         run: npm run docs
 
-      # jsdoc exits 0 when it finds no input files, leaving no site behind at all.
+      # jsdoc exits 0 when it finds no input files, leaving no site behind at all. The context
+      # path comes from PHYX_CONTEXT_JSON so this keeps checking the live IRI after a version
+      # bump, rather than an older context directory that still happens to be in the repo.
       - name: Check the site was generated
-        run: test -s site/index.html && test -s site/context/v1.1.0/phyx.json
+        run: |
+          test -s site/index.html
+          test -s "site/$(node -p 'require("./src/utils/owlterms.js").PHYX_CONTEXT_JSON.split("/phyx.js/")[1]')"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
