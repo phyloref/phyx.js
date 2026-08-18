@@ -10,6 +10,7 @@ In the PR:
 
 1. **Update `CHANGELOG.md`** — move items from `[Unreleased]` into a new `[X.Y.Z] - YYYY-MM-DD` section.
 2. **Bump the version in `package.json`** to the final release version `X.Y.Z` (not an alpha) before merging.
+   The documentation footer is built from this, so every published page will show it.
 3. **Update the PHYX_CONTEXT_JSON in `src/utils/owlterms.js`** if a new version of the context has been
    produced in this release.
 4. **Check that the documentation still builds** — run `npm run docs`. Do not commit `site/`: it is generated output, and publishing the release triggers the workflow that regenerates and deploys it (see step 3 below).

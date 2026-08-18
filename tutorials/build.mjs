@@ -2,7 +2,7 @@
 
 /*
  * Stages the Markdown files we want jsdoc to publish as tutorials into
- * tutorials/build/, which jsdoc.json points at as `opts.tutorials`.
+ * tutorials/build/, which jsdoc.config.js points at as `opts.tutorials`.
  *
  * jsdoc turns *every* Markdown file in its tutorial directory into a page, so we
  * cannot point it at tutorials/ directly: that directory also holds the Jupyter

@@ -14,7 +14,9 @@ npm run docs   # predocs + jsdoc + postdocs
    `tutorials/build/` (gitignored). `tutorials/build/tutorials/` holds tutorials and feeds
    `opts.tutorials`; `tutorials/build/docs/` holds prose pages such as the changelog and feeds
    `opts.docs`, which gives them their own sidebar section.
-2. `jsdoc --configure jsdoc.json` builds the site into `site/`, emptying it first.
+2. `jsdoc --configure jsdoc.config.js` builds the site into `site/`, emptying it first. The
+   config is a CommonJS module rather than JSON so it can read `version` out of `package.json`
+   and put it in the footer — see the note on versioning under [Publishing](#publishing).
 3. `postdocs` copies `context/` into `site/context/` — the published JSON-LD contexts and JSON
    Schemas are served from the documentation site — and creates `site/.nojekyll`.
 
@@ -38,6 +40,14 @@ gh workflow run docs.yml
 
 Note that merging to `master` publishes nothing — **the site only refreshes on a release or a
 manual run.** Test docs changes with `npm run docs` locally.
+
+That is deliberate, and it is why every page's footer carries the version: the site documents a
+released version, not the tip of `master`, so it has to say which one. The footer is built from
+`package.json`'s `version` at build time, so it describes the tree the build ran on — accurate for
+a release run, which checks out the tag, and equally accurate (if less useful) for a manual run
+from `master`, which will read as the version last bumped. If the site is ever switched to publish
+on every push to `master`, this footer becomes misleading and needs to grow a "development build"
+marker.
 
 Both paths run through the `github-pages` environment, whose deployment branch policies decide
 which refs may deploy. A run whose ref matches none of them is rejected in seconds, before it even
