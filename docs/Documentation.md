@@ -41,37 +41,39 @@ gh workflow run docs.yml
 Note that merging to `master` publishes nothing — **the site only refreshes on a release or a
 manual run.** Test docs changes with `npm run docs` locally.
 
-That is deliberate, and it is why every page's footer carries the version: the site documents a
-released version, not the tip of `master`, so it has to say which one. The footer is built from
-`package.json`'s `version` at build time, so it describes the tree the build ran on — accurate for
-a release run, which checks out the tag, and equally accurate (if less useful) for a manual run
-from `master`, which will read as the version last bumped. If the site is ever switched to publish
-on every push to `master`, this footer becomes misleading and needs to grow a "development build"
-marker.
+Every page's footer carries the version being documented, derived from `git describe --tags` in
+`jsdoc.config.js`. One expression covers both ways the site is published, because a release run
+checks out the tag: it reads `v1.2.1` for a release and `v1.2.1-138-g2cbb006` for a manual run from
+`master`, so a between-releases build says how far past the release it is rather than claiming to
+be it. This is why `docs.yml` checks out with `fetch-depth: 0` — a shallow clone has no tags, and
+describe falls back to `package.json` without failing the build.
 
-Both paths run through the `github-pages` environment, which has no deployment branch policy: any
-ref may deploy. That is what makes `gh workflow run docs.yml --ref <branch>` work from a topic
-branch, which is how you repair the live site from a PR.
+Both paths run through the `github-pages` environment, whose deployment branch policies decide
+which refs may deploy. A run whose ref matches none of them is rejected in seconds, before it
+checks out. **Both of these have to exist**:
 
-**If you ever add a branch policy back, it has to cover tags as well.** `release: published` runs
-with `github.ref` set to `refs/tags/vX.Y.Z`, and no *branch* rule can match a tag — so a
-`master`-only policy leaves manual runs working while silently killing the release path, which is
-the state this repository was in. A run whose ref matches no policy is rejected in seconds, before
-it checks out. The environment's rules live in repository settings, so they survive no review and
-no test:
+- `master` (branch) — for `workflow_dispatch`, so a manual refresh runs from `master`.
+- `v*` (tag) — for `release: published`, where `github.ref` is `refs/tags/vX.Y.Z`. No *branch* rule
+  can ever match a tag, so without this one the release path is silently dead while manual runs
+  keep working. That is the state this repository was in.
+
+They live in repository settings, so they survive no review and no test:
 
 ```bash
-# null means any ref may deploy
-gh api repos/phyloref/phyx.js/environments/github-pages --jq .deployment_branch_policy
+gh api repos/phyloref/phyx.js/environments/github-pages/deployment-branch-policies \
+  --jq '.branch_policies[] | "\(.type)\t\(.name)"'
 ```
+
+To publish from some other branch — to repair the live site from a PR, say — add a temporary branch
+rule for it, run `gh workflow run docs.yml --ref <branch>`, then delete the rule.
 
 **Writing any Pages setting re-creates that policy.** A `PUT` to `/repos/{owner}/{repo}/pages`
 re-provisions the environment with a fresh default-branch-only rule — even when the call changes
-only the `source` field that `build_type: workflow` ignores. Whatever was there is replaced, so a
-tag rule the release path depends on disappears without a word. That has already happened once
-here. **Re-check the policy after touching anything in the Pages settings**, and note that the
-rule's `id` changes when it is re-created, which is how you tell a re-provisioned policy from one
-that was never cleared.
+only the `source` field that `build_type: workflow` ignores. Whatever was there is replaced, so the
+`v*` rule disappears without a word and releases stop publishing. That has already happened once
+here. **Re-check the policies after touching anything in the Pages settings**, and note that the
+protection rule's `id` changes when it is re-created, which is how you tell a re-provisioned policy
+from the one you left there.
 
 **The test suite depends on this site being up.** `test/examples/correct/normalization/brochu_2003_normalization.json`
 and `test/examples/incorrect/otl-resolution-errors.json` reference their `@context` by its

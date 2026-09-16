@@ -35,13 +35,14 @@ git push origin vX.Y.Z
 Then create a GitHub release for the tag (via the GitHub UI or `gh release create vX.Y.Z`).
 
 Publishing the release triggers the `docs.yml` workflow, which regenerates and deploys docs to GitHub Pages.
-Check first that the `github-pages` environment still lets a tag deploy — a branch-only policy rejects the
-release run, whose ref is the tag, before it checks out, and writing any Pages setting silently re-creates
-such a policy:
+Check first that the `github-pages` environment still lists a `v*` tag policy — the release run's ref is the
+tag, a branch policy cannot match it, and writing any Pages setting silently replaces the policies with a
+branch-only default:
 
 ```bash
-# null means any ref may deploy; a policy listing only branches will not publish this release
-gh api repos/phyloref/phyx.js/environments/github-pages --jq .deployment_branch_policy
+# must include "tag  v*", or this release will publish nothing
+gh api repos/phyloref/phyx.js/environments/github-pages/deployment-branch-policies \
+  --jq '.branch_policies[] | "\(.type)\t\(.name)"'
 ```
 
 See [docs/Documentation.md](docs/Documentation.md#publishing) if the docs don't refresh.
