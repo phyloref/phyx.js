@@ -80,12 +80,13 @@ The repository's Pages source is **GitHub Actions**, not a branch, so the site i
   Jekyll-builds the configured folder and reports success even when the result has no
   `index.html` — which is exactly how the site 404'd after the esdoc output was removed from
   `docs/`.
-- The Pages settings still record `source: {branch: master, path: /docs}` from the esdoc era, and
-  there is no way to clear it: the API has no "no source" value, and the field is simply ignored
-  while `build_type` is `workflow`. It is a loaded gun rather than a live problem — switching the
-  source back to a branch would resume Jekyll-building `master:/docs`, which holds prose files and
-  no `index.html`, and would 404 exactly as before. Don't switch the source without changing that
-  path too.
+- The Pages settings still record a `source`, because the API has no "no source" value to set it
+  to. It is inert while `build_type` is `workflow`, and it now reads `{branch: master, path: /}`.
+  That only matters if someone switches the source back to a branch, and it is deliberately aimed
+  at the least bad landing: a Jekyll build of `master:/` serves `README.md` as the index (Pages
+  enables `jekyll-readme-index` by default) and still serves `context/` out of the repository, so
+  the published context IRIs — and the tests that dereference them — would survive. It used to
+  point at `/docs`, which holds prose and no `index.html`, and would have 404'd the whole site.
 
 Pages serves the uploaded artifact at the repository sub-path, `/phyx.js`. That is what makes
 `postdocs` enough to keep <https://www.phyloref.org/phyx.js/context/v1.1.0/phyx.json> resolving —
