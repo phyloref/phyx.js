@@ -130,12 +130,14 @@ async function convertFileToOWL(filename, argOutputFilename = '') {
     const nquads = await wrappedPhyx.toRDF(argv.baseIri, path.dirname(filename));
     fs.writeFileSync(outputFilename, nquads);
 
-    // Report on whether any phyloreferences were converted.
+    // Report on whether any phyloreferences were converted. Filtering every phyloreference
+    // out is what --max-internal-specifiers and --max-external-specifiers are for, so it is
+    // a warning, not a failure: the output file was written as asked.
     if (filteredPhylorefs.length === 0) {
       console.warn(
         `No phyloreferences in ${filename} were converted to ${outputFilename}, as they were all filtered out.`,
       );
-      return false;
+      return true;
     } else if (phylorefCount > filteredPhylorefs.length) {
       console.warn(
         `Only ${filteredPhylorefs.length} out of ${phylorefCount} were converted from ${filename} to ${outputFilename}.`,
@@ -162,5 +164,7 @@ if (successes.every(x => x)) {
   console.log(
     `Errors occurred; ${successes.filter(x => x).length} files converted successfully, ${successes.filter(x => !x).length} files failed.`,
   );
-  process.exit(1);
+  // Setting exitCode rather than calling process.exit() lets the summary above finish
+  // being written when stdout is a pipe.
+  process.exitCode = 1;
 }
