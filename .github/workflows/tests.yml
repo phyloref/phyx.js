@@ -43,3 +43,10 @@ jobs:
       run: |
         npm run docs
         test -f site/phyxwrapper/index.html
+
+        # jsdoc.config.js builds the footer from `git describe`, falling back to package.json
+        # when there are no tags to describe against -- which is the case in this shallow
+        # checkout, so CI only ever exercises the fallback. Either way a version must reach the
+        # page: a describeVersion() that threw past its catch, or returned empty, would publish
+        # a footer reading "phyx.js  --" and nothing would say so.
+        grep -qE 'phyx\.js v[0-9]' site/index.html
