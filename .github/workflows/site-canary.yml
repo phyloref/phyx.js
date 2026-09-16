@@ -49,8 +49,25 @@ jobs:
             --retry 3 --retry-delay 10 --retry-all-errors \
             "${{ steps.urls.outputs.home }}" -o home.html
           test -s home.html
-          # A Pages 404 is served with a 200 in some configurations, so check for real content.
-          grep -q 'phyx\.js' home.html
+
+          # Check for something only *our* build emits, not merely for the project name. If the
+          # Pages source is switched back to a branch, GitHub Jekyll-builds master:/ and serves
+          # README.md through jekyll-readme-index -- a 200, with "phyx.js" all over it, and none
+          # of our documentation. That is not hypothetical: it is what the site was serving on
+          # 2026-09-16, and an earlier version of this check passed against it.
+          #
+          # The footer comes from jsdoc.config.js and carries the version being documented.
+          grep -qE 'phyx\.js v[0-9]' home.html
+
+      # The footer alone would survive a build that emitted the home page and nothing else, so
+      # check a generated class page too. This is also the check that would have caught the
+      # site 404ing after the esdoc output was removed.
+      - name: Check a generated API page is present
+        run: |
+          curl --fail --silent --show-error --location \
+            --retry 3 --retry-delay 10 --retry-all-errors \
+            "${{ steps.urls.outputs.home }}phyxwrapper/" -o phyxwrapper.html
+          grep -q 'PhyxWrapper' phyxwrapper.html
 
       - name: Check the published JSON-LD context resolves and parses
         run: |

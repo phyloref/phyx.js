@@ -96,7 +96,13 @@ The repository's Pages source is **GitHub Actions**, not a branch, so the site i
   `index.html` — which is exactly how the site 404'd after the esdoc output was removed from
   `docs/`.
 - The Pages settings still record a `source`, because the API has no "no source" value to set it
-  to. It is inert while `build_type` is `workflow`, and it now reads `{branch: master, path: /}`.
+  to. It now reads `{branch: master, path: /}`. **It is not inert.** Saving anything in the Pages
+  settings triggers one of GitHub's own `pages-build-deployment` runs — event `dynamic`, not a push
+  — which Jekyll-builds that `source` and deploys it *over* the artifact, while `build_type` stays
+  `workflow` and the settings still look correct. On 2026-09-16 that replaced the site with
+  `README.md` and left `/phyx.js/phyxwrapper/` 404ing; `gh workflow run docs.yml` puts it back.
+  `gh run list --workflow=pages-build-deployment` is where this shows up, and a `dynamic` run on a
+  repository whose docs deploy through Actions always means this happened.
   That only matters if someone switches the source back to a branch, and it is deliberately aimed
   at the least bad landing: a Jekyll build of `master:/` serves `README.md` as the index (Pages
   enables `jekyll-readme-index` by default) and still serves `context/` out of the repository, so
