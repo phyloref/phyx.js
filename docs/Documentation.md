@@ -65,6 +65,14 @@ no test:
 gh api repos/phyloref/phyx.js/environments/github-pages --jq .deployment_branch_policy
 ```
 
+**Writing any Pages setting re-creates that policy.** A `PUT` to `/repos/{owner}/{repo}/pages`
+re-provisions the environment with a fresh default-branch-only rule — even when the call changes
+only the `source` field that `build_type: workflow` ignores. Whatever was there is replaced, so a
+tag rule the release path depends on disappears without a word. That has already happened once
+here. **Re-check the policy after touching anything in the Pages settings**, and note that the
+rule's `id` changes when it is re-created, which is how you tell a re-provisioned policy from one
+that was never cleared.
+
 **The test suite depends on this site being up.** `test/examples/correct/normalization/brochu_2003_normalization.json`
 and `test/examples/incorrect/otl-resolution-errors.json` reference their `@context` by its
 published URL rather than a relative path, so a broken deploy fails `npm test` on every Node

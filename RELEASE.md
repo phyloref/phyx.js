@@ -35,8 +35,16 @@ git push origin vX.Y.Z
 Then create a GitHub release for the tag (via the GitHub UI or `gh release create vX.Y.Z`).
 
 Publishing the release triggers the `docs.yml` workflow, which regenerates and deploys docs to GitHub Pages.
-See [docs/Documentation.md](docs/Documentation.md#publishing) if the docs don't refresh — the usual cause is
-a deployment branch policy on the `github-pages` environment that doesn't match the release's tag ref.
+Check first that the `github-pages` environment still lets a tag deploy — a branch-only policy rejects the
+release run, whose ref is the tag, before it checks out, and writing any Pages setting silently re-creates
+such a policy:
+
+```bash
+# null means any ref may deploy; a policy listing only branches will not publish this release
+gh api repos/phyloref/phyx.js/environments/github-pages --jq .deployment_branch_policy
+```
+
+See [docs/Documentation.md](docs/Documentation.md#publishing) if the docs don't refresh.
 
 ## 4. Confirm the Zenodo deposit
 
