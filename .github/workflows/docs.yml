@@ -26,10 +26,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      # fetch-depth: 0 because jsdoc.config.js derives the footer's version from `git describe`,
+      # and the default shallow clone carries no tags for it to describe against.
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
           ref: ${{ github.ref }}
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v7
