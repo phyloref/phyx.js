@@ -18,11 +18,16 @@ npm run docs   # predocs + jsdoc + postdocs
    config is a CommonJS module rather than JSON so it can read `version` out of `package.json`
    and put it in the footer — see the note on versioning under [Publishing](#publishing).
 3. `postdocs` copies `context/` into `site/context/` — the published JSON-LD contexts and JSON
-   Schemas are served from the documentation site — and creates `site/.nojekyll`.
+   Schemas are served from the documentation site.
 
-Nothing Jekyll-related runs under the Actions Pages source (see [Publishing](#publishing)), so
-`.nojekyll` is inert today. It stays because under a branch source Jekyll would ignore the theme's
-`_assets/` and `_islands/` directories.
+There is deliberately no `.nojekyll`. Nothing Jekyll-related runs under the Actions Pages source
+(see [Publishing](#publishing)), which serves the uploaded artifact as it is; GitHub's own
+static-site starter workflow ships without one too. `postdocs` used to write it into `site/`, which
+is gitignored, so it could only ever have mattered to the old workflow that pushed the contents of
+`site/` to a branch — under a branch source today Jekyll would build the repository root, where
+`site/` does not appear at all. **If the theme's `_assets/` or `_islands/` directories start
+404ing after a deploy, this is the assumption that broke**, and writing the file back in `postdocs`
+is the fix.
 
 `context/README.md` is published at `/context/` as a prose page, so that URL keeps working: under
 the old branch source it was served by `jekyll-readme-index`, which GitHub Pages enabled by

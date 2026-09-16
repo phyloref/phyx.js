@@ -26,7 +26,7 @@
   "scripts": {
     "predocs": "node tutorials/build.mjs",
     "docs": "jsdoc --configure jsdoc.config.js",
-    "postdocs": "node -e \"const fs=require('node:fs');fs.cpSync('context','site/context',{recursive:true});fs.writeFileSync('site/.nojekyll','')\"",
+    "postdocs": "node -e \"require('node:fs').cpSync('context','site/context',{recursive:true})\"",
     "generate-every-topology": "every-topology-testing/generate-topologies.js",
     "lint": "biome check",
     "phyx2owl": "node bin/phyx2owl.mjs",
