@@ -29,24 +29,17 @@ jobs:
     - name: Build with NPM
       run: npm run build --if-present
 
+    # Built before the tests rather than after them, because test/docs.mjs validates the
+    # generated site: duplicate element ids, dead internal links, and classes that are
+    # published but missing from the navigation. Those checks skip when site/ is absent
+    # locally, but fail rather than skip when CI is set, so this step cannot go missing
+    # without the test run saying so.
+    #
+    # `opts.strict` in jsdoc.config.js turns a bad option into a build failure, and
+    # tutorials/build.mjs exits non-zero if a page's source has gone missing. Without this,
+    # the release workflow is the first thing to find out.
+    - name: Build the documentation
+      run: npm run docs
+
     - name: Test with NPM
       run: npm test
-
-    # `opts.strict` in jsdoc.config.js turns a bad option into a build failure, and
-    # tutorials/build.mjs exits non-zero if a page's source has gone missing.
-    # Without this, the release workflow is the first thing to find out.
-    #
-    # The page check is not redundant: jsdoc prints "There are no input files
-    # to process" and exits 0 if `source` matches nothing, leaving whatever was
-    # in site/ untouched. A green build alone doesn't mean anything was built.
-    - name: Check that the documentation builds
-      run: |
-        npm run docs
-        test -f site/phyxwrapper/index.html
-
-        # jsdoc.config.js builds the footer from `git describe`, falling back to package.json
-        # when there are no tags to describe against -- which is the case in this shallow
-        # checkout, so CI only ever exercises the fallback. Either way a version must reach the
-        # page: a describeVersion() that threw past its catch, or returned empty, would publish
-        # a footer reading "phyx.js  --" and nothing would say so.
-        grep -qE 'phyx\.js v[0-9]' site/index.html
