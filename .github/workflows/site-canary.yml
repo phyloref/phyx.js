@@ -1,0 +1,97 @@
+name: Check the published documentation site
+
+# The published site is not just documentation. test/examples/correct/normalization/
+# brochu_2003_normalization.json and test/examples/incorrect/otl-resolution-errors.json reference
+# their @context by its published URL rather than a relative path, so while the site is down
+# `npm test` fails on every Node version, in every branch, for reasons that look nothing like a
+# broken deploy. That has happened before.
+#
+# Nothing in CI can catch it: the docs only publish on a release or a manual run, so the deploy
+# that breaks the site happens long after the pull request that caused it went green. This runs
+# against the live site on a schedule instead, and opens an issue when it cannot reach it.
+
+on:
+  schedule:
+    # Daily, at a time nothing else here runs.
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-published-site:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      # The context IRI comes from owlterms.js rather than being written out here, so that
+      # publishing a new context version moves this check with it instead of leaving it
+      # watching an older directory that would keep passing.
+      - name: Work out what to check
+        id: urls
+        run: |
+          context_url=$(node -p 'require("./src/utils/owlterms.js").PHYX_CONTEXT_JSON')
+          echo "context=$context_url" >> "$GITHUB_OUTPUT"
+          echo "home=$(node -p 'require("./package.json").homepage')" >> "$GITHUB_OUTPUT"
+
+      # --fail turns an HTTP error into a non-zero exit; without it curl happily prints a 404
+      # page and succeeds. --location because the phyloref.org URLs redirect to GitHub Pages.
+      - name: Check the documentation site is being served
+        run: |
+          curl --fail --silent --show-error --location \
+            --retry 3 --retry-delay 10 --retry-all-errors \
+            "${{ steps.urls.outputs.home }}" -o home.html
+          test -s home.html
+          # A Pages 404 is served with a 200 in some configurations, so check for real content.
+          grep -q 'phyx\.js' home.html
+
+      - name: Check the published JSON-LD context resolves and parses
+        run: |
+          curl --fail --silent --show-error --location \
+            --retry 3 --retry-delay 10 --retry-all-errors \
+            "${{ steps.urls.outputs.context }}" -o phyx.json
+          # Parseable JSON with an @context key -- the shape jsonld actually needs. A truncated
+          # or HTML response would pass a mere size check.
+          jq -e 'has("@context")' phyx.json > /dev/null
+
+      # One open issue at a time: a daily canary against a site that stays down would otherwise
+      # file an issue every morning.
+      - name: Report an outage
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          existing=$(gh issue list --label docs-site-down --state open --json number --jq 'length')
+          if [ "$existing" -gt 0 ]; then
+            echo "An outage issue is already open; not filing another."
+            exit 0
+          fi
+
+          gh label create docs-site-down \
+            --description 'The published documentation site is unreachable' \
+            --color B60205 2>/dev/null || true
+
+          gh issue create \
+            --title 'The published documentation site is not responding' \
+            --label docs-site-down \
+            --body "$(cat <<EOF
+          The scheduled check against the published documentation site failed.
+
+          - Site: ${{ steps.urls.outputs.home }}
+          - Published JSON-LD context: ${{ steps.urls.outputs.context }}
+          - Failing run: $RUN_URL
+
+          While the context URL is unreachable, \`npm test\` fails on every Node version and in
+          every branch, because two example files reference their \`@context\` by its published
+          URL. A red test run anywhere in this repository may be this and nothing else.
+
+          See [docs/Documentation.md](docs/Documentation.md#publishing) for how the site is
+          published and what can stop it. \`gh workflow run docs.yml\` republishes it from
+          \`master\`.
+          EOF
+          )"

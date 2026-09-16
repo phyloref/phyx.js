@@ -78,7 +78,9 @@ PHYX JSON file
 - **That remote `@context` is our own published docs site**, so the test suite depends on the
   docs deploy: while <https://www.phyloref.org/phyx.js/> was 404ing, `npm test` failed on every
   Node version. If that test fails, `curl` the URL in the error before looking anywhere else —
-  see [docs/Documentation.md](docs/Documentation.md#publishing).
+  see [docs/Documentation.md](docs/Documentation.md#publishing). A daily canary
+  (`.github/workflows/site-canary.yml`) checks the same URLs and opens an issue labelled
+  `docs-site-down`, so look for one of those before debugging anything else.
 - **One `bin/phyx2owl.mjs` test fails on Node 26**, from a bundled-undici conflict in `jsonld`. CI
   runs Node 22, 24 and 25 and is green. Don't chase it or count it as a regression — see
   [issue #180](https://github.com/phyloref/phyx.js/issues/180). It breaks *every* `fetch` with
