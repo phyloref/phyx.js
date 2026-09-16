@@ -124,11 +124,38 @@ stripped, since it exists for the PDF build.
 `tutorials/Introduction.md` is generated from `Introduction.ipynb` by `tutorials/Makefile`. **Edit
 the notebook, not the Markdown**, or the change will be overwritten.
 
+## Validating the docs
+
+`test/docs.mjs` runs as part of `npm test` and enforces the mechanical half of the gotchas below,
+so a regression fails a test instead of waiting to be noticed on the published site. It checks:
+
+- **Prose** — every relative link and heading anchor in our tracked Markdown resolves, and every
+  reference-style definition is used. These files cross-link each other (`AGENTS.md` and
+  `RELEASE.md` both point into [Publishing](#publishing)), and renaming a heading is the easy way
+  to break that silently.
+- **Configuration** — `opts.basePath` matches the sub-path in `PHYX_CONTEXT_JSON`. Checked against
+  the config rather than the built pages, because a wrong `basePath` makes a link check inspect
+  nothing and pass.
+- **The generated site** — no page publishes an element id twice, every internal link and asset
+  resolves, and every class in `src/` has a page that the sidebar links to.
+
+The site checks need `site/` to exist. They skip when it doesn't, so a plain `npm test` stays fast;
+run `npm run docs` first to include them. In CI they fail rather than skip, so the build step in
+`tests.yml` cannot go missing without the test run saying so — which is also why that step now runs
+*before* `npm test` rather than after it.
+
+What this deliberately does not cover is external URLs, and whether the site is actually up.
+`.github/workflows/site-canary.yml` handles the second: it fetches the site and the published
+context daily, and opens an issue labelled `docs-site-down` when it can't. Nothing in CI can catch
+that, because the deploy that breaks the site happens long after the pull request that caused it
+went green.
+
 ## Gotchas
 
-Most of these are silent — the build still succeeds, the page just comes out wrong:
+Most of these are silent — the build still succeeds, the page just comes out wrong. The ones marked
+*(enforced)* now fail a test:
 
-- **jsdoc exits 0 when it finds no input.** If `source` matches nothing it prints "There are no
+- **jsdoc exits 0 when it finds no input.** *(enforced)* If `source` matches nothing it prints "There are no
   input files to process" and stops — without emptying `site/`, so a stale build sits there looking
   like a fresh one. `source.include` names a directory, which needs `opts.recurse`; drop that and
   the whole site quietly stops being rebuilt. The CI step checks a page exists, not just that the
@@ -139,18 +166,21 @@ Most of these are silent — the build still succeeds, the page just comes out w
   document is where someone new to the library should start, and that should stay the only one:
   once a second class has a number, every new class needs one, and a forgotten one lands wherever
   the tool decides.
-- **A class without `@category` disappears from the sidebar.** `sectionOrder` lists our categories
+- **A class without `@category` disappears from the sidebar.** *(enforced)* `sectionOrder` lists our categories
   (Wrappers, Matchers, Utilities) instead of `Classes`, so an uncategorised class is published but
   unreachable from the navigation. `strict` does not catch this.
-- **A class's doc comment must sit immediately above the class**, below the imports. A file-header
+- **A class's doc comment must sit immediately above the class**, below the imports. *(enforced)* A file-header
   comment above the imports is close enough for jsdoc to give the class a page but not to treat the
   comment as the class's own, so tags on it (like `@category`) never reach the class. Both
   `CitationWrapper` and `PhylogenyWrapper` were broken this way.
 - **Don't put `/** */` on a top-level `require`.** jsdoc attaches a doc comment to the next code
   construct, so it documents the import as a global. Use `//` for notes about imports.
-- **Document the getter, `@ignore` the setter.** jsdoc has no notion of accessor pairs, so
-  documenting both publishes the property twice with duplicate HTML ids.
-- **`opts.basePath` must match the sub-path the site is deployed under** (`/phyx.js`). Pages are
+- **Document the getter, `@private` the setter.** *(enforced)* jsdoc has no notion of accessor pairs, so
+  documenting both publishes the property twice, with two elements sharing one HTML id. **`@ignore`
+  does not work here**, though it reads as if it should: jsdoc 4 and clean-jsdoc-theme v5 accept the
+  tag and publish the member regardless. Every setter in the library carried `@ignore`, and eleven
+  duplicate ids were live on the published site until this check caught them.
+- **`opts.basePath` must match the sub-path the site is deployed under** (`/phyx.js`). *(enforced)* Pages are
   served from clean URLs and links are root-relative, so a wrong `basePath` 404s every link and
   asset.
 - **`plugins/markdown` is required** — jsdoc uses it to render Markdown in doc comments before the
