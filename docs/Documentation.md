@@ -146,9 +146,10 @@ run `npm run docs` first to include them. In CI they fail rather than skip, so t
 
 What this deliberately does not cover is external URLs, and whether the site is actually up.
 `.github/workflows/site-canary.yml` handles the second: it fetches the site and the published
-context daily, and opens an issue labelled `docs-site-down` when it can't. Nothing in CI can catch
-that, because the deploy that breaks the site happens long after the pull request that caused it
-went green.
+context daily and fails if either is unreachable, which GitHub emails to whoever last touched the
+cron. Nothing in CI can catch that, because the deploy that breaks the site happens long after the
+pull request that caused it went green. `gh run list --workflow=site-canary.yml` shows its
+history.
 
 ## Gotchas
 

@@ -8,7 +8,11 @@ name: Check the published documentation site
 #
 # Nothing in CI can catch it: the docs only publish on a release or a manual run, so the deploy
 # that breaks the site happens long after the pull request that caused it went green. This runs
-# against the live site on a schedule instead, and opens an issue when it cannot reach it.
+# against the live site on a schedule instead, and just fails -- GitHub emails the failure to
+# whoever last touched the cron below, every day the site stays down, which is the whole point.
+#
+# Note that GitHub disables scheduled workflows in a repository with no activity for 60 days. If
+# this stops running, that is the first thing to check.
 
 on:
   schedule:
@@ -18,7 +22,6 @@ on:
 
 permissions:
   contents: read
-  issues: write
 
 jobs:
   check-published-site:
@@ -57,41 +60,3 @@ jobs:
           # Parseable JSON with an @context key -- the shape jsonld actually needs. A truncated
           # or HTML response would pass a mere size check.
           jq -e 'has("@context")' phyx.json > /dev/null
-
-      # One open issue at a time: a daily canary against a site that stays down would otherwise
-      # file an issue every morning.
-      - name: Report an outage
-        if: failure()
-        env:
-          GH_TOKEN: ${{ github.token }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          existing=$(gh issue list --label docs-site-down --state open --json number --jq 'length')
-          if [ "$existing" -gt 0 ]; then
-            echo "An outage issue is already open; not filing another."
-            exit 0
-          fi
-
-          gh label create docs-site-down \
-            --description 'The published documentation site is unreachable' \
-            --color B60205 2>/dev/null || true
-
-          gh issue create \
-            --title 'The published documentation site is not responding' \
-            --label docs-site-down \
-            --body "$(cat <<EOF
-          The scheduled check against the published documentation site failed.
-
-          - Site: ${{ steps.urls.outputs.home }}
-          - Published JSON-LD context: ${{ steps.urls.outputs.context }}
-          - Failing run: $RUN_URL
-
-          While the context URL is unreachable, \`npm test\` fails on every Node version and in
-          every branch, because two example files reference their \`@context\` by its published
-          URL. A red test run anywhere in this repository may be this and nothing else.
-
-          See [docs/Documentation.md](docs/Documentation.md#publishing) for how the site is
-          published and what can stop it. \`gh workflow run docs.yml\` republishes it from
-          \`master\`.
-          EOF
-          )"
