@@ -78,7 +78,7 @@ PHYX JSON file
 - **That remote `@context` is our own published docs site**, so the test suite depends on the
   docs deploy: while <https://www.phyloref.org/phyx.js/> was 404ing, `npm test` failed on every
   Node version. If that test fails, `curl` the URL in the error before looking anywhere else —
-  see [docs/documentation-site.md](docs/documentation-site.md#publishing).
+  see [docs/Documentation.md](docs/Documentation.md#publishing).
 - **One `bin/phyx2owl.mjs` test fails on Node 26**, from a bundled-undici conflict in `jsonld`. CI
   runs Node 22, 24 and 25 and is green. Don't chase it or count it as a regression — see
   [issue #180](https://github.com/phyloref/phyx.js/issues/180). It breaks *every* `fetch` with
@@ -110,7 +110,7 @@ pushing to `gh-pages` deploys nothing, and that branch has been deleted.
 
 **Never commit `site/`** — it is generated output, and the build empties it.
 
-Read [docs/documentation-site.md](docs/documentation-site.md) before changing anything about the
+Read [docs/Documentation.md](docs/Documentation.md) before changing anything about the
 docs build: how the three build steps fit together, how to add a page, what has to stay true for
 the published context IRIs to keep resolving, and the ways a page can come out wrong while the
 build still reports success.

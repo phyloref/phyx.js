@@ -21,7 +21,7 @@ Currently available tutorials:
 
 
   [phyx.js documentation site]: https://www.phyloref.org/phyx.js/
-  [Building the documentation site]: ../docs/documentation-site.md
+  [Building the documentation site]: ../docs/Documentation.md
   [Jupyter Notebook]: https://jupyter.org/
   [IJavascript]: https://github.com/n-riesco/ijavascript
   [Makefile]: ./Makefile
