@@ -101,6 +101,7 @@ describe(PHYX2OWL_JS, function () {
       });
   });
   it('should report a file that fails to convert as a failure, not a success', function () {
+    this.timeout(20000);
     // This file's `@context` points at a closed port, so resolving it rejects
     // asynchronously. Before phyx2owl.mjs awaited toRDF(), that rejection arrived only
     // after the file had already been reported as converted, so the script printed
@@ -111,9 +112,12 @@ describe(PHYX2OWL_JS, function () {
 
     if (fs.existsSync(OWL_FILE)) fs.unlinkSync(OWL_FILE);
 
+    // spawnSync blocks the event loop, so mocha cannot time this out itself: a firewall
+    // that drops (rather than refuses) the connection would hang the whole suite.
     const result = child.spawnSync(process.execPath, [PHYX2OWL_JS, PHYX_FILE], {
       encoding: 'utf-8',
       stdio: 'pipe',
+      timeout: 15000,
     });
 
     const detail = `--- stdout ---\n${result.stdout}\n--- stderr ---\n${result.stderr}`;
