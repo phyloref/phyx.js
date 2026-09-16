@@ -10,6 +10,7 @@ In the PR:
 
 1. **Update `CHANGELOG.md`** — move items from `[Unreleased]` into a new `[X.Y.Z] - YYYY-MM-DD` section.
 2. **Bump the version in `package.json`** to the final release version `X.Y.Z` (not an alpha) before merging.
+   The documentation footer is built from this, so every published page will show it.
 3. **Update the PHYX_CONTEXT_JSON in `src/utils/owlterms.js`** if a new version of the context has been
    produced in this release.
 4. **Check that the documentation still builds** — run `npm run docs`. Do not commit `site/`: it is generated output, and publishing the release triggers the workflow that regenerates and deploys it (see step 3 below).
@@ -34,6 +35,17 @@ git push origin vX.Y.Z
 Then create a GitHub release for the tag (via the GitHub UI or `gh release create vX.Y.Z`).
 
 Publishing the release triggers the `docs.yml` workflow, which regenerates and deploys docs to GitHub Pages.
+Check first that the `github-pages` environment still lists a `v*` tag policy — the release run's ref is the
+tag, a branch policy cannot match it, and writing any Pages setting silently replaces the policies with a
+branch-only default:
+
+```bash
+# must include "tag  v*", or this release will publish nothing
+gh api repos/phyloref/phyx.js/environments/github-pages/deployment-branch-policies \
+  --jq '.branch_policies[] | "\(.type)\t\(.name)"'
+```
+
+See [docs/Documentation.md](docs/Documentation.md#publishing) if the docs don't refresh.
 
 ## 4. Confirm the Zenodo deposit
 

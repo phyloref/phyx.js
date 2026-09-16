@@ -1,0 +1,79 @@
+name: Check the published documentation site
+
+# The published site is not just documentation. test/examples/correct/normalization/
+# brochu_2003_normalization.json and test/examples/incorrect/otl-resolution-errors.json reference
+# their @context by its published URL rather than a relative path, so while the site is down
+# `npm test` fails on every Node version, in every branch, for reasons that look nothing like a
+# broken deploy. That has happened before.
+#
+# Nothing in CI can catch it: the docs only publish on a release or a manual run, so the deploy
+# that breaks the site happens long after the pull request that caused it went green. This runs
+# against the live site on a schedule instead, and just fails -- GitHub emails the failure to
+# whoever last touched the cron below, every day the site stays down, which is the whole point.
+#
+# Note that GitHub disables scheduled workflows in a repository with no activity for 60 days. If
+# this stops running, that is the first thing to check.
+
+on:
+  schedule:
+    # Daily, at a time nothing else here runs.
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-published-site:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      # The context IRI comes from owlterms.js rather than being written out here, so that
+      # publishing a new context version moves this check with it instead of leaving it
+      # watching an older directory that would keep passing.
+      - name: Work out what to check
+        id: urls
+        run: |
+          context_url=$(node -p 'require("./src/utils/owlterms.js").PHYX_CONTEXT_JSON')
+          echo "context=$context_url" >> "$GITHUB_OUTPUT"
+          echo "home=$(node -p 'require("./package.json").homepage')" >> "$GITHUB_OUTPUT"
+
+      # --fail turns an HTTP error into a non-zero exit; without it curl happily prints a 404
+      # page and succeeds. --location because the phyloref.org URLs redirect to GitHub Pages.
+      - name: Check the documentation site is being served
+        run: |
+          curl --fail --silent --show-error --location \
+            --retry 3 --retry-delay 10 --retry-all-errors \
+            "${{ steps.urls.outputs.home }}" -o home.html
+          test -s home.html
+
+          # Check for something only *our* build emits, not merely for the project name. If the
+          # Pages source is switched back to a branch, GitHub Jekyll-builds master:/ and serves
+          # README.md through jekyll-readme-index -- a 200, with "phyx.js" all over it, and none
+          # of our documentation. That is not hypothetical: it is what the site was serving on
+          # 2026-09-16, and an earlier version of this check passed against it.
+          #
+          # The footer comes from jsdoc.config.js and carries the version being documented.
+          grep -qE 'phyx\.js v[0-9]' home.html
+
+      # The footer alone would survive a build that emitted the home page and nothing else, so
+      # check a generated class page too. This is also the check that would have caught the
+      # site 404ing after the esdoc output was removed.
+      - name: Check a generated API page is present
+        run: |
+          curl --fail --silent --show-error --location \
+            --retry 3 --retry-delay 10 --retry-all-errors \
+            "${{ steps.urls.outputs.home }}phyxwrapper/" -o phyxwrapper.html
+          grep -q 'PhyxWrapper' phyxwrapper.html
+
+      - name: Check the published JSON-LD context resolves and parses
+        run: |
+          curl --fail --silent --show-error --location \
+            --retry 3 --retry-delay 10 --retry-all-errors \
+            "${{ steps.urls.outputs.context }}" -o phyx.json
+          # Parseable JSON with an @context key -- the shape jsonld actually needs. A truncated
+          # or HTML response would pass a mere size check.
+          jq -e 'has("@context")' phyx.json > /dev/null
