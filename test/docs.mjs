@@ -327,6 +327,64 @@ describe('Generated documentation site', function () {
   });
 
   /*
+   * The canary greps the *published* site for markers that only our build emits, so that a Jekyll
+   * fallback serving README.md cannot pass it. Those greps live in a workflow, where nothing type
+   * checks them against the thing they describe: rename the footer or change a page's slug and the
+   * canary starts failing every morning against a perfectly good site.
+   *
+   * So the patterns are read out of the workflow rather than repeated here, and checked against a
+   * fresh build. If this fails, the canary and the build have drifted apart -- fix whichever is
+   * wrong, but do not weaken the pattern to make it pass.
+   */
+  describe('the canary\'s expectations', function () {
+    const workflow = fs.readFileSync(
+      path.join(repoRoot, '.github/workflows/site-canary.yml'),
+      'utf8',
+    );
+
+    /* Each `curl ... "<url>" -o <file>` paired with the `grep` that later reads <file>. */
+    function greppedPages() {
+      const checks = [];
+
+      for (const [, suffix, outFile] of workflow.matchAll(
+        /steps\.urls\.outputs\.home \}\}([^"]*)"\s+-o\s+(\S+)/g,
+      )) {
+        const pattern = new RegExp(
+          `grep -q[E]? '([^']+)' ${outFile.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`,
+        ).exec(workflow);
+        if (!pattern) continue;
+
+        checks.push({
+          // The site is served at BASE_PATH, so a URL suffix is a path under site/.
+          page: path.join(siteDir, suffix, 'index.html'),
+          pattern: pattern[1],
+        });
+      }
+
+      return checks;
+    }
+
+    const checks = greppedPages();
+
+    it('should be extracted from the workflow, not assumed', function () {
+      // If the workflow's shape changes so nothing matches, every test below would vacuously pass.
+      expect(checks.length, 'no grep checks found in site-canary.yml').to.be.at.least(2);
+    });
+
+    checks.forEach(function ({ page, pattern }) {
+      const relative = path.relative(siteDir, page);
+
+      it(`should find /${pattern}/ in ${relative}`, function () {
+        expect(fs.existsSync(page), `${relative} was not built`).to.be.true;
+        expect(
+          new RegExp(pattern).test(fs.readFileSync(page, 'utf8')),
+          `the canary greps for /${pattern}/ in ${relative}, which our build no longer emits`,
+        ).to.be.true;
+      });
+    });
+  });
+
+  /*
    * jsdoc.config.js builds the footer from `git describe`, falling back to package.json when there
    * are no tags to describe against. Either way a version has to reach the page: a describeVersion()
    * that threw past its catch, or returned empty, would publish a footer reading "phyx.js  --" and

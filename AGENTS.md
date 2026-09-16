@@ -82,6 +82,11 @@ PHYX JSON file
   (`.github/workflows/site-canary.yml`) checks the same URLs, so
   `gh run list --workflow=site-canary.yml` answers "is the site down?" before you debug anything
   else.
+- **The reverse does not hold: a green `npm test` is no evidence the docs site is up.** If the
+  Pages source gets switched back to a branch, Jekyll serves `context/` straight out of the
+  repository, so every `@context` still resolves and the suite passes while the documentation
+  itself is gone. That is not hypothetical — it is what happened on 2026-09-16. The canary is the
+  only signal for this; the test suite is not.
 - **One `bin/phyx2owl.mjs` test fails on Node 26**, from a bundled-undici conflict in `jsonld`. CI
   runs Node 22, 24 and 25 and is green. Don't chase it or count it as a regression — see
   [issue #180](https://github.com/phyloref/phyx.js/issues/180). It breaks *every* `fetch` with
