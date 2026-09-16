@@ -48,7 +48,10 @@ jobs:
       - name: Check the site was generated
         run: |
           test -s site/index.html
-          test -s "site/$(node -p 'require("./src/utils/owlterms.js").PHYX_CONTEXT_JSON.split("/phyx.js/")[1]')"
+          # Assign on its own line: inside test -s "site/$(...)" a crashing node would
+          # substitute an empty string, leaving `test -s site/`, which passes.
+          context_path=$(node -p 'require("./src/utils/owlterms.js").PHYX_CONTEXT_JSON.split("/phyx.js/")[1]')
+          test -s "site/$context_path"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
