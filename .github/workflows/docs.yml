@@ -53,6 +53,15 @@ jobs:
       # otherwise. GitHub runs `run:` blocks under `bash -e`, so the first failing test exits the
       # step non-zero and the deploy never happens. Non-empty rather than merely present (`-f`)
       # because a truncated file is the shape a half-finished build leaves behind.
+      #
+      # These two checks overlap test/docs.mjs, which asserts the same things and a good deal more
+      # against a built site. The duplication is deliberate: this is the last gate before deploying
+      # over a working site, and it must not depend on the test suite having been run, or on the
+      # test files being present in whatever tree this checks out. Running `npx mocha test/docs.mjs`
+      # here instead would be strictly stronger and is worth considering -- but it is a change to
+      # the publish path, so it wants its own pull request rather than riding along with one.
+      #
+      # If you change what counts as a generated site, change it in both places.
       - name: Check the site was generated
         run: |
           # jsdoc exits 0 when `source` matches nothing: it prints "There are no input files to
