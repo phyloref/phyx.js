@@ -211,7 +211,7 @@ class SpecimenWrapper {
   /**
    * Set the basis of record. See http://rs.tdwg.org/dwc/terms/basisOfRecord for
    * recommended values.
-   * @ignore
+   * @private
    */
   set basisOfRecord(bor) {
     this.specimen.basisOfRecord = bor;
