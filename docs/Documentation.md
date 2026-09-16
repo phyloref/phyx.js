@@ -49,21 +49,21 @@ from `master`, which will read as the version last bumped. If the site is ever s
 on every push to `master`, this footer becomes misleading and needs to grow a "development build"
 marker.
 
-Both paths run through the `github-pages` environment, whose deployment branch policies decide
-which refs may deploy. A run whose ref matches none of them is rejected in seconds, before it even
-checks out. **Both of these policies have to exist**:
+Both paths run through the `github-pages` environment, which has no deployment branch policy: any
+ref may deploy. That is what makes `gh workflow run docs.yml --ref <branch>` work from a topic
+branch, which is how you repair the live site from a PR.
 
-- `master` (branch) — for `workflow_dispatch`, which is why a manual run has to be on `master` and
-  dispatching from a topic branch fails immediately.
-- `v*` (tag) — for `release: published`, where `github.ref` is `refs/tags/vX.Y.Z` and no branch
-  policy can ever match. Without it the release path is silently dead.
+**If you ever add a branch policy back, it has to cover tags as well.** `release: published` runs
+with `github.ref` set to `refs/tags/vX.Y.Z`, and no *branch* rule can match a tag — so a
+`master`-only policy leaves manual runs working while silently killing the release path, which is
+the state this repository was in. A run whose ref matches no policy is rejected in seconds, before
+it checks out. The environment's rules live in repository settings, so they survive no review and
+no test:
 
-They live in repository settings, not in this repo, so they survive no review and no test. Check
-them with `gh api repos/phyloref/phyx.js/environments/github-pages/deployment-branch-policies`.
-
-To publish from a branch other than `master` — to repair the live site from a PR, say — add a
-temporary branch rule for it, dispatch with `gh workflow run docs.yml --ref <branch>`, then delete
-the rule. That is how the site was restored while the fix was still under review.
+```bash
+# null means any ref may deploy
+gh api repos/phyloref/phyx.js/environments/github-pages --jq .deployment_branch_policy
+```
 
 **The test suite depends on this site being up.** `test/examples/correct/normalization/brochu_2003_normalization.json`
 and `test/examples/incorrect/otl-resolution-errors.json` reference their `@context` by its
