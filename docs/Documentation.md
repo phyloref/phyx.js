@@ -151,6 +151,11 @@ cron. Nothing in CI can catch that, because the deploy that breaks the site happ
 pull request that caused it went green. `gh run list --workflow=site-canary.yml` shows its
 history.
 
+Note that a new workflow cannot be test-fired from the branch that adds it: GitHub resolves
+`workflow_dispatch` against the **default branch**, so `gh workflow run <file> --ref <branch>`
+answers `404: not found on the default branch` until the file is on `master`. Run its steps
+locally to check them, and dispatch it once for real after merging.
+
 ## Gotchas
 
 Most of these are silent — the build still succeeds, the page just comes out wrong. The ones marked

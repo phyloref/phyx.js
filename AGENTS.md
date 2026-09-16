@@ -101,7 +101,7 @@ PHYX JSON file
 
 ### Tooling
 
-- **Linter/formatter**: [Biomejs](https://biomejs.dev/) (`biome.json`) — enforces single quotes and other style rules, with overrides that disable formatting/linting for test files. `includes` also lists `**/*.md`, but Biome doesn't process Markdown yet and reports it as ignored, so prose is unchecked.
+- **Linter/formatter**: [Biomejs](https://biomejs.dev/) (`biome.json`) — enforces single quotes and other style rules, with overrides that disable formatting/linting for test files. `includes` also lists `**/*.md`, but Biome doesn't process Markdown yet and reports it as ignored, so prose is unchecked. **`.mjs` is not in `includes` at all**, so every `.mjs` file is silently unlinted and unformatted — including `bin/phyx2owl.mjs`, which we ship as a binary. `npx biome check <file>` reports a path it skipped under "These paths were provided but ignored", which is the way to tell an unlinted file from a clean one.
 - **CI**: GitHub Actions, Node 22/24/25, runs `npm test` (includes lint)
 
 ## Docs
