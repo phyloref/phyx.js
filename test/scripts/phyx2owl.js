@@ -134,6 +134,45 @@ describe(PHYX2OWL_JS, function () {
     expect(result.status, detail).to.equal(1);
     expect(fs.existsSync(OWL_FILE), `File ${OWL_FILE} should not have been generated.`).to.be.false;
   });
+  it('should not count a fully filtered file as a failure', function () {
+    this.timeout(20000);
+    // --max-internal-specifiers and --max-external-specifiers exist so that oversized phylorefs
+    // can be skipped, so a file left with no phylorefs has done exactly what was asked: the .owl
+    // is written and the run succeeded. convertFileToOWL() used to return `false` for this and
+    // for a thrown error alike, so once the script started exiting 1 on failure, converting a
+    // corpus containing one such file failed a run that produced the requested output.
+    const SOURCE = path.resolve(__dirname, '../examples/correct/brochu_2003.json');
+
+    // Convert a copy, kept in the same directory so its relative `@context` still resolves.
+    const PHYX_FILE = path.resolve(__dirname, '../examples/correct/filtered_out.json');
+    const OWL_FILE = path.resolve(__dirname, '../examples/correct/filtered_out.owl');
+    fs.copyFileSync(SOURCE, PHYX_FILE);
+
+    try {
+      const result = child.spawnSync(process.execPath, [
+        PHYX2OWL_JS, PHYX_FILE,
+        '--max-internal-specifiers', '0',
+        '--max-external-specifiers', '0',
+      ], {
+        encoding: 'utf-8',
+        stdio: 'pipe',
+        timeout: 15000,
+      });
+
+      const detail = `--- stdout ---\n${result.stdout}\n--- stderr ---\n${result.stderr}`;
+
+      expect(result.status, detail).to.equal(0);
+      expect(result.stdout, detail).to.contain('1 files converted successfully.');
+      expect(result.stdout, detail).to.not.contain('files failed');
+
+      // The filtering itself must still be reported, since it is why the output has no phylorefs.
+      expect(result.stderr, detail).to.contain('were all filtered out');
+      expect(fs.existsSync(OWL_FILE), `File ${OWL_FILE} should have been generated.`).to.be.true;
+    } finally {
+      if (fs.existsSync(PHYX_FILE)) fs.unlinkSync(PHYX_FILE);
+      if (fs.existsSync(OWL_FILE)) fs.unlinkSync(OWL_FILE);
+    }
+  });
   // This is where we should test the recursive directory functionality. However,
   // doing that would require using `test/examples` (which isn't recursive),
   // using `test/` or the root project directory (potentially messing with other
