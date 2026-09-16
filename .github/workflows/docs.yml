@@ -42,14 +42,27 @@ jobs:
       - name: Generate documentation
         run: npm run docs
 
-      # jsdoc exits 0 when it finds no input files, leaving no site behind at all. The context
-      # path comes from PHYX_CONTEXT_JSON so this keeps checking the live IRI after a version
-      # bump, rather than an older context directory that still happens to be in the repo.
+      # Nothing downstream objects to a bad site: upload-pages-artifact uploads whatever is in
+      # site/, and deploy-pages publishes it over the working site. These two checks are all that
+      # stands between a silently empty build and a 404 in production.
+      #
+      # `test -s FILE` succeeds when FILE exists and has a size greater than zero, and fails
+      # otherwise. GitHub runs `run:` blocks under `bash -e`, so the first failing test exits the
+      # step non-zero and the deploy never happens. Non-empty rather than merely present (`-f`)
+      # because a truncated file is the shape a half-finished build leaves behind.
       - name: Check the site was generated
         run: |
+          # jsdoc exits 0 when `source` matches nothing: it prints "There are no input files to
+          # process" and leaves site/ exactly as it found it, which in a fresh checkout is nothing.
           test -s site/index.html
-          # Assign on its own line: inside test -s "site/$(...)" a crashing node would
-          # substitute an empty string, leaving `test -s site/`, which passes.
+
+          # The path comes from PHYX_CONTEXT_JSON so this keeps checking the IRI that is actually
+          # live after a version bump, rather than an older context directory that is still in the
+          # repo and would keep passing.
+          #
+          # Assign on its own line. Inside `test -s "site/$(...)"` a crashing node would substitute
+          # the empty string, leaving `test -s site/` -- which *passes*, because -s is true of any
+          # non-empty directory. Assigning first lets `bash -e` fail the step on node's exit status.
           context_path=$(node -p 'require("./src/utils/owlterms.js").PHYX_CONTEXT_JSON.split("/phyx.js/")[1]')
           test -s "site/$context_path"
 
