@@ -15,8 +15,9 @@ npm run docs   # predocs + jsdoc + postdocs
    `opts.tutorials`; `tutorials/build/docs/` holds prose pages such as the changelog and feeds
    `opts.docs`, which gives them their own sidebar section.
 2. `jsdoc --configure jsdoc.config.js` builds the site into `site/`, emptying it first. The
-   config is a CommonJS module rather than JSON so it can read `version` out of `package.json`
-   and put it in the footer — see the note on versioning under [Publishing](#publishing).
+   config is a CommonJS module rather than JSON so it can work out the footer's version with
+   `git describe --tags`, falling back to `version` in `package.json` — see the note on versioning
+   under [Publishing](#publishing).
 3. `postdocs` copies `context/` into `site/context/` — the published JSON-LD contexts and JSON
    Schemas are served from the documentation site.
 
@@ -160,8 +161,10 @@ run `npm run docs` first to include them. In CI they fail rather than skip, so t
 
 What this deliberately does not cover is external URLs, and whether the site is actually up.
 `.github/workflows/site-canary.yml` handles the second: it fetches the site and the published
-context daily and fails if either is unreachable, which GitHub emails to whoever last touched the
-cron. Nothing in CI can catch that, because the deploy that breaks the site happens long after the
+context daily and fails if the context is unreachable or doesn't parse, or if the site is
+unreachable or isn't our build. For the last it looks for the jsdoc footer and a generated class
+page, because a Jekyll build of the repository serves a 200 as well. GitHub emails the failure to
+whoever last touched the cron. Nothing in CI can catch that, because the deploy that breaks the site happens long after the
 pull request that caused it went green. `gh run list --workflow=site-canary.yml` shows its
 history.
 
