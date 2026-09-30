@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 ## [Unreleased]
 - PR #166: Replaced esdoc, which has had no release since 2018, with jsdoc and clean-jsdoc-theme. The documentation at <https://www.phyloref.org/phyx.js/> is now served from clean URLs, so links into the old pages need updating, and `PhylogenyWrapper` is published for the first time — esdoc and jsdoc alike had been skipping it as undocumented.
 - PR #179: Stopped committing generated documentation. The JSON-LD contexts and JSON Schemas moved from `docs/context/` to `context/` at the repository root, changing their path within the published NPM package; they continue to be served from <https://www.phyloref.org/phyx.js/context/>.
+- PR #192: Added tests that every JSON-LD context and JSON Schema in `context/`, including the published versions, is valid. The v0.1.0 and v0.2.0 contexts cannot be processed by the `jsonld` library, so phyx.js cannot convert Phyx files that use them.
 
 ## [1.2.1] - 2025-07-28
 - PR #152: Upraded packages using `npm upgrade`.
