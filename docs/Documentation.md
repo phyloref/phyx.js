@@ -161,7 +161,7 @@ run `npm run docs` first to include them. In CI they fail rather than skip, so t
 
 What this deliberately does not cover is external URLs, and whether the site is actually up.
 `.github/workflows/site-canary.yml` handles the second: it fetches the site and the published
-context daily and fails if the context is unreachable or doesn't parse, or if the site is
+context daily and fails if the context is unreachable or differs from the repository's copy, or if the site is
 unreachable or isn't our build. For the last it looks for the jsdoc footer and a generated class
 page, because a Jekyll build of the repository serves a 200 as well. GitHub emails the failure to
 whoever last touched the cron. Nothing in CI can catch that, because the deploy that breaks the site happens long after the

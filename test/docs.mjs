@@ -382,6 +382,31 @@ describe('Generated documentation site', function () {
         ).to.be.true;
       });
     });
+
+    /*
+     * The canary compares the live context with a file in its checkout, and works out which file
+     * with a node expression. Run that same expression here: if it names a file other than the one
+     * postdocs publishes at the context URL, the canary fails every night against a good site.
+     */
+    it('should compare the live context with the file postdocs publishes', function () {
+      const expression = /context_file=\$\(node -p '([^']+)'\)/.exec(workflow);
+      expect(expression, 'no context_file expression found in site-canary.yml').to.not.be.null;
+
+      const contextFile = execFileSync('node', ['-p', expression[1]], {
+        cwd: repoRoot,
+        encoding: 'utf8',
+      }).trim();
+      const published = path.join(siteDir, PHYX_CONTEXT_JSON.split(`${BASE_PATH}/`)[1]);
+
+      expect(
+        fs.existsSync(path.join(repoRoot, contextFile)),
+        `the canary compares against ${contextFile}, which does not exist`,
+      ).to.be.true;
+      expect(
+        fs.readFileSync(path.join(repoRoot, contextFile)).equals(fs.readFileSync(published)),
+        `the canary compares against ${contextFile}, which is not what site/ publishes`,
+      ).to.be.true;
+    });
   });
 
   /*

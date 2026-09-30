@@ -49,6 +49,10 @@ jobs:
         run: |
           context_url=$(node -p 'require("./src/utils/owlterms.js").PHYX_CONTEXT_JSON')
           echo "context=$context_url" >> "$GITHUB_OUTPUT"
+          # The file postdocs publishes at that URL: its path, minus the site's base path.
+          # test/docs.mjs runs this expression against the build, so keep it on one line.
+          context_file=$(node -p 'new URL(require("./src/utils/owlterms.js").PHYX_CONTEXT_JSON).pathname.split("/").slice(2).join("/")')
+          echo "context_file=$context_file" >> "$GITHUB_OUTPUT"
           echo "home=$(node -p 'require("./package.json").homepage')" >> "$GITHUB_OUTPUT"
 
       # --fail turns an HTTP error into a non-zero exit; without it curl happily prints a 404
@@ -79,11 +83,14 @@ jobs:
             "${{ steps.urls.outputs.home }}phyxwrapper/" -o phyxwrapper.html
           grep -q 'PhyxWrapper' phyxwrapper.html
 
-      - name: Check the published JSON-LD context resolves and parses
+      # Compared byte for byte with the repository's copy rather than parsed: a published context
+      # version never changes, so anything else -- truncated, an HTML error page, the wrong
+      # version, a stale copy -- is wrong, and whether the repository's copy is valid is the test
+      # suite's job. This fails if someone edits a published version on master, which should not
+      # happen either.
+      - name: Check the published JSON-LD context matches the repository's copy
         run: |
           curl --fail --silent --show-error --location \
             --retry 3 --retry-delay 10 --retry-all-errors \
             "${{ steps.urls.outputs.context }}" -o phyx.json
-          # Parseable JSON with an @context key -- the shape jsonld actually needs. A truncated
-          # or HTML response would pass a mere size check.
-          jq -e 'has("@context")' phyx.json > /dev/null
+          cmp phyx.json "${{ steps.urls.outputs.context_file }}"
