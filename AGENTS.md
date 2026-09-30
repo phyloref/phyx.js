@@ -71,6 +71,9 @@ PHYX JSON file
 
 - Test files in `test/` mirror source modules (`phylorefs.js`, `phylogenies.js`, etc.)
 - `test/examples/correct/` contains fixture PHYX files with expected outputs used by `test/examples.js`
+- `test/context.js` validates every JSON-LD context and JSON Schema in `context/`, published versions included. The
+  v0.1.0 and v0.2.0 contexts can't be processed by the `jsonld` library, and since published versions never change,
+  the test asserts they *keep* failing rather than skipping them.
 - `test/jphyloref.js` requires the JPhyloRef JAR; may be skipped if Java is unavailable
 - Some tests need network access. `test/examples/incorrect/otl-resolution-errors.json` and
   `test/examples/correct/normalization/brochu_2003_normalization.json` use a remote `@context`
