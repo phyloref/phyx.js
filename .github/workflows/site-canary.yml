@@ -16,9 +16,11 @@ name: Check the published documentation site
 
 on:
   schedule:
-    # Daily, at a time nothing else here runs. Daily rather than hourly on purpose: a day's outage
-    # is acceptable, and releases run this by hand -- see docs/Documentation.md.
-    - cron: '17 6 * * *'
+    # Daily rather than hourly on purpose: a day's outage is acceptable, and releases run this by
+    # hand -- see docs/Documentation.md. 03:xx UTC is late evening US Eastern (11pm EDT, 10pm EST),
+    # when a failure email is most likely to be seen. Keep the minute off the hour: GitHub delays,
+    # and sometimes drops, scheduled runs at the top of the hour, when load peaks.
+    - cron: '17 3 * * *'
   workflow_dispatch:
 
 permissions:

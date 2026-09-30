@@ -47,7 +47,7 @@ gh api repos/phyloref/phyx.js/environments/github-pages/deployment-branch-polici
 ```
 
 Once the release is published, check that the docs actually went out. A failed deploy leaves the previous
-version's site up, which the daily site canary will not notice, and the canary only runs at 06:17 UTC, so
+version's site up, which the daily site canary will not notice, and the canary only runs at 03:17 UTC, so
 run it now rather than waiting for it:
 
 ```bash
