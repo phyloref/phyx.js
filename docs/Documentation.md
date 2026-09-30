@@ -72,13 +72,14 @@ gh api repos/phyloref/phyx.js/environments/github-pages/deployment-branch-polici
 To publish from some other branch — to repair the live site from a PR, say — add a temporary branch
 rule for it, run `gh workflow run docs.yml --ref <branch>`, then delete the rule.
 
-**Writing any Pages setting re-creates that policy.** A `PUT` to `/repos/{owner}/{repo}/pages`
-re-provisions the environment with a fresh default-branch-only rule — even when the call changes
-only the `source` field that `build_type: workflow` ignores. Whatever was there is replaced, so the
-`v*` rule disappears without a word and releases stop publishing. That has already happened once
-here. **Re-check the policies after touching anything in the Pages settings**, and note that the
-protection rule's `id` changes when it is re-created, which is how you tell a re-provisioned policy
-from the one you left there.
+**Writing the Pages settings can re-create that policy.** A `PUT` to
+`/repos/{owner}/{repo}/pages` that changed only the recorded `source` (see below) re-provisioned the
+environment with a fresh default-branch-only rule, replacing whatever was there, so the `v*` rule
+disappeared without a word and releases stopped publishing. That is the one write we have
+observed; nobody has checked whether changing another setting, such as the custom domain, does the
+same, so assume it does. **Re-check the policies after touching anything in the Pages settings**,
+and note that the protection rule's `id` changes when it is re-created, which is how you tell a
+re-provisioned policy from the one you left there.
 
 **The test suite depends on this site being up.** `test/examples/correct/normalization/brochu_2003_normalization.json`
 and `test/examples/incorrect/otl-resolution-errors.json` reference their `@context` by its
@@ -87,7 +88,7 @@ version. Publishing is not only a docs concern, and CI cannot catch a regression
 deploy has actually run.
 
 The repository's Pages source is **GitHub Actions**, not a branch, so the site is whatever
-`actions/deploy-pages` last uploaded. Two consequences worth remembering:
+`actions/deploy-pages` last uploaded. Three consequences worth remembering:
 
 - Pushing to a `gh-pages` branch deploys nothing, and the branch itself — left over from the
   esdoc era — has been deleted.
@@ -95,19 +96,26 @@ The repository's Pages source is **GitHub Actions**, not a branch, so the site i
   Jekyll-builds the configured folder and reports success even when the result has no
   `index.html` — which is exactly how the site 404'd after the esdoc output was removed from
   `docs/`.
-- The Pages settings still record a `source`, because the API has no "no source" value to set it
-  to. It now reads `{branch: master, path: /}`. **It is not inert.** Saving anything in the Pages
-  settings triggers one of GitHub's own `pages-build-deployment` runs — event `dynamic`, not a push
-  — which Jekyll-builds that `source` and deploys it *over* the artifact, while `build_type` stays
-  `workflow` and the settings still look correct. On 2026-09-16 that replaced the site with
-  `README.md` and left `/phyx.js/phyxwrapper/` 404ing; `gh workflow run docs.yml` puts it back.
-  `gh run list --workflow=pages-build-deployment` is where this shows up, and a `dynamic` run on a
-  repository whose docs deploy through Actions always means this happened.
-  That only matters if someone switches the source back to a branch, and it is deliberately aimed
-  at the least bad landing: a Jekyll build of `master:/` serves `README.md` as the index (Pages
-  enables `jekyll-readme-index` by default) and still serves `context/` out of the repository, so
-  the published context IRIs — and the tests that dereference them — would survive. It used to
-  point at `/docs`, which holds prose and no `index.html`, and would have 404'd the whole site.
+- The Pages settings still record a `source` — it now reads `{branch: master, path: /}` — and
+  there is no way to clear it. The REST API documents no null value for it, unlike `cname`, and
+  every repository we sampled that deploys through Actions records one too, usually its default
+  branch and `/`, which GitHub fills in when "GitHub Actions" is chosen. **It is not inert.** On
+  2026-09-16 a `PUT` that changed only the `source` set off one of GitHub's own
+  `pages-build-deployment` runs within seconds, which Jekyll-built that `source` and deployed it
+  *over* the artifact while `build_type` stayed `workflow` and the settings still looked correct.
+  The site served `README.md` and `/phyx.js/phyxwrapper/` 404'd; `gh workflow run docs.yml` put it
+  back. As with the environment policy above, assume any write to the Pages settings can do this.
+
+  To spot it, look for *any* run in `gh run list --workflow=pages-build-deployment` newer than the
+  last `docs.yml` deploy: under the Actions source nothing else starts one. Don't go by the run's
+  event — it reads `dynamic` for every `pages-build-deployment` run, including the ones pushes
+  used to trigger under the old branch source.
+
+  Since the `source` can't be removed, it is aimed at the least bad landing. A Jekyll build of
+  `master:/` serves `README.md` as the index (Pages enables `jekyll-readme-index` by default) and
+  still serves `context/` out of the repository, so the published context IRIs — and the tests that
+  dereference them — survive. It used to point at `/docs`, which holds prose and no `index.html`,
+  and would have 404'd the whole site.
 
 Pages serves the uploaded artifact at the repository sub-path, `/phyx.js`. That is what makes
 `postdocs` enough to keep <https://www.phyloref.org/phyx.js/context/v1.1.0/phyx.json> resolving —

@@ -36,8 +36,8 @@ Then create a GitHub release for the tag (via the GitHub UI or `gh release creat
 
 Publishing the release triggers the `docs.yml` workflow, which regenerates and deploys docs to GitHub Pages.
 Check first that the `github-pages` environment still lists a `v*` tag policy — the release run's ref is the
-tag, a branch policy cannot match it, and writing any Pages setting silently replaces the policies with a
-branch-only default:
+tag, a branch policy cannot match it, and a write to the Pages settings can silently replace the policies
+with a branch-only default:
 
 ```bash
 # must include "tag  v*", or this release will publish nothing
