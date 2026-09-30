@@ -17,9 +17,16 @@ name: Check the published documentation site
 on:
   schedule:
     # Daily rather than hourly on purpose: a day's outage is acceptable, and releases run this by
-    # hand -- see docs/Documentation.md. 03:xx UTC is late evening US Eastern (11pm EDT, 10pm EST),
-    # when a failure email is most likely to be seen. Keep the minute off the hour: GitHub delays,
-    # and sometimes drops, scheduled runs at the top of the hour, when load peaks.
+    # hand -- see docs/Documentation.md.
+    #
+    # 03:17 UTC is 11:17pm EDT / 10:17pm EST, when a failure email is most likely to be seen.
+    # Cron here is always UTC, so the local time shifts by an hour with daylight saving.
+    #
+    # Why 17 past rather than on the hour: GitHub documents that scheduled runs are delayed when
+    # Actions is under high load, that the start of every hour is such a time, and that under
+    # enough load queued scheduled runs are dropped outright. A dropped run is a missed email, and
+    # this workflow exists only to send that email. :17 also avoids the round :15/:30/:45 minutes
+    # that other schedules tend to pick. Don't round it to 03:00.
     - cron: '17 3 * * *'
   workflow_dispatch:
 
