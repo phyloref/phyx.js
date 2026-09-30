@@ -16,7 +16,8 @@ name: Check the published documentation site
 
 on:
   schedule:
-    # Daily, at a time nothing else here runs.
+    # Daily, at a time nothing else here runs. Daily rather than hourly on purpose: a day's outage
+    # is acceptable, and releases run this by hand -- see docs/Documentation.md.
     - cron: '17 6 * * *'
   workflow_dispatch:
 

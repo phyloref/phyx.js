@@ -165,6 +165,12 @@ cron. Nothing in CI can catch that, because the deploy that breaks the site happ
 pull request that caused it went green. `gh run list --workflow=site-canary.yml` shows its
 history.
 
+**Daily is deliberate.** A site that is down for up to a day is acceptable, as long as it is caught
+then rather than weeks later, so a Pages settings write that clobbers the site is left for the next
+scheduled run to find. A release is the exception, since it is when the site is expected to change:
+[RELEASE.md](../RELEASE.md) runs the canary by hand straight after publishing. Tightening the cron
+would only buy hours on an outage nobody depends on hour to hour.
+
 Note that a new workflow cannot be test-fired from the branch that adds it: GitHub resolves
 `workflow_dispatch` against the **default branch**, so `gh workflow run <file> --ref <branch>`
 answers `404: not found on the default branch` until the file is on `master`. Run its steps

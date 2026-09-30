@@ -45,6 +45,17 @@ gh api repos/phyloref/phyx.js/environments/github-pages/deployment-branch-polici
   --jq '.branch_policies[] | "\(.type)\t\(.name)"'
 ```
 
+Once the release is published, check that the docs actually went out. A failed deploy leaves the previous
+version's site up, which the daily site canary will not notice, and the canary only runs at 06:17 UTC, so
+run it now rather than waiting for it:
+
+```bash
+gh run list --workflow=docs.yml -L 1   # the release's deploy: must be "completed success"
+gh workflow run site-canary.yml       # then `gh run watch` and pick it once it appears; must pass
+# the footer must read "phyx.js vX.Y.Z" -- anything else is an older build
+curl -sL https://www.phyloref.org/phyx.js/ | grep -oE 'phyx\.js v[^ <]+'
+```
+
 See [docs/Documentation.md](docs/Documentation.md#publishing) if the docs don't refresh.
 
 ## 4. Confirm the Zenodo deposit
