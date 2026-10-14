@@ -221,6 +221,18 @@ describe('PhylorefWrapper', function () {
         expect(new phyx.PhylorefWrapper({ label: 'phyloref1' }).getExpectedNodeLabels(phylogeny))
           .to.deep.equal(['C']);
       });
+
+      it('should not match any node for a phyloreference without a label', function () {
+        const phylogeny = {
+          newick: '((A, B)C, D)E',
+          additionalNodeProperties: {
+            C: { expectedPhyloreferenceNamed: undefined },
+            E: { expectedPhyloreferenceNamed: [null] },
+          },
+        };
+
+        expect(new phyx.PhylorefWrapper({}).getExpectedNodeLabels(phylogeny)).to.be.empty;
+      });
     });
   });
 

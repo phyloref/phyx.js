@@ -204,6 +204,10 @@ class PhylorefWrapper {
     const phylorefLabel = this.label;
     const nodeLabels = new Set();
 
+    // A phyloreference without a label can't be named by a node, and must not
+    // match one whose expectedPhyloreferenceNamed is also missing.
+    if (phylorefLabel === undefined || phylorefLabel === null) return [];
+
     new PhylogenyWrapper(phylogeny, this.defaultNomenCode)
       .getNodeLabels()
       .forEach(nodeLabel => {
