@@ -190,7 +190,7 @@ describe('Documentation prose', function () {
  * jsdoc publishes a class member only when a `/**` comment sits directly above it. A `//` block
  * inside the body and a `/*` block above it both read as documentation and are both ignored, and
  * `strict` says nothing: the member just never appears on the page. PhylogenyWrapper shipped with
- * eight of its eleven members missing this way, and two PhylorefWrapper methods were one asterisk
+ * ten of its twelve members missing this way, and two PhylorefWrapper methods were one asterisk
  * short. This reads the source, so it needs no build and runs on every `npm test`.
  */
 describe('Documentation comments', function () {
