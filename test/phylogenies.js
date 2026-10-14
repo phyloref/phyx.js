@@ -457,6 +457,49 @@ describe('PhylogenyWrapper', function () {
       const restrictions = nodeA[owlterms.RDF_TYPE].filter(type => type['@type'] === 'owl:Restriction');
       expect(restrictions).to.have.lengthOf(1);
       expect(JSON.stringify(restrictions[0])).to.include(owlterms.ICZN_CODE);
+
+      // The taxonomic units copied into the node should say the same.
+      expect(nodeA.representsTaxonomicUnits[0].hasName.nomenclaturalCode)
+        .to.equal(owlterms.ICZN_CODE);
+    });
+
+    it('should apply the default nomenclatural code wherever a node\'s taxonomic units are read', function () {
+      const phylogeny = {
+        newick: '(A, B)C',
+        additionalNodeProperties: {
+          A: {
+            representsTaxonomicUnits: [{
+              '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+              nameString: 'Rana boylii',
+            }],
+          },
+          B: {
+            representsTaxonomicUnits: [{
+              '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+              hasName: {
+                '@type': phyx.TaxonNameWrapper.TYPE_TAXON_NAME,
+                nameComplete: 'Rana aurora',
+                nomenclaturalCode: owlterms.ICN_CODE,
+              },
+            }],
+          },
+        },
+      };
+      const original = JSON.parse(JSON.stringify(phylogeny));
+      const wrapper = new phyx.PhylogenyWrapper(phylogeny, owlterms.ICZN_CODE);
+
+      // A taxon concept with only a nameString gets the default...
+      const [tunitA] = wrapper.getTaxonomicUnitsForNodeLabel('A');
+      expect(tunitA.hasName.nameComplete).to.equal('Rana boylii');
+      expect(tunitA.hasName.nomenclaturalCode).to.equal(owlterms.ICZN_CODE);
+
+      // ... one that sets its own code keeps it...
+      const [tunitB] = wrapper.getTaxonomicUnitsForNodeLabel('B');
+      expect(tunitB.hasName.nomenclaturalCode).to.equal(owlterms.ICN_CODE);
+
+      // ... and the phylogeny itself is left alone.
+      wrapper.getNodesAsJSONLD(':phylogeny1');
+      expect(phylogeny).to.deep.equal(original);
     });
   });
 
