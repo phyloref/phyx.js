@@ -221,9 +221,13 @@ class PhylorefWrapper {
           // Does this node label have an expectedPhyloreferenceNamed that
           // includes this phyloreference name?
 
-          const expectedPhylorefs =
+          // It may be a single name or a list of names. Calling includes() on
+          // a single name would test for a substring, so 'phyloref1' would
+          // match a node expecting 'phyloref10'.
+          const expectedPhylorefs = [].concat(
             phylogeny.additionalNodeProperties[nodeLabel]
-              .expectedPhyloreferenceNamed;
+              .expectedPhyloreferenceNamed,
+          );
 
           if (expectedPhylorefs.includes(phylorefLabel)) {
             nodeLabels.add(nodeLabel);

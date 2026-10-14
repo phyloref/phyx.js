@@ -198,6 +198,29 @@ describe('PhylorefWrapper', function () {
         expect(phyloref1.getExpectedNodeLabels(phylogeny1))
           .to.deep.equal(['Test']);
       });
+
+      it('should not match a phyloreference whose name is only part of the expected name', function () {
+        const phyloref10 = new phyx.PhylorefWrapper({ label: 'phyloref10' });
+        const phyloref = new phyx.PhylorefWrapper({ label: 'phyloref' });
+
+        expect(phyloref10.getExpectedNodeLabels(phylogeny1)).to.be.empty;
+        expect(phyloref.getExpectedNodeLabels(phylogeny1)).to.be.empty;
+      });
+
+      it('should accept a list of expected phyloreference names', function () {
+        const phylogeny = {
+          newick: '((A, B)C, D)E',
+          additionalNodeProperties: {
+            C: { expectedPhyloreferenceNamed: ['phyloref1', 'phyloref2'] },
+            E: { expectedPhyloreferenceNamed: ['phyloref10'] },
+          },
+        };
+
+        expect(new phyx.PhylorefWrapper({ label: 'phyloref2' }).getExpectedNodeLabels(phylogeny))
+          .to.deep.equal(['C']);
+        expect(new phyx.PhylorefWrapper({ label: 'phyloref1' }).getExpectedNodeLabels(phylogeny))
+          .to.deep.equal(['C']);
+      });
     });
   });
 
