@@ -411,6 +411,12 @@ class PhylorefWrapper {
     }
 
     // Check to see if there's a previous time interval we should end.
+    //
+    // This ends the last entry, whether or not it records a status, while
+    // getCurrentStatus() skips entries that don't. setStatus() never writes
+    // such an entry, and status tracking isn't used by any current tool, so we
+    // left this alone; if it comes back, end the last entry that records a
+    // status instead, so that it matches getCurrentStatus().
     if (
       Array.isArray(this.phyloref['pso:holdsStatusInTime']) &&
       this.phyloref['pso:holdsStatusInTime'].length > 0
