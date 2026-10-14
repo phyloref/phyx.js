@@ -40,7 +40,11 @@ class PhylogenyWrapper {
   }
 
   /**
-   * Return a normalized form of the phylogeny.
+   * Return a normalized form of the phylogeny. The Newick string is left as it is; only its
+   * `source` citation, if there is one, is normalized (see {@link CitationWrapper.normalize}).
+   *
+   * @param {Object} phylogeny - The phylogeny object from a Phyx document.
+   * @return {Object} A normalized copy of the phylogeny. The original is not modified.
    */
   static normalize(phylogeny) {
     const normalizedPhylogeny = cloneDeep(phylogeny);
@@ -247,6 +251,10 @@ class PhylogenyWrapper {
    * (using `representsTaxonomicUnits` = obo:CDAO_0000187), then those taxonomic
    * units are used. Otherwise, one will be constructed using the default
    * nomenclatural code set up when this PhylogenyWrapper was set up.
+   *
+   * @param {string} nodeLabel - The node label to look up.
+   * @return {Object[]} The taxonomic units for this node label, or an empty list if it
+   *    has none and none could be parsed from the label.
    */
   getTaxonomicUnitsForNodeLabel(nodeLabel) {
     // Look up additional node properties.
@@ -306,9 +314,15 @@ class PhylogenyWrapper {
    *
    * We previously used phylotree.js's Newick parser to parse Newick into a
    * tree-like structure. However, this is difficult to integrate using NPM.
-   * This method provides a similar facility using the newick-js library: each
-   * node has a `children` list, a `name` carrying its label, and an `attribute`
-   * carrying its branch length, as phylotree.js's parser produces.
+   * This method provides a similar facility using the newick-js library, with
+   * the property names phylotree.js's parser used. Each node is an object with:
+   *
+   *  - children: its child nodes, absent on a leaf
+   *  - name: its label, absent if it has none
+   *  - attribute: the length of the branch leading to it, absent if the Newick
+   *    string gives none
+   *
+   * Each node also keeps newick-js's own `label`, which is the same as `name`.
    *
    * Throws an exception if the Newick could not be parsed.
    *
