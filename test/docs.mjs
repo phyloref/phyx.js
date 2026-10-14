@@ -10,10 +10,12 @@
 
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { expect } from 'chai';
 
+const require = createRequire(import.meta.url);
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const siteDir = path.join(repoRoot, 'site');
 
@@ -23,24 +25,8 @@ const siteDir = path.join(repoRoot, 'site');
  */
 const BASE_PATH = '/phyx.js';
 
-/** owlterms.js is CommonJS, so it is read out of a child process rather than imported here. */
-const { PHYX_CONTEXT_JSON } = JSON.parse(
-  execFileSync('node', ['-p', 'JSON.stringify(require("./src/utils/owlterms.js"))'], {
-    cwd: repoRoot,
-    encoding: 'utf8',
-  }),
-);
-
-/*
- * The source section of jsdoc.config.js. Like owlterms.js it is CommonJS, so it is read out of a
- * child process too.
- */
-const JSDOC_SOURCE = JSON.parse(
-  execFileSync('node', ['-p', 'JSON.stringify(require("./jsdoc.config.js").source)'], {
-    cwd: repoRoot,
-    encoding: 'utf8',
-  }),
-);
+const { PHYX_CONTEXT_JSON } = require('../src/utils/owlterms.js');
+const JSDOC_CONFIG = require('../jsdoc.config.js');
 
 /**
  * The source files jsdoc is pointed at, worked out from jsdoc.config.js's `source` rather than
@@ -48,9 +34,9 @@ const JSDOC_SOURCE = JSON.parse(
  */
 function jsdocSources() {
   const relative = entry => path.relative(repoRoot, path.resolve(repoRoot, entry));
-  const included = JSDOC_SOURCE.include.map(relative);
-  const excluded = (JSDOC_SOURCE.exclude || []).map(relative);
-  const pattern = new RegExp(JSDOC_SOURCE.includePattern || '.+\\.js(doc|x)?$');
+  const included = JSDOC_CONFIG.source.include.map(relative);
+  const excluded = (JSDOC_CONFIG.source.exclude || []).map(relative);
+  const pattern = new RegExp(JSDOC_CONFIG.source.includePattern || '.+\\.js(doc|x)?$');
   const within = (file, entry) => file === entry || file.startsWith(`${entry}/`);
 
   return execFileSync('git', ['ls-files', '--', ...included], {
@@ -283,12 +269,7 @@ describe('Documentation configuration', function () {
    * inspect nothing and pass. This is the assertion that fails instead.
    */
   it('should point opts.basePath at that same sub-path', function () {
-    const basePath = execFileSync('node', ['-p', 'require("./jsdoc.config.js").opts.basePath'], {
-      cwd: repoRoot,
-      encoding: 'utf8',
-    }).trim();
-
-    expect(basePath).to.equal(BASE_PATH);
+    expect(JSDOC_CONFIG.opts.basePath).to.equal(BASE_PATH);
   });
 });
 
