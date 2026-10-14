@@ -31,16 +31,38 @@ const { PHYX_CONTEXT_JSON } = JSON.parse(
   }),
 );
 
-/** The source files jsdoc is pointed at: everything under src/ except what jsdoc.config.js excludes. */
+/*
+ * The source section of jsdoc.config.js. Like owlterms.js it is CommonJS, so it is read out of a
+ * child process too.
+ */
+const JSDOC_SOURCE = JSON.parse(
+  execFileSync('node', ['-p', 'JSON.stringify(require("./jsdoc.config.js").source)'], {
+    cwd: repoRoot,
+    encoding: 'utf8',
+  }),
+);
+
+/**
+ * The source files jsdoc is pointed at, worked out from jsdoc.config.js's `source` rather than
+ * restated here, so that the checks below stop reading a file the moment jsdoc does.
+ */
 function jsdocSources() {
-  const excluded = ['src/index.js', 'src/utils/owlterms.js'];
-  return execFileSync('git', ['ls-files', 'src/*.js', 'src/**/*.js'], {
+  const relative = entry => path.relative(repoRoot, path.resolve(repoRoot, entry));
+  const included = JSDOC_SOURCE.include.map(relative);
+  const excluded = (JSDOC_SOURCE.exclude || []).map(relative);
+  const pattern = new RegExp(JSDOC_SOURCE.includePattern || '.+\\.js(doc|x)?$');
+  const within = (file, entry) => file === entry || file.startsWith(`${entry}/`);
+
+  return execFileSync('git', ['ls-files', '--', ...included], {
     cwd: repoRoot,
     encoding: 'utf8',
   })
     .trim()
     .split('\n')
-    .filter(file => file && !excluded.includes(file));
+    .filter(
+      file =>
+        file && pattern.test(file) && !excluded.some(entry => within(file, entry)),
+    );
 }
 
 /** Markdown files tracked in git, with symlinks (CLAUDE.md -> AGENTS.md) collapsed. */
