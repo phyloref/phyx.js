@@ -18,16 +18,22 @@ const { CitationWrapper } = require('./CitationWrapper');
  * @category Wrappers
  */
 class PhylogenyWrapper {
+  /**
+   * Construct a phylogeny based on a Phylogeny object in a PHYX phylogeny.
+   * Note that this version ONLY uses the `newick` property to determine the
+   * phylogeny: if other representations are included (such as a node-based
+   * format, as used in JSON-LD), they will be ignored and possibly overwritten
+   * during export. So, to update the phylogeny, please only update the newick
+   * string!
+   *
+   * This ensures that we don't need to reconcile between different
+   * possible representations of a phylogeny.
+   *
+   * @param {Object} phylogeny - The phylogeny object from a Phyx document to wrap.
+   * @param {string} [defaultNomenCode=owlterms.UNKNOWN_CODE] - The nomenclatural code to
+   *    assume for taxonomic units extracted from node labels.
+   */
   constructor(phylogeny, defaultNomenCode = owlterms.UNKNOWN_CODE) {
-    // Construct a phylogeny based on a Phylogeny object in a PHYX phylogeny.
-    // Note that this version ONLY uses the `newick` property to determine the
-    // phylogeny: if other representations are included (such as a node-based
-    // format, as used in JSON-LD), they will be ignored and possibly overwritten
-    // during export. So, to update the phylogeny, please only update the newick
-    // string!
-    //
-    // This ensures that we don't need to reconcile between different
-    // possible representations of a phylogeny.
     this.phylogeny = phylogeny;
     this.defaultNomenCode = defaultNomenCode;
   }
@@ -50,16 +56,21 @@ class PhylogenyWrapper {
     return normalizedPhylogeny;
   }
 
+  /**
+   * Given a Newick string, return a list of errors found in parsing this
+   * string. The errors are returned as a list of objects, each of which
+   * has two properties:
+   *  - title: A short title of the error, distinct for each type of error.
+   *  - message: A longer description of the error, which might include
+   *    information specific to a particular error.
+   *
+   * We try to order errors from most helpful ('Unbalanced parentheses in
+   * Newick string') to least helpful ('Error parsing phylogeny').
+   *
+   * @param {string} newick - The Newick string to check.
+   * @return {Object[]} A list of `{title, message}` objects, empty if no errors were found.
+   */
   static getErrorsInNewickString(newick) {
-    // Given a Newick string, return a list of errors found in parsing this
-    // string. The errors are returned as a list of objects, each of which
-    // has two properties:
-    //  - title: A short title of the error, distinct for each type of error.
-    //  - message: A longer description of the error, which might include
-    //    information specific to a particular error.
-    //
-    // We try to order errors from most helpful ('Unbalanced parentheses in
-    // Newick string') to least helpful ('Error parsing phylogeny').
     const newickTrimmed = newick.trim();
     const errors = [];
 
@@ -108,21 +119,27 @@ class PhylogenyWrapper {
     return errors;
   }
 
+  /**
+   * Recurse through PhyloTree nodes, executing function on each node.
+   *
+   * When the function `func` is called, it is given three arguments:
+   *  - The current node object (initially: `node`)
+   *  - The count of the current node object (initially: `nodeCount`)
+   *  - The parent count of the current node object (initially: `parentCount`)
+   *
+   * @param {Object} node - The node to recurse from. The function will be called on node
+   *    *before* being called on its children.
+   * @param {function(Object, number, number)} func - The function to call on `node` and all
+   *    of its children.
+   * @param {number} [nodeCount=0] - `node` will be called with this nodeCount. All of its
+   *    children will be called with consecutively increasing nodeCounts.
+   * @param {number} [parentCount=undefined] - The nodeCount associated with the parent of
+   *    this node within this run of recurseNodes. For instance, immediate children of `node`
+   *    will have a parentCount of 0. By default, `node` itself will have a parentCount of
+   *    `undefined`.
+   * @return {number} The next unused nodeCount, i.e. one more than the last node visited.
+   */
   static recurseNodes(node, func, nodeCount = 0, parentCount = undefined) {
-    // Recurse through PhyloTree nodes, executing function on each node.
-    //  - node: The node to recurse from. The function will be called on node
-    //          *before* being called on its children.
-    //  - func: The function to call on `node` and all of its children.
-    //  - nodeCount: `node` will be called with this nodeCount. All of its
-    //          children will be called with consecutively increasing nodeCounts.
-    //  - parentCount: The nodeCount associated with the parent of this node
-    //          within this run of recurseNodes. For instance, immediate children
-    //          of `node` will have a parentCount of 0. By default, `node` itself
-    //          will have a parentCount of `undefined`.
-    // When the function `func` is called, it is given three arguments:
-    //  - The current node object (initially: `node`)
-    //  - The count of the current node object (initially: `nodeCount`)
-    //  - The parent count of the current node object (initially: `parentCount`)
     func(node, nodeCount, parentCount);
 
     let nextID = nodeCount + 1;
@@ -137,18 +154,22 @@ class PhylogenyWrapper {
     return nextID;
   }
 
+  /**
+   * Return the set of all taxonomic units in this phylogeny.
+   * Node labels will be extracted from:
+   *  - internal nodes only (if nodeType == 'internal')
+   *  - terminal nodes only (if nodeType == 'terminal')
+   *  - both internal and terminal nodes (if nodeType == 'both')
+   *
+   * See `getTaxonomicUnitsForNodeLabel` to see how node labels are converted
+   * into taxonomic units, but in brief:
+   *  1. We look for taxonomic units in the additionalNodeProperties.
+   *  2. If none are found, we attempt to parse the node label as a scientific name.
+   *
+   * @param {string} [nodeType='both'] - 'internal', 'terminal' or 'both'.
+   * @return {Set<Object>} The taxonomic units found.
+   */
   getTaxonomicUnits(nodeType = 'both') {
-    // Return a list of all taxonomic units in this phylogeny.
-    // Node labels will be extracted from:
-    //  - internal nodes only (if nodeType == 'internal')
-    //  - terminal nodes only (if nodeType == 'terminal')
-    //  - both internal and terminal nodes (if nodeType == 'both')
-    //
-    // See `getTaxonomicUnitsForNodeLabel` to see how node labels are converted
-    // into node labels, but in brief:
-    //  1. We look for taxonomic units in the additionalNodeProperties.
-    //  2. If none are found, we attempt to parse the node label as a scientific name.
-    //
     const nodeLabels = this.getNodeLabels(nodeType);
     const tunits = new Set();
 
@@ -161,14 +182,16 @@ class PhylogenyWrapper {
     return tunits;
   }
 
+  /**
+   * Return a list of all the node labels in this phylogeny.
+   *
+   * @param {string} [nodeType='both'] - One of:
+   *  - 'internal': Return node labels on internal nodes.
+   *  - 'terminal': Return node labels on terminal nodes.
+   *  - 'both': Return node labels on both internal and terminal nodes.
+   * @return {string[]} The distinct node labels, in no particular order.
+   */
   getNodeLabels(nodeType = 'both') {
-    // Return a list of all the node labels in this phylogeny.
-    //
-    // nodeType can be one of:
-    // - 'internal': Return node labels on internal nodes.
-    // - 'terminal': Return node labels on terminal nodes.
-    // - 'both': Return node labels on both internal and terminal nodes.
-
     // Parse the phylogeny (will throw an exception if parsing failed).
     const { graph } = newickJs.parse(this.phylogeny.newick || '()');
     const [vertices, arcs] = graph;
@@ -253,10 +276,15 @@ class PhylogenyWrapper {
     return []; // No TUnit? Return the empty list.
   }
 
+  /**
+   * Return a list of node labels matched by a given specifier on this phylogeny.
+   * A node matches if any of its taxonomic units (see `getTaxonomicUnitsForNodeLabel`)
+   * matches the specifier under {@link TaxonomicUnitMatcher}.
+   *
+   * @param {Object} specifier - The specifier (a taxonomic unit) to match.
+   * @return {string[]} The matching node labels.
+   */
   getNodeLabelsMatchedBySpecifier(specifier) {
-    // Return a list of node labels matched by a given specifier on
-    // a given phylogeny.
-
     return this.getNodeLabels().filter(nodeLabel => {
       // Find all the taxonomic units associated with the specifier and
       // with the node.
@@ -270,12 +298,21 @@ class PhylogenyWrapper {
     });
   }
 
+  /**
+   * Parse a Newick string into a tree-like structure.
+   *
+   * We previously used phylotree.js's Newick parser to parse Newick into a
+   * tree-like structure. However, this is difficult to integrate using NPM.
+   * This method provides a similar facility using the newick-js library: each
+   * node has a `children` list, a `name` carrying its label, and an `attribute`
+   * carrying its branch length, as phylotree.js's parser produces.
+   *
+   * Throws an exception if the Newick could not be parsed.
+   *
+   * @param {string} newick - The Newick string to parse.
+   * @return {{json: Object}} An object whose `json` property is the root node.
+   */
   static getParsedNewick(newick) {
-    // We previously used phylotree.js's Newick parser to parse Newick into a
-    // tree-like structure. However, this is difficult to integrate using NPM.
-    // This method provides a similar facility using the newick-js library.
-    //
-    // Throws an exception if the Newick could not be parsed.
     const { graph, root, rootWeight } = newickJs.parse(newick);
     const [, arcs] = graph;
 
@@ -307,18 +344,20 @@ class PhylogenyWrapper {
     return { json: root };
   }
 
+  /**
+   * Return the parsed Newick string, but with EVERY node given an IRI in its `@id`.
+   *
+   * @param {string} baseIRI - The base IRI to use for node elements (e.g. ':phylogeny1').
+   *    Node IDs are generated by concatenating `_node${number}` to the end of the baseIRI.
+   * @param {function(string): Object} [newickParser=PhylogenyWrapper.getParsedNewick] - A
+   *    method for converting a Newick string to a object-based representation. The static
+   *    method PhylogenyWrapper.getParsedNewick() is used if none is provided.
+   * @return {Object} The parsed phylogeny, as returned by `newickParser`.
+   */
   getParsedNewickWithIRIs(
     baseIRI,
     newickParser = PhylogenyWrapper.getParsedNewick,
   ) {
-    // Return the parsed Newick string, but with EVERY node given an IRI.
-    // - baseIRI: The base IRI to use for node elements (e.g. ':phylogeny1').
-    //   Node IDs are generated by concatenating `_node${number}` to the end of
-    //   the baseIRI.
-    // - newickParser: A method for converting a Newick string to a object-based
-    //   representation. The static method PhylogenyWrapper.getParsedNewick() is
-    //   used if none is provided.
-
     const parsed = newickParser(this.phylogeny.newick || '()');
     if (has(parsed, 'json')) {
       PhylogenyWrapper.recurseNodes(parsed.json, (node, nodeCount) => {
@@ -334,15 +373,19 @@ class PhylogenyWrapper {
     return parsed;
   }
 
+  /**
+   * Returns a list of all nodes in this phylogeny as JSON-LD objects. Each node carries its
+   * `@id`, its rdf:type, its labels and taxonomic units, and references to its parent,
+   * children and siblings.
+   *
+   * @param {string} baseIRI - The base IRI to use for node elements (e.g. ':phylogeny1').
+   *    Node IDs are generated by concatenating `_node${number}` to the end of the baseIRI.
+   * @param {function(string): Object} [newickParser] - A method for converting a Newick
+   *    string to a object-based representation. See PhylogenyWrapper.getParsedNewick() for
+   *    an example implementation.
+   * @return {Object[]} The nodes as JSON-LD objects.
+   */
   getNodesAsJSONLD(baseIRI, newickParser) {
-    // Returns a list of all nodes in this phylogeny as a series of nodes.
-    // - baseIRI: The base IRI to use for node elements (e.g. ':phylogeny1').
-    //   Node IDs are generated by concatenating `_node${number}` to the end of
-    //   the baseIRI.
-    // - newickParser: A method for converting a Newick string to a object-based
-    //   representation. See PhylogenyWrapper.getParsedNewick() for an example
-    //   implementation.
-
     // List of nodes we have identified.
     const nodes = [];
 
@@ -459,14 +502,17 @@ class PhylogenyWrapper {
     return nodes;
   }
 
+  /**
+   * Export this phylogeny as JSON-LD.
+   *
+   * @param {string} fallbackIRI - The fallback IRI to use for this phylogeny if it does not
+   *    already have an '@id' set.
+   * @param {function(string): Object} [newickParser] - A function that parses a Newick
+   *    string and returns an object based representation of this phylogeny. If not set, the
+   *    static method PhylogenyWrapper.getParsedNewick will be used instead.
+   * @return {Object} This phylogeny as a JSON-LD object.
+   */
   asJSONLD(fallbackIRI, newickParser) {
-    // Export this phylogeny as JSON-LD.
-    // - fallbackIRI: The fallback IRI to use for this phylogeny if it does not
-    //   already have an '@id' set.
-    // - newickParser: A function that parses a Newick string and returns a
-    //   an object based representation of this phylogeny. If not set, the
-    //   static method PhylogenyWrapper.getParsedNewick will be used instead.
-
     // Create a copy to export.
     const phylogenyAsJSONLD = JSON.parse(JSON.stringify(this.phylogeny));
 
