@@ -437,6 +437,27 @@ describe('PhylogenyWrapper', function () {
       expect(nodes[0].labels).to.deep.equal(['A']);
     });
 
+    it('should apply the default nomenclatural code to taxonomic units from additional node properties', function () {
+      const wrapper = new phyx.PhylogenyWrapper({
+        newick: '(A, B)C',
+        additionalNodeProperties: {
+          A: {
+            representsTaxonomicUnits: [{
+              '@type': phyx.TaxonomicUnitWrapper.TYPE_TAXON_CONCEPT,
+              hasName: {
+                '@type': phyx.TaxonNameWrapper.TYPE_TAXON_NAME,
+                nameComplete: 'Rana boylii',
+              },
+            }],
+          },
+        },
+      }, owlterms.ICZN_CODE);
+
+      const nodeA = wrapper.getNodesAsJSONLD(':phylogeny1').find(node => (node.labels || []).includes('A'));
+      const restrictions = nodeA[owlterms.RDF_TYPE].filter(type => type['@type'] === 'owl:Restriction');
+      expect(restrictions).to.have.lengthOf(1);
+      expect(JSON.stringify(restrictions[0])).to.include(owlterms.ICZN_CODE);
+    });
   });
 
   describe('#getParsedNewickWithIRIs', function () {

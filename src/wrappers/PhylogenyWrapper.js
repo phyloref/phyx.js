@@ -464,17 +464,16 @@ class PhylogenyWrapper {
 
             // Add it into the @type so we can reason over it.
             nodeAsJSONLD.representsTaxonomicUnits.forEach(tu => {
-              const wrappedTUnit = new TaxonomicUnitWrapper(tu);
-
-              if (wrappedTUnit) {
-                const equivClass = wrappedTUnit.asOWLEquivClass;
-                if (equivClass) {
-                  nodeAsJSONLD[owlterms.RDF_TYPE].push({
-                    '@type': 'owl:Restriction',
-                    onProperty: owlterms.CDAO_REPRESENTS_TU,
-                    someValuesFrom: equivClass,
-                  });
-                }
+              const equivClass = new TaxonomicUnitWrapper(
+                tu,
+                this.defaultNomenCode,
+              ).asOWLEquivClass;
+              if (equivClass) {
+                nodeAsJSONLD[owlterms.RDF_TYPE].push({
+                  '@type': 'owl:Restriction',
+                  onProperty: owlterms.CDAO_REPRESENTS_TU,
+                  someValuesFrom: equivClass,
+                });
               }
             });
           }
