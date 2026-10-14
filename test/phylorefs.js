@@ -273,9 +273,33 @@ describe('PhylorefWrapper', function () {
         expect(wrapper.getCurrentStatus().statusCURIE).to.equal('pso:draft');
       });
 
-      it('should fall back to "pso:draft" if the last status entry records no status', function () {
+      it('should skip a last status entry that records no status', function () {
         const noStatus = new phyx.PhylorefWrapper({
-          'pso:holdsStatusInTime': [{ 'pso:withStatus': { '@id': 'pso:published' } }, {}],
+          'pso:holdsStatusInTime': [
+            { 'pso:withStatus': { '@id': 'pso:published' } },
+            {},
+            { 'tvc:atTime': { 'timeinterval:hasIntervalStartDate': '2026-10-14T00:00:00Z' } },
+          ],
+        });
+        expect(noStatus.getCurrentStatus().statusCURIE).to.equal('pso:published');
+      });
+
+      it('should skip status entries whose pso:withStatus is null or has no @id', function () {
+        const wrapper = new phyx.PhylorefWrapper({
+          'pso:holdsStatusInTime': [
+            { 'pso:withStatus': { '@id': 'pso:under-review' } },
+            { 'pso:withStatus': null },
+            { 'pso:withStatus': {} },
+          ],
+        });
+        expect(wrapper.getCurrentStatus().statusCURIE).to.equal('pso:under-review');
+        expect(wrapper.getStatusChanges().map(change => change.statusCURIE))
+          .to.deep.equal(['pso:under-review', undefined, undefined]);
+      });
+
+      it('should fall back to "pso:draft" if no status entry records a status', function () {
+        const noStatus = new phyx.PhylorefWrapper({
+          'pso:holdsStatusInTime': [{}, { 'pso:withStatus': null }],
         });
         expect(noStatus.getCurrentStatus().statusCURIE).to.equal('pso:draft');
       });

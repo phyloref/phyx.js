@@ -8,6 +8,14 @@ const { TaxonConceptWrapper } = require('./TaxonConceptWrapper');
 const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 const { CitationWrapper } = require('./CitationWrapper');
 
+// The status CURIE a pso:holdsStatusInTime entry records, or undefined if it
+// records none (no pso:withStatus, or one that is null or has no @id).
+function getStatusCURIE(statusInTime) {
+  if (!has(statusInTime, 'pso:withStatus')) return undefined;
+  const status = statusInTime['pso:withStatus'];
+  return has(status, '@id') ? status['@id'] : undefined;
+}
+
 /**
  * Wraps a phyloreference in a Phyx model, with multiple specifiers and statuses. Includes code for generating the
  * components of a phyloreference expression in OWL.
@@ -262,7 +270,9 @@ class PhylorefWrapper {
 
   /**
    * Return the current status of this phyloreference, i.e. the last of its
-   * `pso:holdsStatusInTime` entries. A phyloreference without any is a draft.
+   * `pso:holdsStatusInTime` entries that records a status. Entries that record
+   * none (such as one with only a time interval) are skipped, and a
+   * phyloreference without any status is a draft.
    *
    * The result object contains:
    *  - statusCURIE: phyloreference status as a short URI (CURIE)
@@ -274,16 +284,17 @@ class PhylorefWrapper {
    */
   getCurrentStatus() {
     const statusesInTime = this.phyloref['pso:holdsStatusInTime'];
-    const lastStatusInTime =
-      Array.isArray(statusesInTime) && statusesInTime.length > 0
-        ? statusesInTime[statusesInTime.length - 1]
-        : undefined;
 
-    // If the last pso:holdsStatusInTime entry records a status, extract the
-    // CURIE and time interval information from it. One that doesn't (which
-    // getStatusChanges() also allows for) falls through to the default below.
-    if (has(lastStatusInTime, 'pso:withStatus')) {
-      const statusCURIE = lastStatusInTime['pso:withStatus']['@id'];
+    // Find the last pso:holdsStatusInTime entry that records a status, and
+    // extract the CURIE and time interval information from it. Skipping entries
+    // without one (which getStatusChanges() also allows for) keeps a later
+    // interval-only entry from hiding an earlier status.
+    const lastStatusInTime = Array.isArray(statusesInTime)
+      ? statusesInTime.findLast(entry => getStatusCURIE(entry) !== undefined)
+      : undefined;
+
+    if (lastStatusInTime !== undefined) {
+      const statusCURIE = getStatusCURIE(lastStatusInTime);
 
       // Look for time interval information
       let intervalStart;
@@ -328,8 +339,8 @@ class PhylorefWrapper {
         const result = {};
 
         // Create a statusCURIE convenience field.
-        if (has(entry, 'pso:withStatus')) {
-          result.statusCURIE = entry['pso:withStatus']['@id'];
+        if (getStatusCURIE(entry) !== undefined) {
+          result.statusCURIE = getStatusCURIE(entry);
           result.statusInEnglish =
             PhylorefWrapper.getStatusCURIEsInEnglish()[result.statusCURIE];
         }
