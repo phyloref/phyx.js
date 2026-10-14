@@ -62,23 +62,27 @@ class TaxonNameWrapper {
     return owlterms.UNKNOWN_CODE;
   }
 
-  /* Directly access IRIs for nomenclatural codes. */
+  /** The IRI for the International Code of Zoological Nomenclature (animals). */
   static get ICZN_CODE() {
     return owlterms.ICZN_CODE;
   }
 
+  /** The IRI for the International Code of Nomenclature for algae, fungi, and plants. */
   static get ICN_CODE() {
     return owlterms.ICN_CODE;
   }
 
+  /** The IRI for the International Code of Nomenclature of Prokaryotes. */
   static get ICNP_CODE() {
     return owlterms.ICNP_CODE;
   }
 
+  /** The IRI for the International Committee on Taxonomy of Viruses' code. */
   static get ICTV_CODE() {
     return owlterms.ICTV_CODE;
   }
 
+  /** The IRI for the International Code of Nomenclature for Cultivated Plants. */
   static get ICNCP_CODE() {
     return owlterms.ICNCP_CODE;
   }
