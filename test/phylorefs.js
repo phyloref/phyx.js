@@ -199,14 +199,24 @@ describe('PhylorefWrapper', function () {
           .to.deep.equal(['Test']);
       });
 
-      it('should not match a phyloreference whose name is only part of the expected name', function () {
-        const phyloref10 = new phyx.PhylorefWrapper({ label: 'phyloref10' });
-        const phyloref = new phyx.PhylorefWrapper({ label: 'phyloref' });
+      it('should not match a phyloreference whose name is only part of a single expected name', function () {
+        // expectedPhyloreferenceNamed is a single string here, not a list: that
+        // is the form in which includes() would test for a substring.
+        const phylogeny = {
+          newick: '((A, B)C, D)E',
+          additionalNodeProperties: {
+            C: { expectedPhyloreferenceNamed: 'phyloref10' },
+          },
+        };
 
-        expect(phyloref10.getExpectedNodeLabels(phylogeny1)).to.be.empty;
-        expect(phyloref.getExpectedNodeLabels(phylogeny1)).to.be.empty;
+        expect(new phyx.PhylorefWrapper({ label: 'phyloref1' }).getExpectedNodeLabels(phylogeny))
+          .to.be.empty;
+        expect(new phyx.PhylorefWrapper({ label: 'phyloref10' }).getExpectedNodeLabels(phylogeny))
+          .to.deep.equal(['C']);
       });
 
+      // Unlike the test above, this one doesn't guard against substring
+      // matches: includes() on a list already compares whole names.
       it('should accept a list of expected phyloreference names', function () {
         const phylogeny = {
           newick: '((A, B)C, D)E',
