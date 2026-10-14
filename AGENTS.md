@@ -98,7 +98,7 @@ PHYX JSON file
 ### Tooling
 
 - **Linter/formatter**: [Biomejs](https://biomejs.dev/) (`biome.json`) — enforces single quotes and other style rules, with overrides that disable formatting/linting for test files. `includes` also lists `**/*.md`, but Biome doesn't process Markdown yet and reports it as ignored, so prose is unchecked.
-- **CI**: GitHub Actions, Node 22/24/25, runs `npm test` (includes lint)
+- **CI**: GitHub Actions, Node 22/24/25/26, runs `npm test` (includes lint)
 
 ## Docs
 
