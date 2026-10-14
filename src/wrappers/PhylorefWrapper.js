@@ -270,8 +270,9 @@ class PhylorefWrapper {
       Array.isArray(this.phyloref['pso:holdsStatusInTime']) &&
       this.phyloref['pso:holdsStatusInTime'].length > 0
     ) {
-      // If we have any pso:holdsStatusInTime entries, pick the first one and
-      // extract the CURIE and time interval information from it.
+      // If we have any pso:holdsStatusInTime entries, pick the last one, which
+      // is the current status, and extract the CURIE and time interval
+      // information from it.
       const lastStatusInTime =
         this.phyloref['pso:holdsStatusInTime'][
           this.phyloref['pso:holdsStatusInTime'].length - 1
