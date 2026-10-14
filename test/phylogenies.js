@@ -430,6 +430,15 @@ describe('PhylogenyWrapper', function () {
     });
   });
 
+  describe('#getNodesAsJSONLD', function () {
+    it('should label the node of a phylogeny with a single node', function () {
+      const nodes = new phyx.PhylogenyWrapper({ newick: 'A;' }).getNodesAsJSONLD(':phylogeny1');
+      expect(nodes).to.have.lengthOf(1);
+      expect(nodes[0].labels).to.deep.equal(['A']);
+    });
+
+  });
+
   describe('#getParsedNewickWithIRIs', function () {
     const tests = [
       {
@@ -463,6 +472,12 @@ describe('PhylogenyWrapper', function () {
         },
       },
     ];
+
+    // A single node has no arcs, which is how getParsedNewick() names every other node.
+    tests.push({
+      newick: 'A;',
+      result: { json: { '@id': '_node0', name: 'A', label: 'A' } },
+    });
 
     tests.forEach((test) => {
       it('should be able to parse a provided Newick string as expected', function () {

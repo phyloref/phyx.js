@@ -358,6 +358,10 @@ class PhylogenyWrapper {
     if (!has(root, 'attribute') && !Number.isNaN(rootWeight))
       root.attribute = rootWeight;
 
+    // The loop above names the root as a parent, but a tree with a single node
+    // has no arcs, so its root would otherwise never get a 'name'.
+    if (has(root, 'label')) root.name = root.label;
+
     return { json: root };
   }
 
