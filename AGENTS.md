@@ -71,18 +71,23 @@ PHYX JSON file
 
 - Test files in `test/` mirror source modules (`phylorefs.js`, `phylogenies.js`, etc.)
 - `test/examples/correct/` contains fixture PHYX files with expected outputs used by `test/examples.js`
-- `test/jphyloref.js` requires the JPhyloRef JAR; may be skipped if Java is unavailable
+- `test/jphyloref.js` requires the JPhyloRef JAR; may be skipped if Java is unavailable. Under
+  jenv, `.java-version` asks for Java 17 and every JPhyloRef test fails if it isn't installed;
+  `JENV_VERSION=21 npm test` works.
 - Some tests need network access. `test/examples/incorrect/otl-resolution-errors.json` and
   `test/examples/correct/normalization/brochu_2003_normalization.json` use a remote `@context`
   URL rather than a relative path, so anything converting them fetches it.
-- **One `bin/phyx2owl.mjs` test fails on Node 26**, from a bundled-undici conflict in `jsonld`. CI
-  runs Node 22, 24 and 25 and is green. Don't chase it or count it as a regression — see
+- **If the `bin/phyx2owl.mjs` test fails with `jsonld.InvalidUrl`**, `curl` the URL in the error.
+  A 404 means the docs site isn't serving the contexts, which breaks it everywhere. A 200 on
+  Node 26 means `jsonld`'s undici has fallen behind Node's bundled one again:
+  `@digitalbazaar/http-client` 4.4.0 (undici ^6.28) fixed that, and older versions fail — see
   [issue #180](https://github.com/phyloref/phyx.js/issues/180).
 
 ### Working in this repository
 
 - **Check a failing test against an unmodified checkout before assuming you caused it.**
-  `git stash -u`, re-run, `git stash pop`. See the known failure above.
+  `git stash -u`, re-run, `git stash pop`. If the dependency sets differ, `npm ci` on each side
+  too, or both runs use the same `node_modules`.
 - **Don't `git add -A`.** A generated directory ignored on one branch may not be ignored on
   another — `tutorials/build/`, `site/` and the editor files now in `.gitignore` have all been
   swept into a commit this way. Stage explicit paths.
