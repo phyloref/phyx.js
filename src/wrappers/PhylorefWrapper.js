@@ -8,6 +8,21 @@ const { TaxonConceptWrapper } = require('./TaxonConceptWrapper');
 const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 const { CitationWrapper } = require('./CitationWrapper');
 
+// A phyloreference's pso:holdsStatusInTime entries as a list. JSON-LD lets a
+// single entry be written without a list around it, so wrap one.
+function getStatusesInTime(phyloref) {
+  if (!has(phyloref, 'pso:holdsStatusInTime')) return [];
+  return [].concat(phyloref['pso:holdsStatusInTime']);
+}
+
+// The status CURIE a pso:holdsStatusInTime entry records, or undefined if it
+// records none (no pso:withStatus, or one that is null or has no @id).
+function getStatusCURIE(statusInTime) {
+  if (!has(statusInTime, 'pso:withStatus')) return undefined;
+  const status = statusInTime['pso:withStatus'];
+  return has(status, '@id') ? status['@id'] : undefined;
+}
+
 /**
  * Wraps a phyloreference in a Phyx model, with multiple specifiers and statuses. Includes code for generating the
  * components of a phyloreference expression in OWL.
@@ -135,26 +150,33 @@ class PhylorefWrapper {
    * @param {string} specifierType - 'Internal' or 'External'; anything else is ignored.
    */
   setSpecifierType(specifier, specifierType) {
+    // We read the list we might remove the specifier from directly, rather than
+    // through its getter, so that we don't add an empty list to the phyloref
+    // that it didn't have. Only the list we add the specifier to is created.
     let index;
     if (specifierType === 'Internal') {
       // To set a specifier to 'Internal', we might need to delete it from the
       // list of external specifiers first.
-      index = this.externalSpecifiers.indexOf(specifier);
-      if (index !== -1) this.externalSpecifiers.splice(index, 1);
+      if (has(this.phyloref, 'externalSpecifiers')) {
+        index = this.phyloref.externalSpecifiers.indexOf(specifier);
+        if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
+      }
 
       // Don't add it to the list of internal specifiers if it's already there.
       if (!this.internalSpecifiers.includes(specifier)) {
-        this.phyloref.internalSpecifiers.unshift(specifier);
+        this.internalSpecifiers.unshift(specifier);
       }
     } else if (specifierType === 'External') {
       // To set a specifier to 'External', we might need to delete it from the
       // list of internal specifiers first.
-      index = this.phyloref.internalSpecifiers.indexOf(specifier);
-      if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+      if (has(this.phyloref, 'internalSpecifiers')) {
+        index = this.phyloref.internalSpecifiers.indexOf(specifier);
+        if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+      }
 
-      // Don't add it to the list of internal specifiers if it's already there.
-      if (!this.phyloref.externalSpecifiers.includes(specifier)) {
-        this.phyloref.externalSpecifiers.unshift(specifier);
+      // Don't add it to the list of external specifiers if it's already there.
+      if (!this.externalSpecifiers.includes(specifier)) {
+        this.externalSpecifiers.unshift(specifier);
       }
     } else {
       // Neither internal nor external? Ignore.
@@ -204,6 +226,10 @@ class PhylorefWrapper {
     const phylorefLabel = this.label;
     const nodeLabels = new Set();
 
+    // A phyloreference without a label can't be named by a node, and must not
+    // match one whose expectedPhyloreferenceNamed is also missing.
+    if (phylorefLabel === undefined || phylorefLabel === null) return [];
+
     new PhylogenyWrapper(phylogeny, this.defaultNomenCode)
       .getNodeLabels()
       .forEach(nodeLabel => {
@@ -221,9 +247,13 @@ class PhylorefWrapper {
           // Does this node label have an expectedPhyloreferenceNamed that
           // includes this phyloreference name?
 
-          const expectedPhylorefs =
+          // It may be a single name or a list of names. Calling includes() on
+          // a single name would test for a substring, so 'phyloref1' would
+          // match a node expecting 'phyloref10'.
+          const expectedPhylorefs = [].concat(
             phylogeny.additionalNodeProperties[nodeLabel]
-              .expectedPhyloreferenceNamed;
+              .expectedPhyloreferenceNamed,
+          );
 
           if (expectedPhylorefs.includes(phylorefLabel)) {
             nodeLabels.add(nodeLabel);
@@ -254,7 +284,9 @@ class PhylorefWrapper {
 
   /**
    * Return the current status of this phyloreference, i.e. the last of its
-   * `pso:holdsStatusInTime` entries. A phyloreference without any is a draft.
+   * `pso:holdsStatusInTime` entries that records a status. Entries that record
+   * none (such as one with only a time interval) are skipped, and a
+   * phyloreference without any status is a draft.
    *
    * The result object contains:
    *  - statusCURIE: phyloreference status as a short URI (CURIE)
@@ -265,19 +297,16 @@ class PhylorefWrapper {
    * @return {Object} The result object described above.
    */
   getCurrentStatus() {
-    if (
-      has(this.phyloref, 'pso:holdsStatusInTime') &&
-      Array.isArray(this.phyloref['pso:holdsStatusInTime']) &&
-      this.phyloref['pso:holdsStatusInTime'].length > 0
-    ) {
-      // If we have any pso:holdsStatusInTime entries, pick the last one, which
-      // is the current status, and extract the CURIE and time interval
-      // information from it.
-      const lastStatusInTime =
-        this.phyloref['pso:holdsStatusInTime'][
-          this.phyloref['pso:holdsStatusInTime'].length - 1
-        ];
-      const statusCURIE = lastStatusInTime['pso:withStatus']['@id'];
+    // Find the last pso:holdsStatusInTime entry that records a status, and
+    // extract the CURIE and time interval information from it. Skipping entries
+    // without one (which getStatusChanges() also allows for) keeps a later
+    // interval-only entry from hiding an earlier status.
+    const lastStatusInTime = getStatusesInTime(this.phyloref).findLast(
+      entry => getStatusCURIE(entry) !== undefined,
+    );
+
+    if (lastStatusInTime !== undefined) {
+      const statusCURIE = getStatusCURIE(lastStatusInTime);
 
       // Look for time interval information
       let intervalStart;
@@ -318,12 +347,12 @@ class PhylorefWrapper {
    */
   getStatusChanges() {
     if (has(this.phyloref, 'pso:holdsStatusInTime')) {
-      return this.phyloref['pso:holdsStatusInTime'].map(entry => {
+      return getStatusesInTime(this.phyloref).map(entry => {
         const result = {};
 
         // Create a statusCURIE convenience field.
-        if (has(entry, 'pso:withStatus')) {
-          result.statusCURIE = entry['pso:withStatus']['@id'];
+        if (getStatusCURIE(entry) !== undefined) {
+          result.statusCURIE = getStatusCURIE(entry);
           result.statusInEnglish =
             PhylorefWrapper.getStatusCURIEsInEnglish()[result.statusCURIE];
         }
@@ -374,12 +403,20 @@ class PhylorefWrapper {
     // See if we can end the previous interval.
     const currentTime = new Date(Date.now()).toISOString();
 
-    if (!has(this.phyloref, 'pso:holdsStatusInTime')) {
+    // Create the list of entries if there isn't one, or wrap a single entry in
+    // one, so that we can append to it.
+    if (!Array.isArray(this.phyloref['pso:holdsStatusInTime'])) {
       // Vue.set(this.phyloref, 'pso:holdsStatusInTime', []);
-      this.phyloref['pso:holdsStatusInTime'] = [];
+      this.phyloref['pso:holdsStatusInTime'] = getStatusesInTime(this.phyloref);
     }
 
     // Check to see if there's a previous time interval we should end.
+    //
+    // This ends the last entry, whether or not it records a status, while
+    // getCurrentStatus() skips entries that don't. setStatus() never writes
+    // such an entry, and status tracking isn't used by any current tool, so we
+    // left this alone; if it comes back, end the last entry that records a
+    // status instead, so that it matches getCurrentStatus().
     if (
       Array.isArray(this.phyloref['pso:holdsStatusInTime']) &&
       this.phyloref['pso:holdsStatusInTime'].length > 0
