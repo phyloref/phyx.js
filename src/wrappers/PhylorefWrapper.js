@@ -150,12 +150,17 @@ class PhylorefWrapper {
    * @param {string} specifierType - 'Internal' or 'External'; anything else is ignored.
    */
   setSpecifierType(specifier, specifierType) {
+    // We read the list we might remove the specifier from directly, rather than
+    // through its getter, so that we don't add an empty list to the phyloref
+    // that it didn't have. Only the list we add the specifier to is created.
     let index;
     if (specifierType === 'Internal') {
       // To set a specifier to 'Internal', we might need to delete it from the
       // list of external specifiers first.
-      index = this.externalSpecifiers.indexOf(specifier);
-      if (index !== -1) this.externalSpecifiers.splice(index, 1);
+      if (has(this.phyloref, 'externalSpecifiers')) {
+        index = this.phyloref.externalSpecifiers.indexOf(specifier);
+        if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
+      }
 
       // Don't add it to the list of internal specifiers if it's already there.
       if (!this.internalSpecifiers.includes(specifier)) {
@@ -164,8 +169,10 @@ class PhylorefWrapper {
     } else if (specifierType === 'External') {
       // To set a specifier to 'External', we might need to delete it from the
       // list of internal specifiers first.
-      index = this.internalSpecifiers.indexOf(specifier);
-      if (index !== -1) this.internalSpecifiers.splice(index, 1);
+      if (has(this.phyloref, 'internalSpecifiers')) {
+        index = this.phyloref.internalSpecifiers.indexOf(specifier);
+        if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+      }
 
       // Don't add it to the list of external specifiers if it's already there.
       if (!this.externalSpecifiers.includes(specifier)) {

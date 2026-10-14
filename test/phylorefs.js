@@ -248,18 +248,18 @@ describe('PhylorefWrapper', function () {
 
   describe('given a phyloreference with no specifier lists', function () {
     describe('#setSpecifierType', function () {
+      // Check the phyloref object itself rather than the wrapper's getters,
+      // which would create the missing list we're checking for.
       it('should be able to make a specifier external', function () {
-        const wrapper = new phyx.PhylorefWrapper({});
-        wrapper.setSpecifierType(specifier1, 'External');
-        expect(wrapper.externalSpecifiers).to.deep.equal([specifier1]);
-        expect(wrapper.internalSpecifiers).to.be.empty;
+        const phyloref = {};
+        new phyx.PhylorefWrapper(phyloref).setSpecifierType(specifier1, 'External');
+        expect(phyloref).to.deep.equal({ externalSpecifiers: [specifier1] });
       });
 
       it('should be able to make a specifier internal', function () {
-        const wrapper = new phyx.PhylorefWrapper({});
-        wrapper.setSpecifierType(specifier1, 'Internal');
-        expect(wrapper.internalSpecifiers).to.deep.equal([specifier1]);
-        expect(wrapper.externalSpecifiers).to.be.empty;
+        const phyloref = {};
+        new phyx.PhylorefWrapper(phyloref).setSpecifierType(specifier1, 'Internal');
+        expect(phyloref).to.deep.equal({ internalSpecifiers: [specifier1] });
       });
     });
   });
