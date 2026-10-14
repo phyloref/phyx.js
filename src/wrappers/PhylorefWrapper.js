@@ -144,17 +144,17 @@ class PhylorefWrapper {
 
       // Don't add it to the list of internal specifiers if it's already there.
       if (!this.internalSpecifiers.includes(specifier)) {
-        this.phyloref.internalSpecifiers.unshift(specifier);
+        this.internalSpecifiers.unshift(specifier);
       }
     } else if (specifierType === 'External') {
       // To set a specifier to 'External', we might need to delete it from the
       // list of internal specifiers first.
-      index = this.phyloref.internalSpecifiers.indexOf(specifier);
-      if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+      index = this.internalSpecifiers.indexOf(specifier);
+      if (index !== -1) this.internalSpecifiers.splice(index, 1);
 
-      // Don't add it to the list of internal specifiers if it's already there.
-      if (!this.phyloref.externalSpecifiers.includes(specifier)) {
-        this.phyloref.externalSpecifiers.unshift(specifier);
+      // Don't add it to the list of external specifiers if it's already there.
+      if (!this.externalSpecifiers.includes(specifier)) {
+        this.externalSpecifiers.unshift(specifier);
       }
     } else {
       // Neither internal nor external? Ignore.

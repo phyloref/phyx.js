@@ -201,6 +201,24 @@ describe('PhylorefWrapper', function () {
     });
   });
 
+  describe('given a phyloreference with no specifier lists', function () {
+    describe('#setSpecifierType', function () {
+      it('should be able to make a specifier external', function () {
+        const wrapper = new phyx.PhylorefWrapper({});
+        wrapper.setSpecifierType(specifier1, 'External');
+        expect(wrapper.externalSpecifiers).to.deep.equal([specifier1]);
+        expect(wrapper.internalSpecifiers).to.be.empty;
+      });
+
+      it('should be able to make a specifier internal', function () {
+        const wrapper = new phyx.PhylorefWrapper({});
+        wrapper.setSpecifierType(specifier1, 'Internal');
+        expect(wrapper.internalSpecifiers).to.deep.equal([specifier1]);
+        expect(wrapper.externalSpecifiers).to.be.empty;
+      });
+    });
+  });
+
   describe('given an empty phyloreference', function () {
     const wrapper = new phyx.PhylorefWrapper({});
 
