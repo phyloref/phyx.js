@@ -8,6 +8,13 @@ const { TaxonConceptWrapper } = require('./TaxonConceptWrapper');
 const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 const { CitationWrapper } = require('./CitationWrapper');
 
+// A phyloreference's pso:holdsStatusInTime entries as a list. JSON-LD lets a
+// single entry be written without a list around it, so wrap one.
+function getStatusesInTime(phyloref) {
+  if (!has(phyloref, 'pso:holdsStatusInTime')) return [];
+  return [].concat(phyloref['pso:holdsStatusInTime']);
+}
+
 // The status CURIE a pso:holdsStatusInTime entry records, or undefined if it
 // records none (no pso:withStatus, or one that is null or has no @id).
 function getStatusCURIE(statusInTime) {
@@ -283,15 +290,13 @@ class PhylorefWrapper {
    * @return {Object} The result object described above.
    */
   getCurrentStatus() {
-    const statusesInTime = this.phyloref['pso:holdsStatusInTime'];
-
     // Find the last pso:holdsStatusInTime entry that records a status, and
     // extract the CURIE and time interval information from it. Skipping entries
     // without one (which getStatusChanges() also allows for) keeps a later
     // interval-only entry from hiding an earlier status.
-    const lastStatusInTime = Array.isArray(statusesInTime)
-      ? statusesInTime.findLast(entry => getStatusCURIE(entry) !== undefined)
-      : undefined;
+    const lastStatusInTime = getStatusesInTime(this.phyloref).findLast(
+      entry => getStatusCURIE(entry) !== undefined,
+    );
 
     if (lastStatusInTime !== undefined) {
       const statusCURIE = getStatusCURIE(lastStatusInTime);
@@ -335,7 +340,7 @@ class PhylorefWrapper {
    */
   getStatusChanges() {
     if (has(this.phyloref, 'pso:holdsStatusInTime')) {
-      return this.phyloref['pso:holdsStatusInTime'].map(entry => {
+      return getStatusesInTime(this.phyloref).map(entry => {
         const result = {};
 
         // Create a statusCURIE convenience field.
@@ -391,9 +396,11 @@ class PhylorefWrapper {
     // See if we can end the previous interval.
     const currentTime = new Date(Date.now()).toISOString();
 
-    if (!has(this.phyloref, 'pso:holdsStatusInTime')) {
+    // Create the list of entries if there isn't one, or wrap a single entry in
+    // one, so that we can append to it.
+    if (!Array.isArray(this.phyloref['pso:holdsStatusInTime'])) {
       // Vue.set(this.phyloref, 'pso:holdsStatusInTime', []);
-      this.phyloref['pso:holdsStatusInTime'] = [];
+      this.phyloref['pso:holdsStatusInTime'] = getStatusesInTime(this.phyloref);
     }
 
     // Check to see if there's a previous time interval we should end.

@@ -297,6 +297,22 @@ describe('PhylorefWrapper', function () {
           .to.deep.equal(['pso:under-review', undefined, undefined]);
       });
 
+      it('should read a single status entry that is not in a list', function () {
+        const phyloref = {
+          'pso:holdsStatusInTime': { 'pso:withStatus': { '@id': 'pso:published' } },
+        };
+        const wrapper = new phyx.PhylorefWrapper(phyloref);
+        expect(wrapper.getCurrentStatus().statusCURIE).to.equal('pso:published');
+        expect(wrapper.getStatusChanges().map(change => change.statusCURIE))
+          .to.deep.equal(['pso:published']);
+
+        // setStatus() should keep that entry, and append to it.
+        wrapper.setStatus('pso:retracted-from-publication');
+        expect(phyloref['pso:holdsStatusInTime']).to.have.lengthOf(2);
+        expect(wrapper.getStatusChanges().map(change => change.statusCURIE))
+          .to.deep.equal(['pso:published', 'pso:retracted-from-publication']);
+      });
+
       it('should fall back to "pso:draft" if no status entry records a status', function () {
         const noStatus = new phyx.PhylorefWrapper({
           'pso:holdsStatusInTime': [{}, { 'pso:withStatus': null }],
