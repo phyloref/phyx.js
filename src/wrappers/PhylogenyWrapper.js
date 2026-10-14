@@ -331,7 +331,14 @@ class PhylogenyWrapper {
    */
   static getParsedNewick(newick) {
     const { graph, root, rootWeight } = newickJs.parse(newick);
-    const [, arcs] = graph;
+    const [vertices, arcs] = graph;
+
+    // Phylotree.js uses 'name' instead of 'label'. Name every vertex here rather
+    // than in the loop below, which would miss the root of a single-node tree,
+    // since it has no arcs.
+    vertices.forEach(vertex => {
+      if (has(vertex, 'label')) vertex.name = vertex.label;
+    });
 
     // Go through the arcs, assigning 'children' to the appropriate parent node.
     arcs.forEach(arc => {
@@ -341,14 +348,6 @@ class PhylogenyWrapper {
       if (!has(parent, 'children')) parent.children = [];
       parent.children.push(child);
 
-      // Phylotree.js uses 'name' instead of 'label'.
-      if (has(parent, 'label')) {
-        parent.name = parent.label;
-      }
-      if (has(child, 'label')) {
-        child.name = child.label;
-      }
-
       // Phylotree.js uses 'attribute' to store weights, so we'll store it there as well.
       if (!has(child, 'attribute') && !Number.isNaN(weight))
         child.attribute = weight;
@@ -357,10 +356,6 @@ class PhylogenyWrapper {
     // Set root 'attribute' to root weight.
     if (!has(root, 'attribute') && !Number.isNaN(rootWeight))
       root.attribute = rootWeight;
-
-    // The loop above names the root as a parent, but a tree with a single node
-    // has no arcs, so its root would otherwise never get a 'name'.
-    if (has(root, 'label')) root.name = root.label;
 
     return { json: root };
   }
