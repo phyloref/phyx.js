@@ -154,7 +154,10 @@ so a regression fails a test instead of waiting to be noticed on the published s
   nothing and pass.
 - **Doc comments** — every class member in the files jsdoc reads has a `/**` comment directly
   above it, so that it is actually published. Checked against the source, not the built pages,
-  because a member that is missing from a page leaves nothing behind to notice.
+  because a member that is missing from a page leaves nothing behind to notice. The files are the
+  ones `jsdoc.config.js`'s `source` selects, and a member is any line at two-space indent inside a
+  `class Name {` … `}` body, so it relies on Biome's formatting: a class declared some other way,
+  such as `module.exports = class`, is not checked, and a file in which no members are found fails.
 - **The generated site** — no page publishes an element id twice, every internal link and asset
   resolves, and every class in `src/` has a page that the sidebar links to.
 

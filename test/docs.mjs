@@ -195,34 +195,44 @@ describe('Documentation prose', function () {
  */
 describe('Documentation comments', function () {
   /*
-   * Member declarations in our classes: two-space indent, optional modifiers, a name, then `(`.
-   * Nothing else in these files sits at that indent with a call-like shape -- class bodies hold
-   * only members, and module-level code is unindented -- but control keywords are excluded in
-   * case a top-level block ever appears.
+   * Our classes are declared as `class Name {` at the start of a line and closed by a `}` at the
+   * start of a line, with their members at two-space indent. Rather than recognise every shape a
+   * member declaration can take -- methods, accessors, fields, generators, quoted or computed
+   * names -- this treats every line that starts at that indent inside a class body as the start of
+   * a member, apart from the ones that can only continue something: closing brackets (the `) {`
+   * of a signature split over several lines, say) and comments. Comment body lines are indented
+   * one further, so a `*` at two spaces is a generator method. A static initialisation block is a
+   * member jsdoc has nothing to publish for.
    */
-  const MEMBER = /^ {2}(?:(?:static|get|set|async)\s+)*([A-Za-z_$][\w$]*)\s*\(/;
-  const KEYWORDS = new Set(['if', 'for', 'while', 'switch', 'catch', 'return']);
+  const CLASS_START = /^class\s/;
+  const CLASS_END = /^\}/;
+  const NOT_A_MEMBER = /^ {2}(?:[})\]/]|\*[\s/]|static\s*\{)/;
 
   /** A source file's members, and the ones with no `/**` comment immediately above them. */
   function members(source) {
     const lines = source.split('\n');
     const found = [];
     const missing = [];
+    let inClass = false;
 
     lines.forEach((line, i) => {
-      const match = MEMBER.exec(line);
-      if (!match || KEYWORDS.has(match[1])) return;
-      found.push(match[1]);
+      if (CLASS_START.test(line)) inClass = true;
+      else if (CLASS_END.test(line)) inClass = false;
+      if (!inClass || !/^ {2}\S/.test(line) || NOT_A_MEMBER.test(line)) return;
+
+      // Enough of the declaration to recognise it by: `static get UNKNOWN_CODE`, `async *nodes`.
+      const name = line.trim().replace(/\s*[({=;].*$/, '');
+      found.push(name);
 
       let j = i - 1;
       while (j >= 0 && lines[j].trim() === '') j -= 1;
       if (j < 0 || !lines[j].trim().endsWith('*/')) {
-        missing.push(`${i + 1}: ${match[1]}`);
+        missing.push(`${i + 1}: ${name}`);
         return;
       }
 
       while (j >= 0 && !lines[j].includes('/*')) j -= 1;
-      if (j < 0 || !lines[j].trim().startsWith('/**')) missing.push(`${i + 1}: ${match[1]}`);
+      if (j < 0 || !lines[j].trim().startsWith('/**')) missing.push(`${i + 1}: ${name}`);
     });
 
     return { found, missing };
@@ -232,8 +242,12 @@ describe('Documentation comments', function () {
     it(`should give every member of ${file} a /** comment directly above it`, function () {
       const { found, missing } = members(fs.readFileSync(path.join(repoRoot, file), 'utf8'));
 
-      // Every file jsdoc reads defines a class, so finding nothing means MEMBER has stopped matching.
-      expect(found, `${file}: no members found; has the declaration pattern changed?`).to.not.be.empty;
+      // Every file jsdoc reads defines a class, so finding nothing means CLASS_START has stopped
+      // matching how classes are declared.
+      expect(
+        found,
+        `${file}: no members found; is its class still declared as \`class Name {\` on its own line?`,
+      ).to.not.be.empty;
       expect(
         missing,
         `${file}: members jsdoc will not publish (use /** */, not // or /* */):\n  ${missing.join('\n  ')}`,
