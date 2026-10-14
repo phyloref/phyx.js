@@ -38,13 +38,17 @@ class PhyxWrapper {
     this.newickParser = newickParser;
   }
 
-  // Determine a 'default nomenclatural code' for this Phyx file. There are
-  // two ways to do this:
-  //  1. If the Phyx file has a 'defaultNomenclaturalCodeIRI' property, we use that.
-  //  2. Otherwise, we check to see if every phyloref in this file has the same
-  //     nomenclatural code. If so, we can use that code. If not, i.e. if any of
-  //     the phylorefs are missing a nomenclatural code or include a specifier,
-  //     we default to owlterms.UNKNOWN_CODE.
+  /**
+   * Determine a 'default nomenclatural code' for this Phyx file. There are
+   * two ways to do this:
+   *  1. If the Phyx file has a 'defaultNomenclaturalCodeIRI' property, we use that.
+   *  2. Otherwise, we check to see if every phyloref in this file has the same
+   *     nomenclatural code. If so, we can use that code. If not, i.e. if any of
+   *     the phylorefs are missing a nomenclatural code or include a specifier,
+   *     we default to owlterms.UNKNOWN_CODE.
+   *
+   * @return {string} The IRI of the nomenclatural code.
+   */
   get defaultNomenCode() {
     if (has(this.phyx, 'defaultNomenclaturalCodeIRI'))
       return this.phyx.defaultNomenclaturalCodeIRI;
