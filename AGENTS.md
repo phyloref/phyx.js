@@ -71,9 +71,9 @@ PHYX JSON file
 
 - Test files in `test/` mirror source modules (`phylorefs.js`, `phylogenies.js`, etc.)
 - `test/examples/correct/` contains fixture PHYX files with expected outputs used by `test/examples.js`
-- `test/jphyloref.js` requires the JPhyloRef JAR; may be skipped if Java is unavailable. Under
-  jenv, `.java-version` asks for Java 17 and every JPhyloRef test fails if it isn't installed;
-  `JENV_VERSION=21 npm test` works.
+- `test/jphyloref.js` downloads the JPhyloRef JAR and runs it with `java`; without a working
+  Java, every JPhyloRef test fails rather than being skipped. `.java-version` sets the version
+  for both jenv and CI (`actions/setup-java` reads it), so change it there.
 - Some tests need network access. `test/examples/incorrect/otl-resolution-errors.json` and
   `test/examples/correct/normalization/brochu_2003_normalization.json` use a remote `@context`
   URL rather than a relative path, so anything converting them fetches it.
