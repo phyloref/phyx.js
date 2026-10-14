@@ -30,8 +30,9 @@ class PhylogenyWrapper {
    * possible representations of a phylogeny.
    *
    * @param {Object} phylogeny - The phylogeny object from a Phyx document to wrap.
-   * @param {string} [defaultNomenCode=owlterms.UNKNOWN_CODE] - The nomenclatural code to
-   *    assume for taxonomic units extracted from node labels.
+   * @param {string|undefined} [defaultNomenCode=owlterms.UNKNOWN_CODE] - The nomenclatural
+   *    code to assume for taxonomic units extracted from node labels; owlterms.UNKNOWN_CODE
+   *    is `undefined`.
    */
   constructor(phylogeny, defaultNomenCode = owlterms.UNKNOWN_CODE) {
     this.phylogeny = phylogeny;

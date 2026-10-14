@@ -18,9 +18,10 @@ class PhylorefWrapper {
    * Wraps the provided phyloreference.
    *
    * @param {Object} phyloref - The phyloreference object from a Phyx document to wrap.
-   * @param {string} [phyxDefaultNomenCode=owlterms.UNKNOWN_CODE] - The default nomenclatural
-   *    code of the Phyx document this phyloreference belongs to, used for specifiers that
-   *    don't set one. See {@link PhylorefWrapper#defaultNomenCode}.
+   * @param {string|undefined} [phyxDefaultNomenCode=owlterms.UNKNOWN_CODE] - The default
+   *    nomenclatural code of the Phyx document this phyloreference belongs to, used for
+   *    specifiers that don't set one; owlterms.UNKNOWN_CODE is `undefined`. See
+   *    {@link PhylorefWrapper#defaultNomenCode}.
    */
   constructor(phyloref, phyxDefaultNomenCode = owlterms.UNKNOWN_CODE) {
     this.phyloref = phyloref;

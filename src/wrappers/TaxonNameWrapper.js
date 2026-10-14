@@ -56,7 +56,8 @@ class TaxonNameWrapper {
   }
 
   /**
-   * The IRI for an unknown nomenclatural code (i.e. all we know is that it's a scientific name).
+   * The value used for an unknown nomenclatural code (i.e. all we know is that it's a scientific
+   * name). There is no IRI for that, so this is `undefined`.
    */
   static get UNKNOWN_CODE() {
     return owlterms.UNKNOWN_CODE;
