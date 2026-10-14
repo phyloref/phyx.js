@@ -231,8 +231,12 @@ describe('Documentation comments', function () {
         return;
       }
 
-      while (j >= 0 && !lines[j].includes('/*')) j -= 1;
-      if (j < 0 || !lines[j].trim().startsWith('/**')) missing.push(`${i + 1}: ${name}`);
+      // Walk back to the line that opens this comment: the nearest one that *starts* with `/*`.
+      // Matching any line that merely contains it stops early on a body line that mentions a
+      // glob like `src/**/*.js`. jsdoc also skips a comment that opens with three or more
+      // asterisks, so `/***` counts as missing.
+      while (j >= 0 && !lines[j].trim().startsWith('/*')) j -= 1;
+      if (j < 0 || !/^\/\*\*(?!\*)/.test(lines[j].trim())) missing.push(`${i + 1}: ${name}`);
     });
 
     return { found, missing };

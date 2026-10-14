@@ -211,7 +211,8 @@ Most of these are silent — the build still succeeds, the page just comes out w
   `CitationWrapper` and `PhylogenyWrapper` were broken this way.
 - **A member is published only if a `/**` comment sits directly above it.** *(enforced)* A `//`
   block inside the method body and a `/* */` block above it both read as documentation and are
-  both ignored, and `strict` says nothing: the member is simply absent from the page.
+  both ignored, and `strict` says nothing: the member is simply absent from the page. So is one
+  whose comment opens with `/***`.
   `PhylogenyWrapper` shipped with eight of its eleven members missing this way, and two
   `PhylorefWrapper` methods were one asterisk short. Implementation notes can stay as `//` inside
   the body; it is the description of what the method does and takes that has to move above it.
