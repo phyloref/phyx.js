@@ -152,6 +152,9 @@ so a regression fails a test instead of waiting to be noticed on the published s
 - **Configuration** — `opts.basePath` matches the sub-path in `PHYX_CONTEXT_JSON`. Checked against
   the config rather than the built pages, because a wrong `basePath` makes a link check inspect
   nothing and pass.
+- **Doc comments** — every class member in the files jsdoc reads has a `/**` comment directly
+  above it, so that it is actually published. Checked against the source, not the built pages,
+  because a member that is missing from a page leaves nothing behind to notice.
 - **The generated site** — no page publishes an element id twice, every internal link and asset
   resolves, and every class in `src/` has a page that the sidebar links to.
 
@@ -203,6 +206,12 @@ Most of these are silent — the build still succeeds, the page just comes out w
   comment above the imports is close enough for jsdoc to give the class a page but not to treat the
   comment as the class's own, so tags on it (like `@category`) never reach the class. Both
   `CitationWrapper` and `PhylogenyWrapper` were broken this way.
+- **A member is published only if a `/**` comment sits directly above it.** *(enforced)* A `//`
+  block inside the method body and a `/* */` block above it both read as documentation and are
+  both ignored, and `strict` says nothing: the member is simply absent from the page.
+  `PhylogenyWrapper` shipped with eight of its eleven members missing this way, and two
+  `PhylorefWrapper` methods were one asterisk short. Implementation notes can stay as `//` inside
+  the body; it is the description of what the method does and takes that has to move above it.
 - **Don't put `/** */` on a top-level `require`.** jsdoc attaches a doc comment to the next code
   construct, so it documents the import as a global. Use `//` for notes about imports.
 - **Document the getter, `@private` the setter.** *(enforced)* jsdoc has no notion of accessor pairs, so
