@@ -31,6 +31,18 @@ const { PHYX_CONTEXT_JSON } = JSON.parse(
   }),
 );
 
+/** The source files jsdoc is pointed at: everything under src/ except what jsdoc.config.js excludes. */
+function jsdocSources() {
+  const excluded = ['src/index.js', 'src/utils/owlterms.js'];
+  return execFileSync('git', ['ls-files', 'src/*.js', 'src/**/*.js'], {
+    cwd: repoRoot,
+    encoding: 'utf8',
+  })
+    .trim()
+    .split('\n')
+    .filter(file => file && !excluded.includes(file));
+}
+
 /** Markdown files tracked in git, with symlinks (CLAUDE.md -> AGENTS.md) collapsed. */
 function trackedMarkdown() {
   const files = execFileSync('git', ['ls-files', '*.md'], { cwd: repoRoot, encoding: 'utf8' })
@@ -148,6 +160,62 @@ describe('Documentation prose', function () {
           expect(defined, `${file}: undefined reference [${wanted}]`).to.include(wanted);
         }
       });
+    });
+  });
+});
+
+/*
+ * jsdoc publishes a class member only when a `/**` comment sits directly above it. A `//` block
+ * inside the body and a `/*` block above it both read as documentation and are both ignored, and
+ * `strict` says nothing: the member just never appears on the page. PhylogenyWrapper shipped with
+ * eight of its eleven members missing this way, and two PhylorefWrapper methods were one asterisk
+ * short. This reads the source, so it needs no build and runs on every `npm test`.
+ */
+describe('Documentation comments', function () {
+  /*
+   * Member declarations in our classes: two-space indent, optional modifiers, a name, then `(`.
+   * Nothing else in these files sits at that indent with a call-like shape -- class bodies hold
+   * only members, and module-level code is unindented -- but control keywords are excluded in
+   * case a top-level block ever appears.
+   */
+  const MEMBER = /^ {2}(?:(?:static|get|set|async)\s+)*([A-Za-z_$][\w$]*)\s*\(/;
+  const KEYWORDS = new Set(['if', 'for', 'while', 'switch', 'catch', 'return']);
+
+  /** A source file's members, and the ones with no `/**` comment immediately above them. */
+  function members(source) {
+    const lines = source.split('\n');
+    const found = [];
+    const missing = [];
+
+    lines.forEach((line, i) => {
+      const match = MEMBER.exec(line);
+      if (!match || KEYWORDS.has(match[1])) return;
+      found.push(match[1]);
+
+      let j = i - 1;
+      while (j >= 0 && lines[j].trim() === '') j -= 1;
+      if (j < 0 || !lines[j].trim().endsWith('*/')) {
+        missing.push(`${i + 1}: ${match[1]}`);
+        return;
+      }
+
+      while (j >= 0 && !lines[j].includes('/*')) j -= 1;
+      if (j < 0 || !lines[j].trim().startsWith('/**')) missing.push(`${i + 1}: ${match[1]}`);
+    });
+
+    return { found, missing };
+  }
+
+  jsdocSources().forEach(function (file) {
+    it(`should give every member of ${file} a /** comment directly above it`, function () {
+      const { found, missing } = members(fs.readFileSync(path.join(repoRoot, file), 'utf8'));
+
+      // Every file jsdoc reads defines a class, so finding nothing means MEMBER has stopped matching.
+      expect(found, `${file}: no members found; has the declaration pattern changed?`).to.not.be.empty;
+      expect(
+        missing,
+        `${file}: members jsdoc will not publish (use /** */, not // or /* */):\n  ${missing.join('\n  ')}`,
+      ).to.be.empty;
     });
   });
 });
@@ -274,17 +342,8 @@ describe('Generated documentation site', function () {
   describe('navigation', function () {
     /** The classes jsdoc is pointed at, read from the source rather than assumed. */
     function documentedClasses() {
-      const excluded = ['src/index.js', 'src/utils/owlterms.js'];
-      const sources = execFileSync('git', ['ls-files', 'src/*.js', 'src/**/*.js'], {
-        cwd: repoRoot,
-        encoding: 'utf8',
-      })
-        .trim()
-        .split('\n')
-        .filter(file => file && !excluded.includes(file));
-
       const classes = [];
-      for (const file of sources) {
+      for (const file of jsdocSources()) {
         const source = fs.readFileSync(path.join(repoRoot, file), 'utf8');
         for (const [, name] of source.matchAll(/^class\s+(\w+)/gm)) classes.push({ file, name });
       }
