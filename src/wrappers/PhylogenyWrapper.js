@@ -185,10 +185,12 @@ class PhylogenyWrapper {
   /**
    * Return a list of all the node labels in this phylogeny.
    *
-   * @param {string} [nodeType='both'] - One of:
+   * nodeType can be one of:
    *  - 'internal': Return node labels on internal nodes.
    *  - 'terminal': Return node labels on terminal nodes.
    *  - 'both': Return node labels on both internal and terminal nodes.
+   *
+   * @param {string} [nodeType='both'] - Which nodes to return labels from, as above.
    * @return {string[]} The distinct node labels, in no particular order.
    */
   getNodeLabels(nodeType = 'both') {

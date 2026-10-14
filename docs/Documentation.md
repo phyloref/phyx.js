@@ -212,6 +212,10 @@ Most of these are silent — the build still succeeds, the page just comes out w
   `PhylogenyWrapper` shipped with eight of its eleven members missing this way, and two
   `PhylorefWrapper` methods were one asterisk short. Implementation notes can stay as `//` inside
   the body; it is the description of what the method does and takes that has to move above it.
+- **A Markdown list inside a `@param` or `@return` is dropped.** The theme renders the tag's text
+  as a single line and the list items after it never appear, so `@return {Object} An object
+  with:` followed by a bulleted list publishes as just "An object with:". Lists render fine in
+  the description, so put the enumeration there and have the tag refer to it.
 - **Don't put `/** */` on a top-level `require`.** jsdoc attaches a doc comment to the next code
   construct, so it documents the import as a global. Use `//` for notes about imports.
 - **Document the getter, `@private` the setter.** *(enforced)* jsdoc has no notion of accessor pairs, so

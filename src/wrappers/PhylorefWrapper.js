@@ -255,11 +255,13 @@ class PhylorefWrapper {
    * Return the current status of this phyloreference, i.e. the last of its
    * `pso:holdsStatusInTime` entries. A phyloreference without any is a draft.
    *
-   * @return {Object} A result object that contains:
+   * The result object contains:
    *  - statusCURIE: phyloreference status as a short URI (CURIE)
    *  - statusInEnglish: an English representation of the phyloref status
    *  - intervalStart: the start of the interval, if recorded
    *  - intervalEnd: the end of the interval, if recorded
+   *
+   * @return {Object} The result object described above.
    */
   getCurrentStatus() {
     if (
