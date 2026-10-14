@@ -154,10 +154,12 @@ so a regression fails a test instead of waiting to be noticed on the published s
   nothing and pass.
 - **Doc comments** — every class member in the files jsdoc reads has a `/**` comment directly
   above it, so that it is actually published. Checked against the source, not the built pages,
-  because a member that is missing from a page leaves nothing behind to notice. The files are the
-  ones `jsdoc.config.js`'s `source` selects, and a member is any line at two-space indent inside a
-  `class Name {` … `}` body, so it relies on Biome's formatting: a class declared some other way,
-  such as `module.exports = class`, is not checked, and a file in which no members are found fails.
+  because a member that is missing from a page leaves nothing behind to notice. It doesn't parse
+  the source itself: it runs `jsdoc --explain` with `jsdoc.config.js` and reads the doclets, so the
+  files checked and the comments that count are exactly the ones the build uses. A member whose
+  doclet has an empty `comment` is one jsdoc will leave off the page. An earlier version matched
+  lines instead, and was fooled by a `}` at the start of a line inside a template literal, by a
+  trailing `/* */` after the previous member, and by `/**/`; don't go back to that.
 - **The generated site** — no page publishes an element id twice, every internal link and asset
   resolves, and every class in `src/` has a page that the sidebar links to.
 
@@ -212,7 +214,9 @@ Most of these are silent — the build still succeeds, the page just comes out w
 - **A member is published only if a `/**` comment sits directly above it.** *(enforced)* A `//`
   block inside the method body and a `/* */` block above it both read as documentation and are
   both ignored, and `strict` says nothing: the member is simply absent from the page. So is one
-  whose comment opens with `/***`.
+  whose comment opens with `/***` or is the empty `/**/`. jsdoc reads only the block comment
+  nearest the member, so a `/* */` between the `/**` and the member hides it too, though a `//`
+  line there (a lint directive, say) does not.
   `PhylogenyWrapper` shipped with ten of its twelve members missing this way, and two
   `PhylorefWrapper` methods were one asterisk short. Implementation notes can stay as `//` inside
   the body; it is the description of what the method does and takes that has to move above it.

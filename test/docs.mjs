@@ -28,28 +28,27 @@ const BASE_PATH = '/phyx.js';
 const { PHYX_CONTEXT_JSON } = require('../src/utils/owlterms.js');
 const JSDOC_CONFIG = require('../jsdoc.config.js');
 
-/**
- * The source files jsdoc is pointed at, worked out from jsdoc.config.js's `source` rather than
- * restated here, so that the checks below stop reading a file the moment jsdoc does.
+/*
+ * What jsdoc makes of our source, as `jsdoc --explain` prints it: one doclet for everything it
+ * found, documented or not, read with jsdoc.config.js exactly as `npm run docs` reads it. The
+ * checks below ask jsdoc rather than reading the files themselves, so they agree with the build
+ * about which files it reads (`include`, `exclude`, `includePattern`, `excludePattern`,
+ * `recurse`) and about which comments count. This parses the source and builds nothing, so it
+ * takes well under a second.
  */
-function jsdocSources() {
-  const relative = entry => path.relative(repoRoot, path.resolve(repoRoot, entry));
-  const included = JSDOC_CONFIG.source.include.map(relative);
-  const excluded = (JSDOC_CONFIG.source.exclude || []).map(relative);
-  const pattern = new RegExp(JSDOC_CONFIG.source.includePattern || '.+\\.js(doc|x)?$');
-  const within = (file, entry) => file === entry || file.startsWith(`${entry}/`);
+const DOCLETS = JSON.parse(
+  execFileSync(
+    process.execPath,
+    [require.resolve('jsdoc/jsdoc.js'), '--configure', 'jsdoc.config.js', '--explain'],
+    { cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 },
+  ),
+);
 
-  return execFileSync('git', ['ls-files', '--', ...included], {
-    cwd: repoRoot,
-    encoding: 'utf8',
-  })
-    .trim()
-    .split('\n')
-    .filter(
-      file =>
-        file && pattern.test(file) && !excluded.some(entry => within(file, entry)),
-    );
-}
+/** The source file a doclet came from, relative to the repository root. */
+const sourceOf = doclet => path.relative(repoRoot, path.join(doclet.meta.path, doclet.meta.filename));
+
+/** The source files jsdoc read, as it reports them rather than as we would work them out. */
+const JSDOC_SOURCES = [...new Set(DOCLETS.filter(doclet => doclet.meta).map(sourceOf))].sort();
 
 /** Markdown files tracked in git, with symlinks (CLAUDE.md -> AGENTS.md) collapsed. */
 function trackedMarkdown() {
@@ -177,67 +176,36 @@ describe('Documentation prose', function () {
  * inside the body and a `/*` block above it both read as documentation and are both ignored, and
  * `strict` says nothing: the member just never appears on the page. PhylogenyWrapper shipped with
  * ten of its twelve members missing this way, and two PhylorefWrapper methods were one asterisk
- * short. This reads the source, so it needs no build and runs on every `npm test`.
+ * short. This asks jsdoc to parse the source, so it needs no build and runs on every `npm test`.
  */
 describe('Documentation comments', function () {
+  it('should check the source files we expect', function () {
+    // A guard against jsdoc reading nothing -- a bad `include`, say -- and this suite passing
+    // vacuously. A file in which jsdoc finds nothing at all drops out of the list.
+    expect(JSDOC_SOURCES).to.include('src/wrappers/PhyxWrapper.js');
+    expect(JSDOC_SOURCES.length).to.be.at.least(10);
+  });
+
   /*
-   * Our classes are declared as `class Name {` at the start of a line and closed by a `}` at the
-   * start of a line, with their members at two-space indent. Rather than recognise every shape a
-   * member declaration can take -- methods, accessors, fields, generators, quoted or computed
-   * names -- this treats every line that starts at that indent inside a class body as the start of
-   * a member, apart from the ones that can only continue something: closing brackets (the `) {`
-   * of a signature split over several lines, say) and comments. Comment body lines are indented
-   * one further, so a `*` at two spaces is a generator method. A static initialisation block is a
-   * member jsdoc has nothing to publish for.
+   * jsdoc emits a doclet for every class member -- methods, accessors, the constructor and
+   * fields, public or private -- whether it is documented or not. `comment` holds the doc comment
+   * jsdoc accepted for it, and is empty when there was none. (`undocumented` won't do: jsdoc sets
+   * it on every constructor, because it moves the constructor's comment onto the class.)
    */
-  const CLASS_START = /^class\s/;
-  const CLASS_END = /^\}/;
-  const NOT_A_MEMBER = /^ {2}(?:[})\]/]|\*[\s/]|static\s*\{)/;
+  const MEMBER_TYPES = new Set(['MethodDefinition', 'ClassProperty', 'ClassPrivateProperty']);
 
-  /** A source file's members, and the ones with no `/**` comment immediately above them. */
-  function members(source) {
-    const lines = source.split('\n');
-    const found = [];
-    const missing = [];
-    let inClass = false;
-
-    lines.forEach((line, i) => {
-      if (CLASS_START.test(line)) inClass = true;
-      else if (CLASS_END.test(line)) inClass = false;
-      if (!inClass || !/^ {2}\S/.test(line) || NOT_A_MEMBER.test(line)) return;
-
-      // Enough of the declaration to recognise it by: `static get UNKNOWN_CODE`, `async *nodes`.
-      const name = line.trim().replace(/\s*[({=;].*$/, '');
-      found.push(name);
-
-      let j = i - 1;
-      while (j >= 0 && lines[j].trim() === '') j -= 1;
-      if (j < 0 || !lines[j].trim().endsWith('*/')) {
-        missing.push(`${i + 1}: ${name}`);
-        return;
-      }
-
-      // Walk back to the line that opens this comment: the nearest one that *starts* with `/*`.
-      // Matching any line that merely contains it stops early on a body line that mentions a
-      // glob like `src/**/*.js`. jsdoc also skips a comment that opens with three or more
-      // asterisks, so `/***` counts as missing.
-      while (j >= 0 && !lines[j].trim().startsWith('/*')) j -= 1;
-      if (j < 0 || !/^\/\*\*(?!\*)/.test(lines[j].trim())) missing.push(`${i + 1}: ${name}`);
-    });
-
-    return { found, missing };
-  }
-
-  jsdocSources().forEach(function (file) {
+  JSDOC_SOURCES.forEach(function (file) {
     it(`should give every member of ${file} a /** comment directly above it`, function () {
-      const { found, missing } = members(fs.readFileSync(path.join(repoRoot, file), 'utf8'));
+      const members = DOCLETS.filter(
+        doclet => MEMBER_TYPES.has(doclet.meta?.code?.type) && sourceOf(doclet) === file,
+      );
+      const missing = members
+        .filter(doclet => !doclet.comment)
+        .map(doclet => `${doclet.meta.lineno}: ${doclet.longname}`);
 
-      // Every file jsdoc reads defines a class, so finding nothing means CLASS_START has stopped
-      // matching how classes are declared.
-      expect(
-        found,
-        `${file}: no members found; is its class still declared as \`class Name {\` on its own line?`,
-      ).to.not.be.empty;
+      // Every file jsdoc reads defines a class, so finding no members means MEMBER_TYPES has
+      // stopped matching what jsdoc reports.
+      expect(members, `${file}: jsdoc found no class members in it`).to.not.be.empty;
       expect(
         missing,
         `${file}: members jsdoc will not publish (use /** */, not // or /* */):\n  ${missing.join('\n  ')}`,
@@ -364,7 +332,7 @@ describe('Generated documentation site', function () {
     /** The classes jsdoc is pointed at, read from the source rather than assumed. */
     function documentedClasses() {
       const classes = [];
-      for (const file of jsdocSources()) {
+      for (const file of JSDOC_SOURCES) {
         const source = fs.readFileSync(path.join(repoRoot, file), 'utf8');
         for (const [, name] of source.matchAll(/^class\s+(\w+)/gm)) classes.push({ file, name });
       }
