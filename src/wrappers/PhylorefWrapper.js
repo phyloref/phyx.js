@@ -269,18 +269,16 @@ class PhylorefWrapper {
    * @return {Object} The result object described above.
    */
   getCurrentStatus() {
-    if (
-      has(this.phyloref, 'pso:holdsStatusInTime') &&
-      Array.isArray(this.phyloref['pso:holdsStatusInTime']) &&
-      this.phyloref['pso:holdsStatusInTime'].length > 0
-    ) {
-      // If we have any pso:holdsStatusInTime entries, pick the last one, which
-      // is the current status, and extract the CURIE and time interval
-      // information from it.
-      const lastStatusInTime =
-        this.phyloref['pso:holdsStatusInTime'][
-          this.phyloref['pso:holdsStatusInTime'].length - 1
-        ];
+    const statusesInTime = this.phyloref['pso:holdsStatusInTime'];
+    const lastStatusInTime =
+      Array.isArray(statusesInTime) && statusesInTime.length > 0
+        ? statusesInTime[statusesInTime.length - 1]
+        : undefined;
+
+    // If the last pso:holdsStatusInTime entry records a status, extract the
+    // CURIE and time interval information from it. One that doesn't (which
+    // getStatusChanges() also allows for) falls through to the default below.
+    if (has(lastStatusInTime, 'pso:withStatus')) {
       const statusCURIE = lastStatusInTime['pso:withStatus']['@id'];
 
       // Look for time interval information

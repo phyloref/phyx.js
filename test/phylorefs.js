@@ -250,6 +250,13 @@ describe('PhylorefWrapper', function () {
         // Initially, an empty phyloref should report a status of 'pso:draft'.
         expect(wrapper.getCurrentStatus().statusCURIE).to.equal('pso:draft');
       });
+
+      it('should fall back to "pso:draft" if the last status entry records no status', function () {
+        const noStatus = new phyx.PhylorefWrapper({
+          'pso:holdsStatusInTime': [{ 'pso:withStatus': { '@id': 'pso:published' } }, {}],
+        });
+        expect(noStatus.getCurrentStatus().statusCURIE).to.equal('pso:draft');
+      });
     });
 
     describe('#setStatus', function () {
