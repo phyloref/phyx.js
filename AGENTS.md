@@ -75,9 +75,23 @@ PHYX JSON file
 - Some tests need network access. `test/examples/incorrect/otl-resolution-errors.json` and
   `test/examples/correct/normalization/brochu_2003_normalization.json` use a remote `@context`
   URL rather than a relative path, so anything converting them fetches it.
+- **That remote `@context` is our own published docs site**, so the test suite depends on the
+  docs deploy: while <https://www.phyloref.org/phyx.js/> was 404ing, `npm test` failed on every
+  Node version. If that test fails, `curl` the URL in the error before looking anywhere else —
+  see [docs/Documentation.md](docs/Documentation.md#publishing). A daily canary
+  (`.github/workflows/site-canary.yml`) checks the same URLs, so
+  `gh run list --workflow=site-canary.yml` answers "is the site down?" before you debug anything
+  else.
+- **The reverse does not hold: a green `npm test` is no evidence the docs site is up.** If the
+  Pages source gets switched back to a branch, Jekyll serves `context/` straight out of the
+  repository, so every `@context` still resolves and the suite passes while the documentation
+  itself is gone. That is not hypothetical — it is what happened on 2026-09-16. The canary is the
+  only signal for this; the test suite is not.
 - **One `bin/phyx2owl.mjs` test fails on Node 26**, from a bundled-undici conflict in `jsonld`. CI
   runs Node 22, 24 and 25 and is green. Don't chase it or count it as a regression — see
-  [issue #180](https://github.com/phyloref/phyx.js/issues/180).
+  [issue #180](https://github.com/phyloref/phyx.js/issues/180). It breaks *every* `fetch` with
+  `invalid onError method`, so it surfaces as a failure to resolve the remote `@context` and looks
+  exactly like the site being down. The `curl` above is what tells the two apart.
 
 ### Working in this repository
 
@@ -92,17 +106,19 @@ PHYX JSON file
 
 ### Tooling
 
-- **Linter/formatter**: [Biomejs](https://biomejs.dev/) (`biome.json`) — enforces single quotes and other style rules, with overrides that disable formatting/linting for test files. `includes` also lists `**/*.md`, but Biome doesn't process Markdown yet and reports it as ignored, so prose is unchecked.
+- **Linter/formatter**: [Biomejs](https://biomejs.dev/) (`biome.json`) — enforces single quotes and other style rules, with overrides that disable formatting/linting for test files. `includes` also lists `**/*.md`, but Biome doesn't process Markdown yet and reports it as ignored, so prose is unchecked. **`.mjs` is not in `includes` at all**, so every `.mjs` file is silently unlinted and unformatted — including `bin/phyx2owl.mjs`, which we ship as a binary. `npx biome check <file>` reports a path it skipped under "These paths were provided but ignored", which is the way to tell an unlinted file from a clean one.
 - **CI**: GitHub Actions, Node 22/24/25, runs `npm test` (includes lint)
 
 ## Docs
 
 Generated with JSDoc 4 and clean-jsdoc-theme v5 into `site/`, and published to
-<https://www.phyloref.org/phyx.js/> from the `gh-pages` branch. `npm run docs` builds it.
+<https://www.phyloref.org/phyx.js/> by `.github/workflows/docs.yml`, which uploads `site/` as the
+Pages artifact. `npm run docs` builds it. The Pages source is GitHub Actions, not a branch —
+pushing to `gh-pages` deploys nothing, and that branch has been deleted.
 
 **Never commit `site/`** — it is generated output, and the build empties it.
 
-Read [docs/documentation-site.md](docs/documentation-site.md) before changing anything about the
+Read [docs/Documentation.md](docs/Documentation.md) before changing anything about the
 docs build: how the three build steps fit together, how to add a page, what has to stay true for
 the published context IRIs to keep resolving, and the ways a page can come out wrong while the
 build still reports success.
