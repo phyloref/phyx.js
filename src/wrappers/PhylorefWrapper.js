@@ -87,7 +87,7 @@ class PhylorefWrapper {
 
   /**
    * Set a label for this phyloreference.
-   * @ignore
+   * @private
    */
   set label(newLabel) {
     if (has(this.phyloref, 'label')) {
