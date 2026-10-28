@@ -10,10 +10,12 @@
 
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { expect } from 'chai';
 
+const require = createRequire(import.meta.url);
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const siteDir = path.join(repoRoot, 'site');
 
@@ -23,13 +25,30 @@ const siteDir = path.join(repoRoot, 'site');
  */
 const BASE_PATH = '/phyx.js';
 
-/** owlterms.js is CommonJS, so it is read out of a child process rather than imported here. */
-const { PHYX_CONTEXT_JSON } = JSON.parse(
-  execFileSync('node', ['-p', 'JSON.stringify(require("./src/utils/owlterms.js"))'], {
-    cwd: repoRoot,
-    encoding: 'utf8',
-  }),
+const { PHYX_CONTEXT_JSON } = require('../src/utils/owlterms.js');
+const JSDOC_CONFIG = require('../jsdoc.config.js');
+
+/*
+ * What jsdoc makes of our source, as `jsdoc --explain` prints it: one doclet for everything it
+ * found, documented or not, read with jsdoc.config.js exactly as `npm run docs` reads it. The
+ * checks below ask jsdoc rather than reading the files themselves, so they agree with the build
+ * about which files it reads (`include`, `exclude`, `includePattern`, `excludePattern`,
+ * `recurse`) and about which comments count. This parses the source and builds nothing, so it
+ * takes well under a second.
+ */
+const DOCLETS = JSON.parse(
+  execFileSync(
+    process.execPath,
+    [require.resolve('jsdoc/jsdoc.js'), '--configure', 'jsdoc.config.js', '--explain'],
+    { cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 },
+  ),
 );
+
+/** The source file a doclet came from, relative to the repository root. */
+const sourceOf = doclet => path.relative(repoRoot, path.join(doclet.meta.path, doclet.meta.filename));
+
+/** The source files jsdoc read, as it reports them rather than as we would work them out. */
+const JSDOC_SOURCES = [...new Set(DOCLETS.filter(doclet => doclet.meta).map(sourceOf))].sort();
 
 /** Markdown files tracked in git, with symlinks (CLAUDE.md -> AGENTS.md) collapsed. */
 function trackedMarkdown() {
@@ -153,6 +172,49 @@ describe('Documentation prose', function () {
 });
 
 /*
+ * jsdoc publishes a class member only when a `/**` comment sits directly above it. A `//` block
+ * inside the body and a `/*` block above it both read as documentation and are both ignored, and
+ * `strict` says nothing: the member just never appears on the page. PhylogenyWrapper shipped with
+ * ten of its twelve members missing this way, and two PhylorefWrapper methods were one asterisk
+ * short. This asks jsdoc to parse the source, so it needs no build and runs on every `npm test`.
+ */
+describe('Documentation comments', function () {
+  it('should check the source files we expect', function () {
+    // A guard against jsdoc reading nothing -- a bad `include`, say -- and this suite passing
+    // vacuously. A file in which jsdoc finds nothing at all drops out of the list.
+    expect(JSDOC_SOURCES).to.include('src/wrappers/PhyxWrapper.js');
+    expect(JSDOC_SOURCES.length).to.be.at.least(10);
+  });
+
+  /*
+   * jsdoc emits a doclet for every class member -- methods, accessors, the constructor and
+   * fields, public or private -- whether it is documented or not. `comment` holds the doc comment
+   * jsdoc accepted for it, and is empty when there was none. (`undocumented` won't do: jsdoc sets
+   * it on every constructor, because it moves the constructor's comment onto the class.)
+   */
+  const MEMBER_TYPES = new Set(['MethodDefinition', 'ClassProperty', 'ClassPrivateProperty']);
+
+  JSDOC_SOURCES.forEach(function (file) {
+    it(`should give every member of ${file} a /** comment directly above it`, function () {
+      const members = DOCLETS.filter(
+        doclet => MEMBER_TYPES.has(doclet.meta?.code?.type) && sourceOf(doclet) === file,
+      );
+      const missing = members
+        .filter(doclet => !doclet.comment)
+        .map(doclet => `${doclet.meta.lineno}: ${doclet.longname}`);
+
+      // Every file jsdoc reads defines a class, so finding no members means MEMBER_TYPES has
+      // stopped matching what jsdoc reports.
+      expect(members, `${file}: jsdoc found no class members in it`).to.not.be.empty;
+      expect(
+        missing,
+        `${file}: members jsdoc will not publish (use /** */, not // or /* */):\n  ${missing.join('\n  ')}`,
+      ).to.be.empty;
+    });
+  });
+});
+
+/*
  * The published JSON-LD context is served off the docs site, at the IRI owlterms.js hardcodes and
  * every published Phyx file dereferences. postdocs copies context/ into site/, and the only reason
  * that is enough is that basePath matches the sub-path in the IRI. Two of our own test fixtures
@@ -175,12 +237,7 @@ describe('Documentation configuration', function () {
    * inspect nothing and pass. This is the assertion that fails instead.
    */
   it('should point opts.basePath at that same sub-path', function () {
-    const basePath = execFileSync('node', ['-p', 'require("./jsdoc.config.js").opts.basePath'], {
-      cwd: repoRoot,
-      encoding: 'utf8',
-    }).trim();
-
-    expect(basePath).to.equal(BASE_PATH);
+    expect(JSDOC_CONFIG.opts.basePath).to.equal(BASE_PATH);
   });
 });
 
@@ -274,17 +331,8 @@ describe('Generated documentation site', function () {
   describe('navigation', function () {
     /** The classes jsdoc is pointed at, read from the source rather than assumed. */
     function documentedClasses() {
-      const excluded = ['src/index.js', 'src/utils/owlterms.js'];
-      const sources = execFileSync('git', ['ls-files', 'src/*.js', 'src/**/*.js'], {
-        cwd: repoRoot,
-        encoding: 'utf8',
-      })
-        .trim()
-        .split('\n')
-        .filter(file => file && !excluded.includes(file));
-
       const classes = [];
-      for (const file of sources) {
+      for (const file of JSDOC_SOURCES) {
         const source = fs.readFileSync(path.join(repoRoot, file), 'utf8');
         for (const [, name] of source.matchAll(/^class\s+(\w+)/gm)) classes.push({ file, name });
       }
