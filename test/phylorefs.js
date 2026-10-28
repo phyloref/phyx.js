@@ -198,6 +198,69 @@ describe('PhylorefWrapper', function () {
         expect(phyloref1.getExpectedNodeLabels(phylogeny1))
           .to.deep.equal(['Test']);
       });
+
+      it('should not match a phyloreference whose name is only part of a single expected name', function () {
+        // expectedPhyloreferenceNamed is a single string here, not a list: that
+        // is the form in which includes() would test for a substring.
+        const phylogeny = {
+          newick: '((A, B)C, D)E',
+          additionalNodeProperties: {
+            C: { expectedPhyloreferenceNamed: 'phyloref10' },
+          },
+        };
+
+        expect(new phyx.PhylorefWrapper({ label: 'phyloref1' }).getExpectedNodeLabels(phylogeny))
+          .to.be.empty;
+        expect(new phyx.PhylorefWrapper({ label: 'phyloref10' }).getExpectedNodeLabels(phylogeny))
+          .to.deep.equal(['C']);
+      });
+
+      // Unlike the test above, this one doesn't guard against substring
+      // matches: includes() on a list already compares whole names.
+      it('should accept a list of expected phyloreference names', function () {
+        const phylogeny = {
+          newick: '((A, B)C, D)E',
+          additionalNodeProperties: {
+            C: { expectedPhyloreferenceNamed: ['phyloref1', 'phyloref2'] },
+            E: { expectedPhyloreferenceNamed: ['phyloref10'] },
+          },
+        };
+
+        expect(new phyx.PhylorefWrapper({ label: 'phyloref2' }).getExpectedNodeLabels(phylogeny))
+          .to.deep.equal(['C']);
+        expect(new phyx.PhylorefWrapper({ label: 'phyloref1' }).getExpectedNodeLabels(phylogeny))
+          .to.deep.equal(['C']);
+      });
+
+      it('should not match any node for a phyloreference without a label', function () {
+        const phylogeny = {
+          newick: '((A, B)C, D)E',
+          additionalNodeProperties: {
+            C: { expectedPhyloreferenceNamed: undefined },
+            E: { expectedPhyloreferenceNamed: [null] },
+          },
+        };
+
+        expect(new phyx.PhylorefWrapper({}).getExpectedNodeLabels(phylogeny)).to.be.empty;
+      });
+    });
+  });
+
+  describe('given a phyloreference with no specifier lists', function () {
+    describe('#setSpecifierType', function () {
+      // Check the phyloref object itself rather than the wrapper's getters,
+      // which would create the missing list we're checking for.
+      it('should be able to make a specifier external', function () {
+        const phyloref = {};
+        new phyx.PhylorefWrapper(phyloref).setSpecifierType(specifier1, 'External');
+        expect(phyloref).to.deep.equal({ externalSpecifiers: [specifier1] });
+      });
+
+      it('should be able to make a specifier internal', function () {
+        const phyloref = {};
+        new phyx.PhylorefWrapper(phyloref).setSpecifierType(specifier1, 'Internal');
+        expect(phyloref).to.deep.equal({ internalSpecifiers: [specifier1] });
+      });
     });
   });
 
@@ -208,6 +271,53 @@ describe('PhylorefWrapper', function () {
       it('should return "pso:draft" as the default initial status', function () {
         // Initially, an empty phyloref should report a status of 'pso:draft'.
         expect(wrapper.getCurrentStatus().statusCURIE).to.equal('pso:draft');
+      });
+
+      it('should skip a last status entry that records no status', function () {
+        const noStatus = new phyx.PhylorefWrapper({
+          'pso:holdsStatusInTime': [
+            { 'pso:withStatus': { '@id': 'pso:published' } },
+            {},
+            { 'tvc:atTime': { 'timeinterval:hasIntervalStartDate': '2026-10-14T00:00:00Z' } },
+          ],
+        });
+        expect(noStatus.getCurrentStatus().statusCURIE).to.equal('pso:published');
+      });
+
+      it('should skip status entries whose pso:withStatus is null or has no @id', function () {
+        const wrapper = new phyx.PhylorefWrapper({
+          'pso:holdsStatusInTime': [
+            { 'pso:withStatus': { '@id': 'pso:under-review' } },
+            { 'pso:withStatus': null },
+            { 'pso:withStatus': {} },
+          ],
+        });
+        expect(wrapper.getCurrentStatus().statusCURIE).to.equal('pso:under-review');
+        expect(wrapper.getStatusChanges().map(change => change.statusCURIE))
+          .to.deep.equal(['pso:under-review', undefined, undefined]);
+      });
+
+      it('should read a single status entry that is not in a list', function () {
+        const phyloref = {
+          'pso:holdsStatusInTime': { 'pso:withStatus': { '@id': 'pso:published' } },
+        };
+        const wrapper = new phyx.PhylorefWrapper(phyloref);
+        expect(wrapper.getCurrentStatus().statusCURIE).to.equal('pso:published');
+        expect(wrapper.getStatusChanges().map(change => change.statusCURIE))
+          .to.deep.equal(['pso:published']);
+
+        // setStatus() should keep that entry, and append to it.
+        wrapper.setStatus('pso:retracted-from-publication');
+        expect(phyloref['pso:holdsStatusInTime']).to.have.lengthOf(2);
+        expect(wrapper.getStatusChanges().map(change => change.statusCURIE))
+          .to.deep.equal(['pso:published', 'pso:retracted-from-publication']);
+      });
+
+      it('should fall back to "pso:draft" if no status entry records a status', function () {
+        const noStatus = new phyx.PhylorefWrapper({
+          'pso:holdsStatusInTime': [{}, { 'pso:withStatus': null }],
+        });
+        expect(noStatus.getCurrentStatus().statusCURIE).to.equal('pso:draft');
       });
     });
 
