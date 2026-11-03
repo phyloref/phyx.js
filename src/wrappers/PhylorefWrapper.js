@@ -101,6 +101,38 @@ class PhylorefWrapper {
     }
   }
 
+  /**
+   * Whether this phyloreference is deprecated, i.e. whether it carries
+   * `owl:deprecated: true`. A phyloreference is deprecated when its curators no
+   * longer stand behind it, for example because a later one supersedes it; it
+   * stays in the file so that the IRI keeps resolving and the history is kept.
+   *
+   * Deprecation is the one piece of publication status a Phyx file records.
+   * The property is the standard OWL annotation, so it survives conversion to
+   * an ontology, where tools such as JPhyloRef can read it.
+   *
+   * @return {boolean} True only if `owl:deprecated` is exactly `true`.
+   */
+  get deprecated() {
+    return this.phyloref[owlterms.OWL_DEPRECATED] === true;
+  }
+
+  /**
+   * Mark this phyloreference as deprecated or not. Marking it not deprecated
+   * removes the `owl:deprecated` key rather than writing `false`, so that a
+   * phyloreference that was never deprecated and one that was un-deprecated
+   * look the same.
+   *
+   * @param {boolean} deprecated
+   */
+  set deprecated(deprecated) {
+    if (deprecated) {
+      this.phyloref[owlterms.OWL_DEPRECATED] = true;
+    } else {
+      delete this.phyloref[owlterms.OWL_DEPRECATED];
+    }
+  }
+
   /** Return all the specifiers of this phyloref (if any). */
   get specifiers() {
     // Returns a list of all specifiers by combining the internal and external
