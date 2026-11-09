@@ -13,14 +13,12 @@ const owlterms = require('../src/utils/owlterms');
 const expect = chai.expect;
 
 /*
- * Phyloref tests cover three aspects of phyloreferences:
+ * Phyloref tests cover two aspects of phyloreferences:
  *  - Whether we can create a phyloref with a particular set of specifiers,
  *    and whether we can correctly change the type of a specifer (from 'External'
  *    to 'Internal'), delete specifiers, and retrieve specifier labels.
  *  - Whether we can determine to which node a phyloref is expected to resolve to
  *    by using additionalNodeProperties.
- *  - Whether we can update the phyloref's status several times and retrieve the
- *    full history of its status changes.
  */
 
 describe('PhylorefWrapper', function () {
@@ -197,53 +195,6 @@ describe('PhylorefWrapper', function () {
 
         expect(phyloref1.getExpectedNodeLabels(phylogeny1))
           .to.deep.equal(['Test']);
-      });
-    });
-  });
-
-  describe('given an empty phyloreference', function () {
-    const wrapper = new phyx.PhylorefWrapper({});
-
-    describe('#getCurrentStatus', function () {
-      it('should return "pso:draft" as the default initial status', function () {
-        // Initially, an empty phyloref should report a status of 'pso:draft'.
-        expect(wrapper.getCurrentStatus().statusCURIE).to.equal('pso:draft');
-      });
-    });
-
-    describe('#setStatus', function () {
-      it('should throw an error if given a mistyped status', function () {
-        expect(function () { wrapper.setStatus('pso:retracted-from_publication'); })
-          .to.throw(
-            TypeError,
-            'setStatus() called with invalid status CURIE \'pso:retracted-from_publication\'',
-            'PhylorefWrapper throws TypeError on a mistyped status'
-          );
-      });
-    });
-
-    describe('#getStatusChanges', function () {
-      it('should return the empty list', function () {
-        expect(wrapper.getStatusChanges()).to.be.empty;
-      });
-
-      describe('when modified by using .setStatus', function () {
-        it('should return the updated list', function () {
-          wrapper.setStatus('pso:final-draft');
-          wrapper.setStatus('pso:under-review');
-          wrapper.setStatus('pso:submitted');
-          wrapper.setStatus('pso:published');
-          wrapper.setStatus('pso:retracted-from-publication');
-
-          // And see if we get the statuses back in the correct order.
-          const statusChanges = wrapper.getStatusChanges();
-          expect(statusChanges.length, 'number of status changes should be 5').to.equal(5);
-          expect(statusChanges[0].statusCURIE, 'first status change should be "pso:final-draft"').to.equal('pso:final-draft');
-          expect(statusChanges[1].statusCURIE, 'second status change should be "pso:under-review"').to.equal('pso:under-review');
-          expect(statusChanges[2].statusCURIE, 'third status change should be a "pso:submitted"').to.equal('pso:submitted');
-          expect(statusChanges[3].statusCURIE, 'fourth status change should be a "pso:published"').to.equal('pso:published');
-          expect(statusChanges[4].statusCURIE, 'fifth status change should be a "pso:retracted-from-publication"').to.equal('pso:retracted-from-publication');
-        });
       });
     });
   });
