@@ -87,7 +87,7 @@ if (files.length === 0) {
  * filename: either by replacing '.json' with '.owl', or by concatenating
  * '.owl' at the end.
  */
-function convertFileToOWL(filename, argOutputFilename = '') {
+async function convertFileToOWL(filename, argOutputFilename = '') {
   // console.debug(`Starting with ${filename}.`);
   let outputFilename;
   if (argOutputFilename !== '') {
@@ -123,23 +123,21 @@ function convertFileToOWL(filename, argOutputFilename = '') {
     });
     phyxContent.phylorefs = filteredPhylorefs;
 
-    // Convert the Phyx file into JSON-LD.
+    // Convert the Phyx file into JSON-LD. This must be awaited: otherwise a failure here
+    // surfaces as an unhandled rejection that kills the process *after* we've already
+    // reported this file as converted, and the summary below counts it as a success.
     const wrappedPhyx = new phyx.PhyxWrapper(phyxContent);
-    wrappedPhyx
-      .toRDF(argv.baseIri, path.dirname(filename))
-      .then(nquads => {
-        fs.writeFileSync(outputFilename, nquads);
-      })
-      .catch(err => {
-        throw err;
-      });
+    const nquads = await wrappedPhyx.toRDF(argv.baseIri, path.dirname(filename));
+    fs.writeFileSync(outputFilename, nquads);
 
-    // Report on whether any phyloreferences were converted.
+    // Report on whether any phyloreferences were converted. Filtering every phyloreference
+    // out is what --max-internal-specifiers and --max-external-specifiers are for, so it is
+    // a warning, not a failure: the output file was written as asked.
     if (filteredPhylorefs.length === 0) {
       console.warn(
         `No phyloreferences in ${filename} were converted to ${outputFilename}, as they were all filtered out.`,
       );
-      return false;
+      return true;
     } else if (phylorefCount > filteredPhylorefs.length) {
       console.warn(
         `Only ${filteredPhylorefs.length} out of ${phylorefCount} were converted from ${filename} to ${outputFilename}.`,
@@ -159,11 +157,14 @@ function convertFileToOWL(filename, argOutputFilename = '') {
 }
 
 // Count and report all the successes in converting files to OWL.
-const successes = files.map(file => convertFileToOWL(file));
+const successes = await Promise.all(files.map(file => convertFileToOWL(file)));
 if (successes.every(x => x)) {
   console.log(`${successes.length} files converted successfully.`);
 } else {
   console.log(
     `Errors occurred; ${successes.filter(x => x).length} files converted successfully, ${successes.filter(x => !x).length} files failed.`,
   );
+  // Setting exitCode rather than calling process.exit() lets the summary above finish
+  // being written when stdout is a pipe.
+  process.exitCode = 1;
 }

@@ -1,0 +1,21 @@
+{
+  "@context": "http://127.0.0.1:1/unreachable-context.json",
+  "@id": "#",
+  "phylorefs": [
+    {
+      "@id": "#Alligatoridae",
+      "label": "Alligatoridae",
+      "internalSpecifiers": [
+        {
+          "@type": "http://rs.tdwg.org/ontology/voc/TaxonConcept#TaxonConcept",
+          "hasName": {
+            "@type": "http://rs.tdwg.org/ontology/voc/TaxonName#TaxonName",
+            "nomenclaturalCode": "http://purl.obolibrary.org/obo/NOMEN_0000036",
+            "nameComplete": "Alligator mississippiensis"
+          }
+        }
+      ]
+    }
+  ],
+  "phylogenies": []
+}

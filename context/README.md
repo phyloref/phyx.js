@@ -35,7 +35,6 @@ unchanged, and the test checks that they still fail.
   [JSON-LD Context]: ./development/phyx.json
   [JSON Schema]: ./development/schema.json
   [semantic versioning]: https://semver.org/
-  [development]: ./development/phyx.json
   [v0.1.0]: https://github.com/phyloref/phyx.js/releases/tag/v0.1.0
   [v0.1.0 JSON-LD context]: ./v0.1.0/phyx.json
   [v0.2.0]: https://github.com/phyloref/phyx.js/releases/tag/v0.2.0

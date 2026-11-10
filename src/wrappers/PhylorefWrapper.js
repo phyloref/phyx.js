@@ -1,5 +1,3 @@
-// Used to parse timestamps for phyloref statuses.
-const moment = require('moment');
 const { has, cloneDeep, uniq } = require('lodash');
 
 const owlterms = require('../utils/owlterms');
@@ -9,16 +7,21 @@ const { PhylogenyWrapper } = require('./PhylogenyWrapper');
 const { CitationWrapper } = require('./CitationWrapper');
 
 /**
- * Wraps a phyloreference in a Phyx model, with multiple specifiers and statuses. Includes code for generating the
+ * Wraps a phyloreference in a Phyx model, with multiple specifiers. Includes code for generating the
  * components of a phyloreference expression in OWL.
  * @category Wrappers
  */
-
 class PhylorefWrapper {
-  // Wraps a phyloreference in a PHYX model.
-
+  /**
+   * Wraps the provided phyloreference.
+   *
+   * @param {Object} phyloref - The phyloreference object from a Phyx document to wrap.
+   * @param {string|undefined} [phyxDefaultNomenCode=owlterms.UNKNOWN_CODE] - The default
+   *    nomenclatural code of the Phyx document this phyloreference belongs to, used for
+   *    specifiers that don't set one; owlterms.UNKNOWN_CODE is `undefined`. See
+   *    {@link PhylorefWrapper#defaultNomenCode}.
+   */
   constructor(phyloref, phyxDefaultNomenCode = owlterms.UNKNOWN_CODE) {
-    // Wraps the provided phyloreference
     this.phyloref = phyloref;
     this.phyxDefaultNomenCode = phyxDefaultNomenCode;
   }
@@ -87,7 +90,7 @@ class PhylorefWrapper {
 
   /**
    * Set a label for this phyloreference.
-   * @ignore
+   * @private
    */
   set label(newLabel) {
     if (has(this.phyloref, 'label')) {
@@ -108,51 +111,71 @@ class PhylorefWrapper {
     return specifiers;
   }
 
+  /**
+   * For a given specifier, return a string indicating whether it is
+   * an 'Internal' or 'External' specifier.
+   *
+   * @param {Object} specifier - A specifier of this phyloreference.
+   * @return {string} 'Internal', 'External', or 'Specifier' if it is neither.
+   */
   getSpecifierType(specifier) {
-    // For a given specifier, return a string indicating whether it is
-    // an 'Internal' or 'External' specifier.
-
     if (this.internalSpecifiers.includes(specifier)) return 'Internal';
     if (this.externalSpecifiers.includes(specifier)) return 'External';
     return 'Specifier';
   }
 
+  /**
+   * Change the type of a given specifier. To do this, we first need
+   * to determine if it was originally an internal or external
+   * specifier, then move it into the other list.
+   *
+   * @param {Object} specifier - A specifier of this phyloreference.
+   * @param {string} specifierType - 'Internal' or 'External'; anything else is ignored.
+   */
   setSpecifierType(specifier, specifierType) {
-    // Change the type of a given specifier. To do this, we first need
-    // to determine if it was originally an internal or external
-    // specifier, then move it into the other list.
-
+    // We read the list we might remove the specifier from directly, rather than
+    // through its getter, so that we don't add an empty list to the phyloref
+    // that it didn't have. Only the list we add the specifier to is created.
     let index;
     if (specifierType === 'Internal') {
       // To set a specifier to 'Internal', we might need to delete it from the
       // list of external specifiers first.
-      index = this.externalSpecifiers.indexOf(specifier);
-      if (index !== -1) this.externalSpecifiers.splice(index, 1);
+      if (has(this.phyloref, 'externalSpecifiers')) {
+        index = this.phyloref.externalSpecifiers.indexOf(specifier);
+        if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
+      }
 
       // Don't add it to the list of internal specifiers if it's already there.
       if (!this.internalSpecifiers.includes(specifier)) {
-        this.phyloref.internalSpecifiers.unshift(specifier);
+        this.internalSpecifiers.unshift(specifier);
       }
     } else if (specifierType === 'External') {
       // To set a specifier to 'External', we might need to delete it from the
       // list of internal specifiers first.
-      index = this.phyloref.internalSpecifiers.indexOf(specifier);
-      if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+      if (has(this.phyloref, 'internalSpecifiers')) {
+        index = this.phyloref.internalSpecifiers.indexOf(specifier);
+        if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+      }
 
-      // Don't add it to the list of internal specifiers if it's already there.
-      if (!this.phyloref.externalSpecifiers.includes(specifier)) {
-        this.phyloref.externalSpecifiers.unshift(specifier);
+      // Don't add it to the list of external specifiers if it's already there.
+      if (!this.externalSpecifiers.includes(specifier)) {
+        this.externalSpecifiers.unshift(specifier);
       }
     } else {
       // Neither internal nor external? Ignore.
     }
   }
 
+  /**
+   * Delete a specifier from this phyloreference.
+   *
+   * Since the user interface combines specifiers into a single list,
+   * it doesn't remember if the specifier to be deleted is internal
+   * or external. We delete the intended specifier from both arrays.
+   *
+   * @param {Object} specifier - The specifier to delete.
+   */
   deleteSpecifier(specifier) {
-    // Since the user interface combines specifiers into a single list,
-    // it doesn't remember if the specifier to be deleted is internal
-    // or external. We delete the intended specifier from both arrays.
-
     if (
       has(this.phyloref, 'internalSpecifiers') &&
       this.phyloref.internalSpecifiers.length > 0
@@ -170,16 +193,25 @@ class PhylorefWrapper {
     }
   }
 
+  /**
+   * Given a phylogeny, determine which node labels we expect this phyloref to
+   * resolve to. To do this, we:
+   *  1. Find all node labels that are case-sensitively identical
+   *     to the phyloreference.
+   *  2. Find all node labels that have additionalNodeProperties with
+   *     expectedPhyloreferenceNamed case-sensitively identical to
+   *     the phyloreference.
+   *
+   * @param {Object} phylogeny - The phylogeny object (not a wrapper) to look in.
+   * @return {string[]} The expected node labels, sorted alphabetically.
+   */
   getExpectedNodeLabels(phylogeny) {
-    // Given a phylogeny, determine which node labels we expect this phyloref to
-    // resolve to. To do this, we:
-    //  1. Find all node labels that are case-sensitively identical
-    //     to the phyloreference.
-    //  2. Find all node labels that have additionalNodeProperties with
-    //     expectedPhyloreferenceNamed case-sensitively identical to
-    //     the phyloreference.
     const phylorefLabel = this.label;
     const nodeLabels = new Set();
+
+    // A phyloreference without a label can't be named by a node, and must not
+    // match one whose expectedPhyloreferenceNamed is also missing.
+    if (phylorefLabel === undefined || phylorefLabel === null) return [];
 
     new PhylogenyWrapper(phylogeny, this.defaultNomenCode)
       .getNodeLabels()
@@ -198,9 +230,13 @@ class PhylorefWrapper {
           // Does this node label have an expectedPhyloreferenceNamed that
           // includes this phyloreference name?
 
-          const expectedPhylorefs =
+          // It may be a single name or a list of names. Calling includes() on
+          // a single name would test for a substring, so 'phyloref1' would
+          // match a node expecting 'phyloref10'.
+          const expectedPhylorefs = [].concat(
             phylogeny.additionalNodeProperties[nodeLabel]
-              .expectedPhyloreferenceNamed;
+              .expectedPhyloreferenceNamed,
+          );
 
           if (expectedPhylorefs.includes(phylorefLabel)) {
             nodeLabels.add(nodeLabel);
@@ -210,158 +246,6 @@ class PhylorefWrapper {
 
     // Return node labels sorted alphabetically.
     return Array.from(nodeLabels).sort();
-  }
-
-  static getStatusCURIEsInEnglish() {
-    // Return dictionary of all phyloref statuses in English
-    return {
-      'pso:draft': 'Draft',
-      'pso:final-draft': 'Final draft',
-      'pso:under-review': 'Under review',
-      'pso:submitted': 'Tested',
-      'pso:published': 'Published',
-      'pso:retracted-from-publication': 'Retracted',
-    };
-  }
-
-  getCurrentStatus() {
-    // Return a result object that contains:
-    //  - status: phyloreference status as a short URI (CURIE)
-    //  - statusInEnglish: an English representation of the phyloref status
-    //  - intervalStart: the start of the interval
-    //  - intervalEnd: the end of the interval
-
-    if (
-      has(this.phyloref, 'pso:holdsStatusInTime') &&
-      Array.isArray(this.phyloref['pso:holdsStatusInTime']) &&
-      this.phyloref['pso:holdsStatusInTime'].length > 0
-    ) {
-      // If we have any pso:holdsStatusInTime entries, pick the first one and
-      // extract the CURIE and time interval information from it.
-      const lastStatusInTime =
-        this.phyloref['pso:holdsStatusInTime'][
-          this.phyloref['pso:holdsStatusInTime'].length - 1
-        ];
-      const statusCURIE = lastStatusInTime['pso:withStatus']['@id'];
-
-      // Look for time interval information
-      let intervalStart;
-      let intervalEnd;
-
-      if (has(lastStatusInTime, 'tvc:atTime')) {
-        const atTime = lastStatusInTime['tvc:atTime'];
-        if (has(atTime, 'timeinterval:hasIntervalStartDate'))
-          intervalStart = atTime['timeinterval:hasIntervalStartDate'];
-        if (has(atTime, 'timeinterval:hasIntervalEndDate'))
-          intervalEnd = atTime['timeinterval:hasIntervalEndDate'];
-      }
-
-      // Return result object
-      return {
-        statusCURIE,
-        statusInEnglish:
-          PhylorefWrapper.getStatusCURIEsInEnglish()[statusCURIE],
-        intervalStart,
-        intervalEnd,
-      };
-    }
-
-    // If we couldn't figure out a status for this phyloref, assume it's a draft.
-    return {
-      statusCURIE: 'pso:draft',
-      statusInEnglish: PhylorefWrapper.getStatusCURIEsInEnglish()['pso:draft'],
-    };
-  }
-
-  getStatusChanges() {
-    // Return a list of status changes for a particular phyloreference
-    if (has(this.phyloref, 'pso:holdsStatusInTime')) {
-      return this.phyloref['pso:holdsStatusInTime'].map(entry => {
-        const result = {};
-
-        // Create a statusCURIE convenience field.
-        if (has(entry, 'pso:withStatus')) {
-          result.statusCURIE = entry['pso:withStatus']['@id'];
-          result.statusInEnglish =
-            PhylorefWrapper.getStatusCURIEsInEnglish()[result.statusCURIE];
-        }
-
-        // Create intervalStart/intervalEnd convenient fields
-        if (has(entry, 'tvc:atTime')) {
-          const atTime = entry['tvc:atTime'];
-          if (has(atTime, 'timeinterval:hasIntervalStartDate')) {
-            result.intervalStart = atTime['timeinterval:hasIntervalStartDate'];
-            result.intervalStartAsCalendar = moment(
-              result.intervalStart,
-            ).calendar();
-          }
-
-          if (has(atTime, 'timeinterval:hasIntervalEndDate')) {
-            result.intervalEnd = atTime['timeinterval:hasIntervalEndDate'];
-            result.intervalEndAsCalendar = moment(
-              result.intervalEnd,
-            ).calendar();
-          }
-        }
-
-        return result;
-      });
-    }
-
-    // No changes? Return an empty list.
-    return [];
-  }
-
-  setStatus(status) {
-    // Set the status of a phyloreference
-    //
-    // Check whether we have a valid status CURIE.
-    if (!has(PhylorefWrapper.getStatusCURIEsInEnglish(), status)) {
-      throw new TypeError(
-        `setStatus() called with invalid status CURIE '${status}'`,
-      );
-    }
-
-    // See if we can end the previous interval.
-    const currentTime = new Date(Date.now()).toISOString();
-
-    if (!has(this.phyloref, 'pso:holdsStatusInTime')) {
-      // Vue.set(this.phyloref, 'pso:holdsStatusInTime', []);
-      this.phyloref['pso:holdsStatusInTime'] = [];
-    }
-
-    // Check to see if there's a previous time interval we should end.
-    if (
-      Array.isArray(this.phyloref['pso:holdsStatusInTime']) &&
-      this.phyloref['pso:holdsStatusInTime'].length > 0
-    ) {
-      const lastStatusInTime =
-        this.phyloref['pso:holdsStatusInTime'][
-          this.phyloref['pso:holdsStatusInTime'].length - 1
-        ];
-
-      // if (!has(lastStatusInTime, 'tvc:atTime'))
-      //  Vue.set(lastStatusInTime, 'tvc:atTime', {});
-      if (!has(lastStatusInTime, 'tvc:atTime')) {
-        lastStatusInTime['tvc:atTime'] = {};
-      }
-      if (
-        !has(lastStatusInTime['tvc:atTime'], 'timeinterval:hasIntervalEndDate')
-      ) {
-        // If the last time entry doesn't already have an interval end date, set it to now.
-        lastStatusInTime['tvc:atTime']['timeinterval:hasIntervalEndDate'] =
-          currentTime;
-      }
-    }
-
-    // Create new entry.
-    this.phyloref['pso:holdsStatusInTime'].push({
-      '@type': 'http://purl.org/spar/pso/StatusInTime',
-      'pso:withStatus': { '@id': status },
-      'tvc:atTime': {
-        'timeinterval:hasIntervalStartDate': currentTime,
-      },
-    });
   }
 
   /**
@@ -533,6 +417,13 @@ class PhylorefWrapper {
     return componentClass;
   }
 
+  /**
+   * Return an OWL restriction for the nodes that include a taxonomic unit
+   * (`phyloref:includes_TU some <tu>`).
+   *
+   * @param {Object} tu - The taxonomic unit.
+   * @return {Object} The restriction as a JSON-LD object.
+   */
   getIncludesRestrictionForTU(tu) {
     return {
       '@type': 'owl:Restriction',
@@ -565,14 +456,9 @@ class PhylorefWrapper {
     };
   }
 
-  /*
+  /**
    * Create an OWL restriction for a phyloreference made up entirely of internal
    * specifiers.
-   *  - jsonld: the JSON-LD representation of this phyloreference in model 1.0.
-   *    We mainly use this to access the '@id' and internal and external specifiers.
-   *  - remainingInternals: all internal specifiers that have not yet been selected.
-   *  - selected: internal specifiers have been seen selected. This should initially
-   *    be [], and will be filled in when this method calls itself recursively.
    *
    * This method works like this:
    *  1. We have several special cases: we fail if 0 or 1 specifiers are
@@ -590,6 +476,14 @@ class PhylorefWrapper {
    *     only process cases where there are more remainingInternals than selected
    *     internals -- when there are fewer, we'll just end up with the inverses of the
    *     previous comparisons, which we'll already have covered.
+   *
+   * @param {Object} jsonld - The JSON-LD representation of this phyloreference in model 1.0.
+   *    We mainly use this to access the '@id' and internal and external specifiers.
+   * @param {Object[]} remainingInternals - All internal specifiers that have not yet been
+   *    selected.
+   * @param {Object[]} selected - Internal specifiers that have been selected. This should
+   *    initially be [], and will be filled in when this method calls itself recursively.
+   * @return {Object[]} The class expressions as JSON-LD objects.
    */
   createClassExpressionsForInternals(jsonld, remainingInternals, selected) {
     // process.stderr.write(`@id [${jsonld['@id']}] Remaining internals:
@@ -705,14 +599,13 @@ class PhylorefWrapper {
     return classExprs;
   }
 
-  /*
-   * Phyloref.asJSONLD(fallbackIRI)
+  /**
+   * Export this phyloreference as JSON-LD, including the OWL class expression
+   * that defines it.
    *
-   * Export this phylogeny as JSON-LD.
-   *
-   * Arguments:
-   *  - fallbackIRI: The base IRI to use for this phyloref if it does not have
+   * @param {string} fallbackIRI - The base IRI to use for this phyloref if it does not have
    *    an '@id'.
+   * @return {Object} This phyloreference as a JSON-LD object.
    */
   asJSONLD(fallbackIRI) {
     // Keep all currently extant data.

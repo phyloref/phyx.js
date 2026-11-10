@@ -56,29 +56,34 @@ class TaxonNameWrapper {
   }
 
   /**
-   * The IRI for an unknown nomenclatural code (i.e. all we know is that it's a scientific name).
+   * The value used for an unknown nomenclatural code (i.e. all we know is that it's a scientific
+   * name). There is no IRI for that, so this is `undefined`.
    */
   static get UNKNOWN_CODE() {
     return owlterms.UNKNOWN_CODE;
   }
 
-  /* Directly access IRIs for nomenclatural codes. */
+  /** The IRI for the International Code of Zoological Nomenclature (animals). */
   static get ICZN_CODE() {
     return owlterms.ICZN_CODE;
   }
 
+  /** The IRI for the International Code of Nomenclature for algae, fungi, and plants. */
   static get ICN_CODE() {
     return owlterms.ICN_CODE;
   }
 
+  /** The IRI for the International Code of Nomenclature of Prokaryotes. */
   static get ICNP_CODE() {
     return owlterms.ICNP_CODE;
   }
 
+  /** The IRI for the International Committee on Taxonomy of Viruses' code. */
   static get ICTV_CODE() {
     return owlterms.ICTV_CODE;
   }
 
+  /** The IRI for the International Code of Nomenclature for Cultivated Plants. */
   static get ICNCP_CODE() {
     return owlterms.ICNCP_CODE;
   }
@@ -196,7 +201,7 @@ class TaxonNameWrapper {
 
   /**
    * Set the nomenclatural code of this taxon name.
-   * @ignore
+   * @private
    */
   set nomenclaturalCode(nomenCode) {
     this.txname.nomenclaturalCode = nomenCode;
@@ -293,7 +298,7 @@ class TaxonNameWrapper {
 
   /**
    * Set the label of this scientific name.
-   * @ignore
+   * @private
    */
   set label(lab) {
     this.txname.label = lab;
@@ -325,7 +330,7 @@ class TaxonNameWrapper {
 
   /**
    * Set the complete name. To do this, we re-parse the provided name.
-   * @ignore
+   * @private
    */
   set nameComplete(name) {
     this.txname = TaxonNameWrapper.fromVerbatimName(
@@ -353,7 +358,7 @@ class TaxonNameWrapper {
 
   /**
    * Set the uninomial name.
-   * @ignore
+   * @private
    */
   set uninomial(uninom) {
     this.txname.uninomial = uninom;
@@ -371,7 +376,7 @@ class TaxonNameWrapper {
 
   /**
    * Set the binomial name.
-   * @ignore
+   * @private
    */
   set binomialName(binom) {
     this.txname.uninomial = undefined;
@@ -391,7 +396,7 @@ class TaxonNameWrapper {
 
   /**
    * Set the trinomial name.
-   * @ignore
+   * @private
    */
   set trinomialName(trinom) {
     this.txname.uninomial = undefined;
@@ -418,7 +423,7 @@ class TaxonNameWrapper {
 
   /**
    * Set the genus part of this name.
-   * @ignore
+   * @private
    */
   set genusPart(genus) {
     this.txname.genusPart = genus;
@@ -451,7 +456,7 @@ class TaxonNameWrapper {
 
   /**
    * Set the specificEpithet part of this name.
-   * @ignore
+   * @private
    */
   set specificEpithet(epithet) {
     this.txname.specificEpithet = epithet;
@@ -486,7 +491,7 @@ class TaxonNameWrapper {
 
   /**
    * Set the infraspecificEpithet part of this name.
-   * @ignore
+   * @private
    */
   set infraspecificEpithet(epithet) {
     this.txname.infraspecificEpithet = epithet;

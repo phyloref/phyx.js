@@ -5,21 +5,37 @@ on:
     types: [published]
   workflow_dispatch:
 
+# Pages is configured with "GitHub Actions" as its source, so the site is served from the
+# artifact this workflow uploads. Pushing to a `gh-pages` branch would deploy nothing.
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a release finish deploying before a manual run starts, rather than cancelling it.
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   publish-docs:
     runs-on: ubuntu-latest
 
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
+      # fetch-depth: 0 because jsdoc.config.js derives the footer's version from `git describe`,
+      # and the default shallow clone carries no tags for it to describe against.
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: ${{ github.ref }}
+          fetch-depth: 0
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: '22.x'
 
@@ -29,12 +45,47 @@ jobs:
       - name: Generate documentation
         run: npm run docs
 
-      # Pinned to a commit rather than a tag: this step holds `contents: write`,
-      # and a tag can be moved to point at anything.
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@1ef5a1b1df4c63fe21a2242edbee6cac921ece01 # v4.1.0
+      # Nothing downstream objects to a bad site: upload-pages-artifact uploads whatever is in
+      # site/, and deploy-pages publishes it over the working site. These two checks are all that
+      # stands between a silently empty build and a 404 in production.
+      #
+      # `test -s FILE` succeeds when FILE exists and has a size greater than zero, and fails
+      # otherwise. GitHub runs `run:` blocks under `bash -e`, so the first failing test exits the
+      # step non-zero and the deploy never happens. Non-empty rather than merely present (`-f`)
+      # because a truncated file is the shape a half-finished build leaves behind.
+      #
+      # These two checks overlap test/docs.mjs, which asserts the same things and a good deal more
+      # against a built site. The duplication is deliberate: this is the last gate before deploying
+      # over a working site, and it must not depend on the test suite having been run, or on the
+      # test files being present in whatever tree this checks out. Running `npx mocha test/docs.mjs`
+      # here instead would be strictly stronger and is worth considering -- but it is a change to
+      # the publish path, so it wants its own pull request rather than riding along with one.
+      #
+      # If you change what counts as a generated site, change it in both places.
+      - name: Check the site was generated
+        run: |
+          # jsdoc exits 0 when `source` matches nothing: it prints "There are no input files to
+          # process" and leaves site/ exactly as it found it, which in a fresh checkout is nothing.
+          test -s site/index.html
+
+          # The path comes from PHYX_CONTEXT_JSON so this keeps checking the IRI that is actually
+          # live after a version bump, rather than an older context directory that is still in the
+          # repo and would keep passing.
+          #
+          # Assign on its own line. Inside `test -s "site/$(...)"` a crashing node would substitute
+          # the empty string, leaving `test -s site/` -- which *passes*, because -s is true of any
+          # non-empty directory. Assigning first lets `bash -e` fail the step on node's exit status.
+          context_path=$(node -p 'require("./src/utils/owlterms.js").PHYX_CONTEXT_JSON.split("/phyx.js/")[1]')
+          test -s "site/$context_path"
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          publish_branch: gh-pages
-          force_orphan: true
+          path: ./site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

@@ -13,14 +13,12 @@ const owlterms = require('../src/utils/owlterms');
 const expect = chai.expect;
 
 /*
- * Phyloref tests cover three aspects of phyloreferences:
+ * Phyloref tests cover two aspects of phyloreferences:
  *  - Whether we can create a phyloref with a particular set of specifiers,
  *    and whether we can correctly change the type of a specifer (from 'External'
  *    to 'Internal'), delete specifiers, and retrieve specifier labels.
  *  - Whether we can determine to which node a phyloref is expected to resolve to
  *    by using additionalNodeProperties.
- *  - Whether we can update the phyloref's status several times and retrieve the
- *    full history of its status changes.
  */
 
 describe('PhylorefWrapper', function () {
@@ -198,52 +196,68 @@ describe('PhylorefWrapper', function () {
         expect(phyloref1.getExpectedNodeLabels(phylogeny1))
           .to.deep.equal(['Test']);
       });
+
+      it('should not match a phyloreference whose name is only part of a single expected name', function () {
+        // expectedPhyloreferenceNamed is a single string here, not a list: that
+        // is the form in which includes() would test for a substring.
+        const phylogeny = {
+          newick: '((A, B)C, D)E',
+          additionalNodeProperties: {
+            C: { expectedPhyloreferenceNamed: 'phyloref10' },
+          },
+        };
+
+        expect(new phyx.PhylorefWrapper({ label: 'phyloref1' }).getExpectedNodeLabels(phylogeny))
+          .to.be.empty;
+        expect(new phyx.PhylorefWrapper({ label: 'phyloref10' }).getExpectedNodeLabels(phylogeny))
+          .to.deep.equal(['C']);
+      });
+
+      // Unlike the test above, this one doesn't guard against substring
+      // matches: includes() on a list already compares whole names.
+      it('should accept a list of expected phyloreference names', function () {
+        const phylogeny = {
+          newick: '((A, B)C, D)E',
+          additionalNodeProperties: {
+            C: { expectedPhyloreferenceNamed: ['phyloref1', 'phyloref2'] },
+            E: { expectedPhyloreferenceNamed: ['phyloref10'] },
+          },
+        };
+
+        expect(new phyx.PhylorefWrapper({ label: 'phyloref2' }).getExpectedNodeLabels(phylogeny))
+          .to.deep.equal(['C']);
+        expect(new phyx.PhylorefWrapper({ label: 'phyloref1' }).getExpectedNodeLabels(phylogeny))
+          .to.deep.equal(['C']);
+      });
+
+      it('should not match any node for a phyloreference without a label', function () {
+        const phylogeny = {
+          newick: '((A, B)C, D)E',
+          additionalNodeProperties: {
+            C: { expectedPhyloreferenceNamed: undefined },
+            E: { expectedPhyloreferenceNamed: [null] },
+          },
+        };
+
+        expect(new phyx.PhylorefWrapper({}).getExpectedNodeLabels(phylogeny)).to.be.empty;
+      });
     });
   });
 
-  describe('given an empty phyloreference', function () {
-    const wrapper = new phyx.PhylorefWrapper({});
-
-    describe('#getCurrentStatus', function () {
-      it('should return "pso:draft" as the default initial status', function () {
-        // Initially, an empty phyloref should report a status of 'pso:draft'.
-        expect(wrapper.getCurrentStatus().statusCURIE).to.equal('pso:draft');
-      });
-    });
-
-    describe('#setStatus', function () {
-      it('should throw an error if given a mistyped status', function () {
-        expect(function () { wrapper.setStatus('pso:retracted-from_publication'); })
-          .to.throw(
-            TypeError,
-            'setStatus() called with invalid status CURIE \'pso:retracted-from_publication\'',
-            'PhylorefWrapper throws TypeError on a mistyped status'
-          );
-      });
-    });
-
-    describe('#getStatusChanges', function () {
-      it('should return the empty list', function () {
-        expect(wrapper.getStatusChanges()).to.be.empty;
+  describe('given a phyloreference with no specifier lists', function () {
+    describe('#setSpecifierType', function () {
+      // Check the phyloref object itself rather than the wrapper's getters,
+      // which would create the missing list we're checking for.
+      it('should be able to make a specifier external', function () {
+        const phyloref = {};
+        new phyx.PhylorefWrapper(phyloref).setSpecifierType(specifier1, 'External');
+        expect(phyloref).to.deep.equal({ externalSpecifiers: [specifier1] });
       });
 
-      describe('when modified by using .setStatus', function () {
-        it('should return the updated list', function () {
-          wrapper.setStatus('pso:final-draft');
-          wrapper.setStatus('pso:under-review');
-          wrapper.setStatus('pso:submitted');
-          wrapper.setStatus('pso:published');
-          wrapper.setStatus('pso:retracted-from-publication');
-
-          // And see if we get the statuses back in the correct order.
-          const statusChanges = wrapper.getStatusChanges();
-          expect(statusChanges.length, 'number of status changes should be 5').to.equal(5);
-          expect(statusChanges[0].statusCURIE, 'first status change should be "pso:final-draft"').to.equal('pso:final-draft');
-          expect(statusChanges[1].statusCURIE, 'second status change should be "pso:under-review"').to.equal('pso:under-review');
-          expect(statusChanges[2].statusCURIE, 'third status change should be a "pso:submitted"').to.equal('pso:submitted');
-          expect(statusChanges[3].statusCURIE, 'fourth status change should be a "pso:published"').to.equal('pso:published');
-          expect(statusChanges[4].statusCURIE, 'fifth status change should be a "pso:retracted-from-publication"').to.equal('pso:retracted-from-publication');
-        });
+      it('should be able to make a specifier internal', function () {
+        const phyloref = {};
+        new phyx.PhylorefWrapper(phyloref).setSpecifierType(specifier1, 'Internal');
+        expect(phyloref).to.deep.equal({ internalSpecifiers: [specifier1] });
       });
     });
   });
