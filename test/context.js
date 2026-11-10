@@ -52,11 +52,20 @@ function processContext(context, processingMode = 'json-ld-1.1') {
   );
 }
 
+/** Matches the name of a context directory: `development`, or a semantic version such as `v1.1.0`. */
+const VERSION_DIRECTORY = /^(development|v\d+\.\d+\.\d+)$/;
+
+/** Read and parse a version's phyx.json. */
+function loadContextFile(contextFile) {
+  return JSON.parse(fs.readFileSync(contextFile, 'utf8'));
+}
+
 describe('Phyx JSON-LD contexts and JSON Schemas', function () {
   const versions = fs
     .readdirSync(CONTEXT_DIR, { withFileTypes: true })
     .filter(entry => entry.isDirectory())
     .map(entry => entry.name)
+    .filter(name => VERSION_DIRECTORY.test(name))
     .sort();
 
   it('should find the context versions we expect', function () {
@@ -80,13 +89,13 @@ describe('Phyx JSON-LD contexts and JSON Schemas', function () {
 
       it('should have a phyx.json with an @context', function () {
         expect(fs.existsSync(contextFile), `${contextFile} is missing`).to.be.true;
-        expect(JSON.parse(fs.readFileSync(contextFile, 'utf8'))).to.have.property('@context');
+        expect(loadContextFile(contextFile)).to.have.property('@context');
       });
 
       if (KNOWN_INVALID_CONTEXTS.includes(version)) {
         ['json-ld-1.0', 'json-ld-1.1'].forEach(function (processingMode) {
           it(`should still fail to process as a JSON-LD context in ${processingMode} mode (see KNOWN_INVALID_CONTEXTS)`, async function () {
-            const { '@context': context } = JSON.parse(fs.readFileSync(contextFile, 'utf8'));
+            const { '@context': context } = loadContextFile(contextFile);
             let error;
             try {
               await processContext(context, processingMode);
@@ -101,7 +110,7 @@ describe('Phyx JSON-LD contexts and JSON Schemas', function () {
         });
       } else {
         it('should process as a JSON-LD context', async function () {
-          const { '@context': context } = JSON.parse(fs.readFileSync(contextFile, 'utf8'));
+          const { '@context': context } = loadContextFile(contextFile);
           await processContext(context);
         });
       }

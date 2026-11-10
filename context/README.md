@@ -17,11 +17,11 @@ deleted so that Phyx files that refer to them can continue to be used.
 
 `test/context.js` checks that every version here, published or not, is a valid
 JSON-LD context and (from v1.0.0) a valid JSON Schema, so a new version is
-tested as soon as its directory exists. Every version from v1.0.0 must include
-a `schema.json`. The v0.1.0 and v0.2.0 contexts are the
-exception: the `jsonld` library rejects the `_comments` entries they use, so
-phyx.js cannot convert Phyx files that refer to them. They are left unchanged,
-and the test checks that they still fail.
+tested as soon as its directory (named like `v1.2.0`) exists. Every version
+from v1.0.0 must include a `schema.json`. The v0.1.0 and v0.2.0 contexts are
+the exception: the `jsonld` library rejects the `_comments` entries they use,
+so phyx.js cannot convert Phyx files that refer to them. They are left
+unchanged, and the test checks that they still fail.
 
 | Version     | Date published      | JSON-LD context          | JSON Schema          |
 |-------------|---------------------|--------------------------|----------------------|
