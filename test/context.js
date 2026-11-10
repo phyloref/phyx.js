@@ -11,9 +11,9 @@ const fs = require('fs');
 const path = require('path');
 
 const chai = require('chai');
-const Ajv = require('ajv');
-const addFormats = require('ajv-formats');
 const jsonld = require('jsonld');
+
+const { makeAjv } = require('./helpers/ajv');
 
 const expect = chai.expect;
 
@@ -110,10 +110,12 @@ describe('Phyx JSON-LD contexts and JSON Schemas', function () {
         it('should have a schema.json that is a valid JSON Schema', function () {
           expect(fs.existsSync(schemaFile), `${schemaFile} is missing`).to.be.true;
 
-          // The same options test/examples.js validates our examples with. Its strictTypes
-          // warnings are already logged there, so they are not repeated here.
-          const ajv = new Ajv({ allErrors: true, logger: false });
-          addFormats(ajv);
+          // Ajv's strict-mode warnings (strictTypes, at the time of writing) are silenced here.
+          // The development schema's are logged by test/examples.js, which compiles it with the
+          // same options. A published schema can't be changed, so warning about it every run
+          // achieves nothing -- and a new version is a copy of the development schema, whose
+          // warnings were already logged while it was being written.
+          const ajv = makeAjv({ logger: false });
 
           const schema = JSON.parse(fs.readFileSync(schemaFile, 'utf8'));
           expect(ajv.validateSchema(schema), ajv.errorsText(ajv.errors)).to.be.true;
