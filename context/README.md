@@ -12,8 +12,10 @@ repository.
 Instead, users should use the most recent published version number, which are
 stored in separate subdirectories named after a version number using
 [semantic versioning]. These can be published by copying the development version
-into a new directory. Note that previously published versions should not be
-deleted so that Phyx files that refer to them can continue to be used.
+into a new directory, and adding the new version to the list in the "should find
+the context versions we expect" test in `test/context.js`, so that the tests
+fail if it is ever deleted. Note that previously published versions should not
+be deleted so that Phyx files that refer to them can continue to be used.
 
 `test/context.js` checks that every version here, published or not, is a valid
 JSON-LD context and (from v1.0.0) a valid JSON Schema, so a new version is
