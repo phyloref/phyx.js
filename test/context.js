@@ -30,6 +30,12 @@ const CONTEXT_DIR = path.resolve(__dirname, '../context');
  */
 const KNOWN_INVALID_CONTEXTS = ['v0.1.0', 'v0.2.0'];
 
+/*
+ * Published versions that predate the JSON Schema. Every other version must have a schema.json,
+ * so a published schema that is deleted or renamed fails the test rather than going untested.
+ */
+const VERSIONS_WITHOUT_SCHEMA = ['v0.1.0', 'v0.2.0'];
+
 /** Refuse to fetch anything: a context that imports a remote one should not make this test depend on the network. */
 async function offlineDocumentLoader(url) {
   throw new Error(`test/context.js tried to fetch ${url}`);
@@ -87,9 +93,10 @@ describe('Phyx JSON-LD contexts and JSON Schemas', function () {
         });
       }
 
-      // Only v1.0.0 onwards publish a schema.
-      if (fs.existsSync(schemaFile)) {
+      if (!VERSIONS_WITHOUT_SCHEMA.includes(version)) {
         it('should have a schema.json that is a valid JSON Schema', function () {
+          expect(fs.existsSync(schemaFile), `${schemaFile} is missing`).to.be.true;
+
           // The same options test/examples.js validates our examples with. Its strictTypes
           // warnings are already logged there, so they are not repeated here.
           const ajv = new Ajv({ allErrors: true, logger: false });
