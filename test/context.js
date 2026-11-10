@@ -21,7 +21,7 @@ const CONTEXT_DIR = path.resolve(__dirname, '../context');
 
 /*
  * Published contexts that the jsonld library cannot process, in either JSON-LD 1.0 or 1.1
- * processing mode: they annotate their groups of terms with `_comments` entries whose own value
+ * processing mode (both are tested): they annotate their groups of terms with `_comments` entries whose own value
  * contains a `_comments` key, which is not a valid term definition. A published version must never
  * change, so they stay as they are and are tested to *keep* failing instead -- if one of these
  * starts passing, remove it from this list.
@@ -45,10 +45,10 @@ async function offlineDocumentLoader(url) {
  * Process a context by expanding a document that uses it. Expansion creates a term definition for
  * every term in the context, so any invalid term is reported, not just the ones the document uses.
  */
-function processContext(context) {
+function processContext(context, processingMode = 'json-ld-1.1') {
   return jsonld.expand(
     { '@context': context, '@id': 'http://example.org/test' },
-    { documentLoader: offlineDocumentLoader },
+    { documentLoader: offlineDocumentLoader, processingMode },
   );
 }
 
@@ -84,16 +84,20 @@ describe('Phyx JSON-LD contexts and JSON Schemas', function () {
       });
 
       if (KNOWN_INVALID_CONTEXTS.includes(version)) {
-        it('should still fail to process as a JSON-LD context (see KNOWN_INVALID_CONTEXTS)', async function () {
-          const { '@context': context } = JSON.parse(fs.readFileSync(contextFile, 'utf8'));
-          let error;
-          try {
-            await processContext(context);
-          } catch (err) {
-            error = err;
-          }
-          expect(error, `${version} now processes; remove it from KNOWN_INVALID_CONTEXTS`).to.exist;
-          expect(error.message).to.include('_comments');
+        ['json-ld-1.0', 'json-ld-1.1'].forEach(function (processingMode) {
+          it(`should still fail to process as a JSON-LD context in ${processingMode} mode (see KNOWN_INVALID_CONTEXTS)`, async function () {
+            const { '@context': context } = JSON.parse(fs.readFileSync(contextFile, 'utf8'));
+            let error;
+            try {
+              await processContext(context, processingMode);
+            } catch (err) {
+              error = err;
+            }
+            expect(error, `${version} now processes; remove it from KNOWN_INVALID_CONTEXTS`).to.exist;
+            // Pin the documented cause, so a different failure doesn't keep this test passing.
+            expect(error.details?.code, error.message).to.equal('invalid term definition');
+            expect(error.message).to.include('_comments');
+          });
         });
       } else {
         it('should process as a JSON-LD context', async function () {
