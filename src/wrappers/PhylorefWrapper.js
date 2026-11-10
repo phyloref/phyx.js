@@ -133,26 +133,33 @@ class PhylorefWrapper {
    * @param {string} specifierType - 'Internal' or 'External'; anything else is ignored.
    */
   setSpecifierType(specifier, specifierType) {
+    // We read the list we might remove the specifier from directly, rather than
+    // through its getter, so that we don't add an empty list to the phyloref
+    // that it didn't have. Only the list we add the specifier to is created.
     let index;
     if (specifierType === 'Internal') {
       // To set a specifier to 'Internal', we might need to delete it from the
       // list of external specifiers first.
-      index = this.externalSpecifiers.indexOf(specifier);
-      if (index !== -1) this.externalSpecifiers.splice(index, 1);
+      if (has(this.phyloref, 'externalSpecifiers')) {
+        index = this.phyloref.externalSpecifiers.indexOf(specifier);
+        if (index !== -1) this.phyloref.externalSpecifiers.splice(index, 1);
+      }
 
       // Don't add it to the list of internal specifiers if it's already there.
       if (!this.internalSpecifiers.includes(specifier)) {
-        this.phyloref.internalSpecifiers.unshift(specifier);
+        this.internalSpecifiers.unshift(specifier);
       }
     } else if (specifierType === 'External') {
       // To set a specifier to 'External', we might need to delete it from the
       // list of internal specifiers first.
-      index = this.phyloref.internalSpecifiers.indexOf(specifier);
-      if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+      if (has(this.phyloref, 'internalSpecifiers')) {
+        index = this.phyloref.internalSpecifiers.indexOf(specifier);
+        if (index !== -1) this.phyloref.internalSpecifiers.splice(index, 1);
+      }
 
-      // Don't add it to the list of internal specifiers if it's already there.
-      if (!this.phyloref.externalSpecifiers.includes(specifier)) {
-        this.phyloref.externalSpecifiers.unshift(specifier);
+      // Don't add it to the list of external specifiers if it's already there.
+      if (!this.externalSpecifiers.includes(specifier)) {
+        this.externalSpecifiers.unshift(specifier);
       }
     } else {
       // Neither internal nor external? Ignore.
@@ -202,6 +209,10 @@ class PhylorefWrapper {
     const phylorefLabel = this.label;
     const nodeLabels = new Set();
 
+    // A phyloreference without a label can't be named by a node, and must not
+    // match one whose expectedPhyloreferenceNamed is also missing.
+    if (phylorefLabel === undefined || phylorefLabel === null) return [];
+
     new PhylogenyWrapper(phylogeny, this.defaultNomenCode)
       .getNodeLabels()
       .forEach(nodeLabel => {
@@ -219,9 +230,13 @@ class PhylorefWrapper {
           // Does this node label have an expectedPhyloreferenceNamed that
           // includes this phyloreference name?
 
-          const expectedPhylorefs =
+          // It may be a single name or a list of names. Calling includes() on
+          // a single name would test for a substring, so 'phyloref1' would
+          // match a node expecting 'phyloref10'.
+          const expectedPhylorefs = [].concat(
             phylogeny.additionalNodeProperties[nodeLabel]
-              .expectedPhyloreferenceNamed;
+              .expectedPhyloreferenceNamed,
+          );
 
           if (expectedPhylorefs.includes(phylorefLabel)) {
             nodeLabels.add(nodeLabel);
