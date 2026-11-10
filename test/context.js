@@ -60,8 +60,17 @@ describe('Phyx JSON-LD contexts and JSON Schemas', function () {
     .sort();
 
   it('should find the context versions we expect', function () {
-    // A guard against the directory listing quietly matching nothing and this suite passing vacuously.
-    expect(versions).to.include.members(['development', 'v1.0.0', 'v1.1.0']);
+    // A guard against the directory listing quietly matching nothing and this suite passing
+    // vacuously, and against a published version being deleted: the version-specific tests below
+    // only run for directories that exist. Add each newly published version here.
+    const expected = new Set([
+      ...KNOWN_INVALID_CONTEXTS,
+      ...VERSIONS_WITHOUT_SCHEMA,
+      'development',
+      'v1.0.0',
+      'v1.1.0',
+    ]);
+    expect(versions).to.include.members([...expected]);
   });
 
   versions.forEach(function (version) {
