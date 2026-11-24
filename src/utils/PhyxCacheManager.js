@@ -7,6 +7,7 @@ const { has } = require('lodash');
  *
  * We might want to replace this with a cache that limits the amount of memory,
  * such as https://www.npmjs.com/package/safe-memory-cache.
+ * @category Utilities
  */
 
 class CacheManager {

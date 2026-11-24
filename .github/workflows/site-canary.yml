@@ -1,0 +1,96 @@
+name: Check the published documentation site
+
+# The published site is not just documentation. test/examples/correct/normalization/
+# brochu_2003_normalization.json and test/examples/incorrect/otl-resolution-errors.json reference
+# their @context by its published URL rather than a relative path, so while the site is down
+# `npm test` fails on every Node version, in every branch, for reasons that look nothing like a
+# broken deploy. That has happened before.
+#
+# Nothing in CI can catch it: the docs only publish on a release or a manual run, so the deploy
+# that breaks the site happens long after the pull request that caused it went green. This runs
+# against the live site on a schedule instead, and just fails -- GitHub emails the failure to
+# whoever last touched the cron below, every day the site stays down, which is the whole point.
+#
+# Note that GitHub disables scheduled workflows in a repository with no activity for 60 days. If
+# this stops running, that is the first thing to check.
+
+on:
+  schedule:
+    # Daily rather than hourly on purpose: a day's outage is acceptable, and releases run this by
+    # hand -- see docs/Documentation.md.
+    #
+    # 03:17 UTC is 11:17pm EDT / 10:17pm EST, when a failure email is most likely to be seen.
+    # Cron here is always UTC, so the local time shifts by an hour with daylight saving.
+    #
+    # Why 17 past rather than on the hour: GitHub documents that scheduled runs are delayed when
+    # Actions is under high load, that the start of every hour is such a time, and that under
+    # enough load queued scheduled runs are dropped outright. A dropped run is a missed email, and
+    # this workflow exists only to send that email. :17 also avoids the round :15/:30/:45 minutes
+    # that other schedules tend to pick. Don't round it to 03:00.
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-published-site:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      # The context IRI comes from owlterms.js rather than being written out here, so that
+      # publishing a new context version moves this check with it instead of leaving it
+      # watching an older directory that would keep passing.
+      - name: Work out what to check
+        id: urls
+        run: |
+          context_url=$(node -p 'require("./src/utils/owlterms.js").PHYX_CONTEXT_JSON')
+          echo "context=$context_url" >> "$GITHUB_OUTPUT"
+          # The file postdocs publishes at that URL: its path, minus the site's base path.
+          # test/docs.mjs runs this expression against the build, so keep it on one line.
+          context_file=$(node -p 'new URL(require("./src/utils/owlterms.js").PHYX_CONTEXT_JSON).pathname.split("/").slice(2).join("/")')
+          echo "context_file=$context_file" >> "$GITHUB_OUTPUT"
+          echo "home=$(node -p 'require("./package.json").homepage')" >> "$GITHUB_OUTPUT"
+
+      # --fail turns an HTTP error into a non-zero exit; without it curl happily prints a 404
+      # page and succeeds. --location because the phyloref.org URLs redirect to GitHub Pages.
+      - name: Check the documentation site is being served
+        run: |
+          curl --fail --silent --show-error --location \
+            --retry 3 --retry-delay 10 --retry-all-errors \
+            "${{ steps.urls.outputs.home }}" -o home.html
+          test -s home.html
+
+          # Check for something only *our* build emits, not merely for the project name. If the
+          # Pages source is switched back to a branch, GitHub Jekyll-builds master:/ and serves
+          # README.md through jekyll-readme-index -- a 200, with "phyx.js" all over it, and none
+          # of our documentation. That is not hypothetical: it is what the site was serving on
+          # 2026-09-16, and an earlier version of this check passed against it.
+          #
+          # The footer comes from jsdoc.config.js and carries the version being documented.
+          grep -qE 'phyx\.js v[0-9]' home.html
+
+      # The footer alone would survive a build that emitted the home page and nothing else, so
+      # check a generated class page too. This is also the check that would have caught the
+      # site 404ing after the esdoc output was removed.
+      - name: Check a generated API page is present
+        run: |
+          curl --fail --silent --show-error --location \
+            --retry 3 --retry-delay 10 --retry-all-errors \
+            "${{ steps.urls.outputs.home }}phyxwrapper/" -o phyxwrapper.html
+          grep -q 'PhyxWrapper' phyxwrapper.html
+
+      # Compared byte for byte with the repository's copy rather than parsed: a published context
+      # version never changes, so anything else -- truncated, an HTML error page, the wrong
+      # version, a stale copy -- is wrong, and whether the repository's copy is valid is the test
+      # suite's job. This fails if someone edits a published version on master, which should not
+      # happen either.
+      - name: Check the published JSON-LD context matches the repository's copy
+        run: |
+          curl --fail --silent --show-error --location \
+            --retry 3 --retry-delay 10 --retry-all-errors \
+            "${{ steps.urls.outputs.context }}" -o phyx.json
+          cmp phyx.json "${{ steps.urls.outputs.context_file }}"

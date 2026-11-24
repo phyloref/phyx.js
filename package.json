@@ -24,7 +24,9 @@
     "resolve": "bin/resolve.mjs"
   },
   "scripts": {
-    "docs": "esdoc",
+    "predocs": "node tutorials/build.mjs",
+    "docs": "jsdoc --configure jsdoc.config.js",
+    "postdocs": "node -e \"require('node:fs').cpSync('context','site/context',{recursive:true})\"",
     "generate-every-topology": "every-topology-testing/generate-topologies.js",
     "lint": "biome check",
     "phyx2owl": "node bin/phyx2owl.mjs",
@@ -35,46 +37,18 @@
   "dependencies": {
     "jsonld": "^9.0.0",
     "lodash": "^4.17.23",
-    "moment": "^2.30.1",
-    "newick-js": "^1.2.1",
+    "newick-js": "^1.2.4",
     "retus": "^1.1.2",
-    "yargs": "^18.0.0"
+    "yargs": "^18.2.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.4",
-    "ajv": "^8.18.0",
+    "@biomejs/biome": "2.5.15",
+    "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
-    "chai": "^6.2.2",
-    "esdoc": "^1.1.0",
-    "esdoc-node": "^1.0.5",
-    "esdoc-standard-plugin": "^1.0.0",
-    "mocha": "^11.7.5",
+    "chai": "^6.3.0",
+    "clean-jsdoc-theme": "^5.2.0",
+    "jsdoc": "^4.0.5",
+    "mocha": "^12.0.3",
     "nodejs-file-downloader": "^4.13.0"
-  },
-  "esdoc": {
-    "source": "./src",
-    "destination": "./docs",
-    "plugins": [
-      {
-        "name": "esdoc-standard-plugin",
-        "option": {
-          "manual": {
-            "files": [
-              "./CHANGELOG.md",
-              "./tutorials/Introduction.md"
-            ]
-          },
-          "test": {
-            "source": "./test/",
-            "includes": [
-              "\\.js$"
-            ]
-          }
-        }
-      },
-      {
-        "name": "esdoc-node"
-      }
-    ]
   }
 }

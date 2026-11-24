@@ -1,5 +1,5 @@
 {
-  "@context": "../../../docs/context/development/phyx.json",
+  "@context": "../../../context/development/phyx.json",
   "phylogenies": [
     {
       "@id": "#phylogeny0",
