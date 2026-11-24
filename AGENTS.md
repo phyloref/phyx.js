@@ -71,6 +71,9 @@ PHYX JSON file
 
 - Test files in `test/` mirror source modules (`phylorefs.js`, `phylogenies.js`, etc.)
 - `test/examples/correct/` contains fixture PHYX files with expected outputs used by `test/examples.js`
+- `test/context.js` validates every JSON-LD context and JSON Schema in `context/`, published versions included. The
+  v0.1.0 and v0.2.0 contexts can't be processed by the `jsonld` library, and since published versions never change,
+  the test asserts they *keep* failing rather than skipping them.
 - `test/jphyloref.js` downloads the JPhyloRef JAR and runs it with `java`; without a working
   Java, every JPhyloRef test fails rather than being skipped. `.java-version` sets the version
   for both jenv and CI (`actions/setup-java` reads it), so change it there.

@@ -50,7 +50,7 @@ class TaxonomicUnitWrapper {
   }
 
   /** Wrap a taxonomic unit. */
-  constructor(tunit, defaultNomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
+  constructor(tunit, defaultNomenCode = owlterms.UNKNOWN_CODE) {
     this.tunit = tunit;
     this.defaultNomenCode = defaultNomenCode;
   }
@@ -153,7 +153,7 @@ class TaxonomicUnitWrapper {
    *
    * @return A taxonomic unit that this label could be parsed as.
    */
-  static fromLabel(nodeLabel, nomenCode = owlterms.NAME_IN_UNKNOWN_CODE) {
+  static fromLabel(nodeLabel, nomenCode = owlterms.UNKNOWN_CODE) {
     if (
       nodeLabel === undefined ||
       nodeLabel === null ||

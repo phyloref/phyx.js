@@ -7,6 +7,7 @@ const newickJs = require('newick-js');
 const owlterms = require('../utils/owlterms');
 
 const { TaxonomicUnitWrapper } = require('./TaxonomicUnitWrapper');
+const { TaxonConceptWrapper } = require('./TaxonConceptWrapper');
 const { TaxonomicUnitMatcher } = require('../matchers/TaxonomicUnitMatcher');
 const { CitationWrapper } = require('./CitationWrapper');
 
@@ -249,8 +250,9 @@ class PhylogenyWrapper {
    *
    * If the additionalNodeProperties for this node label includes taxonomic units
    * (using `representsTaxonomicUnits` = obo:CDAO_0000187), then those taxonomic
-   * units are used. Otherwise, one will be constructed using the default
-   * nomenclatural code set up when this PhylogenyWrapper was set up.
+   * units are used, with the default nomenclatural code set up when this
+   * PhylogenyWrapper was set up filled in on any taxon concept that doesn't set
+   * one. Otherwise, one will be constructed from the label using that default.
    *
    * @param {string} nodeLabel - The node label to look up.
    * @return {Object[]} The taxonomic units for this node label, or an empty list if it
@@ -270,7 +272,30 @@ class PhylogenyWrapper {
     // If there are explicit taxonomic units in the
     // representsTaxonomicUnits property, we need to use those.
     if (has(additionalNodeProperties, 'representsTaxonomicUnits')) {
-      return additionalNodeProperties.representsTaxonomicUnits;
+      return additionalNodeProperties.representsTaxonomicUnits.map(tunit => {
+        // Fill in the default nomenclatural code here rather than in each
+        // caller, so that they all see the same code: getNodesAsJSONLD(), for
+        // one, both copies these into the node and types the node with them.
+        // Return a copy rather than changing the phylogeny.
+        if (this.defaultNomenCode === owlterms.UNKNOWN_CODE) return tunit;
+        if (!new TaxonomicUnitWrapper(tunit).taxonConcept) return tunit;
+        if (tunit.hasName?.nomenclaturalCode) return tunit;
+
+        // A taxon concept with only a nameString gets its name parsed with
+        // the default code, as TaxonConceptWrapper would.
+        const taxonName = new TaxonConceptWrapper(tunit, this.defaultNomenCode)
+          .taxonName;
+        if (!taxonName) return tunit;
+
+        return {
+          ...tunit,
+          hasName: {
+            ...taxonName,
+            nomenclaturalCode:
+              taxonName.nomenclaturalCode || this.defaultNomenCode,
+          },
+        };
+      });
     }
 
     // If that doesn't work, we can try to extract scientific names from
@@ -331,7 +356,14 @@ class PhylogenyWrapper {
    */
   static getParsedNewick(newick) {
     const { graph, root, rootWeight } = newickJs.parse(newick);
-    const [, arcs] = graph;
+    const [vertices, arcs] = graph;
+
+    // Phylotree.js uses 'name' instead of 'label'. Name every vertex here rather
+    // than in the loop below, which would miss the root of a single-node tree,
+    // since it has no arcs.
+    vertices.forEach(vertex => {
+      if (has(vertex, 'label')) vertex.name = vertex.label;
+    });
 
     // Go through the arcs, assigning 'children' to the appropriate parent node.
     arcs.forEach(arc => {
@@ -340,14 +372,6 @@ class PhylogenyWrapper {
       // Add child to parent.children.
       if (!has(parent, 'children')) parent.children = [];
       parent.children.push(child);
-
-      // Phylotree.js uses 'name' instead of 'label'.
-      if (has(parent, 'label')) {
-        parent.name = parent.label;
-      }
-      if (has(child, 'label')) {
-        child.name = child.label;
-      }
 
       // Phylotree.js uses 'attribute' to store weights, so we'll store it there as well.
       if (!has(child, 'attribute') && !Number.isNaN(weight))
@@ -460,17 +484,16 @@ class PhylogenyWrapper {
 
             // Add it into the @type so we can reason over it.
             nodeAsJSONLD.representsTaxonomicUnits.forEach(tu => {
-              const wrappedTUnit = new TaxonomicUnitWrapper(tu);
-
-              if (wrappedTUnit) {
-                const equivClass = wrappedTUnit.asOWLEquivClass;
-                if (equivClass) {
-                  nodeAsJSONLD[owlterms.RDF_TYPE].push({
-                    '@type': 'owl:Restriction',
-                    onProperty: owlterms.CDAO_REPRESENTS_TU,
-                    someValuesFrom: equivClass,
-                  });
-                }
+              const equivClass = new TaxonomicUnitWrapper(
+                tu,
+                this.defaultNomenCode,
+              ).asOWLEquivClass;
+              if (equivClass) {
+                nodeAsJSONLD[owlterms.RDF_TYPE].push({
+                  '@type': 'owl:Restriction',
+                  onProperty: owlterms.CDAO_REPRESENTS_TU,
+                  someValuesFrom: equivClass,
+                });
               }
             });
           }

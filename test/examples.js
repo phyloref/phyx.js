@@ -6,8 +6,7 @@ const fs = require('fs');
 const path = require('path');
 
 const chai = require('chai');
-const Ajv = require('ajv');
-const addFormats = require('ajv-formats');
+const { makeAjv } = require('./helpers/ajv');
 
 const phyx = require('../src');
 
@@ -26,10 +25,7 @@ const REPLACE_EXISTING = false;
  */
 
 describe('PhyxWrapper', function () {
-  const ajv = new Ajv({
-    allErrors: true, // Display all error messages, not just the first.
-  });
-  addFormats(ajv);
+  const ajv = makeAjv();
   const validator = ajv.compile(
     JSON.parse(
       fs.readFileSync(
