@@ -14,7 +14,7 @@ In the PR:
    won't show a missed bump.
 3. **Update the PHYX_CONTEXT_JSON in `src/utils/owlterms.js`** if a new version of the context has been
    produced in this release.
-4. **Check that the documentation still builds** — run `npm run docs`. Do not commit `site/`: it is generated output, and publishing the release triggers the workflow that regenerates and deploys it (see step 3 below).
+4. **Check that the documentation still builds** — run `npm run docs`. Do not commit `site/`: it is generated output, and publishing the release triggers the workflow that regenerates and deploys it (see step 4 below).
 
 Get the PR reviewed and approved, then merge it.
 
@@ -26,7 +26,23 @@ npm publish --access public
 
 Verify the new version appears at https://www.npmjs.com/package/@phyloref/phyx.
 
-## 3. Tag and release on GitHub
+## 3. Confirm that Zenodo's GitHub integration is on
+
+Zenodo archives a release only if its webhook is active when the release is published, and never catches
+up on one published without it. The hook can drop off without anyone noticing: it did on JPhyloRef, whose
+v1.2.0 never reached Zenodo and had to be followed by v1.2.1
+([phyloref/jphyloref#119](https://github.com/phyloref/jphyloref/pull/119)). So check it before tagging:
+
+```bash
+# must list https://zenodo.org/api/hooks/receivers/github/events/ as true
+gh api repos/phyloref/phyx.js/hooks --jq '.[] | "\(.active)\t\(.config.url | split("?")[0])"'
+```
+
+The `split` drops the access token that the hook's URL carries, so don't print the URL whole. If the hook
+is missing or inactive, switch phyloref/phyx.js on at <https://zenodo.org/account/settings/github/> and
+check again. If a release has already gone out without it, the fix is the next patch release.
+
+## 4. Tag and release on GitHub
 
 ```bash
 git tag vX.Y.Z
@@ -59,11 +75,11 @@ curl -sL https://www.phyloref.org/phyx.js/ | grep -oE 'phyx\.js v[^ <]+'
 
 See [docs/Documentation.md](docs/Documentation.md#publishing) if the docs don't refresh.
 
-## 4. Confirm the Zenodo deposit
+## 5. Confirm the Zenodo deposit
 
 The GitHub release triggers an automatic Zenodo deposit. Check that a new versioned DOI has been minted at https://zenodo.org (search for "phyx.js").
 
-## 5. Update `CITATION.cff`
+## 6. Update `CITATION.cff`
 
 Once the Zenodo DOI is available, update `CITATION.cff`:
 
