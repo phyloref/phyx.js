@@ -164,7 +164,9 @@ so a regression fails a test instead of waiting to be noticed on the published s
   resolves, and every class in `src/` has a page that the sidebar links to.
 
 The site checks need `site/` to exist. They skip when it doesn't, so a plain `npm test` stays fast;
-run `npm run docs` first to include them. In CI they fail rather than skip, so the build step in
+run `npm run docs` first to include them. When `site/` does exist they check it as it stands, so a
+build left over from before your change passes them: rebuild after touching a doc comment, or a
+duplicate id that CI will catch sails through locally. In CI they fail rather than skip, so the build step in
 `tests.yml` cannot go missing without the test run saying so — which is also why that step now runs
 *before* `npm test` rather than after it.
 
