@@ -111,6 +111,10 @@ class PhylorefWrapper {
    * The property is the standard OWL annotation, so it survives conversion to
    * an ontology, where tools such as JPhyloRef can read it.
    *
+   * Assigning `true` sets `owl:deprecated: true`. Assigning `false` removes the
+   * key rather than writing `false`, so that a phyloreference that was never
+   * deprecated and one that was un-deprecated look the same.
+   *
    * @return {boolean} True only if `owl:deprecated` is exactly `true`.
    */
   get deprecated() {
@@ -118,11 +122,11 @@ class PhylorefWrapper {
   }
 
   /**
-   * Mark this phyloreference as deprecated or not. Marking it not deprecated
-   * removes the `owl:deprecated` key rather than writing `false`, so that a
-   * phyloreference that was never deprecated and one that was un-deprecated
-   * look the same.
+   * Mark this phyloreference as deprecated or not; documented on the getter.
+   * `@private` keeps jsdoc from publishing the property a second time under the
+   * same HTML id (see docs/Documentation.md).
    *
+   * @private
    * @param {boolean} deprecated
    */
   set deprecated(deprecated) {
