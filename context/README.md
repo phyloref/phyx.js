@@ -27,10 +27,13 @@ unchanged, and the test checks that they still fail.
 
 Context versions are numbered separately from phyx.js releases, and the
 version links below go to the phyx.js release that first published each one:
-context v1.2.0, for example, was published in phyx.js v1.3.0. A version that
-changes only the JSON Schema leaves `PHYX_CONTEXT_JSON` in
-`src/utils/owlterms.js` pointing at the newest version whose JSON-LD context
-changed.
+context v1.2.0, for example, was published in phyx.js v1.3.0. Whenever
+`development/` has changed since the newest published version, publish a new
+version in the next phyx.js release and point `PHYX_CONTEXT_JSON` in
+`src/utils/owlterms.js` at it in the same release, even if only the JSON Schema
+changed: otherwise a Phyx file that uses the change validates against no
+published schema. `RELEASE.md` orders the release so the new version is live on
+the site before the npm package that names it is published.
 
 | Version     | Date published      | JSON-LD context          | JSON Schema          |
 |-------------|---------------------|--------------------------|----------------------|
