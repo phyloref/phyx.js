@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 ## [Unreleased]
 
-## [1.3.0] - 2026-11-24
+## [1.3.0] - 2026-11-25
 This release removes public `PhylorefWrapper` methods (PR #198) without a major version bump: no known consumer of phyx.js used them, and v2.0.0 is reserved for a major revision of the library.
 
 - PR #199: Added `PhylorefWrapper.deprecated`, a getter and setter backed by `owl:deprecated`, so a phyloreference its curators no longer stand behind can be marked as such and the annotation survives conversion to OWL. The JSON Schema now allows `owl:deprecated` on phylorefs.
@@ -16,6 +16,7 @@ This release removes public `PhylorefWrapper` methods (PR #198) without a major 
 - PR #192: Added tests that every JSON-LD context and JSON Schema in `context/`, including the published versions, is valid. The v0.1.0 and v0.2.0 contexts cannot be processed by the `jsonld` library, so phyx.js cannot convert Phyx files that use them.
 - PR #184: Fixed the documentation site, which had been unavailable since #166, and added a daily check that it is live. `phyx2owl` now reports conversions that fail, and exits with status 1, instead of counting them as converted.
 - PR #179: Stopped committing generated documentation. The JSON-LD contexts and JSON Schemas moved from `docs/context/` to `context/` at the repository root, changing their path within the published NPM package; they continue to be served from <https://www.phyloref.org/phyx.js/context/>.
+- PR #178: Published version 1.2.0 of the Phyx JSON-LD context and JSON Schema, whose schema allows `owl:deprecated` on phyloreferences (#199). Its JSON-LD context is unchanged from v1.1.0, so `PHYX_CONTEXT_JSON` still points at v1.1.0.
 - PR #171: Updated `PHYX_CONTEXT_JSON` to point at the Phyx JSON-LD context v1.1.0.
 - PR #167: Added `AGENTS.md` and `RELEASE.md` documenting the repository layout and release process.
 - PR #166: Replaced esdoc, which has had no release since 2018, with jsdoc and clean-jsdoc-theme. The documentation at <https://www.phyloref.org/phyx.js/> is now served from clean URLs, so links into the old pages need updating, and `PhylogenyWrapper` is published for the first time — esdoc and jsdoc alike had been skipping it as undocumented.
