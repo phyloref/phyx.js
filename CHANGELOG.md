@@ -1,7 +1,8 @@
 # Changelog
 All notable changes to this library will be documented in this file.
 
-The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning].
+The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning], except that
+1.3.0 removed public methods without a major version bump (see its entry below).
 
 ## [Unreleased]
 
