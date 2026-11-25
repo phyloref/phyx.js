@@ -1,7 +1,10 @@
 // Some OWL constants to be used.
 module.exports = {
-  // Where is our context file located?
-  PHYX_CONTEXT_JSON: 'http://www.phyloref.org/phyx.js/context/v1.1.0/phyx.json',
+  // Where is our context file located? The newest published version in context/. The docs site
+  // serves it, and it is only deployed when a release is published, so RELEASE.md publishes to npm
+  // after that deploy: a phyx.js that names a context the site lacks emits JSON-LD that can't be
+  // expanded. No test dereferences this IRI, so `npm test` passes before the deploy either way.
+  PHYX_CONTEXT_JSON: 'http://www.phyloref.org/phyx.js/context/v1.2.0/phyx.json',
 
   // OWL properties.
   OWL_CLASS: 'owl:Class',

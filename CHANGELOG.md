@@ -1,16 +1,35 @@
 # Changelog
 All notable changes to this library will be documented in this file.
 
-The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning].
+The format is based on [Keep a Changelog] and this project adheres to [Semantic Versioning], except that
+1.3.0 removed public methods without a major version bump (see its entry below).
 
 ## [Unreleased]
-- PR #166: Replaced esdoc, which has had no release since 2018, with jsdoc and clean-jsdoc-theme. The documentation at <https://www.phyloref.org/phyx.js/> is now served from clean URLs, so links into the old pages need updating, and `PhylogenyWrapper` is published for the first time — esdoc and jsdoc alike had been skipping it as undocumented.
-- PR #179: Stopped committing generated documentation. The JSON-LD contexts and JSON Schemas moved from `docs/context/` to `context/` at the repository root, changing their path within the published NPM package; they continue to be served from <https://www.phyloref.org/phyx.js/context/>.
-- PR #192: Added tests that every JSON-LD context and JSON Schema in `context/`, including the published versions, is valid. The v0.1.0 and v0.2.0 contexts cannot be processed by the `jsonld` library, so phyx.js cannot convert Phyx files that use them.
-- PR #195: Documented every method of `PhylogenyWrapper`, `PhylorefWrapper`, `PhyxWrapper` and `TaxonNameWrapper` that jsdoc had been skipping because its description was a `//` or `/* */` comment, so they now appear at <https://www.phyloref.org/phyx.js/>. The test suite fails if a class member has no `/**` comment above it.
-- PR #196: Fixed `PhylorefWrapper.setSpecifierType()` throwing when making a specifier external on a phyloref without specifier lists, and `getExpectedNodeLabels()` matching a single `expectedPhyloreferenceNamed` as a substring; `setSpecifierType()` also no longer adds an empty specifier list to the phyloref. A single-node phylogeny now exports its node's label, and `PhylogenyWrapper.getTaxonomicUnitsForNodeLabel()` (and so `getNodesAsJSONLD()`) applies the phylogeny's default nomenclatural code to taxonomic units listed in `additionalNodeProperties`.
-- PR #198: Removed `PhylorefWrapper.getCurrentStatus()`, `getStatusChanges()`, `setStatus()` and `getStatusCURIEsInEnglish()`, which tracked a phyloreference's publication status (draft, under review, published, and so on) as `pso:holdsStatusInTime` entries. That was more machinery than the problem needed: curators can keep that information in curator notes or by filing Phyx files in directories per status, and Klados has already dropped its status editor. The `pso`, `tvc` and `timeinterval` prefixes stay in every JSON-LD context so that older Phyx files still expand, and the `moment` dependency is gone.
+
+## [1.3.0] - 2026-11-25
+This release removes public `PhylorefWrapper` methods (PR #198) without a major version bump: no known consumer of phyx.js used them, and v2.0.0 is reserved for a major revision of the library.
+
 - PR #199: Added `PhylorefWrapper.deprecated`, a getter and setter backed by `owl:deprecated`, so a phyloreference its curators no longer stand behind can be marked as such and the annotation survives conversion to OWL. The JSON Schema now allows `owl:deprecated` on phylorefs.
+- PR #198: Removed `PhylorefWrapper.getCurrentStatus()`, `getStatusChanges()`, `setStatus()` and `getStatusCURIEsInEnglish()`, which tracked a phyloreference's publication status (draft, under review, published, and so on) as `pso:holdsStatusInTime` entries. That was more machinery than the problem needed: curators can keep that information in curator notes or by filing Phyx files in directories per status, and Klados has already dropped its status editor. The `pso`, `tvc` and `timeinterval` prefixes stay in every JSON-LD context so that older Phyx files still expand, and the `moment` dependency is gone.
+- PR #196: Fixed `PhylorefWrapper.setSpecifierType()` throwing when making a specifier external on a phyloref without specifier lists, and `getExpectedNodeLabels()` matching a single `expectedPhyloreferenceNamed` as a substring; `setSpecifierType()` also no longer adds an empty specifier list to the phyloref. A single-node phylogeny now exports its node's label, and `PhylogenyWrapper.getTaxonomicUnitsForNodeLabel()` (and so `getNodesAsJSONLD()`) applies the phylogeny's default nomenclatural code to taxonomic units listed in `additionalNodeProperties`.
+- PR #195: Documented every method of `PhylogenyWrapper`, `PhylorefWrapper`, `PhyxWrapper` and `TaxonNameWrapper` that jsdoc had been skipping because its description was a `//` or `/* */` comment, so they now appear at <https://www.phyloref.org/phyx.js/>. The test suite fails if a class member has no `/**` comment above it.
+- PR #194: Updated all dependencies, including mocha 12 and Biome 2.5, which fixes `phyx2owl` failing on Node 26 (#180). JPhyloRef tests now run on Java 21, and CI tests on Node.js 22.x, 24.x and 26.x.
+- PR #192: Added tests that every JSON-LD context and JSON Schema in `context/`, including the published versions, is valid. The v0.1.0 and v0.2.0 contexts cannot be processed by the `jsonld` library, so phyx.js cannot convert Phyx files that use them.
+- PR #184: Fixed the documentation site, which had been unavailable since #166, and added a daily check that it is live. `phyx2owl` now reports conversions that fail, and exits with status 1, instead of counting them as converted.
+- PR #179: Stopped committing generated documentation. The JSON-LD contexts and JSON Schemas moved from `docs/context/` to `context/` at the repository root, changing their path within the published NPM package; they continue to be served from <https://www.phyloref.org/phyx.js/context/>.
+- PR #178: Published version 1.2.0 of the Phyx JSON-LD context and JSON Schema, whose schema allows `owl:deprecated` on phyloreferences (#199) and now rejects unknown keys in a citation's `link` entries, which earlier schemas meant to forbid but accepted. `PHYX_CONTEXT_JSON` now points at v1.2.0; its JSON-LD context is identical to v1.1.0's, so Phyx files expand as before.
+- PR #171: Updated `PHYX_CONTEXT_JSON` to point at the Phyx JSON-LD context v1.1.0.
+- PR #167: Added `AGENTS.md` and `RELEASE.md` documenting the repository layout and release process.
+- PR #166: Replaced esdoc, which has had no release since 2018, with jsdoc and clean-jsdoc-theme. The documentation at <https://www.phyloref.org/phyx.js/> is now served from clean URLs, so links into the old pages need updating, and `PhylogenyWrapper` is published for the first time — esdoc and jsdoc alike had been skipping it as undocumented.
+- PR #165: Updated the homepage link to phyx.js's generated documentation.
+- PR #161: Upgraded all packages. This required converting `bin/phyx2owl.js` and `bin/resolve.js`
+  to ESM (as `bin/phyx2owl.mjs` and `bin/resolve.mjs`) for yargs v18 compatibility, and adding
+  `ajv-formats` for Ajv v8 compatibility. The `phyx2owl` and `resolve` command names are unchanged.
+- PR #160: Upgraded jsonld to v9.
+- PR #158: Updated the link and text for the curation tool.
+- PR #156: Replaced ESLint with [Biome] as the linter and formatter.
+- PR #155: Upgraded packages and updated the tested Node.js versions to 22.x, 24.x and 25.x.
+- PR #168, #169: Upgraded lodash to 4.18.1 and follow-redirects to 1.16.0.
 
 ## [1.2.1] - 2025-07-28
 - PR #152: Upraded packages using `npm upgrade`.
@@ -81,7 +100,8 @@ release of this package was based on [commit 14d2c3d5d1] in that repository.
 - Replaced references to the [phylotree] library with the [newick-js] library.
 - Made other changes to the initial code as needed to work as an independent NPM package.
 
-  [Unreleased]: https://github.com/phyloref/phyx.js/compare/v1.2.0...master
+  [Unreleased]: https://github.com/phyloref/phyx.js/compare/v1.3.0...master
+  [1.3.0]: https://github.com/phyloref/phyx.js/compare/v1.2.1...v1.3.0
   [1.2.1]: https://github.com/phyloref/phyx.js/compare/v1.2.0...v1.2.1
   [1.2.0]: https://github.com/phyloref/phyx.js/compare/v1.1.1...v1.2.0
   [1.1.1]: https://github.com/phyloref/phyx.js/compare/v1.1.0...v1.1.1
@@ -93,6 +113,7 @@ release of this package was based on [commit 14d2c3d5d1] in that repository.
   [0.1.2]: https://github.com/phyloref/phyx.js/compare/v0.1.1...v0.1.2
   [0.1.1]: https://github.com/phyloref/phyx.js/compare/v0.1.0...v0.1.1
   [0.1.0]: https://github.com/phyloref/phyx.js/releases/tag/v0.1.0
+  [Biome]: https://biomejs.dev/
   [Keep a Changelog]: https://keepachangelog.com/en/1.0.0/
   [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
   [Phyloreference Curation Tool]: http://github.com/phyloref/curation-tool

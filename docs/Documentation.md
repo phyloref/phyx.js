@@ -119,8 +119,8 @@ The repository's Pages source is **GitHub Actions**, not a branch, so the site i
   and would have 404'd the whole site.
 
 Pages serves the uploaded artifact at the repository sub-path, `/phyx.js`. That is what makes
-`postdocs` enough to keep `http://www.phyloref.org/phyx.js/context/v1.1.0/phyx.json` resolving —
-the IRI `src/utils/owlterms.js` hardcodes. It redirects to the same path over `https://`, which is
+`postdocs` enough to keep the published context IRIs resolving, such as
+`http://www.phyloref.org/phyx.js/context/v1.2.0/phyx.json`, the one `src/utils/owlterms.js` hardcodes. It redirects to the same path over `https://`, which is
 the form our own fixtures and tutorials use; the two are distinct IRIs, and both have to keep
 dereferencing. Any change to `basePath`, to the uploaded `path`, or to the Pages source has to
 preserve that path exactly. The workflow checks `site/index.html` and that context file exist before it deploys,

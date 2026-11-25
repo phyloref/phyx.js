@@ -25,14 +25,25 @@ the exception: the `jsonld` library rejects the `_comments` entries they use,
 so phyx.js cannot convert Phyx files that refer to them. They are left
 unchanged, and the test checks that they still fail.
 
-| Version     | Date published      | JSON-LD context          | JSON Schema          |
-|-------------|---------------------|--------------------------|----------------------|
-| development | Not for publication | [JSON-LD context]        | [JSON Schema]        |
-| [v0.1.0]    | February 6, 2019    | [v0.1.0 JSON-LD context] | None                 |
-| [v0.2.0]    | July 22, 2019       | [v0.2.0 JSON-LD context] | None                 |
-| [v1.0.0]    | March 19, 2021      | [v1.0.0 JSON-LD context] | [v1.0.0 JSON Schema] |
-| [v1.0.1]    | October 18, 2021    | Unchanged                | Unchanged            |
-| [v1.1.0]    | May 11, 2023        | [v1.1.0 JSON-LD context] | [v1.1.0 JSON Schema] |
+Context versions are numbered separately from phyx.js releases, and the
+version links below go to the phyx.js release that first published each one:
+context v1.2.0, for example, was published in phyx.js v1.3.0. Whenever
+`development/` has changed since the newest published version, publish a new
+version in the next phyx.js release and point `PHYX_CONTEXT_JSON` in
+`src/utils/owlterms.js` at it in the same release, even if only the JSON Schema
+changed: otherwise a Phyx file that uses the change validates against no
+published schema. `RELEASE.md` orders the release so the new version is live on
+the site before the npm package that names it is published.
+
+| Version     | Date published      | JSON-LD context                           | JSON Schema          |
+|-------------|---------------------|-------------------------------------------|----------------------|
+| development | Not for publication | [JSON-LD context]                         | [JSON Schema]        |
+| [v0.1.0]    | February 6, 2019    | [v0.1.0 JSON-LD context]                  | None                 |
+| [v0.2.0]    | July 22, 2019       | [v0.2.0 JSON-LD context]                  | None                 |
+| [v1.0.0]    | March 19, 2021      | [v1.0.0 JSON-LD context]                  | [v1.0.0 JSON Schema] |
+| [v1.0.1]    | October 18, 2021    | Unchanged                                 | Unchanged            |
+| [v1.1.0]    | May 11, 2023        | [v1.1.0 JSON-LD context]                  | [v1.1.0 JSON Schema] |
+| [v1.2.0]    | November 25, 2026   | [v1.2.0 JSON-LD context] (same as v1.1.0) | [v1.2.0 JSON Schema] |
 
   [JSON-LD Context]: ./development/phyx.json
   [JSON Schema]: ./development/schema.json
@@ -48,3 +59,6 @@ unchanged, and the test checks that they still fail.
   [v1.1.0]: https://github.com/phyloref/phyx.js/releases/tag/v1.1.0
   [v1.1.0 JSON-LD context]: ./v1.1.0/phyx.json
   [v1.1.0 JSON Schema]: ./v1.1.0/schema.json
+  [v1.2.0]: https://github.com/phyloref/phyx.js/releases/tag/v1.3.0
+  [v1.2.0 JSON-LD context]: ./v1.2.0/phyx.json
+  [v1.2.0 JSON Schema]: ./v1.2.0/schema.json
