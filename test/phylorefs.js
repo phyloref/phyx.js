@@ -68,6 +68,30 @@ describe('PhylorefWrapper', function () {
       });
     });
 
+    describe('#deprecated', function () {
+      it('should initially be false', function () {
+        expect(wrapper.deprecated).to.be.false;
+      });
+
+      it('should be true after assigning true to .deprecated, and write owl:deprecated', function () {
+        wrapper.deprecated = true;
+        expect(wrapper.deprecated).to.be.true;
+        expect(wrapper.phyloref['owl:deprecated']).to.be.true;
+      });
+
+      it('should remove owl:deprecated after assigning false to .deprecated', function () {
+        wrapper.deprecated = false;
+        expect(wrapper.deprecated).to.be.false;
+        expect(wrapper.phyloref).to.not.have.property('owl:deprecated');
+      });
+
+      it('should only count an owl:deprecated of exactly true', function () {
+        expect(new phyx.PhylorefWrapper({ 'owl:deprecated': 'true' }).deprecated).to.be.false;
+        expect(new phyx.PhylorefWrapper({ 'owl:deprecated': false }).deprecated).to.be.false;
+        expect(new phyx.PhylorefWrapper({ 'owl:deprecated': true }).deprecated).to.be.true;
+      });
+    });
+
     describe('#specifiers', function () {
       it('should initially return an empty list', function () {
         expect(wrapper.specifiers).to.be.empty;
