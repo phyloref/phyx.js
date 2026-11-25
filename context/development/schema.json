@@ -186,11 +186,11 @@
           "type": "array",
           "description": "Links to this publication.",
           "items": {
+            "additionalProperties": false,
             "required": [
               "url"
             ],
             "properties": {
-              "additionalProperties": false,
               "url": {
                 "type": "string",
                 "description": "The URL of this publication."
@@ -246,7 +246,7 @@
           "minLength": 1
         },
         "specificEpithet": {
-          "description": "The genus portion of the taxon name.",
+          "description": "The specific epithet of the taxon name.",
           "type": "string",
           "minLength": 1
         }
@@ -296,7 +296,7 @@
     },
     "specimen": {
       "type": "object",
-      "description": "A taxon or taxon concept.",
+      "description": "A specimen.",
       "additionalProperties": false,
       "required": [
         "@type"

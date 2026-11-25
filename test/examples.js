@@ -222,6 +222,21 @@ describe('PhyxWrapper', function () {
         },
         ],
       },
+      {
+        // Up to context v1.1.0, `additionalProperties: false` sat inside the link's `properties`,
+        // where it declared a property named "additionalProperties" instead of forbidding extra
+        // keys, so this file validated.
+        fileName: 'examples/incorrect/unexpected-field-in-citation-link.json',
+        expectedErrors: [{
+          instancePath: '/source/link/0',
+          keyword: 'additionalProperties',
+          message: 'must NOT have additional properties',
+          params: {
+            additionalProperty: 'label',
+          },
+          schemaPath: '#/properties/link/items/additionalProperties',
+        }],
+      },
     ];
 
     filesThatShouldFailValidation.forEach((entry) => {
