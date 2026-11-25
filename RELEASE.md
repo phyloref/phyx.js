@@ -31,7 +31,7 @@ v1.2.0 never reached Zenodo and had to be followed by v1.2.1
 
 ```bash
 # must list https://zenodo.org/api/hooks/receivers/github/events/ as true
-gh api repos/phyloref/phyx.js/hooks --jq '.[] | "\(.active)\t\(.config.url | split("?")[0])"'
+gh api repos/phyloref/phyx.js/hooks --jq '.[] | "\(.active)\t\((.config.url // "(no URL)") | split("?")[0])"'
 ```
 
 The `split` drops the access token that the hook's URL carries, so don't print the URL whole. If the hook
