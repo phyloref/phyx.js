@@ -6,6 +6,7 @@ module.exports = {
   // OWL properties.
   OWL_CLASS: 'owl:Class',
   OWL_RESTRICTION: 'owl:Restriction',
+  OWL_DEPRECATED: 'owl:deprecated',
 
   // Phyloref properties.
   PHYLOREF_INCLUDES_TU: 'phyloref:includes_TU',

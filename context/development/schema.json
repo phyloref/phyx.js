@@ -574,6 +574,10 @@
           "curatorNotes": {
             "type": "string",
             "description": "Curator notes associated with this phyloreference."
+          },
+          "owl:deprecated": {
+            "type": "boolean",
+            "description": "Whether this phyloreference is deprecated, i.e. no longer endorsed by its curators. The standard OWL annotation property, written as a CURIE so that it expands under every version of the Phyx context."
           }
         }
       }
