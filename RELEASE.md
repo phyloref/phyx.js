@@ -18,7 +18,10 @@ In the PR:
    new context before publishing the npm package that names it, so no follow-up release is needed.
 4. **Check that the documentation still builds** — run `npm run docs`. Do not commit `site/`: it is generated output, and publishing the release triggers the workflow that regenerates and deploys it (see step 3 below).
 
-Get the PR reviewed and approved, then merge it. Carry on with the steps below straight away: if the PR
+Get the PR reviewed and approved. Just before merging, check that the release date in `CHANGELOG.md`, and in
+[context/README.md](context/README.md)'s table if this release publishes a context, is the day you are
+merging: both are written when the PR is opened, and a published context's date can't be corrected later.
+Then merge it, and carry on with the steps below straight away: if the PR
 moved `PHYX_CONTEXT_JSON`, master names a context the site does not serve until step 3 deploys it, and the
 daily site canary fails in the meantime.
 
