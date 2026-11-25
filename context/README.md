@@ -35,15 +35,15 @@ changed: otherwise a Phyx file that uses the change validates against no
 published schema. `RELEASE.md` orders the release so the new version is live on
 the site before the npm package that names it is published.
 
-| Version     | Date published      | JSON-LD context          | JSON Schema          |
-|-------------|---------------------|--------------------------|----------------------|
-| development | Not for publication | [JSON-LD context]        | [JSON Schema]        |
-| [v0.1.0]    | February 6, 2019    | [v0.1.0 JSON-LD context] | None                 |
-| [v0.2.0]    | July 22, 2019       | [v0.2.0 JSON-LD context] | None                 |
-| [v1.0.0]    | March 19, 2021      | [v1.0.0 JSON-LD context] | [v1.0.0 JSON Schema] |
-| [v1.0.1]    | October 18, 2021    | Unchanged                | Unchanged            |
-| [v1.1.0]    | May 11, 2023        | [v1.1.0 JSON-LD context] | [v1.1.0 JSON Schema] |
-| [v1.2.0]    | November 25, 2026   | Unchanged                | [v1.2.0 JSON Schema] |
+| Version     | Date published      | JSON-LD context                           | JSON Schema          |
+|-------------|---------------------|-------------------------------------------|----------------------|
+| development | Not for publication | [JSON-LD context]                         | [JSON Schema]        |
+| [v0.1.0]    | February 6, 2019    | [v0.1.0 JSON-LD context]                  | None                 |
+| [v0.2.0]    | July 22, 2019       | [v0.2.0 JSON-LD context]                  | None                 |
+| [v1.0.0]    | March 19, 2021      | [v1.0.0 JSON-LD context]                  | [v1.0.0 JSON Schema] |
+| [v1.0.1]    | October 18, 2021    | Unchanged                                 | Unchanged            |
+| [v1.1.0]    | May 11, 2023        | [v1.1.0 JSON-LD context]                  | [v1.1.0 JSON Schema] |
+| [v1.2.0]    | November 25, 2026   | [v1.2.0 JSON-LD context] (same as v1.1.0) | [v1.2.0 JSON Schema] |
 
   [JSON-LD Context]: ./development/phyx.json
   [JSON Schema]: ./development/schema.json
@@ -60,4 +60,5 @@ the site before the npm package that names it is published.
   [v1.1.0 JSON-LD context]: ./v1.1.0/phyx.json
   [v1.1.0 JSON Schema]: ./v1.1.0/schema.json
   [v1.2.0]: https://github.com/phyloref/phyx.js/releases/tag/v1.3.0
+  [v1.2.0 JSON-LD context]: ./v1.2.0/phyx.json
   [v1.2.0 JSON Schema]: ./v1.2.0/schema.json
