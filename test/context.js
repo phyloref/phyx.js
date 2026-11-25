@@ -78,6 +78,7 @@ describe('Phyx JSON-LD contexts and JSON Schemas', function () {
       'development',
       'v1.0.0',
       'v1.1.0',
+      'v1.2.0',
     ]);
     expect(versions).to.include.members([...expected]);
   });

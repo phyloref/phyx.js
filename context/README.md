@@ -25,6 +25,13 @@ the exception: the `jsonld` library rejects the `_comments` entries they use,
 so phyx.js cannot convert Phyx files that refer to them. They are left
 unchanged, and the test checks that they still fail.
 
+Context versions are numbered separately from phyx.js releases, and the
+version links below go to the phyx.js release that first published each one:
+context v1.2.0, for example, was published in phyx.js v1.3.0. A version that
+changes only the JSON Schema leaves `PHYX_CONTEXT_JSON` in
+`src/utils/owlterms.js` pointing at the newest version whose JSON-LD context
+changed.
+
 | Version     | Date published      | JSON-LD context          | JSON Schema          |
 |-------------|---------------------|--------------------------|----------------------|
 | development | Not for publication | [JSON-LD context]        | [JSON Schema]        |
@@ -33,6 +40,7 @@ unchanged, and the test checks that they still fail.
 | [v1.0.0]    | March 19, 2021      | [v1.0.0 JSON-LD context] | [v1.0.0 JSON Schema] |
 | [v1.0.1]    | October 18, 2021    | Unchanged                | Unchanged            |
 | [v1.1.0]    | May 11, 2023        | [v1.1.0 JSON-LD context] | [v1.1.0 JSON Schema] |
+| [v1.2.0]    | November 25, 2026   | Unchanged                | [v1.2.0 JSON Schema] |
 
   [JSON-LD Context]: ./development/phyx.json
   [JSON Schema]: ./development/schema.json
@@ -48,3 +56,5 @@ unchanged, and the test checks that they still fail.
   [v1.1.0]: https://github.com/phyloref/phyx.js/releases/tag/v1.1.0
   [v1.1.0 JSON-LD context]: ./v1.1.0/phyx.json
   [v1.1.0 JSON Schema]: ./v1.1.0/schema.json
+  [v1.2.0]: https://github.com/phyloref/phyx.js/releases/tag/v1.3.0
+  [v1.2.0 JSON Schema]: ./v1.2.0/schema.json
